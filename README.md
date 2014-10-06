@@ -3,6 +3,8 @@ OmniEngine.Net
 
 Official repository for the Omni T3D Game Engine from Winterleaf Entertainment L.L.C.
 
+Check out the Official Omni Engine Website at http://www.OmniEngine.net
+
 User Manual is located in "OMNI Programmers Manual.docx"
 
 Patches
