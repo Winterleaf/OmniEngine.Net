@@ -1,0 +1,514 @@
+Leap.Vector
+=============
+
+.. currentmodule:: Leap
+
+.. class:: Vector
+
+  The Vector class represents a three-component mathematical vector or point
+  such as a direction or position in three-dimensional space.
+ 
+  The Leap Motion software employs a right-handed Cartesian coordinate system.
+  Values given are in units of real-world millimeters. The origin is centered
+  at the center of the Leap Motion Controller. The x- and z-axes lie in the horizontal
+  plane, with the x-axis running parallel to the long edge of the device.
+  The y-axis is vertical, with positive values increasing upwards (in contrast
+  to the downward orientation of most computer graphics coordinate systems).
+  The z-axis has positive values increasing away from the computer screen.
+ 
+  .. image:: ../../../images/Leap_Axes.png
+  
+  .. versionadded:: 1.0
+ 
+
+  .. container:: constructors
+
+    .. classmethod:: Vector([x, y, z])
+
+      Creates a new Vector with the specified component values. If you do not supply
+      arguments, a zero-vector is returned.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Constructor_1.txt
+
+      **Arguments:**
+
+      ``x`` (float) -- the x (long, horizontal) component
+      
+      ``y`` (float) -- the x (height) component
+      
+      ``z`` (float) -- the x (short, horizontal) component
+
+      .. versionadded:: 1.0
+
+
+    .. classmethod:: Vector(vector)
+
+      Copies the specified Vector.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Constructor_2.txt
+
+      **Arguments:**
+
+      ``vector`` (:class:`Leap.Vector`) -- the vector to copy.
+
+      **Returns:**
+
+      :class:`Leap.Vector` -- the new copy.
+
+      .. versionadded:: 1.0
+
+
+  .. container:: attributes
+  
+    .. attribute:: x -> float
+
+        The horizontal component.
+
+        .. versionadded:: 1.0
+
+
+    .. attribute:: y -> float
+
+      The vertical component.
+
+      .. versionadded:: 1.0
+
+
+    .. attribute::  z -> float
+
+      The depth component.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: normalized -> Leap.Vector
+
+      A normalized copy of this vector.
+
+      A normalized vector has the same direction as the original vector,
+      but with a length of one.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Normalized.txt
+
+      .. versionadded:: 1.0
+
+
+    .. attribute::  pitch -> float
+
+      The pitch angle in radians.
+
+      Pitch is the angle between the negative z-axis and the projection of
+      the vector onto the y-z plane. In other words, pitch represents rotation
+      around the x-axis.
+      If the vector points upward, the returned angle is between 0 and pi radians
+      (180 degrees); if it points downward, the angle is between 0 and -pi radians.
+
+      .. image:: ../../../images/Math_Pitch_Angle.png
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Pitch.txt
+
+      .. versionadded:: 1.0
+
+
+    .. attribute:: yaw -> float
+
+      The yaw angle in radians.
+
+      Yaw is the angle between the negative z-axis and the projection of
+      the vector onto the x-z plane. In other words, yaw represents rotation
+      around the y-axis. If the vector points to the right of the negative z-axis,
+      then the returned angle is between 0 and pi radians (180 degrees);
+      if it points to the left, the angle is between 0 and -pi radians.
+
+      .. image:: ../../../images/Math_Yaw_Angle.png
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Yaw.txt
+
+      .. versionadded:: 1.0
+
+    .. attribute::  roll -> float
+
+      The roll angle in radians.
+
+      Roll is the angle between the y-axis and the projection of
+      the vector onto the x-y plane. In other words, roll represents rotation
+      around the z-axis. If the vector points to the left of the y-axis,
+      then the returned angle is between 0 and pi radians (180 degrees);
+      if it points to the right, the angle is between 0 and -pi radians.
+
+      .. image:: ../../../images/Math_Roll_Angle.png
+
+      Use this function to get roll angle of the plane to which this vector is a
+      normal. For example, if this vector represents the normal to the palm,
+      then this function returns the tilt or roll of the palm plane compared
+      to the horizontal (x-z) plane.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Roll.txt
+
+      .. versionadded:: 1.0
+
+    .. attribute:: is_valid -> bool
+
+      True if all of the vector's components are finite.  If any
+      component is NaN or infinite, then this is false.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_IsValid.txt
+
+      .. versionadded:: 1.0
+
+
+
+  .. container:: methods
+
+    .. method:: magnitude() -> float
+
+      The magnitude, or length, of this vector.
+
+      The magnitude is the L2 norm, or Euclidean distance between the origin and
+      the point represented by the (x, y, z) components of this Vector object.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Magnitude.txt
+
+      **Returns:**
+
+      float -- The length of this vector.
+
+      .. versionadded:: 1.0
+
+
+    .. method::  magnitude_squared() -> float
+
+      The square of the magnitude, or length, of this vector.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Magnitude_Squared.txt
+
+      **Returns:**
+
+      float -- The square of the length of this vector.
+
+      .. versionadded:: 1.0
+
+
+    .. method::  distance_to(other) -> float
+
+      The distance between the point represented by this Vector
+      object and a point represented by the specified Vector object.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_DistanceTo.txt
+
+      **Arguments:**
+
+      ``other`` (:class:`Leap.Vector`) -- another point.
+
+      **Returns:**
+
+      float -- The distance from this point to the specified point.
+
+      .. versionadded:: 1.0
+
+
+    .. method::  angle_to(other) -> float
+
+      The angle between this vector and the specified vector in radians.
+
+      The angle is measured in the plane formed by the two vectors. The
+      angle returned is always the smaller of the two conjugate angles.
+      Thus ``A.angle_to(B) == B.angle_to(A)`` and is always a positive
+      value less than or equal to pi radians (180 degrees).
+
+      If either vector has zero length, then this function returns zero.
+
+      .. image:: ../../../images/Math_AngleTo.png
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_AngleTo.txt
+
+      **Arguments:**
+
+      ``other`` (:class:`Leap.Vector`) -- Another vector.
+
+      **Returns:**
+
+      float -- The angle between this vector and the specified vector in radians.
+
+      .. versionadded:: 1.0
+
+
+    .. method::  dot(other) -> float
+
+      The dot product of this vector with another vector.
+
+      The dot product is the magnitude of the projection of this vector
+      onto the specified vector.
+
+      .. image:: ../../../images/Math_Dot.png
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Dot.txt
+
+      **Arguments:**
+
+      ``other`` (:class:`Leap.Vector`) -- Another vector.
+
+      **Returns:**
+
+      float -- The dot product of this vector and the specified vector.
+
+      .. versionadded:: 1.0
+
+
+    .. method:: cross(other) -> Leap.Vector
+
+      The cross product of this vector and the specified vector.
+
+      The cross product is a vector orthogonal to both original vectors.
+      It has a magnitude equal to the area of a parallelogram having the
+      two vectors as sides. The direction of the returned vector is
+      determined by the right-hand rule. Thus ``A.cross(B) == -B.cross(A)``.
+
+      .. image:: ../../../images/Math_Cross.png
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Cross.txt
+
+      **Arguments:**
+
+      ``other`` (:class:`Leap.Vector`) -- Another vector.
+
+      **Returns:**
+
+      :class:`Leap.Vector` -- The cross product of this vector and the specified vector.
+
+      .. versionadded:: 1.0
+
+
+    .. method::  to_float_array() -> array
+
+      Converts this vector to a float array.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_ToFloatPointer.txt
+    
+      **Returns**
+    
+      ``float[]`` -- the vector as a three-element array of floating point values.
+    
+      .. versionadded:: 1.0
+
+
+    .. method:: to_tuple() -> tuple
+
+      Converts this vector to a tuple containing the x, y, and z components.
+    
+      **Returns**
+    
+      ``tuple`` -- The three vector components as a tuple.
+    
+      .. versionadded:: 1.0
+    
+
+  .. container:: operators
+  
+    .. method:: neg(a, b) -> Leap.Vector
+
+      A copy of this vector pointing in the opposite direction.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Negate.txt
+
+    
+      .. versionadded:: 1.0
+
+
+    .. method:: add(a , b) -> Leap.Vector
+
+      Add vectors component-wise.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Plus.txt
+    
+      .. versionadded:: 1.0
+
+
+    .. method:: sub(a, b) -> Leap.Vector
+
+      Subtract vectors component-wise.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Minus.txt
+    
+      .. versionadded:: 1.0
+
+
+    .. method:: mul(a, b) -> Leap.Vector
+
+      Multiply vector by a scalar.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Times.txt
+    
+      .. versionadded:: 1.0
+
+
+
+    .. method:: div(a, b) -> Leap.Vector
+
+      Divide vector by a scalar.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Divide.txt
+    
+      .. versionadded:: 1.0
+
+
+    .. method:: iadd(a, b) -> Leap.Vector
+
+      Add vectors component-wise and assign the sum.
+    
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Plus_Equals.txt
+
+      .. versionadded:: 1.0
+
+
+    .. method:: isub(a, b) -> Leap.Vector
+
+      Subtract vectors component-wise and assign the difference.
+    
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Minus_Equals.txt
+
+      .. versionadded:: 1.0
+
+
+    .. method:: imul(a, b) -> Leap.Vector
+
+      Multiply vector by a scalar and assign the product.
+    
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Times_Equals.txt
+
+      .. versionadded:: 1.0
+
+
+    .. method:: idiv(a, b) -> Leap.Vector
+
+      Divide vector by a scalar and assign the quotient.
+    
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Div_Equals.txt
+
+      .. versionadded:: 1.0
+
+
+    .. method:: eq(a, b) -> bool
+
+      Compare Vector equality component-wise.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Equals.txt
+    
+      .. versionadded:: 1.0
+
+
+    .. method:: ne(a, b) -> bool
+
+      Compare Vector inequality component-wise.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_NotEqual.txt
+    
+      .. versionadded:: 1.0
+
+    .. method::  getitem(object, index) -> float
+
+      Index vector components numerically.
+      Index 0 is x, index 1 is y, and index 2 is z.
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Index.txt
+    
+      **Returns**
+    
+      The x, y, or z component of this Vector, if the specified index
+      value is at least 0 and at most 2; otherwise, returns zero.
+
+      .. versionadded:: 1.0
+
+    
+  .. container:: data
+
+    .. data:: Vector.zero -> Leap.Vector
+
+      The zero vector: (0, 0, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Zero.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.x_axis -> Leap.Vector
+
+      The x-axis unit vector: (1, 0, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_XAxis.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.y_axis -> Leap.Vector
+
+      The y-axis unit vector: (0, 1, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_YAxis.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.z_axis -> Leap.Vector
+
+      The z-axis unit vector: (0, 0, 1)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_ZAxis.txt
+
+      .. versionadded:: 1.0
+
+
+
+    .. data:: Vector.left -> Leap.Vector
+
+      The unit vector pointing left along the negative x-axis: (-1, 0, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Left.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.right -> Leap.Vector
+
+      The unit vector pointing right along the positive x-axis: (1, 0, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Right.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.down -> Leap.Vector
+
+      The unit vector pointing down along the negative y-axis: (0, -1, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Down.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.up -> Leap.Vector
+
+      The unit vector pointing up along the positive y-axis: (0, 1, 0)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Up.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.forward -> Leap.Vector
+
+      The unit vector pointing forward along the negative z-axis: (0, 0, -1)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Forward.txt
+
+      .. versionadded:: 1.0
+
+
+    .. data:: Vector.backward -> Leap.Vector
+
+      The unit vector pointing backward along the positive z-axis: (0, 0, 1)
+
+      .. literalinclude:: ../../../codeexamples/includes/python/Vector_Backward.txt
+
+      .. versionadded:: 1.0
+
+

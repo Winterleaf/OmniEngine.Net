@@ -1,0 +1,82 @@
+Leap.FingerList
+===============
+
+.. currentmodule:: Leap
+
+.. class:: FingerList
+
+  The FingerList class represents a list of Finger objects.
+ 
+  Get a FingerList object by calling :func:`Frame.fingers()` or
+  :func:`Hand.fingers()`.
+  
+  .. versionadded:: 1.0
+
+  .. container:: constructors
+  
+    .. classmethod:: FingerList()
+
+      Constructs an empty list.
+    
+      .. versionadded:: 1.0
+
+  .. container:: attributes
+  
+    .. attribute:: len -> int
+
+      The number of items in this list.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: is_empty -> bool
+
+      Reports whether the list is empty.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: frontmost -> Leap.Finger
+  
+      The item in this list with the smallest ``z`` coordinate.
+    
+      .. versionadded:: 1.0
+    
+    .. attribute:: leftmost -> Leap.Finger
+  
+      The item in this list with the smallest ``x`` coordinate.
+
+      .. versionadded:: 1.0
+    
+    .. attribute:: rightmost -> Leap.Finger
+  
+      The item in this list with the largest ``x`` coordinate.
+
+      .. versionadded:: 1.0
+    
+
+  .. container:: methods
+  
+    .. method:: append(other)
+  
+      Appends the members of the specifed FingerList to this FingerList.
+
+      **Arguments**
+     
+      ``other`` (:class:`Leap.FingerList`) -- A FingerList object containing Finger objects
+      to append to the end of this FingerList.
+    
+      .. versionadded:: 1.0
+
+    .. method:: next() -> Leap.Finger
+  
+      Provides the next item in the list.
+    
+      .. versionadded:: 1.0
+  
+    
+  .. container:: operators
+  
+    .. method::  getitem(object, index) -> Leap.Device
+
+      Access a list member by its position in the list.
+
+      .. versionadded:: 1.0

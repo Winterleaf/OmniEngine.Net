@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.SwipeGesture &mdash; Leap Motion 1.0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0.9 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0.9 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-swipegesture">
+<h1>Leap.SwipeGesture<a class="headerlink" href="#leap-swipegesture" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.SwipeGesture">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">SwipeGesture</tt><a class="headerlink" href="#Leap.SwipeGesture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends <a class="reference internal" href="Leap.Gesture.html#Leap.Gesture" title="Leap.Gesture"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Gesture</span></tt></a>.</p>
+<p>The SwipeGesture class represents a swiping motion of a finger or tool.</p>
+<img alt="../_images/Leap_Gesture_Swipe.png" src="../_images/Leap_Gesture_Swipe.png" />
+<p>Important: To use swipe gestures in your application, you must enable
+recognition of the swipe gesture. You can enable recognition with:</p>
+<div class="highlight-python"><div class="highlight"><pre>        <span class="n">controller</span><span class="o">.</span><span class="n">enable_gesture</span><span class="p">(</span><span class="n">Leap</span><span class="o">.</span><span class="n">Gesture</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">TYPE_SWIPE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Swipe gestures are continuous.</p>
+<p>You can set the minimum length and velocity required for a movement
+to be recognized as a swipe using the config attribute of a connected
+Controller object. Use the following keys to configure swipe recognition:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="15%" />
+<col width="20%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key string</th>
+<th class="head">Value type</th>
+<th class="head">Default value</th>
+<th class="head">Units</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Gesture.Swipe.MinLength</td>
+<td>float</td>
+<td>150</td>
+<td>mm</td>
+</tr>
+<tr class="row-odd"><td>Gesture.Swipe.MinVelocity</td>
+<td>float</td>
+<td>1000</td>
+<td>mm/s</td>
+</tr>
+</tbody>
+</table>
+<p>The following example demonstrates how to set the swipe configuration
+parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre>        <span class="k">if</span><span class="p">(</span><span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_float</span><span class="p">(</span><span class="s">&quot;Gesture.Swipe.MinLength&quot;</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">)</span>
+          <span class="ow">and</span> <span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_float</span><span class="p">(</span><span class="s">&quot;Gesture.Swipe.MinVelocity&quot;</span><span class="p">,</span> <span class="mi">750</span><span class="p">)):</span>
+            <span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+<div class="constructors container">
+<dl class="classmethod">
+<dt id="Leap.SwipeGesture.SwipeGesture">
+<em class="property">classmethod </em><tt class="descname">SwipeGesture</tt><big>(</big><span class="optional">[</span><em>gesture</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#Leap.SwipeGesture.SwipeGesture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a SwipeGesture object from an instance of the Gesture class.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">gesture</span></tt> (<a class="reference internal" href="Leap.Gesture.html#Leap.Gesture" title="Leap.Gesture"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Gesture</span></tt></a>) &#8211; The Gesture instance to specialize. This Gesture instance must
+be a SwipeGesture object. If no argument is supplied, an invalid SwipeGesture object is created.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="attributes container">
+<dl class="attribute">
+<dt>
+<tt class="descname">startPosition -&gt; Leap.Vector</tt></dt>
+<dd><p>The position where the swipe began.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">position -&gt; Leap.Vector</tt></dt>
+<dd><p>The current position of the swipe.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">direction -&gt; Leap.Vector</tt></dt>
+<dd><p>The unit direction vector parallel to the swipe motion.</p>
+<p>You can compare the components of the vector to classify the swipe as
+appropriate for your application. For example, if you are using swipes
+for two dimensional scrolling, you can compare the x and y values to
+determine if the swipe is primarily horizontal or vertical.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">speed -&gt; float</tt></dt>
+<dd><p>The swipe speed in mm/second.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">pointable -&gt; Leap.Pointable</tt></dt>
+<dd><p>The finger performing the swipe gesture.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="data container">
+<dl class="classmethod">
+<dt>
+<tt class="descname">class_type -&gt; int</tt></dt>
+<dd><p>The swipe gesture type designator: <tt class="xref py py-data docutils literal"><span class="pre">Gesture.TYPE_SWIPE</span></tt></p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

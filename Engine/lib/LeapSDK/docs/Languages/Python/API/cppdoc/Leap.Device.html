@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Device &mdash; Leap Motion 1.0.8 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/breathe.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0.8 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0.8 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-device">
+<h1>Leap.Device<a class="headerlink" href="#leap-device" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Leap.Device">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Device</tt><a class="headerlink" href="#Leap.Leap.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Device class represents a physically connected device.</p>
+<p>The Device class contains information related to a particular connected
+device such as field of view, device id, and calibrated positions.</p>
+<p>Note that Device objects can be invalid, which means that they do not contain
+valid device information and do not correspond to a physical device.
+Test for validity with the <tt class="xref py py-attr docutils literal"><span class="pre">Device.is_valid</span></tt> property.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+<div class="constructors container">
+<dl class="classmethod">
+<dt id="Leap.Leap.Device.Device">
+<em class="property">classmethod </em><tt class="descname">Device</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Leap.Device.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Device object.</p>
+<p>An uninitialized device is considered invalid.
+Get valid Device objects from a DeviceList object obtained using the
+<tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller.devices()</span></tt> method.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="attributes container">
+<dl class="attribute">
+<dt id="Leap.Leap.Device.horizontal_view_angle">
+<tt class="descname">horizontal_view_angle</tt><a class="headerlink" href="#Leap.Leap.Device.horizontal_view_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>The angle of view along the x axis of this device.</p>
+<img alt="../_images/Leap_horizontalViewAngle1.png" src="../_images/Leap_horizontalViewAngle1.png" />
+<p>The Leap Motion controller scans a region in the shape of an inverted pyramid
+centered at the device&#8217;s center and extending upwards. The <tt class="docutils literal"><span class="pre">horizontal_view_angle</span></tt>
+reports the view angle along the long dimension of the device.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Leap.Device.vertical_view_angle">
+<tt class="descname">vertical_view_angle</tt><a class="headerlink" href="#Leap.Leap.Device.vertical_view_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>The angle of view along the z axis of this device.</p>
+<img alt="../_images/Leap_verticalViewAngle1.png" src="../_images/Leap_verticalViewAngle1.png" />
+<p>The Leap Motion controller scans a region in the shape of an inverted pyramid
+centered at the device&#8217;s center and extending upwards. The <tt class="docutils literal"><span class="pre">vertical_view_angle</span></tt>
+reports the view angle along the short dimension of the device.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Leap.Device.range">
+<tt class="descname">range</tt><a class="headerlink" href="#Leap.Leap.Device.range" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum reliable tracking range.</p>
+<p>The range reports the maximum recommended distance from the device center
+for which tracking is expected to be reliable. This distance is not a hard limit.
+Tracking may be still be functional above this distance or begin to degrade slightly
+before this distance depending on calibration and extreme environmental conditions.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Leap.Leap.Device.is_valid">
+<tt class="descname">is_valid</tt><a class="headerlink" href="#Leap.Leap.Device.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reports whether this is a valid Device object.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="methods container">
+<dl class="method">
+<dt id="Leap.Leap.Device.distance_to_boundary">
+<tt class="descname">distance_to_boundary</tt><big>(</big><em>position</em><big>)</big><a class="headerlink" href="#Leap.Leap.Device.distance_to_boundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>The distance to the nearest edge of the Leap Motion controller&#8217;s view volume.</p>
+<p>The view volume is an axis-aligned, inverted pyramid centered on the device origin
+and extending upward to the range limit. The walls of the pyramid are described
+by the <tt class="docutils literal"><span class="pre">horizontal_view_angle</span></tt> and <tt class="docutils literal"><span class="pre">vertical_view_angle</span></tt> and the roof by the <tt class="docutils literal"><span class="pre">range</span></tt>.
+This function estimates the distance between the specified input position and the
+nearest wall or roof of the view volume.</p>
+<p><strong>Arguments</strong></p>
+<p>position (<a class="reference internal" href="../pydoc/Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211; The point to use for the distance calculation.</p>
+<p><strong>Returns</strong></p>
+<p>float &#8211; The distance in millimeters from the input position to the nearest boundary.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="operators container">
+<dl class="method">
+<dt id="Leap.Leap.Device.eq">
+<tt class="descname">eq</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="headerlink" href="#Leap.Leap.Device.eq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare Device object equality.</p>
+<p>Two Device objects are equal if and only if both Device objects represent the
+exact same Device and both Devices are valid.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Leap.Device.ne">
+<tt class="descname">ne</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="headerlink" href="#Leap.Leap.Device.ne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare Device object inequality.</p>
+<p>Two Device objects are equal if and only if both Device objects represent the
+exact same Device and both Devices are valid.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<div class="data container">
+<dl class="data">
+<dt id="Leap.Leap.Device.invalid">
+<tt class="descclassname">Leap.Device.</tt><tt class="descname">invalid</tt><a class="headerlink" href="#Leap.Leap.Device.invalid" title="Permalink to this definition">¶</a></dt>
+<dd><p>An invalid Device object.</p>
+<p>You can use the instance returned by this function in comparisons testing
+whether a given Device instance is valid or invalid. (You can also use the
+<tt class="xref py py-func docutils literal"><span class="pre">is_valid()</span></tt> function.)</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

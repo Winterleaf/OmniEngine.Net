@@ -1,0 +1,138 @@
+Leap.Device
+===========
+
+.. currentmodule:: Leap
+
+.. class:: Leap.Device
+
+  The Device class represents a physically connected device.
+
+  The Device class contains information related to a particular connected
+  device such as field of view, device id, and calibrated positions.
+
+  Note that Device objects can be invalid, which means that they do not contain
+  valid device information and do not correspond to a physical device.
+  Test for validity with the :attr:`Device.is_valid` property.
+  
+  .. versionadded:: 1.0
+
+
+  .. container:: constructors
+  
+    .. classmethod:: Device()
+
+      Constructs a Device object.
+
+      An uninitialized device is considered invalid.
+      Get valid Device objects from a DeviceList object obtained using the
+      :class:`Leap.Controller.devices()` method.
+
+      .. versionadded:: 1.0
+
+
+
+  .. container:: attributes
+  
+    .. attribute:: horizontal_view_angle
+
+      The angle of view along the x axis of this device.
+
+      .. image:: ../../../images/Leap_horizontalViewAngle.png
+
+      The Leap Motion controller scans a region in the shape of an inverted pyramid
+      centered at the device's center and extending upwards. The ``horizontal_view_angle``
+      reports the view angle along the long dimension of the device.
+
+      .. versionadded:: 1.0
+
+
+    .. attribute:: vertical_view_angle
+
+      The angle of view along the z axis of this device.
+
+      .. image:: ../../../images/Leap_verticalViewAngle.png
+
+      The Leap Motion controller scans a region in the shape of an inverted pyramid
+      centered at the device's center and extending upwards. The ``vertical_view_angle``
+      reports the view angle along the short dimension of the device.
+
+      .. versionadded:: 1.0
+
+
+    .. attribute:: range
+
+      The maximum reliable tracking range.
+
+      The range reports the maximum recommended distance from the device center
+      for which tracking is expected to be reliable. This distance is not a hard limit.
+      Tracking may be still be functional above this distance or begin to degrade slightly
+      before this distance depending on calibration and extreme environmental conditions.
+
+      .. versionadded:: 1.0
+
+
+    .. attribute:: is_valid
+
+      Reports whether this is a valid Device object.
+
+      .. versionadded:: 1.0
+
+
+
+  .. container:: methods
+
+    .. method:: distance_to_boundary(position)
+
+      The distance to the nearest edge of the Leap Motion controller's view volume.
+
+      The view volume is an axis-aligned, inverted pyramid centered on the device origin
+      and extending upward to the range limit. The walls of the pyramid are described
+      by the ``horizontal_view_angle`` and ``vertical_view_angle`` and the roof by the ``range``.
+      This function estimates the distance between the specified input position and the
+      nearest wall or roof of the view volume.
+
+      **Arguments**
+
+      position (:class:`Leap.Vector`) -- The point to use for the distance calculation.
+
+      **Returns** 
+
+      float -- The distance in millimeters from the input position to the nearest boundary.
+
+      .. versionadded:: 1.0
+
+
+  .. container:: operators
+
+    .. method:: eq(a, b)
+
+      Compare Device object equality.
+
+      Two Device objects are equal if and only if both Device objects represent the
+      exact same Device and both Devices are valid.
+
+      .. versionadded:: 1.0
+
+
+    .. method:: ne(a, b)
+
+      Compare Device object inequality.
+
+      Two Device objects are equal if and only if both Device objects represent the
+      exact same Device and both Devices are valid.
+
+      .. versionadded:: 1.0
+
+
+.. container:: data
+
+  .. data:: Leap.Device.invalid
+
+    An invalid Device object.
+
+    You can use the instance returned by this function in comparisons testing
+    whether a given Device instance is valid or invalid. (You can also use the
+    :func:`is_valid()` function.)
+
+    .. versionadded:: 1.0
+

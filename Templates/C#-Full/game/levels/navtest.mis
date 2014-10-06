@@ -1,0 +1,1424 @@
+//--- OBJECT WRITE BEGIN ---
+new SimGroup(MissionGroup) {
+   canSave = "1";
+   canSaveDynamicFields = "1";
+      enabled = "1";
+
+   new LevelInfo(theLevelInfo) {
+      nearClip = "0.1";
+      visibleDistance = "1000";
+      decalBias = "0.0015";
+      fogColor = "0.6 0.6 0.7 1";
+      fogDensity = "0";
+      fogDensityOffset = "700";
+      fogAtmosphereHeight = "0";
+      canvasClearColor = "0 0 0 255";
+      ambientLightBlendPhase = "1";
+      ambientLightBlendCurve = "0 0 -1 -1";
+      advancedLightmapSupport = "0";
+      soundAmbience = "AudioAmbienceDefault";
+      soundDistanceModel = "Linear";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         desc0 = "A small environment to test navigation with.";
+         enabled = "1";
+         LevelName = "Navigation Test";
+   };
+   new SkyBox(theSky) {
+      Material = "BlackSkyMat";
+      drawBottom = "0";
+      fogBandHeight = "0";
+      position = "0 0 0";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new Sun(theSun) {
+      azimuth = "230.396";
+      elevation = "45";
+      color = "0.968628 0.901961 0.901961 1";
+      ambient = "0.078431 0.113725 0.156863 1";
+      brightness = "1";
+      castShadows = "1";
+      coronaEnabled = "1";
+      coronaScale = "0.5";
+      coronaTint = "1 1 1 1";
+      coronaUseLightColor = "1";
+      flareScale = "1";
+      attenuationRatio = "0 1 1";
+      shadowType = "PSSM";
+      texSize = "1024";
+      overDarkFactor = "3000 2000 1000 250";
+      shadowDistance = "400";
+      shadowSoftness = "0.25";
+      numSplits = "4";
+      logWeight = "0.96";
+      fadeStartDistance = "325";
+      lastSplitTerrainOnly = "0";
+      representedInLightmap = "0";
+      shadowDarkenColor = "0 0 0 -1";
+      includeLightmappedGeometryInShadow = "0";
+      position = "0 0 0";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new GroundPlane() {
+      squareSize = "128";
+      scaleU = "12";
+      scaleV = "12";
+      Material = "BlankWhite";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         enabled = "1";
+         position = "0 0 0";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+   };
+   new SimGroup(PlayerDropPoints) {
+      canSave = "1";
+      canSaveDynamicFields = "1";
+         enabled = "1";
+
+      new SpawnSphere() {
+         spawnClass = "Player";
+         spawnDatablock = "DefaultPlayerData";
+         autoSpawn = "0";
+         radius = "1";
+         sphereWeight = "1";
+         indoorWeight = "1";
+         outdoorWeight = "1";
+         isAIControlled = "0";
+         dataBlock = "SpawnSphereMarker";
+         position = "-2.77292 -4.12303 2";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+            enabled = "1";
+            homingCount = "0";
+            lockCount = "0";
+      };
+   };
+   new SimGroup(Brushes) {
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new SimGroup(Clutter) {
+         canSave = "1";
+         canSaveDynamicFields = "1";
+
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "13.1196 -14.8259 0.82318";
+            rotation = "0.0910917 0.296847 0.950571 35.7823";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -1.32685e-008 1.81098e-008 1.90082";
+            surface = "0 1 0 0 2.30708e-008 -2.64604e-008 -1.90082";
+            surface = "0.707107 0 0 0.707107 -2.4065e-009 4.65099 1.37263e-008";
+            surface = "0 0.707107 -0.707107 0 -7.24788e-009 -4.65099 -3.22299e-010";
+            surface = "0.5 0.5 -0.5 0.5 -4.66616 -2.11409e-008 -1.12003e-007";
+            surface = "0.5 -0.5 0.5 0.5 4.66616 2.11409e-008 -1.12003e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "7.47142 -20.2963 1.68474";
+            rotation = "0 0 1 66.1926";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0.0726219 9.33788e-010 0 0.99736 1.39679e-008 7.29318e-009 1.68473";
+            surface = "0 1 0 0 -2.07932e-008 6.65771e-009 -1.68473";
+            surface = "0.707107 0 0 0.707107 2.84732e-008 4.05701 -0.296983";
+            surface = "0 0.707107 -0.707107 0 9.68293e-009 -4.05701 0.296983";
+            surface = "0.5 0.5 -0.5 0.5 -3.68265 0.238389 -0.0174507";
+            surface = "0.5 -0.5 0.5 0.5 3.68265 0.238389 -0.0174508";
+         };
+      };
+      new SimGroup(Bridge) {
+         canSave = "1";
+         canSaveDynamicFields = "1";
+
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-7.58222 21.6096 6.98494";
+            rotation = "0.594121 -0.582614 0.5546 121.019";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "-9.49565e-008 -5.35379e-018 5.63816e-011 1 2.39933e-007 2.41161 5.18795";
+            surface = "0 1 0 0 1.04785e-006 3.82506e-007 0";
+            surface = "-0.537805 5.01271e-010 -7.85797e-010 0.843069 5.83448e-007 -0.049604 2.59397";
+            surface = "-0.5 0.5 0.5 0.5 -1.06917 1.20581 2.59397";
+            surface = "-3.23798e-008 0.843069 0.537805 3.50925e-008 7.11735e-007 2.46122 2.59397";
+            surface = "0.5 0.5 0.5 -0.5 1.06917 1.20581 2.59397";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-13.9392 21.4853 7.29838";
+            rotation = "0.560113 0.571176 -0.600027 119.054";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 -0 -5.63816e-011 1 6.63757e-007 2.76802 4.12392";
+            surface = "0 1 0 0 8.04439e-010 -4.6367e-008 0";
+            surface = "-0.470473 -8.01599e-009 1.50347e-008 0.882414 7.96272e-007 0.128601 2.06196";
+            surface = "-0.5 0.5 0.5 0.5 -1.06917 1.38401 2.06196";
+            surface = "1.64059e-009 0.882414 0.470473 8.74706e-010 -1.05074e-007 2.63942 2.06196";
+            surface = "0.5 0.5 0.5 -0.5 1.06917 1.38401 2.06196";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-18.8804 16.2708 1.71906";
+            rotation = "0 -0 -1 50.3723";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -1.30793e-008 -0.204315 1.71906";
+            surface = "0 1 0 0 -1.99621e-008 -0.204315 -1.71906";
+            surface = "0.707107 0 0 0.707107 1.49687e-008 1.6467 7.89729e-009";
+            surface = "0 0.707107 -0.707107 0 3.318e-009 -2.05533 9.49495e-009";
+            surface = "0.5 0.5 -0.5 0.5 -3.67685 -0.204315 -3.24932e-007";
+            surface = "0.5 -0.5 0.5 0.5 3.67685 -0.204315 -3.24932e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-23.759 17.9015 2.01854";
+            rotation = "0 0 1 24.8675";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "-0.186621 -0.0843904 -0.0160923 0.978668 7.97974e-008 -3.1439e-008 3.04814";
+            surface = "0 1 0 0 -4.6269e-009 -1.2231e-007 -2.59059";
+            surface = "0.707107 0 0 0.707107 0.0294874 1.11651 0.44696";
+            surface = "0 0.707107 -0.707107 0 0.034502 -1.11651 0.00461169";
+            surface = "0.5 0.5 -0.5 0.5 -1.69664 -0.0276126 0.38183";
+            surface = "0.5 -0.5 0.5 0.5 1.69664 -0.0309026 0.0641378";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-20.6084 16.5404 2.04161";
+            rotation = "0 0 1 24.8675";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "-2.19618e-009 -0.132012 0 0.991248 -4.54858e-006 -9.67911e-009 2.18331";
+            surface = "0 1 0 0 -4.88026e-006 -3.91383e-009 -2.18331";
+            surface = "0.707107 0 0 0.707107 0.101567 1.7302 -0.0137714";
+            surface = "0 0.707107 -0.707107 0 0.101567 -1.7302 -0.0137714";
+            surface = "0.5 0.5 -0.5 0.5 -2.21516 -2.92162e-009 0.300335";
+            surface = "0.5 -0.5 0.5 0.5 2.21515 8.63996e-009 -0.300336";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-21.9919 14.0398 1.36741";
+            rotation = "0 0 1 47.3778";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 6.74074e-009 -3.11874e-009 1.36741";
+            surface = "0 1 0 0 2.28695e-008 -4.86532e-009 -1.36741";
+            surface = "0.707107 0 0 0.707107 -1.0664e-008 1.09165 7.13366e-009";
+            surface = "0 0.707107 -0.707107 0 1.45578e-008 -1.09165 -2.1629e-009";
+            surface = "0.5 0.5 -0.5 0.5 -2.88275 -1.42539e-009 -3.5427e-007";
+            surface = "0.5 -0.5 0.5 0.5 2.88275 1.42539e-009 -3.5427e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-17.7213 13.1349 0.978082";
+            rotation = "0 -0 -1 53.8166";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "-3.46787e-008 0.198374 -7.01883e-009 0.980126 -7.59332e-007 -0.25502 0.793986";
+            surface = "0 1 5.79835e-008 0 -1.56787e-008 -0.25502 -0.978082";
+            surface = "0.707107 0 0 0.707107 -1.03177 1.02993 -0.309794";
+            surface = "0 0.707107 -0.707107 0 -1.03177 -1.53997 -0.309794";
+            surface = "0.5 0.5 -0.5 0.5 -3.6049 -0.25502 -0.852831";
+            surface = "0.5 -0.5 0.5 0.5 3.6049 -0.25502 0.668735";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-14.9114 16.5588 1.65845";
+            rotation = "0 -0 -1 53.8166";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 8.51596e-010 3.13428e-009 1.65845";
+            surface = "0 1 0 0 -7.04346e-009 4.60439e-009 -1.65845";
+            surface = "0.707107 0 0 0.707107 8.57251e-009 1.19023 -7.82928e-009";
+            surface = "0 0.707107 -0.707107 0 4.20429e-009 -1.19023 -4.10842e-009";
+            surface = "0.5 0.5 -0.5 0.5 -1.18095 -4.44683e-009 -4.57571e-007";
+            surface = "0.5 -0.5 0.5 0.5 1.18095 4.44683e-009 -4.57571e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-10.7579 21.405 7.14166";
+            rotation = "0.00908885 -0.929408 -0.368941 3.03653";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -3.69114e-009 0.142507 1.25541";
+            surface = "0 1 0 0 7.67517e-009 0.142507 -1.25541";
+            surface = "0.707107 0 0 0.707107 -9.50708e-009 1.21168 -8.98999e-009";
+            surface = "0 0.707107 -0.707107 0 -1.47044e-008 -0.926666 -3.47146e-009";
+            surface = "0.5 0.5 -0.5 0.5 -3.18294 0.142507 -2.92826e-007";
+            surface = "0.5 -0.5 0.5 0.5 3.18294 0.142507 -2.92826e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "7.96493 19.9874 5.14968";
+            rotation = "-0.277275 0.0884088 0.956714 36.8638";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -2.60133e-008 2.20997e-009 0.878706";
+            surface = "0 1 0 0 2.29199e-008 1.10208e-009 -0.878706";
+            surface = "0.707107 0 0 0.707107 2.01787e-008 1.48687 9.42861e-011";
+            surface = "0 0.707107 -0.707107 0 -1.01316e-008 -1.48687 4.52653e-009";
+            surface = "0.5 0.5 -0.5 0.5 -3.3658 -1.3986e-009 -1.00665e-007";
+            surface = "0.5 -0.5 0.5 0.5 3.3658 1.3986e-009 -1.00665e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-1.65822 22.001 1.55741";
+            rotation = "-0.115257 -0.63894 0.760573 26.6851";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -7.08142e-009 1.61073e-008 3.74386";
+            surface = "0 1 0 0 7.81203e-009 1.53932e-008 -2.26597";
+            surface = "0.707107 0 0 0.707107 -7.32497e-009 2.07802 0.738945";
+            surface = "0 0.707107 -0.707107 0 1.78123e-010 -2.07802 0.738945";
+            surface = "0.5 0.5 -0.5 0.5 -2.3503 -5.31468e-009 0.738944";
+            surface = "0.5 -0.5 0.5 0.5 2.3503 5.31468e-009 0.738944";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "5.429 19.002 1.66533";
+            rotation = "0 0 1 21.9067";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -4.92487e-008 -3.88892e-009 2.76252";
+            surface = "0 1 0 0 3.97734e-008 -2.44406e-009 -1.66533";
+            surface = "0.707107 0 0 0.707107 -3.78716e-008 4.21146 0.548595";
+            surface = "0 0.707107 -0.707107 0 3.01028e-008 -4.21146 0.548595";
+            surface = "0.5 0.5 -0.5 0.5 -5.81863 1.72847e-008 0.548595";
+            surface = "0.5 -0.5 0.5 0.5 5.81863 -1.72847e-008 0.548595";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-20.7219 20.7124 3.04959";
+            rotation = "0 0 1 21.9067";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "-0.100279 0 7.48833e-009 0.994959 -1.43306e-008 1.21467e-008 3.04959";
+            surface = "0 1 0 0 -1.68707e-008 -2.37411e-007 -3.04959";
+            surface = "0.707107 0 0 0.707107 2.07676e-008 2.8988 0.29516";
+            surface = "0 0.707107 -0.707107 0 1.60983e-008 -2.8988 -0.29516";
+            surface = "0.5 0.5 -0.5 0.5 -3.15919 -0.0935219 -0.00952314";
+            surface = "0.5 -0.5 0.5 0.5 3.15919 -0.0935219 -0.00952312";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "8.84271 16.141 4.81365";
+            rotation = "0.286604 0.862402 0.417279 16.7878";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 3.34255e-009 -1.05722e-008 1.32691";
+            surface = "0 1 0 0 1.98198e-009 -1.32265e-008 -0.694896";
+            surface = "0.707107 0 0 0.707107 -6.34573e-009 2.42793 0.316007";
+            surface = "0 0.707107 -0.707107 0 8.35726e-010 -2.42793 0.316007";
+            surface = "0.5 0.5 -0.5 0.5 -1.12669 -5.73443e-009 0.316007";
+            surface = "0.5 -0.5 0.5 0.5 1.12669 5.73443e-009 0.316007";
+         };
+      };
+      new SimGroup(Pedestal) {
+         canSave = "1";
+         canSaveDynamicFields = "1";
+
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "-1.72756 3.47725 0.691426";
+            rotation = "-0.345614 0.300183 0.889068 88.0323";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "-1.89458e-008 0 -0 1 -3.33768e-007 -0.67106 1.95625";
+            surface = "0 1 1.89458e-008 0 3.28997e-007 -0.67106 -1.95625";
+            surface = "0.707107 0 0 0.707106 2.13908e-009 2.47499 3.2715e-007";
+            surface = "0 0.707107 -0.707107 0 1.15191e-009 -3.81711 1.07709e-007";
+            surface = "0.5 0.5 -0.5 0.5 -0.966466 -0.67106 -2.59524e-007";
+            surface = "0.437533 -0.555486 0.437533 0.555487 0.966466 -0.67106 -2.21411e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "3.96872 1.67726 1.3326";
+            rotation = "0 -0 -1 18.0395";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 -1.42404e-008 -1.5333e-009 2.33227";
+            surface = "0 1 0 0 -1.33408e-008 -1.04064e-008 -2.33227";
+            surface = "0.707107 0 0 0.707107 2.70537e-008 5.31648 7.01917e-009";
+            surface = "0 0.707107 -0.707107 0 5.03154e-009 -5.31648 2.74961e-009";
+            surface = "0.5 0.5 -0.5 0.5 -4.28218 -1.74463e-008 -2.02134e-007";
+            surface = "0.5 -0.5 0.5 0.5 4.28218 1.74463e-008 -2.02134e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "5.96145 -4.31364 1.0125";
+            rotation = "0 0 1 47.4442";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "0 0 0 1 3.64391e-009 1.69408e-009 1.0125";
+            surface = "0 1 0 0 4.77133e-009 2.24165e-009 -1.0125";
+            surface = "0.707107 0 0 0.707106 -1.99208e-009 0.815759 -1.62563e-009";
+            surface = "0 0.707107 -0.707107 0 4.3408e-009 -0.815759 1.48341e-009";
+            surface = "0.5 0.5 -0.5 0.5 -1.61425 3.17212e-009 -2.39667e-007";
+            surface = "0.5 -0.5 0.5 0.5 1.61425 -3.17212e-009 -2.39667e-007";
+         };
+         new ConvexShape() {
+            Material = "Grid512_OrangeLines_Mat";
+            position = "11.7253 0.590991 1.01522";
+            rotation = "0 -0 -1 8.86046";
+            scale = "1 1 1";
+            canSave = "1";
+            canSaveDynamicFields = "1";
+
+            surface = "1.37575e-007 -0.271369 -4.15444e-008 0.962475 9.53541e-007 0.478381 0.835717";
+            surface = "2.29191e-010 0.999867 -1.37056e-007 0.0163072 -7.06484e-008 0.478381 -1.02823";
+            surface = "0.707107 -3.6319e-008 3.6319e-008 0.707107 0.902725 1.5794 -0.387487";
+            surface = "-2.64661e-009 0.707107 -0.707107 -2.64661e-009 0.902725 -0.622634 -0.387486";
+            surface = "0.5 0.5 -0.5 0.5 -2.95021 0.478381 0.855516";
+            surface = "-0.5 0.5 -0.5 -0.5 2.95021 0.478381 -1.04803";
+         };
+      };
+   };
+   new Path(Patrol) {
+      isLooping = "1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new Marker() {
+         seqNum = "0";
+         type = "Normal";
+         msToNext = "1000";
+         smoothingType = "Spline";
+         position = "-4.50759 8.60765 0.266078";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new Marker() {
+         seqNum = "1";
+         type = "Normal";
+         msToNext = "1000";
+         smoothingType = "Spline";
+         position = "6.6873 -0.291592 3.84714";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new Marker() {
+         seqNum = "2";
+         type = "Normal";
+         msToNext = "1000";
+         smoothingType = "Spline";
+         position = "18.5693 2.61262 0.236483";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+   };
+   new NavMesh(Nav) {
+      fileName = "levels/navtest.nm";
+      cellSize = "0.2";
+      cellHeight = "0.2";
+      actorHeight = "2";
+      actorClimb = "0.3";
+      actorRadius = "0.5";
+      walkableSlope = "40";
+      smallCharacters = "0";
+      regularCharacters = "1";
+      largeCharacters = "0";
+      vehicles = "0";
+      coverGroup = "NavCover";
+      innerCover = "0";
+      coverDist = "1";
+      peekDist = "0.7";
+      borderSize = "1";
+      detailSampleDist = "6";
+      detailSampleError = "1";
+      maxEdgeLen = "1086324736";
+      simplificationError = "1.3";
+      minRegionArea = "8";
+      mergeRegionArea = "20";
+      tileSize = "11";
+      maxPolysPerTile = "128";
+      position = "0 0 3.5";
+      rotation = "1 0 0 0";
+      scale = "30 30 10";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new NavPath(PatrolPath) {
+      mesh = "Nav";
+      waypoints = "Patrol";
+      isLooping = "1";
+      isSliced = "0";
+      maxIterations = "1";
+      autoUpdate = "1";
+      allowWalk = "1";
+      allowJump = "1";
+      allowDrop = "1";
+      allowSwim = "1";
+      allowLedge = "0";
+      allowClimb = "0";
+      allowTeleport = "0";
+      alwaysRender = "1";
+      xray = "0";
+      renderSearch = "0";
+      position = "-1.06254 1.94168 1.63297";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new NavPath(OneWayPath) {
+      from = "-22 8 1";
+      to = "2 17 5";
+      mesh = "Nav";
+      isLooping = "0";
+      isSliced = "1";
+      maxIterations = "5";
+      autoUpdate = "1";
+      allowWalk = "1";
+      allowJump = "1";
+      allowDrop = "1";
+      allowSwim = "1";
+      allowLedge = "0";
+      allowClimb = "0";
+      allowTeleport = "0";
+      alwaysRender = "1";
+      xray = "1";
+      renderSearch = "1";
+      position = "0 0 0";
+      rotation = "1 0 0 0";
+      scale = "1 1 1";
+      canSave = "1";
+      canSaveDynamicFields = "1";
+   };
+   new SimGroup(NavCover) {
+      canSave = "1";
+      canSaveDynamicFields = "1";
+
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-23.5857 24.3358 0.1";
+         rotation = "0 0 1 111.801";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-22.2 19.6 0.1";
+         rotation = "0 0 1 161.565";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-22.3 25.2 0.1";
+         rotation = "0 0 1 180";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-16.1 21.9 0.1";
+         rotation = "0 -0 -1 81.8699";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-16.8 23 0.1";
+         rotation = "0 0 1 206.565";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-18.6 20.3 0.1";
+         rotation = "0 0 1 140.194";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "0";
+         peekOver = "1";
+         position = "-4.7 24.3 0.1";
+         rotation = "0 0 1 108.435";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "0.900001 25.1 0.1";
+         rotation = "0 0 1 113.199";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "1.8 25.7 0.1";
+         rotation = "0 0 1 189.462";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-2.6 25.3 0.1";
+         rotation = "0 0 1 200.556";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "1";
+         position = "-5.6 21.2 0.1";
+         rotation = "0 0 1 90";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-4.5 20 0.1";
+         rotation = "0 0 1 15.9454";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-3.9 25.4 0.1";
+         rotation = "0 0 1 158.199";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "12.9019 20.7097 0.1";
+         rotation = "0 -0 -1 78.69";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "1";
+         position = "3.9 21.4 4.5";
+         rotation = "0 0 1 116.565";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-25.6 16.8 0.1";
+         rotation = "0 0 1 26.565";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-20.6068 10.6184 0.318426";
+         rotation = "0 -0 -1 29.0546";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-19.5932 11.1816 0.881574";
+         rotation = "0 -0 -1 29.0546";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-26.3019 17.6903 0.1";
+         rotation = "0 0 1 101.31";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-24.9 14.4 0.1";
+         rotation = "0 0 1 50.1944";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-21.6 11 0.1";
+         rotation = "0 0 1 45";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-22.6 17.5 5.1";
+         rotation = "0 0 1 51.3402";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "1";
+         position = "-21.6 17 4.7";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "1";
+         position = "-19.6478 16.399 4.1995";
+         rotation = "0 0 1 23.9625";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-18.9215 11.7714 1.2857";
+         rotation = "0 -0 -1 53.1301";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-18.1 9 0.1";
+         rotation = "0 -0 -1 21.8014";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-14.1293 14.0237 0.1";
+         rotation = "0 -0 -1 48.8141";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "1";
+         position = "-16.1227 11.416 0.1";
+         rotation = "0 -0 -1 56.3099";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-13 17.6 0.1";
+         rotation = "0 0 1 225";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-12.8572 15.9713 0.1";
+         rotation = "0 -0 -1 59.0362";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-17.4 17.6 0.1";
+         rotation = "0 0 -1 108.435";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-18.2 16.8 3.8";
+         rotation = "0 -0 -1 56.31";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "1";
+         position = "-17.7215 13.3714 2.0857";
+         rotation = "0 -0 -1 53.1301";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-17.0785 14.2286 2.5143";
+         rotation = "0 -0 -1 53.1301";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-2.10194 17.4903 0.1";
+         rotation = "0 0 1 101.31";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "0";
+         peekOver = "1";
+         position = "6.7 15.7 4.5";
+         rotation = "0 0 1 98.1301";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "1";
+         position = "9.1 17.1 6.3";
+         rotation = "0 0 1 101.31";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "0";
+         peekOver = "1";
+         position = "8.91091 16.11 6.34454";
+         rotation = "0 0 1 100.305";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "0";
+         peekOver = "1";
+         position = "8.68909 14.89 6.45546";
+         rotation = "0 0 1 100.305";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "9.4 12.4 0.1";
+         rotation = "0 -0 -1 18.4349";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-2.2 5.6 0.1";
+         rotation = "0 0 1 108.435";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "1";
+         position = "-5 4.7 0.1";
+         rotation = "0 0 1 172.875";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "-1.51762 6.33156 0.1";
+         rotation = "0 0 1 164.745";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-6 4.1 0.1";
+         rotation = "0 0 1 111.801";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "-4.90248 1.24975 0.1";
+         rotation = "0 -0 -1 5.71053";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "7.4 7.7 0.1";
+         rotation = "0 0 -1 105.945";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "12.7097 3.10194 0.1";
+         rotation = "0 0 1 168.69";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "11.6903 2.89806 0.1";
+         rotation = "0 0 1 168.69";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "4.8 -2.1 0.1";
+         rotation = "0 0 1 143.13";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "8.1 0.0999994 0.1";
+         rotation = "0 0 1 83.6598";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "10.3 -1.7 0.1";
+         rotation = "0 0 -1 98.1301";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "1";
+         position = "12.4 -0.700001 0.1";
+         rotation = "0 -0 -1 7.12499";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "1";
+         position = "14.4 2.3 0.3";
+         rotation = "0 -0 -1 68.1986";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "13.7 3.2 0.1";
+         rotation = "0 0 1 180";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "14.8 0.0999995 0.1";
+         rotation = "0 -0 -1 68.1986";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "0.600001 -4.3 0.1";
+         rotation = "0 0 1 74.0546";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "1.8 -5.3 0.1";
+         rotation = "0 -0 -1 9.46229";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "7.9 -4.1 0.1";
+         rotation = "0 0 1 225";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "9.7 -2.8 0.1";
+         rotation = "0 -0 -1 29.7449";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "12.7 -7.9 0.1";
+         rotation = "0 0 1 210.964";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "7.3 -6.3 0.1";
+         rotation = "0 -0 -1 45";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "5.7 -6.2 0.1";
+         rotation = "0 0 1 50.1944";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "19.9713 -12.9428 0.1";
+         rotation = "0 0 1 210.964";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "2 -17.9 0.1";
+         rotation = "0 0 1 143.13";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "1.6 -18.7 0.1";
+         rotation = "0 0 1 90";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Prone";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "0";
+         peekOver = "1";
+         position = "8.28054 -15.0689 2.14369";
+         rotation = "0 0 1 164.745";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "12.4 -22.9 0.1";
+         rotation = "0 -0 -1 20.5561";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "13.3 -22.1 0.1";
+         rotation = "0 -0 -1 78.6901";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "1";
+         position = "14.5 -22 0.1";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "1";
+         peekOver = "0";
+         position = "20.4 -13.7 0.1";
+         rotation = "0 -0 -1 90";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Crouch";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "20.093 -14.5947 0.1";
+         rotation = "0 -0 -1 52.125";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "1";
+         peekRight = "0";
+         peekOver = "0";
+         position = "6.3 -25.7 0.1";
+         rotation = "0 -0 -1 30.9638";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+      new CoverPoint() {
+         size = "Stand";
+         quality = "1";
+         peekLeft = "0";
+         peekRight = "1";
+         peekOver = "0";
+         position = "4.74275 -25.5713 0.1";
+         rotation = "0 0 1 59.0362";
+         scale = "1 1 1";
+         canSave = "1";
+         canSaveDynamicFields = "1";
+      };
+   };
+};
+//--- OBJECT WRITE END ---

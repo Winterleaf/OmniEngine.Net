@@ -1,0 +1,103 @@
+Leap.KeyTapGesture
+==================
+
+.. currentmodule:: Leap
+
+.. class:: KeyTapGesture
+
+  Extends :class:`Leap.Gesture`.
+
+  The KeyTapGesture class represents a tapping gesture by a finger or tool.
+ 
+  A key tap gesture is recognized when the tip of a finger rotates down toward the
+  palm and then springs back to approximately the original postion, as if
+  tapping. The tapping finger must pause briefly before beginning the tap.
+ 
+  .. image:: ../../../images/Leap_Gesture_Tap.png
+ 
+  Important: To use key tap gestures in your application, you must enable
+  recognition of the key tap gesture. You can enable recognition with:
+ 
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_KeyTap_Enable.txt
+ 
+  Key tap gestures are discrete. The KeyTapGesture object representing a tap always
+  has the state, STATE_STOP. Only one KeyTapGesture object is created for each
+  key tap gesture recognized.
+ 
+  You can set the minimum finger movement and velocity required for a movement
+  to be recognized as a key tap as well as adjust the detection window for
+  evaluating the movement using the config attribute of a connected
+  Controller object. Use the following configuration keys to configure key tap
+  recognition:
+ 
+  ====================================  ========== ============= =======
+  Key string                            Value type Default value Units
+  ====================================  ========== ============= =======
+  Gesture.KeyTap.MinDownVelocity        float      50            mm/s
+  Gesture.KeyTap.HistorySeconds         float      0.1           s
+  Gesture.KeyTap.MinDistance            float      3.0           mm
+  ====================================  ========== ============= =======
+ 
+  The following example demonstrates how to set the key tap configuration
+  parameters:
+ 
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_KeyTap_Params.txt
+  
+  .. versionadded:: 1.0
+
+
+  .. container:: constructors
+  
+    .. classmethod:: KeyTapGesture([gesture])
+
+      Constructs a KeyTapGesture object from an instance of the Gesture class.
+ 
+      **Arguments**
+    
+      ``gesture`` (:class:`Leap.Gesture`) -- The Gesture instance to specialize. This Gesture instance must
+       be a KeyTapGesture object. If no argument is supplied, an invalid KeyTapGesture object is created.
+    
+      .. versionadded::  1.0
+
+
+  .. container:: attributes
+  
+    .. attribute:: position -> Leap.Vector
+  
+      The position where the key tap is registered.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: direction -> Leap.Vector
+  
+      The direction of finger tip motion. If the finger is stationary, at the time
+      this gesture object is recorded, then the direction will be a zero vector.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: progress -> float
+  
+      The progess value is always 1.0 for a key tap gesture.
+
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: pointable -> Leap.Pointable
+  
+      The finger performing the key tap gesture.
+   
+      .. versionadded:: 1.0
+   
+   
+   .. container:: data
+   
+     .. data:: class_type -> int
+
+       The key tap gesture type designator: :data:`Gesture.TYPE_KEY_TAP`
+
+       .. versionadded::  1.0
+
+
+   

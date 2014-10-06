@@ -1,0 +1,134 @@
+/** Page layout **/
+
+html {
+	overflow-y: scroll;
+}
+
+.container {
+	max-width: 640px;
+}
+
+/** Images **/
+
+img.banner {
+	display: block;
+	margin: 0px auto;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	max-width: 640px;
+}
+
+img.inline {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+/** Links **/
+
+a {
+	text-decoration: none;
+}
+
+/** Headings and paragraphs **/
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+p {
+	margin: 5px;
+}
+
+p.title {
+	text-align: center;
+	font-weight: bold;
+	margin: 1em 0em;
+}
+
+p.caption {
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 1em;
+}
+
+td {
+	vertical-align: middle!important;
+}
+
+/** Code and path formatting **/
+
+pre {
+	background: #F0F0F0;
+	margin: 1em 0;
+	padding: 1em;
+	font-size: 9pt;
+}
+
+.path {
+	font-family: "Courier";
+	/*font-size: 10pt;*/
+	text-decoration: underline;
+}
+
+/** Lists **/
+
+ol ol {
+	list-style-type: lower-alpha;
+}
+
+ol ol ol {
+	list-style-type: none;
+}
+/** Special 'tiles' list **/
+
+ul.tiles {
+	list-style-type: none;
+	width: 424px;
+	margin: 20px auto;
+	padding: 0;
+}
+
+ul.tiles li {
+	display: inline-block;
+	border: 1px solid gray;
+	/*background: #F0F0F0;*/
+	width: 200px;
+	height: 102px;
+	margin: 5px;
+	border-radius: 3px;
+}
+
+ul.tiles li a {
+	display: table-cell;
+	vertical-align: bottom;
+	width: 200px;
+	height: 100px;
+	margin: 0px;
+	background-position: 0px 0px;
+	text-decoration: none;
+}
+
+ul.tiles li a:hover {
+	background-position: 200px 0px;
+}
+
+ul.tiles li a p {
+	font-size: 20pt;
+	text-decoration: none;
+	color: rgb(51, 51, 51);
+	text-indent: 0px;
+	background-color: rgba(255, 255, 255, 0.6);
+	margin-bottom: 0;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

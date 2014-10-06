@@ -1,0 +1,104 @@
+Leap.SwipeGesture
+=================
+
+.. currentmodule:: Leap
+
+.. class:: SwipeGesture
+
+  Extends :class:`Leap.Gesture`.
+
+  The SwipeGesture class represents a swiping motion of a finger or tool.
+ 
+  .. image:: ../../../images/Leap_Gesture_Swipe.png
+ 
+  Important: To use swipe gestures in your application, you must enable
+  recognition of the swipe gesture. You can enable recognition with:
+ 
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_Swipe_Enable.txt
+ 
+  Swipe gestures are continuous.
+ 
+  You can set the minimum length and velocity required for a movement
+  to be recognized as a swipe using the config attribute of a connected
+  Controller object. Use the following keys to configure swipe recognition:
+ 
+  ====================================  ========== ============= =======
+  Key string                            Value type Default value Units
+  ====================================  ========== ============= =======
+  Gesture.Swipe.MinLength               float      150           mm
+  Gesture.Swipe.MinVelocity             float      1000          mm/s
+  ====================================  ========== ============= =======
+ 
+  The following example demonstrates how to set the swipe configuration
+  parameters:
+ 
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_Swipe_Params.txt
+  
+  .. versionadded:: 1.0
+ 
+
+  .. container:: constructors
+  
+    .. classmethod:: SwipeGesture([gesture])
+
+      Constructs a SwipeGesture object from an instance of the Gesture class.
+ 
+      **Arguments**
+    
+      ``gesture`` (:class:`Leap.Gesture`) -- The Gesture instance to specialize. This Gesture instance must
+      be a SwipeGesture object. If no argument is supplied, an invalid SwipeGesture object is created.
+    
+      .. versionadded::  1.0
+
+
+  .. container:: attributes
+  
+    .. attribute:: startPosition -> Leap.Vector
+  
+      The position where the swipe began.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: position -> Leap.Vector
+  
+      The current position of the swipe.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: direction -> Leap.Vector
+  
+      The unit direction vector parallel to the swipe motion.
+   
+      You can compare the components of the vector to classify the swipe as
+      appropriate for your application. For example, if you are using swipes
+      for two dimensional scrolling, you can compare the x and y values to
+      determine if the swipe is primarily horizontal or vertical.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: speed -> float
+  
+      The swipe speed in mm/second.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: pointable -> Leap.Pointable
+  
+      The finger performing the swipe gesture.
+   
+      .. versionadded:: 1.0
+
+ 
+  .. container:: data
+  
+    .. classmethod:: class_type -> int
+
+      The swipe gesture type designator: :data:`Gesture.TYPE_SWIPE`
+ 
+      .. versionadded::  1.0
+ 
+   

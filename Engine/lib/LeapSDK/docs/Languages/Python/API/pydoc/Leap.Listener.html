@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Listener &mdash; Leap Motion 1.0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0.9 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0.9 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-listener">
+<h1>Leap.Listener<a class="headerlink" href="#leap-listener" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Listener">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Listener</tt><a class="headerlink" href="#Leap.Listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Listener class defines a set of callback functions that you can
+override in a subclass to respond to events dispatched by the <a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Controller</span></tt></a> object.</p>
+<p>To handle Leap Motion events, create an instance of a Listener subclass and assign
+it to the Controller instance. The Controller calls the relevant Listener
+callback function when an event occurs, passing in a reference to itself.
+You do not have to implement callbacks for events you do not want to handle.</p>
+<p>The Controller object calls these Listener functions from a thread created
+by the Leap Motion library, not the thread used to create or set the Listener instance.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+<div class="constructors container">
+<dl class="classmethod">
+<dt id="Leap.Listener.Listener">
+<em class="property">classmethod </em><tt class="descname">Listener</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Listener.Listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Listener object.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="methods container">
+<dl class="method">
+<dt id="Leap.Listener.on_init">
+<tt class="descname">on_init</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called once, when this Listener object is newly added to a Controller.</p>
+<div class="highlight-python"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Initialized&quot;</span>
+</pre></div>
+</div>
+<p><strong>Arguments:</strong></p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Listener.on_connect">
+<tt class="descname">on_connect</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the Controller object connects to the Leap Motion software and hardware,
+or when this Listener object is added to a Controller that is already connected.</p>
+<div class="highlight-python"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Connected&quot;</span>
+</pre></div>
+</div>
+<p><strong>Arguments:</strong></p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Listener.on_disconnect">
+<tt class="descname">on_disconnect</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the Controller object disconnects from the Leap Motion software.
+The controller can disconnect when the Leap Motion device is unplugged, the
+user shuts the Leap Motion software down, or the Leap Motion software encounters an
+unrecoverable error.</p>
+<div class="highlight-python"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+        <span class="c"># Note: not dispatched when running in a debugger.</span>
+        <span class="k">print</span> <span class="s">&quot;Disconnected&quot;</span>
+</pre></div>
+</div>
+<p>Note: When you launch a Leap-enabled application in a debugger, the
+Leap Motion library does not disconnect from the application. This is to allow
+you to step through code without losing the connection because of time outs.</p>
+<p><strong>Arguments:</strong></p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Listener.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when this Listener object is removed from the Controller
+or the Controller instance is destroyed.</p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Listener.on_frame">
+<tt class="descname">on_frame</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a new frame of hand and finger tracking data is available.
+Access the new frame data using the <a class="reference internal" href="Leap.Controller.html#Leap.Controller.frame" title="Leap.Controller.frame"><tt class="xref py py-func docutils literal"><span class="pre">Controller.frame()</span></tt></a> function.</p>
+<div class="highlight-python"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Frame available&quot;</span>
+</pre></div>
+</div>
+<p>Note, the Controller skips any pending on_frame events while your
+on_frame handler executes. If your implementation takes too long to return,
+one or more frames can be skipped. The Controller still inserts the skipped
+frames into the frame history. You can access recent frames by setting
+the history parameter when calling the <a class="reference internal" href="Leap.Controller.html#Leap.Controller.frame" title="Leap.Controller.frame"><tt class="xref py py-func docutils literal"><span class="pre">Controller.frame()</span></tt></a> function.
+You can determine if any pending on_frame events were skipped by comparing
+the ID of the most recent frame with the ID of the last received frame.</p>
+<p><strong>Arguments:</strong></p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Listener.on_focus_gained">
+<tt class="descname">on_focus_gained</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_focus_gained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when this application becomes the foreground application.</p>
+<p>Only the foreground application receives tracking data from the Leap
+Motion Controller. This function is only called when the controller
+object is in a connected state.</p>
+<div class="highlight-python"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_focus_gained</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Focused&quot;</span>
+</pre></div>
+</div>
+<p><strong>Arguments:</strong></p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Listener.on_focus_lost">
+<tt class="descname">on_focus_lost</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_focus_lost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when this application loses the foreground focus.</p>
+<p>Only the foreground application receives tracking data from the Leap
+Motion Controller. This function is only called when the controller
+object is in a connected state.</p>
+<div class="highlight-python"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_focus_lost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Unfocused&quot;</span>
+</pre></div>
+</div>
+<p><strong>Arguments:</strong></p>
+<p><tt class="docutils literal"><span class="pre">controller</span></tt> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

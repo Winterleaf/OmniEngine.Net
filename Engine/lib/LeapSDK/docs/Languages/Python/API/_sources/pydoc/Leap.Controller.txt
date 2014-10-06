@@ -1,0 +1,232 @@
+Leap.Controller
+===============
+
+.. currentmodule:: Leap
+
+.. class:: Controller
+
+  The Controller class is your main interface to the Leap Motion Controller.
+
+  Create an instance of this Controller class to access frames of tracking data and configuration information. 
+  Frame data can be polled at any time using the :func:`frame()` function. Call frame() or frame(0) to 
+  get the most recent frame. Set the history parameter to a positive integer to access previous frames. A controller 
+  stores up to 60 frames in its frame history.
+
+  Polling is an appropriate strategy for applications which already have an intrinsic update loop, such as a game. 
+  You can also add an instance of a subclass of :py:class:`Leap.Listener` to the controller to handle events as they 
+  occur. The Controller dispatches events to the listener upon initialization and exiting, on connection changes, 
+  when the application gains and loses the OS input focus, and when a new frame of tracking data is available. When 
+  these events occur, the controller object invokes the appropriate callback function defined in your subclass of Listener.
+
+  To access frames of tracking data as they become available:
+
+  1. Implement a subclass of the Listener class and override the :func:`Listener.on_frame()` function.
+  2. In your Listener on_frame() function, call the :func:`frame()` function to access the newest frame of tracking data.
+  3. To start receiving frames, create a Controller object and add an instance of the Listener subclass to the 
+     :func:`add_listener()` function.
+
+  When an instance of a Listener subclass is added to a Controller object, it calls the :func:`Listener.on_init()` 
+  function when the listener is ready for use. When a connection is established between the controller and the Leap Motion 
+  software, the controller calls the :func:`Listener.on_connect()` function. At this point, your application will 
+  start receiving frames of data. The controller calls the :func:`Listener.on_frame()` function each time a new 
+  frame is available. If the controller loses its connection with the Leap Motion software or device for any reason, it 
+  calls the :func:`Listener.on_disconnect()` function. If the listener is removed from the controller or the controller 
+  is destroyed, it calls the :func:`Listener.on_exit()` function. At that point, unless the listener is added to another 
+  controller, it will no longer receive frames of tracking data.
+
+  The Controller object is multithreaded and calls the Listener functions on its own thread, not on an application thread. 
+
+  .. versionadded:: 1.0
+
+  .. container:: constructors
+  
+    .. classmethod:: Controller([listener])
+
+      Constructs a Controller object.
+
+      When creating a Controller object, you may optionally pass in a
+      reference to an instance of a subclass of :class:`Listener`. Alternatively,       
+      you may add a listener later using the :func:`add_listener()` function.
+
+      **Arguments:**  
+  
+      ``listener`` (:class:`Leap.Listener`) -- An optional instance of Leap.Listener implementing the callback
+      functions for the Leap Motion events you want to handle in your application.
+
+      .. versionadded:: 1.0
+
+
+  .. container:: attributes
+
+
+    .. py:attribute:: config -> Leap.Config
+  
+      A :py:class:`Config` object.
+
+         .. versionadded:: 1.0
+
+    .. py:attribute:: devices -> Leap.DeviceList
+
+      A :py:class:`Leap.DeviceList` object containing all the connected devices.
+  
+      Currently, only one device can be connected at a time.
+
+         .. versionadded:: 1.0
+
+    .. py:attribute:: has_focus -> bool
+
+       Reports whether this application is the focused, foreground application.
+       
+       By default, your application only receives tracking information from
+       the Leap Motion controller when it has the operating system input focus.
+       To receive tracking data when your application is in the background,
+       the background frames policy flag must be set.
+
+       .. versionadded:: 1.0
+
+    .. py:attribute:: is_connected -> bool
+    
+      Reports whether this Controller is connected to the Leap Motion service and device.
+    
+      When you first create a Controller object, is_connected is False.
+      After the controller finishes initializing and connects to the Leap Motion software 
+      and hardware, is_connected becomes True.
+    
+      You can either handle the onConnect event using a Listener instance or
+      poll the is_connected function if you need to wait for your
+      application to be connected to the Leap Motion software before performing some other
+      operation.
+    
+      .. versionadded:: 1.0
+
+    .. py:attribute:: policy_flags -> int
+      
+      The active controller policies.
+      
+      Currently, the only supported policy is the :data:`Controller.POLICY_BACKGROUND_FRAMES` policy,
+      which determines whether your application receives frames of tracking
+      data when it is not the focused, foreground application. Use :meth:`Controller.setPolicy()`
+      to change policies.
+      
+      If the current value is :data:`Controller.POLICY_DeFAULT`, then the default state of all policies
+      are in effect, meaning that your application does not receive frames when it is in the background.
+      
+      .. versionadded:: 1.0
+
+  .. container:: methods
+
+    .. py:method:: frame([history]) -> Leap.Frame
+
+        Returns a frame of tracking data from the Leap Motion software. Use the optional
+        ``history`` parameter to specify which frame to retrieve. Call frame() or
+        frame(0) to access the most recent frame; call frame(1) to access the
+        previous frame, and so on. If you use a history value greater than the
+        number of stored frames, then the controller returns an invalid frame.
+
+
+        **Arguments:**  
+
+        ``history`` (int) -- The age of the frame to return, counting backwards from the most recent 
+        frame (0) into the past and up to the maximum age (59).
+
+        **Returns:**
+
+        :class:`Leap.Frame` -- The specified frame; or, if no history parameter is specified, the newest 
+        frame. If a frame is not available at the specified history position, an invalid Frame is returned.
+  
+        .. versionadded:: 1.0
+
+    .. py:method:: add_listener(listener) -> bool
+
+        Adds a listener to this Controller.
+
+        The Controller dispatches Leap Motion events to each associated listener. The
+        order in which listener callback functions are invoked is arbitrary. If
+        you pass a listener to the Controller's constructor function, it is
+        automatically added to the list and can be removed with the
+        :func:`remove_listener()` function.
+
+        **Arguments:**
+    
+        ``listener`` (:class:`Leap.Listener`) -- A subclass of Listener implementing the callback
+           functions for the Leap Motion events you want to handle in your application.
+      
+        **Returns:**
+  
+        ``bool`` indicating whether or not the listener was successfully added to the list of listeners.
+      
+        .. versionadded:: 1.0
+  
+    .. py:method::  remove_listener(listener) -> bool
+
+        Remove a listener from the list of listeners that will receive Leap Motion
+        events. A listener must be removed if its lifetime is shorter than the
+        controller to which it is listening.
+
+      **Arguments:**
+  
+        ``listener`` (:class:`Leap.Listener`) -- The listener to remove.
+      
+        **Returns:** 
+  
+        ``bool`` indicating whether or not the listener was successfully added to the list of listeners.
+    
+        .. versionadded:: 1.0
+
+      .. py:method:: set_policy_flags(flags)
+
+          Requests a change in policy.
+
+          A request to change a policy is subject to user approval and a policy
+          can be changed by the user at any time (using the Leap Motion settings dialog).
+          The desired policy flags must be set every time an application runs.
+
+          Policy changes are completed asynchronously and, because they are subject
+          to user approval, may not complete successfully. Examine the
+          :attr:`policy_flags` attribute after a suitable interval to test whether
+          the change was accepted.
+
+          Currently, the :data:`POLICY_BACKGROUND_FRAMES` policy is the only policy supported.
+          The background frames policy determines whether an application
+          receives frames of tracking data while in the background. By
+          default, the Leap Motion  software only sends tracking data to the foreground application.
+          Only applications that need this ability should request the background
+          frames policy.
+
+          At this time, you can use the Leap Motion Settings dialog to
+          globally enable or disable the background frames policy. However,
+          each application that needs tracking data while in the background
+          must also set the policy flag using this function.
+
+          This function can be called before the Controller object is connected,
+          but the request will be sent to the Leap Motion software after the Controller connects.
+
+          .. versionadded:: 1.0
+
+          **Arguments**
+    
+          ``flags`` (int) -- A policy flag value indicating the policies to request.
+    
+          * ``Controller.POLICY_BACKGROUND_FRAMES`` -- your application will receive tracking data when 
+          no other Leap-enabled applications have the operating system focus.
+          * ``Controller.POLICY_DEFAULT`` -- reset the default policies. (Your application will only 
+          receive tracking data when it has the operating system focus.)
+          
+
+  .. container:: data
+        
+    .. data:: POLICY_BACKGROUND_FRAMES = 1
+      
+      Your application will receive tracking data when 
+      no other Leap-enabled applications have the operating system focus.
+
+      .. versionadded:: 1.0
+
+    .. data:: POLICY_DEFAULT = 0
+    
+      Your application will only 
+      receive tracking data when it has the operating system focus.
+      
+      .. versionadded:: 1.0
+    
+

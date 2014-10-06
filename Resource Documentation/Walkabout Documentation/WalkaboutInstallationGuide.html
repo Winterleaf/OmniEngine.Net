@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Installation Guide | Walkabout</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div class="container"><div class="row">
+	<a href="WalkaboutDocumentation.html"><img src="images/walkabout.png" class="banner" /></a>
+	<p class="title">INSTALLATION GUIDE</p>
+
+	<ol class="toc">
+		<li><a href="#introduction">Introduction</a></li>
+		<li><a href="#structure">Directory structure</a></li>
+		<li><a href="#easy">Easy install (new project)</a></li>
+		<li><a href="#winmerge">Installing with WinMerge (existing project)</a></li>
+	</ol>
+
+	<h1 id="introduction">Introduction</h1>
+	<p>This guide will walk you through the process of installing <strong>Walkabout</strong> into Torque 3D.
+	<strong>Walkabout</strong> is a complex product and requires significant additions (and a few modifications) to the engine code.
+	If you follow this guide, you should be fine, but if you need more detailed information on the modifications <strong>Walkabout</strong> makes, see the <a href="./WalkaboutEngineModifications.html">Engine Modifications</a> file.</p>
+
+	<p>If you're installing <strong>Walkabout</strong> into a new project that you haven't started to modify already, you're in luck: your installation should be very simple.
+	Follow the guide in the <a href="#easy">Easy install</a> section below.</p>
+
+	<p>If you've made source code or script changes already, however, you should install a program like <a href="#winmerge">WinMerge</a>, which will let you visually merge the differences between your code and <strong>Walkabout</strong>'s code.
+	Follow the instructions in the <a href="#winmerge">Installing with WinMerge</a> section below.</p>
+
+	<h1 id="structure">Directory structure</h1>
+	<p>In the instructions below, I want to make as few assumptions as I can about where you've installed Torque and how your projects are laid out.
+	With that in mind, here are some abbreviations I will use:</p>
+
+	<table class="table">
+		<tr><th>Abbreviation</th> <th>Explanation</th> <th>Example</th></tr>
+		<tr><td>install directory</td> <td>The location you installed Torque 3D.</td> <td class="path">C:\Torque\Torque 3D 1.1 Final</td></tr>
+		<tr><td>engine directory</td> <td>The location of Torque's engine source files.</td> <td class="path">C:\Torque\Torque 3D 1.1 Final\Engine\source</td></tr>
+		<tr><td>project directory</td> <td>The location of the project you'd like to install <strong>Walkabout</strong> to.</td> <td class="path">C:\Torque\Torque 3D 1.1 Final\My Projects\SuperFunGame</td></tr>
+		<tr><td>game directory</td> <td>The location of your project's game folder.</td> <td class="path">C:\Torque\Torque 3D 1.1 Final\My Projects\SuperFunGame\game</td></tr>
+		<tr><td>Walkabout</td> <td>The folder that contains your <strong>Walkabout</strong> download.</td> <td class="path">C:\Users\Me\Downloads\Walkabout R1\Torque 3D 1.1 Final</td></tr>
+	</table>
+
+	<h1 id="easy">Easy install (new project)</h1>
+	<p>If you're working with a new T3D install (blank project based on Full or Empty template),
+	then you will be able to simply copy over all the files in your <strong>Walkabout</strong> download and overwrite the existing ones.
+	To install <strong>Walkabout</strong> in a new T3D project, do the following:</p>
+	<ol>
+		<li>Copy <span class="path">Walkabout/Engine/source</span> to <span class="path">engine directory</span> and select 'Copy and Replace' for all items when prompted.</li>
+		<li>Copy <span class="path">Walkabout/Engine/lib</span> to <span class="path">engine directory</span>.</li>
+		<li>Copy <span class="path">Walkabout/game</span> to <span class="path">game directory</span> and select 'Copy and Replace' for all items when prompted.</li>
+		<li>Copy <span class="path">Walkabout/Tools</span> to <span class="path">install directory</span>
+		<li>In <span class="path">project directory/buildFiles/config</span>, open <span class="path">projectCode.conf</span> with a regular text editor
+		(Notepad, Notepad++, and WordPad should be fine. Do not use Microsoft Word, OpenOffice, or other word processors!).<br />
+		After these lines:<br />
+<pre><code>   // Here is an example of how to include your project specific code 
+   // In this case all the code in the "custom" folder in your project's source directory would be added
+   // addSrcDir('../source/custom');</code></pre>
+		Add this: <br />
+		<pre>   includeModule( 'walkabout' );</pre></li>
+		<li>In <span class="path">project directory</span>, double-click on <span class="path">generateProjects.bat</span>.</li>
+		<li>Recompile the engine.</li>
+	</ol>
+
+	<h1 id="winmerge">Installing with WinMerge (existing project)</h1>
+	<p>If you have already made script and source code changes to Torque 3D in your own project,
+	you'll need to be a bit more careful when you integrate <strong>Walkabout</strong>, to avoid its changes overwriting your own changes!</p>
+
+	<p>Once you've installed <a href="http://www.winmerge.org">WinMerge</a> or the merging tool of your choice, follow the steps below.
+	Note that instructions will assume you are using WinMerge - if your merge tool has differences, you'll need to work them out yourself!</p>
+
+	<p>First, compare <span class="path">Walkabout/source</span> to <span class="path">engine directory</span>.
+	If there is a file with differences, double-click it to view and edit them.</p>
+
+	<img src="images/winmerge-dir.png" />
+	<p class="caption">Viewing differences in the T3D directory.</p>
+
+	<p>Once inside a file, press Alt+Down to quickly scroll to the next difference,
+	and Alt+Right to copy from the left-hand-side (<strong>Walkabout</strong> file) to the right-hand-side (your engine file).</p>
+
+	<img src="images/winmerge-file.png" />
+	<p class="caption">Editing conflicts inside a file.</p>
+
+	<p>Next, compare <span class="path">Walkabout/game</span> to <span class="path">game directory</span>. Copy over files that don't exist in your tree, and edit any conflicts within existing files.</p>
+
+	<p>Finally, follow steps 3-6 from <a href="#easy">Easy install</a>.
+	Note that step 5 will rewrite your Visual Studio project files, so if you've modified them, you will need to redo those modifications.</p>
+	</div></div>
+</body>
+</html>

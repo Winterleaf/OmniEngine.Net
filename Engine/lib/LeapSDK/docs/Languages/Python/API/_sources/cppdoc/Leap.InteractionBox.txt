@@ -1,0 +1,135 @@
+Leap.InteractionBox
+===================
+
+.. currentmodule:: Leap
+
+.. class:: InteractionBox
+
+  The InteractionBox class represents a box-shaped region completely
+  within the field of view of the Leap Motion controller.
+ 
+  The interaction box is an axis-aligned rectangular prism and provides normalized
+  coordinates for hands, fingers, and tools within this box. The InteractionBox class
+  can make it easier to map positions in the Leap Motion coordinate system to 2D or
+  3D coordinate systems used for application drawing.
+ 
+  .. image:: ../../../images/Leap_InteractionBox.png
+ 
+  The InteractionBox region is defined by a center and dimensions along the x, y,
+  and z axes.
+ 
+  Get an InteractionBox object from a Frame object.
+  
+  .. versionadded:: 1.0
+  
+  .. container:: attributes
+  
+    .. attribute:: center -> Leap.Vector
+  
+      The center of the InteractionBox in device coordinates (millimeters). This point
+      is equidistant from all sides of the box.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: width -> float
+  
+      The width of the InteractionBox in millimeters, measured along the x-axis.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: height -> float
+  
+      The height of the InteractionBox in millimeters, measured along the y-axis.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: depth -> float
+  
+      The depth of the InteractionBox in millimeters, measured along the z-axis.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: is_valid -> bool
+  
+      Reports whether this is a valid InteractionBox object.
+    
+      .. versionadded:: 1.0
+   
+
+  .. container:: methods
+  
+    .. method:: normalize_point(position[, clamp=True]) -> Leap.Vector
+
+      Normalizes the coordinates of a point using the interaction box.
+   
+      Coordinates from the Leap Motion frame of reference (millimeters) are converted
+      to a range of [0..1] such that the minimum value of the InteractionBox maps to 0
+      and the maximum value of the InteractionBox maps to 1.
+   
+      **Arguments**
+   
+      ``position`` (:class:`Leap.Vector`) -- The input position in device coordinates.
+    
+      ``clamp`` (bool) -- Whether or not to limit the output value to the range [0,1] when the
+      input position is outside the InteractionBox. Defaults to True.
+    
+      **Returns** 
+    
+      ``Leap.Vector`` -- The normalized position. 
+    
+      .. versionadded:: 1.0
+   
+
+    .. method:: denormalize_point(normalizedPosition) -> Leap.Vector
+  
+      Converts a position defined by normalized InteractionBox coordinates into device
+      coordinates in millimeters.
+   
+      This function performs the inverse of :func:`InteractionBox.normalize_point()`.
+    
+      **Arguments**
+    
+      ``normalizedPosition`` (:class:`Leap.Vector`) -- The input position in normalixed, InteractionBox coordinates.
+    
+      **Returns** 
+    
+      ``Leap.Vector`` -- The corresponding denormalized position in device coordinates.
+    
+      .. versionadded:: 1.0
+   
+  .. container:: data
+  
+    .. data:: invalid -> Leap.InteractionBox
+  
+      An invalid InteractionBox object.
+   
+      You can use the instance returned by this function in comparisons testing
+      whether a given InteractionBox instance is valid or invalid. (You can also use the
+      :attr:`InteractionBox.is_valid` property.)
+   
+      .. versionadded:: 1.0
+   
+  
+  .. container:: operators
+  
+    .. function:: eq(a, b) -> bool
+  
+      Compare InteractionBox object equality.
+      Two InteractionBox objects are equal if and only if both InteractionBox objects represent the
+      exact same InteractionBox and both InteractionBoxes are valid.
+    
+      .. versionadded:: 1.0
+   
+
+    .. function:: ne(a, b) -> bool
+  
+      Compare InteractionBox object inequality.
+      Two InteractionBox objects are equal if and only if both InteractionBox objects represent the
+      exact same InteractionBox and both InteractionBoxes are valid.
+    
+      .. versionadded:: 1.0
+   

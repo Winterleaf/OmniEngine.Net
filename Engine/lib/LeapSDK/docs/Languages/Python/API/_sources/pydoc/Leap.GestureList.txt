@@ -1,0 +1,65 @@
+Leap.GestureList
+================
+
+.. currentmodule:: Leap
+
+.. class:: GestureList
+
+  The GestureList class represents a list of Gesture objects.
+ 
+  Get a GestureList object by calling :func:`Frame.gestures()`.
+  
+  .. versionadded:: 1.0
+
+
+  .. container:: constructors
+  
+    .. classmethod:: GestureList()
+
+      Constructs an empty list.
+    
+      .. versionadded:: 1.0
+
+
+  .. container:: attributes
+  
+    .. attribute:: len -> int
+
+      The number of items in this list.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: is_empty -> bool
+
+      Reports whether the list is empty.
+
+      .. versionadded:: 1.0
+    
+
+  .. container:: methods
+  
+    .. method:: append(other)
+  
+      Appends the members of the specifed GestureList to this GestureList.
+
+      **Arguments**
+     
+      ``other`` (:class:`Leap.GestureList`) -- A GestureList object containing Gesture objects
+      to append to the end of this GestureList.
+    
+      .. versionadded:: 1.0
+
+    .. method:: next() -> Leap.Gesture
+  
+      Provides the next item in the list.
+    
+      .. versionadded:: 1.0
+
+
+  .. container:: operators
+      
+    .. method::  getitem(object, index) -> Leap.Device
+
+      Access a list member by its position in the list.
+
+      .. versionadded:: 1.0

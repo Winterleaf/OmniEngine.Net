@@ -1,0 +1,41 @@
+
+
+10/1/2014
+Sahara for Torque 3D MIT 3.5.1 (http://www.garagegames.com/community/resources/view/22781)
+Created Sample Full TorqueScript Example
+
+9/28/2014
+-Added pre-Loading of all Lod's for all models active in the game world on first render (ShapeBase)
+-Added pre-Loading of all Lod's for all models active in the game world on first render (tsStatic)
+-Removed Support for images of Type GFXFormatB8G8R8A8,
+-Removed Support for images of Type GFXFormatD15S1,
+
+9/27/2014
+-Improved Fonts
+-Improved Math routines
+-General bug fixes
+
+
+9/25/2014
+--------------------------------------------------------------------------------------------
+-Win 32/64 bit implementation
+-Added PDF support for materials
+-Added Alpha LOD to TSStatics
+-Added Support for images of Type GFXFormatB8G8R8A8,
+-Added Support for images of Type GFXFormatD15S1,
+-Re-factored Math classes
+
+9/13/2014
+--------------------------------------------------------------------------------------------
+-Added Advance UI Kit
+-Added Omni Framework
+-Added Network Culling - Added Visible Range Ghost
+-Added Scene Culling - Far Plane Slider
+-Added Solder Resource (Rewrote to standard C++) https://github.com/GarageGames/Torque3D/pull/566/files
+-Added Volumetric Fog (http://www.garagegames.com/community/blogs/view/22823/1#comment-198608)
+-Added Fix for Volumetric Fog, Not selecting a model when creating fog caused a crash when you assigned it later.
+-Added ZOffset functionality to ScatterSky object (http://www.garagegames.com/community/resources/view/20788)
+-Added Parsing for DefineTSShapeConstructorMethod
+-WalkableShape Resource http://www.garagegames.com/community/forums/viewthread/137542 Applied to path faea2042a1dd6bd5683ac11f51b7551daf9b224f
+-Datablock caching for remote clients when server is running in dedicated mode.
+

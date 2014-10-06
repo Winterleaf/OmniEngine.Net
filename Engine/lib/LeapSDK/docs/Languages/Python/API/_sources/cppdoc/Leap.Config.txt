@@ -1,0 +1,133 @@
+Leap.Config
+===========
+
+.. currentmodule:: Leap
+
+.. class:: Config
+
+  The Config class provides access to Leap Motion system configuration information.
+
+  You can get and set gesture configuration parameters using the Config object
+  obtained from a connected Controller object (:attr:`Leap.Controller.config`). The key strings required to
+  identify a configuration parameter include:
+
+  ====================================  ========== ============= =======
+  Key string                            Value type Default value Units
+  ====================================  ========== ============= =======
+  Gesture.Circle.MinRadius              float      5.0           mm
+  Gesture.Circle.MinArc                 float      1.5 * pi      radians
+  Gesture.Swipe.MinLength               float      150           mm
+  Gesture.Swipe.MinVelocity             float      1000          mm/s
+  Gesture.KeyTap.MinDownVelocity        float      50            mm/s
+  Gesture.KeyTap.HistorySeconds         float      0.1           s
+  Gesture.KeyTap.MinDistance            float      3.0           mm
+  Gesture.ScreenTap.MinForwardVelocity  float      50            mm/s
+  Gesture.ScreenTap.HistorySeconds      float      0.1           s
+  Gesture.ScreenTap.MinDistance         float      5.0           mm
+  ====================================  ========== ============= =======
+
+  After setting a configuration value, you must call the :func:`save()` method
+  to commit the changes. The configuration value changes are not persistent;
+  your application needs to set the values everytime it runs.
+
+  **See also:**
+  
+  * :class:`Leap.CircleGesture`
+  * :class:`Leap.KeyTapGesture`
+  * :class:`Leap.ScreenTapGesture`
+  * :class:`Leap.SwipeGesture`
+ 
+  .. versionadded:: 1.0
+    
+
+  .. container:: constructors
+
+    .. classmethod:: Config()
+    
+         Constructs a Config object. 
+         
+         Do not create your own Config objects; rather, access the Config object of a connected
+         controller with: :attr:`Leap.Controller.config`.
+     
+         .. versionadded:: 1.0
+
+
+  .. container:: methods
+
+    .. method:: get(type, key)
+    
+      Gets the current value of a configuration variable.
+  
+      **Arguments**
+  
+      ``type`` (int) -- A type code indicating the datat type of the configuration variable.
+      One of TYPE_BOOLEAN, TYPE_INT32, TYPE_FLOAT, or, TYPE_STRING.
+  
+      ``key`` (string) -- The name of the configuration variable.
+  
+  
+    .. method:: set(type, key, value)
+
+      Sets a configuration variable to the specified value locally. The change in value is not effective
+      until the :func:`save()` method is called.
+  
+      **Arguments**
+  
+      ``type`` (int) -- A type code indicating the datat type of the configuration variable.
+      One of TYPE_BOOLEAN, TYPE_INT32, TYPE_FLOAT, or, TYPE_STRING.
+  
+      ``key`` (string) -- The name of the configuration variable.
+  
+      ``value`` (various) -- The value to set. Must be convertible to the type specified by the ``type`` parameter.
+  
+    .. method:: save();
+    
+      Saves the current state of the config.
+      
+      Call ``save()`` after making a set of configuration changes. The
+      ``save()`` function transfers the configuration changes to the Leap Motion
+      service. The configuration value changes are not persistent; your
+      application must set the values everytime it runs.
+      
+      **Returns** 
+     
+      True on success; false on failure.
+     
+      .. versionadded:: 1.0
+     
+
+  
+  .. container:: data
+  
+    .. data:: TYPE_UNKNOWN = 0
+      
+      The data type is unknown.
+     
+      .. versionadded:: 1.0
+             
+    .. data:: TYPE_BOOLEAN = 1
+
+      A boolean value.
+     
+      .. versionadded:: 1.0
+       
+    .. data::       TYPE_INT32   = 2
+      
+      A 32-bit integer.
+     
+      .. versionadded:: 1.0
+       
+    .. data::       TYPE_FLOAT   = 6
+      
+      A floating-point number.
+     
+      .. versionadded:: 1.0
+       
+    .. data::       TYPE_STRING  = 8
+      
+      A string of characters.
+     
+      .. versionadded:: 1.0
+       
+     
+    

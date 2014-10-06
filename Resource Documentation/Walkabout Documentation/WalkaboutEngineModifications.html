@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Under the Hood | Walkabout</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div class="container"><div class="row">
+	<a href="WalkaboutDocumentation.html"><img src="images/walkabout.png" class="banner" /></a>
+	<p class="title">ENGINE MODIFICATIONS</p>
+
+	<ol class="toc">
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#new-classes">New classes</a>
+		<ol>
+			<li><a href="#nav-classes">Navigation classes</a>
+			<ol>
+				<li><a href="#nav">Nav namespace</a></li>
+				<li><a href="#navmesh">NavMesh</a></li>
+				<li><a href="#navpath">NavPath</a></li>
+				<li><a href="#coverpoint">CoverPoint</a></li>
+			</ol></li>
+			<li><a href="#misc-classes">Miscellaneous classes</a>
+			<ol>
+				<li><a href="#guinaveditorctrl">GuiNavEditorCtrl</a></li>
+				<li><a href="#objpolylist">ObjPolyList</a></li>
+			</ol></li>
+		</ol></li>
+		<li><a href="#rcdt">Recast/Detour</a></li>
+		<li><a href="#modifications">Modifications</a>
+		<ol>
+			<li><a href="#ai-mods">AI</a></li>
+			<li><a href="#collision-mods">Collision</a></li>
+			<li><a href="#rendering-mods">Rendering</a></li>
+			<li><a href="#config-mods">Project configuration</a></li>
+		</ol></li>
+	</ol>
+
+	<h1 id="overview">Overview</h1>
+	<p>Walkabout is a significant addition to T3D, and requires a few modifications to its source code.
+	I’ve tried to keep my modifications as self-contained as possible, preferring to add code rather than modifying or replacing it,
+	and adding new classes instead of retrofitting existing ones.</p>
+
+	<p>This guide aims to introduce the code changes to you, providing information on why certain changes were made and what they do.
+	If you are integrating Walkabout with your own modifications to T3D and need to know how to merge,
+	or if you’re just trying to gain a better understanding of how the engine and Walkabout work together, you’ve come to the right place.</p>
+
+	<h1 id="new-classes">New classes</h1>
+
+	<h2 id="nav-classes">Navigation classes</h2>
+	
+	<h3 id="nav">Nav namespace</h3>
+
+	<h3 id="navmesh">NavMesh</h3>
+	<p>This class is the most important addition to the engine. A NavMesh represents a navigable volume in your level.</p>
+	<p class="path">Engine/source/T3D/nav/navMesh.h</p>
+	<p class="path">Engine/source/T3D/nav/navMesh.cpp</p>
+
+	<h3 id="navpath">NavPath</h3>
+	<p>A NavPath stores data about a pathfinding query on a single NavMesh.</p>
+	<p class="path">Engine/source/T3D/nav/navPath.h</p>
+	<p class="path">Engine/source/T3D/nav/navPath.cpp</p>
+
+	<h3 id="coverpoint">CoverPoint</h3>
+	<p>This simple class represents a location where an AI player can take cover.
+	These points can be placed manually by level designers, or generated automatically on a particular NavMesh.
+	A combination of both is usually a good idea!</p>
+	<p class="path">Engine/source/T3D/nav/coverPoint.h</p>
+	<p class="path">Engine/source/T3D/nav/coverPoint.cpp</p>
+
+	<h2 id="misc-classes">Miscellaneous classes</h2>
+
+	<h3 id="guinaveditorctrl">GuiNavEditorCtrl</h3>
+	<p>Provides functionality to the Nav editor plugin.</p>
+	<p class="path">Engine/source/T3D/nav/guiNavEditorCtrl.h</p>
+	<p class="path">Engine/source/T3D/nav/guiNavEditorCtrl.cpp</p>
+
+	<h3 id="objpolylist">ObjPolyList</h3>
+	<p>This poly list stores its internal data as simple lists of vertex locations and indices in Recast’s coordinate system
+	(where the axes represent different directions than in Torque).
+	It is so named because it is similar in structure to the OBJ file format, and can be easily exported as an OBJ file with the provided console function.</p>
+	<p class="path">Engine/source/collision/objPolyList.h</p>
+	<p class="path">Engine/source/collision/objPolyList.cpp</p>
+
+	<h1 id="rcdt">Recast/Detour</h1>
+	<p>Of course, a significant amount of code has been added to the engine in the form of the Recast/Detour library.
+	For a description of Recast’s operation, visit its <a href="http://code.google.com/p/recastnavigation/">official site</a> or
+	<a href="https://groups.google.com/forum/?fromgroups#!forum/recastnavigation">group forum</a>.
+	Note that two files have been renamed from the official Recast distribution:
+	files previously named DebugDraw have been renamed duDebugDraw due to a conflict with an existing Torque file.</p>
+	<p class="path">Engine/source/T3D/nav/recast/*</p>
+
+	<h1 id="modifications">Modifications</h1>
+
+	<h2 id="ai-mods">AI</h2>
+	<p>Walkabout makes significant additions to the AIPlayer class to make pathfinding as simple-to-use as possible.
+	This includes adding new engine and console functions that take care of pathfinding, but also hooking into the callbacks like onStuck.
+	You’ll notice I’ve replaced callbacks in getAIMove with calls to engine functions.
+	In these new functions, I perform logic related to pathfinding (like automatically replanning a path if the character becomes stuck), then call the script-side functions.
+	If you have other callbacks implemented for AIPlayers, this is a good pattern to follow.</p>
+	<p class="path">Engine/source/T3D/aiPlayer.h</p>
+	<p class="path">Engine/source/T3D/aiPlayer.cpp</p>
+
+	<h2 id="collision-mods">Collision</h2>
+	<p>To generate NavMeshes, Walkabout needs to parse a level’s collision geometry.
+	It does this by using the standard buildPolyList function in SceneContainer, which finds objects in a box and calls their buildPolyList methods.</p>
+
+	<p>However, several classes do not do a good job of honouring a request to buildPolyList when passed a bounding box.
+	For example, GroundPlane always adds an infinitely large collision plane, no matter what size the query box is.
+	This is bad for Recast, since the library builds a voxel grid based on the dimensions of the input geometry.
+	In early tests, Recast would try to create a nearly-infinitely large grid!</p>
+
+	<p>Walkabout leverages the existing PolyListContext feature to tell objects that a given call to buildPolyList is being used for navigation.
+	If you implemented your own custom class, you’d be able to do things like export special geometry to the navigation mesh if you really wanted.</p>
+	<p class="path">Engine/source/scene/sceneContainer.h</p>
+	<p class="path">Engine/source/scene/sceneContainer.cpp</p>
+
+	<p>The buildPolyList functions of GroundPlane, ConvexShape and TerrainBlock have been modified so they return better data for NavMesh generation.
+	These additional routines are hidden away using the PLC_Navigation context, so they affect the existing code in these methods as little as possible.</p>
+	<p class="path">Engine/source/T3D/convexShape.cpp</p>
+	<p class="path">Engine/source/T3D/groundPlane.cpp</p>
+	<p class="path">Engine/source/terrain/terrCollision.cpp</p>
+
+	<h2 id="rendering-mods">Rendering</h2>
+	<p>There was only one change made to the rendering engine to accommodate Recast’s debug draw functionality.
+	The debug draw functions expect an OpenGL-like interface, where a drawer makes arbitrary calls like:</p>
+
+<pre><code>   BEGIN(TriangleList);
+   VERTEX(x1, y1, z1);
+   VERTEX(x2, y2, z2);
+   ...
+   VERTEX(xn, yn, zn);
+   END();
+</code></pre>
+
+	<p>However, the PrimBuilder class expects to know the exact number of vertices beforehand, which Recast does not provide.
+	So we need to make a small change to the macro definitions in PrimBuilder to allow the vertex buffer to grow if the number of vertices exceeds the initial expectation.</p>
+	<p class="path">Engine/source/gfx/primBuilder.cpp</p>
+
+	<h2 id="config-mods">Project configuration</h2>
+	<p>Torque 3D comes with a handy system to configure your projects and automatically generate Visual Studio solution files.
+	Instead of asking you to add all the new source files manually, a Walkabout install typically involves including a project generator module.
+	This module is defined in <span class="path">Tools/projectGenerator/modules/walkabout.inc</span> so it is available to all your projects.
+	However, you need to include the module in the <span class="path">projectCode.conf</span> file for each project you want to use Walkabout in.</p>
+	<p class="path">Tools/projectGenerator/modules/walkabout.inc</p>
+	<p class="path">your project/buildFiles/config/projectCode.conf</p>
+  </div></div>
+</body>
+</html>

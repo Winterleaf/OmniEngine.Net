@@ -1,0 +1,777 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/widgets.js" id="twitter-wjs"></script><script type="text/javascript" async="" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/quant.js"></script><script src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o?o:n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({QJf3ax:[function(t,n){function e(t){function n(n,e,o){t&&t(n,e,o),o||(o={});for(var a=i(n),u=a.length,c=o[r]||(o[r]={}),f=0;u>f;f++)a[f].apply(c,e);return c}function o(t,n){u[t]=i(t).concat(n)}function i(t){return u[t]||[]}function a(){return e(n)}var u={};return{on:o,emit:n,create:a,listeners:i,_events:u}}var r="nr@context";n.exports=e()},{}],ee:[function(t,n){n.exports=t("QJf3ax")},{}],D5DuLP:[function(t,n){function e(t,n,e){return r.listeners(t).length?r.emit(t,n,e):(o[t]||(o[t]=[]),void o[t].push(n))}var r=t("ee").create(),o={};n.exports=e,e.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,n){n.exports=t("D5DuLP")},{}],loader:[function(t,n){n.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,n){function e(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var n=c.createElement("script");n.src=l.proto+t.agent,c.body.appendChild(n)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=n.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",e,!1)):(c[s]("onreadystatechange",r),u[s]("onload",e)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Sahara is a tech extension to the Torque 3D game engine by GarageGames which lets you create more realistic game environments by generating naturally accumulated dirt, snow, dust or any other material over your game shapes. BitGap Games has graciously allowed me to release this under MIT.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Sahara for Torque 3D MIT 3.5.1 | Quinton Delpeche | Resources | Community | GarageGames.com</title>		<link href="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ui.css" media="screen" rel="stylesheet" type="text/css">
+<link href="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ui_002.css" media="screen" rel="stylesheet" type="text/css">
+<link href="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shCore.js"></script>
+		<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shBrushCpp.js"></script>
+		<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shBrushPhp.js"></script>
+		<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	timeoutID = 0;
+	
+	function filterProducts()
+	{
+		var filterArray = [];
+		
+		$('.qtip-content input.relevantProductFilter:checked').each(function(){
+			if(($(this).val() != 0))
+			{
+			    jQuery.merge(filterArray, [$(this).val()]);
+			}
+		});
+		
+		if(filterArray.length > 0)
+		{
+			window.location = "/community/resources/all/"+filterArray.join(',') + ',';
+		}
+		else
+		{
+			window.location = "/community/resources/";
+		}
+	}
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			clearTimeout(timeoutID);
+			timeoutID = setTimeout('filterProducts()',2000);
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-6057184-2']);
+		  _gaq.push(['_setDomainName', 'garagegames.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+    
+<body data-twttr-rendered="true">
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Products</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products">Store</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products">Home</a></li><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="stub" id="main-nav-services"><a href="http://services.garagegames.com/">Services</a></li><li class="stub" id="main-nav-education"><a href="http://www.garagegames.com/education">Education</a></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About GarageGames</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Vince Gee</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/49324">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input name="q" id="top-keywords" class="formTip" value="Search site" title="Search site" maxlength="255" onfocus="if ( this.value=='Search site' ) { this.value = ''; }" onblur="if ( this.value=='' ) { this.value = 'Search site'; }" type="text">
+                        <input id="top-submit" onclick="searchSubmit(); return false;" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/search-bar-main-btn.png" alt="Search" type="image">
+                </form>
+                
+                <script type="text/javascript">
+				
+                function searchSubmit() {
+					var search = $('#top-keywords').val();
+					if(document.location.href.indexOf("forum")!= -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=forums&gsc.tab=0';
+					} else if(document.location.href.indexOf("blog") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=blogs&gsc.tab=0';
+					} else if(document.location.href.indexOf("resource") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=resources&gsc.tab=0';
+					} else {
+						window.location = '/community/search#gsc.q='+search;
+					}
+                	
+                }
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+			
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div style="margin: -20px -13px 10px;"><a href="http://www.gginteractive.com/" alt="Learn more about The Game Development Curriculum by GGInteractive"><img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/devpro_ad_banner_938x62.png" alt="dev|Pro Game Development Curriculum" title="dev|Pro Game Development Curriculum"></a></div>
+	<div id="blog-content">
+						<h1>Sahara for Torque 3D MIT 3.5.1</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/95011">Quinton Delpeche</a>
+			<strong>·</strong>
+			07/11/2014 (11:50 am)			<strong>·</strong>
+			14 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">Sahara is a tech extension to the Torque 3D game 
+engine by GarageGames which lets you create more realistic game 
+environments by generating naturally accumulated dirt, snow, dust or any
+ other material over your game shapes. It is a successor to BitGap Games
+ Cliff Construction Kit and Konrad Kiss from BitGap Games has allowed me
+ to release this under the MIT license, so here is some more information
+ about Sahara.<br>
+<br>
+The motto of Sahara is: use one model in many environments. Sahara can 
+be set up on a per material basis. Once installed, use the Torque 3D 
+Material Editor to edit the properties of your shape.<br>
+<br>
+You can follow the original forum post regarding this <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/138296">here</a>.<br>
+<br>
+<object height="420" width="700"><param value="http://www.youtube.com/v/Tsxp1qidqKM&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/Tsxp1qidqKMhlenfs1ap26fmt18" height="420" width="700"></object><br>
+<br>
+<object height="420" width="700"><param value="http://www.youtube.com/v/rRzqoOpgTtk&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/rRzqoOpgTtkhlenfs1ap26fmt18" height="420" width="700"></object><br>
+<br>
+In order to have Sahara work on your shapes, you will have to meet the following requirements:<br>
+<ul><li>Your material has a Diffuse map</li><li>Your material has a Normal map (with or without an embedded specular map)</li><li>Your graphics card supports Shader Model 3.0</li><li>If
+ you do not meet these requirements and you still try to use the 
+accumulation feature of Sahara, you will receive a warning in the 
+console about it.</li></ul>Some images of the feature in action:<br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/642_700x1000.jpg" alt="www.gobbogames.co.za/screenshots/Sahara/642_700x1000"><br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/641_700x1000.jpg" alt="www.gobbogames.co.za/screenshots/Sahara/641_700x1000"><br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/639_700x1000.jpg" alt="www.gobbogames.co.za/screenshots/Sahara/639_700x1000"><br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/637_700x1000.jpg" alt="www.gobbogames.co.za/screenshots/Sahara/637_700x1000"><br>
+<br>
+Enough of the yacking ... here is how you can get it. I have given you three different options to get the code working.<br>
+<br>
+1). Github:<br>
+Use my GitHub repository at <a rel="nofollow" href="https://github.com/qdelpeche/Torque3D/tree/sahara" target="_blank">github.com/qdelpeche/Torque3D/tree/sahara</a>.<br>
+<br>
+2). Patch Files:<br>
+Download the <a rel="nofollow" href="http://www.gobbogames.co.za/downloads/Sahara/Engine.patch" target="_blank">Engine</a> and <a rel="nofollow" href="http://www.gobbogames.co.za/downloads/Sahara/Templates.patch" target="_blank">Template</a> patch files and apply them to your system. Make sure you also download the <a rel="nofollow" href="http://www.gobbogames.co.za/downloads/Sahara/Engine_Accu.zip" target="_blank">Engine Accumulator</a> files and unzip them in your Engine directory.<br>
+<br>
+3). Changed Files:<br>
+Download the changed <a rel="nofollow" href="http://www.gobbogames.co.za/downloads/Sahara/Engine.zip" target="_blank">Engine</a> files and <a rel="nofollow" href="http://www.gobbogames.co.za/downloads/Sahara/Templates.zip" target="_blank">Template</a> files and unzip them in your directory.<br>
+<br>
+Please remember to thank Konrad Kiss from BitGap games for his generous offer of releasing this to the community.<br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/640_700x1000.jpg" alt="www.gobbogames.co.za/screenshots/Sahara/640_700x1000"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/95011.jpg" alt="Quinton Delpeche's profile picture">
+			<br>
+			<a rel="Quinton Delpeche" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/95011" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Quinton Delpeche<br>
+	<span class="studio-name">Gobbo Games</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				Gobbo Games is an Independent Games Development company operating 
+from Durban in South Africa. We believe in creating high-quality 
+cost-effective games that remain true to the belief of Independent Game 
+Developers around the world.			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22840">The End of an Era</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22784">Re-Spawn: Oh the Humanity...</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22742">Re-Spawn: Oh Foundation my Foundation</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22738">Social Media or Unsocial Media</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22722">Re-Spawn: Alpha v1.0.0.5 Released</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/22785"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/22772"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/22781#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input name="notify-me" id="notify-me" onchange="GG.blogNotify(22781, 49324);" type="checkbox">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/87641.jpg" class="profilepic">
+			<br>
+			<a rel="Donnie Hutson Jr" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/87641" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Donnie Hutson Jr
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-197989" name="comment-197989">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/11/2014 (12:05 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Heck yes, ive been wanting this, THANK YOU KONRAD. This is great news.....		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/39648.png" class="profilepic">
+			<br>
+			<a rel="Stephen" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/39648" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Stephen<br>
+	<span class="studio-name">GearedMind Studio</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-197992" name="comment-197992">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/11/2014 (2:55 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thank you Konrad and Quinton.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/101755.jpg" class="profilepic">
+			<br>
+			<a rel="Konrad Kiss" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101755" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Konrad Kiss<br>
+	<span class="studio-name">Bitgap Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-197993" name="comment-197993">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/11/2014 (4:36 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			No problem, guys, hope it will be useful.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/244295.jpg" class="profilepic">
+			<br>
+			<a rel="Chris DeBoy" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/244295" onclick="return false;">
+	
+	Chris DeBoy
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-197994" name="comment-197994">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/11/2014 (6:12 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Konrad, thanks for being awesome and open sourcing this awesome piece of code. <br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/xerZLkU.jpg" alt="i.imgur.com/xerZLkU.jpg">		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/200921.jpg" class="profilepic">
+			<br>
+			<a rel="Robert Fritzen" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/200921" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Robert Fritzen<br>
+	<span class="studio-name">Phantom Games Development</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-197995" name="comment-197995">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/11/2014 (6:37 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This is awesome, thanks a bunch for bringing this to the table Konrad!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/95011.jpg" class="profilepic">
+			<br>
+			<a rel="Quinton Delpeche" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/95011" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Quinton Delpeche<br>
+	<span class="studio-name">Gobbo Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-197996" name="comment-197996">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/12/2014 (1:10 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			So here are some test images that I have been working. THis were 
+quickly created in Medusa Pro, placed in the World Editor and then had 
+the accumulation placed on them.<br>
+<br>
+With a little bit of tweaking, you can get some pretty decent results.<br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10552436_839704502707081_1122075565653248079_n.jpg" alt="https://scontent-b-lhr.xx.fbcdn.net/hphotos-xpf1/t1.0-9/p180x540/10552436_839704502707081_1122075565653248079_n.jpg"><br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10457553_839703932707138_8607554855275414926_n.jpg" alt="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/t1.0-9/p180x540/10457553_839703932707138_8607554855275414926_n.jpg"><br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10505457_839704269373771_7478938183475495985_n.jpg" alt="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/p180x540/10505457_839704269373771_7478938183475495985_n.jpg"><br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10552450_839704609373737_2340903009324896983_n.jpg" alt="https://scontent-b-lhr.xx.fbcdn.net/hphotos-xpf1/t1.0-9/p180x540/10552450_839704609373737_2340903009324896983_n.jpg"><br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10487488_839704522707079_6286903342846820958_n.jpg" alt="https://scontent-b-lhr.xx.fbcdn.net/hphotos-xap1/t1.0-9/p180x540/10487488_839704522707079_6286903342846820958_n.jpg"><br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10351020_839703959373802_2324516263230349443_n.jpg" alt="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/t1.0-9/p180x540/10351020_839703959373802_2324516263230349443_n.jpg"><br>
+<br>
+<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10514761_839703969373801_7895205846454408408_n.jpg" alt="https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/p180x540/10514761_839703969373801_7895205846454408408_n.jpg"><br>
+<br>
+This is going to really help with Re-Spawn as I have similar objects 
+being used in maps in different biomes and all I need to do is apply the
+ accumulator. I have set up my objects to use skins, so my materials 
+look something like this.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>singleton&nbsp;Material(&nbsp;MAT_Base_PDiamondPlate&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;mapTo&nbsp;=&nbsp;<span class="string">"Base_PDiamondPlate"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;diffuseMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_D.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;normalMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_N.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;specularMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_S.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;specular[0]&nbsp;=&nbsp;<span class="string">"1&nbsp;1&nbsp;1&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;specularPower[0]&nbsp;=&nbsp;<span class="string">"10"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;translucentBlendOp&nbsp;=&nbsp;<span class="string">"None"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;useAnisotropic[0]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;materialTag0&nbsp;=&nbsp;<span class="string">"Platforms"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">singleton Material( MAT_Base_PDiamondPlate )
+{
+	mapTo = "Base_PDiamondPlate";
+	diffuseMap[0] = "./textures/Base_PDiamondPlate_D.dds";
+	normalMap[0] = "./textures/Base_PDiamondPlate_N.dds";
+	specularMap[0] = "./textures/Base_PDiamondPlate_S.dds";
+	specular[0] = "1 1 1 1";
+	specularPower[0] = "10";
+	translucentBlendOp = "None";
+	useAnisotropic[0] = "1";
+	
+	
+	materialTag0 = "Platforms";
+};</pre><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>singleton&nbsp;Material(&nbsp;MAT_Sand_PDiamondPlate&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;mapTo&nbsp;=&nbsp;<span class="string">"Sand_PDiamondPlate"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;diffuseMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_D.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;normalMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_N.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;specularMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_S.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;specular[0]&nbsp;=&nbsp;<span class="string">"1&nbsp;1&nbsp;1&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;specularPower[0]&nbsp;=&nbsp;<span class="string">"10"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;translucentBlendOp&nbsp;=&nbsp;<span class="string">"None"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;useAnisotropic[0]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;accuMap[0]&nbsp;=&nbsp;<span class="string">"art/terrains/DesertA/sand05.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;accuStrength[0]&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;accuCoverage[0]&nbsp;=&nbsp;<span class="string">"1.8"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;accuSpecular[0]&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;materialTag0&nbsp;=&nbsp;<span class="string">"Platforms"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">singleton Material( MAT_Sand_PDiamondPlate )
+{
+	mapTo = "Sand_PDiamondPlate";
+	diffuseMap[0] = "./textures/Base_PDiamondPlate_D.dds";
+	normalMap[0] = "./textures/Base_PDiamondPlate_N.dds";
+	specularMap[0] = "./textures/Base_PDiamondPlate_S.dds";
+	specular[0] = "1 1 1 1";
+	specularPower[0] = "10";
+	translucentBlendOp = "None";
+	useAnisotropic[0] = "1";
+	
+   accuMap[0] = "art/terrains/DesertA/sand05.dds";
+   accuStrength[0] = "0.5";
+   accuCoverage[0] = "1.8";
+   accuSpecular[0] = "0.5";
+	
+	materialTag0 = "Platforms";
+};</pre><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>singleton&nbsp;Material(&nbsp;MAT_Snow_PDiamondPlate&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;mapTo&nbsp;=&nbsp;<span class="string">"Snow_PDiamondPlate"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;diffuseMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_D.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;normalMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_N.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;specularMap[0]&nbsp;=&nbsp;<span class="string">"./textures/Base_PDiamondPlate_S.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;specular[0]&nbsp;=&nbsp;<span class="string">"1&nbsp;1&nbsp;1&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;specularPower[0]&nbsp;=&nbsp;<span class="string">"10"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;translucentBlendOp&nbsp;=&nbsp;<span class="string">"None"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;useAnisotropic[0]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;accuMap[0]&nbsp;=&nbsp;<span class="string">"art/terrains/ArcticA/snow02.dds"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;accuStrength[0]&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;accuCoverage[0]&nbsp;=&nbsp;<span class="string">"1.8"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;accuSpecular[0]&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;materialTag0&nbsp;=&nbsp;<span class="string">"Platforms"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">singleton Material( MAT_Snow_PDiamondPlate )
+{
+	mapTo = "Snow_PDiamondPlate";
+	diffuseMap[0] = "./textures/Base_PDiamondPlate_D.dds";
+	normalMap[0] = "./textures/Base_PDiamondPlate_N.dds";
+	specularMap[0] = "./textures/Base_PDiamondPlate_S.dds";
+	specular[0] = "1 1 1 1";
+	specularPower[0] = "10";
+	translucentBlendOp = "None";
+	useAnisotropic[0] = "1";
+	
+   accuMap[0] = "art/terrains/ArcticA/snow02.dds";
+   accuStrength[0] = "0.5";
+   accuCoverage[0] = "1.8";
+   accuSpecular[0] = "0.5";
+	
+	materialTag0 = "Platforms";
+};</pre><br>
+So now I just place the objects ... set the skin and I am good to go. 
+The same will apply to the natural objects like rocks and stuff ... I am
+ very happy that I was given the opportunity to share this with 
+everyone.<br>
+<br>
+Kudos to Konrad for letting me. 8-}<br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/83642.jpg" class="profilepic">
+			<br>
+			<a rel="D Fasel" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/83642" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	D Fasel<br>
+	<span class="studio-name">Game 3D</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198000" name="comment-198000">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/12/2014 (5:00 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Awesome! 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/13868.png" class="profilepic">
+			<br>
+			<a rel="Simon Love" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/13868" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Simon Love
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198010" name="comment-198010">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/12/2014 (10:02 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I can't believe that for the past two days, my dreams have been of 
+T3D for no other reason than this Sahara tech. So elegant.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/245174.jpg" class="profilepic">
+			<br>
+			<a rel="Jason Campbell" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/245174" onclick="return false;">
+	
+	Jason Campbell
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198013" name="comment-198013">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/12/2014 (7:28 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thank you Konrad! 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/254695.jpg" class="profilepic">
+			<br>
+			<a rel="matias figueroa" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/254695" onclick="return false;">
+	
+	matias figueroa
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198015" name="comment-198015">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/12/2014 (9:49 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			wow it's amazing!!! thank you Konrad!!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/182019.png" class="profilepic">
+			<br>
+			<a rel="Jeff Yaskus" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/182019" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Jeff Yaskus<br>
+	<span class="studio-name">jy games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198034" name="comment-198034">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/13/2014 (3:34 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thanks Quinton and Konrad!!<br>
+<br>
+This could definitely be added into core T3D, as it has so many possible uses.<br>
+<br>
+My favorite was on snowy missions, it accumulates very well ... on the tops o objects, etc.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/55161.jpg" class="profilepic">
+			<br>
+			<a rel="Nils Eikelenboom" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/55161" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nils Eikelenboom<br>
+	<span class="studio-name">Deadly Matter</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198046" name="comment-198046">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/14/2014 (7:36 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			That's awesome. Thanks Konrad &amp; Quinton!<br>
+<br>
+@Quinton; the dl links to your host don't seem to work :(		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/95011.jpg" class="profilepic">
+			<br>
+			<a rel="Quinton Delpeche" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/95011" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Quinton Delpeche<br>
+	<span class="studio-name">Gobbo Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198047" name="comment-198047">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/14/2014 (7:47 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Nils: Whoops ... thanks, these should be fixed now. Sorry about that. 8-{		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/8816.gif" class="profilepic">
+			<br>
+			<a rel="Gibby" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/8816" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gibby<br>
+	<span class="studio-name">faderboy digital media</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/22781/1#comment-198054" name="comment-198054">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/14/2014 (10:58 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Konrad and Quinton, you are Sainted for doing this...		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="/community/resources/view/22781/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input name="Post Comment" value="Post Comment" type="submit">
+</div>
+<a href="#" onclick="$(this).closest('form').submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input class="relevantProductFilter" value="0" type="checkbox"> All Products<br>
+		<input class="relevantProductFilter" value="other" type="checkbox"> 3rd Party Addons<br>
+		<input class="relevantProductFilter" value="itorque2d" type="checkbox"> iTorque 2D<br>
+		<input class="relevantProductFilter" value="itorque3d" type="checkbox"> iTorque 3D<br>
+		<input class="relevantProductFilter" value="tge" type="checkbox"> TGE<br>
+		<input class="relevantProductFilter" value="tgea" type="checkbox"> TGEA<br>
+		<input class="relevantProductFilter" value="torque-2d" type="checkbox"> Torque 2D<br>
+		<input class="relevantProductFilter" value="torque3dpro" type="checkbox"> Torque 3D Pro<br>
+		<input class="relevantProductFilter" value="torquex" type="checkbox"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2014 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ga.js" type="text/javascript"></script>
+	</div>
+<div id="supersecrethiddendiv"></div>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-78WdNPl8jvIsA"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-78WdNPl8jvIsA.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+<!-- Twitter JS -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"9591b99732","applicationID":"1014775","transactionName":"NlNSNUsCWEUABkdaCg8ZcQJNCllYTgFWVQQUWkROWgxbWxQLWkccTkBZBE4=","queueTime":0,"applicationTime":4626,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-460.min.js"}</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div><script src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/nr-460.js"></script><script src="Sahara%20for%20Torque%203D%20MIT%203.5.1%20_%20Quinton%20Delpeche%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/9591b99732" type="text/javascript"></script></body></html>

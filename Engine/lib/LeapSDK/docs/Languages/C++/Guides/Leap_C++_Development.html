@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9.1: http://docutils.sourceforge.net/" />
+<title>Developing Leap Motion Applications in C++</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7434 2012-05-11 21:06:27Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { /* line numbers */
+  color: grey;
+}
+
+.code {
+  background-color: #eeeeee
+}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="developing-leap-motion-applications-in-c">
+<h1 class="title">Developing Leap Motion Applications in C++</h1>
+
+<p>This article discusses how to set up and compile C++ projects from the command line and popular IDEs.</p>
+<div class="contents topic" id="topics">
+<p class="topic-title first">Topics:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#compilers-and-libraries" id="id1">Compilers and libraries</a></li>
+<li><a class="reference internal" href="#compiling-and-linking-from-the-command-line" id="id2">Compiling and linking from the command line</a><ul>
+<li><a class="reference internal" href="#on-windows" id="id3">On Windows</a></li>
+<li><a class="reference internal" href="#on-mac-os-x" id="id4">On Mac OS X</a></li>
+<li><a class="reference internal" href="#on-linux" id="id5">On Linux</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mac-os-x-setting-up-a-c-project-in-xcode" id="id6">Mac OS X: Setting up a C++ project in Xcode</a><ul>
+<li><a class="reference internal" href="#mac-os-x-loading-the-libleap-dynamic-library-from-a-different-location" id="id7">Mac OS X: Loading the libLeap dynamic library from a different location</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#windows-setting-up-a-c-project-in-visual-studio" id="id8">Windows: Setting up a C++ project in Visual Studio</a></li>
+</ul>
+</div>
+<div class="section" id="compilers-and-libraries">
+<h1><a class="toc-backref" href="#id1">Compilers and libraries</a></h1>
+<p>On Windows, you can use the Visual C++ compiler included with Visual Studio 2008, 2010, or 2012. On OS X and Linux, you can use the gcc or clang compiler.</p>
+<p>On Windows, the Leap Motion C++ API is provided in the dynamically linked library, <tt class="docutils literal">Leap.dll</tt> (release) or <tt class="docutils literal">Leapd.dll</tt> (debug). Separate libraries are provided for 32-bit, x86 architectures and 64-bit, x64 architectures.</p>
+<p>On Mac OS X, the Leap Motion C++ API is provided in the dynamic library, <tt class="docutils literal">libLeap.dylib</tt>. The SDK contains two versions, one linked with <tt class="docutils literal">libstdc++</tt> and the other with <tt class="docutils literal">libc++</tt>. Both versions are functionally equivalent; choose the one that suits your desired compiler settings. The OS X libraries support both 32-bit and 64-bit architectures.</p>
+<p>On Linux, the Leap Motion C++ API is provided in the shared library, <tt class="docutils literal">libLeap.so</tt>. Separate libraries are provided for 32-bit, x86 architectures and 64bit, x64 architectures. The libraries use the <tt class="docutils literal">libstdc++</tt> standard library.</p>
+<p>The Leap Motion dynamic libraries are designed to be loaded from the same directory as your application executable. You are expected to distribute the appropriate Leap Motion library with your application. The Leap Motion libraries are located in the <tt class="docutils literal">lib</tt> folder of the Leap SDK package.</p>
+</div>
+<div class="section" id="compiling-and-linking-from-the-command-line">
+<h1><a class="toc-backref" href="#id2">Compiling and linking from the command line</a></h1>
+<p>The following examples illustrate how to compile and run Leap-enabled C++ applications from a terminal window or command line. The examples compile and run the Sample.cpp program included in the SDK. The current, working directory must be the SDK Samples folder for the commands to work as written.</p>
+<div class="section" id="on-windows">
+<h2><a class="toc-backref" href="#id3">On Windows</a></h2>
+<p>It is simplest to run the Visual C++ compiler from the Visual Studio command prompt. The Visual Studio command prompt automatically sets up the environment variables to make it easy to run the compiler and linker. The Leap Motion SDK provides different libraries for 32-bit and 64-bit architectures as well as separate libraries for release versus debug configurations (for a total of four combinations). The 32-bit libraries are in the SDK <tt class="docutils literal">lib\x86 folder</tt>; the 64-bit libraries are in <tt class="docutils literal">lib\x64</tt>. The debug versions of the libraries are designated by the letter &quot;d&quot; at the end of the library name: i.e. <tt class="docutils literal">Leapd.dll</tt> instead of <tt class="docutils literal">Leap.dll</tt>.</p>
+<p>Using debug versions also requires that <tt class="docutils literal">msvcp100d.dll</tt> and <tt class="docutils literal">msvcr100d.dll</tt> from the Microsoft Visual C++ Runtime Redistributable package are accessible. These libraries are included with the Leap Motion SDK in case you do not already have them installed. The release version of these libraries are installed along with the Leap Motion software so you do not need to include them with the release version of your application when distributing it to end-users.</p>
+<p>Debug 32-bit:</p>
+<pre class="literal-block">
+mkdir Debug
+cl /EHsc /Zi /I ..\include Sample.cpp /link ..\lib\x86\Leap.lib /OUT:Debug\Sample.exe /DEBUG
+xcopy ..\lib\x86\Leapd.dll Debug
+xcopy ..\lib\x86\msvcp100d.dll Debug
+xcopy ..\lib\x86\msvcr100d.dll Debug
+Debug\Sample
+</pre>
+<p>Debug 64-bit:</p>
+<pre class="literal-block">
+mkdir Debug
+cl /EHsc /Zi /I ..\include Sample.cpp /link ..\lib\x64\Leapd.lib /OUT:Debug\Sample.exe /DEBUG
+xcopy ..\lib\x64\Leapd.dll Debug
+xcopy ..\lib\x64\msvcp100d.dll Debug
+xcopy ..\lib\x64\msvcr100d.dll Debug
+Debug\Sample
+</pre>
+<p>Release 32-bit:</p>
+<pre class="literal-block">
+mkdir Release
+cl /EHsc /I ..\include Sample.cpp /link ..\lib\x86\Leap.lib /OUT:Release\Sample.exe
+xcopy ..\lib\x86\Leap.dll Release
+Release\Sample
+</pre>
+<p>Release 64-bit:</p>
+<pre class="literal-block">
+mkdir Release
+cl /EHsc /I ..\include Sample.cpp /link ..\lib\x64\Leap.lib /OUT:Release\Sample.exe
+xcopy ..\lib\x64\Leap.dll Release
+Release\Sample
+</pre>
+</div>
+<div class="section" id="on-mac-os-x">
+<h2><a class="toc-backref" href="#id4">On Mac OS X</a></h2>
+<p>With gcc:</p>
+<pre class="literal-block">
+mkdir ../build
+g++ -std=c++98 Sample.cpp -I ../include -o ../build/Sample ../lib/libLeap.dylib
+cp ../lib/libLeap.dylib ../build
+../build/Sample
+</pre>
+<p>With clang:</p>
+<pre class="literal-block">
+mkdir ../build
+clang++ -std=c++11 -stdlib=libc++ Sample.cpp -I ../include -o ../build/Sample ../lib/libc++/libLeap.dylib
+cp ../lib/libc++/libLeap.dylib ../build
+../build/Sample
+</pre>
+</div>
+<div class="section" id="on-linux">
+<h2><a class="toc-backref" href="#id5">On Linux</a></h2>
+<p>With gcc 32-bit:</p>
+<pre class="literal-block">
+mkdir ../build
+g++ -std=c++98 Sample.cpp -I ../include -o ../build/Sample ../lib/x86/libLeap.so
+cp ../lib/x86/libLeap.so ../build
+../build/Sample
+</pre>
+<p>With clang 64-bit:</p>
+<pre class="literal-block">
+mkdir ../build
+clang++ -std=c++11 -stdlib=libstdc++ Sample.cpp -I ../include -o ../build/Sample ../lib/x64/libLeap.so
+cp ../lib/x64/libLeap.so ../build
+../build/Sample
+</pre>
+</div>
+</div>
+<div class="section" id="mac-os-x-setting-up-a-c-project-in-xcode">
+<h1><a class="toc-backref" href="#id6">Mac OS X: Setting up a C++ project in Xcode</a></h1>
+<p>To set up a Leap Motion C++ project in Xcode:</p>
+<ol class="arabic">
+<li><p class="first">Open or create an Xcode project.</p>
+<p>Note that by default, Xcode sets new projects to use c++11, the <tt class="docutils literal">libc++</tt> standard library, and the Clang flavor of the LLVM compiler. You must use the version of the <tt class="docutils literal">libLeap.dylib</tt> compiled with <tt class="docutils literal">libc++</tt> when using these defaults.</p>
+</li>
+<li><p class="first">Add the Leap Motion SDK include files and API library:</p>
+<ol class="loweralpha">
+<li><p class="first">Drag <tt class="docutils literal">Leap.h</tt> and <tt class="docutils literal">LeapMath.h</tt> into the project from the SDK <tt class="docutils literal">include</tt> folder.</p>
+</li>
+<li><p class="first">Drag <tt class="docutils literal">libLeap.dylib</tt> into the project from the SDK <tt class="docutils literal">lib/libc++</tt> folder. (Make sure to add it to the appropriate project targets.)</p>
+<p>Note: When you drag the library into the Xcode project, Xcode adds the parent folder to the library search path. However, it does not remove the folder from the search path if you later remove the library. If you replace the <tt class="docutils literal">libstdc++</tt> version of libLeap.dylib with the <tt class="docutils literal">libc++</tt> version, be sure to ammend your library paths under <em>Build Settings</em>, if necessary.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Configure the project to bundle <tt class="docutils literal">libLeap.dylib</tt> with the application:</p>
+</li>
+</ol>
+<blockquote>
+<ol class="loweralpha simple">
+<li>Go to the target <em>Build Phases</em> page.</li>
+<li>Add a build phase:<ol class="lowerroman">
+<li>Click <em>Add Build Phase</em>.</li>
+<li>Select <em>Add Copy Files</em>.</li>
+</ol>
+</li>
+<li>Open the new phase.<ol class="lowerroman">
+<li>Set destination to <em>Executables</em>.</li>
+<li>Add <tt class="docutils literal">libLeap.dylib</tt> to the list of files.</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<ol class="arabic simple" start="4">
+<li>Add your source code...</li>
+</ol>
+<div class="section" id="mac-os-x-loading-the-libleap-dynamic-library-from-a-different-location">
+<h2><a class="toc-backref" href="#id7">Mac OS X: Loading the libLeap dynamic library from a different location</a></h2>
+<p>If you wish to load the libLeap dynamic library from a different location than your application executable, you can use the OS X <tt class="docutils literal">install_name_tool</tt> to change the loader path. For example, to load the library from the Resources folder of a standard Mac application package instead of the MacOS folder, you could run the following command:</p>
+<p>On Mac OS X:</p>
+<pre class="literal-block">
+install_name_tool -change &#64;loader_path/libLeap.dylib  &#64;executable_path/../Resources/libLeap.dylib Sample
+</pre>
+<p>(where <em>Sample</em> is your application binary).</p>
+</div>
+</div>
+<div class="section" id="windows-setting-up-a-c-project-in-visual-studio">
+<h1><a class="toc-backref" href="#id8">Windows: Setting up a C++ project in Visual Studio</a></h1>
+<p>The Leap Motion SDK package includes sample projects for Visual Studio 2008, 20010, and 2012. You can use these projects as a starting point for your Leap Motion projects. This section illustrates how to create a project from scratch. Most of the steps also apply to adding Leap Motion support to an existing project. The example uses Visual Studio 2012.</p>
+<p>To add Leap Motion support to a new or existing project:</p>
+<p><strong>Important</strong>: If you are creating a 64-bit application, use the libraries in the <tt class="docutils literal">lib\x64</tt> directory of the SDK, not the 32-bit libraries in the <tt class="docutils literal">lib\x86</tt> directory.</p>
+<ol class="arabic simple">
+<li>Open or create a new project of the desired type.</li>
+<li>Make a LEAP_SDK system environment variable to point to your Leap Motion SDK folder. This step is optional, but does simplify creating references to the SDK files in your projects. (As a reminder, you can create and change system environment variables from the Windows System Properties dialog.)</li>
+<li>Open the Project Property Pages using the Project &gt; Properties menu command.</li>
+<li>Set up a Debug configuration:</li>
+</ol>
+<blockquote>
+<ol class="loweralpha simple">
+<li>Choose the Debug configuration.</li>
+<li>Add the SDK include directory to your project:</li>
+</ol>
+<blockquote>
+<ol class="lowerroman">
+<li><p class="first">Under Configuration Properties, select C/C++ &gt; General.</p>
+</li>
+<li><p class="first">In the properties pane, add the SDK include directory to the <em>Additional Include Directories</em> field by adding:</p>
+<pre class="literal-block">
+$(LEAP_SDK)\include
+</pre>
+</li>
+</ol>
+<blockquote>
+(where <tt class="docutils literal">LEAP_SDK</tt> is the name of the environment variable you created earlier. You can substitute the appropriate file path if you do not want to use an environment variable.)</blockquote>
+</blockquote>
+<ol class="loweralpha simple" start="3">
+<li>Add references to the Leap Motion libraries:</li>
+</ol>
+<blockquote>
+<ol class="lowerroman">
+<li><p class="first">Under Configuration Properties, select Linker &gt; General.</p>
+</li>
+<li><p class="first">In the properties pane, add the SDK <tt class="docutils literal">lib\x86</tt> directory (or <tt class="docutils literal">lib\x64</tt> for 64-bit configurations) to the <em>Additional Library Directories</em> field by adding:</p>
+<pre class="literal-block">
+$(LEAP_SDK)\lib\x86
+</pre>
+</li>
+<li><p class="first">Select Linker &gt; Input</p>
+</li>
+<li><p class="first">Add <tt class="docutils literal">Leapd.lib</tt> to the <em>Additional Dependencies</em> field.</p>
+</li>
+</ol>
+</blockquote>
+<ol class="loweralpha simple" start="4">
+<li>Add a <em>Post-Build Event</em> to copy the Leap Motion libraries to the project's target executable directory.</li>
+</ol>
+<blockquote>
+<ol class="lowerroman">
+<li><p class="first">Under Configuration Properties, select Build Events &gt; Post-Build Event.</p>
+</li>
+<li><p class="first">Edit the <em>Command Line</em> field to copy the libraries, adding:</p>
+<pre class="literal-block">
+xcopy $(LEAP_SDK)\lib\x86\Leapd.dll &quot;$(TargetDir)&quot;
+xcopy $(LEAP_SDK)\lib\x86\msvcp100d.dll &quot;$(TargetDir)&quot;
+xcopy $(LEAP_SDK)\lib\x86\msvcr100d.dll &quot;$(TargetDir)&quot;
+</pre>
+<p>The <tt class="docutils literal">msvcp100d.dll</tt> and <tt class="docutils literal">msvcr100d.dll</tt> libraries are only needed for debugging configurations. For release configurations, copy only <tt class="docutils literal">Leap.dll</tt>.</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<ol class="arabic simple" start="5">
+<li>Set up a Release configuration:</li>
+</ol>
+<blockquote>
+<ol class="loweralpha simple">
+<li>Choose the Release configuration.</li>
+<li>Add the SDK include directory as shown above.</li>
+<li>Add references to the Leap Motion libraries as shown above, except using <tt class="docutils literal">Leap.lib</tt> (not <tt class="docutils literal">Leapd.lib</tt>).</li>
+<li>Add a <em>Post-Build Event</em> to copy <tt class="docutils literal">Leap.dll</tt> to the target executable directory.</li>
+</ol>
+</blockquote>
+<ol class="arabic simple" start="6">
+<li>Add your source code...</li>
+</ol>
+</div>
+</div>
+</body>
+</html>

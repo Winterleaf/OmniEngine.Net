@@ -1,0 +1,67 @@
+Leap.ScreenList
+===============
+
+.. currentmodule:: Leap
+
+.. class:: ScreenList
+
+  The ScreenList class represents a list of Screen objects.
+
+  The list always contains at least one entry representing the default
+  screen. If the user has not registered the location of this default
+  screen, then the coordinates, directions, and other values reported by
+  the functions in its Screen object will not be accurate. Other monitor
+  screens only appear in the list if their positions have been registered
+  using the Leap Motion Screen Locator.
+ 
+  Get a ScreenList object from :attr:`Controller.located_screens`.
+  
+  .. versionadded:: 
+
+  .. classmethod:: ScreenList()
+
+    Constructs an empty list.
+    
+    .. versionadded:: 
+
+  .. attribute:: len -> int
+
+    The number of items in this list.
+
+    .. versionadded:: 
+
+  .. attribute:: is_empty -> bool
+
+    Reports whether the list is empty.
+
+    .. versionadded:: 
+    
+  .. method::  getitem(object, index) -> Leap.Device
+
+    Access a list member by its position in the list.
+
+    .. versionadded:: 
+
+  .. method:: append(other)
+  
+    Appends the members of the specifed ScreenList to this ScreenList.
+
+    **Arguments**
+     
+    ``other`` (:class:`Leap.ScreenList`) -- A ScreenList object containing Screen objects
+      to append to the end of this ScreenList.
+    
+    .. versionadded:: 
+
+  .. method:: next() -> Leap.Screen
+  
+    Provides the next item in the list.
+    
+    .. versionadded:: 
+    
+
+  .. method:: closest_screen(position) -> Leap.Screen
+  
+  .. method:: closest_screen_hit(position, direction) -> Leap.Screen
+  
+  .. method:: closest_screen_hit(pointable) -> Leap.Screen

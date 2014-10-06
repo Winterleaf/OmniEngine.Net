@@ -1,0 +1,148 @@
+Leap.Listener
+=============
+
+.. currentmodule:: Leap
+
+.. class:: Listener
+
+  The Listener class defines a set of callback functions that you can
+  override in a subclass to respond to events dispatched by the :class:`Controller` object.
+ 
+  To handle Leap Motion events, create an instance of a Listener subclass and assign
+  it to the Controller instance. The Controller calls the relevant Listener
+  callback function when an event occurs, passing in a reference to itself.
+  You do not have to implement callbacks for events you do not want to handle.
+ 
+  The Controller object calls these Listener functions from a thread created
+  by the Leap Motion library, not the thread used to create or set the Listener instance.
+ 
+  .. versionadded:: 1.0
+
+  .. container:: constructors
+
+	  .. classmethod:: Listener()
+
+	    Constructs a Listener object.
+  
+	    .. versionadded:: 1.0
+ 
+
+  .. container:: methods
+  
+    .. py:method:: on_init(controller)
+
+      Called once, when this Listener object is newly added to a Controller.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onInit.txt
+ 
+      **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+ 
+
+    .. py:method:: on_connect(controller)
+
+      Called when the Controller object connects to the Leap Motion software and hardware,
+      or when this Listener object is added to a Controller that is already connected.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onConnect.txt
+ 
+      **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+ 
+    .. py:method:: on_disconnect(controller)
+
+      Called when the Controller object disconnects from the Leap Motion software.
+      The controller can disconnect when the Leap Motion device is unplugged, the
+      user shuts the Leap Motion software down, or the Leap Motion software encounters an
+      unrecoverable error.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onDisconnect.txt
+ 
+      Note: When you launch a Leap-enabled application in a debugger, the
+      Leap Motion library does not disconnect from the application. This is to allow
+      you to step through code without losing the connection because of time outs.
+ 
+      **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+
+
+    .. py:method:: on_exit(controller)
+
+      Called when this Listener object is removed from the Controller
+      or the Controller instance is destroyed.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onExit.txt
+ 
+        **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+ 
+
+    .. py:method:: on_frame(controller)
+
+      Called when a new frame of hand and finger tracking data is available.
+      Access the new frame data using the :func:`Controller.frame()` function.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onFrame.txt
+ 
+      Note, the Controller skips any pending on_frame events while your
+      on_frame handler executes. If your implementation takes too long to return,
+      one or more frames can be skipped. The Controller still inserts the skipped
+      frames into the frame history. You can access recent frames by setting
+      the history parameter when calling the :func:`Controller.frame()` function.
+      You can determine if any pending on_frame events were skipped by comparing
+      the ID of the most recent frame with the ID of the last received frame.
+ 
+      **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+ 
+
+    .. py:method:: on_focus_gained(controller)
+
+      Called when this application becomes the foreground application.
+ 
+      Only the foreground application receives tracking data from the Leap
+      Motion Controller. This function is only called when the controller
+      object is in a connected state.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onFocusGained.txt
+ 
+      **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+ 
+
+    .. py:method:: on_focus_lost(controller)
+
+      Called when this application loses the foreground focus.
+ 
+      Only the foreground application receives tracking data from the Leap
+      Motion Controller. This function is only called when the controller
+      object is in a connected state.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Listener_onFocusLost.txt
+ 
+      **Arguments:**  
+
+      ``controller`` (:class:`Leap.Controller`) -- The Controller object invoking this callback function.
+
+      .. versionadded:: 1.0
+ 
+
+

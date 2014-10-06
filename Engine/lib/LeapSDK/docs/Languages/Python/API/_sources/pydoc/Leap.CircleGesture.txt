@@ -1,0 +1,125 @@
+Leap.CircleGesture
+==================
+
+.. currentmodule:: Leap
+
+.. class:: CircleGesture
+
+  Extends :class:`Leap.Gesture`.
+
+  The CircleGesture classes represents a circular finger movement.
+
+  A circle movement is recognized when the tip of a finger draws a circle
+  within the Leap Motion Controller field of view.
+
+  .. image:: ../../../images/Leap_Gesture_Circle.png
+
+  Important: To use circle gestures in your application, you must enable
+  recognition of the circle gesture. You can enable recognition with:
+
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_Circle_Enable.txt
+
+  Circle gestures are continuous. The CircleGesture objects for the gesture have
+  three possible states:
+
+  * STATE_START -- The circle gesture has just started. The movement has
+    progressed far enough for the recognizer to classify it as a circle.
+  * STATE_UPDATE -- The circle gesture is continuing.
+  * STATE_STOP -- The circle gesture is finished.
+
+  You can set the minimum radius and minimum arc length required for a movement
+  to be recognized as a circle using the config attribute of a connected
+  Controller object. Use the following keys to configure circle recognition:
+
+  ======================== ========== ============= ========
+  Key string               Value type Default value Units
+  ======================== ========== ============= ========
+  Gesture.Circle.MinRadius float      5.0            mm
+  Gesture.Circle.MinArc    float      1.5 * p        radians
+  ======================== ========== ============= ========
+
+  The following example demonstrates how to set the circle configuration
+  parameters:
+
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_Circle_Params.txt
+
+  .. versionadded::  1.0
+
+
+  .. container:: constructors
+  
+    .. classmethod:: CircleGesture([gesture])
+
+      Constructs a CircleGesture object from an instance of the Gesture class.
+ 
+      **Arguments**
+    
+      ``gesture`` (:class:`Leap.Gesture`) -- The Gesture instance to specialize. This Gesture instance must
+       be a CircleGesture object. If no argument is supplied, an invalid CircleGesture object is created.
+    
+      .. versionadded::  1.0
+ 
+
+  .. container:: attributes
+  
+    .. attribute:: center -> Leap.Vector
+
+      The center point of the circle within the Leap Motion frame of reference.
+ 
+      .. versionadded::  1.0
+ 
+
+    .. attribute:: normal -> Leap.Vector
+
+      The normal vector for the circle being traced.
+ 
+      If you draw the circle clockwise, the normal vector points in the same
+      general direction as the pointable object drawing the circle. If you draw
+      the circle counterclockwise, the normal points back toward the
+      pointable. If the angle between the normal and the pointable object
+      drawing the circle is less than 90 degrees, then the circle is clockwise.
+ 
+      .. literalinclude:: ../../../codeexamples/includes/python/Gesture_Circle_Direction.txt
+ 
+      .. versionadded::  1.0
+ 
+
+    .. attribute:: progress -> float
+
+      The number of times the finger tip has traversed the circle.
+ 
+      Progress is reported as a positive number of the number. For example,
+      a progress value of .5 indicates that the finger has gone halfway
+      around, while a value of 3 indicates that the finger has gone around
+      the the circle three times.
+ 
+      Progress starts where the circle gesture began. Since the circle
+      must be partially formed before the Leap Motion software can recognize it, progress
+      will be greater than zero when a circle gesture first appears in the
+      frame.
+ 
+      .. versionadded::  1.0
+ 
+
+    .. attribute:: radius -> float
+    
+      The radius of the circle.
+ 
+      .. versionadded::  1.0
+ 
+
+    .. attribute:: pointable -> Leap.Pointable
+
+      The finger performing the circle gesture.
+ 
+      .. versionadded::  1.0
+ 
+  .. container:: data
+  
+   .. data:: class_type -> int
+
+     The circle gesture type designator: :data:`Gesture.TYPE_CIRCLE`
+
+     .. versionadded::  1.0
+
+ 

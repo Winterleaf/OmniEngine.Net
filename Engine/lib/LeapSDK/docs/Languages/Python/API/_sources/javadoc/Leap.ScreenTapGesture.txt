@@ -1,0 +1,99 @@
+Leap.ScreenTapGesture
+=====================
+
+.. currentmodule:: Leap
+
+.. class:: ScreenTapGesture
+
+  Extends :class:`Leap.Gesture`.
+
+  A screen tap gesture is recognized when the tip of a finger pokes forward
+  and then springs back to approximately the original postion, as if
+  tapping a vertical screen. The tapping finger must pause briefly before beginning the tap.
+  
+  .. image:: ../../../images/Leap_Gesture_Tap2.png
+  
+  **Important:** To use screen tap gestures in your application, you must enable
+  recognition of the screen tap gesture. You can enable recognition with:
+  
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_ScreenTap_Enable.txt
+  
+  ScreenTap gestures are discrete. The ScreenTapGesture object representing a tap always
+  has the state, STATE_STOP. Only one ScreenTapGesture object is created for each
+  screen tap gesture recognized.
+  
+  You can set the minimum finger movement and velocity required for a movement
+  to be recognized as a screen tap as well as adjust the detection window for
+  evaluating the movement using the config attribute of a connected
+  Controller object. Use the following keys to configure screen tap recognition:
+ 
+  ====================================  ========== ============= =======
+  Key string                            Value type Default value Units
+  ====================================  ========== ============= =======
+  Gesture.ScreenTap.MinForwardVelocity  float      50            mm/s
+  Gesture.ScreenTap.HistorySeconds      float      0.1           s
+  Gesture.ScreenTap.MinDistance         float      5.0           mm
+  ====================================  ========== ============= =======
+ 
+  The following example demonstrates how to set the key tap configuration
+  parameters:
+ 
+  .. literalinclude:: ../../../codeexamples/includes/python/Gesture_ScreenTap_Params.txt
+  
+  .. versionadded:: 1.0
+
+  .. container:: constructors
+  
+    .. classmethod:: ScreenTapGesture([gesture])
+
+      Constructs a ScreenTapGesture object from an instance of the Gesture class.
+ 
+      **Arguments**
+    
+      ``gesture`` (:class:`Leap.Gesture`) -- The Gesture instance to specialize. This Gesture instance must
+      be a ScreenTapGesture object. If no argument is supplied, an invalid ScreenTapGesture object is created.
+    
+      .. versionadded::  1.0
+
+
+  .. container:: attributes
+  
+    .. attribute:: position -> Leap.Vector
+  
+      The position where the screen tap is registered.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: direction -> Leap.Vector
+  
+      The direction of finger tip motion. If the finger is stationary, at the time
+      this gesture object is recorded, then the direction will be a zero vector.
+   
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: progress -> float
+  
+      The progess value is always 1.0 for a screen tap gesture.
+
+      .. versionadded:: 1.0
+   
+
+    .. attribute:: pointable -> Leap.Pointable
+  
+      The finger performing the screen tap gesture.
+   
+      .. versionadded:: 1.0
+   
+   
+   .. container:: data
+   
+     .. classmethod:: class_type -> int
+
+       The screen tap gesture type designator: :data:`Gesture.TYPE_SCREEN_TAP`
+ 
+       .. versionadded::  1.0
+ 
+
+   

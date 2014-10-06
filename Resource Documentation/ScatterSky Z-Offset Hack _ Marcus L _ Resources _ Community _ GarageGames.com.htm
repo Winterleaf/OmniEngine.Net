@@ -1,0 +1,887 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/widgets.js" id="twitter-wjs"></script><script type="text/javascript" async="" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/quant.js"></script><script src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o?o:n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({QJf3ax:[function(t,n){function e(t){function n(n,e,o){t&&t(n,e,o),o||(o={});for(var a=i(n),u=a.length,c=o[r]||(o[r]={}),f=0;u>f;f++)a[f].apply(c,e);return c}function o(t,n){u[t]=i(t).concat(n)}function i(t){return u[t]||[]}function a(){return e(n)}var u={};return{on:o,emit:n,create:a,listeners:i,_events:u}}var r="nr@context";n.exports=e()},{}],ee:[function(t,n){n.exports=t("QJf3ax")},{}],D5DuLP:[function(t,n){function e(t,n,e){return r.listeners(t).length?r.emit(t,n,e):(o[t]||(o[t]=[]),void o[t].push(n))}var r=t("ee").create(),o={};n.exports=e,e.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,n){n.exports=t("D5DuLP")},{}],loader:[function(t,n){n.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,n){function e(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var n=c.createElement("script");n.src=l.proto+t.agent,c.body.appendChild(n)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=n.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",e,!1)):(c[s]("onreadystatechange",r),u[s]("onload",e)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="A simple hack to avoid canvas rendering from the ScatterSky. This will add a new field to the ScatterSky that gives you control of the z-offset of the ScatterSky.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>ScatterSky Z-Offset Hack | Marcus L | Resources | Community | GarageGames.com</title>		<link href="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ui.css" media="screen" rel="stylesheet" type="text/css">
+<link href="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ui_002.css" media="screen" rel="stylesheet" type="text/css">
+<link href="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shCore.js"></script>
+		<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shBrushCpp.js"></script>
+		<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shBrushPhp.js"></script>
+		<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	timeoutID = 0;
+	
+	function filterProducts()
+	{
+		var filterArray = [];
+		
+		$('.qtip-content input.relevantProductFilter:checked').each(function(){
+			if(($(this).val() != 0))
+			{
+			    jQuery.merge(filterArray, [$(this).val()]);
+			}
+		});
+		
+		if(filterArray.length > 0)
+		{
+			window.location = "/community/resources/all/"+filterArray.join(',') + ',';
+		}
+		else
+		{
+			window.location = "/community/resources/";
+		}
+	}
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			clearTimeout(timeoutID);
+			timeoutID = setTimeout('filterProducts()',2000);
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-6057184-2']);
+		  _gaq.push(['_setDomainName', 'garagegames.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+    
+<body data-twttr-rendered="true">
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Products</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products">Store</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products">Home</a></li><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="stub" id="main-nav-services"><a href="http://services.garagegames.com/">Services</a></li><li class="stub" id="main-nav-education"><a href="http://www.garagegames.com/education">Education</a></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About GarageGames</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Vince Gee</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/49324">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input name="q" id="top-keywords" class="formTip" value="Search site" title="Search site" maxlength="255" onfocus="if ( this.value=='Search site' ) { this.value = ''; }" onblur="if ( this.value=='' ) { this.value = 'Search site'; }" type="text">
+                        <input id="top-submit" onclick="searchSubmit(); return false;" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/search-bar-main-btn.png" alt="Search" type="image">
+                </form>
+                
+                <script type="text/javascript">
+				
+                function searchSubmit() {
+					var search = $('#top-keywords').val();
+					if(document.location.href.indexOf("forum")!= -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=forums&gsc.tab=0';
+					} else if(document.location.href.indexOf("blog") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=blogs&gsc.tab=0';
+					} else if(document.location.href.indexOf("resource") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=resources&gsc.tab=0';
+					} else {
+						window.location = '/community/search#gsc.q='+search;
+					}
+                	
+                }
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+			
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div style="margin: -20px -13px 10px;"><a href="http://www.gginteractive.com/" alt="Learn more about The Game Development Curriculum by GGInteractive"><img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/devpro_ad_banner_938x62.png" alt="dev|Pro Game Development Curriculum" title="dev|Pro Game Development Curriculum"></a></div>
+	<div id="blog-content">
+						<h1>ScatterSky Z-Offset Hack</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/117422">Marcus L</a>
+			<strong>·</strong>
+			01/25/2011 (3:07 pm)			<strong>·</strong>
+			22 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><b>Tested on: 1.1b3</b><br>
+<br>
+This resource will give you a new field in the ScatterSky object, which 
+will give you the ability to adjust the ScatterSky's z-offset. The 
+purpose of this resource is to hide the empty canvas that might be 
+rendered in your levels <small>scroll down for before and after pix</small>. Time of Day users will probably want to add this as the canvas doesn't change color during day shift =P.<br>
+<br>
+<h1>Installation:</h1><br>
+As always, this is how to install the rest of this resource:<br>
+Where it says // Added, it means that the line is added.<br>
+Where it says // Removed, it means that the line is removed.<br>
+Where it says // Changed, it means that the line is changed.<br>
+Where it says ..., it means that there is code between what ever that was last written.<br>
+Whenever it says ..., there will be an comment below describing what function it is.<br>
+<br>
+I recommend you using CTRL + F to find where to put the code blocks. Remember to backup before installing.<br>
+<br>
+Let's start with editing <i>environment/scatterSky.cpp</i><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>...&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//In&nbsp;ScatterSky::ScatterSky()</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mExposure&nbsp;=&nbsp;1.0f;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;mNightInterpolant&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mZOffset&nbsp;=&nbsp;0.0f;&nbsp;<span class="comment">//&nbsp;Added</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>...&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//In&nbsp;ScatterSky::initPersistFields()</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"exposure"</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeF32,&nbsp;&nbsp;&nbsp;&nbsp;Offset(&nbsp;mExposure,&nbsp;ScatterSky&nbsp;),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Controls&nbsp;the&nbsp;contrast&nbsp;of&nbsp;the&nbsp;sky&nbsp;and&nbsp;sun&nbsp;during&nbsp;daytime."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Added&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"zoffset"</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeF32,&nbsp;&nbsp;&nbsp;&nbsp;Offset(&nbsp;mZOffset,&nbsp;ScatterSky&nbsp;),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Offsets&nbsp;the&nbsp;scatterSky&nbsp;to&nbsp;avoid&nbsp;canvas&nbsp;rendering."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Added&nbsp;&lt;-</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>...&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//In&nbsp;ScatterSky::packUpdate(NetConnection&nbsp;*con,&nbsp;U32&nbsp;mask,&nbsp;BitStream&nbsp;*stream)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream-&gt;write(&nbsp;mExposure&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream-&gt;write(&nbsp;mZOffset&nbsp;);&nbsp;<span class="comment">//&nbsp;Added</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>...&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//In&nbsp;ScatterSky::unpackUpdate(NetConnection&nbsp;*con,&nbsp;BitStream&nbsp;*stream)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream-&gt;read(&nbsp;&amp;mExposure&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream-&gt;read(&nbsp;&amp;mZOffset&nbsp;);&nbsp;<span class="comment">//&nbsp;Added</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>...&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//In&nbsp;ScatterSky::_render(&nbsp;ObjectRenderInst&nbsp;*ri,&nbsp;SceneState&nbsp;*state,&nbsp;BaseMatInstance&nbsp;*overrideMat&nbsp;)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;Point3F&nbsp;camPos2&nbsp;=&nbsp;state-&gt;getCameraPosition();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;MatrixF&nbsp;xfm(<span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;xfm.setPosition(camPos2&nbsp;-&nbsp;Point3F(&nbsp;0,&nbsp;0,&nbsp;mZOffset));&nbsp;<span class="comment">//&nbsp;Added</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">...
+//In ScatterSky::ScatterSky()
+   mExposure = 1.0f;
+   mNightInterpolant = 0;
+   mZOffset = 0.0f; // Added
+...
+//In ScatterSky::initPersistFields()
+      addField( "exposure",            TypeF32,    Offset( mExposure, ScatterSky ),
+         "Controls the contrast of the sky and sun during daytime." );
+
+	  // Added -&gt;
+	  addField( "zoffset",            TypeF32,    Offset( mZOffset, ScatterSky ),
+         "Offsets the scatterSky to avoid canvas rendering." );
+	  // Added &lt;-
+...
+//In ScatterSky::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
+      stream-&gt;write( mExposure );
+
+	  stream-&gt;write( mZOffset ); // Added
+...
+//In ScatterSky::unpackUpdate(NetConnection *con, BitStream *stream)
+      stream-&gt;read( &amp;mExposure );
+
+	  stream-&gt;read( &amp;mZOffset ); // Added
+...
+//In ScatterSky::_render( ObjectRenderInst *ri, SceneState *state, BaseMatInstance *overrideMat )
+   Point3F camPos2 = state-&gt;getCameraPosition();
+   MatrixF xfm(true);
+   xfm.setPosition(camPos2 - Point3F( 0, 0, mZOffset)); // Added</pre><br>
+Last, <i>environment/scatterSky.h</i>:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">//In&nbsp;protected&nbsp;of&nbsp;ScatterSky</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;F32&nbsp;mExposure;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;F32&nbsp;mNightInterpolant;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;F32&nbsp;mZOffset;&nbsp;<span class="comment">//&nbsp;Added</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">//In protected of ScatterSky
+   F32 mExposure;
+   F32 mNightInterpolant;
+   F32 mZOffset; // Added</pre><br>
+Yeah, that was all.<br>
+<br>
+Now all you need to do is to go in-game,<br>
+Find your strangely looking ScatterSky,<br>
+Go to its properties in the world editor,<br>
+Look for <i>zoffset</i>,<br>
+Change it to a value that hides the empty canvas.<br>
+<br>
+<h1>Screenshots:</h1><img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/screenshot00200002w.jpg" alt="img337.imageshack.us/img337/7453/screenshot00200002w.png"><br>
+Before<br>
+<br>
+<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/screenshot00200003.jpg" alt="img403.imageshack.us/img403/7277/screenshot00200003.png"><br>
+After<br>
+<br>
+Now for some notes:<br>
+The value you'll have to use for hiding the empty canvas, might need to be quiet high, in the pictures above i used <i>20000</i>.<br>
+There might be some undiscovered side effects, but I've not noticed 
+anything special, except that too high values might move your ScatterSky
+ too low.<br>
+<br>
+If you stumble upon some issues, let me know.<br>
+Also know that my methods might not be correct, nor the most 
+professional. Therefore if you see some silly mistakes please leave a 
+comment with the "fix".<br>
+<br>
+Thanks,<br>
+Marcus L.</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" alt="Marcus L's profile picture">
+			<br>
+			<a rel="Marcus L" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/117422" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Marcus L
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20567">In-Game Script Editor</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20431">1. MXG Gui Mod - Fading Chat</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20147">4. MXG Weapon Mod - Advanced Crosshair</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/19943">3. MXG Weapon Mod - Structure and Armor Piercing Projectiles</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/19749">2. MXG Weapon Mod - Explosion and SFX Depending on Material</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/20789"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/20780"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/resource/view/20788/2#comments">2</a> <a href="http://www.garagegames.com/community/resource/view/20788/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/20788/2#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input name="notify-me" id="notify-me" onchange="GG.blogNotify(20788, 49324);" type="checkbox">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles.com]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172031" name="comment-172031">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/25/2011 (3:31 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Nice workaround!<br>
+<br>
+Also, nice idiot proof explanation of modding the code. :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Jason Parker" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/121199" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Jason Parker
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172032" name="comment-172032">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/25/2011 (3:46 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thank you, I had been trying to do exactly that with mixed but ultimately failed results.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/106163.jpg" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name">Distracted...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172037" name="comment-172037">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/25/2011 (5:50 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Very nice!  Definite improvement over an annoying issue whose 
+previous 'fix' consisted of making certain viewpoints inaccessible.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/83642.jpg" class="profilepic">
+			<br>
+			<a rel="D Fasel" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/83642" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	D Fasel<br>
+	<span class="studio-name">Game 3D</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172040" name="comment-172040">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/25/2011 (6:48 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			nice resource! ty. Will try this today.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/189615.png" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172056" name="comment-172056">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/26/2011 (4:21 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			nice resource		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="Jules" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Jules<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172078" name="comment-172078">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/26/2011 (11:38 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			nice work.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Marcus L" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/117422" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Marcus L
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172080" name="comment-172080">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/26/2011 (1:11 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@ All<br>
+Thanks :D<br>
+<small>Forgot to mark the "Notify me of new comments" button, doh!</small><br>
+<br>
+@ Steve<br>
+True, don't think it gets much simpler than this =P<br>
+<br>
+@ Michael<br>
+Yeah, exactly xP		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/5493.jpg" class="profilepic">
+			<br>
+			<a rel="Netwyrm" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/5493" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Netwyrm<br>
+	<span class="studio-name">Consequence Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172140" name="comment-172140">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/27/2011 (9:43 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thank you! <br>
+<br>
+And very nice writeup of how to implement your feature, too!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/182019.png" class="profilepic">
+			<br>
+			<a rel="Jeff Yaskus" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/182019" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Jeff Yaskus<br>
+	<span class="studio-name">jy games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172404" name="comment-172404">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/30/2011 (7:00 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Very helpful, my level has some high mountains and w/o this --- the view was horrible -- now, much better. Thanks!<br>
+<br>
+note: <i>I noticed when I applied these changes to latest version that 
+you changes were already in there but commented out ... with a set value
+ of 20,000 though.</i><br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Marcus L" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/117422" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Marcus L
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172430" name="comment-172430">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/31/2011 (12:25 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@ Netwyrm &amp; Jeff<br>
+Thx<br>
+<br>
+<blockquote><span>Quote:</span>note: I noticed when I applied these 
+changes to latest version that you changes were already in there but 
+commented out ... with a set value of 20,000 though</blockquote>Yup, that comment is exactly what lead me to this solution. The reason i decided to add a persist field is for dynamicness.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Jonas Kraska" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/230249" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Jonas Kraska
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172442" name="comment-172442">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/31/2011 (6:06 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thx for this hack, very usefull. Only problem now is the lens flare 
+effect. While using zOffset the visible sun has another position as the 
+for the flare effect used position.<br>
+<br>
+EDIT: Don't know, but there could be the same difference with the shadows, because there is the "old" sun position used, too?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Marcus L" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/117422" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Marcus L
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172484" name="comment-172484">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/31/2011 (3:36 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@ Jonas K<br>
+<blockquote><span>Quote:</span>Only problem now is the lens flare effect.</blockquote>I see, thanks for telling me, gonna see if i can find a easy fix.<br>
+<br>
+<blockquote><span>Quote:</span>Don't know, but there could be the same difference with the shadows, because there is the "old" sun position used, too? </blockquote>Yeah, it does in a way use the old position, but it should be barely noticeable really.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Marcus L" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/117422" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Marcus L
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172485" name="comment-172485">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/31/2011 (4:10 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Probably not such a scientific fix, but it worked fine for me:<br>
+<br>
+In <i>environment/scatterSky.cpp</i>:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>...&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//In&nbsp;bool&nbsp;ScatterSky::prepRenderImage(&nbsp;SceneState&nbsp;*state,&nbsp;const&nbsp;U32&nbsp;stateKey,&nbsp;const&nbsp;U32&nbsp;startZone,&nbsp;const&nbsp;bool&nbsp;modifyBaseState&nbsp;)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point3F&nbsp;lightPos&nbsp;=&nbsp;state-&gt;getCameraPosition()&nbsp;-&nbsp;state-&gt;getFarPlane()&nbsp;*&nbsp;mLight-&gt;getDirection()&nbsp;*&nbsp;0.9f;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mFlareState.lightMat.identity();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mFlareState.lightMat.setPosition(&nbsp;lightPos&nbsp;-&nbsp;Point3F(0,&nbsp;0,&nbsp;mZOffset&nbsp;*&nbsp;0.005)&nbsp;);&nbsp;<span class="comment">//&nbsp;Changed</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">...
+//In bool ScatterSky::prepRenderImage( SceneState *state, const U32 stateKey, const U32 startZone, const bool modifyBaseState )
+      Point3F lightPos = state-&gt;getCameraPosition() - state-&gt;getFarPlane() * mLight-&gt;getDirection() * 0.9f;
+      mFlareState.lightMat.identity();
+      mFlareState.lightMat.setPosition( lightPos - Point3F(0, 0, mZOffset * 0.005) ); // Changed</pre>Tell me if it works for you, if not, I'll see if i can find a more <i>scientific</i> solution.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Jonas Kraska" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/230249" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Jonas Kraska
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172523" name="comment-172523">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">02/01/2011 (9:14 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			You're right! Shadows are not that important in this case ;)<br>
+And now the lens effect works fine for me as well - thx a lot!<br>
+<br>
+cheers<br>
+Jonas		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/39929.jpg" class="profilepic">
+			<br>
+			<a rel="Ademys®" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/39929" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Ademys®<br>
+	<span class="studio-name">Ademys Studios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-172542" name="comment-172542">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">02/01/2011 (1:40 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thank you! 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/24544.jpg" class="profilepic">
+			<br>
+			<a rel="Paul Yoskowitz" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/24544" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Paul Yoskowitz<br>
+	<span class="studio-name">WinterLeaf Entertainment</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-180137" name="comment-180137">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/19/2011 (9:22 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I know this was not addressed as a bug, but it is rather bothersome. Could this fix be slipped into 1.2?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/108398.png" class="profilepic">
+			<br>
+			<a rel="x-ming-x" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/108398" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	x-ming-x<br>
+	<span class="studio-name">TeamSport Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-182056" name="comment-182056">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/09/2012 (10:58 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hello <br>
+<br>
+just wondering if theres any update on this resource, ive added the 
+original resource to 1.2 but its not having any effect for me <br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/106163.jpg" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name">Distracted...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-184443" name="comment-184443">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2012 (10:00 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			EDIT:  <small>Bah!  Doublepost, with this one having errors -- now that's weird.</small>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/106163.jpg" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name">Distracted...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-184444" name="comment-184444">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2012 (10:01 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			The Resource works just fine in Torque 3D 1.2. I'm actually using 1.1
+ which has been updated with the patch to 1.2, but there is no reason 
+why it wouldn't work in the full T3D 1.2.<br>
+<br>
+The only gotcha that I noticed was that the Resource instructs you that 
+the following line was added, when in fact it should modify the existing
+ line at that location.<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>xfm.setPosition(camPos2&nbsp;-&nbsp;Point3F(&nbsp;0,&nbsp;0,&nbsp;mZOffset));&nbsp;</span><span class="comment">//&nbsp;Added</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">xfm.setPosition(camPos2 - Point3F( 0, 0, mZOffset)); // Added</pre>  <br>
+If you simply add that line as the Resource instructs, the very next 
+line will overwrite the setPosition().... looks like someone was 
+attempting to hardcode a z offset at one point.<br>
+<br>
+So make sure this line gets commented/removed/altered:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">//&nbsp;Replace&nbsp;this&nbsp;line&nbsp;with&nbsp;the&nbsp;line&nbsp;from&nbsp;the&nbsp;Resource&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>xfm.setPosition(camPos2);<span class="comment">//-Point3F(&nbsp;0,&nbsp;0,&nbsp;200000.0f));</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">// Replace this line with the line from the Resource  
+xfm.setPosition(camPos2);//-Point3F( 0, 0, 200000.0f));</pre> <br>
+<br>
+Another thing to take note of is that you have to use a large number for
+ the zOffset. The Resource writer suggested 20000, but depending on how 
+high you are, this number will have to be even greater.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/10920.png" class="profilepic">
+			<br>
+			<a rel="Kyrah Abattoir" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/10920" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Kyrah Abattoir<br>
+	<span class="studio-name">KDC</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20788/1#comment-187491" name="comment-187491">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">09/26/2012 (2:44 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I have a suggestion for this resource.<br>
+<br>
+It would be really nice to have a mode where the Z position of the 
+scattersky is "locked", so even if the player climb a hill, the 
+scattersky keeps rendering with a Z value that was set.<br>
+<br>
+so some toggle where, instead of rendering the scattersky from:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>xfm.setPosition(camPos2);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">xfm.setPosition(camPos2);</pre>it would do something like:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>xfm.setPosition(&nbsp;Point3F(&nbsp;camPos2.x,&nbsp;camPos2.y,&nbsp;mZOffset&nbsp;)&nbsp;);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">xfm.setPosition( Point3F( camPos2.x, camPos2.y, mZOffset ) );</pre><br>
+(i don't know how to extract Point3F x/y/z so correct me if i'm wrong.)<br>
+Or would that not work?		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/resource/view/20788/2#comments">2</a> <a href="http://www.garagegames.com/community/resource/view/20788/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input class="relevantProductFilter" value="0" type="checkbox"> All Products<br>
+		<input class="relevantProductFilter" value="other" type="checkbox"> 3rd Party Addons<br>
+		<input class="relevantProductFilter" value="itorque2d" type="checkbox"> iTorque 2D<br>
+		<input class="relevantProductFilter" value="itorque3d" type="checkbox"> iTorque 3D<br>
+		<input class="relevantProductFilter" value="tge" type="checkbox"> TGE<br>
+		<input class="relevantProductFilter" value="tgea" type="checkbox"> TGEA<br>
+		<input class="relevantProductFilter" value="torque-2d" type="checkbox"> Torque 2D<br>
+		<input class="relevantProductFilter" value="torque3dpro" type="checkbox"> Torque 3D Pro<br>
+		<input class="relevantProductFilter" value="torquex" type="checkbox"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2014 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ga.js" type="text/javascript"></script>
+	</div>
+<div id="supersecrethiddendiv"></div>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-78WdNPl8jvIsA"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-78WdNPl8jvIsA.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+<!-- Twitter JS -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"9591b99732","applicationID":"1014775","transactionName":"NlNSNUsCWEUABkdaCg8ZcQJNCllYTgFWVQQUWkROWgxbWxQLWkccTkBZBE4=","queueTime":0,"applicationTime":3517,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-460.min.js"}</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div><script src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/nr-460.js"></script><script src="ScatterSky%20Z-Offset%20Hack%20_%20Marcus%20L%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/9591b99732" type="text/javascript"></script></body></html>

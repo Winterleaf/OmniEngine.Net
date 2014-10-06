@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Finger &mdash; Leap Motion 1.0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0.9 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0.9 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-finger">
+<h1>Leap.Finger<a class="headerlink" href="#leap-finger" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Finger">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Finger</tt><a class="headerlink" href="#Leap.Finger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends <a class="reference internal" href="Leap.Pointable.html#Leap.Pointable" title="Leap.Pointable"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Pointable</span></tt></a>.</p>
+<p>The Finger class represents a tracked finger.</p>
+<p>Fingers are Pointable objects that the Leap Motion software has classified as a finger.
+Get valid Finger objects from a Frame or a Hand object.</p>
+<p>Fingers may be permanently associated to a hand. In this case the angular order of the finger IDs
+will be invariant. As fingers move in and out of view it is possible for the guessed ID
+of a finger to be incorrect. Consequently, it may be necessary for finger IDs to be
+exchanged. All tracked properties, such as velocity, will remain continuous in the API.
+However, quantities that are derived from the API output (such as a history of positions)
+will be discontinuous unless they have a corresponding ID exchange.</p>
+<p>Note that Finger objects can be invalid, which means that they do not contain
+valid tracking data and do not correspond to a physical finger. Invalid Finger
+objects can be the result of asking for a Finger object using an ID from an
+earlier frame when no Finger objects with that ID exist in the current frame.
+A Finger object created from the Finger constructor is also invalid.
+Test for validity with the <tt class="xref py py-func docutils literal"><span class="pre">Pointable.is_valid()</span></tt> attribute.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+<div class="constructors container">
+<dl class="classmethod">
+<dt>
+<tt class="descname">Finger([finger]);</tt></dt>
+<dd><p>Constructs a Finger object.</p>
+<p>Get valid Finger and Pointable objects from a Frame or a Hand object.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">finger</span></tt> (<a class="reference internal" href="Leap.Pointable.html#Leap.Pointable" title="Leap.Pointable"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Pointable</span></tt></a>) &#8211; an object representing a finger.
+If no finger parameter is supplied, or the object does not represent a finger,
+an <tt class="docutils literal"><span class="pre">invalid</span></tt> Finger object is returned.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="data container">
+<dl class="data">
+<dt>
+<tt class="descname">Finger.invalid -&gt; Leap.Finger</tt></dt>
+<dd><p>An invalid Finger object.</p>
+<p>You can use this invalid object in comparisons testing
+whether a given Finger instance is valid or invalid. (You can also use the
+<tt class="xref py py-attr docutils literal"><span class="pre">Pointable.is_valid</span></tt> attribute.)</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

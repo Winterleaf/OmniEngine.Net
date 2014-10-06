@@ -1,0 +1,258 @@
+Leap.Matrix
+===========
+
+.. currentmodule:: Leap
+
+.. class:: Matrix
+
+  The Matrix class represents a transformation matrix.
+ 
+  To use this class to transform a Vector, construct a matrix containing the
+  desired transformation and then use the :meth:`transformPoint()` or
+  :meth:`transformDirection()` methods to apply the transform.
+ 
+  Transforms can be combined by multiplying two or more transform matrices using
+  the * operator.
+  
+  .. versionadded:: 1.0
+ 
+  
+  .. container:: constructors
+  
+    .. classmethod:: Matrix()
+
+      Constructs an identity transformation matrix.
+    
+      .. versionadded:: 1.0
+   
+
+    .. classmethod:: Matrix(other)
+  
+      Constructs a copy of the specified Matrix object.
+    
+      **Arguments**
+    
+      ``other`` (:class:`Leap.Matrix`) -- The matrix to copy.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. classmethod:: Matrix(xBasis, yBasis, zBasis)
+
+      Constructs a transformation matrix from the specified basis vectors.
+   
+      **Arguments**
+    
+      ``xBasis`` (:class:`Leap.Vector`) -- A Vector specifying rotation and scale factors for the x-axis.
+    
+      ``yBasis`` (:class:`Leap.Vector`) --  A Vector specifying rotation and scale factors for the y-axis.
+    
+      ``zBasis`` (:class:`Leap.Vector`) --  A Vector specifying rotation and scale factors for the z-axis.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. classmethod:: Matrix(xBasis, yBasis, zBasis, origin)
+
+      Constructs a transformation matrix from the specified basis and translation vectors.
+   
+      **Arguments**
+    
+      ``xBasis`` (:class:`Leap.Vector`) --  A Vector specifying rotation and scale factors for the x-axis.
+    
+      ``yBasis`` (:class:`Leap.Vector`) --  A Vector specifying rotation and scale factors for the y-axis.
+    
+      ``zBasis`` (:class:`Leap.Vector`) --  A Vector specifying rotation and scale factors for the z-axis.
+    
+      ``origin`` (:class:`Leap.Vector`) --  A Vector specifying translation factors on all three axes.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. classmethod:: Matrix(axis, angleRadians)
+
+      Constructs a transformation matrix specifying a rotation around the specified vector.
+   
+      **Arguments**
+    
+      ``axis`` (:class:`Leap.Vector`) --  A Vector specifying the axis of rotation.
+    
+      ``angleRadians`` (float) -- The amount of rotation in radians.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. classmethod:: Matrix(axis, angleRadians, translation)
+
+      Constructs a transformation matrix specifying a rotation around the specified vector
+      and a translation by the specified vector.
+   
+      **Arguments**
+    
+      ``axis`` (:class:`Leap.Vector`) --  A Vector specifying the axis of rotation.
+    
+      ``angleRadians`` (float) -- The angle of rotation in radians.
+    
+      ``translation`` (:class:`Leap.Vector`) --  A Vector representing the translation part of the transform.
+    
+      .. versionadded:: 1.0
+   
+
+
+  .. container:: attributes
+  
+    .. attribute:: x_basis -> Leap.Vector
+
+      The rotation and scale factors for the x-axis.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. attribute:: y_basis -> Leap.Vector
+
+      The rotation and scale factors for the y-axis.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. attribute:: z_basis -> Leap.Vector
+
+      The rotation and scale factors for the z-axis.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. attribute:: origin -> Leap.Vector
+
+      The translation factors for all three axes.
+    
+      .. versionadded:: 1.0
+   
+
+  
+  .. container:: methods
+  
+
+    .. method:: set_rotation(axis, angleRadians)
+  
+      Sets this transformation matrix to represent a rotation around the specified vector.
+   
+      This function erases any previous rotation and scale transforms applied
+      to this matrix, but does not affect translation.
+   
+      **Arguments**
+    
+      ``axis`` (:class:`Leap.Vector`) --  A Vector specifying the axis of rotation.
+    
+      ``angleRadians`` (float) -- The amount of rotation in radians.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. method::  transform_point(in) -> Leap.Vector
+
+      Transforms a vector with this matrix by transforming its rotation,
+      scale, and translation.
+   
+      Translation is applied after rotation and scale.
+   
+      **Arguments**
+    
+      ``in`` (:class:`Leap.Vector`) --  The Vector to transform.
+    
+      **Returns**
+    
+      ``Leap.Vector`` -- A new Vector representing the transformed original.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. method:: transform_direction(in) -> Leap.Vector
+
+      Transforms a vector with this matrix by transforming its rotation and
+      scale only.
+   
+      **Arguments**
+    
+      ``in`` (:class:`Leap.Vector`) --  The Vector to transform.
+    
+      **Returns**
+    
+      ``Leap.Vector`` -- A new Vector representing the transformed original.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. method:: rigid_inverse() -> Leap.Matrix
+
+      Performs a matrix inverse if the matrix consists entirely of rigid
+      transformations (translations and rotations).  If the matrix is not rigid,
+      this operation will not represent an inverse.
+   
+      Note that all matricies that are directly returned by the API are rigid.
+   
+      **Returns**
+    
+      ``Leap.Matrix`` -- An inverted copy of this matrix.
+
+      .. versionadded:: 1.0
+   
+
+    .. method:: to_array_3x3() -> array
+
+      Convert a 3x3 Matrix object to a 9-element, row-major, float array.
+   
+      Translation factors are discarded.
+   
+      .. versionadded:: 1.0
+   
+
+    .. method:: to_array_4x4() -> array
+  
+      Convert a 4x4 Matrix object to a 16-element, row-major, float array.
+   
+      .. versionadded:: 1.0
+   
+
+  
+  .. container:: operators
+  
+    .. function:: mul(a, b) -> Leap.Matrix
+
+      Multiply transform matrices.
+   
+      Combines two transformations into a single equivalent transformation.
+   
+      .. versionadded:: 1.0
+   
+  
+    .. function:: imul(a, b) -> Leap.Matrix
+
+      Multiply transform matrices and assign the product.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. function:: eq(a, b) -> bool
+
+      Compare Matrix equality component-wise.
+    
+      .. versionadded:: 1.0
+   
+  
+    .. function:: ne(a, b) -> bool
+
+      Compare Matrix inequality component-wise.
+    
+      .. versionadded:: 1.0
+   
+  
+  .. container:: data
+  
+    .. data:: Matrix.identity -> Leap.Matrix
+  
+      The identity matrix specifying no translation, rotation, and scale.
+   
+      .. versionadded:: 1.0
+   
+  

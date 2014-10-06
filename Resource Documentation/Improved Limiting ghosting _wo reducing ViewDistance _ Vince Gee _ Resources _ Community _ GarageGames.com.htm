@@ -1,0 +1,835 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/widgets.js" id="twitter-wjs"></script><script type="text/javascript" async="" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/quant.js"></script><script src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o?o:n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({QJf3ax:[function(t,n){function e(t){function n(n,e,o){t&&t(n,e,o),o||(o={});for(var a=i(n),u=a.length,c=o[r]||(o[r]={}),f=0;u>f;f++)a[f].apply(c,e);return c}function o(t,n){u[t]=i(t).concat(n)}function i(t){return u[t]||[]}function a(){return e(n)}var u={};return{on:o,emit:n,create:a,listeners:i,_events:u}}var r="nr@context";n.exports=e()},{}],ee:[function(t,n){n.exports=t("QJf3ax")},{}],D5DuLP:[function(t,n){function e(t,n,e){return r.listeners(t).length?r.emit(t,n,e):(o[t]||(o[t]=[]),void o[t].push(n))}var r=t("ee").create(),o={};n.exports=e,e.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,n){n.exports=t("D5DuLP")},{}],loader:[function(t,n){n.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,n){function e(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var n=c.createElement("script");n.src=l.proto+t.agent,c.body.appendChild(n)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=n.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",e,!1)):(c[s]("onreadystatechange",r),u[s]("onload",e)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="This is an improved version of the original resource http://www.garagegames.com/community/resources/view/21471
+
+This resource adds the ability to set the viewdistance_ghost at the shapebase level as well as the LevelInfo level.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Improved Limiting ghosting /wo reducing ViewDistance | Vince Gee | Resources | Community | GarageGames.com</title>		<link href="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ui.css" media="screen" rel="stylesheet" type="text/css">
+<link href="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ui_002.css" media="screen" rel="stylesheet" type="text/css">
+<link href="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shCore.js"></script>
+		<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shBrushCpp.js"></script>
+		<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/shBrushPhp.js"></script>
+		<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	timeoutID = 0;
+	
+	function filterProducts()
+	{
+		var filterArray = [];
+		
+		$('.qtip-content input.relevantProductFilter:checked').each(function(){
+			if(($(this).val() != 0))
+			{
+			    jQuery.merge(filterArray, [$(this).val()]);
+			}
+		});
+		
+		if(filterArray.length > 0)
+		{
+			window.location = "/community/resources/all/"+filterArray.join(',') + ',';
+		}
+		else
+		{
+			window.location = "/community/resources/";
+		}
+	}
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			clearTimeout(timeoutID);
+			timeoutID = setTimeout('filterProducts()',2000);
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-6057184-2']);
+		  _gaq.push(['_setDomainName', 'garagegames.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+    
+<body data-twttr-rendered="true">
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Products</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products">Store</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products">Home</a></li><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="stub" id="main-nav-services"><a href="http://services.garagegames.com/">Services</a></li><li class="stub" id="main-nav-education"><a href="http://www.garagegames.com/education">Education</a></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About GarageGames</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Vince Gee</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/49324">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input name="q" id="top-keywords" class="formTip" value="Search site" title="Search site" maxlength="255" onfocus="if ( this.value=='Search site' ) { this.value = ''; }" onblur="if ( this.value=='' ) { this.value = 'Search site'; }" type="text">
+                        <input id="top-submit" onclick="searchSubmit(); return false;" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/search-bar-main-btn.png" alt="Search" type="image">
+                </form>
+                
+                <script type="text/javascript">
+				
+                function searchSubmit() {
+					var search = $('#top-keywords').val();
+					if(document.location.href.indexOf("forum")!= -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=forums&gsc.tab=0';
+					} else if(document.location.href.indexOf("blog") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=blogs&gsc.tab=0';
+					} else if(document.location.href.indexOf("resource") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=resources&gsc.tab=0';
+					} else {
+						window.location = '/community/search#gsc.q='+search;
+					}
+                	
+                }
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+			
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div style="margin: -20px -13px 10px;"><a href="http://www.gginteractive.com/" alt="Learn more about The Game Development Curriculum by GGInteractive"><img src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/devpro_ad_banner_938x62.png" alt="dev|Pro Game Development Curriculum" title="dev|Pro Game Development Curriculum"></a></div>
+	<div id="blog-content">
+					<div id="admin" style="float: right;">
+													<a style="margin: 2px; float: left;" title="Edit your blog" href="http://www.garagegames.com/community/resources/edit/21756" class="edit button ui-corner-all ui-state-default"><span class="ui-icon ui-icon-pencil">Edit</span></a>
+							</div>
+						<h1>Improved Limiting ghosting /wo reducing ViewDistance</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/49324">Vince Gee</a>
+			<strong>·</strong>
+			06/27/2012 (10:46 am)			<strong>·</strong>
+			1 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">I happened to be messing around with the old ghost culling resource I wrote back in January <a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21471">www.garagegames.com/community/resources/view/21471</a>
+ and as I was going through it I realized that it would indeed be quite 
+easy to allow players to have different ghost culling ranges.<br>
+<br>
+With this resource, you can now set what the default player ghost range is in the mission file.<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">new</span><span>&nbsp;LevelInfo(theLevelInfo)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nearClip&nbsp;=&nbsp;<span class="string">"0.1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visibleDistance&nbsp;=&nbsp;<span class="string">"1000"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visibleDistance_Ghost&nbsp;=&nbsp;<span class="string">"100"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalBias&nbsp;=&nbsp;<span class="string">"0.0015"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fogColor&nbsp;=&nbsp;<span class="string">"0.462745&nbsp;0.521569&nbsp;0.545098&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">new LevelInfo(theLevelInfo) {
+         nearClip = "0.1";
+         visibleDistance = "1000";
+         visibleDistance_Ghost = "100";
+         decalBias = "0.0015";
+         fogColor = "0.462745 0.521569 0.545098 1";</pre><br>
+and then, let's say a person equips a scope to their rifle, on the mount of the scope you could call<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>%player.setVisibleDistance(500);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">%player.setVisibleDistance(500);</pre><br>
+and the player will now recieve all objects within a 500 unit range 
+around them.  When the remove the scope you would then just call<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>%player.setVisibleDistance(0);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">%player.setVisibleDistance(0);</pre><br>
+which would set the players ghost range to the levelinfo default value.<br>
+<br>
+Enjoy!<br>
+<br>
+Vince<br>
+<br>
+<br>
+File	levelInfo.h<br>
+Line Location	~40<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>F32&nbsp;mNearClip;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mDecalBias;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">F32 mNearClip;
+
+      F32 mVisibleDistance;
+
+      F32 mDecalBias;</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>F32&nbsp;mNearClip;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mVisibleDistance_Ghost;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mDecalBias;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">F32 mNearClip;
+
+      F32 mVisibleDistance;
+
+      //Winterleaf Modification
+      F32 mVisibleDistance_Ghost;
+      //Winterleaf Modification
+
+      F32 mDecalBias;</pre><br>
+File	levelInfo.cpp<br>
+Line Location	~62<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>LevelInfo::LevelInfo()&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;mNearClip(&nbsp;0.1f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance(&nbsp;1000.0f&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDecalBias(&nbsp;0.0015f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mCanvasClearColor(&nbsp;255,&nbsp;0,&nbsp;255,&nbsp;255&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mSoundAmbience(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mSoundscape(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mSoundDistanceModel(&nbsp;SFXDistanceModelLinear&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mWorldSize(&nbsp;10000.0f&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mAmbientLightBlendPhase(&nbsp;1.f&nbsp;)&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">LevelInfo::LevelInfo()
+   :  mNearClip( 0.1f ),
+      mVisibleDistance( 1000.0f ),
+      mDecalBias( 0.0015f ),
+      mCanvasClearColor( 255, 0, 255, 255 ),
+      mSoundAmbience( NULL ),
+      mSoundscape( NULL ),
+      mSoundDistanceModel( SFXDistanceModelLinear ),
+      mWorldSize( 10000.0f ),
+      mAmbientLightBlendPhase( 1.f )</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>LevelInfo::LevelInfo()&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;mNearClip(&nbsp;0.1f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance(&nbsp;1000.0f&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance_Ghost(&nbsp;200.0f&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDecalBias(&nbsp;0.0015f&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mCanvasClearColor(&nbsp;255,&nbsp;0,&nbsp;255,&nbsp;255&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mSoundAmbience(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mSoundscape(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mSoundDistanceModel(&nbsp;SFXDistanceModelLinear&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mWorldSize(&nbsp;10000.0f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mAmbientLightBlendPhase(&nbsp;1.f&nbsp;)&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">LevelInfo::LevelInfo()
+   :  mNearClip( 0.1f ),
+      mVisibleDistance( 1000.0f ),
+      //Winterleaf Modification
+      mVisibleDistance_Ghost( 200.0f ),
+      //Winterleaf Modification
+      mDecalBias( 0.0015f ),
+      mCanvasClearColor( 255, 0, 255, 255 ),
+      mSoundAmbience( NULL ),
+      mSoundscape( NULL ),
+      mSoundDistanceModel( SFXDistanceModelLinear ),
+      mWorldSize( 10000.0f ),
+      mAmbientLightBlendPhase( 1.f )</pre><br>
+File	levelInfo.cpp<br>
+Line Location	99<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>addGroup(&nbsp;</span><span class="string">"Visibility"</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"nearClip"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mNearClip,&nbsp;LevelInfo&nbsp;),&nbsp;</span><span class="string">"Closest&nbsp;distance&nbsp;from&nbsp;the&nbsp;camera's&nbsp;position&nbsp;to&nbsp;render&nbsp;the&nbsp;world."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"visibleDistance"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mVisibleDistance,&nbsp;LevelInfo&nbsp;),&nbsp;</span><span class="string">"Furthest&nbsp;distance&nbsp;fromt&nbsp;he&nbsp;camera's&nbsp;position&nbsp;to&nbsp;render&nbsp;the&nbsp;world."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"decalBias"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mDecalBias,&nbsp;LevelInfo&nbsp;),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"NearPlane&nbsp;bias&nbsp;used&nbsp;when&nbsp;rendering&nbsp;Decal&nbsp;and&nbsp;DecalRoad.&nbsp;This&nbsp;should&nbsp;be&nbsp;tuned&nbsp;to&nbsp;the&nbsp;visibleDistance&nbsp;in&nbsp;your&nbsp;level."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">addGroup( "Visibility" );
+
+      addField( "nearClip", TypeF32, Offset( mNearClip, LevelInfo ), "Closest distance from the camera's position to render the world." );
+      addField( "visibleDistance", TypeF32, Offset( mVisibleDistance, LevelInfo ), "Furthest distance fromt he camera's position to render the world." );
+      addField( "decalBias", TypeF32, Offset( mDecalBias, LevelInfo ),
+         "NearPlane bias used when rendering Decal and DecalRoad. This should be tuned to the visibleDistance in your level." );</pre><br>
+New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>addGroup(&nbsp;</span><span class="string">"Visibility"</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"nearClip"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mNearClip,&nbsp;LevelInfo&nbsp;),&nbsp;</span><span class="string">"Closest&nbsp;distance&nbsp;from&nbsp;the&nbsp;camera's&nbsp;position&nbsp;to&nbsp;render&nbsp;the&nbsp;world."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"visibleDistance"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mVisibleDistance,&nbsp;LevelInfo&nbsp;),&nbsp;</span><span class="string">"Furthest&nbsp;distance&nbsp;fromt&nbsp;he&nbsp;camera's&nbsp;position&nbsp;to&nbsp;render&nbsp;the&nbsp;world."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"visibleDistance_Ghost"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mVisibleDistance_Ghost,&nbsp;LevelInfo&nbsp;),&nbsp;</span><span class="string">"Furthest&nbsp;distance&nbsp;fromt&nbsp;he&nbsp;camera's&nbsp;position&nbsp;to&nbsp;render&nbsp;players."</span><span>&nbsp;);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addField(&nbsp;<span class="string">"decalBias"</span><span>,&nbsp;TypeF32,&nbsp;Offset(&nbsp;mDecalBias,&nbsp;LevelInfo&nbsp;),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"NearPlane&nbsp;bias&nbsp;used&nbsp;when&nbsp;rendering&nbsp;Decal&nbsp;and&nbsp;DecalRoad.&nbsp;This&nbsp;should&nbsp;be&nbsp;tuned&nbsp;to&nbsp;the&nbsp;visibleDistance&nbsp;in&nbsp;your&nbsp;level."</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">addGroup( "Visibility" );
+
+      addField( "nearClip", TypeF32, Offset( mNearClip, LevelInfo ), "Closest distance from the camera's position to render the world." );
+      addField( "visibleDistance", TypeF32, Offset( mVisibleDistance, LevelInfo ), "Furthest distance fromt he camera's position to render the world." );
+      //Winterleaf Modification
+      addField( "visibleDistance_Ghost", TypeF32, Offset( mVisibleDistance_Ghost, LevelInfo ), "Furthest distance fromt he camera's position to render players." );  
+      //Winterleaf Modification
+      addField( "decalBias", TypeF32, Offset( mDecalBias, LevelInfo ),
+         "NearPlane bias used when rendering Decal and DecalRoad. This should be tuned to the visibleDistance in your level." );</pre><br>
+File	levelInfo.cpp<br>
+Line Location	291<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>SceneManager*&nbsp;scene&nbsp;=&nbsp;isClientObject()&nbsp;?&nbsp;gClientSceneGraph&nbsp;:&nbsp;gServerSceneGraph;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;scene-&gt;setNearClip(&nbsp;mNearClip&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;scene-&gt;setVisibleDistance(&nbsp;mVisibleDistance&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;gDecalBias&nbsp;=&nbsp;mDecalBias;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Set&nbsp;ambient&nbsp;lighting&nbsp;properties.</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">SceneManager* scene = isClientObject() ? gClientSceneGraph : gServerSceneGraph;
+   
+   scene-&gt;setNearClip( mNearClip );
+   scene-&gt;setVisibleDistance( mVisibleDistance );
+
+   gDecalBias = mDecalBias;
+
+   // Set ambient lighting properties.</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>SceneManager*&nbsp;scene&nbsp;=&nbsp;isClientObject()&nbsp;?&nbsp;gClientSceneGraph&nbsp;:&nbsp;gServerSceneGraph;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;scene-&gt;setNearClip(&nbsp;mNearClip&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;scene-&gt;setVisibleDistance(&nbsp;mVisibleDistance&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;scene-&gt;setVisibleDistance_Ghost(&nbsp;mVisibleDistance_Ghost&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;gDecalBias&nbsp;=&nbsp;mDecalBias;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Set&nbsp;ambient&nbsp;lighting&nbsp;properties.</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">SceneManager* scene = isClientObject() ? gClientSceneGraph : gServerSceneGraph;
+   
+   scene-&gt;setNearClip( mNearClip );
+
+   scene-&gt;setVisibleDistance( mVisibleDistance );
+   
+   //Winterleaf Modification
+   scene-&gt;setVisibleDistance_Ghost( mVisibleDistance_Ghost );
+   //Winterleaf Modification
+
+   gDecalBias = mDecalBias;
+
+   // Set ambient lighting properties.</pre><br>
+File	sceneManager.h<br>
+Line Location	113<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">///&nbsp;The&nbsp;currently&nbsp;active&nbsp;render&nbsp;state&nbsp;or&nbsp;NULL&nbsp;if&nbsp;we're</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;not&nbsp;in&nbsp;the&nbsp;process&nbsp;of&nbsp;rendering.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SceneRenderState*&nbsp;mCurrentRenderState;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mNearClip;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">/// The currently active render state or NULL if we're
+      /// not in the process of rendering.
+      SceneRenderState* mCurrentRenderState;
+
+      F32 mVisibleDistance;
+
+      F32 mNearClip;</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>SceneRenderState*&nbsp;mCurrentRenderState;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mVisibleDistance_Ghost;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;mNearClip;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">SceneRenderState* mCurrentRenderState;
+
+      F32 mVisibleDistance;
+
+      //Winterleaf Modification
+      F32 mVisibleDistance_Ghost;
+      //Winterleaf Modification
+
+      F32 mNearClip;</pre><br>
+File	sceneManager.h<br>
+Line Location	290<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">///&nbsp;Used&nbsp;by&nbsp;LevelInfo&nbsp;to&nbsp;set&nbsp;the&nbsp;default&nbsp;visible&nbsp;distance&nbsp;for</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;rendering&nbsp;the&nbsp;scene.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;Note&nbsp;this&nbsp;should&nbsp;not&nbsp;be&nbsp;used&nbsp;to&nbsp;alter&nbsp;culling&nbsp;which&nbsp;is</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;controlled&nbsp;by&nbsp;the&nbsp;active&nbsp;frustum&nbsp;when&nbsp;a&nbsp;SceneRenderState&nbsp;is&nbsp;created.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@see&nbsp;SceneRenderState</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@see&nbsp;GameProcessCameraQuery</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@see&nbsp;LevelInfo</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;setVisibleDistance(&nbsp;F32&nbsp;dist&nbsp;)&nbsp;{&nbsp;mVisibleDistance&nbsp;=&nbsp;dist;&nbsp;}&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">/// Used by LevelInfo to set the default visible distance for
+      /// rendering the scene.
+      ///
+      /// Note this should not be used to alter culling which is
+      /// controlled by the active frustum when a SceneRenderState is created.
+      ///
+      /// @see SceneRenderState
+      /// @see GameProcessCameraQuery
+      /// @see LevelInfo
+      void setVisibleDistance( F32 dist ) { mVisibleDistance = dist; }</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">///&nbsp;Used&nbsp;by&nbsp;LevelInfo&nbsp;to&nbsp;set&nbsp;the&nbsp;default&nbsp;visible&nbsp;distance&nbsp;for</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;rendering&nbsp;the&nbsp;scene.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;Note&nbsp;this&nbsp;should&nbsp;not&nbsp;be&nbsp;used&nbsp;to&nbsp;alter&nbsp;culling&nbsp;which&nbsp;is</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;controlled&nbsp;by&nbsp;the&nbsp;active&nbsp;frustum&nbsp;when&nbsp;a&nbsp;SceneRenderState&nbsp;is&nbsp;created.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@see&nbsp;SceneRenderState</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@see&nbsp;GameProcessCameraQuery</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@see&nbsp;LevelInfo</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;setVisibleDistance(&nbsp;F32&nbsp;dist&nbsp;)&nbsp;{&nbsp;mVisibleDistance&nbsp;=&nbsp;dist;&nbsp;}&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;setVisibleDistance_Ghost(&nbsp;F32&nbsp;dist&nbsp;)&nbsp;{&nbsp;mVisibleDistance_Ghost&nbsp;=&nbsp;dist;&nbsp;}&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;&nbsp;getVisibleDistance_Ghost()&nbsp;{&nbsp;<span class="keyword">return</span><span>&nbsp;mVisibleDistance_Ghost;}&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">/// Used by LevelInfo to set the default visible distance for
+      /// rendering the scene.
+      ///
+      /// Note this should not be used to alter culling which is
+      /// controlled by the active frustum when a SceneRenderState is created.
+      ///
+      /// @see SceneRenderState
+      /// @see GameProcessCameraQuery
+      /// @see LevelInfo
+      void setVisibleDistance( F32 dist ) { mVisibleDistance = dist; }
+
+      //Winterleaf Modification
+      void setVisibleDistance_Ghost( F32 dist ) { mVisibleDistance_Ghost = dist; }
+      F32  getVisibleDistance_Ghost() { return mVisibleDistance_Ghost;}
+      //Winterleaf Modification</pre><br>
+File	sceneManager.cpp<br>
+Line Location	91<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>SceneManager::SceneManager(&nbsp;</span><span class="datatypes">bool</span><span>&nbsp;isClient&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;:&nbsp;mLightManager(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mCurrentRenderState(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mIsClient(&nbsp;isClient&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUsePostEffectFog(&nbsp;<span class="keyword">true</span><span>&nbsp;),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDisplayTargetResolution(&nbsp;0,&nbsp;0&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDefaultRenderPass(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance(&nbsp;500.f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mNearClip(&nbsp;0.1f&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mAmbientLightColor(&nbsp;ColorF(&nbsp;0.1f,&nbsp;0.1f,&nbsp;0.1f,&nbsp;1.0f&nbsp;)&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mZoneManager(&nbsp;NULL&nbsp;)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">SceneManager::SceneManager( bool isClient )
+   : mLightManager( NULL ),
+     mCurrentRenderState( NULL ),
+     mIsClient( isClient ),
+     mUsePostEffectFog( true ),
+     mDisplayTargetResolution( 0, 0 ),
+     mDefaultRenderPass( NULL ),
+     mVisibleDistance( 500.f ),
+     mNearClip( 0.1f ),
+     mAmbientLightColor( ColorF( 0.1f, 0.1f, 0.1f, 1.0f ) ),
+     mZoneManager( NULL )
+{</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>SceneManager::SceneManager(&nbsp;</span><span class="datatypes">bool</span><span>&nbsp;isClient&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;:&nbsp;mLightManager(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mCurrentRenderState(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mIsClient(&nbsp;isClient&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUsePostEffectFog(&nbsp;<span class="keyword">true</span><span>&nbsp;),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDisplayTargetResolution(&nbsp;0,&nbsp;0&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDefaultRenderPass(&nbsp;NULL&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance(&nbsp;500.f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance_Ghost(200.0f),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mNearClip(&nbsp;0.1f&nbsp;),&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mAmbientLightColor(&nbsp;ColorF(&nbsp;0.1f,&nbsp;0.1f,&nbsp;0.1f,&nbsp;1.0f&nbsp;)&nbsp;),&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mZoneManager(&nbsp;NULL&nbsp;)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">SceneManager::SceneManager( bool isClient )
+   : mLightManager( NULL ),
+     mCurrentRenderState( NULL ),
+     mIsClient( isClient ),
+     mUsePostEffectFog( true ),
+     mDisplayTargetResolution( 0, 0 ),
+     mDefaultRenderPass( NULL ),
+     mVisibleDistance( 500.f ),
+     //Winterleaf Modification
+     mVisibleDistance_Ghost(200.0f),
+     //Winterleaf Modification
+     mNearClip( 0.1f ),
+     mAmbientLightColor( ColorF( 0.1f, 0.1f, 0.1f, 1.0f ) ),
+     mZoneManager( NULL )
+{</pre><br>
+File	shapeBase.h<br>
+Line Location	6<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="preprocessor">#ifndef&nbsp;_SHAPEBASE_H_</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#define&nbsp;_SHAPEBASE_H_</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#ifndef&nbsp;__RESOURCE_H__</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">&nbsp;&nbsp;&nbsp;#include&nbsp;"core/resource.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#endif</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">#ifndef _SHAPEBASE_H_
+#define _SHAPEBASE_H_
+#ifndef __RESOURCE_H__
+   #include "core/resource.h"
+#endif</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="preprocessor">#ifndef&nbsp;_SHAPEBASE_H_</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#define&nbsp;_SHAPEBASE_H_</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="preprocessor">#ifndef&nbsp;__SCENEMANAGER_H__</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"scene/sceneManager.h"&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#define&nbsp;__SCENEMANAGER_H__</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#endif</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="preprocessor">#ifndef&nbsp;__RESOURCE_H__</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">&nbsp;&nbsp;&nbsp;#include&nbsp;"core/resource.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#endif</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">#ifndef _SHAPEBASE_H_
+#define _SHAPEBASE_H_
+
+
+#ifndef __SCENEMANAGER_H__
+#include "scene/sceneManager.h"  
+#define __SCENEMANAGER_H__
+#endif
+
+#ifndef __RESOURCE_H__
+   #include "core/resource.h"
+#endif</pre><br>
+File	shapeBase.h<br>
+Line Location	689<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">protected</span><span>:&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ShapeBaseData*&nbsp;&nbsp;&nbsp;&nbsp;mDataBlock;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&lt;&nbsp;Datablock</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mIsAiControlled;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">///&lt;&nbsp;Is&nbsp;this&nbsp;object&nbsp;AI&nbsp;controlled?</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//GameConnection*&nbsp;&nbsp;&nbsp;mControllingClient;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&lt;&nbsp;Controlling&nbsp;client</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ShapeBase*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mControllingObject;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&lt;&nbsp;Controlling&nbsp;object</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mTrigger[MaxTriggerKeys];&nbsp;&nbsp;</span><span class="comment">///&lt;&nbsp;What&nbsp;triggers&nbsp;are&nbsp;set,&nbsp;if&nbsp;any.</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">protected:
+   ShapeBaseData*    mDataBlock;                ///&lt; Datablock
+   bool              mIsAiControlled;           ///&lt; Is this object AI controlled?
+   //GameConnection*   mControllingClient;        ///&lt; Controlling client
+   ShapeBase*        mControllingObject;        ///&lt; Controlling object
+   bool              mTrigger[MaxTriggerKeys];  ///&lt; What triggers are set, if any.</pre><br>
+New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">protected</span><span>:&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ShapeBaseData*&nbsp;&nbsp;&nbsp;&nbsp;mDataBlock;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&lt;&nbsp;Datablock</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mIsAiControlled;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">///&lt;&nbsp;Is&nbsp;this&nbsp;object&nbsp;AI&nbsp;controlled?</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//GameConnection*&nbsp;&nbsp;&nbsp;mControllingClient;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&lt;&nbsp;Controlling&nbsp;client</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ShapeBase*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mControllingObject;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">///&lt;&nbsp;Controlling&nbsp;object</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mTrigger[MaxTriggerKeys];&nbsp;&nbsp;</span><span class="comment">///&lt;&nbsp;What&nbsp;triggers&nbsp;are&nbsp;set,&nbsp;if&nbsp;any.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;S32&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">protected:
+   ShapeBaseData*    mDataBlock;                ///&lt; Datablock
+   bool              mIsAiControlled;           ///&lt; Is this object AI controlled?
+   //GameConnection*   mControllingClient;        ///&lt; Controlling client
+   ShapeBase*        mControllingObject;        ///&lt; Controlling object
+   bool              mTrigger[MaxTriggerKeys];  ///&lt; What triggers are set, if any.
+
+   //Winterleaf
+   S32 mVisibleDistance;
+   //Winterleaf</pre><br>
+<br>
+File	shapeBase.h<br>
+Line Location	1185<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">void</span><span>&nbsp;setShapeName(</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*&nbsp;getShapeName();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;setSkinName(</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*&nbsp;getSkinName();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@}</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@name&nbsp;Mesh&nbsp;Visibility</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@{</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">void setShapeName(const char*);
+   const char* getShapeName();
+   void setSkinName(const char*);
+   const char* getSkinName();
+   /// @}
+
+   /// @name Mesh Visibility
+   /// @{</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">void</span><span>&nbsp;setShapeName(</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*&nbsp;getShapeName();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;setSkinName(</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*&nbsp;getSkinName();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@}</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@name&nbsp;Mesh&nbsp;Visibility</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">///&nbsp;@{</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;setVisibleDistance(S32&nbsp;dist);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;S32&nbsp;getVisibleDistance();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">void setShapeName(const char*);
+   const char* getShapeName();
+   void setSkinName(const char*);
+   const char* getSkinName();
+   /// @}
+
+   /// @name Mesh Visibility
+   /// @{
+   //Winterleaf
+   void setVisibleDistance(S32 dist);
+   S32 getVisibleDistance();
+   //Winterleaf</pre><br>
+File	shapeBase.cpp<br>
+Line Location	1487<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">//&nbsp;Get&nbsp;the&nbsp;visible&nbsp;distance.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(getSceneManager()&nbsp;!=&nbsp;NULL)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query-&gt;visibleDistance&nbsp;=&nbsp;getSceneManager()-&gt;getVisibleDistance();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;Parent::onCameraScopeQuery(&nbsp;cr,&nbsp;query&nbsp;);&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">// Get the visible distance.
+	if (getSceneManager() != NULL)
+		query-&gt;visibleDistance = getSceneManager()-&gt;getVisibleDistance();
+
+   Parent::onCameraScopeQuery( cr, query );</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">//&nbsp;Get&nbsp;the&nbsp;visible&nbsp;distance.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(mVisibleDistance==0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(getSceneManager()&nbsp;!=&nbsp;NULL)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query-&gt;visibleDistance&nbsp;=&nbsp;getSceneManager()-&gt;getVisibleDistance_Ghost();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query-&gt;visibleDistance&nbsp;=&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;Parent::onCameraScopeQuery(&nbsp;cr,&nbsp;query&nbsp;);&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">// Get the visible distance.
+   if (mVisibleDistance==0)
+   {
+   if (getSceneManager() != NULL)
+		query-&gt;visibleDistance = getSceneManager()-&gt;getVisibleDistance_Ghost();
+   }
+   else
+   {
+	   query-&gt;visibleDistance = mVisibleDistance;
+   }
+
+
+   Parent::onCameraScopeQuery( cr, query );</pre><br>
+File	shapeBase.cpp<br>
+Line Location	894<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>mOneOverMass(&nbsp;1.0f&nbsp;),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;mMoveMotion(&nbsp;<span class="keyword">false</span><span>&nbsp;),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mIsAiControlled(&nbsp;<span class="keyword">false</span><span>&nbsp;)&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">mOneOverMass( 1.0f ),
+   mMoveMotion( false ),
+   mIsAiControlled( false )</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>mOneOverMass(&nbsp;1.0f&nbsp;),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;mMoveMotion(&nbsp;<span class="keyword">false</span><span>&nbsp;),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mIsAiControlled(&nbsp;<span class="keyword">false</span><span>&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;,mVisibleDistance(0)&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">mOneOverMass( 1.0f ),
+   mMoveMotion( false ),
+   mIsAiControlled( false )
+   //Winterleaf
+   ,mVisibleDistance(0)
+   //Winterleaf</pre><br>
+<br>
+File	shapeBase.cpp<br>
+Line Location	993<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>&nbsp;*ShapeBase::_getFieldSkin(&nbsp;</span><span class="keyword">void</span><span>&nbsp;*object,&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>&nbsp;*data&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ShapeBase*&nbsp;shape&nbsp;=&nbsp;<span class="keyword">static_cast</span><span>&lt;ShapeBase*&gt;(&nbsp;object&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;shape&nbsp;?&nbsp;shape-&gt;getSkinName()&nbsp;:&nbsp;</span><span class="string">""</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">const char *ShapeBase::_getFieldSkin( void *object, const char *data )
+{
+   ShapeBase* shape = static_cast&lt;ShapeBase*&gt;( object );
+   return shape ? shape-&gt;getSkinName() : "";
+}
+
+//----------------------------------------------------------------------------</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>&nbsp;*ShapeBase::_getFieldSkin(&nbsp;</span><span class="keyword">void</span><span>&nbsp;*object,&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>&nbsp;*data&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ShapeBase*&nbsp;shape&nbsp;=&nbsp;<span class="keyword">static_cast</span><span>&lt;ShapeBase*&gt;(&nbsp;object&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;shape&nbsp;?&nbsp;shape-&gt;getSkinName()&nbsp;:&nbsp;</span><span class="string">""</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">void</span><span>&nbsp;ShapeBase::setVisibleDistance(S32&nbsp;dist)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;mVisibleDistance=dist;&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>S32&nbsp;ShapeBase::getVisibleDistance()&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(mVisibleDistance==0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(getSceneManager()&nbsp;!=&nbsp;NULL)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;getSceneManager()-&gt;getVisibleDistance_Ghost();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;0;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;mVisibleDistance;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//Winterleaf</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">const char *ShapeBase::_getFieldSkin( void *object, const char *data )
+{
+   ShapeBase* shape = static_cast&lt;ShapeBase*&gt;( object );
+   return shape ? shape-&gt;getSkinName() : "";
+}
+
+//----------------------------------------------------------------------------
+//Winterleaf
+void ShapeBase::setVisibleDistance(S32 dist)
+{
+	mVisibleDistance=dist;
+}
+S32 ShapeBase::getVisibleDistance()
+{
+	if (mVisibleDistance==0)
+	{
+		if (getSceneManager() != NULL)
+			return getSceneManager()-&gt;getVisibleDistance_Ghost();
+		else
+			return 0;
+	}
+	else
+	return mVisibleDistance;
+}
+//Winterleaf</pre><br>
+File	shapeBase.cpp<br>
+Line Location	4891<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>DefineEngineMethod(&nbsp;ShapeBase,&nbsp;getSkinName,&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*,&nbsp;(),,&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@brief&nbsp;Get&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;skin&nbsp;applied&nbsp;to&nbsp;this&nbsp;shape.nn"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;skinnn"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;skinn"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;setSkinName()n"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;object-&gt;getSkinName();&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">DefineEngineMethod( ShapeBase, getSkinName, const char*, (),,
+   "@brief Get the name of the skin applied to this shape.nn"
+
+   "@return the name of the skinnn" 
+
+   "@see skinn"
+   "@see setSkinName()n")
+{
+   return object-&gt;getSkinName();
+}</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span>DefineEngineMethod(&nbsp;ShapeBase,&nbsp;getSkinName,&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">char</span><span>*,&nbsp;(),,&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@brief&nbsp;Get&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;skin&nbsp;applied&nbsp;to&nbsp;this&nbsp;shape.nn"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;skinnn"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;skinn"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;setSkinName()n"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;object-&gt;getSkinName();&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>DefineEngineMethod(&nbsp;ShapeBase,&nbsp;getVisibleDistance,&nbsp;S32,&nbsp;(),,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="string">"@brief&nbsp;Get&nbsp;the&nbsp;visible&nbsp;distance&nbsp;applied&nbsp;to&nbsp;this&nbsp;shape.nn"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="string">"@return&nbsp;the&nbsp;visible&nbsp;distancenn"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;n"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;n"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(object-&gt;getVisibleDistance());&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>DefineEngineMethod(&nbsp;ShapeBase,&nbsp;setVisibleDistance,&nbsp;<span class="keyword">void</span><span>,&nbsp;(S32&nbsp;dist),,&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@brief&nbsp;Get&nbsp;the&nbsp;visible&nbsp;distance&nbsp;applied&nbsp;to&nbsp;this&nbsp;shape.nn"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@return&nbsp;the&nbsp;visible&nbsp;distancenn"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;n"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="string">"@see&nbsp;n"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;object-&gt;setVisibleDistance(dist);&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="cpp">DefineEngineMethod( ShapeBase, getSkinName, const char*, (),,
+   "@brief Get the name of the skin applied to this shape.nn"
+
+   "@return the name of the skinnn" 
+
+   "@see skinn"
+   "@see setSkinName()n")
+{
+   return object-&gt;getSkinName();
+}
+
+DefineEngineMethod( ShapeBase, getVisibleDistance, S32, (),,
+   "@brief Get the visible distance applied to this shape.nn"
+
+   "@return the visible distancenn" 
+
+   "@see n"
+   "@see n")
+{
+
+		return (object-&gt;getVisibleDistance());
+}
+DefineEngineMethod( ShapeBase, setVisibleDistance, void, (S32 dist),,
+   "@brief Get the visible distance applied to this shape.nn"
+
+   "@return the visible distancenn" 
+
+   "@see n"
+   "@see n")
+{
+	object-&gt;setVisibleDistance(dist);
+}</pre><br>
+<br>
+<br>
+<br>
+<br>
+File	gameBase.h<br>
+Line Location	18<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="preprocessor">#ifndef&nbsp;_DYNAMIC_CONSOLETYPES_H_</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"console/dynamicTypes.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#endif</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">class</span><span>&nbsp;NetConnection;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">class</span><span>&nbsp;ProcessList;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">class</span><span>&nbsp;GameBase;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;Move;&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">#ifndef _DYNAMIC_CONSOLETYPES_H_
+#include "console/dynamicTypes.h"
+#endif
+
+class NetConnection;
+class ProcessList;
+class GameBase;
+struct Move;</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="preprocessor">#ifndef&nbsp;_DYNAMIC_CONSOLETYPES_H_</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"console/dynamicTypes.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#endif</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//Winterleaf&nbsp;Modificaition</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"scene/sceneManager.h"&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">class</span><span>&nbsp;NetConnection;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">class</span><span>&nbsp;ProcessList;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">class</span><span>&nbsp;GameBase;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;Move;&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">#ifndef _DYNAMIC_CONSOLETYPES_H_
+#include "console/dynamicTypes.h"
+#endif
+
+//Winterleaf Modificaition
+#include "scene/sceneManager.h"  
+//Winterleaf Modification
+
+class NetConnection;
+class ProcessList;
+class GameBase;
+struct Move;</pre><br>
+<br>
+<br>
+File	gameBase.cpp<br>
+Line Location	378<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">//&nbsp;Weight&nbsp;by&nbsp;field&nbsp;of&nbsp;view,&nbsp;objects&nbsp;directly&nbsp;in&nbsp;front</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;will&nbsp;be&nbsp;weighted&nbsp;1,&nbsp;objects&nbsp;behind&nbsp;will&nbsp;be&nbsp;0</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;F32&nbsp;dot&nbsp;=&nbsp;mDot(pos,camInfo-&gt;orientation);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;inFov&nbsp;=&nbsp;dot&nbsp;&gt;&nbsp;camInfo-&gt;cosFov;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;F32&nbsp;wFov&nbsp;=&nbsp;inFov?&nbsp;1.0f:&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Weight&nbsp;by&nbsp;linear&nbsp;velocity&nbsp;parallel&nbsp;to&nbsp;the&nbsp;viewing&nbsp;plane</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;(if&nbsp;it's&nbsp;the&nbsp;field&nbsp;of&nbsp;view,&nbsp;0&nbsp;if&nbsp;it's&nbsp;not).</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">// Weight by field of view, objects directly in front
+   // will be weighted 1, objects behind will be 0
+   F32 dot = mDot(pos,camInfo-&gt;orientation);
+   bool inFov = dot &gt; camInfo-&gt;cosFov;
+   F32 wFov = inFov? 1.0f: 0;
+
+   // Weight by linear velocity parallel to the viewing plane
+   // (if it's the field of view, 0 if it's not).</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="comment">//&nbsp;Weight&nbsp;by&nbsp;field&nbsp;of&nbsp;view,&nbsp;objects&nbsp;directly&nbsp;in&nbsp;front</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;will&nbsp;be&nbsp;weighted&nbsp;1,&nbsp;objects&nbsp;behind&nbsp;will&nbsp;be&nbsp;0</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;F32&nbsp;dot&nbsp;=&nbsp;mDot(pos,camInfo-&gt;orientation);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//bool&nbsp;inFov&nbsp;=&nbsp;dot&nbsp;&gt;&nbsp;camInfo-&gt;cosFov;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;inFov&nbsp;=&nbsp;dot&nbsp;&gt;&nbsp;(cos(&nbsp;&nbsp;(camInfo-&gt;fov&nbsp;+&nbsp;40)&nbsp;&gt;360?360:camInfo-&gt;fov&nbsp;+&nbsp;40)/2);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Winterleaf&nbsp;Modification</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;F32&nbsp;wFov&nbsp;=&nbsp;inFov?&nbsp;1.0f:&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Weight&nbsp;by&nbsp;linear&nbsp;velocity&nbsp;parallel&nbsp;to&nbsp;the&nbsp;viewing&nbsp;plane</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;(if&nbsp;it's&nbsp;the&nbsp;field&nbsp;of&nbsp;view,&nbsp;0&nbsp;if&nbsp;it's&nbsp;not).</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">// Weight by field of view, objects directly in front
+   // will be weighted 1, objects behind will be 0
+   F32 dot = mDot(pos,camInfo-&gt;orientation);
+   //Winterleaf Modification
+   //bool inFov = dot &gt; camInfo-&gt;cosFov;
+   bool inFov = dot &gt; (cos(  (camInfo-&gt;fov + 40) &gt;360?360:camInfo-&gt;fov + 40)/2);  
+   //Winterleaf Modification
+   F32 wFov = inFov? 1.0f: 0;
+
+   // Weight by linear velocity parallel to the viewing plane
+   // (if it's the field of view, 0 if it's not).</pre><br>
+File	Any Mission File<br>
+Line Location	<br>
+Original Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">new</span><span>&nbsp;LevelInfo(theLevelInfo)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nearClip&nbsp;=&nbsp;<span class="string">"0.1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visibleDistance&nbsp;=&nbsp;<span class="string">"1000"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalBias&nbsp;=&nbsp;<span class="string">"0.0015"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fogColor&nbsp;=&nbsp;<span class="string">"0.462745&nbsp;0.521569&nbsp;0.545098&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">new LevelInfo(theLevelInfo) {
+         nearClip = "0.1";
+         visibleDistance = "1000";
+         decalBias = "0.0015";
+         fogColor = "0.462745 0.521569 0.545098 1";</pre>New Code<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-cpp" start="1"><li class="alt"><span><span class="keyword">new</span><span>&nbsp;LevelInfo(theLevelInfo)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nearClip&nbsp;=&nbsp;<span class="string">"0.1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visibleDistance&nbsp;=&nbsp;<span class="string">"1000"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visibleDistance_Ghost&nbsp;=&nbsp;<span class="string">"100"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalBias&nbsp;=&nbsp;<span class="string">"0.0015"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fogColor&nbsp;=&nbsp;<span class="string">"0.462745&nbsp;0.521569&nbsp;0.545098&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="cpp">new LevelInfo(theLevelInfo) {
+         nearClip = "0.1";
+         visibleDistance = "1000";
+         visibleDistance_Ghost = "100";
+         decalBias = "0.0015";
+         fogColor = "0.462745 0.521569 0.545098 1";</pre></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/49324.jpg" alt="Vince Gee's profile picture">
+			<br>
+			<a rel="Vince Gee" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/49324" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Vince Gee<br>
+	<span class="studio-name">WinterLeaf Entertainment</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				www.winterleafentertainment.com			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22843">Omni Engine Update!  64 Bit plus other features.</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22791">Video of the Omni T3D Game Engine in action (Video included)</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22657">Ever Wonder what the inheritance tree is for T3D?</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22639">What are the people at WLE up to now?</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/22547">The Making of a Game Engine. (Part 1)</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21763"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/21740"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21756#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input name="notify-me" id="notify-me" onchange="GG.blogNotify(21756, 49324);" checked="checked" type="checkbox">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/33917.png" class="profilepic">
+			<br>
+			<a rel="Demolishun" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/33917" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Demolishun<br>
+	<span class="studio-name">DemolishunConsulting Rocks!</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21756/1#comment-185511" name="comment-185511">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">06/29/2012 (12:44 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This is cool.  Being able to dynamically adjust the range like in 
+your scope example is excellent.  You have a narrower field of view, but
+ you need to see further.  Nice work!		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="/community/resources/view/21756/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input name="Post Comment" value="Post Comment" type="submit">
+</div>
+<a href="#" onclick="$(this).closest('form').submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input class="relevantProductFilter" value="0" type="checkbox"> All Products<br>
+		<input class="relevantProductFilter" value="other" type="checkbox"> 3rd Party Addons<br>
+		<input class="relevantProductFilter" value="itorque2d" type="checkbox"> iTorque 2D<br>
+		<input class="relevantProductFilter" value="itorque3d" type="checkbox"> iTorque 3D<br>
+		<input class="relevantProductFilter" value="tge" type="checkbox"> TGE<br>
+		<input class="relevantProductFilter" value="tgea" type="checkbox"> TGEA<br>
+		<input class="relevantProductFilter" value="torque-2d" type="checkbox"> Torque 2D<br>
+		<input class="relevantProductFilter" value="torque3dpro" type="checkbox"> Torque 3D Pro<br>
+		<input class="relevantProductFilter" value="torquex" type="checkbox"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2014 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/ga.js" type="text/javascript"></script>
+	</div>
+<div id="supersecrethiddendiv"></div>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-78WdNPl8jvIsA"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-78WdNPl8jvIsA.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+<!-- Twitter JS -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-5.newrelic.com","licenseKey":"9591b99732","applicationID":"1014775","transactionName":"NlNSNUsCWEUABkdaCg8ZcQJNCllYTgFWVQQUWkROWgxbWxQLWkccTkBZBE4=","queueTime":0,"applicationTime":404,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-460.min.js"}</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div><script src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/nr-460.js"></script><script src="Improved%20Limiting%20ghosting%20_wo%20reducing%20ViewDistance%20_%20Vince%20Gee%20_%20Resources%20_%20Community%20_%20GarageGames.com_files/9591b99732" type="text/javascript"></script></body></html>

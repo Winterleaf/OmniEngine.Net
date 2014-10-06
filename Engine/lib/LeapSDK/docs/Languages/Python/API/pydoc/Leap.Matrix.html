@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.Matrix &mdash; Leap Motion 1.0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0.9 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0.9 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-matrix">
+<h1>Leap.Matrix<a class="headerlink" href="#leap-matrix" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.Matrix">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Matrix</tt><a class="headerlink" href="#Leap.Matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Matrix class represents a transformation matrix.</p>
+<p>To use this class to transform a Vector, construct a matrix containing the
+desired transformation and then use the <tt class="xref py py-meth docutils literal"><span class="pre">transformPoint()</span></tt> or
+<tt class="xref py py-meth docutils literal"><span class="pre">transformDirection()</span></tt> methods to apply the transform.</p>
+<p>Transforms can be combined by multiplying two or more transform matrices using
+the * operator.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+<div class="constructors container">
+<dl class="classmethod">
+<dt id="Leap.Matrix.Matrix">
+<em class="property">classmethod </em><tt class="descname">Matrix</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Matrix.Matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an identity transformation matrix.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><tt class="descname">Matrix</tt><big>(</big><em>other</em><big>)</big></dt>
+<dd><p>Constructs a copy of the specified Matrix object.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">other</span></tt> (<a class="reference internal" href="#Leap.Matrix" title="Leap.Matrix"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Matrix</span></tt></a>) &#8211; The matrix to copy.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><tt class="descname">Matrix</tt><big>(</big><em>xBasis</em>, <em>yBasis</em>, <em>zBasis</em><big>)</big></dt>
+<dd><p>Constructs a transformation matrix from the specified basis vectors.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">xBasis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211; A Vector specifying rotation and scale factors for the x-axis.</p>
+<p><tt class="docutils literal"><span class="pre">yBasis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying rotation and scale factors for the y-axis.</p>
+<p><tt class="docutils literal"><span class="pre">zBasis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying rotation and scale factors for the z-axis.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><tt class="descname">Matrix</tt><big>(</big><em>xBasis</em>, <em>yBasis</em>, <em>zBasis</em>, <em>origin</em><big>)</big></dt>
+<dd><p>Constructs a transformation matrix from the specified basis and translation vectors.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">xBasis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying rotation and scale factors for the x-axis.</p>
+<p><tt class="docutils literal"><span class="pre">yBasis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying rotation and scale factors for the y-axis.</p>
+<p><tt class="docutils literal"><span class="pre">zBasis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying rotation and scale factors for the z-axis.</p>
+<p><tt class="docutils literal"><span class="pre">origin</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying translation factors on all three axes.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><tt class="descname">Matrix</tt><big>(</big><em>axis</em>, <em>angleRadians</em><big>)</big></dt>
+<dd><p>Constructs a transformation matrix specifying a rotation around the specified vector.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">axis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying the axis of rotation.</p>
+<p><tt class="docutils literal"><span class="pre">angleRadians</span></tt> (float) &#8211; The amount of rotation in radians.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><tt class="descname">Matrix</tt><big>(</big><em>axis</em>, <em>angleRadians</em>, <em>translation</em><big>)</big></dt>
+<dd><p>Constructs a transformation matrix specifying a rotation around the specified vector
+and a translation by the specified vector.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">axis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying the axis of rotation.</p>
+<p><tt class="docutils literal"><span class="pre">angleRadians</span></tt> (float) &#8211; The angle of rotation in radians.</p>
+<p><tt class="docutils literal"><span class="pre">translation</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector representing the translation part of the transform.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="attributes container">
+<dl class="attribute">
+<dt>
+<tt class="descname">x_basis -&gt; Leap.Vector</tt></dt>
+<dd><p>The rotation and scale factors for the x-axis.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">y_basis -&gt; Leap.Vector</tt></dt>
+<dd><p>The rotation and scale factors for the y-axis.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">z_basis -&gt; Leap.Vector</tt></dt>
+<dd><p>The rotation and scale factors for the z-axis.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">origin -&gt; Leap.Vector</tt></dt>
+<dd><p>The translation factors for all three axes.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="methods container">
+<dl class="method">
+<dt id="Leap.Matrix.set_rotation">
+<tt class="descname">set_rotation</tt><big>(</big><em>axis</em>, <em>angleRadians</em><big>)</big><a class="headerlink" href="#Leap.Matrix.set_rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets this transformation matrix to represent a rotation around the specified vector.</p>
+<p>This function erases any previous rotation and scale transforms applied
+to this matrix, but does not affect translation.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">axis</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  A Vector specifying the axis of rotation.</p>
+<p><tt class="docutils literal"><span class="pre">angleRadians</span></tt> (float) &#8211; The amount of rotation in radians.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.transform_point">
+<tt class="descname">transform_point</tt><big>(</big><em>in</em><big>)</big> &rarr; Leap.Vector<a class="headerlink" href="#Leap.Matrix.transform_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a vector with this matrix by transforming its rotation,
+scale, and translation.</p>
+<p>Translation is applied after rotation and scale.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">in</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  The Vector to transform.</p>
+<p><strong>Returns</strong></p>
+<p><tt class="docutils literal"><span class="pre">Leap.Vector</span></tt> &#8211; A new Vector representing the transformed original.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.transform_direction">
+<tt class="descname">transform_direction</tt><big>(</big><em>in</em><big>)</big> &rarr; Leap.Vector<a class="headerlink" href="#Leap.Matrix.transform_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a vector with this matrix by transforming its rotation and
+scale only.</p>
+<p><strong>Arguments</strong></p>
+<p><tt class="docutils literal"><span class="pre">in</span></tt> (<a class="reference internal" href="Leap.Vector.html#Leap.Vector" title="Leap.Vector"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Vector</span></tt></a>) &#8211;  The Vector to transform.</p>
+<p><strong>Returns</strong></p>
+<p><tt class="docutils literal"><span class="pre">Leap.Vector</span></tt> &#8211; A new Vector representing the transformed original.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.rigid_inverse">
+<tt class="descname">rigid_inverse</tt><big>(</big><big>)</big> &rarr; Leap.Matrix<a class="headerlink" href="#Leap.Matrix.rigid_inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a matrix inverse if the matrix consists entirely of rigid
+transformations (translations and rotations).  If the matrix is not rigid,
+this operation will not represent an inverse.</p>
+<p>Note that all matricies that are directly returned by the API are rigid.</p>
+<p><strong>Returns</strong></p>
+<p><tt class="docutils literal"><span class="pre">Leap.Matrix</span></tt> &#8211; An inverted copy of this matrix.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.to_array_3x3">
+<tt class="descname">to_array_3x3</tt><big>(</big><big>)</big> &rarr; array<a class="headerlink" href="#Leap.Matrix.to_array_3x3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a 3x3 Matrix object to a 9-element, row-major, float array.</p>
+<p>Translation factors are discarded.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Leap.Matrix.to_array_4x4">
+<tt class="descname">to_array_4x4</tt><big>(</big><big>)</big> &rarr; array<a class="headerlink" href="#Leap.Matrix.to_array_4x4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a 4x4 Matrix object to a 16-element, row-major, float array.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="operators container">
+<dl class="function">
+<dt id="Leap.Matrix.mul">
+<tt class="descname">mul</tt><big>(</big><em>a</em>, <em>b</em><big>)</big> &rarr; Leap.Matrix<a class="headerlink" href="#Leap.Matrix.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply transform matrices.</p>
+<p>Combines two transformations into a single equivalent transformation.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Leap.Matrix.imul">
+<tt class="descname">imul</tt><big>(</big><em>a</em>, <em>b</em><big>)</big> &rarr; Leap.Matrix<a class="headerlink" href="#Leap.Matrix.imul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply transform matrices and assign the product.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Leap.Matrix.eq">
+<tt class="descname">eq</tt><big>(</big><em>a</em>, <em>b</em><big>)</big> &rarr; bool<a class="headerlink" href="#Leap.Matrix.eq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare Matrix equality component-wise.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Leap.Matrix.ne">
+<tt class="descname">ne</tt><big>(</big><em>a</em>, <em>b</em><big>)</big> &rarr; bool<a class="headerlink" href="#Leap.Matrix.ne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare Matrix inequality component-wise.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="data container">
+<dl class="data">
+<dt>
+<tt class="descname">Matrix.identity -&gt; Leap.Matrix</tt></dt>
+<dd><p>The identity matrix specifying no translation, rotation, and scale.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

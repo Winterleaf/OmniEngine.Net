@@ -1,0 +1,83 @@
+Leap.HandList
+=============
+
+.. currentmodule:: Leap
+
+.. class:: HandList
+
+  The HandList class represents a list of Hand objects.
+ 
+  Get a HandList object by calling :func:`Frame.hands()`.
+  
+  .. versionadded:: 1.0
+
+  .. container:: constructors
+  
+    .. classmethod:: HandList()
+
+      Constructs an empty list.
+    
+      .. versionadded:: 1.0
+
+
+  .. container:: attributes
+
+    .. attribute:: len -> int
+
+      The number of items in this list.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: is_empty -> bool
+
+      Reports whether the list is empty.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: frontmost -> Leap.Hand
+  
+      The item in this list with the smallest ``z`` coordinate.
+    
+      .. versionadded:: 1.0
+    
+    .. attribute:: leftmost -> Leap.Hand
+  
+      The item in this list with the smallest ``x`` coordinate.
+
+      .. versionadded:: 1.0
+    
+    .. attribute:: rightmost -> Leap.Hand
+  
+      The item in this list with the largest ``x`` coordinate.
+
+      .. versionadded:: 1.0
+    
+
+  .. container:: methods
+  
+    .. method:: append(other)
+  
+      Appends the members of the specifed HandList to this HandList.
+
+      **Arguments**
+     
+      ``other`` (:class:`Leap.HandList`) -- A HandList object containing Hand objects
+      to append to the end of this HandList.
+    
+      .. versionadded:: 1.0
+
+    .. method:: next() -> Leap.Hand
+  
+      Provides the next item in the list.
+    
+      .. versionadded:: 1.0
+  
+  
+  .. container:: operators
+    
+    .. method::  getitem(object, index) -> Leap.Device
+
+      Access a list member by its position in the list.
+
+      .. versionadded:: 1.0
+

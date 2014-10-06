@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Leap.CircleGesture &mdash; Leap Motion 1.0.8 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/leap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/breathe.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Leap Motion 1.0.8 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Leap Motion 1.0.8 documentation</a></div>
+        <div class="rel">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="leap-circlegesture">
+<h1>Leap.CircleGesture<a class="headerlink" href="#leap-circlegesture" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Leap.CircleGesture">
+<em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">CircleGesture</tt><a class="headerlink" href="#Leap.CircleGesture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends <a class="reference internal" href="../pydoc/Leap.Gesture.html#Leap.Gesture" title="Leap.Gesture"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Gesture</span></tt></a>.</p>
+<p>The CircleGesture classes represents a circular finger movement.</p>
+<p>A circle movement is recognized when the tip of a finger draws a circle
+within the Leap Motion Controller field of view.</p>
+<img alt="../_images/Leap_Gesture_Circle1.png" src="../_images/Leap_Gesture_Circle1.png" />
+<p>Important: To use circle gestures in your application, you must enable
+recognition of the circle gesture. You can enable recognition with:</p>
+<div class="highlight-python"><div class="highlight"><pre>        <span class="n">controller</span><span class="o">.</span><span class="n">enable_gesture</span><span class="p">(</span><span class="n">Leap</span><span class="o">.</span><span class="n">Gesture</span><span class="o">.</span><span class="n">TYPE_CIRCLE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Circle gestures are continuous. The CircleGesture objects for the gesture have
+three possible states:</p>
+<ul class="simple">
+<li>STATE_START &#8211; The circle gesture has just started. The movement has
+progressed far enough for the recognizer to classify it as a circle.</li>
+<li>STATE_UPDATE &#8211; The circle gesture is continuing.</li>
+<li>STATE_STOP &#8211; The circle gesture is finished.</li>
+</ul>
+<p>You can set the minimum radius and minimum arc length required for a movement
+to be recognized as a circle using the config attribute of a connected
+Controller object. Use the following keys to configure circle recognition:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="18%" />
+<col width="24%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key string</th>
+<th class="head">Value type</th>
+<th class="head">Default value</th>
+<th class="head">Units</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Gesture.Circle.MinRadius</td>
+<td>float</td>
+<td>5.0</td>
+<td>mm</td>
+</tr>
+<tr class="row-odd"><td>Gesture.Circle.MinArc</td>
+<td>float</td>
+<td>1.5 * p</td>
+<td>radians</td>
+</tr>
+</tbody>
+</table>
+<p>The following example demonstrates how to set the circle configuration
+parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre>        <span class="k">if</span><span class="p">(</span><span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_float</span><span class="p">(</span><span class="s">&quot;Gesture.Circle.MinRadius&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span> 
+           <span class="ow">and</span> <span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_float</span><span class="p">(</span><span class="s">&quot;Gesture.Circle.MinArc&quot;</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)):</span>
+            <span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+<div class="constructors container">
+<dl class="classmethod">
+<dt id="Leap.CircleGesture.CircleGesture">
+<em class="property">classmethod </em><tt class="descname">CircleGesture</tt><big>(</big><span class="optional">[</span><em>gesture</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#Leap.CircleGesture.CircleGesture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a CircleGesture object from an instance of the Gesture class.</p>
+<p><strong>Arguments</strong></p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">gesture</span></tt> (<a class="reference internal" href="../pydoc/Leap.Gesture.html#Leap.Gesture" title="Leap.Gesture"><tt class="xref py py-class docutils literal"><span class="pre">Leap.Gesture</span></tt></a>) &#8211; The Gesture instance to specialize. This Gesture instance must</dt>
+<dd>be a CircleGesture object. If no argument is supplied, an invalid CircleGesture object is created.</dd>
+</dl>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="attributes container">
+<dl class="attribute">
+<dt>
+<tt class="descname">center -&gt; Leap.Vector</tt></dt>
+<dd><p>The center point of the circle within the Leap Motion frame of reference.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">normal -&gt; Leap.Vector</tt></dt>
+<dd><p>The normal vector for the circle being traced.</p>
+<p>If you draw the circle clockwise, the normal vector points in the same
+general direction as the pointable object drawing the circle. If you draw
+the circle counterclockwise, the normal points back toward the
+pointable. If the angle between the normal and the pointable object
+drawing the circle is less than 90 degrees, then the circle is clockwise.</p>
+<div class="highlight-python"><div class="highlight"><pre>        <span class="k">if</span> <span class="p">(</span><span class="n">circle</span><span class="o">.</span><span class="n">pointable</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">angle_to</span><span class="p">(</span><span class="n">circle</span><span class="o">.</span><span class="n">normal</span> <span class="o">&lt;=</span> <span class="n">Leap</span><span class="o">.</span><span class="n">PI</span><span class="o">/</span><span class="mi">2</span><span class="p">)):</span>
+            <span class="n">clockwiseness</span> <span class="o">=</span> <span class="s">&quot;clockwise&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">clockwiseness</span> <span class="o">=</span> <span class="s">&quot;counterclockwise&quot;</span>
+</pre></div>
+</div>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">progress -&gt; float</tt></dt>
+<dd><p>The number of times the finger tip has traversed the circle.</p>
+<p>Progress is reported as a positive number of the number. For example,
+a progress value of .5 indicates that the finger has gone halfway
+around, while a value of 3 indicates that the finger has gone around
+the the circle three times.</p>
+<p>Progress starts where the circle gesture began. Since the circle
+must be partially formed before the Leap Motion software can recognize it, progress
+will be greater than zero when a circle gesture first appears in the
+frame.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">radius -&gt; float</tt></dt>
+<dd><p>The radius of the circle.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">pointable -&gt; Leap.Pointable</tt></dt>
+<dd><p>The finger performing the circle gesture.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+<div class="data container">
+<dl class="data">
+<dt>
+<tt class="descname">class_type -&gt; int</tt></dt>
+<dd><p>The circle gesture type designator: <tt class="xref py py-data docutils literal"><span class="pre">Gesture.TYPE_CIRCLE</span></tt></p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.0.</span></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright 2013, Leap Motion.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

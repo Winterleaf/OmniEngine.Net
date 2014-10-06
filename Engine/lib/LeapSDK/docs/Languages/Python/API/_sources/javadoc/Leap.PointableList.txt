@@ -1,0 +1,85 @@
+Leap.PointableList
+==================
+
+.. currentmodule:: Leap
+
+.. class:: PointableList
+
+  The PointableList class represents a list of Pointable objects.
+ 
+  Get a PointableList object by calling :func:`Frame.pointables()` or
+  :func:`Hand.pointables()`.
+  
+  .. versionadded:: 1.0
+
+
+  .. container:: constructors
+  
+    .. classmethod:: PointableList()
+
+      Constructs an empty list.
+    
+      .. versionadded:: 1.0
+
+
+.. container:: attributes
+
+    .. attribute:: len -> int
+
+      The number of items in this list.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: is_empty -> bool
+
+      Reports whether the list is empty.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: frontmost -> Leap.Pointable
+  
+      The item in this list with the smallest ``z`` coordinate.
+    
+      .. versionadded:: 1.0
+    
+    .. attribute:: leftmost -> Leap.Pointable
+  
+      The item in this list with the smallest ``x`` coordinate.
+
+      .. versionadded:: 1.0
+    
+    .. attribute:: rightmost -> Leap.Pointable
+  
+      The item in this list with the largest ``x`` coordinate.
+
+      .. versionadded:: 1.0
+    
+    
+  .. container:: methods
+  
+    .. method:: append(other)
+  
+      Appends the members of the specifed PointableList to this PointableList.
+
+      **Arguments**
+     
+      ``other`` (:class:`Leap.PointableList`) -- A PointableList object containing Pointable objects
+      to append to the end of this PointableList.
+    
+      .. versionadded:: 1.0
+
+    .. method:: next() -> Leap.Pointable
+  
+      Provides the next item in the list.
+    
+      .. versionadded:: 1.0
+    
+    
+  .. container:: operators
+  
+    .. method::  getitem(object, index) -> Leap.Device
+
+      Access a list member by its position in the list.
+
+      .. versionadded:: 1.0
+

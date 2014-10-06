@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Tutorials | Walkabout</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div class="container"><div class="row">
+	<a href="WalkaboutDocumentation.html"><img src="images/walkabout.png" class="banner" /></a>
+	<p class="title">TUTORIALS</p>
+	<p>Please note that all these tutorials assume you have already <a href="WalkaboutInstallationGuide.html">installed <strong>Walkabout</strong></a>,
+	and are working with a project based on the <strong>Full Template</strong>.</p>
+	<ol>
+		<li><a href="#basics">The Basics</a></li>
+		<li><a href="#breakables">Creating Breakable Objects</a></li>
+		<li><a href="#UAISK">UAISK integration</a></li>
+	</ol>
+
+  <br />
+  <hr />
+
+	<h1 id="basics">1. The Basics</h1>
+	<p>This tutorial will take you through the very basics of using <strong>Walkabout.</strong>
+	You'll learn how to add a NavMesh to a mission, build it, and test it with some AIPlayers.
+	It goes hand-in-hand with <a href="http://www.youtube.com/watch?v=V5bKGLCmQLI">this video tutorial</a>.</p>
+
+	<ol class="toc">
+		<li><a href="#basics-newmission">Creating a new mission</a></li>
+		<li><a href="#basics-navmesh">Creating a NavMesh</a></li>
+		<li><a href="#basics-buildmesh">Building the NavMesh</a></li>
+		<li><a href="#basics-testing">Testing the NavMesh</a></li>
+	</ol>
+
+	<h2 id="basics-newmission">Creating a new mission</h2>
+	<p>When you run Torque3D, you will be presented with the main menu.
+	Instead of opening an existing level, we'll create a new one by pressing F11 and selecting 'Blank Room' as the template.</p>
+	<img src="images/basics/newmission.jpg" alt="Choosing a template for the new mission." />
+	<p>When the new mission has loaded, the World Editor should open up straight away.
+	Hit F5 (or select the orange cube in the editor mode strip) to enter the Skech tool.
+	We'll use the Sketch tool to create some random geometry for our characters to navigate.
+	Hold the Alt key, click and drag your mouse to create a shape on the ground, then move the mouse vertically to give it height.
+	Try making some large obstacles, and maybe even a ramp up onto one of them, like so:</p>
+	<img src="images/basics/convex.jpg" alt="Some convex meshes with a ramp." />
+
+	<h2 id="basics-navmesh">Creating a NavMesh</h2>
+	<p>Let's create our first NavMesh!
+	Open the NavEditor by selecting the <strong>Walkabout</strong> logo from the editor mode strip.
+	Since there is no NavMesh in your mission already, you'll be prompted to create one.
+	Check the box marked 'fit NavMesh to mission area' (as below) and hit 'Create'.</p>
+	<img src="images/basics/dialog.jpg." alt="Using the NavMesh creation dialog." />
+	<p>The 'fit to mission' checkbox automatically scales the NavMesh to the size of the objects in your mission, (not including Terrains).</p>
+
+	<h2 id="basics-buildmesh">Building the NavMesh</h2>
+	<p>When the NavMesh is created, you will be put into the Nav editor's <i>inspect mode</i>.
+	Here you can tweak the settings of your NavMesh, which you can see selected in the tree view to the right.
+	You can see the NavMesh represented as a blue box around your Convex geometry, but there's no actual mesh yet - let's make one now!
+	On the right, find the 'build NavMesh' button and press it. You should see your NavMesh turn red as tiles are added to it.
+	Once it's finished building, it will turn blue again, and you should have something like this:</p>
+	<img src="images/basics/navmesh.jpg" alt="The built NavMesh." />
+
+	<h2 id="basics-testing">Testing the NavMesh</h2>
+	<p>Now we're ready to test the NavMesh we just created!
+	To go into <i>test mode</i>, select the small person icon on the left, or press 5.
+	To spawn a new AIPlayer, hold Ctrl and click somewhere on the level, or aim your camera at the location you want and hit the 'spawn' button on the right.
+	The character you've just created will be selected - move it around by clicking somewhere in the level, and watch as your character finds a path.</p>
+	<img src="images/basics/test.jpg" alt="A character pathfinding on the new NavMesh." />
+	<p>Congratulations! You've created and tested your first NavMesh!</p>
+
+	<br />
+	<hr />
+
+	<h1 id="breakables">2. Creating Breakable Objects</h1>
+	<p>This tutorial will show you how to use <strong>Walkabout</strong>'s scripting interface to create breakable objects that automatically update the NavMesh when destroyed.
+	This tutorial assumes your peoject is based on the Full template.
+	If your project is based on the Empty template, you will need to provide your own art, as well as script hooks like <span class="code">onDamage</span>.</p>
+
+	<ol class="toc">
+		<li><a href="#breakables-loadmission">Loading the example mission</a></li>
+		<li><a href="#breakables-datablock">Creating a new datablock</a></li>
+		<li><a href="#breakables-script">Creating a new script</a></li>
+		<li><a href="#breakables-destroy">Making the shape destroyable</a></li>
+		<li><a href="#breakables-update">Making the shape update the NavMesh</a></li>
+		<li><a href="#breakables-test">Testing</a></li>
+	</ol>
+
+	<h2 id="breakables-loadmission">Loading the example mission</h2>
+	<p>For this tutorial, I'll work in the NavTest example mission.
+	If you want to add links to one of your own missions that already has a NavMesh, then go ahead and use that one instead.
+	If you can't see the 'Navtest' mission when you start Torque 3D and open the mission select dialog, you can find it in
+	<span class="path">Walkabout R1/game/levels/navtest.mis</span> and copy it to your own <span class="path">game/levels</span> directory.</p>
+	<p>When you're in the mission, hit F11 to open the World editor.</p>
+
+	<h2 id="breakables-datablock">Creating a new datablock</h2>
+	<p>The first thing we need to do is create a new datablock for our destroyable shape.
+	Open the datablock editor by pressing F6 or selecting the icon from the World editor ribbon.
+	Create a new datablock by double-clicking <span class="code">StaticShapeData</span> from the 'new' tab and name it something sensible:</p>
+	<img src="images/breakables/newdb.jpg" alt="Creating a new named datablock." />
+	<p>In the datablock properties window below, find the <span class="code">shapeFile</span> field and give the new datablock a shape.
+	I selected <span class="path">art/shapes/rocks/rock1.dts</span>, but any shape with a collision mesh will work fine.
+	In addition, set the <span class="code">category</span> property to <span class="code">Rocks</span> so that we will be able to find the datablock in the World editor.
+	Don't forget to save the datablock when you've changed its properties!</p>
+	<p>Go ahead and add a new shape with this datablock to the mission from the World editor.
+	Open the Woeld editor by hitting F1 or selecting it from the ribbon, then open the 'Library' tab on the right, select 'Scripted' and find the 'Rocks' folder.
+	Double click on the name of the datablock you just created.</p>
+	<img src="images/breakables/newshape.jpg" alt="The Rocks folder where our new datablock lives." />
+
+	<h2 id="breakables-script">Creating a new script</h2>
+	<p>To give our new rock some interesting behaviour, we need to create a new script file with some additional logic.
+	Script files for logic usually live in <span class="path">scripts/server/*.cs</span>, whereas scripts with datablock definitions are in <span class="path">art/datablocks/*.cs</span>.
+	In this case, we'll create a new script file in <span class="path">scripts/server</span> called <span class="path">breakableRock.cs</span>.
+	Make sure you name your new file with a .cs extension!</p>
+	<p>Once you've created your new script file, you need to make sure that the engine knows to execute it when you load a level.
+	There's a file called <span class="path">scripts/server/scriptExec.cs</span> which is responsible for loading up all the scripts a game needs.
+	Open it up, and add a line at the end:</p>
+<pre><code>exec("./breakableRock.cs");
+</code></pre>
+	<p>This lets Torque know to execute the new script file when it loads a level.</p>
+
+	<h2 id="breakables-script">Making the shape destroyable</h2>
+	<p>Now that we have a new script file for our rock, we need to add logic to make the rock take damage and eventually be destroyed.
+	(Note: Michael Hall has written an extensive <a href="http://www.garagegames.com/community/blog/view/21709/2">series of resources</a> about destroyable objects.
+	You might want to give those a try, if you actually want nice destroyable objects!
+	I'll only show you enough here to makethe very basics work.)</p>
+	<p>In the <span class="path">server/scripts/breakableRock.cs</span> file, add the following code:
+<pre><code>function BreakableRock::damage(%this, %obj, %position, %source, %amount, %damageType)
+{
+   // Apply the damage to the object.
+   %obj.applyDamage(%amount);
+   // If the object has taken full damage, delete it!
+   if(%obj.getDamageLevel() >= 1)
+      %obj.delete();
+   // Call the parent function in case it needs to do anything
+   Parent::damage(%this, %obj, %position, %source, %amount, %damageType);
+}
+</code></pre>
+	<p>In default scripts, when a weapon does damage to an object, it calls that object's datablock's damage function.
+	Here we define a very simple damage function that just deletes the object when its damageLevel increases to 1 or above.
+	Note that unless you change the rock datablock's <span class="code">maxDamage</span> property, you'll be able to destroy the rock in a single shot.
+	Not bad for testing!</p>
+
+	<h2 id="breakables-destroy">Making the shape update the NavMesh</h2>
+	<p>Now, we want the rock to update the level's NavMesh when it is destroyed.
+	We can do this in a <i>callback</i>, a function that the engine calls automatically when certain events happen.
+	In this case, we'll use the <span class="code">onRemove</span> callback.
+	Add the following code to <span class="path">breakableRock.cs</span>:</p>
+<pre><code>function BreakableRock::onRemove(%this, %obj)
+{
+   // Notify all NavMeshes that this object will be deleted
+   WalkaboutUpdateAll(%obj, true);
+   // Call the parent function in case it needs to do anything
+   Parent::onRemove(%this, %obj);
+}
+</code></pre>
+	<p>We just used the <span class="code">WalkaboutUpdateAll</span> function which is build into <strong>Walkabout</strong>.
+	It updates all NavMeshes, notifying them that an object is to be added or removed (the meaning of the second parameter).</p>
+	<p>Notice how in both of the functions we just wrote, <span class="code">%obj</span> refers to the rock shape itself.
+	<span class="code">%this</span> refers to the datablock, <span class="code">BreakableRock</span>.</p>
+
+	<h2 id="breakables-test">Testing</h2>
+	<p>Now that our scripts are complete, reload the level, place a few BreakableRocks, rebuild the NavMesh, and shoot them!
+	The NavMesh should automatically update to account for the missing geometry.
+	<a href="http://youtu.be/SOw8ZAwyCzg">This video</a> shows the desired outcome.</p>
+
+	<br />
+	<hr />
+
+	<h1 id="UAISK">3. UAISK integration</h1>
+
+	<p><strong>Walkabout</strong> is a navigation solution, but chances are you want your characters to do more than go where you tell them without running into stuff!
+	The <a href="http://www.garagegames.com/products/ai-starter-kit">Universal AI Starter Kit</a> is one of the premier addons providing AI for Torque 3D.
+	This section will describe how to modify the UAISK to make full use of <strong>Walkabout</strong>'s navmeshes.</p>
+
+	<p>First, we'll add some global variables that control how <strong>Walkabout</strong> behaves as part of the UAISK.
+	In <span class="path">game/scripts/server/UAISK/aiGlobals.cs</span>, add the following to the bottom of the file:</p>
+
+<pre><code>//----------------------------------------------------------------
+//The values below are Walkabout-specific
+
+// Allow behaviors to make use of Walkabout navmeshes.
+$AISK_WALKABOUT_ENABLE = true;
+
+// Distance that characters should search for cover.
+$AISK_WALKABOUT_COVER_RADIUS = 20;
+</code></pre>
+
+	<p>Next, let's make moving AI units actually use our new pathfinding!
+	The UAISK routes most of its movement through the AIPlayer::movementPositionFilter function.
+	We're going to hijack part of this function to use <strong>Walkabout</strong> instead of the standard movement algorithm.
+	In <span class="path">game/scripts/server/UAISK/aiMovement.cs</span>, replace this block:</p>
+
+<pre><code>    //Do a simple test to see if the bot can go directly to its target destination,
+    //or if it needs to do something fancy to go around an obstacle
+    if (%this.checkMovementLos(%obj, %eyeTrans, %this.moveDestinationB) == 0)
+        %obj.setmovedestination(%this.moveDestinationB);
+</code></pre>
+
+	<p>With:</p>
+
+<pre><code>    if($AISK_WALKABOUT_ENABLE && %this.behavior.useWalkabout && isObject(%this.getNavMesh()))
+        // Use Walkabout pathfinding.
+        %this.setPathDestination(%this.moveDestinationB);
+    //Do a simple test to see if the bot can go directly to its target destination,
+    //or if it needs to do something fancy to go around an obstacle
+    else if (%this.checkMovementLos(%obj, %eyeTrans, %this.moveDestinationB) == 0)
+        %obj.setmovedestination(%this.moveDestinationB);
+</code></pre>
+
+	<p>Notice that you can specify which behaviours use <strong>Walkabout</strong> by setting the useWalkabout property.</p>
+
+	<p>Now, we'll add a bit of spice: allowing AIPlayers that have been damaged to take cover.
+	The Armor::damage function is called when AIPlayers are damaged.
+	Currently, the UAISK uses this callback to do things like maki aggressive AIs respond to being shot at.
+	In <span class="path">game/scripts/server/player.cs</span>, replace the following block:</p>
+
+<pre><code>        //Move a little when hit, aggressive bots move in the "Defending" state
+        if (!%obj.behavior.isAggressive)
+            %obj.sidestep(%obj, true);
+</code></pre>
+
+	<p>With:</p>
+
+<pre><code>        //Move a little when hit, aggressive bots move in the "Defending" state
+        if (!%obj.behavior.isAggressive)
+        {
+            if($AISK_WALKABOUT_ENABLE && %this.behavior.useWalkabout && %this.behavior.useCover && isObject(%this.getNavMesh()))
+            {
+                // Try to take cover. If that fails, just sidestep!
+                if(!%this.findCover(%sourceObject.getPosition(), $AISK_WALKABOUT_COVER_RADIUS))
+                    %this.sidestep(%this, true);
+            }
+            else
+                %obj.sidestep(%obj, true);
+        }
+</code></pre>
+
+	<p>Next, we'll modify bots' pathed movement.
+	We're going to make bots find a <strong>Walkabout</strong> path between each UAISK path node they travel through.
+	This will allow you to use paths as 'waypoints', instead of having to place a path node at every corner.
+	For example, you could put one path node inside a building, the next up a hill, and the final one on a bridge, and bots will find proper paths between these points.
+	If your level geometry changes or you decide to move your path nodes around, the bots will still find correct paths!</p>
+
+	<p>In <span class="path">game/scripts/server/UAISK/aiPathed.cs</span>, replace this:</p>
+
+<pre><code>    //The 0 at the end sets if the bot should slow down or not, you can change it if needed
+    %obj.setMoveDestination(%node.getPosition(), 0);
+</code></pre>
+
+	<p>With:</p>
+
+<pre><code>    if($AISK_WALKABOUT_ENABLE && %this.behavior.useWalkabout && isObject(%this.getNavMesh()))
+        %this.setPathDestination(%node.getPosition());
+    else
+        //The 0 at the end sets if the bot should slow down or not, you can change it if needed
+        %obj.setMoveDestination(%node.getPosition(), 0);
+</code></pre>
+
+	<p>Finally, we need to set the useWalkabout and useCover properties on behaviours that you want to use pathfinding.
+	The behaviours are in <span class="path">game/scripts/server/UAISK/aiBehavoirs.cs</span>.
+	I recommend setting useWalkabout to true for the Chase behaviour, and useWalkabout and useCover to true for the KillableNPC behaviour.</p>
+	<p>All done! Now, if you start up your game using the UAISK, you should see your characters using navmeshes and taking cover.</p>
+  </div></div>
+</body>
+</html>

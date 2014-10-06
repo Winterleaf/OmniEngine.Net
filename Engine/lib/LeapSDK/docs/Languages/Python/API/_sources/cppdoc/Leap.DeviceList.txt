@@ -1,0 +1,65 @@
+Leap.DeviceList
+===============
+
+.. currentmodule:: Leap
+
+.. class:: DeviceList
+
+  The DeviceList class represents a list of Device objects.
+ 
+  Get a DeviceList object by calling :func:`Controller.devices()`.
+  
+  .. versionadded:: 1.0
+
+
+  .. container:: constructors
+
+    .. classmethod:: DeviceList()
+
+      Constructs an empty list of devices.
+    
+      .. versionadded:: 1.0
+
+
+  .. container:: attributes
+  
+    .. attribute:: len -> int
+
+      The number of items in this list.
+
+      .. versionadded:: 1.0
+
+    .. attribute:: is_empty -> bool
+
+      Reports whether the list is empty.
+
+      .. versionadded:: 1.0
+
+  
+  .. container:: methods
+
+    .. method:: append(other)
+  
+      Appends the members of the specifed DeviceList to this DeviceList.
+
+      **Arguments**
+     
+      ``other`` (:class:`Leap.DeviceList`) -- A DeviceList object containing Device objects
+      to append to the end of this DeviceList.
+    
+      .. versionadded:: 1.0
+
+    .. method:: next() -> Leap.Device
+  
+      Provides the next item in the list.
+    
+      .. versionadded:: 1.0
+    
+    
+  .. container:: operators
+
+    .. method::  getitem(object, index) -> Leap.Device
+
+      Access a list member by its position in the list.
+
+      .. versionadded:: 1.0
