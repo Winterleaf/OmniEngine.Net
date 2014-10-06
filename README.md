@@ -93,9 +93,9 @@ Redistribution and use in source and binary forms, with or without modification,
     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
     With respect to any Product that the Licensee develop using the Software:
     Licensee shall:
-        display the WinterLeaf Entertainment Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+        display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
-        display the WinterLeaf Entertainment Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+        display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
     Neither the name of WinterLeaf Entertainment LLC nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
