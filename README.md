@@ -8,11 +8,13 @@ User Manual is located in "OMNI Programmers Manual.docx"
 Patches
 =======
 10/1/2014
+---------
 
 Sahara for Torque 3D MIT 3.5.1 (http://www.garagegames.com/community/resources/view/22781)
 Created Sample Full TorqueScript Example
 
 9/28/2014
+---------
 Added pre-Loading of all Lod's for all models active in the game world on first render (ShapeBase)
 
 Added pre-Loading of all Lod's for all models active in the game world on first render (tsStatic)
@@ -22,6 +24,7 @@ Removed Support for images of Type GFXFormatB8G8R8A8,
 Removed Support for images of Type GFXFormatD15S1,
 
 9/27/2014
+---------
 
 Improved Fonts
 
