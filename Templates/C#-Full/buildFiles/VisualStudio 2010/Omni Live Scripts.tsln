@@ -4,15 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Demo.LiveScripts", "..\..\game\csScripts\Winterleaf.Demo.LiveScripts.csproj", "{D223E980-DD64-499A-A618-9F7A9BE9244F}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://hqapp02:8080/tfs/wintereleaf%20entertainment%20l.l.c.%20omni
-		SccProjectUniqueName0 = ..\\..\\game\\csScripts\\Winterleaf.Demo.LiveScripts.csproj
-		SccProjectName0 = ../../game/csScripts
-		SccLocalPath0 = ..\\..\\game\\csScripts
-		SccLocalPath1 = .
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
