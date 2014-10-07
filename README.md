@@ -92,20 +92,38 @@ BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edi
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
 With respect to any Product that the Licensee develop using the Software:
+
 Licensee shall:
+
 display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+
 display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+
 display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+
 notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
-the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+
+the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the
+
+Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+
 Neither the name of WinterLeaf Entertainment LLC nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
 The following restrictions apply to the use of OMNI "Community Edition":
 Licensee may not:
+
 create any derivative works of OMNI T3D Game Engine, including but not limited to translations, localizations, or game making software other than Games;
+
 redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+
 remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI T3D Game Engine; or
+
 use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+
 use the Software for any illegal purpose.
+
 THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
