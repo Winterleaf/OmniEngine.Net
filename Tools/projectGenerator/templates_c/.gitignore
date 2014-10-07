@@ -1,4 +1,5 @@
 #############
 ## Torque
 #############
-templates_c/
+*.php
+.php
