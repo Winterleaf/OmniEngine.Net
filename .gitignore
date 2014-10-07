@@ -39,7 +39,7 @@ local.properties
 # User-specific files
 *.suo
 *.user
-\!*Models.User*
+!Models.User/
 *.sln.docstates
 
 # Build results
