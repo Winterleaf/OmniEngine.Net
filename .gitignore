@@ -39,7 +39,6 @@ local.properties
 # User-specific files
 *.suo
 *.user
-!Models.User/
 *.sln.docstates
 
 # Build results
@@ -170,5 +169,7 @@ pip-log.txt
 console.log
 *.cached.dts
 !Engine/bin
-My Projects/
+
+*.debug.*
+*.release.*
 
