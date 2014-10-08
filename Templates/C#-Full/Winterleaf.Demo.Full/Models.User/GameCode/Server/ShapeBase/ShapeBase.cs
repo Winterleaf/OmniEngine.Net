@@ -1,0 +1,428 @@
+﻿#region
+
+using System;
+using WinterLeaf.Demo.Full.Models.User.CustomObjects;
+using WinterLeaf.Demo.Full.Models.User.CustomObjects.Utilities;
+using WinterLeaf.Engine.Classes;
+using WinterLeaf.Engine.Classes.Decorations;
+using WinterLeaf.Engine.Classes.Extensions;
+using WinterLeaf.Engine.Containers;
+using WinterLeaf.Engine.Classes.Interopt;
+
+#endregion
+
+namespace WinterLeaf.Demo.Full.Models.User.Extendable
+    {
+    /// <summary>
+    /// 
+    /// </summary>
+    public partial class ShapeBase
+        {
+        private static pInvokes tst = new pInvokes();
+
+        public override bool OnFunctionNotFoundCallTorqueScript()
+            {
+            return false;
+            }
+
+        //todo this does not need to be exposed to T3D in the end.
+
+        [ConsoleInteraction(true)]
+        public virtual void damage(GameBase sourceobject, Point3F position, float damage, string damagetype)
+            {
+            if (!isObject())
+                return;
+            ShapeBaseData datablock = getDataBlock();
+            datablock.damage(this, position, sourceobject, damage, damagetype);
+            }
+
+        //todo this does not need to be exposed to T3D in the end.
+        [ConsoleInteraction(true)]
+        public virtual void setDamageDT(float damageAmount, string damageType)
+            {
+            // This function is used to apply damage over time.  The damage is applied
+            // at a fixed rate (50 ms).  Damage could be applied over time using the
+            // built in ShapBase C++ repair functions (using a neg. repair), but this
+            // has the advantage of going through the normal script channels.
+
+            if (getDamageState() != "Dead")
+                {
+                damage(0, new Point3F("0 0 0"), damageAmount, damageType);
+                this["damageSchedule"] = schedule("50", "setDamageDt", damageAmount.AsString(), damageType).AsString();
+                }
+            else
+                {
+                this["damageSchedule"] = string.Empty;
+                }
+            }
+
+        //todo this does not need to be exposed to T3D in the end.
+        [ConsoleInteraction(true)]
+        public virtual void clearDamageDt()
+            {
+            //I could think of soo much better ways of doing this... even if my grammar blows.
+
+            if (this["damageSchedule"] == string.Empty)
+                return;
+
+            new pInvokes().Util.cancel(this["damageSchedule"].AsInt());
+            this["damageSchedule"] = string.Empty;
+            }
+
+        [ConsoleInteraction(true)]
+        public static void serverCmdUse(GameConnection client, ItemData data)
+            {
+            if (((Player) client.getControlObject()).isObject())
+                ((Player) client.getControlObject()).Use(data);
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual int incInventory(ItemData datablock, int amount)
+            {
+            int maxamount = maxInventory(datablock);
+
+            int total = this["inv[" + datablock.getName() + "]"].AsInt();
+
+            if (total < maxamount)
+                {
+                if (total + amount > maxamount)
+                    {
+                    amount = (maxamount - total);
+                    }
+                setInventory(datablock, (total + amount));
+                return amount;
+                }
+            return 0;
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual int decInventory(ItemData data, int amount = 0)
+            {
+            int total = this["inv[" + data.getName() + "]"].AsInt();
+
+
+            if (total > 0)
+                {
+                if (total < amount)
+                    amount = total;
+
+                setInventory(data, (total - amount));
+                return amount;
+                }
+            return 0;
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual int setInventory(ItemData data, int value = 0)
+            {
+            int max = 0;
+
+
+            max = maxInventory(data);
+            if (value > max)
+                value = max;
+
+            int amount = this["inv[" + data.getName() + "]"].AsInt();
+
+
+            if (amount != value)
+                {
+                this["inv[" + data.getName() + "]"] = value.AsString();
+                //console.warn("Setting " + data.getName() + " to " + value);
+
+                data.onInventory(this, value);
+                }
+            return value;
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual void clearInventory()
+            {
+            //todo Fill this in.
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual void onInventory(ShapeBase thisobj, ModelBase data, string value)
+            {
+            // Invoked on ShapeBase objects whenever their inventory changes
+            // for the given datablock.
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual int getInventory(ModelBase data)
+            {
+            if (data != null)
+                return isObject() ? this["inv[" + data.getName() + "]"].AsInt() : 0;
+            return 0;
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual int maxInventory(ModelBase data)
+            {
+            if (data.isField("clip"))
+                return data["maxInventory"].AsInt();
+
+            return ((SimDataBlock) getDataBlock())["maxInv[" + data.getName() + "]"].AsInt();
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual bool hasInventory(ModelBase data)
+            {
+            return this["inv[" + data.getName() + "]"].AsInt() > 0;
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual bool hasAmmo(Item weapon)
+            {
+            ShapeBaseImageData weaponimageammo = weapon["image.ammo"];
+            if (weaponimageammo == string.Empty)
+                return true;
+            return getInventory(weaponimageammo) > 0;
+            }
+
+        //todo this does not need to be exposed to T3D in the end.
+        [ConsoleInteraction(true)]
+        public virtual bool Throw(ItemData data, int amount = 1)
+            {
+            bool functionresult = false;
+            if (getInventory(data) > 0)
+                {
+                Item objectid = data.onThrow(this, amount);
+                    {
+                    if (objectid != 0)
+                        {
+                        throwObject(objectid);
+                        Audio.AudioServerPlay3D("ThrowSnd", this.getTransform());
+                        functionresult = true;
+                        }
+                    }
+                }
+            return functionresult;
+            }
+
+        //todo doesn't need to be exposed to T3D.
+        [ConsoleInteraction(true)]
+        public string tossPatch()
+            {
+            if (!isObject())
+                return string.Empty;
+
+            Item item = ItemData.createItem("HealthKitPatch");
+            item["istemp"] = true.AsString();
+
+            item["sourceObject"] = this;
+            item["static"] = false.AsString();
+
+            ((SimSet) "MissionCleanup").pushToBack(item);
+
+            Random r = new Random();
+
+            Point3F vec = new Point3F(-1 + (float) r.NextDouble()*2, -1*(float) r.NextDouble()*2, (float) r.NextDouble());
+            vec = vec.vecotrScale(10);
+            Point3F eye = getEyeVector();
+            float dot = new Point3F("0 0 1 ").vectorDot(eye);
+            if (dot < 0)
+                dot = -dot;
+
+            vec = vec + new Point3F("0 0 8").vecotrScale(1 - dot);
+            vec = vec + getVelocity();
+
+            TransformF pos = new TransformF(getWorldBox().Get_MinExtents());
+            item.setTransform(pos);
+            item.applyImpulse(pos.GetPosition(), vec);
+            item.setCollisionTimeout(this);
+
+            item.SchedulePop();
+
+            return item;
+            }
+
+        public string doRayCast(float range, UInt32 mask)
+            {
+            Point3F eyeVec = getEyeVector();
+            TransformF eyeTran = getEyeTransform();
+
+            Point3F eyePos = eyeTran.GetPosition();
+
+            Point3F nEyeVec = Util.VectorNormalize(eyeVec);
+
+            Point3F scEyeVec = Util.VectorScale(nEyeVec, range);
+
+            Point3F eyeEnd = Util.VectorAdd(eyePos, scEyeVec);
+
+            return Util.containerRayCast(eyePos, eyeEnd, mask, this, false);
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual bool Use(ItemData data)
+            {
+            GameConnection client = getControllingClient();
+            if (client.isObject())
+                {
+                double defaultfov = client.getControlCameraDefaultFov();
+                double fov = client.getControlCameraFov();
+                if (defaultfov != fov)
+                    return false;
+                }
+            if (getInventory(data) > 0)
+
+                return data.onUse(_ID);
+
+
+            return false;
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual bool pickup(Item obj, int amount)
+            {
+            ItemData data = obj.getDataBlock();
+
+            if (amount == 0)
+                {
+                int maxamount = maxInventory(data);
+
+                int curamount = getInventory(data);
+
+                amount = (maxamount - curamount);
+                }
+
+            return amount > 0 && data.onPickup(obj, this, amount);
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual void throwObject(Item obj)
+            {
+            // Throw the given object in the direction the shape is looking.
+            // The force value is hardcoded according to the current default
+            // object mass and mission gravity (20m/s^2).
+
+            float throwforce = ((SimDataBlock) getDataBlock())["throwForce"].AsFloat();
+            if (throwforce == 0)
+                throwforce = 20;
+
+            // Start with the shape's eye vector...
+
+            Point3F eye = getEyeVector();
+            Point3F vec = eye.vectorScale(throwforce);
+
+            // Add a vertical component to give the object a better arc
+            double verticalForce = throwforce/2.0;
+            float dot = Point3F.vectorDot(new Point3F("0 0 1"), eye);
+            if (dot < 0)
+                dot = dot*-1;
+
+            vec = vec + Point3F.vectorScale(new Point3F(string.Format("0 0 {0}", verticalForce)), 1 - dot);
+            vec = vec + getVelocity();
+
+
+            // Set the object's position and initial velocity
+
+
+            TransformF pos = new TransformF(Util.getBoxCenter(getWorldBox()));
+
+
+            obj.setTransform(pos);
+
+
+            obj.applyImpulse(pos.GetPosition(), vec);
+
+            // Since the object is thrown from the center of the shape,
+            // the object needs to avoid colliding with it's thrower.
+
+            obj.setCollisionTimeout(this);
+
+            //todo Should we add this code in to destroy things after they have been thrown?
+            if ((obj.getClassName() != "AITurretShape") && (obj.getClassName() != "ProximityMine"))
+                obj.schedule("2000", "delete");
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual void clearWeaponCycle()
+            {
+            this["totalCycledWeapons"] = "0";
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual void addToWeaponCycle(string weapon)
+            {
+            this["cycleWeapon[" + this["totalCycledWeapons"].AsString() + "]"] = weapon;
+            this["totalCycledWeapons"] = (this["totalCycledWeapons"].AsInt() + 1).AsString();
+            }
+
+        [ConsoleInteraction(true)]
+        public virtual void cycleWeapon(string direction)
+            {
+            //I sure seem to retrieve "thisobj.totalCycledWeapons" alot,
+            //So to save so work, I'm just gonna grab it here.
+            int totalCycledWeapons = this["totalCycledWeapons"].AsInt();
+
+
+            // Can't cycle what we don't have
+            if (totalCycledWeapons == 0)
+                return;
+            // Find out the index of the current weapon, if any (not all
+            // available weapons may be part of the cycle)
+            int currentIndex = -1;
+
+
+            ShapeBaseImageData mountedimage = this.getMountedImage(Constants.WeaponSlot);
+
+            if (mountedimage.isObject())
+                {
+                string curWeapon = mountedimage["item"];
+                for (int i = 0; i < totalCycledWeapons; i++)
+                    {
+                    if (this["cycleWeapon[" + i + "]"] != curWeapon)
+                        continue;
+                    currentIndex = i;
+                    break;
+                    }
+                }
+
+
+            int nextIndex = 0;
+            int dir = 1;
+            if (currentIndex != -1)
+                {
+                if (direction == "prev")
+                    {
+                    dir = -1;
+                    nextIndex = currentIndex - 1;
+                    if (nextIndex < 0)
+                        {
+                        nextIndex = totalCycledWeapons - 1;
+                        }
+                    }
+                else
+                    {
+                    nextIndex = currentIndex + 1;
+                    if (nextIndex >= totalCycledWeapons)
+                        {
+                        nextIndex = 0;
+                        }
+                    }
+                }
+            bool found = false;
+            ItemData weapon = null;
+            for (int i = 0; i < totalCycledWeapons; i++)
+                {
+                weapon = this["cycleWeapon[" + i + "]"];
+                if ((weapon != 0) && (hasInventory(weapon)))
+                    {
+                    found = true;
+                    break;
+                    }
+                nextIndex = nextIndex + dir;
+                if (nextIndex < 0)
+                    nextIndex = totalCycledWeapons - 1;
+                else if (nextIndex >= totalCycledWeapons)
+                    nextIndex = 0;
+                }
+            if (!found)
+                return;
+            weapon = this["cycleWeapon[" + nextIndex + "]"];
+
+            Use(weapon);
+            }
+        }
+    }
