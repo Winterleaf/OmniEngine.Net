@@ -800,7 +800,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ForestEditor.gui
                 FileName = ""
             };
 
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.OpenFileDialog(ref fd);
+            DialogResult dr = Dialogs.OpenFileDialog(ref fd);
             switch (dr)
             {
                 case DialogResult.OK:

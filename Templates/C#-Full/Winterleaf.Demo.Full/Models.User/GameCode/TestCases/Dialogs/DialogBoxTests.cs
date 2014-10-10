@@ -15,7 +15,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_FileDialogWithDelegate()
             {
             FileDialog fd = new OpenFileDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.FileDialog(ref fd, Test_FileDialogWithDelegate_finished);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.FileDialog(ref fd, Test_FileDialogWithDelegate_finished);
             }
 
         public static void Test_FileDialogWithDelegate_finished(object o, DialogResult dr)
@@ -26,7 +26,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_FileDialogWithoutDelegate()
             {
             FileDialog fd = new OpenFileDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.FileDialog(ref fd);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.FileDialog(ref fd);
             MessageBox.Show(dr.ToString());
             }
 
@@ -37,7 +37,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_FolderBrowserDialogWithDelegate()
             {
             FolderBrowserDialog fd = new FolderBrowserDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.FolderBrowserDialog(ref fd, Test_FolderBrowserDialogWithDelegate_finished);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.FolderBrowserDialog(ref fd, Test_FolderBrowserDialogWithDelegate_finished);
             }
 
         public static void Test_FolderBrowserDialogWithDelegate_finished(object o, DialogResult dr)
@@ -48,7 +48,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_FolderBrowserDialogWithoutDelegate()
             {
             FolderBrowserDialog fd = new FolderBrowserDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.FolderBrowserDialog(ref fd);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.FolderBrowserDialog(ref fd);
             MessageBox.Show(dr.ToString());
             }
 
@@ -59,7 +59,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_OpenFileDialogWithDelegate()
             {
             OpenFileDialog fd = new OpenFileDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.OpenFileDialog(ref fd, Test_OpenFileDialogWithDelegate_finished);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.OpenFileDialog(ref fd, Test_OpenFileDialogWithDelegate_finished);
             }
 
         public static void Test_OpenFileDialogWithDelegate_finished(object o, DialogResult dr)
@@ -70,7 +70,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_OpenFileDialogWithoutDelegate()
             {
             OpenFileDialog fd = new OpenFileDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.OpenFileDialog(ref fd);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.OpenFileDialog(ref fd);
             MessageBox.Show(dr.ToString());
             }
 
@@ -81,7 +81,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_SaveFileDialogWithDelegate()
             {
             SaveFileDialog fd = new SaveFileDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.SaveFileDialog(ref fd, Test_SaveFileDialogWithDelegate_finished);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.SaveFileDialog(ref fd, Test_SaveFileDialogWithDelegate_finished);
             }
 
         public static void Test_SaveFileDialogWithDelegate_finished(object o, DialogResult dr)
@@ -92,7 +92,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.TestCases.Dialogs
         public static void Test_SaveFileDialogWithoutDelegate()
             {
             SaveFileDialog fd = new SaveFileDialog();
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.SaveFileDialog(ref fd);
+            DialogResult dr = WinterLeaf.Engine.Classes.Helpers.Dialogs.SaveFileDialog(ref fd);
             MessageBox.Show(dr.ToString());
             }
 

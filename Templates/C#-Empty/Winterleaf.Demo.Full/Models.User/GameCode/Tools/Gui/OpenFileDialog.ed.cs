@@ -38,7 +38,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
             if (omni.Util.filePath(currentFile) != "")
                 ofd.InitialDirectory = omni.Util.filePath(currentFile);
 
-            DialogResult dr = Engine.Classes.Helpers.Dialogs.OpenFileDialog(ref ofd);
+            DialogResult dr = Dialogs.OpenFileDialog(ref ofd);
 
 
             if (dr == DialogResult.OK)

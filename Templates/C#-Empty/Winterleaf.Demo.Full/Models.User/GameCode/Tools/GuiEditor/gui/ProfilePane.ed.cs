@@ -2628,7 +2628,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             profileFrame.remove(saveAsButton, saveButton);
 
-            profileFrame.docking = Engine.Enums.TypeGuiDockingType.Client;
+            profileFrame.docking = WinterLeaf.Engine.Enums.TypeGuiDockingType.Client;
         }
 
         [ConsoleInteraction]
