@@ -1,22 +1,55 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Helpers;
-using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Classes.Interopt;
+using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
-    {
+{
     public class TerrainPainterToolbar
-        {
+    {
         private static readonly pInvokes omni = new pInvokes();
-
 
         [ConsoleInteraction(true, "TerrainPainterToolbar_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (EWTerrainPainterToolbar,EditorGuiGroup)        oc_Newobject24
 
             ObjectCreator oc_Newobject24 = new ObjectCreator("GuiControl", "EWTerrainPainterToolbar,EditorGuiGroup");
@@ -473,8 +506,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl (PaintBrushPressureTextEditContainer,EditorGuiGroup)        oc_Newobject22
 
-            ObjectCreator oc_Newobject22 = new ObjectCreator("GuiControl",
-                "PaintBrushPressureTextEditContainer,EditorGuiGroup");
+            ObjectCreator oc_Newobject22 = new ObjectCreator("GuiControl", "PaintBrushPressureTextEditContainer,EditorGuiGroup");
             oc_Newobject22["canSaveDynamicFields"] = "0";
             oc_Newobject22["isContainer"] = "1";
             oc_Newobject22["Profile"] = "ToolsGuiTransparentProfile";
@@ -583,9 +615,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiMouseEventCtrl (PaintBrushPressureSliderCtrlContainer,EditorGuiGroup)        oc_Newobject26
 
-            ObjectCreator oc_Newobject26 = new ObjectCreator("GuiMouseEventCtrl",
-                "PaintBrushPressureSliderCtrlContainer,EditorGuiGroup",
-                typeof (EditorGui.PaintBrushPressureSliderCtrlContainer));
+            ObjectCreator oc_Newobject26 = new ObjectCreator("GuiMouseEventCtrl", "PaintBrushPressureSliderCtrlContainer,EditorGuiGroup", typeof (EditorGui.PaintBrushPressureSliderCtrlContainer));
             oc_Newobject26["horizSizing"] = "right";
             oc_Newobject26["vertSizing"] = "bottom";
             oc_Newobject26["position"] = "0 0";
@@ -604,15 +634,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject25["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject25["HorizSizing"] = "right";
             oc_Newobject25["VertSizing"] = "bottom";
-            oc_Newobject25["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(PaintBrushPressureTextEditContainer.position) + firstWord(EWTerrainPainterToolbar.position) SPC          (getWord(PaintBrushPressureTextEditContainer, 1)) + 25");
+            oc_Newobject25["position"] = new Creator.StringNoQuote("firstWord(PaintBrushPressureTextEditContainer.position) + firstWord(EWTerrainPainterToolbar.position) SPC          (getWord(PaintBrushPressureTextEditContainer, 1)) + 25");
             oc_Newobject25["Extent"] = "112 20";
             oc_Newobject25["MinExtent"] = "8 2";
             oc_Newobject25["canSave"] = "1";
             oc_Newobject25["Visible"] = "1";
-            oc_Newobject25["AltCommand"] =
-                "PaintBrushPressureTextEditContainer-->textEdit.setValue(mFloatLength( ($ThisControl.getValue()), 2 )); ETerrainEditor.setBrushPressure( $ThisControl.value );";
+            oc_Newobject25["AltCommand"] = "PaintBrushPressureTextEditContainer-->textEdit.setValue(mFloatLength( ($ThisControl.getValue()), 2 )); ETerrainEditor.setBrushPressure( $ThisControl.value );";
             oc_Newobject25["range"] = "0 1";
             oc_Newobject25["ticks"] = "0";
             oc_Newobject25["value"] = "0";
@@ -627,9 +654,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiMouseEventCtrl (PaintBrushSoftnessSliderCtrlContainer,EditorGuiGroup)        oc_Newobject28
 
-            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiMouseEventCtrl",
-                "PaintBrushSoftnessSliderCtrlContainer,EditorGuiGroup",
-                typeof (EditorGui.PaintBrushSoftnessSliderCtrlContainer));
+            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiMouseEventCtrl", "PaintBrushSoftnessSliderCtrlContainer,EditorGuiGroup", typeof (EditorGui.PaintBrushSoftnessSliderCtrlContainer));
             oc_Newobject28["horizSizing"] = "right";
             oc_Newobject28["vertSizing"] = "bottom";
             oc_Newobject28["position"] = "0 0";
@@ -648,15 +673,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject27["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject27["HorizSizing"] = "right";
             oc_Newobject27["VertSizing"] = "bottom";
-            oc_Newobject27["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(PaintBrushSoftnessTextEditContainer.position) + firstWord(EWTerrainPainterToolbar.position) SPC          (getWord(PaintBrushSoftnessTextEditContainer, 1)) + 25");
+            oc_Newobject27["position"] = new Creator.StringNoQuote("firstWord(PaintBrushSoftnessTextEditContainer.position) + firstWord(EWTerrainPainterToolbar.position) SPC          (getWord(PaintBrushSoftnessTextEditContainer, 1)) + 25");
             oc_Newobject27["Extent"] = "112 20";
             oc_Newobject27["MinExtent"] = "8 2";
             oc_Newobject27["canSave"] = "1";
             oc_Newobject27["Visible"] = "1";
-            oc_Newobject27["AltCommand"] =
-                "PaintBrushSoftnessTextEditContainer-->textEdit.setValue(mFloatLength( ($ThisControl.getValue()), 2 )); ETerrainEditor.setBrushSoftness( $ThisControl.value );";
+            oc_Newobject27["AltCommand"] = "PaintBrushSoftnessTextEditContainer-->textEdit.setValue(mFloatLength( ($ThisControl.getValue()), 2 )); ETerrainEditor.setBrushSoftness( $ThisControl.value );";
             oc_Newobject27["range"] = "0 1";
             oc_Newobject27["ticks"] = "0";
             oc_Newobject27["value"] = "0";
@@ -671,8 +693,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiMouseEventCtrl (PaintBrushSizeSliderCtrlContainer,EditorGuiGroup)        oc_Newobject30
 
-            ObjectCreator oc_Newobject30 = new ObjectCreator("GuiMouseEventCtrl",
-                "PaintBrushSizeSliderCtrlContainer,EditorGuiGroup", typeof (EditorGui.PaintBrushSizeSliderCtrlContainer));
+            ObjectCreator oc_Newobject30 = new ObjectCreator("GuiMouseEventCtrl", "PaintBrushSizeSliderCtrlContainer,EditorGuiGroup", typeof (EditorGui.PaintBrushSizeSliderCtrlContainer));
             oc_Newobject30["horizSizing"] = "right";
             oc_Newobject30["vertSizing"] = "bottom";
             oc_Newobject30["position"] = "0 0";
@@ -691,15 +712,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject29["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject29["HorizSizing"] = "right";
             oc_Newobject29["VertSizing"] = "bottom";
-            oc_Newobject29["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(PaintBrushSizeTextEditContainer.position) + firstWord(EWTerrainPainterToolbar.position)+11 SPC          (getWord(PaintBrushSizeTextEditContainer, 1)) + 25");
+            oc_Newobject29["position"] = new Creator.StringNoQuote("firstWord(PaintBrushSizeTextEditContainer.position) + firstWord(EWTerrainPainterToolbar.position)+11 SPC          (getWord(PaintBrushSizeTextEditContainer, 1)) + 25");
             oc_Newobject29["Extent"] = "112 20";
             oc_Newobject29["MinExtent"] = "8 2";
             oc_Newobject29["canSave"] = "1";
             oc_Newobject29["Visible"] = "1";
-            oc_Newobject29["AltCommand"] =
-                "PaintBrushSizeTextEditContainer-->textEdit.setValue(mFloatLength( ($ThisControl.getValue()), 2 )); ETerrainEditor.setBrushSize( $ThisControl.value );";
+            oc_Newobject29["AltCommand"] = "PaintBrushSizeTextEditContainer-->textEdit.setValue(mFloatLength( ($ThisControl.getValue()), 2 )); ETerrainEditor.setBrushSize( $ThisControl.value );";
             oc_Newobject29["range"] = "1 40";
             oc_Newobject29["ticks"] = "0";
             oc_Newobject29["value"] = "0";
@@ -714,8 +732,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiMouseEventCtrl (PaintBrushSlopeMinContainer,EditorGuiGroup)        oc_Newobject32
 
-            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiMouseEventCtrl",
-                "PaintBrushSlopeMinContainer,EditorGuiGroup", typeof (PaintBrushSlopeMinContainer));
+            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiMouseEventCtrl", "PaintBrushSlopeMinContainer,EditorGuiGroup", typeof (PaintBrushSlopeMinContainer));
             oc_Newobject32["horizSizing"] = "right";
             oc_Newobject32["vertSizing"] = "bottom";
             oc_Newobject32["position"] = "0 0";
@@ -734,15 +751,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject31["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject31["HorizSizing"] = "right";
             oc_Newobject31["VertSizing"] = "bottom";
-            oc_Newobject31["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(PaintBrushSlopeControl.position) + firstWord(EWTerrainPainterToolbar.position)+firstWord(PaintBrushSlopeControl->SlopeMinAngle.position) - 40 SPC         (getWord(PaintBrushSlopeControl, 1)) + 25");
+            oc_Newobject31["position"] = new Creator.StringNoQuote("firstWord(PaintBrushSlopeControl.position) + firstWord(EWTerrainPainterToolbar.position)+firstWord(PaintBrushSlopeControl->SlopeMinAngle.position) - 40 SPC         (getWord(PaintBrushSlopeControl, 1)) + 25");
             oc_Newobject31["Extent"] = "112 20";
             oc_Newobject31["MinExtent"] = "8 2";
             oc_Newobject31["canSave"] = "1";
             oc_Newobject31["Visible"] = "1";
-            oc_Newobject31["AltCommand"] =
-                "PaintBrushSlopeControl-->SlopeMinAngle.setValue(mFloatLength( ($ThisControl.getValue()), 1 )); ETerrainEditor.setSlopeLimitMinAngle(mFloatLength( ($ThisControl.getValue()), 1 ));TerrainPainterPlugin.validateSlopeMinAngle();";
+            oc_Newobject31["AltCommand"] = "PaintBrushSlopeControl-->SlopeMinAngle.setValue(mFloatLength( ($ThisControl.getValue()), 1 )); ETerrainEditor.setSlopeLimitMinAngle(mFloatLength( ($ThisControl.getValue()), 1 ));TerrainPainterPlugin.validateSlopeMinAngle();";
             oc_Newobject31["range"] = "0 89.9";
             oc_Newobject31["ticks"] = "0";
             oc_Newobject31["value"] = "0";
@@ -757,8 +771,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiMouseEventCtrl (PaintBrushSlopeMaxContainer,EditorGuiGroup)        oc_Newobject34
 
-            ObjectCreator oc_Newobject34 = new ObjectCreator("GuiMouseEventCtrl",
-                "PaintBrushSlopeMaxContainer,EditorGuiGroup", typeof (PaintBrushSlopeMaxContainer));
+            ObjectCreator oc_Newobject34 = new ObjectCreator("GuiMouseEventCtrl", "PaintBrushSlopeMaxContainer,EditorGuiGroup", typeof (PaintBrushSlopeMaxContainer));
             oc_Newobject34["horizSizing"] = "right";
             oc_Newobject34["vertSizing"] = "bottom";
             oc_Newobject34["position"] = "0 0";
@@ -777,15 +790,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject33["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject33["HorizSizing"] = "right";
             oc_Newobject33["VertSizing"] = "bottom";
-            oc_Newobject33["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(PaintBrushSlopeControl.position) + firstWord(EWTerrainPainterToolbar.position)+firstWord(PaintBrushSlopeControl->SlopeMaxAngle.position) - 40 SPC         (getWord(PaintBrushSlopeControl, 1)) + 25");
+            oc_Newobject33["position"] = new Creator.StringNoQuote("firstWord(PaintBrushSlopeControl.position) + firstWord(EWTerrainPainterToolbar.position)+firstWord(PaintBrushSlopeControl->SlopeMaxAngle.position) - 40 SPC         (getWord(PaintBrushSlopeControl, 1)) + 25");
             oc_Newobject33["Extent"] = "112 20";
             oc_Newobject33["MinExtent"] = "8 2";
             oc_Newobject33["canSave"] = "1";
             oc_Newobject33["Visible"] = "1";
-            oc_Newobject33["AltCommand"] =
-                "PaintBrushSlopeControl-->SlopeMaxAngle.setValue(mFloatLength( ($ThisControl.getValue()), 1 )); ETerrainEditor.setSlopeLimitMaxAngle(mFloatLength( ($ThisControl.getValue()), 1 ));TerrainPainterPlugin.validateSlopeMaxAngle();";
+            oc_Newobject33["AltCommand"] = "PaintBrushSlopeControl-->SlopeMaxAngle.setValue(mFloatLength( ($ThisControl.getValue()), 1 )); ETerrainEditor.setSlopeLimitMaxAngle(mFloatLength( ($ThisControl.getValue()), 1 ));TerrainPainterPlugin.validateSlopeMaxAngle();";
             oc_Newobject33["range"] = "0.1 90.0";
             oc_Newobject33["ticks"] = "0";
             oc_Newobject33["value"] = "0";
@@ -797,49 +807,46 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             #endregion
 
             oc_Newobject34.Create();
-            }
+        }
 
         [ConsoleInteraction]
         public static void setTerrainEditorMinSlope(float value)
-            {
+        {
             TerrainEditor ETerrainEditor = "ETerrainEditor";
             float val = ETerrainEditor.setSlopeLimitMinAngle(value);
-            GuiTextEditCtrl SlopeMinAngle =
-                ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMinAngle", true);
+            GuiTextEditCtrl SlopeMinAngle = ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMinAngle", true);
 
             SlopeMinAngle.setValue(omni.Util.mFloatLength(val, 1));
-            }
+        }
 
         [ConsoleInteraction]
         public static void setTerrainEditorMaxSlope(float value)
-            {
+        {
             TerrainEditor ETerrainEditor = "ETerrainEditor";
             float val = ETerrainEditor.setSlopeLimitMaxAngle(value);
-            GuiTextEditCtrl SlopeMaxAngle =
-                ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMaxAngle", true);
+            GuiTextEditCtrl SlopeMaxAngle = ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMaxAngle", true);
 
             SlopeMaxAngle.setValue(omni.Util.mFloatLength(val, 1));
-            }
         }
+    }
 
     [TypeConverter(typeof (TypeConverterGeneric<PaintBrushSlopeMaxContainer>))]
     public class PaintBrushSlopeMaxContainer : EditorGui.EditorDropdownSliderContainer
-        {
+    {
         public override void onWake()
-            {
+        {
             GuiSliderCtrl slider = this.findObjectByInternalName("slider", true);
-            GuiTextEditCtrl SlopeMaxAngle =
-                ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMaxAngle", true);
+            GuiTextEditCtrl SlopeMaxAngle = ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMaxAngle", true);
 
             slider.setValue(SlopeMaxAngle.getValue());
-            }
+        }
 
         [ConsoleInteraction]
         public void init()
-            {
+        {
             GuiSliderCtrl slider = this.findObjectByInternalName("slider", true);
             slider.setValue("90.0");
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -850,18 +857,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(PaintBrushSlopeMaxContainer ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -869,9 +876,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -880,12 +887,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(PaintBrushSlopeMaxContainer ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -893,9 +899,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(PaintBrushSlopeMaxContainer ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -903,11 +909,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator PaintBrushSlopeMaxContainer(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-            return
-                (PaintBrushSlopeMaxContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMaxContainer));
-            }
+            return (PaintBrushSlopeMaxContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMaxContainer));
+        }
 
         /// <summary>
         /// 
@@ -915,9 +920,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(PaintBrushSlopeMaxContainer ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -925,11 +930,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator PaintBrushSlopeMaxContainer(int simobjectid)
-            {
-            return
-                (PaintBrushSlopeMaxContainer)
-                    Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSlopeMaxContainer));
-            }
+        {
+            return (PaintBrushSlopeMaxContainer) Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSlopeMaxContainer));
+        }
 
         /// <summary>
         /// 
@@ -937,33 +940,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(PaintBrushSlopeMaxContainer ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator PaintBrushSlopeMaxContainer(uint simobjectid)
-            {
-            return
-                (PaintBrushSlopeMaxContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMaxContainer));
-            }
+        {
+            return (PaintBrushSlopeMaxContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMaxContainer));
+        }
 
         #endregion
-        }
+    }
 
     [TypeConverter(typeof (TypeConverterGeneric<PaintBrushSlopeMinContainer>))]
     public class PaintBrushSlopeMinContainer : EditorGui.EditorDropdownSliderContainer
-        {
+    {
         public override void onWake()
-            {
+        {
             GuiSliderCtrl slider = this.findObjectByInternalName("slider", true);
-            GuiTextEditCtrl SlopeMinAngle =
-                ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMinAngle", true);
+            GuiTextEditCtrl SlopeMinAngle = ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMinAngle", true);
             slider.setValue(SlopeMinAngle.getValue());
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -974,18 +975,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(PaintBrushSlopeMinContainer ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -993,9 +994,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -1004,12 +1005,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(PaintBrushSlopeMinContainer ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -1017,9 +1017,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(PaintBrushSlopeMinContainer ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -1027,11 +1027,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator PaintBrushSlopeMinContainer(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-            return
-                (PaintBrushSlopeMinContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMinContainer));
-            }
+            return (PaintBrushSlopeMinContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMinContainer));
+        }
 
         /// <summary>
         /// 
@@ -1039,9 +1038,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(PaintBrushSlopeMinContainer ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -1049,11 +1048,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator PaintBrushSlopeMinContainer(int simobjectid)
-            {
-            return
-                (PaintBrushSlopeMinContainer)
-                    Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSlopeMinContainer));
-            }
+        {
+            return (PaintBrushSlopeMinContainer) Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSlopeMinContainer));
+        }
 
         /// <summary>
         /// 
@@ -1061,20 +1058,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(PaintBrushSlopeMinContainer ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator PaintBrushSlopeMinContainer(uint simobjectid)
-            {
-            return
-                (PaintBrushSlopeMinContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMinContainer));
-            }
+        {
+            return (PaintBrushSlopeMinContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSlopeMinContainer));
+        }
 
         #endregion
-        }
     }
+}

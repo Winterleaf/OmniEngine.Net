@@ -1,29 +1,61 @@
-﻿using System;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui.CodeBehind;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.PlugIns;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<DecalEditorGui>))]
     public class DecalEditorGui : GuiDecalEditorCtrl
-        {
+    {
         [ConsoleInteraction(true, "DecalEditorGui_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiDecalEditorCtrl (DecalEditorGui)        oc_Newobject45
 
-            ObjectCreator oc_Newobject45 = new ObjectCreator("GuiDecalEditorCtrl", "DecalEditorGui",
-                typeof (DecalEditorGui));
+            ObjectCreator oc_Newobject45 = new ObjectCreator("GuiDecalEditorCtrl", "DecalEditorGui", typeof (DecalEditorGui));
             oc_Newobject45["canSaveDynamicFields"] = "0";
             oc_Newobject45["Enabled"] = "1";
             oc_Newobject45["isContainer"] = "1";
@@ -63,8 +95,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiWindowCollapseCtrl (DecalEditorWindow)        oc_Newobject16
 
-            ObjectCreator oc_Newobject16 = new ObjectCreator("GuiWindowCollapseCtrl", "DecalEditorWindow",
-                typeof (DecalEditorWindow));
+            ObjectCreator oc_Newobject16 = new ObjectCreator("GuiWindowCollapseCtrl", "DecalEditorWindow", typeof (DecalEditorWindow));
             oc_Newobject16["AllowPopWindow"] = "1";
             oc_Newobject16["canSaveDynamicFields"] = "0";
             oc_Newobject16["Enabled"] = "1";
@@ -72,9 +103,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject16["Profile"] = "ToolsGuiWindowProfile";
             oc_Newobject16["HorizSizing"] = "windowRelative";
             oc_Newobject16["VertSizing"] = "windowRelative";
-            oc_Newobject16["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($pref::Video::mode, 0) - 209 SPC getWord(EditorGuiToolbar.extent, 1) -1");
+            oc_Newobject16["Position"] = new Creator.StringNoQuote("getWord($pref::Video::mode, 0) - 209 SPC getWord(EditorGuiToolbar.extent, 1) -1");
             oc_Newobject16["Extent"] = "210 600";
             oc_Newobject16["MinExtent"] = "210 100";
             oc_Newobject16["canSave"] = "1";
@@ -101,8 +130,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiTabBookCtrl (DecalEditorTabBook)        oc_Newobject11
 
-            ObjectCreator oc_Newobject11 = new ObjectCreator("GuiTabBookCtrl", "DecalEditorTabBook",
-                typeof (DecalEditorTabBook));
+            ObjectCreator oc_Newobject11 = new ObjectCreator("GuiTabBookCtrl", "DecalEditorTabBook", typeof (DecalEditorTabBook));
             oc_Newobject11["canSaveDynamicFields"] = "0";
             oc_Newobject11["isContainer"] = "1";
             oc_Newobject11["Profile"] = "ToolsGuiTabBookProfile";
@@ -338,8 +366,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiTreeViewCtrl (DecalEditorTreeView)        oc_Newobject8
 
-            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTreeViewCtrl", "DecalEditorTreeView",
-                typeof (DecalEditorTreeView));
+            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTreeViewCtrl", "DecalEditorTreeView", typeof (DecalEditorTreeView));
             oc_Newobject8["canSaveDynamicFields"] = "0";
             oc_Newobject8["Enabled"] = "1";
             oc_Newobject8["isContainer"] = "1";
@@ -410,8 +437,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiBitmapButtonCtrl (RetargetDecalButton)        oc_Newobject13
 
-            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiBitmapButtonCtrl", "RetargetDecalButton",
-                typeof (RetargetDecalButton));
+            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiBitmapButtonCtrl", "RetargetDecalButton", typeof (RetargetDecalButton));
             oc_Newobject13["canSaveDynamicFields"] = "0";
             oc_Newobject13["Enabled"] = "1";
             oc_Newobject13["isContainer"] = "0";
@@ -437,8 +463,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiBitmapButtonCtrl (NewDecalButton)        oc_Newobject14
 
-            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiBitmapButtonCtrl", "NewDecalButton",
-                typeof (NewDecalButton));
+            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiBitmapButtonCtrl", "NewDecalButton", typeof (NewDecalButton));
             oc_Newobject14["canSaveDynamicFields"] = "0";
             oc_Newobject14["Enabled"] = "1";
             oc_Newobject14["isContainer"] = "0";
@@ -464,8 +489,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiBitmapButtonCtrl (DeleteDecalButton)        oc_Newobject15
 
-            ObjectCreator oc_Newobject15 = new ObjectCreator("GuiBitmapButtonCtrl", "DeleteDecalButton",
-                typeof (DeleteDecalButton));
+            ObjectCreator oc_Newobject15 = new ObjectCreator("GuiBitmapButtonCtrl", "DeleteDecalButton", typeof (DeleteDecalButton));
             oc_Newobject15["canSaveDynamicFields"] = "0";
             oc_Newobject15["Enabled"] = "1";
             oc_Newobject15["isContainer"] = "0";
@@ -498,8 +522,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             #region GuiWindowCollapseCtrl (DecalPreviewWindow)        oc_Newobject44
 
-            ObjectCreator oc_Newobject44 = new ObjectCreator("GuiWindowCollapseCtrl", "DecalPreviewWindow",
-                typeof (DecalPreviewWindow));
+            ObjectCreator oc_Newobject44 = new ObjectCreator("GuiWindowCollapseCtrl", "DecalPreviewWindow", typeof (DecalPreviewWindow));
             oc_Newobject44["AllowPopWindow"] = "1";
             oc_Newobject44["canSaveDynamicFields"] = "0";
             oc_Newobject44["internalName"] = "";
@@ -508,9 +531,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject44["Profile"] = "ToolsGuiWindowProfile";
             oc_Newobject44["HorizSizing"] = "windowRelative";
             oc_Newobject44["VertSizing"] = "windowRelative";
-            oc_Newobject44["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($pref::Video::mode, 0) - 209 SPC getWord(EditorGuiToolbar.extent, 1) + getWord(DecalEditorWindow.extent, 1) - 2");
+            oc_Newobject44["Position"] = new Creator.StringNoQuote("getWord($pref::Video::mode, 0) - 209 SPC getWord(EditorGuiToolbar.extent, 1) + getWord(DecalEditorWindow.extent, 1) - 2");
             oc_Newobject44["Extent"] = "210 335";
             oc_Newobject44["MinExtent"] = "210 335";
             oc_Newobject44["canSave"] = "1";
@@ -560,7 +581,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject34["Margin"] = "3 1 3 3";
             oc_Newobject34["hScrollBar"] = "alwaysOff";
             oc_Newobject34["vScrollBar"] = "dynamic";
-            oc_Newobject34["lockHorizScroll"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject34["lockHorizScroll"] = new Creator.StringNoQuote("true");
             oc_Newobject34["lockVertScroll"] = "false";
             oc_Newobject34["constantThumbHeight"] = "0";
             oc_Newobject34["childMargin"] = "0 0";
@@ -589,7 +610,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             ObjectCreator oc_Newobject21 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject21["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject21["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject21["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject21["Profile"] = "GuiRolloutProfile";
             oc_Newobject21["HorizSizing"] = "width";
             oc_Newobject21["VertSizing"] = "bottom";
@@ -597,10 +618,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject21["Extent"] = "208 0";
             oc_Newobject21["Caption"] = "Decal Instance Preview";
             oc_Newobject21["Margin"] = "0 0 0 -3";
-            oc_Newobject21["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject21["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject21["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject21["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject21["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject21["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject21["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject21["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject20
 
@@ -696,7 +717,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             ObjectCreator oc_Newobject32 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject32["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject32["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject32["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject32["Profile"] = "GuiRolloutProfile";
             oc_Newobject32["HorizSizing"] = "width";
             oc_Newobject32["VertSizing"] = "bottom";
@@ -704,10 +725,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject32["Extent"] = "202 0";
             oc_Newobject32["Caption"] = "Decal Instance Properties";
             oc_Newobject32["Margin"] = "0 0 0 0";
-            oc_Newobject32["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject32["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject32["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject32["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject32["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject32["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject32["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject32["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject31
 
@@ -903,7 +924,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject43["Margin"] = "3 1 3 3";
             oc_Newobject43["hScrollBar"] = "alwaysOff";
             oc_Newobject43["vScrollBar"] = "dynamic";
-            oc_Newobject43["lockHorizScroll"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject43["lockHorizScroll"] = new Creator.StringNoQuote("true");
             oc_Newobject43["lockVertScroll"] = "false";
             oc_Newobject43["constantThumbHeight"] = "0";
             oc_Newobject43["childMargin"] = "0 0";
@@ -932,7 +953,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             ObjectCreator oc_Newobject39 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject39["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject39["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject39["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject39["Profile"] = "GuiRolloutProfile";
             oc_Newobject39["HorizSizing"] = "width";
             oc_Newobject39["VertSizing"] = "bottom";
@@ -940,10 +961,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject39["Extent"] = "208 0";
             oc_Newobject39["Caption"] = "Decal Template Preview";
             oc_Newobject39["Margin"] = "0 0 0 -3";
-            oc_Newobject39["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject39["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject39["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject39["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject39["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject39["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject39["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject39["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject38
 
@@ -1039,7 +1060,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             ObjectCreator oc_Newobject41 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject41["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject41["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject41["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject41["Profile"] = "GuiRolloutProfile";
             oc_Newobject41["HorizSizing"] = "width";
             oc_Newobject41["VertSizing"] = "bottom";
@@ -1047,10 +1068,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             oc_Newobject41["Extent"] = "202 0";
             oc_Newobject41["Caption"] = "Decal Template Properties";
             oc_Newobject41["Margin"] = "0 0 0 0";
-            oc_Newobject41["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject41["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject41["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject41["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject41["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject41["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject41["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject41["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiInspector (DecalInspector)        oc_Newobject40
 
@@ -1099,16 +1120,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             #endregion
 
             oc_Newobject45.Create();
-            }
+        }
 
         [ConsoleInteraction]
         public override void onWake()
-            {
-            }
+        {
+        }
 
         [ConsoleInteraction]
         public override void onSelectInstance(string decalId, string lookupName)
-            {
+        {
             DecalEditorTreeView DecalEditorTreeView = "DecalEditorTreeView";
 
             if (this["selDecalInstanceId"] == decalId)
@@ -1121,11 +1142,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             int item = DecalEditorTreeView.findItemByName(name);
             DecalEditorTreeView.selectItem(item);
             this.syncNodeDetails();
-            }
+        }
 
         [ConsoleInteraction]
         public override void onCreateInstance(string decalId, string lookupName)
-            {
+        {
             DecalEditorTreeView DecalEditorTreeView = "DecalEditorTreeView";
 
             // Lets remember the new Id
@@ -1139,11 +1160,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             int item = DecalEditorTreeView.findItemByName(name);
             DecalEditorTreeView.selectItem(item);
             this.syncNodeDetails();
-            }
+        }
 
         [ConsoleInteraction]
         public override void onDeleteInstance(string decalId, string lookupName)
-            {
+        {
             DecalEditorTreeView DecalEditorTreeView = "DecalEditorTreeView";
 
             if (decalId == this["selDecalInstanceId"])
@@ -1151,11 +1172,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             int id = DecalEditorTreeView.findItemByName(decalId + ' ' + lookupName);
             DecalEditorTreeView.removeItem(id);
-            }
+        }
 
         [ConsoleInteraction]
         public void editNodeDetails()
-            {
+        {
             GuiContainer DecalEditorDetailContainer = "DecalEditorDetailContainer";
             GuiTextEditCtrl nodePosition = DecalEditorDetailContainer.FOT("nodePosition");
             GuiTextEditCtrl nodeTangent = DecalEditorDetailContainer.FOT("nodeTangent");
@@ -1171,30 +1192,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
             if (Util.getWordCount(nodeDetails) == 7)
                 this.doEditNodeDetails(decalId.AsUint(), nodeDetails, false);
-            }
+        }
 
         // Stores the information when the gizmo is first used
         [ConsoleInteraction]
         public override void prepGizmoTransform(string decalId, string nodeDetails)
-            {
+        {
             this["gizmoDetails"] = nodeDetails;
-            }
+        }
 
         // Activated in onMouseUp while gizmo is dirty
         [ConsoleInteraction]
         public override void completeGizmoTransform(string decalId, string nodeDetails)
-            {
+        {
             this.doEditNodeDetails(decalId.AsUint(), nodeDetails, true);
-            }
+        }
 
         [ConsoleInteraction]
         public override void onSleep()
-            {
-            }
+        {
+        }
 
         [ConsoleInteraction]
         public override void syncNodeDetails()
-            {
+        {
             GuiContainer DecalEditorDetailContainer = "DecalEditorDetailContainer";
             GuiTextCtrl instanceId = DecalEditorDetailContainer.FOT("instanceId");
             GuiTextEditCtrl nodePosition = DecalEditorDetailContainer.FOT("nodePosition");
@@ -1213,20 +1234,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             nodePosition.setText(Util.getWords(transformData, 0, 2));
             nodeTangent.setText(Util.getWords(transformData, 3, 5));
             nodeSize.setText(Util.getWord(transformData, 6));
-            }
+        }
 
         [ConsoleInteraction]
         public override void paletteSync(string mode)
-            {
+        {
             string evalShortcut = "ToolsPaletteArray-->" + mode + ".setStateOn(1);";
             Util.eval(evalShortcut);
-            }
+        }
 
         // Intended for gui use. The undo/redo functionality for deletion of datablocks
         // will enable itself automatically after using this function.
         [ConsoleInteraction]
         public void deleteSelectedDecalDatablock()
-            {
+        {
             GuiListBoxCtrl DecalDataList = "DecalDataList";
             PersistenceManager DecalPMan = "DecalPMan";
 
@@ -1242,25 +1263,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 }
 
             DecalDataList.addFilteredItem(datablock);
-            }
+        }
 
         [ConsoleInteraction]
         public void updateDecalPreview(Material material)
-            {
+        {
             GuiWindowCollapseCtrl DecalPreviewWindow = "DecalPreviewWindow";
             GuiBitmapCtrl decalPreview = DecalPreviewWindow.FOT("decalPreview");
             MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
 
             if (material.isObject())
-                decalPreview.setBitmapX(MaterialEditorGui.searchForTexture(material.getId().AsString(),
-                    material.diffuseMap[0]));
+                decalPreview.setBitmapX(MaterialEditorGui.searchForTexture(material.getId().AsString(), material.diffuseMap[0]));
             else
                 decalPreview.setBitmapX("tools/materialeditor/gui/unknownImage");
-            }
+        }
 
         [ConsoleInteraction]
         public void updateInstancePreview(Material material)
-            {
+        {
             GuiWindowCollapseCtrl DecalPreviewWindow = "DecalPreviewWindow";
             GuiBitmapCtrl instancePreview = DecalPreviewWindow.FOT("decalPreview");
             MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
@@ -1269,11 +1289,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 instancePreview.setBitmapX(MaterialEditorGui.searchForTexture(material, material.diffuseMap[0]));
             else
                 instancePreview.setBitmapX("tools/materialeditor/gui/unknownImage");
-            }
+        }
 
         [ConsoleInteraction]
         public override void rebuildInstanceTree()
-            {
+        {
             DecalEditorTreeView DecalEditorTreeView = "DecalEditorTreeView";
 
             // Initialize the instance tree when the tab is selected
@@ -1288,37 +1308,37 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
                 DecalEditorTreeView.addNodeTree(i.AsString(), name);
                 }
-            }
+        }
 
         //[ConsoleInteraction]
         public T createAction<T>(string desc)
-            {
+        {
             Util.pushInstantGroup();
-            var ocf = new ObjectCreator("UndoScriptAction", "", typeof(T));
+            ObjectCreator ocf = new ObjectCreator("UndoScriptAction", "", typeof (T));
             //action["class"] = className;
             //action["superClass"] = "BaseDecalEdAction";
             ocf["actionName"] = desc;
             ocf["tree"] = "DecalEditorTreeView";
 
-            var action = myReflections.ChangeType<T>(ocf.Create());
+            T action = myReflections.ChangeType<T>(ocf.Create());
             Util.popInstantGroup();
             return action;
-            }
+        }
 
         [ConsoleInteraction]
         public void doAction(DecalEditorActions.BaseDecalEdAction action)
-            {
+        {
             editor Editor = "Editor";
             if (action.doit())
                 action.addToManager(Editor.getUndoManager());
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit node
         [ConsoleInteraction]
         public void doEditNodeDetails(uint instanceId, string transformData, bool gizmo)
-            {
-                var action = this.createAction<DecalEditorActions.ActionEditNodeDetails>("Edit Decal Transform");
+        {
+            DecalEditorActions.ActionEditNodeDetails action = this.createAction<DecalEditorActions.ActionEditNodeDetails>("Edit Decal Transform");
             action["instanceId"] = instanceId.AsString();
             action["newTransformData"] = transformData;
 
@@ -1328,7 +1348,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 action["oldTransformData"] = this.getDecalTransform(instanceId);
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Delete Decal Datablocks
@@ -1338,7 +1358,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
         [ConsoleInteraction]
         public override void redoDeleteDecalDatablock(string datablock)
-            {
+        {
             PersistenceManager DecalPMan = "DecalPMan";
             GuiListBoxCtrl DecalDataList = "DecalDataList";
 
@@ -1350,11 +1370,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 }
 
             DecalDataList.addFilteredItem(datablock);
-            }
+        }
 
         [ConsoleInteraction]
         public override void undoDeleteDecalDatablock(string datablock)
-            {
+        {
             PersistenceManager DecalPMan = "DecalPMan";
             GuiListBoxCtrl DecalDataList = "DecalDataList";
 
@@ -1367,14 +1387,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 }
 
             DecalDataList.removeFilteredItem(datablock);
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DecalDataList>))]
         public class DecalDataList : GuiListBoxCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string index, string itemText)
-                {
+            {
                 DecalEditorGui DecalEditorGui = "DecalEditorGui";
                 GuiInspector DecalInspector = "DecalInspector";
 
@@ -1393,7 +1413,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 //Canvas.pushDialog( DecalEditDlg );
                 DecalInspector.inspect(data);
                 DecalEditorGui.updateDecalPreview(data["material"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1404,20 +1424,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DecalDataList ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1425,9 +1443,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1436,12 +1454,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DecalDataList ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1449,9 +1466,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DecalDataList ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1459,10 +1476,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DecalDataList(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DecalDataList) Omni.self.getSimObject(simobjectid, typeof (DecalDataList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1470,9 +1487,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DecalDataList ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1480,9 +1497,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DecalDataList(int simobjectid)
-                {
+            {
                 return (DecalDataList) Omni.self.getSimObject((uint) simobjectid, typeof (DecalDataList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1490,28 +1507,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DecalDataList ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DecalDataList(uint simobjectid)
-                {
+            {
                 return (DecalDataList) Omni.self.getSimObject(simobjectid, typeof (DecalDataList));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DecalEditorTabBook>))]
         public class DecalEditorTabBook : GuiTabBookCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onTabSelected(string text, uint index)
-                {
+            {
                 GuiWindowCollapseCtrl DecalPreviewWindow = "DecalPreviewWindow";
                 GuiScrollCtrl DecalEditorLibraryProperties = "DecalEditorLibraryProperties";
                 GuiScrollCtrl DecalEditorTemplateProperties = "DecalEditorTemplateProperties";
@@ -1540,7 +1557,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                     DecalEditorLibraryProperties.setVisible(false);
                     DecalEditorTemplateProperties.setVisible(true);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1551,20 +1568,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DecalEditorTabBook ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1572,9 +1587,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1583,12 +1598,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DecalEditorTabBook ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1596,9 +1610,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DecalEditorTabBook ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1606,10 +1620,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DecalEditorTabBook(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DecalEditorTabBook) Omni.self.getSimObject(simobjectid, typeof (DecalEditorTabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1617,9 +1631,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DecalEditorTabBook ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1627,9 +1641,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DecalEditorTabBook(int simobjectid)
-                {
+            {
                 return (DecalEditorTabBook) Omni.self.getSimObject((uint) simobjectid, typeof (DecalEditorTabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1637,38 +1651,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DecalEditorTabBook ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DecalEditorTabBook(uint simobjectid)
-                {
+            {
                 return (DecalEditorTabBook) Omni.self.getSimObject(simobjectid, typeof (DecalEditorTabBook));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DecalEditorTreeView>))]
         public class DecalEditorTreeView : GuiTreeViewCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onDefineIcons()
-                {
-                const string icons = "tools/gui/images/treeview/default:" +
-                                     "tools/classIcons/decal:" +
-                                     "tools/classIcons/decalNode:";
+            {
+                const string icons = "tools/gui/images/treeview/default:" + "tools/classIcons/decal:" + "tools/classIcons/decalNode:";
 
                 this.buildIconTable(icons);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onSelect(string x, string y)
-                {
+            {
                 DecalEditorGui DecalEditorGui = "DecalEditorGui";
 
                 SimObject instanceTag = Util.getWord(this.getItemText(x.AsInt()), 1);
@@ -1689,12 +1701,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
                 DecalEditorGui.selectDecal(decalId.AsUInt());
                 DecalEditorGui.syncNodeDetails();
-                }
+            }
 
             // Creating per node in the instance tree
             [ConsoleInteraction]
             public void addNodeTree(string nodeName, string parentName)
-                {
+            {
                 // If my template isnt there...put it there
                 if (this.findItemByName(parentName) == 0)
                     {
@@ -1705,7 +1717,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 nodeName = nodeName + ' ' + parentName;
                 int parentId = this.findItemByName(parentName);
                 int id = this.insertItem(parentId, nodeName, "0", "", 2, 2);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1716,20 +1728,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DecalEditorTreeView ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1737,9 +1747,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1748,12 +1758,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DecalEditorTreeView ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1761,9 +1770,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DecalEditorTreeView ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1771,10 +1780,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DecalEditorTreeView(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DecalEditorTreeView) Omni.self.getSimObject(simobjectid, typeof (DecalEditorTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1782,9 +1791,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DecalEditorTreeView ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1792,9 +1801,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DecalEditorTreeView(int simobjectid)
-                {
+            {
                 return (DecalEditorTreeView) Omni.self.getSimObject((uint) simobjectid, typeof (DecalEditorTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1802,44 +1811,44 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DecalEditorTreeView ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DecalEditorTreeView(uint simobjectid)
-                {
+            {
                 return (DecalEditorTreeView) Omni.self.getSimObject(simobjectid, typeof (DecalEditorTreeView));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DecalEditorWindow>))]
         public class DecalEditorWindow : GuiWindowCollapseCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onPopWindow()
-                {
+            {
                 EditorPlugin DecalEditorPlugin = "DecalEditorPlugin";
 
                 EditorGui.DeactivateAll();
                 DecalEditorPlugin.onActivated();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onPopWindowClosed()
-                {
+            {
                 EditorPlugin DecalEditorPlugin = "DecalEditorPlugin";
                 GuiWindowCollapseCtrl DecalPreviewWindow = "DecalPreviewWindow";
 
                 EditorGui.DeactivateAll();
                 DecalEditorPlugin.onActivated();
                 this.attachTo(DecalPreviewWindow);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1850,20 +1859,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DecalEditorWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1871,9 +1878,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1882,12 +1889,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DecalEditorWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1895,9 +1901,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DecalEditorWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1905,10 +1911,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DecalEditorWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DecalEditorWindow) Omni.self.getSimObject(simobjectid, typeof (DecalEditorWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1916,9 +1922,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DecalEditorWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1926,9 +1932,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DecalEditorWindow(int simobjectid)
-                {
+            {
                 return (DecalEditorWindow) Omni.self.getSimObject((uint) simobjectid, typeof (DecalEditorWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1936,28 +1942,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DecalEditorWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DecalEditorWindow(uint simobjectid)
-                {
+            {
                 return (DecalEditorWindow) Omni.self.getSimObject(simobjectid, typeof (DecalEditorWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DecalInspector>))]
         public class DecalInspector : GuiInspector
-            {
+        {
             [ConsoleInteraction]
             public override void onInspectorFieldModified(string objectx, string fieldName, string arrayIndex, string oldValue, string newValue)
-                {
+            {
                 DecalEditorGui DecalEditorGui = "DecalEditorGui";
                 Inspector Inspector = "Inspector";
 
@@ -1965,15 +1971,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                     DecalEditorGui.updateDecalPreview(newValue);
 
                 // Same work to do as for the regular WorldEditor Inspector.
-                Inspector.onInspectorFieldModified(objectx, fieldName,arrayIndex, oldValue, newValue);
+                Inspector.onInspectorFieldModified(objectx, fieldName, arrayIndex, oldValue, newValue);
 
                 if (oldValue != newValue || oldValue != newValue)
                     this.setDirty(objectx);
-                }
+            }
 
             [ConsoleInteraction]
             public void setDirty(string obj)
-                {
+            {
                 PersistenceManager DecalPMan = "DecalPMan";
                 GuiTabPageCtrl LibraryTabControl = "LibraryTabControl";
 
@@ -1981,16 +1987,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
 
                 if (Util.strchr(LibraryTabControl.text, "*") == "")
                     LibraryTabControl.text = LibraryTabControl.text + "*";
-                }
+            }
 
             [ConsoleInteraction]
             public void removeDirty()
-                {
+            {
                 GuiTabPageCtrl LibraryTabControl = "LibraryTabControl";
 
                 if (Util.strchr(LibraryTabControl.text, "*") != "")
                     LibraryTabControl.text = Util.stripChars(LibraryTabControl.text, "*");
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2001,20 +2007,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DecalInspector ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2022,9 +2026,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2033,12 +2037,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DecalInspector ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2046,9 +2049,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DecalInspector ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2056,10 +2059,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DecalInspector(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DecalInspector) Omni.self.getSimObject(simobjectid, typeof (DecalInspector));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2067,9 +2070,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DecalInspector ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2077,9 +2080,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DecalInspector(int simobjectid)
-                {
+            {
                 return (DecalInspector) Omni.self.getSimObject((uint) simobjectid, typeof (DecalInspector));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2087,44 +2090,44 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DecalInspector ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DecalInspector(uint simobjectid)
-                {
+            {
                 return (DecalInspector) Omni.self.getSimObject(simobjectid, typeof (DecalInspector));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DecalPreviewWindow>))]
         public class DecalPreviewWindow : GuiWindowCollapseCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onPopWindow()
-                {
+            {
                 EditorPlugin DecalEditorPlugin = "DecalEditorPlugin";
 
                 EditorGui.DeactivateAll();
                 DecalEditorPlugin.onActivated();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onPopWindowClosed()
-                {
+            {
                 EditorPlugin DecalEditorPlugin = "DecalEditorPlugin";
                 GuiWindowCollapseCtrl DecalEditorWindow = "DecalEditorWindow";
 
                 EditorGui.DeactivateAll();
                 DecalEditorPlugin.onActivated();
                 this.attachTo(DecalEditorWindow);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2135,20 +2138,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DecalPreviewWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2156,9 +2157,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2167,12 +2168,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DecalPreviewWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2180,9 +2180,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DecalPreviewWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2190,10 +2190,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DecalPreviewWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DecalPreviewWindow) Omni.self.getSimObject(simobjectid, typeof (DecalPreviewWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2201,9 +2201,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DecalPreviewWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2211,9 +2211,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DecalPreviewWindow(int simobjectid)
-                {
+            {
                 return (DecalPreviewWindow) Omni.self.getSimObject((uint) simobjectid, typeof (DecalPreviewWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2221,28 +2221,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DecalPreviewWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DecalPreviewWindow(uint simobjectid)
-                {
+            {
                 return (DecalPreviewWindow) Omni.self.getSimObject(simobjectid, typeof (DecalPreviewWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<DeleteDecalButton>))]
         public class DeleteDecalButton : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 GuiTabBookCtrl DecalEditorTabBook = "DecalEditorTabBook";
                 GuiListBoxCtrl DecalDataList = "DecalDataList";
                 DecalEditorGui DecalEditorGui = "DecalEditorGui";
@@ -2252,18 +2252,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                     int id = DecalDataList.getSelectedItem();
                     string datablock = DecalDataList.getItemText(id);
 
-                    messageBox.MessageBoxYesNoCancel("Delete Decal Datablock?",
-                        "Are you sure you want to delete<br><br>" + datablock +
-                        "<br><br> Datablock deletion won't take affect until the engine is quit.",
-                        "DecalEditorGui.deleteSelectedDecalDatablock();",
-                        "",
-                        "");
+                    messageBox.MessageBoxYesNoCancel("Delete Decal Datablock?", "Are you sure you want to delete<br><br>" + datablock + "<br><br> Datablock deletion won't take affect until the engine is quit.", "DecalEditorGui.deleteSelectedDecalDatablock();", "", "");
                     }
                 else // instances
-                    {
                     DecalEditorGui.deleteSelectedDecal();
-                    }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2274,20 +2267,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(DeleteDecalButton ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2295,9 +2286,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2306,12 +2297,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(DeleteDecalButton ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2319,9 +2309,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(DeleteDecalButton ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2329,10 +2319,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator DeleteDecalButton(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (DeleteDecalButton) Omni.self.getSimObject(simobjectid, typeof (DeleteDecalButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2340,9 +2330,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(DeleteDecalButton ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2350,9 +2340,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator DeleteDecalButton(int simobjectid)
-                {
+            {
                 return (DeleteDecalButton) Omni.self.getSimObject((uint) simobjectid, typeof (DeleteDecalButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2360,28 +2350,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(DeleteDecalButton ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator DeleteDecalButton(uint simobjectid)
-                {
+            {
                 return (DeleteDecalButton) Omni.self.getSimObject(simobjectid, typeof (DeleteDecalButton));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<NewDecalButton>))]
         public class NewDecalButton : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 PersistenceManager DecalPMan = "DecalPMan";
                 GuiTabPageCtrl LibraryTabControl = "LibraryTabControl";
                 GuiListBoxCtrl DecalDataList = "DecalDataList";
@@ -2405,7 +2395,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 //TODO
                 Canvas.pushDialog("DecalEditDlg");
                 DecalInspector.inspect(name);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2416,20 +2406,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(NewDecalButton ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2437,9 +2425,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2448,12 +2436,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(NewDecalButton ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2461,9 +2448,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(NewDecalButton ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2471,10 +2458,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator NewDecalButton(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (NewDecalButton) Omni.self.getSimObject(simobjectid, typeof (NewDecalButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2482,9 +2469,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(NewDecalButton ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2492,9 +2479,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator NewDecalButton(int simobjectid)
-                {
+            {
                 return (NewDecalButton) Omni.self.getSimObject((uint) simobjectid, typeof (NewDecalButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2502,28 +2489,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(NewDecalButton ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator NewDecalButton(uint simobjectid)
-                {
+            {
                 return (NewDecalButton) Omni.self.getSimObject(simobjectid, typeof (NewDecalButton));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RetargetDecalButton>))]
         public class RetargetDecalButton : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 GuiListBoxCtrl DecalDataList = "DecalDataList";
                 DecalEditorGui DecalEditorGui = "DecalEditorGui";
 
@@ -2539,13 +2526,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 // This is the first place IODropdown is used. The # in the function passed replaced with the output 
                 // of the preset menu.
 
-                messageBox.IODropdown("Retarget Decal Instances",
-                    "Retarget DecalInstances from " + datablock.getName() + " over to....",
-                    "decalDataSet",
-                    "DecalEditorGui.retargetDecalDatablock(" + datablock.getName() + ", #);",
-                    "");
+                messageBox.IODropdown("Retarget Decal Instances", "Retarget DecalInstances from " + datablock.getName() + " over to....", "decalDataSet", "DecalEditorGui.retargetDecalDatablock(" + datablock.getName() + ", #);", "");
                 DecalEditorGui.rebuildInstanceTree();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2556,20 +2539,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RetargetDecalButton ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2577,9 +2558,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2588,12 +2569,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RetargetDecalButton ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2601,9 +2581,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RetargetDecalButton ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2611,10 +2591,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RetargetDecalButton(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (RetargetDecalButton) Omni.self.getSimObject(simobjectid, typeof (RetargetDecalButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2622,9 +2602,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RetargetDecalButton ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2632,9 +2612,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RetargetDecalButton(int simobjectid)
-                {
+            {
                 return (RetargetDecalButton) Omni.self.getSimObject((uint) simobjectid, typeof (RetargetDecalButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2642,21 +2622,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RetargetDecalButton ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RetargetDecalButton(uint simobjectid)
-                {
+            {
                 return (RetargetDecalButton) Omni.self.getSimObject(simobjectid, typeof (RetargetDecalButton));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -2667,18 +2647,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(DecalEditorGui ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -2686,9 +2666,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2697,12 +2677,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(DecalEditorGui ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -2710,9 +2689,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(DecalEditorGui ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2720,10 +2699,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator DecalEditorGui(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (DecalEditorGui) Omni.self.getSimObject(simobjectid, typeof (DecalEditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2731,9 +2710,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(DecalEditorGui ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2741,9 +2720,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator DecalEditorGui(int simobjectid)
-            {
+        {
             return (DecalEditorGui) Omni.self.getSimObject((uint) simobjectid, typeof (DecalEditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2751,19 +2730,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(DecalEditorGui ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator DecalEditorGui(uint simobjectid)
-            {
+        {
             return (DecalEditorGui) Omni.self.getSimObject(simobjectid, typeof (DecalEditorGui));
-            }
+        }
 
         #endregion
-        }
     }
+}

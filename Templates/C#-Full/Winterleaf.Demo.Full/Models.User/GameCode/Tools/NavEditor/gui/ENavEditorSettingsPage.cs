@@ -1,8 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui.CodeBehind;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
@@ -13,7 +44,7 @@ using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
 {
-    [TypeConverter(typeof(TypeConverterGeneric<ENavEditorSettingsPage>))]
+    [TypeConverter(typeof (TypeConverterGeneric<ENavEditorSettingsPage>))]
     public class ENavEditorSettingsPage : GuiTabPageCtrl
     {
         public static void initialize()
@@ -40,10 +71,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
             ObjectCreator oc_Newobject00002;
             ObjectCreator oc_Newobject00001;
             if (true)
-            {
-
+                {
                 #region GuiTabPageCtrl (ENavEditorSettingsPage)        oc_Newobject00021
-                oc_Newobject00021 = new ObjectCreator("GuiTabPageCtrl", "ENavEditorSettingsPage", typeof(ENavEditorSettingsPage));
+
+                oc_Newobject00021 = new ObjectCreator("GuiTabPageCtrl", "ENavEditorSettingsPage", typeof (ENavEditorSettingsPage));
                 oc_Newobject00021["fitBook"] = "1";
                 oc_Newobject00021["text"] = "Navigation Editor";
                 oc_Newobject00021["maxLength"] = "1024";
@@ -67,9 +98,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                 oc_Newobject00021["canSave"] = "1";
                 oc_Newobject00021["canSaveDynamicFields"] = "1";
                 if (true)
-                {
-
+                    {
                     #region GuiScrollCtrl ()        oc_Newobject00020
+
                     oc_Newobject00020 = new ObjectCreator("GuiScrollCtrl", "");
                     oc_Newobject00020["willFirstRespond"] = "1";
                     oc_Newobject00020["hScrollBar"] = "alwaysOff";
@@ -99,9 +130,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                     oc_Newobject00020["canSave"] = "1";
                     oc_Newobject00020["canSaveDynamicFields"] = "0";
                     if (true)
-                    {
-
+                        {
                         #region GuiStackControl ()        oc_Newobject00019
+
                         oc_Newobject00019 = new ObjectCreator("GuiStackControl", "");
                         oc_Newobject00019["stackingType"] = "Vertical";
                         oc_Newobject00019["horizStacking"] = "Left to Right";
@@ -126,9 +157,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00019["canSave"] = "1";
                         oc_Newobject00019["canSaveDynamicFields"] = "0";
                         if (true)
-                        {
-
+                            {
                             #region GuiRolloutCtrl ()        oc_Newobject00008
+
                             oc_Newobject00008 = new ObjectCreator("GuiRolloutCtrl", "");
                             oc_Newobject00008["caption"] = "Test spawn";
                             oc_Newobject00008["margin"] = "0 3 0 0";
@@ -151,9 +182,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                             oc_Newobject00008["canSave"] = "1";
                             oc_Newobject00008["canSaveDynamicFields"] = "0";
                             if (true)
-                            {
-
+                                {
                                 #region GuiStackControl ()        oc_Newobject00007
+
                                 oc_Newobject00007 = new ObjectCreator("GuiStackControl", "");
                                 oc_Newobject00007["stackingType"] = "Vertical";
                                 oc_Newobject00007["horizStacking"] = "Left to Right";
@@ -178,9 +209,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                 oc_Newobject00007["canSave"] = "1";
                                 oc_Newobject00007["canSaveDynamicFields"] = "0";
                                 if (true)
-                                {
-
+                                    {
                                     #region GuiControl ()        oc_Newobject00003
+
                                     oc_Newobject00003 = new ObjectCreator("GuiControl", "");
                                     oc_Newobject00003["position"] = "0 0";
                                     oc_Newobject00003["extent"] = "206 18";
@@ -196,9 +227,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                     oc_Newobject00003["canSave"] = "1";
                                     oc_Newobject00003["canSaveDynamicFields"] = "0";
                                     if (true)
-                                    {
-
+                                        {
                                         #region GuiTextCtrl ()        oc_Newobject00001
+
                                         oc_Newobject00001 = new ObjectCreator("GuiTextCtrl", "");
                                         oc_Newobject00001["text"] = "Spawn class:";
                                         oc_Newobject00001["maxLength"] = "1024";
@@ -221,12 +252,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         oc_Newobject00001["isContainer"] = "0";
                                         oc_Newobject00001["canSave"] = "1";
                                         oc_Newobject00001["canSaveDynamicFields"] = "0";
+
                                         #endregion
 
                                         oc_Newobject00003["#Newobject00001"] = oc_Newobject00001;
 
                                         #region GuiPopUpMenuCtrlEx ()        oc_Newobject00002
-                                        oc_Newobject00002 = new ObjectCreator("GuiPopUpMenuCtrlEx", "", typeof(ESettingsWindowPopup));
+
+                                        oc_Newobject00002 = new ObjectCreator("GuiPopUpMenuCtrlEx", "", typeof (ESettingsWindowPopup));
                                         oc_Newobject00002["maxPopupHeight"] = "200";
                                         oc_Newobject00002["sbUsesNAColor"] = "0";
                                         oc_Newobject00002["reverseTextList"] = "0";
@@ -257,16 +290,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         oc_Newobject00002["editorSettingsRead"] = "NavEditorPlugin.readSettings();";
                                         oc_Newobject00002["editorSettingsValue"] = "NavEditor/SpawnClass";
                                         oc_Newobject00002["editorSettingsWrite"] = "NavEditorPlugin.writeSettings();";
+
                                         #endregion
 
                                         oc_Newobject00003["#Newobject00002"] = oc_Newobject00002;
+                                        }
 
-                                    }
                                     #endregion
 
                                     oc_Newobject00007["#Newobject00003"] = oc_Newobject00003;
 
                                     #region GuiControl ()        oc_Newobject00006
+
                                     oc_Newobject00006 = new ObjectCreator("GuiControl", "");
                                     oc_Newobject00006["position"] = "0 21";
                                     oc_Newobject00006["extent"] = "206 18";
@@ -282,9 +317,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                     oc_Newobject00006["canSave"] = "1";
                                     oc_Newobject00006["canSaveDynamicFields"] = "0";
                                     if (true)
-                                    {
-
+                                        {
                                         #region GuiTextCtrl ()        oc_Newobject00004
+
                                         oc_Newobject00004 = new ObjectCreator("GuiTextCtrl", "");
                                         oc_Newobject00004["text"] = "Datablock:";
                                         oc_Newobject00004["maxLength"] = "1024";
@@ -307,12 +342,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         oc_Newobject00004["isContainer"] = "0";
                                         oc_Newobject00004["canSave"] = "1";
                                         oc_Newobject00004["canSaveDynamicFields"] = "0";
+
                                         #endregion
 
                                         oc_Newobject00006["#Newobject00004"] = oc_Newobject00004;
 
                                         #region GuiTextEditCtrl ()        oc_Newobject00005
-                                        oc_Newobject00005 = new ObjectCreator("GuiTextEditCtrl", "", typeof(ESettingsWindow.ESettingsWindowTextEdit));
+
+                                        oc_Newobject00005 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowTextEdit));
                                         oc_Newobject00005["historySize"] = "0";
                                         oc_Newobject00005["tabComplete"] = "0";
                                         oc_Newobject00005["sinkAllKeyEvents"] = "0";
@@ -343,26 +380,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         oc_Newobject00005["editorSettingsRead"] = "NavEditorPlugin.readSettings();";
                                         oc_Newobject00005["editorSettingsValue"] = "NavEditor/SpawnDatablock";
                                         oc_Newobject00005["editorSettingsWrite"] = "NavEditorPlugin.writeSettings();";
+
                                         #endregion
 
                                         oc_Newobject00006["#Newobject00005"] = oc_Newobject00005;
+                                        }
 
-                                    }
                                     #endregion
 
                                     oc_Newobject00007["#Newobject00006"] = oc_Newobject00006;
+                                    }
 
-                                }
                                 #endregion
 
                                 oc_Newobject00008["#Newobject00007"] = oc_Newobject00007;
+                                }
 
-                            }
                             #endregion
 
                             oc_Newobject00019["#Newobject00008"] = oc_Newobject00008;
 
                             #region GuiRolloutCtrl ()        oc_Newobject00018
+
                             oc_Newobject00018 = new ObjectCreator("GuiRolloutCtrl", "");
                             oc_Newobject00018["caption"] = "Colors";
                             oc_Newobject00018["margin"] = "0 3 0 0";
@@ -385,9 +424,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                             oc_Newobject00018["canSave"] = "1";
                             oc_Newobject00018["canSaveDynamicFields"] = "0";
                             if (true)
-                            {
-
+                                {
                                 #region GuiStackControl ()        oc_Newobject00017
+
                                 oc_Newobject00017 = new ObjectCreator("GuiStackControl", "");
                                 oc_Newobject00017["stackingType"] = "Vertical";
                                 oc_Newobject00017["horizStacking"] = "Left to Right";
@@ -412,10 +451,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                 oc_Newobject00017["canSave"] = "1";
                                 oc_Newobject00017["canSaveDynamicFields"] = "0";
                                 if (true)
-                                {
-
+                                    {
                                     #region GuiControl ()        oc_Newobject00012
-                                    oc_Newobject00012 = new ObjectCreator("GuiControl", "", typeof(ESettingsWindow.ESettingsWindowColor));
+
+                                    oc_Newobject00012 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
                                     oc_Newobject00012["position"] = "0 0";
                                     oc_Newobject00012["extent"] = "206 18";
                                     oc_Newobject00012["minExtent"] = "8 2";
@@ -434,9 +473,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                     oc_Newobject00012["editorSettingsValue"] = "NavEditor/HoverSplineColor";
                                     oc_Newobject00012["editorSettingsWrite"] = "NavEditorPlugin.writeSettings();";
                                     if (true)
-                                    {
-
+                                        {
                                         #region GuiTextCtrl ()        oc_Newobject00009
+
                                         oc_Newobject00009 = new ObjectCreator("GuiTextCtrl", "");
                                         oc_Newobject00009["text"] = "Hover Spline:";
                                         oc_Newobject00009["maxLength"] = "1024";
@@ -459,12 +498,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         oc_Newobject00009["isContainer"] = "0";
                                         oc_Newobject00009["canSave"] = "1";
                                         oc_Newobject00009["canSaveDynamicFields"] = "1";
+
                                         #endregion
 
                                         oc_Newobject00012["#Newobject00009"] = oc_Newobject00009;
 
                                         #region GuiTextEditCtrl ()        oc_Newobject00010
-                                        oc_Newobject00010 = new ObjectCreator("GuiTextEditCtrl", "", typeof(ESettingsWindow.ESettingsWindowColorEdit));
+
+                                        oc_Newobject00010 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
                                         oc_Newobject00010["historySize"] = "0";
                                         oc_Newobject00010["tabComplete"] = "0";
                                         oc_Newobject00010["sinkAllKeyEvents"] = "0";
@@ -492,12 +533,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         //oc_Newobject00010["class"] = "ESettingsWindowColorEdit";
                                         oc_Newobject00010["canSave"] = "1";
                                         oc_Newobject00010["canSaveDynamicFields"] = "1";
+
                                         #endregion
 
                                         oc_Newobject00012["#Newobject00010"] = oc_Newobject00010;
 
                                         #region GuiSwatchButtonCtrl ()        oc_Newobject00011
-                                        oc_Newobject00011 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof(ESettingsWindow.ESettingsWindowColorButton));
+
+                                        oc_Newobject00011 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
                                         oc_Newobject00011["color"] = "0 0 0 0";
                                         oc_Newobject00011["groupNum"] = "-1";
                                         oc_Newobject00011["buttonType"] = "PushButton";
@@ -517,17 +560,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         //oc_Newobject00011["class"] = "ESettingsWindowColorButton";
                                         oc_Newobject00011["canSave"] = "1";
                                         oc_Newobject00011["canSaveDynamicFields"] = "1";
+
                                         #endregion
 
                                         oc_Newobject00012["#Newobject00011"] = oc_Newobject00011;
+                                        }
 
-                                    }
                                     #endregion
 
                                     oc_Newobject00017["#Newobject00012"] = oc_Newobject00012;
 
                                     #region GuiControl ()        oc_Newobject00016
-                                    oc_Newobject00016 = new ObjectCreator("GuiControl", "", typeof(ESettingsWindow.ESettingsWindowColor));
+
+                                    oc_Newobject00016 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
                                     oc_Newobject00016["position"] = "0 21";
                                     oc_Newobject00016["extent"] = "206 18";
                                     oc_Newobject00016["minExtent"] = "8 2";
@@ -546,9 +591,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                     oc_Newobject00016["editorSettingsValue"] = "NavEditor/SelectedSplineColor";
                                     oc_Newobject00016["editorSettingsWrite"] = "NavEditorPlugin.writeSettings();";
                                     if (true)
-                                    {
-
+                                        {
                                         #region GuiTextCtrl ()        oc_Newobject00013
+
                                         oc_Newobject00013 = new ObjectCreator("GuiTextCtrl", "");
                                         oc_Newobject00013["text"] = "Sel. Spline:";
                                         oc_Newobject00013["maxLength"] = "1024";
@@ -571,12 +616,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         oc_Newobject00013["isContainer"] = "0";
                                         oc_Newobject00013["canSave"] = "1";
                                         oc_Newobject00013["canSaveDynamicFields"] = "1";
+
                                         #endregion
 
                                         oc_Newobject00016["#Newobject00013"] = oc_Newobject00013;
 
                                         #region GuiTextEditCtrl ()        oc_Newobject00014
-                                        oc_Newobject00014 = new ObjectCreator("GuiTextEditCtrl", "", typeof(ESettingsWindow.ESettingsWindowColorEdit));
+
+                                        oc_Newobject00014 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
                                         oc_Newobject00014["historySize"] = "0";
                                         oc_Newobject00014["tabComplete"] = "0";
                                         oc_Newobject00014["sinkAllKeyEvents"] = "0";
@@ -604,12 +651,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         //oc_Newobject00014["class"] = "ESettingsWindowColorEdit";
                                         oc_Newobject00014["canSave"] = "1";
                                         oc_Newobject00014["canSaveDynamicFields"] = "1";
+
                                         #endregion
 
                                         oc_Newobject00016["#Newobject00014"] = oc_Newobject00014;
 
                                         #region GuiSwatchButtonCtrl ()        oc_Newobject00015
-                                        oc_Newobject00015 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof(ESettingsWindow.ESettingsWindowColorButton));
+
+                                        oc_Newobject00015 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
                                         oc_Newobject00015["color"] = "0 0 0 0";
                                         oc_Newobject00015["groupNum"] = "-1";
                                         oc_Newobject00015["buttonType"] = "PushButton";
@@ -629,40 +678,41 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                                         //oc_Newobject00015["class"] = "ESettingsWindowColorButton";
                                         oc_Newobject00015["canSave"] = "1";
                                         oc_Newobject00015["canSaveDynamicFields"] = "1";
+
                                         #endregion
 
                                         oc_Newobject00016["#Newobject00015"] = oc_Newobject00015;
+                                        }
 
-                                    }
                                     #endregion
 
                                     oc_Newobject00017["#Newobject00016"] = oc_Newobject00016;
+                                    }
 
-                                }
                                 #endregion
 
                                 oc_Newobject00018["#Newobject00017"] = oc_Newobject00017;
+                                }
 
-                            }
                             #endregion
 
                             oc_Newobject00019["#Newobject00018"] = oc_Newobject00018;
+                            }
 
-                        }
                         #endregion
 
                         oc_Newobject00020["#Newobject00019"] = oc_Newobject00019;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00021["#Newobject00020"] = oc_Newobject00020;
+                    }
 
-                }
                 #endregion
-                oc_Newobject00021.Create();
 
-            }
+                oc_Newobject00021.Create();
+                }
         }
 
         [ConsoleInteraction]
@@ -674,6 +724,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
             SpawnClassOptions.add("AIPlayer");
             SpawnClassOptions.setFirstSelected();
         }
+
         #region ProxyObjects Operator Overrides
 
         /// <summary>
@@ -682,19 +733,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==( ENavEditorSettingsPage ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        public static bool operator ==(ENavEditorSettingsPage ts, string simobjectid)
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -702,9 +753,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -712,75 +763,74 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=( ENavEditorSettingsPage ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        public static bool operator !=(ENavEditorSettingsPage ts, string simobjectid)
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( ENavEditorSettingsPage ts)
-            {
-            if (object.ReferenceEquals(ts, null))
+        public static implicit operator string(ENavEditorSettingsPage ts)
+        {
+            if (ReferenceEquals(ts, null))
                 return "0";
             return ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator  ENavEditorSettingsPage(string ts)
-            {
+        public static implicit operator ENavEditorSettingsPage(string ts)
+        {
             uint simobjectid = resolveobject(ts);
-            return ( ENavEditorSettingsPage) Omni.self.getSimObject(simobjectid, typeof ( ENavEditorSettingsPage));
-            }
+            return (ENavEditorSettingsPage) Omni.self.getSimObject(simobjectid, typeof (ENavEditorSettingsPage));
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( ENavEditorSettingsPage ts)
-            {
+        public static implicit operator int(ENavEditorSettingsPage ts)
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static implicit operator  ENavEditorSettingsPage(int simobjectid)
-            {
-            return ( ENavEditorSettingsPage) Omni.self.getSimObject((uint) simobjectid, typeof ( ENavEditorSettingsPage));
-            }
+        public static implicit operator ENavEditorSettingsPage(int simobjectid)
+        {
+            return (ENavEditorSettingsPage) Omni.self.getSimObject((uint) simobjectid, typeof (ENavEditorSettingsPage));
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( ENavEditorSettingsPage ts)
-            {
+        public static implicit operator uint(ENavEditorSettingsPage ts)
+        {
             return (uint) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static implicit operator  ENavEditorSettingsPage(uint simobjectid)
-            {
-            return ( ENavEditorSettingsPage) Omni.self.getSimObject(simobjectid, typeof ( ENavEditorSettingsPage));
-            }
+        public static implicit operator ENavEditorSettingsPage(uint simobjectid)
+        {
+            return (ENavEditorSettingsPage) Omni.self.getSimObject(simobjectid, typeof (ENavEditorSettingsPage));
+        }
 
         #endregion
     }

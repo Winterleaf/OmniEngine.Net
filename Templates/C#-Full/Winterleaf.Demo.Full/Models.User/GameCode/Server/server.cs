@@ -1,24 +1,57 @@
-﻿#region
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-using System;
+#region
+
 using System.Linq;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
-using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Classes.Interopt;
+using WinterLeaf.Engine.Classes.View.Creators;
 
 #endregion
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
-    {
+{
     public class server
-        {
+    {
         public static pInvokes t3d = new pInvokes();
 
         public static void LoadDefaults()
-            {
+        {
             // List of master servers to query, each one is tried in order
             // until one responds
             t3d.iGlobal["$Pref::Server::RegionMask"] = 2;
@@ -34,10 +67,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             // message is display. This message should be replaced with information
             // usefull to the client, such as the url or ftp address of where the
             // latest version of the game can be obtained.
-            t3d.sGlobal["$Pref::Server::ConnectionError"] =
-                "You do not have the correct version of the FPS starter kit or " +
-                "the related art needed to play on this server, please contact " +
-                "the server operator for more information.";
+            t3d.sGlobal["$Pref::Server::ConnectionError"] = "You do not have the correct version of the FPS starter kit or " + "the related art needed to play on this server, please contact " + "the server operator for more information.";
 
             // The network port is also defined by the client, this value 
             // overrides pref::net::port for dedicated servers
@@ -58,8 +88,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             t3d.iGlobal["$Pref::Server::FloodProtectionEnabled"] = 1;
             t3d.iGlobal["$Pref::Server::MaxChatLen"] = 120;
 
-
-            t3d.sGlobal["$Pref::Server::Net::ClientGameConnectionModelClass"] = typeof(GameConnectionDM).FullName;
+            t3d.sGlobal["$Pref::Server::Net::ClientGameConnectionModelClass"] = typeof (GameConnectionDM).FullName;
 
             //todo Now add your own game specific server preferences as well as any overloaded core defaults here.
 
@@ -72,16 +101,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
                 //Settings.LoadSection("scripts/server/prefs.cs");
                 }
             else
-                {
                 t3d.Util._error("Not loading server prefs.cs on Xbox360");
-                }
-
-
-            }
+        }
 
         public static void initDedicated()
-            {
-            t3d.console.Call("enableWinConsole", new[] { "true" });
+        {
+            t3d.console.Call("enableWinConsole", new[] {"true"});
             //con.Eval("enableWinConsole(true);");
             t3d.console.print(@"\n--------- Starting Dedicated Server ---------");
             // Make sure this variable reflects the correct state.
@@ -92,10 +117,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
 
             else
                 t3d.console.print("No mission specified (use -mission filename)");
-            }
+        }
 
         public static void initServer()
-            {
+        {
             t3d.console.print("\n--------- Initializing " + t3d.sGlobal["$appName"] + ": Server Scripts ---------");
             // Server::Status is returned in the Game Info Query and represents the
             // current status of the server. This string sould be very short.
@@ -108,23 +133,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             // The common module provides the basic server functionality
             initBaseServer();
 
-
             // Load up game server support scripts
             game.initGame();
-            }
+        }
 
         public static void initBaseServer()
-            {
+        {
             // Base server functionality
             missionLoad.InitMissionLoad();
             game.initGame();
             spawn.init();
             t3d.iGlobal["$Camera::movementSpeed"] = 30;
-            Models.User.GameCode.Client.CenterPrint.centerPrint.initialize();
-            }
+            Client.CenterPrint.centerPrint.initialize();
+        }
 
         public static void portInit(int port)
-            {
+        {
             int failCount = 0;
             while (failCount < 10 && !t3d.Util.setNetPort(port))
                 {
@@ -132,7 +156,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
                 port++;
                 failCount++;
                 }
-            }
+        }
 
         /// <summary>
         /// Create a server of the given type, load the given level, and then
@@ -146,13 +170,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         /// <param name="level"></param>
         [ConsoleInteraction(true)]
         public static bool createAndConnectToLocalServer(string serverType, string level)
-            {
+        {
             if (!createServer(serverType, level))
                 return false;
 
             GameConnection conn = new ObjectCreator("GameConnection", "ServerConnection", t3d.sGlobal["$Pref::Server::Net::ClientGameConnectionModelClass"]).Create();
 
-            ((SimGroup)"RootGroup").add(conn);
+            ((SimGroup) "RootGroup").add(conn);
 
             conn.setConnectArgs(t3d.sGlobal["$pref::Player::Name"]);
             conn.setJoinPassword(t3d.sGlobal["$Client::Password"]);
@@ -164,7 +188,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
                 return false;
                 }
             return true;
-            }
+        }
 
         /// <summary>
         /// Create a server with either a "SinglePlayer" or "MultiPlayer" type
@@ -175,7 +199,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         /// <returns></returns>
         [ConsoleInteraction(true)]
         public static bool createServer(string serverType, string level)
-            {
+        {
             t3d.iGlobal["$Server::Session"]++;
 
             if (level == string.Empty)
@@ -220,18 +244,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
 
             game.onServerCreated();
 
-
-            t3d.console.Call("loadMission", new[] { level, "true" });
+            t3d.console.Call("loadMission", new[] {level, "true"});
 
             return true;
-            }
+        }
 
         /// <summary>
         /// Shut down the server
         /// </summary>
         [ConsoleInteraction(true)]
         public static void destroyServer()
-            {
+        {
             t3d.sGlobal["$Server::ServerType"] = string.Empty;
             t3d.Util.allowConnections(false);
 
@@ -268,17 +291,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             // Increase the server session number.  This is used to make sure we're
             // working with the server session we think we are.
             t3d.iGlobal["$Server::Session"]++;
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string onServerInfoQuery()
-            {
+        {
             return "Doing Ok";
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static void resetServerDefaults()
-            {
+        {
             t3d.console.print("Resetting server defaults...");
             LoadDefaults();
 
@@ -288,6 +311,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
 
             // Reload the current level
             missionLoad.loadMission(t3d.sGlobal["$Server::MissionFile"], false);
-            }
         }
     }
+}

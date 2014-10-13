@@ -1,34 +1,59 @@
-
-
+// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 #region
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
-using WinterLeaf.Engine.Containers;
-using WinterLeaf.Engine.Enums;
+
 using System.ComponentModel;
-using System.Threading;
-using  WinterLeaf.Engine.Classes.Interopt;
-using WinterLeaf.Engine.Classes.Decorations;
-using WinterLeaf.Engine.Classes.Extensions;
-using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Engine;
+using WinterLeaf.Engine.Classes.Decorations;
+using WinterLeaf.Engine.Classes.Helpers;
+using WinterLeaf.Engine.Classes.Interopt;
+
 #endregion
 
 namespace WinterLeaf.Demo.Full.Models.Base
-    {
+{
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof(TypeConverterGeneric<SFXSound_Base>))]
-    public partial class SFXSound_Base: SFXSource
-{
+    [TypeConverter(typeof (TypeConverterGeneric<SFXSound_Base>))]
+    public partial class SFXSound_Base : SFXSource
+    {
+        #region ProxyObjects Operator Overrides
 
-#region ProxyObjects Operator Overrides
         /// <summary>
         /// 
         /// </summary>
@@ -36,27 +61,29 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(SFXSound_Base ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
-  /// <summary>
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
-  /// <summary>
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
-            
-            return (this._ID ==(string)myReflections.ChangeType( obj,typeof(string)));
-            }
+        {
+            return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,25 +91,23 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(SFXSound_Base ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
+        }
 
-            }
-
-
-            /// <summary>
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( SFXSound_Base ts)
-            {
-            if (object.ReferenceEquals(ts, null))
-                 return "0";
+        public static implicit operator string(SFXSound_Base ts)
+        {
+            if (ReferenceEquals(ts, null))
+                return "0";
             return ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -90,20 +115,20 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator SFXSound_Base(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-           return  (SFXSound_Base) Omni.self.getSimObject(simobjectid,typeof(SFXSound_Base));
-            }
+            return (SFXSound_Base) Omni.self.getSimObject(simobjectid, typeof (SFXSound_Base));
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( SFXSound_Base ts)
-            {
-            return (int)ts._iID;
-            }
+        public static implicit operator int(SFXSound_Base ts)
+        {
+            return (int) ts._iID;
+        }
 
         /// <summary>
         /// 
@@ -111,70 +136,81 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator SFXSound_Base(int simobjectid)
-            {
-            return  (SFXSound) Omni.self.getSimObject((uint)simobjectid,typeof(SFXSound_Base));
-            }
-
+        {
+            return (SFXSound) Omni.self.getSimObject((uint) simobjectid, typeof (SFXSound_Base));
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( SFXSound_Base ts)
-            {
+        public static implicit operator uint(SFXSound_Base ts)
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator SFXSound_Base(uint simobjectid)
-            {
-            return  (SFXSound_Base) Omni.self.getSimObject(simobjectid,typeof(SFXSound_Base));
-            }
-#endregion
-#region Init Persists
+        {
+            return (SFXSound_Base) Omni.self.getSimObject(simobjectid, typeof (SFXSound_Base));
+        }
 
-#endregion
-#region Member Functions
-/// <summary>
-/// Get the total play time (in seconds) of the sound data attached to the sound.   @return    @note Be aware that for looped sounds, this will not return the total playback time of the sound. )
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  float getDuration(){
+        #endregion
 
-return pInvokes.m_ts.fnSFXSound_getDuration(_ID);
+        #region Init Persists
+
+        #endregion
+
+        #region Member Functions
+
+        /// <summary>
+        /// Get the total play time (in seconds) of the sound data attached to the sound.   @return    @note Be aware that for looped sounds, this will not return the total playback time of the sound. )
+        /// </summary>
+        [MemberFunctionConsoleInteraction(true)]
+        public float getDuration()
+        {
+            return m_ts.fnSFXSound_getDuration(_ID);
+        }
+
+        /// <summary>
+        /// Get the current playback position in seconds.   @return The current play cursor offset. )
+        /// </summary>
+        [MemberFunctionConsoleInteraction(true)]
+        public float getPosition()
+        {
+            return m_ts.fnSFXSound_getPosition(_ID);
+        }
+
+        /// <summary>
+        /// Test whether the sound data associated with the sound has been fully loaded and is ready for playback.   For streamed sounds, this will be false during playback when the stream queue for the sound is starved and    waiting for data.  For buffered sounds, only an initial loading phase will potentially cause isReady to    return false.   @return True if the sound is ready for playback. )
+        /// </summary>
+        [MemberFunctionConsoleInteraction(true)]
+        public bool isReady()
+        {
+            return m_ts.fnSFXSound_isReady(_ID);
+        }
+
+        /// <summary>
+        /// Set the current playback position in seconds.   If the source is currently playing, playback will jump to the new position.  If playback is stopped or paused,    playback will resume at the given position when play() is called.   @param position The new position of the play cursor (in seconds). )
+        /// </summary>
+        [MemberFunctionConsoleInteraction(true)]
+        public void setPosition(float position)
+        {
+            m_ts.fnSFXSound_setPosition(_ID, position);
+        }
+
+        #endregion
+
+        #region T3D Callbacks
+
+        #endregion
+
+        public SFXSound_Base()
+        {
+        }
+    }
 }
-/// <summary>
-/// Get the current playback position in seconds.   @return The current play cursor offset. )
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  float getPosition(){
-
-return pInvokes.m_ts.fnSFXSound_getPosition(_ID);
-}
-/// <summary>
-/// Test whether the sound data associated with the sound has been fully loaded and is ready for playback.   For streamed sounds, this will be false during playback when the stream queue for the sound is starved and    waiting for data.  For buffered sounds, only an initial loading phase will potentially cause isReady to    return false.   @return True if the sound is ready for playback. )
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  bool isReady(){
-
-return pInvokes.m_ts.fnSFXSound_isReady(_ID);
-}
-/// <summary>
-/// Set the current playback position in seconds.   If the source is currently playing, playback will jump to the new position.  If playback is stopped or paused,    playback will resume at the given position when play() is called.   @param position The new position of the play cursor (in seconds). )
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  void setPosition(float position){
-
-pInvokes.m_ts.fnSFXSound_setPosition(_ID, position);
-}
-
-#endregion
-#region T3D Callbacks
-
-#endregion
-public SFXSound_Base (){}
-}}

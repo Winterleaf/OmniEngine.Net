@@ -1,45 +1,77 @@
-﻿using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<ColladaImportDlg>))]
     public class ColladaImportDlg : GuiControl
-        {
-        
+    {
 
         internal string path
-            {
+        {
             get { return this["path"]; }
             set { this["path"] = value; }
-            }
+        }
 
         internal string cmd
-            {
+        {
             get { return this["cmd"]; }
             set { this["cmd"] = value; }
-            }
+        }
 
         public SimObject constructor
-            {
+        {
             get { return this["constructor"]; }
             set { this["constructor"] = value; }
-            }
+        }
 
         [ConsoleInteraction(true, "ColladaImportDlg_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (ColladaImportDlg,EditorGuiGroup)        oc_Newobject48
 
-            ObjectCreator oc_Newobject48 = new ObjectCreator("GuiControl", "ColladaImportDlg,EditorGuiGroup",
-                typeof (ColladaImportDlg));
+            ObjectCreator oc_Newobject48 = new ObjectCreator("GuiControl", "ColladaImportDlg,EditorGuiGroup", typeof (ColladaImportDlg));
             oc_Newobject48["isContainer"] = "1";
             oc_Newobject48["Profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject48["HorizSizing"] = "width";
@@ -135,8 +167,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             #region GuiTreeViewCtrl (ColladaImportTreeView)        oc_Newobject1
 
-            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiTreeViewCtrl", "ColladaImportTreeView",
-                typeof (ColladaImportTreeView));
+            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiTreeViewCtrl", "ColladaImportTreeView", typeof (ColladaImportTreeView));
             oc_Newobject1["tabSize"] = "16";
             oc_Newobject1["textOffset"] = "2";
             oc_Newobject1["fullRowSelect"] = "0";
@@ -1507,11 +1538,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             #endregion
 
             oc_Newobject52.Create();
-            }
+        }
 
         [ConsoleInteraction]
         public string showDialog(string shapePath, string cmd)
-            {
+        {
             ColladaImportTreeView ColladaImportTreeView = "ColladaImportTreeView";
             ShapeEditor.gui.CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             Settings EditorSettings = "EditorSettings";
@@ -1543,7 +1574,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 if (canLoadLights && (this.constructor > 0) && (this.constructor["loadLights"].AsInt() == 1))
                     this.loadLights();
 
-                    return id;
+                return id;
                 }
 
             bGlobal["$collada::forceLoadDAE"] = false;
@@ -1646,11 +1677,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             ColladaImportTreeView.refresh("all");
 
             return "0";
-            }
+        }
 
         [ConsoleInteraction]
         public void readDtsConfig()
-            {
+        {
             string filename = Util.filePath(this.path) + "/" + Util.fileBase(this.path) + ".cfg";
             string filename2 = Util.filePath(this.path) + "/" + "dtsScene.cfg";
 
@@ -1698,16 +1729,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 ((GuiTextEditCtrl) this.FOT(neverImport)).setText(neverImport);
                 }
             else
-                {
                 Util._error("Failed to open " + filename + " or " + filename2 + " for reading");
-                }
 
             fo.delete();
-            }
+        }
 
         [ConsoleInteraction]
         public void writeDtsConfig()
-            {
+        {
             string filename = Util.filePath(this.path) + "/" + Util.fileBase(this.path) + ".cfg";
 
             FileObject fo = new ObjectCreator("FileObject").Create();
@@ -1715,8 +1744,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 {
                 // AlwaysImport
                 fo.writeLine("AlwaysExport:");
-                string alwaysImport =
-                    Util.trim(Util.strreplace(((GuiTextEditCtrl) this.FOT("alwaysImport")).getText(), ";", "\t"));
+                string alwaysImport = Util.trim(Util.strreplace(((GuiTextEditCtrl) this.FOT("alwaysImport")).getText(), ";", "\t"));
                 int count1 = Util.getFieldCount(alwaysImport);
                 for (int i = 0; i < count1; i++)
                     fo.writeLine(Util.getField(alwaysImport, i));
@@ -1724,8 +1752,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                 // NeverImport
                 fo.writeLine("NeverExport:");
-                string neverImport =
-                    Util.trim(Util.strreplace(((GuiTextEditCtrl) this.FOT("neverImport")).getText(), ";", "\t"));
+                string neverImport = Util.trim(Util.strreplace(((GuiTextEditCtrl) this.FOT("neverImport")).getText(), ";", "\t"));
                 int count = Util.getFieldCount(neverImport);
                 for (int i = 0; i < count; i++)
                     fo.writeLine(Util.getField(neverImport, i));
@@ -1734,16 +1761,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 fo.close();
                 }
             else
-                {
                 Util._error("Failed to open " + filename + " for writing");
-                }
 
             fo.delete();
-            }
+        }
 
         [ConsoleInteraction]
         public void updateOverrideUpAxis(bool overrideState)
-            {
+        {
             ColladaImportTreeView ColladaImportTreeView = "ColladaImportTreeView";
 
             GuiCheckBoxCtrl overrideUpAxis = this.FOT("overrideUpAxis");
@@ -1753,11 +1778,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             upAxis.setActive(overrideState);
             if (!overrideState)
                 upAxis.setText(ColladaImportTreeView["_upAxis"]);
-            }
+        }
 
         [ConsoleInteraction]
         public void updateOverrideScale(bool overrideState)
-            {
+        {
             ColladaImportTreeView ColladaImportTreeView = "ColladaImportTreeView";
 
             GuiTextEditCtrl scale = this.FOT("scale");
@@ -1767,21 +1792,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             scale.setActive(overrideState);
             if (!overrideState)
                 scale.setText(ColladaImportTreeView["_unit"]);
-            }
+        }
 
         [ConsoleInteraction]
         public void onCancel()
-            {
+        {
             ColladaImportTreeView ColladaImportTreeView = "ColladaImportTreeView";
             GuiCanvas Canvas = "Canvas";
 
             Canvas.popDialog(this);
             ColladaImportTreeView.clear();
-            }
+        }
 
         [ConsoleInteraction]
         public void onOK()
-            {
+        {
             ColladaImportTreeView ColladaImportTreeView = "ColladaImportTreeView";
             GuiCanvas Canvas = "Canvas";
             ShapeEditor.gui.CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
@@ -1808,14 +1833,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             // Need to create a TSShapeConstructor object if any settings are not
             // at the default values
-            if ((overrideUpAxis.getValue().AsInt() != 0) || (overrideScale.getValue().AsInt() != 0) ||
-                (lodType.getText() != "DetectDTS") || (singleDetailSize.getText() != "2") ||
-                (materialPrefix.getText() != "") ||
-                (alwaysImport.getText() != "") || (neverImport.getText() != "") || (alwaysImportMesh.getText() != "") ||
-                (neverImportMesh.getText() != "") || (ignoreNodeScale.getValue().AsInt() != 0) ||
-                (adjustCenter.getValue().AsInt() != 0) ||
-                (adjustFloor.getValue().AsInt() != 0) || (forceUpdateMaterials.getValue().AsInt() != 0) ||
-                (loadLights.getValue().AsInt() != 0))
+            if ((overrideUpAxis.getValue().AsInt() != 0) || (overrideScale.getValue().AsInt() != 0) || (lodType.getText() != "DetectDTS") || (singleDetailSize.getText() != "2") || (materialPrefix.getText() != "") || (alwaysImport.getText() != "") || (neverImport.getText() != "") || (alwaysImportMesh.getText() != "") || (neverImportMesh.getText() != "") || (ignoreNodeScale.getValue().AsInt() != 0) || (adjustCenter.getValue().AsInt() != 0) || (adjustFloor.getValue().AsInt() != 0) || (forceUpdateMaterials.getValue().AsInt() != 0) || (loadLights.getValue().AsInt() != 0))
                 {
                 if (this.constructor <= 0)
                     {
@@ -1863,11 +1881,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // to the scene)
             if (loadLights.getValue().AsBool())
                 this.loadLights();
-            }
+        }
 
         [ConsoleInteraction]
         public void loadLights()
-            {
+        {
             SimGroup MissionGroup = "MissionGroup";
             EditorTree EditorTree = "EditorTree";
 
@@ -1892,14 +1910,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     }
                 }
             else
-                {
                 group.delete();
-                }
-            }
+        }
 
         [ConsoleInteraction]
         public static void updateTSShapeLoadProgress(float progress, string msg)
-            {
+        {
             GuiCanvas Canvas = "Canvas";
             GuiChunkedBitmapCtrl LoadingGui = "LoadingGui";
             GuiControl ColladaImportProgress = "ColladaImportProgress";
@@ -1947,9 +1963,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     Canvas.pushDialog(ColladaImportProgress);
                     }
                 else if (progress == 1.0)
-                    {
                     Canvas.popDialog(ColladaImportProgress);
-                    }
 
                 progressCtrl = progressBar;
                 textCtrl = progressText;
@@ -1969,12 +1983,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 }
 
             Canvas.repaint(33);
-            }
+        }
 
         [ConsoleInteraction]
         // Convert all COLLADA models that match the given pattern (defaults to *) to DTS
         public static void convertColladaModels(string pattern)
-            {
+        {
             // Force loading the COLLADA file (to ensure cached DTS is updated)
             omni.bGlobal["$collada::forceLoadDAE"] = true;
 
@@ -2000,14 +2014,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 }
 
             omni.bGlobal["$collada::forceLoadDAE"] = false;
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ColladaImportTreeView>))]
         public class ColladaImportTreeView : GuiTreeViewCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onDefineIcons()
-                {
+            {
                 // Set the tree view icon indices and texture paths
                 this["_imageNone"] = "0";
                 this["_imageNode"] = "1";
@@ -2028,11 +2042,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                                "tools/gui/images/ColladaImport/iconExistingMaterial"; // existing material
 
                 this.buildIconTable(icons);
-                }
+            }
 
             [ConsoleInteraction]
             public void refresh(string what)
-                {
+            {
                 ColladaImportDlg ColladaImportDlg = "ColladaImportDlg";
 
                 GuiTextEditCtrl materialPrefix = ColladaImportDlg.FOT("materialPrefix");
@@ -2094,22 +2108,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                         id = this.getNextSibling(id);
                         }
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void refreshNode(int id)
-                {
+            {
                 while (id > 0)
                     {
                     switch (this.getItemValue(id))
                         {
                             case "mesh":
                                 // Check if this mesh will be ignored on import
-                                if (
-                                    Util.strIsMatchMultipleExpr(this["_alwaysImportMesh"],
-                                        this.getItemText(id), false) ||
-                                    !Util.strIsMatchMultipleExpr(this["_neverImportMesh"],
-                                        this.getItemText(id), false))
+                                if (Util.strIsMatchMultipleExpr(this["_alwaysImportMesh"], this.getItemText(id), false) || !Util.strIsMatchMultipleExpr(this["_neverImportMesh"], this.getItemText(id), false))
                                     {
                                     this.setItemTooltip(id, "");
                                     this.setItemImages(id, this["_imageMesh"].AsSbyte(), this["_imageMesh"].AsSbyte());
@@ -2127,11 +2137,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                             case "node":
                                 // Check if this node will be ignored on import
-                                if (
-                                    Util.strIsMatchMultipleExpr(this["_alwaysImport"], this.getItemText(id),
-                                        false) ||
-                                    !Util.strIsMatchMultipleExpr(this["_neverImport"], this.getItemText(id),
-                                        false))
+                                if (Util.strIsMatchMultipleExpr(this["_alwaysImport"], this.getItemText(id), false) || !Util.strIsMatchMultipleExpr(this["_neverImport"], this.getItemText(id), false))
                                     {
                                     this.setItemTooltip(id, "");
                                     this.setItemImages(id, this["_imageNode"].AsSbyte(), this["_imageNode"].AsSbyte());
@@ -2148,7 +2154,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     this.refreshNode(this.getChild(id));
                     id = this.getNextSibling(id);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2159,20 +2165,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ColladaImportTreeView ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2180,9 +2184,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2191,12 +2195,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ColladaImportTreeView ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2204,9 +2207,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ColladaImportTreeView ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2214,10 +2217,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ColladaImportTreeView(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ColladaImportTreeView) Omni.self.getSimObject(simobjectid, typeof (ColladaImportTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2225,9 +2228,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ColladaImportTreeView ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2235,10 +2238,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ColladaImportTreeView(int simobjectid)
-                {
-                return
-                    (ColladaImportTreeView) Omni.self.getSimObject((uint) simobjectid, typeof (ColladaImportTreeView));
-                }
+            {
+                return (ColladaImportTreeView) Omni.self.getSimObject((uint) simobjectid, typeof (ColladaImportTreeView));
+            }
 
             /// <summary>
             /// 
@@ -2246,21 +2248,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ColladaImportTreeView ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ColladaImportTreeView(uint simobjectid)
-                {
+            {
                 return (ColladaImportTreeView) Omni.self.getSimObject(simobjectid, typeof (ColladaImportTreeView));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -2271,18 +2273,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(ColladaImportDlg ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -2290,9 +2292,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2301,12 +2303,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(ColladaImportDlg ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -2314,9 +2315,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(ColladaImportDlg ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2324,10 +2325,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator ColladaImportDlg(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (ColladaImportDlg) Omni.self.getSimObject(simobjectid, typeof (ColladaImportDlg));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2335,9 +2336,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(ColladaImportDlg ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2345,9 +2346,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator ColladaImportDlg(int simobjectid)
-            {
+        {
             return (ColladaImportDlg) Omni.self.getSimObject((uint) simobjectid, typeof (ColladaImportDlg));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2355,19 +2356,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(ColladaImportDlg ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator ColladaImportDlg(uint simobjectid)
-            {
+        {
             return (ColladaImportDlg) Omni.self.getSimObject(simobjectid, typeof (ColladaImportDlg));
-            }
+        }
 
         #endregion
-        }
     }
+}

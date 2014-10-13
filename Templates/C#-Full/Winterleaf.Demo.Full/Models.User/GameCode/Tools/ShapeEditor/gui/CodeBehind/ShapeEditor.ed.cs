@@ -1,12 +1,38 @@
-﻿using System;
-using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
-using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 // +todo:
 //
 // - split node transform editboxes into X Y Z and rot X Y Z with spin controls
@@ -20,31 +46,37 @@ using WinterLeaf.Engine.Classes;
 //   order in the shape ( since it results in remove/add sequence commands )
 // - deleting a node should not delete its children as well?
 //
+using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
+using WinterLeaf.Engine;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
+using OpenFileDialog = WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBehind
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<ShapeEditor>))]
     public class ShapeEditor : ScriptObject
-        {
-        
+    {
 
         internal TSShapeConstructor shape
-            {
+        {
             get { return this["shape"]; }
             set { this["shape"] = value; }
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Utility Methods
         //------------------------------------------------------------------------------
         [ConsoleInteraction(true, "ShapeEditor_initialize")]
         public static void initialize()
-            {
+        {
             if (!"ShapeEditor".isObject())
                 {
                 ObjectCreator shapeEditor = new ObjectCreator("ScriptObject", "ShapeEditor", typeof (ShapeEditor));
@@ -52,19 +84,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 shapeEditor["deletedCount"] = "0";
                 shapeEditor.Create();
                 }
-            }
+        }
 
         // Capitalise the first letter of the input string
         [ConsoleInteraction]
         public static string strcapitalise(string str)
-            {
+        {
             int len = omni.Util.strlen(str);
             return omni.Util.strupr(omni.Util.getSubStr(str, 0, 1)) + omni.Util.getSubStr(str, 1, len - 1);
-            }
+        }
 
         [ConsoleInteraction]
         public string getObjectShapeFile(SimObject obj)
-            {
+        {
             // Get the path to the shape file used by the given object (not perfect, but
             // works for the vast majority of object types)
             string path = "";
@@ -76,12 +108,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 path = ((SimObject) obj.getDataBlock())["shapeFile"];
 
             return path;
-            }
+        }
 
         // Check if the given name already exists
         [ConsoleInteraction]
         public bool nameExists(string type, string name)
-            {
+        {
             if (this.shape == -1)
                 return false;
 
@@ -93,12 +125,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 return (this.shape.getObjectIndex(name) >= 0);
 
             return false;
-            }
+        }
 
         // Check if the given 'hint' name exists (spaces could also be underscores)
         [ConsoleInteraction]
         public bool hintNameExists(string type, string name)
-            {
+        {
             if (this.nameExists(type, name))
                 return true;
 
@@ -108,12 +140,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 return true;
 
             return false;
-            }
+        }
 
         // Generate a unique name from a given base by appending an integer
         [ConsoleInteraction]
         public string getUniqueName(string type, string name)
-            {
+        {
             string uniqueName = "";
             for (int idx = 1; idx < 100; idx++)
                 {
@@ -123,39 +155,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 }
 
             return uniqueName;
-            }
+        }
 
         [ConsoleInteraction]
         public string getProxyName(string seqName)
-            {
+        {
             return "__proxy__" + seqName;
-            }
+        }
 
         [ConsoleInteraction]
         public string getUnproxyName(string proxyName)
-            {
+        {
             return Util.strreplace(proxyName, "__proxy__", "");
-            }
+        }
 
         [ConsoleInteraction]
         public string getBackupName(string seqName)
-            {
+        {
             return "__backup__" + seqName;
-            }
+        }
 
         // Check if this mesh name is a collision hint
         [ConsoleInteraction]
         public bool isCollisionMesh(string name)
-            {
-            return (Util.startsWith(name, "ColBox", true) ||
-                    Util.startsWith(name, "ColSphere", true) ||
-                    Util.startsWith(name, "ColCapsule", true) ||
-                    Util.startsWith(name, "ColConvex", true));
-            }
+        {
+            return (Util.startsWith(name, "ColBox", true) || Util.startsWith(name, "ColSphere", true) || Util.startsWith(name, "ColCapsule", true) || Util.startsWith(name, "ColConvex", true));
+        }
 
         [ConsoleInteraction]
         public string getSequenceSource(string seqName)
-            {
+        {
             string source = this.shape.getSequenceSource(seqName);
 
             // Use the sequence name as the source for DTS built-in sequences
@@ -167,12 +196,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 source = Util.setField(source, 0, seqName);
 
             return source;
-            }
+        }
 
         // Recursively get names for a node and its children
         [ConsoleInteraction]
         public string getNodeNames(string nodeName, string names, string exclude)
-            {
+        {
             if (nodeName == exclude)
                 return names;
 
@@ -186,23 +215,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             names = names + '\t' + nodeName;
 
             return Util.trim(names);
-            }
+        }
 
         // Get the list of meshes for a particular object
         [ConsoleInteraction]
         public string getObjectMeshList(string name)
-            {
+        {
             string list = "";
             int count = this.shape.getMeshCount(name);
             for (int i = 0; i < count; i++)
                 list = list + '\t' + this.shape.getMeshName(name, i);
             return Util.trim(list);
-            }
+        }
 
         // Get the list of meshes for a particular detail level
         [ConsoleInteraction]
         public string getDetailMeshList(string detSize)
-            {
+        {
             string list = "";
             int objCount = this.shape.getObjectCount();
             for (int i = 0; i < objCount; i++)
@@ -217,19 +246,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     }
                 }
             return Util.trim(list);
-            }
+        }
 
         [ConsoleInteraction]
         public bool isDirty()
-            {
+        {
             GuiWindowCollapseCtrl ShapeEdPropWindow = "ShapeEdPropWindow";
             GuiBitmapButtonCtrl saveBtn = ShapeEdPropWindow.FOT("saveBtn");
             return (this.shape.isObject() && saveBtn.isActive());
-            }
+        }
 
         [ConsoleInteraction]
         public void setDirty(bool dirty)
-            {
+        {
             GuiWindowCollapseCtrl ShapeEdPropWindow = "ShapeEdPropWindow";
             GuiBitmapButtonCtrl saveBtn = ShapeEdPropWindow.FOT("saveBtn");
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
@@ -240,11 +269,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 ShapeEdSelectWindow.text = "Shapes";
 
             saveBtn.setActive(dirty);
-            }
+        }
 
         [ConsoleInteraction]
         public void saveChanges()
-            {
+        {
             if (this.shape.isObject())
                 {
                 this.saveConstructor(this.shape);
@@ -252,14 +281,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 this.shape.notifyShapeChanged(); // Force game objects to reload shape
                 this.setDirty(false);
                 }
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Shape Selection
         //------------------------------------------------------------------------------
 
         public string findConstructor(string path)
-            {
+        {
             SimSet TSShapeConstructorGroup = "TSShapeConstructorGroup";
             int count = TSShapeConstructorGroup.getCount();
             for (uint i = 0; i < count; i++)
@@ -269,11 +298,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     return obj;
                 }
             return "-1";
-            }
+        }
 
         [ConsoleInteraction]
         public string createConstructor(string path)
-            {
+        {
             string name = strcapitalise(Util.fileBase(path)) + strcapitalise(Util.getSubStr(Util.fileExt(path), 1, 3));
             name = Util.strreplace(name, "-", "_");
             name = Util.strreplace(name, ".", "_");
@@ -283,22 +312,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
             TSShapeConstructor temp = tempCreator.Create();
             return temp;
-            }
+        }
 
         [ConsoleInteraction]
         public void saveConstructor(SimObject constructor)
-            {
-            string savepath = Util.filePath(constructor["baseShape"]) + "/" + Util.fileBase(constructor["baseShape"]) +
-                              ".cs";
+        {
+            string savepath = Util.filePath(constructor["baseShape"]) + "/" + Util.fileBase(constructor["baseShape"]) + ".cs";
             PersistenceManager shapeEd_perMan = new ObjectCreator("PersistenceManager", "shapeEd_perMan").Create();
             shapeEd_perMan.setDirty(constructor, savepath);
             shapeEd_perMan.saveDirtyObject(constructor);
             shapeEd_perMan.delete();
-            }
+        }
 
         [ConsoleInteraction]
         public void selectShape(string path, bool saveOld)
-            {
+        {
             ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             ShapeEditorActions.ShapeEdUndoManager ShapeEdUndoManager = "ShapeEdUndoManager";
             ShapeEdAdvancedWindow ShapeEdAdvancedWindow = "ShapeEdAdvancedWindow";
@@ -363,11 +391,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
             // Update editor status bar
             EditorGuiStatusBar.setSelection(path);
-            }
+        }
 
         [ConsoleInteraction]
         public void autoAddDetails(SimObject dest)
-            {
+        {
             // Sets of LOD files are named like:
             //
             // MyShape_LOD200.dae
@@ -392,8 +420,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
             Util._echo("Base is: " + baseShape);
 
-            string filePatterns = Util.filePath(dest["baseShape"]) + "/" + baseShape + "*" +
-                                  Util.fileExt(dest["baseShape"]);
+            string filePatterns = Util.filePath(dest["baseShape"]) + "/" + baseShape + "*" + Util.fileExt(dest["baseShape"]);
 
             Util._echo("Pattern is: " + filePatterns);
 
@@ -420,11 +447,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 ShapeEdShapeView.refreshShape();
                 ShapeEdDetails.update_onDetailsChanged();
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public string addLODFromFile(SimObject dest, string filename, string size, bool allowUnmatched)
-            {
+        {
             // Get (or create) a TSShapeConstructor object for the source shape. Need to
             // exec the script manually as the resource may not have been loaded yet
 
@@ -473,16 +500,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 }
 
             return Util.trim(meshList);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Helper functions for creating and applying GUI operations
 
         //[ConsoleInteraction]
         public T createAction<T>(string desc)
-            {
+        {
             Util.pushInstantGroup();
-            ObjectCreator actionCreator = new ObjectCreator("UndoScriptAction", "", typeof(T));
+            ObjectCreator actionCreator = new ObjectCreator("UndoScriptAction", "", typeof (T));
             //action["class"] = className;
             //action["superClass"] = "BaseShapeEdAction";
             actionCreator["actionName"] = desc;
@@ -492,11 +519,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
             Util.popInstantGroup();
             return action;
-            }
+        }
 
         [ConsoleInteraction]
         public void doAction(ShapeEditorActions.BaseShapeEdAction action)
-            {
+        {
             ShapeEditor ShapeEditor = "ShapeEditor";
             ShapeEditorActions.ShapeEdUndoManager ShapeEdUndoManager = "ShapeEdUndoManager";
 
@@ -506,41 +533,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 action.addToManager(ShapeEdUndoManager);
                 }
             else
-                {
-                messageBox.MessageBoxOK("Error",
-                    action["actionName"] + ' ' + "failed. Check the console for error messages.", "");
-                }
-            }
+                messageBox.MessageBoxOK("Error", action["actionName"] + ' ' + "failed. Check the console for error messages.", "");
+        }
 
         [ConsoleInteraction]
         public void doRemoveShapeData(string type, string name)
-            {
+        {
             // Removing data from the shape cannot be undone => so warn the user first
-            messageBox.MessageBoxYesNo("Warning", "Deleting a " + type + " cannot be undone. Do " +
-                                                  "you want to continue?",
-                "ShapeEditor.doRemove" + type + "( \"" + name + "\" );", "");
-            }
+            messageBox.MessageBoxYesNo("Warning", "Deleting a " + type + " cannot be undone. Do " + "you want to continue?", "ShapeEditor.doRemove" + type + "( \"" + name + "\" );", "");
+        }
 
         //------------------------------------------------------------------------------
         // Add node
         [ConsoleInteraction]
         public void doAddNode(string nodeName, string parentName, string transform)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionAddNode>("Add node");
+        {
+            ShapeEditorActions.ActionAddNode action = this.createAction<ShapeEditorActions.ActionAddNode>("Add node");
             action["nodeName"] = nodeName;
             action["parentName"] = parentName;
             action["transform"] = transform;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Remove node
         [ConsoleInteraction]
         public void doRemoveNode(string nodeName)
-            {
+        {
             ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
-            var action = this.createAction<ShapeEditorActions.ActionRemoveNode>("Remove node");
+            ShapeEditorActions.ActionRemoveNode action = this.createAction<ShapeEditorActions.ActionRemoveNode>("Remove node");
             action["nodeName"] = nodeName;
             action["nodeChildIndex"] = ShapeEdNodeTreeView.getChildIndexByName(nodeName).AsString();
 
@@ -552,48 +574,47 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 action["names[" + i + "]"] = Util.getField(action["nameList"], i);
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Rename node
         [ConsoleInteraction]
         public void doRenameNode(string oldName, string newName)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRenameNode>("Rename node");
+        {
+            ShapeEditorActions.ActionRenameNode action = this.createAction<ShapeEditorActions.ActionRenameNode>("Rename node");
             action["oldName"] = oldName;
             action["newName"] = newName;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Set node parent
         [ConsoleInteraction]
         public void doSetNodeParent(string name, string parent)
-            {
+        {
             if (parent == "<root>")
                 parent = "";
 
-            var action = this.createAction<ShapeEditorActions.ActionSetNodeParent>("Set parent node");
+            ShapeEditorActions.ActionSetNodeParent action = this.createAction<ShapeEditorActions.ActionSetNodeParent>("Set parent node");
             action["nodeName"] = name;
             action["parentName"] = parent;
             action["oldParentName"] = this.shape.getNodeParentName(name);
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit node transform
         [ConsoleInteraction]
         public void doEditNodeTransform(string nodeName, string newTransform, bool isWorld, string gizmoID)
-            {
+        {
             ShapeEditorActions.ShapeEdUndoManager ShapeEdUndoManager = "ShapeEdUndoManager";
 
             // If dragging the 3D gizmo, combine all movement into a single action. Undoing
             // that action will return the node to where it was when the gizmo drag started.
             ShapeEditorActions.BaseShapeEdAction last = ShapeEdUndoManager.getUndoAction((ShapeEdUndoManager.getUndoCount() - 1));
-            if ((last != -1) && (last["class"] == "ActionEditNodeTransform") &&
-                (last["nodeName"] == nodeName) && (last["gizmoID"].AsInt() != -1) && (last["gizmoID"] == gizmoID))
+            if ((last != -1) && (last["class"] == "ActionEditNodeTransform") && (last["nodeName"] == nodeName) && (last["gizmoID"].AsInt() != -1) && (last["gizmoID"] == gizmoID))
                 {
                 // Use the last action to do the edit, and modify it so it only applies
                 // the latest transform
@@ -604,7 +625,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 }
             else
                 {
-                var action = this.createAction<ShapeEditorActions.ActionEditNodeTransform>("Edit node transform");
+                ShapeEditorActions.ActionEditNodeTransform action = this.createAction<ShapeEditorActions.ActionEditNodeTransform>("Edit node transform");
                 action["nodeName"] = nodeName;
                 action["newTransform"] = newTransform;
                 action["isWorld"] = isWorld.AsString();
@@ -613,14 +634,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 this.doAction(action);
                 }
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Add sequence
         [ConsoleInteraction]
         public void doAddSequence(string seqName, string from, string start, string end)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionAddSequence>("Add sequence");
+        {
+            ShapeEditorActions.ActionAddSequence action = this.createAction<ShapeEditorActions.ActionAddSequence>("Add sequence");
             action["seqName"] = seqName;
             action["origFrom"] = from;
             action["from"] = from;
@@ -628,38 +649,38 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             action["end"] = end;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Remove sequence
 
         [ConsoleInteraction]
         public void doRemoveSequence(string seqName)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRemoveSequence>("Remove sequence");
+        {
+            ShapeEditorActions.ActionRemoveSequence action = this.createAction<ShapeEditorActions.ActionRemoveSequence>("Remove sequence");
             action["seqName"] = seqName;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Rename sequence
         [ConsoleInteraction]
         public void doRenameSequence(string oldName, string newName)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRenameSequence>("Rename sequence");
+        {
+            ShapeEditorActions.ActionRenameSequence action = this.createAction<ShapeEditorActions.ActionRenameSequence>("Rename sequence");
             action["oldName"] = oldName;
             action["newName"] = newName;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit sequence source data ( parent, start or end )
         [ConsoleInteraction]
         public void doEditSeqSource(string seqName, string from, string start, string end)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditSeqSource>("Edit sequence source data");
+        {
+            ShapeEditorActions.ActionEditSeqSource action = this.createAction<ShapeEditorActions.ActionEditSeqSource>("Edit sequence source data");
             action["seqName"] = seqName;
             action["origFrom"] = from;
             action["from"] = from;
@@ -676,26 +697,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 action["from"] = action["seqBackup"];
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit cyclic flag
         [ConsoleInteraction]
         public void doEditCyclic(string seqName, string cyclic)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditCyclic>("Toggle cyclic flag");
+        {
+            ShapeEditorActions.ActionEditCyclic action = this.createAction<ShapeEditorActions.ActionEditCyclic>("Toggle cyclic flag");
             action["seqName"] = seqName;
             action["cyclic"] = cyclic;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit blend properties
         [ConsoleInteraction]
         public void doEditBlend(string seqName, string blend, string blendSeq, string blendFrame)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditBlend>("Edit blend properties");
+        {
+            ShapeEditorActions.ActionEditBlend action = this.createAction<ShapeEditorActions.ActionEditBlend>("Edit blend properties");
             action["seqName"] = seqName;
             action["blend"] = blend;
             action["blendSeq"] = blendSeq;
@@ -715,66 +736,66 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 action["oldBlendFrame"] = action["blendFrame"];
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit sequence priority
         [ConsoleInteraction]
         public void doEditSequencePriority(string seqName, string newPriority)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditSequencePriority>("Edit sequence priority");
+        {
+            ShapeEditorActions.ActionEditSequencePriority action = this.createAction<ShapeEditorActions.ActionEditSequencePriority>("Edit sequence priority");
             action["seqName"] = seqName;
             action["newPriority"] = newPriority;
             action["oldPriority"] = this.shape.getSequencePriority(seqName).AsString();
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit sequence ground speed
         [ConsoleInteraction]
         public void doEditSequenceGroundSpeed(string seqName, string newSpeed)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditSequenceGroundSpeed>("Edit sequence ground speed");
+        {
+            ShapeEditorActions.ActionEditSequenceGroundSpeed action = this.createAction<ShapeEditorActions.ActionEditSequenceGroundSpeed>("Edit sequence ground speed");
             action["seqName"] = seqName;
             action["newSpeed"] = newSpeed;
             action["oldSpeed"] = this.shape.getSequenceGroundSpeed(seqName);
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Add trigger
         [ConsoleInteraction]
         public void doAddTrigger(string seqName, string frame, string state)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionAddTrigger>("Add trigger");
+        {
+            ShapeEditorActions.ActionAddTrigger action = this.createAction<ShapeEditorActions.ActionAddTrigger>("Add trigger");
             action["seqName"] = seqName;
             action["frame"] = frame;
             action["state"] = state;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Remove trigger
         [ConsoleInteraction]
         public void doRemoveTrigger(string seqName, string frame, string state)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRemoveTrigger>("Remove trigger");
+        {
+            ShapeEditorActions.ActionRemoveTrigger action = this.createAction<ShapeEditorActions.ActionRemoveTrigger>("Remove trigger");
             action["seqName"] = seqName;
             action["frame"] = frame;
             action["state"] = state;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit trigger
         [ConsoleInteraction]
         public void doEditTrigger(string seqName, string oldFrame, string oldState, string frame, string state)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditTrigger>("Edit trigger");
+        {
+            ShapeEditorActions.ActionEditTrigger action = this.createAction<ShapeEditorActions.ActionEditTrigger>("Edit trigger");
             action["seqName"] = seqName;
             action["oldFrame"] = oldFrame;
             action["oldState"] = oldState;
@@ -782,115 +803,114 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             action["state"] = state;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Rename detail
         [ConsoleInteraction]
         public void doRenameDetail(string oldName, string newName)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRenameDetail>("Rename detail");
+        {
+            ShapeEditorActions.ActionRenameDetail action = this.createAction<ShapeEditorActions.ActionRenameDetail>("Rename detail");
             action["oldName"] = oldName;
             action["newName"] = newName;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit detail size
         [ConsoleInteraction]
         public void doEditDetailSize(int oldSize, string newSize)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditDetailSize>("Edit detail size");
+        {
+            ShapeEditorActions.ActionEditDetailSize action = this.createAction<ShapeEditorActions.ActionEditDetailSize>("Edit detail size");
             action["oldSize"] = oldSize.AsString();
             action["newSize"] = newSize;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Rename object
         [ConsoleInteraction]
         public void doRenameObject(string oldName, string newName)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRenameObject>("Rename object");
+        {
+            ShapeEditorActions.ActionRenameObject action = this.createAction<ShapeEditorActions.ActionRenameObject>("Rename object");
             action["oldName"] = oldName;
             action["newName"] = newName;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit mesh size
         public void doEditMeshSize(string meshName, string size)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditMeshSize>("Edit mesh size");
+        {
+            ShapeEditorActions.ActionEditMeshSize action = this.createAction<ShapeEditorActions.ActionEditMeshSize>("Edit mesh size");
             action["meshName"] = Util.stripTrailingNumber(meshName);
             action["oldSize"] = Util.getTrailingNumber(meshName).AsString();
             action["newSize"] = size;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit billboard type
         [ConsoleInteraction]
         public void doEditMeshBillboard(string meshName, string type)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditMeshBillboard>("Edit mesh billboard");
+        {
+            ShapeEditorActions.ActionEditMeshBillboard action = this.createAction<ShapeEditorActions.ActionEditMeshBillboard>("Edit mesh billboard");
             action["meshName"] = meshName;
             action["oldType"] = this.shape.getMeshType(meshName);
             action["newType"] = type;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Edit object node
         [ConsoleInteraction]
         public void doSetObjectNode(string objName, string node)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionSetObjectNode>("Set object node");
+        {
+            ShapeEditorActions.ActionSetObjectNode action = this.createAction<ShapeEditorActions.ActionSetObjectNode>("Set object node");
             action["objName"] = objName;
             action["oldNode"] = this.shape.getObjectNode(objName);
             action["newNode"] = node;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Remove mesh
         [ConsoleInteraction]
         public void doRemoveMesh(string meshName)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRemoveMesh>("Remove mesh");
+        {
+            ShapeEditorActions.ActionRemoveMesh action = this.createAction<ShapeEditorActions.ActionRemoveMesh>("Remove mesh");
             action["meshName"] = meshName;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Add meshes from file
         [ConsoleInteraction]
         public void doAddMeshFromFile(string filename, string size)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionAddMeshFromFile>("Add mesh from file");
+        {
+            ShapeEditorActions.ActionAddMeshFromFile action = this.createAction<ShapeEditorActions.ActionAddMeshFromFile>("Add mesh from file");
             action["filename"] = filename;
             action["size"] = size;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Add/edit collision geometry
-        public void doEditCollision(string type, string target, string depth, string merge, string concavity,
-            string maxVerts, string boxMax, string sphereMax, string capsuleMax)
-            {
+        public void doEditCollision(string type, string target, string depth, string merge, string concavity, string maxVerts, string boxMax, string sphereMax, string capsuleMax)
+        {
             ShapeEdColWindow ShapeEdColWindow = "ShapeEdColWindow";
 
             string colData = ShapeEdColWindow["lastColSettings"];
 
-            var action = this.createAction<ShapeEditorActions.ActionEditCollision>("Edit shape collision");
+            ShapeEditorActions.ActionEditCollision action = this.createAction<ShapeEditorActions.ActionEditCollision>("Edit shape collision");
 
             action["oldType"] = Util.getField(colData, 0);
             action["oldTarget"] = Util.getField(colData, 1);
@@ -913,25 +933,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             action["newCapsuleMax"] = capsuleMax;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Remove Detail
 
         public void doRemoveDetail(string size)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRemoveDetail>("Remove detail level");
+        {
+            ShapeEditorActions.ActionRemoveDetail action = this.createAction<ShapeEditorActions.ActionRemoveDetail>("Remove detail level");
             action["size"] = size;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Add/edit imposter
-        public void doEditImposter(int dl, string detailSize, string bbEquatorSteps, string bbPolarSteps,
-            string bbDetailLevel, string bbDimension, string bbIncludePoles, string bbPolarAngle)
-            {
-            var action = this.createAction<ShapeEditorActions.ActionEditImposter>("Edit imposter");
+        public void doEditImposter(int dl, string detailSize, string bbEquatorSteps, string bbPolarSteps, string bbDetailLevel, string bbDimension, string bbIncludePoles, string bbPolarAngle)
+        {
+            ShapeEditorActions.ActionEditImposter action = this.createAction<ShapeEditorActions.ActionEditImposter>("Edit imposter");
             action["oldDL"] = dl.AsString();
             if (action["oldDL"].AsInt() != -1)
                 {
@@ -939,18 +958,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 action["oldImposter"] = this.shape.getImposterSettings(dl);
                 }
             action["newSize"] = detailSize;
-            action["newImposter"] = "1" + '\t' + bbEquatorSteps + '\t' + bbPolarSteps + '\t' + bbDetailLevel + '\t' +
-                                    bbDimension + '\t' + bbIncludePoles + '\t' + bbPolarAngle;
+            action["newImposter"] = "1" + '\t' + bbEquatorSteps + '\t' + bbPolarSteps + '\t' + bbDetailLevel + '\t' + bbDimension + '\t' + bbIncludePoles + '\t' + bbPolarAngle;
 
             this.doAction(action);
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Remove imposter
         [ConsoleInteraction]
         public void doRemoveImposter()
-            {
-            var action = this.createAction<ShapeEditorActions.ActionRemoveImposter>("Remove imposter");
+        {
+            ShapeEditorActions.ActionRemoveImposter action = this.createAction<ShapeEditorActions.ActionRemoveImposter>("Remove imposter");
             int dl = this.shape.getImposterDetailLevel();
             if (dl != -1)
                 {
@@ -958,32 +976,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 action["oldImposter"] = this.shape.getImposterSettings(dl);
                 this.doAction(action);
                 }
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Update bounds
         [ConsoleInteraction]
         public void doSetBounds()
-            {
+        {
             ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
-            var action = this.createAction<ShapeEditorActions.ActionSetBounds>("Set bounds");
+            ShapeEditorActions.ActionSetBounds action = this.createAction<ShapeEditorActions.ActionSetBounds>("Set bounds");
             action["oldBounds"] = this.shape.getBounds().AsString();
             action["newBounds"] = ShapeEdShapeView.computeShapeBounds().AsString();
 
             this.doAction(action);
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdColWindow>))]
         public class ShapeEdColWindow : GuiContainer
-            {
+        {
             //------------------------------------------------------------------------------
             // Collision editing
             //------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiPopUpMenuCtrl colType = this.FOT("colType");
 
                 colType.clear();
@@ -996,11 +1014,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 colType.add("18-DOP");
                 colType.add("26-DOP");
                 colType.add("Convex Hulls");
-                }
+            }
 
             [ConsoleInteraction]
             public void update_onShapeSelectionChanged()
-                {
+            {
                 GuiPopUpMenuCtrl colTarget = this.FOT("colTarget");
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -1014,11 +1032,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     colTarget.add(ShapeEditor.shape.getObjectName(i));
 
                 colTarget.setSelected(colTarget.findText("Bounds"), false);
-                }
+            }
 
             [ConsoleInteraction]
             public void update_onCollisionChanged()
-                {
+            {
                 GuiPopUpMenuCtrl colType = this.FOT("colType");
                 GuiPopUpMenuCtrl colTarget = this.FOT("colTarget");
                 GuiBitmapCtrl hullInactive = this.FOT("hullInactive");
@@ -1065,34 +1083,25 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     hullMaxCapsuleErrorText.setText(Util.mFloor(hullMaxCapsuleError.getValue()).AsString());
                     }
                 else
-                    {
                     hullInactive.setVisible(true);
-                    }
-                }
+            }
 
             [ConsoleInteraction]
             public void editCollision()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
                 // If the shape already contains a collision detail size-1, warn the user
                 // that it will be removed
-                if ((ShapeEditor.shape.getDetailLevelIndex(-1) >= 0) &&
-                    (Util.getField(this["lastColSettings"], 0) == ""))
-                    {
-                    messageBox.MessageBoxYesNo("Warning", "Existing collision geometry at detail size " +
-                                                          "-1 will be removed, and this cannot be undone. Do you want to continue?",
-                        "ShapeEdColWindow.editCollisionOK();", "");
-                    }
+                if ((ShapeEditor.shape.getDetailLevelIndex(-1) >= 0) && (Util.getField(this["lastColSettings"], 0) == ""))
+                    messageBox.MessageBoxYesNo("Warning", "Existing collision geometry at detail size " + "-1 will be removed, and this cannot be undone. Do you want to continue?", "ShapeEdColWindow.editCollisionOK();", "");
                 else
-                    {
                     this.editCollisionOK();
-                    }
-                }
+            }
 
             [ConsoleInteraction]
             public void editCollisionOK()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
                 GuiPopUpMenuCtrl colType = this.FOT("colType");
@@ -1115,10 +1124,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 float maxSphere = hullMaxSphereError.getValue();
                 float maxCapsule = hullMaxCapsuleError.getValue();
 
-                ShapeEditor.doEditCollision(type, target, depth.AsString(), merge.AsString(), concavity.AsString(),
-                    maxVerts.AsString(),
-                    maxBox.AsString(), maxSphere.AsString(), maxCapsule.AsString());
-                }
+                ShapeEditor.doEditCollision(type, target, depth.AsString(), merge.AsString(), concavity.AsString(), maxVerts.AsString(), maxBox.AsString(), maxSphere.AsString(), maxCapsule.AsString());
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1129,20 +1136,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdColWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1150,9 +1155,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1161,12 +1166,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdColWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1174,9 +1178,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdColWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1184,10 +1188,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdColWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdColWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdColWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1195,9 +1199,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdColWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1205,9 +1209,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdColWindow(int simobjectid)
-                {
+            {
                 return (ShapeEdColWindow) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdColWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1215,28 +1219,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdColWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdColWindow(uint simobjectid)
-                {
+            {
                 return (ShapeEdColWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdColWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdDetailTree>))]
         public class ShapeEdDetailTree : GuiTreeViewCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onDefineIcons()
-                {
+            {
                 // Set the tree view icon indices and texture paths
                 this["_imageNone"] = "0";
                 this["_imageHidden"] = "1";
@@ -1245,20 +1249,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                                "tools/gui/images/visible_i:"; // hidden
 
                 this.buildIconTable(icons);
-                }
+            }
 
             // Return true if the item in the details tree view is a detail level (false if
             // a mesh)
             [ConsoleInteraction]
             public bool isDetailItem(int id)
-                {
+            {
                 return (this.getParentItem(id) == 1);
-                }
+            }
 
             // Get the detail level index from the ID of an item in the details tree view
             [ConsoleInteraction]
             public int getDetailLevelFromItem(int id)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 string detSize;
 
@@ -1267,11 +1271,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 else
                     detSize = this.getItemValue(this.getParentItem(id));
                 return ShapeEditor.shape.getDetailLevelIndex(detSize.AsInt());
-                }
+            }
 
             [ConsoleInteraction]
             public int addMeshEntry(string name, bool noSync)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
 
@@ -1285,20 +1289,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     detailID = this.insertItem(1, detName, size.AsString(), "", 1, 1);
 
                     // Sort details by decreasing size
-                    for (int sibling = this.getPrevSibling(detailID);
-                        (sibling > 0) && (this.getItemValue(sibling).AsInt() < size);
-                        sibling = this.getPrevSibling(detailID))
+                    for (int sibling = this.getPrevSibling(detailID); (sibling > 0) && (this.getItemValue(sibling).AsInt() < size); sibling = this.getPrevSibling(detailID))
                         this.moveItemUp(detailID);
 
                     if (!noSync)
                         ShapeEdDetails.update_onDetailsChanged();
                     }
                 return this.insertItem(detailID, name, "", "", 1, 1);
-                }
+            }
 
             [ConsoleInteraction]
             public void removeMeshEntry(string name, int size)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
 
@@ -1312,12 +1314,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     }
                 else
                     this.removeItem(id);
-                }
+            }
 
             [ConsoleInteraction]
-            
             public override void onSelect(string ID, string y)
-                {
+            {
                 int id = ID.AsInt();
                 ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
@@ -1372,11 +1373,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     ShapeEdShapeView["selectedObject"] = ShapeEditor.shape.getObjectIndex(baseName).AsString();
                     ShapeEdShapeView["selectedObjDetail"] = dl.AsString();
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public override void onRightMouseUp(int itemId, string mousePos, SimObject objectx)
-                {
+            {
                 // Open context menu if this is a Mesh item
                 MenuBuilder ShapeEdMeshPopup = "ShapeEdMeshPopup";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
@@ -1386,33 +1387,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     {
                     if (!ShapeEdMeshPopup.isObject())
                         {
-                        ObjectCreator shapecCreator = new ObjectCreator("PopupMenu", "ShapeEdMeshPopup",
-                            typeof (MenuBuilder));
+                        ObjectCreator shapecCreator = new ObjectCreator("PopupMenu", "ShapeEdMeshPopup", typeof (MenuBuilder));
                         shapecCreator["isPopup"] = true.AsString();
 
-                        shapecCreator["item[0]"] = "Hidden" + '\t' + "" + '\t' +
-                                                   "ShapeEdDetailTree.onHideMeshItem( ShapeEdMeshPopup._objName, !ShapeEdMeshPopup._itemHidden );";
+                        shapecCreator["item[0]"] = "Hidden" + '\t' + "" + '\t' + "ShapeEdDetailTree.onHideMeshItem( ShapeEdMeshPopup._objName, !ShapeEdMeshPopup._itemHidden );";
                         shapecCreator["item[1]"] = "-";
-                        shapecCreator["item[2]"] = "Hide all" + '\t' + "" + '\t' +
-                                                   "ShapeEdDetailTree.onHideMeshItem( \\\"\\\", true );";
-                        shapecCreator["item[3]"] = "Show all" + '\t' + "" + '\t' +
-                                                   "ShapeEdDetailTree.onHideMeshItem( \\\"\\\", false );";
+                        shapecCreator["item[2]"] = "Hide all" + '\t' + "" + '\t' + "ShapeEdDetailTree.onHideMeshItem( \\\"\\\", true );";
+                        shapecCreator["item[3]"] = "Show all" + '\t' + "" + '\t' + "ShapeEdDetailTree.onHideMeshItem( \\\"\\\", false );";
 
                         ShapeEdMeshPopup = shapecCreator.Create();
                         }
 
                     ShapeEdMeshPopup["_objName"] = Util.stripTrailingNumber(this.getItemText(itemId));
-                    ShapeEdMeshPopup["_itemHidden"] =
-                        ShapeEdShapeView.getMeshHidden(ShapeEdMeshPopup["_objName"]).AsString();
+                    ShapeEdMeshPopup["_itemHidden"] = ShapeEdShapeView.getMeshHidden(ShapeEdMeshPopup["_objName"]).AsString();
 
                     ShapeEdMeshPopup.checkItem(0, ShapeEdMeshPopup["_itemHidden"].AsBool());
                     ShapeEdMeshPopup.showPopup(Canvas);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onHideMeshItem(string objName, bool hide)
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
@@ -1427,14 +1423,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     {
                     // Show/hide all
                     ShapeEdShapeView.setAllMeshesHidden(hide);
-                    for (int parent = this.getChild(this.getFirstRootItem());
-                        parent > 0;
-                        parent = this.getNextSibling(parent
-                            ))
-                        for (int child = this.getChild(parent);
-                            child > 0;
-                            child = this.getNextSibling(child))
+                    for (int parent = this.getChild(this.getFirstRootItem()); parent > 0; parent = this.getNextSibling(parent))
+                        {
+                        for (int child = this.getChild(parent); child > 0; child = this.getNextSibling(child))
                             this.setItemImages(child, imageId.AsSbyte(), imageId.AsSbyte());
+                        }
                     }
                 else
                     {
@@ -1449,7 +1442,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                             this.setItemImages(id, imageId.AsSbyte(), imageId.AsSbyte());
                         }
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1460,20 +1453,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdDetailTree ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1481,9 +1472,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1492,12 +1483,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdDetailTree ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1505,9 +1495,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdDetailTree ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1515,10 +1505,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdDetailTree(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdDetailTree) Omni.self.getSimObject(simobjectid, typeof (ShapeEdDetailTree));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1526,9 +1516,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdDetailTree ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1536,9 +1526,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdDetailTree(int simobjectid)
-                {
+            {
                 return (ShapeEdDetailTree) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdDetailTree));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1546,28 +1536,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdDetailTree ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdDetailTree(uint simobjectid)
-                {
+            {
                 return (ShapeEdDetailTree) Omni.self.getSimObject(simobjectid, typeof (ShapeEdDetailTree));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdDetails>))]
         public class ShapeEdDetails : GuiTabPageCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
 
                 GuiPopUpMenuCtrl bbType = this.FOT("bbType");
@@ -1585,11 +1575,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 addGeomTo.setSelected(0, false);
 
                 ShapeEdDetailTree.onDefineIcons();
-                }
+            }
 
             [ConsoleInteraction]
             public void update_onDetailsChanged()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdAdvancedWindow ShapeEdAdvancedWindow = "ShapeEdAdvancedWindow";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
@@ -1629,11 +1619,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     bbIncludePoles.setValue(Util.getField(settings, 5));
                     bbPolarAngle.setText(Util.getField(settings, 6));
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditName()
-                {
+            {
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -1656,11 +1646,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     // Rename the selected mesh
                     ShapeEditor.doRenameObject(Util.stripTrailingNumber(oldName), newName);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditSize()
-                {
+            {
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -1682,11 +1672,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string meshName = ShapeEdDetailTree.getItemText(id);
                     ShapeEditor.doEditMeshSize(meshName, newSize);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditBBType()
-                {
+            {
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -1712,11 +1702,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         }
                     ShapeEditor.doEditMeshBillboard(meshName, bbType);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onSetObjectNode()
-                {
+            {
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -1733,11 +1723,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         node = "";
                     ShapeEditor.doSetObjectNode(objName, node);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onAddMeshFromFile(string path)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
@@ -1746,8 +1736,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 if (path == "")
                     {
-                    WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog.getLoadFilename("DTS Files|*.dts|COLLADA Files|*.dae|Google Earth Files|*.kmz",
-                        this + ".onAddMeshFromFile", this["lastPath"]);
+                    OpenFileDialog.getLoadFilename("DTS Files|*.dts|COLLADA Files|*.dae|Google Earth Files|*.kmz", this + ".onAddMeshFromFile", this["lastPath"]);
                     return;
                     }
 
@@ -1756,9 +1745,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 // Determine the detail level to use for the new geometry
                 if (addGeomTo.getText() == "current detail")
-                    {
                     size = ShapeEditor.shape.getDetailLevelSize(ShapeEdShapeView["currentDL"].AsInt());
-                    }
                 else
                     {
                     // Check if the file has an LODXXX hint at the end of it
@@ -1775,11 +1762,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     }
 
                 ShapeEditor.doAddMeshFromFile(path, size.AsString());
-                }
+            }
 
             [ConsoleInteraction]
             public void onDeleteMesh()
-                {
+            {
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -1794,11 +1781,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string name = ShapeEdDetailTree.getItemText(id);
                     ShapeEditor.doRemoveShapeData("Mesh", name);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onToggleImposter(bool useImposter)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 bool hasImposterDetail = (ShapeEditor.shape.getImposterDetailLevel() != -1);
                 if (useImposter == hasImposterDetail)
@@ -1823,21 +1810,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     int bbPolarAngle = 0;
 
                     // Add a new imposter detail level to the shape
-                    ShapeEditor.doEditImposter(-1, detailSize.AsString(), bbEquatorSteps.AsString(),
-                        bbPolarSteps.AsString(),
-                        bbDetailLevel.AsString(), bbDimension.AsString(), bbIncludePoles.AsString(),
-                        bbPolarAngle.AsString());
+                    ShapeEditor.doEditImposter(-1, detailSize.AsString(), bbEquatorSteps.AsString(), bbPolarSteps.AsString(), bbDetailLevel.AsString(), bbDimension.AsString(), bbIncludePoles.AsString(), bbPolarAngle.AsString());
                     }
                 else
                     {
                     // Remove the imposter detail level
                     ShapeEditor.doRemoveImposter();
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditImposter()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
                 ShapeEdAdvancedWindow ShapeEdAdvancedWindow = "ShapeEdAdvancedWindow";
@@ -1858,10 +1842,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 int bbPolarSteps = ShapeEdAdvancedWindowbbPolarSteps.getText().AsInt();
                 int bbPolarAngle = ShapeEdAdvancedWindowbbPolarAngle.getText().AsInt();
 
-                ShapeEditor.doEditImposter(ShapeEdShapeView["currentDL"].AsInt(), detailSize.AsString(),
-                    bbEquatorSteps.AsString(), bbPolarSteps.AsString(), bbDetailLevel.AsString(), bbDimension.AsString(),
-                    bbIncludePoles.AsString(), bbPolarAngle.AsString());
-                }
+                ShapeEditor.doEditImposter(ShapeEdShapeView["currentDL"].AsInt(), detailSize.AsString(), bbEquatorSteps.AsString(), bbPolarSteps.AsString(), bbDetailLevel.AsString(), bbDimension.AsString(), bbIncludePoles.AsString(), bbPolarAngle.AsString());
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1872,20 +1854,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdDetails ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1893,9 +1873,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1904,12 +1884,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdDetails ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1917,9 +1896,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdDetails ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1927,10 +1906,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdDetails(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdDetails) Omni.self.getSimObject(simobjectid, typeof (ShapeEdDetails));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1938,9 +1917,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdDetails ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1948,9 +1927,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdDetails(int simobjectid)
-                {
+            {
                 return (ShapeEdDetails) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdDetails));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1958,21 +1937,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdDetails ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdDetails(uint simobjectid)
-                {
+            {
                 return (ShapeEdDetails) Omni.self.getSimObject(simobjectid, typeof (ShapeEdDetails));
-                }
+            }
 
             #endregion
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Shape Hints
@@ -1980,17 +1959,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdHintMenu>))]
         public class ShapeEdHintMenu : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
                 ShapeEdSelectWindow.updateHints();
-                }
+            }
 
             [ConsoleInteraction]
             public void processHint(string type, string hint)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
 
@@ -2022,16 +2001,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         bool present = ShapeEditor.hintNameExists(type, Base + j);
                         if (present != prevPresent)
                             {
-                            ShapeEdSelectWindow.addObjectHint(type, Base, desc, prevPresent,
-                                arrayStart.AsString(), (j - 1).AsString());
+                            ShapeEdSelectWindow.addObjectHint(type, Base, desc, prevPresent, arrayStart.AsString(), (j - 1).AsString());
                             arrayStart = j;
                             prevPresent = present;
                             }
                         }
 
                     // add hint for the last group
-                    ShapeEdSelectWindow.addObjectHint(type, Base, desc, prevPresent, arrayStart.AsString(),
-                        last.AsString());
+                    ShapeEdSelectWindow.addObjectHint(type, Base, desc, prevPresent, arrayStart.AsString(), last.AsString());
                     }
                 else
                     {
@@ -2039,7 +2016,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     bool present = ShapeEditor.hintNameExists(type, name);
                     ShapeEdSelectWindow.addObjectHint(type, name, desc, present, "", "");
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2050,20 +2027,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdHintMenu ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2071,9 +2046,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2082,12 +2057,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdHintMenu ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2095,9 +2069,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdHintMenu ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2105,10 +2079,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdHintMenu(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdHintMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdHintMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2116,9 +2090,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdHintMenu ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2126,9 +2100,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdHintMenu(int simobjectid)
-                {
+            {
                 return (ShapeEdHintMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdHintMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2136,40 +2110,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdHintMenu ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdHintMenu(uint simobjectid)
-                {
+            {
                 return (ShapeEdHintMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdHintMenu));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdMaterials>))]
         public class ShapeEdMaterials : GuiTabPageCtrl
-            {
+        {
             public Material selectedMaterial
-                {
+            {
                 get { return this["selectedMaterial"]; }
                 set { this["selectedMaterial"] = value; }
-                }
+            }
 
             public TSStatic tempShape
-                {
+            {
                 get { return this["tempShape"]; }
                 set { this["tempShape"] = value; }
-                }
+            }
 
             [ConsoleInteraction]
             public void updateMaterialList()
-                {
+            {
                 GuiTextListCtrl ShapeEdMaterialList = "ShapeEdMaterialList";
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 Material WarningMaterial = "WarningMaterial";
@@ -2192,12 +2166,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         ShapeEdMaterialList.addRow(mapped.getID(), matName + '\t' + mapped, -1);
                     }
 
-                materialListHeader.setExtent(new Point2F( Util.getWord(ShapeEdMaterialList["extent"], 0) + ' ' + "19"));
-                }
+                materialListHeader.setExtent(new Point2F(Util.getWord(ShapeEdMaterialList["extent"], 0) + ' ' + "19"));
+            }
 
             [ConsoleInteraction]
             public void updateSelectedMaterial(bool highlight)
-                {
+            {
                 GuiTextListCtrl ShapeEdMaterialList = "ShapeEdMaterialList";
 
                 // Remove the highlight effect from the old selection
@@ -2208,30 +2182,27 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     }
 
                 // Apply the highlight effect to the new selected material
-                this["selectedMapTo"] =
-                    Util.getField(ShapeEdMaterialList.getRowText(ShapeEdMaterialList.getSelectedRow()), 0);
+                this["selectedMapTo"] = Util.getField(ShapeEdMaterialList.getRowText(ShapeEdMaterialList.getSelectedRow()), 0);
                 if (ShapeEdMaterialList.getSelectedId() != -1)
                     {
                     this.selectedMaterial = ShapeEdMaterialList.getSelectedId();
                     this["savedMap"] = this.selectedMaterial.diffuseMap[1];
                     if (highlight && this.selectedMaterial.isObject())
                         {
-                        this.selectedMaterial.diffuseMap[1] =
-                            "tools/shapeEditor/images/highlight_material".AsTypeImageFilename();
+                        this.selectedMaterial.diffuseMap[1] = "tools/shapeEditor/images/highlight_material".AsTypeImageFilename();
                         this.selectedMaterial.reload();
                         }
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void editSelectedMaterial()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
                 MaterialEditorPropertiesWindow MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 MaterialEditorPreviewWindow MaterialEditorPreviewWindow = "MaterialEditorPreviewWindow";
-                MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui.SubMaterialSelector SubMaterialSelector =
-                    "SubMaterialSelector";
+                MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui.SubMaterialSelector SubMaterialSelector = "SubMaterialSelector";
                 ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
                 ShapeEdPropWindow ShapeEdPropWindow = "ShapeEdPropWindow";
                 GuiBitmapButtonCtrl MatEd_phoBreadcrumb = "MatEd_phoBreadcrumb";
@@ -2280,11 +2251,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (id != -1)
                         SubMaterialSelector.setSelected(id);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void editSelectedMaterialEnd(bool closeEditor)
-                {
+            {
                 MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
                 MaterialEditorPropertiesWindow MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 MaterialEditorPreviewWindow MaterialEditorPreviewWindow = "MaterialEditorPreviewWindow";
@@ -2310,7 +2281,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     ShapeEdSelectWindow.setVisible(true);
                     ShapeEdPropWindow.setVisible(true);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2321,20 +2292,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdMaterials ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2342,9 +2311,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2353,12 +2322,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdMaterials ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2366,9 +2334,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdMaterials ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2376,10 +2344,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMaterials(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdMaterials) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMaterials));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2387,9 +2355,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdMaterials ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2397,9 +2365,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMaterials(int simobjectid)
-                {
+            {
                 return (ShapeEdMaterials) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdMaterials));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2407,28 +2375,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdMaterials ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdMaterials(uint simobjectid)
-                {
+            {
                 return (ShapeEdMaterials) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMaterials));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdMountSeqSlider>))]
         public class ShapeEdMountSeqSlider : GuiSliderCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseDragged()
-                {
+            {
                 ShapeEdMountWindow ShapeEdMountWindow = "ShapeEdMountWindow";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
@@ -2444,7 +2412,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     ShapeEdShapeView.setMountThreadDir(row - 1, 0);
                     mountPlayBtn.setStateOn(false);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2455,20 +2423,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdMountSeqSlider ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2476,9 +2442,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2487,12 +2453,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdMountSeqSlider ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2500,9 +2465,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdMountSeqSlider ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2510,10 +2475,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMountSeqSlider(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdMountSeqSlider) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMountSeqSlider));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2521,9 +2486,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdMountSeqSlider ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2531,10 +2496,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMountSeqSlider(int simobjectid)
-                {
-                return
-                    (ShapeEdMountSeqSlider) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdMountSeqSlider));
-                }
+            {
+                return (ShapeEdMountSeqSlider) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdMountSeqSlider));
+            }
 
             /// <summary>
             /// 
@@ -2542,46 +2506,45 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdMountSeqSlider ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdMountSeqSlider(uint simobjectid)
-                {
+            {
                 return (ShapeEdMountSeqSlider) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMountSeqSlider));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdMountShapeMenu>))]
         public class ShapeEdMountShapeMenu : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 ShapeEdMountWindow ShapeEdMountWindow = "ShapeEdMountWindow";
 
                 if (text == "Browse...")
                     {
                     // Allow the user to browse for an external model file
-                    WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog.getLoadFilename("DTS Files|*.dts|COLLADA Files|*.dae|Google Earth Files|*.kmz",
-                        this + ".onBrowseSelect", this["lastPath"]);
+                    OpenFileDialog.getLoadFilename("DTS Files|*.dts|COLLADA Files|*.dae|Google Earth Files|*.kmz", this + ".onBrowseSelect", this["lastPath"]);
                     }
                 else
                     {
                     // Modify the current mount
                     ShapeEdMountWindow.updateSelectedMount();
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onBrowseSelect(string path)
-                {
+            {
                 ShapeEdMountWindow ShapeEdMountWindow = "ShapeEdMountWindow";
 
                 path = Util.makeRelativePath(path, Util.getMainDotCsDir());
@@ -2593,7 +2556,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     this.add(path);
 
                 ShapeEdMountWindow.updateSelectedMount();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2604,20 +2567,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdMountShapeMenu ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2625,9 +2586,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2636,12 +2597,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdMountShapeMenu ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2649,9 +2609,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdMountShapeMenu ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2659,10 +2619,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMountShapeMenu(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdMountShapeMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMountShapeMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2670,9 +2630,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdMountShapeMenu ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2680,10 +2640,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMountShapeMenu(int simobjectid)
-                {
-                return
-                    (ShapeEdMountShapeMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdMountShapeMenu));
-                }
+            {
+                return (ShapeEdMountShapeMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdMountShapeMenu));
+            }
 
             /// <summary>
             /// 
@@ -2691,30 +2650,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdMountShapeMenu ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdMountShapeMenu(uint simobjectid)
-                {
+            {
                 return (ShapeEdMountShapeMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMountShapeMenu));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdMountWindow>))]
         public class ShapeEdMountWindow : GuiContainer
-            {
+        {
             internal int mounts
-                {
+            {
                 get { return this["mounts"].AsInt(); }
                 set { this["mounts"] = value.AsString(); }
-                }
+            }
 
             //------------------------------------------------------------------------------
             // Mounted Shapes
@@ -2722,7 +2681,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 ShapeEdMountShapeMenu ShapeEdMountShapeMenu = "ShapeEdMountShapeMenu";
 
                 GuiPopUpMenuCtrl mountType = this.FOT("mountType");
@@ -2747,17 +2706,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     ShapeEdMountShapeMenu.add("Browse...", 0);
                     ShapeEdMountShapeMenu.setSelected(0, false);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public bool isMountableNode(string nodeName)
-                {
+            {
                 return (Util.startsWith(nodeName, "mount", false) || Util.startsWith(nodeName, "hub", false));
-                }
+            }
 
             [ConsoleInteraction]
             public void update_onShapeSelectionChanged()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
                 GuiPopUpMenuCtrl mountNode = this.FOT("mountNode");
@@ -2781,11 +2740,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 mountSeq.clear();
                 mountSeq.add("<rootpose>", 0);
                 mountSeq.setSelected(0, false);
-                }
+            }
 
             [ConsoleInteraction]
             public void update_onMountSelectionChanged()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdMountShapeMenu ShapeEdMountShapeMenu = "ShapeEdMountShapeMenu";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
@@ -2832,21 +2791,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     ShapeEdMountSeqSlider.setValue(ShapeEdShapeView.getMountThreadPos(slot).AsString());
                     mountPlayBtn.setStateOn((int) ShapeEdShapeView.getMountThreadPos(slot) != 0);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSelectedMount()
-                {
+            {
                 GuiTextListCtrl mountList = this.FOT("mountList");
 
                 int row = mountList.getSelectedRow();
                 if (row > 0)
                     this.mountShape(row - 1);
-                }
+            }
 
             [ConsoleInteraction]
             public void setMountThreadSequence()
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
                 GuiTextListCtrl mountList = this.FOT("mountList");
@@ -2859,11 +2818,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     ShapeEdShapeView.setMountThreadSequence(row - 1, mountSeq.getText());
                     ShapeEdShapeView.setMountThreadDir(row - 1, mountPlayBtn.getValue().AsFloat());
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void toggleMountThreadPlayback()
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
                 GuiTextListCtrl mountList = this.FOT("mountList");
@@ -2872,11 +2831,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 int row = mountList.getSelectedRow();
                 if (row > 0)
                     ShapeEdShapeView.setMountThreadDir(row - 1, mountPlayBtn.getValue().AsFloat());
-                }
+            }
 
             [ConsoleInteraction]
             public void mountShape(int slot)
-                {
+            {
                 ShapeEdMountShapeMenu ShapeEdMountShapeMenu = "ShapeEdMountShapeMenu";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
@@ -2909,15 +2868,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     mountList.setSelectedById(id);
                     }
                 else
-                    {
-                    messageBox.MessageBoxOK("Error",
-                        "Failed to mount \"" + model + "\". Check the console for error messages.", "");
-                    }
-                }
+                    messageBox.MessageBoxOK("Error", "Failed to mount \"" + model + "\". Check the console for error messages.", "");
+            }
 
             [ConsoleInteraction]
             public void unmountShape()
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
                 GuiTextListCtrl mountList = this.FOT("mountList");
@@ -2935,11 +2891,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (row > 0)
                         mountList.setSelectedRow(row);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void unmountAll()
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
                 GuiTextListCtrl mountList = this.FOT("mountList");
@@ -2948,7 +2904,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 mountList.clear();
                 mountList.addRow(-1, "FullPath" + '\t' + "Filename" + '\t' + "Node" + '\t' + "Type", -1);
                 mountList.setRowActive(-1, false);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2959,20 +2915,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdMountWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2980,9 +2934,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2991,12 +2945,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdMountWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3004,9 +2957,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdMountWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3014,10 +2967,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMountWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdMountWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMountWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3025,9 +2978,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdMountWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3035,9 +2988,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdMountWindow(int simobjectid)
-                {
+            {
                 return (ShapeEdMountWindow) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdMountWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3045,28 +2998,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdMountWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdMountWindow(uint simobjectid)
-                {
+            {
                 return (ShapeEdMountWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdMountWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdNodeParentMenu>))]
         public class ShapeEdNodeParentMenu : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -3076,7 +3029,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string name = ShapeEdNodeTreeView.getItemText(selectId);
                     ShapeEditor.doSetNodeParent(name, text);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3087,20 +3040,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdNodeParentMenu ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3108,9 +3059,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3119,12 +3070,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdNodeParentMenu ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3132,9 +3082,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdNodeParentMenu ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3142,10 +3092,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdNodeParentMenu(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdNodeParentMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdNodeParentMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3153,9 +3103,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdNodeParentMenu ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3163,10 +3113,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdNodeParentMenu(int simobjectid)
-                {
-                return
-                    (ShapeEdNodeParentMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdNodeParentMenu));
-                }
+            {
+                return (ShapeEdNodeParentMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdNodeParentMenu));
+            }
 
             /// <summary>
             /// 
@@ -3174,38 +3123,38 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdNodeParentMenu ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdNodeParentMenu(uint simobjectid)
-                {
+            {
                 return (ShapeEdNodeParentMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdNodeParentMenu));
-                }
+            }
 
             #endregion
-            }
+        }
 
         //------------------------------------------------------------------------------
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdNodeTreeView>))]
         public class ShapeEdNodeTreeView : GuiTreeViewCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClearSelection()
-                {
+            {
                 ShapeEdPropWindow ShapeEdPropWindow = "ShapeEdPropWindow";
 
                 ShapeEdPropWindow.update_onNodeSelectionChanged(-1);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onSelect(string ID, string y)
-                {
+            {
                 int id = ID.AsInt();
                 ShapeEdPropWindow ShapeEdPropWindow = "ShapeEdPropWindow";
                 ShapeEditor ShapeEditor = "ShapeEditor";
@@ -3221,12 +3170,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string transform = ShapeEditor.shape.getNodeTransform(name, true).AsString();
                     ShapeEdShapeView.setOrbitPos(Util.getWords(transform, 0, 2).AsPoint3F());
                     }
-                }
+            }
 
             // Determine the index of a node in the tree relative to its parent
             [ConsoleInteraction]
             public int getChildIndexByName(string name)
-                {
+            {
                 int id = this.findItemByName(name);
                 int parentId = this.getParentItem(id);
                 int childId = this.getChild(parentId);
@@ -3241,12 +3190,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     }
 
                 return index;
-                }
+            }
 
             // Add a node and its children to the node tree view
             [ConsoleInteraction]
             public int addNodeTree(string nodeName)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
                 // Abort if already added => something dodgy has happened and we'd end up
@@ -3271,7 +3220,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     this.addNodeTree(ShapeEditor.shape.getNodeChildName(nodeName, i));
 
                 return id;
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3282,20 +3231,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdNodeTreeView ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3303,9 +3250,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3314,12 +3261,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdNodeTreeView ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3327,9 +3273,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdNodeTreeView ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3337,10 +3283,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdNodeTreeView(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdNodeTreeView) Omni.self.getSimObject(simobjectid, typeof (ShapeEdNodeTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3348,9 +3294,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdNodeTreeView ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3358,9 +3304,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdNodeTreeView(int simobjectid)
-                {
+            {
                 return (ShapeEdNodeTreeView) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdNodeTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3368,28 +3314,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdNodeTreeView ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdNodeTreeView(uint simobjectid)
-                {
+            {
                 return (ShapeEdNodeTreeView) Omni.self.getSimObject(simobjectid, typeof (ShapeEdNodeTreeView));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdNodes>))]
         public class ShapeEdNodes : GuiTabPageCtrl
-            {
+        {
             [ConsoleInteraction]
             public void onAddNode(string name)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
 
@@ -3405,11 +3351,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     parent = ShapeEdNodeTreeView.getItemText(id);
 
                 ShapeEditor.doAddNode(name, parent, "0 0 0 0 0 1 0");
-                }
+            }
 
             [ConsoleInteraction]
             public void onDeleteNode()
-                {
+            {
                 ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -3420,11 +3366,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string name = ShapeEdNodeTreeView.getItemText(id);
                     ShapeEditor.doRemoveShapeData("Node", name);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditName()
-                {
+            {
                 ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
                 GuiTextEditCtrl nodeName = FOT("nodeName");
                 ShapeEditor ShapeEditor = "ShapeEditor";
@@ -3437,11 +3383,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (newName != "")
                         ShapeEditor.doRenameNode(oldName, newName);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditTransform()
-                {
+            {
                 ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -3469,7 +3415,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                     ShapeEditor.doEditNodeTransform(name, txfm, isWorld, "-1");
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3480,20 +3426,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdNodes ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3501,9 +3445,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3512,12 +3456,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdNodes ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3525,9 +3468,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdNodes ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3535,10 +3478,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdNodes(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdNodes) Omni.self.getSimObject(simobjectid, typeof (ShapeEdNodes));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3546,9 +3489,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdNodes ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3556,9 +3499,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdNodes(int simobjectid)
-                {
+            {
                 return (ShapeEdNodes) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdNodes));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3566,32 +3509,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdNodes ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdNodes(uint simobjectid)
-                {
+            {
                 return (ShapeEdNodes) Omni.self.getSimObject(simobjectid, typeof (ShapeEdNodes));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdPreviewGui>))]
         public class ShapeEdPreviewGui : GuiContainer
-            {
+        {
             //------------------------------------------------------------------------------
             // Shape Preview
             //------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void updatePreviewBackground(string color)
-                {
+            {
                 ShapeEditorToolbar ShapeEditorToolbar = "ShapeEditorToolbar";
 
                 GuiSwatchButtonCtrl previewBackground = this.FOT("previewBackground");
@@ -3599,11 +3542,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 previewBackground["color"] = color;
                 previewBackgroundPicker["color"] = color;
-                }
+            }
 
             [ConsoleInteraction]
             public static void showShapeEditorPreview()
-                {
+            {
                 ShapeEditorToolbar ShapeEditorToolbar = "ShapeEditorToolbar";
                 ShapeEdPreviewGui ShapeEdPreviewGui = "ShapeEdPreviewGui";
 
@@ -3611,7 +3554,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 bool visible = showPreview.getValue().AsBool();
                 ShapeEdPreviewGui.setVisible(visible);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3622,20 +3565,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdPreviewGui ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3643,9 +3584,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3654,12 +3595,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdPreviewGui ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3667,9 +3607,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdPreviewGui ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3677,10 +3617,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdPreviewGui(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdPreviewGui) Omni.self.getSimObject(simobjectid, typeof (ShapeEdPreviewGui));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3688,9 +3628,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdPreviewGui ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3698,9 +3638,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdPreviewGui(int simobjectid)
-                {
+            {
                 return (ShapeEdPreviewGui) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdPreviewGui));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3708,32 +3648,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdPreviewGui ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdPreviewGui(uint simobjectid)
-                {
+            {
                 return (ShapeEdPreviewGui) Omni.self.getSimObject(simobjectid, typeof (ShapeEdPreviewGui));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdSelectMenu>))]
         public class ShapeEdSelectMenu : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
                 string split = Util.strreplace(text, "/", " ");
                 ShapeEdSelectWindow.navigate(split);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3744,20 +3684,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdSelectMenu ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3765,9 +3703,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3776,12 +3714,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdSelectMenu ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3789,9 +3726,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdSelectMenu ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3799,10 +3736,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSelectMenu(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdSelectMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSelectMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3810,9 +3747,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdSelectMenu ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3820,9 +3757,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSelectMenu(int simobjectid)
-                {
+            {
                 return (ShapeEdSelectMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSelectMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3830,28 +3767,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdSelectMenu ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdSelectMenu(uint simobjectid)
-                {
+            {
                 return (ShapeEdSelectMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSelectMenu));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdSeqFromMenu>))]
         public class ShapeEdSeqFromMenu : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
@@ -3864,26 +3801,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     this.setText(seqFrom);
 
                     // Allow the user to browse for an external source of animation data
-                    WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog.getLoadFilename("DSQ Files|*.dsq|COLLADA Files|*.dae|Google Earth Files|*.kmz",
-                        this + ".onBrowseSelect",
-                        this["lastPath"]);
+                    OpenFileDialog.getLoadFilename("DSQ Files|*.dsq|COLLADA Files|*.dae|Google Earth Files|*.kmz", this + ".onBrowseSelect", this["lastPath"]);
                     }
                 else
-                    {
                     ShapeEdSequences.onEditSequenceSource(text);
-                    }
-                }
+            }
 
             [ConsoleInteraction]
             public void onBrowseSelect(string path)
-                {
+            {
                 ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
 
                 path = Util.makeRelativePath(path, Util.getMainDotCsDir());
                 this["lastPath"] = path;
                 this.setText(path);
                 ShapeEdSequences.onEditSequenceSource(path);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3894,20 +3827,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdSeqFromMenu ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3915,9 +3846,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3926,12 +3857,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdSeqFromMenu ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3939,9 +3869,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdSeqFromMenu ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3949,10 +3879,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqFromMenu(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdSeqFromMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSeqFromMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3960,9 +3890,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdSeqFromMenu ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3970,9 +3900,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqFromMenu(int simobjectid)
-                {
+            {
                 return (ShapeEdSeqFromMenu) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSeqFromMenu));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3980,28 +3910,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdSeqFromMenu ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqFromMenu(uint simobjectid)
-                {
+            {
                 return (ShapeEdSeqFromMenu) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSeqFromMenu));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdSeqNodeTabBook>))]
         public class ShapeEdSeqNodeTabBook : GuiTabBookCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onTabSelected(string text, uint index)
-                {
+            {
                 ShapeEdPropWindow ShapeEdPropWindow = "ShapeEdPropWindow";
                 GuiBitmapButtonCtrl newBtn = ShapeEdPropWindow.FOT("newBtn");
                 GuiBitmapButtonCtrl deleteBtn = ShapeEdPropWindow.FOT("deleteBtn");
@@ -4050,10 +3980,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                             // For some reason, the header is not resized correctly until the Materials + '\t' + has been
                             // displayed at least once, so resize it here too
-                            materialListHeader.setExtent(new Point2F( Util.getWord(ShapeEdMaterialList["extent"], 0) + ' ' + "19"));
+                            materialListHeader.setExtent(new Point2F(Util.getWord(ShapeEdMaterialList["extent"], 0) + ' ' + "19"));
                             break;
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4064,20 +3994,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdSeqNodeTabBook ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4085,9 +4013,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4096,12 +4024,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdSeqNodeTabBook ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4109,9 +4036,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdSeqNodeTabBook ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4119,10 +4046,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqNodeTabBook(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdSeqNodeTabBook) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSeqNodeTabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4130,9 +4057,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdSeqNodeTabBook ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4140,10 +4067,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqNodeTabBook(int simobjectid)
-                {
-                return
-                    (ShapeEdSeqNodeTabBook) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSeqNodeTabBook));
-                }
+            {
+                return (ShapeEdSeqNodeTabBook) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSeqNodeTabBook));
+            }
 
             /// <summary>
             /// 
@@ -4151,21 +4077,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdSeqNodeTabBook ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqNodeTabBook(uint simobjectid)
-                {
+            {
                 return (ShapeEdSeqNodeTabBook) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSeqNodeTabBook));
-                }
+            }
 
             #endregion
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Threads and Animation
@@ -4173,10 +4099,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdSeqSlider>))]
         public class ShapeEdSeqSlider : GuiSliderCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseDragged()
-                {
+            {
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
                 GuiBitmapButtonCtrl pauseBtn = ShapeEdAnimWindow.FOT("pauseBtn");
 
@@ -4185,7 +4111,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     pauseBtn.performClick();
 
                 ShapeEdAnimWindow.setKeyframe(this.getValue());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4196,20 +4122,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdSeqSlider ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4217,9 +4141,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4228,12 +4152,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdSeqSlider ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4241,9 +4164,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdSeqSlider ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4251,10 +4174,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqSlider(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdSeqSlider) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSeqSlider));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4262,9 +4185,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdSeqSlider ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4272,9 +4195,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqSlider(int simobjectid)
-                {
+            {
                 return (ShapeEdSeqSlider) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSeqSlider));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4282,56 +4205,56 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdSeqSlider ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdSeqSlider(uint simobjectid)
-                {
+            {
                 return (ShapeEdSeqSlider) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSeqSlider));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdSequenceList>))]
         public class ShapeEdSequenceList : GuiTextListCtrl
-            {
+        {
             // Get the name of the currently selected sequence
             [ConsoleInteraction]
             public string getSelectedName()
-                {
+            {
                 int row = this.getSelectedRow();
                 return (row > 1) ? this.getItemName(row) : ""; // ignore header row
-                }
+            }
 
             // Get the sequence name from the indexed row
             [ConsoleInteraction]
             public string getItemName(int row)
-                {
+            {
                 return Util.getField(this.getRowText(row), 0);
-                }
+            }
 
             // Get the index in the list of the sequence with the given name
             [ConsoleInteraction]
             public int getItemIndex(string name)
-                {
+            {
                 for (int i = 1; i < this.rowCount(); i++) // ignore header row
                     {
                     if (this.getItemName(i) == name)
                         return i;
                     }
                 return -1;
-                }
+            }
 
             // Change one of the fields in the sequence list
             [ConsoleInteraction]
             public void editColumn(string name, int col, string text)
-                {
+            {
                 ShapeEdThreadWindow ShapeEdThreadWindow = "ShapeEdThreadWindow";
                 GuiTextListCtrl seqList = ShapeEdThreadWindow.FOT("seqList");
 
@@ -4343,38 +4266,35 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 if (col == 0)
                     seqList.setRowById(id, text); // Sync name in Thread window
                 this.setRowById(id, rowText);
-                }
+            }
 
             [ConsoleInteraction]
             public int addItem(string name)
-                {
+            {
                 return this.insertItem(name, this.rowCount());
-                }
+            }
 
             [ConsoleInteraction]
             public int insertItem(string name, int index)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdThreadWindow ShapeEdThreadWindow = "ShapeEdThreadWindow";
 
                 GuiTextListCtrl seqList = ShapeEdThreadWindow.FOT("seqList");
                 string cyclic = ShapeEditor.shape.getSequenceCyclic(name) ? "yes" : "no";
-                string blend = Util.getField(ShapeEditor.shape.getSequenceBlend(name), 0).AsBool()
-                    ? "yes"
-                    : "no";
+                string blend = Util.getField(ShapeEditor.shape.getSequenceBlend(name), 0).AsBool() ? "yes" : "no";
                 int frameCount = ShapeEditor.shape.getSequenceFrameCount(name);
                 string priority = ShapeEditor.shape.getSequencePriority(name).AsString();
 
                 // Add the item to the Properties and Thread sequence lists
                 this["seqId"] = ((this["seqId"]).AsInt() + 1).AsString(); // use this to keep the row IDs synchronised
                 seqList.addRow(this["seqId"].AsInt(), name, index - 1); // no header row
-                return this.addRow(this["seqId"].AsInt(),
-                    name + '\t' + cyclic + '\t' + blend + '\t' + frameCount + '\t' + priority, index);
-                }
+                return this.addRow(this["seqId"].AsInt(), name + '\t' + cyclic + '\t' + blend + '\t' + frameCount + '\t' + priority, index);
+            }
 
             [ConsoleInteraction]
             public void removeItem(string name)
-                {
+            {
                 ShapeEdThreadWindow ShapeEdThreadWindow = "ShapeEdThreadWindow";
 
                 GuiTextListCtrl seqList = ShapeEdThreadWindow.FOT("seqList");
@@ -4385,7 +4305,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     this.removeRow(index);
                     seqList.removeRow(index - 1); // no header row
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4396,20 +4316,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdSequenceList ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4417,9 +4335,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4428,12 +4346,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdSequenceList ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4441,9 +4358,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdSequenceList ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4451,10 +4368,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSequenceList(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdSequenceList) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSequenceList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4462,9 +4379,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdSequenceList ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4472,9 +4389,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSequenceList(int simobjectid)
-                {
+            {
                 return (ShapeEdSequenceList) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSequenceList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4482,28 +4399,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdSequenceList ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdSequenceList(uint simobjectid)
-                {
+            {
                 return (ShapeEdSequenceList) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSequenceList));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdSequences>))]
         public class ShapeEdSequences : GuiTabPageCtrl
-            {
+        {
             [ConsoleInteraction]
             public void onEditSeqInOut(string type, string value)
-                {
+            {
                 GuiTextEditCtrl endFrame = this.FOT("endFrame");
                 GuiTextEditCtrl startFrame = this.FOT("startFrame");
                 ShapeEdSeqSlider ShapeEdSeqSlider = "ShapeEdSeqSlider";
@@ -4533,11 +4450,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     }
 
                 this.onEditSequenceSource("");
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditSequenceSource(string from)
-                {
+            {
                 GuiTextEditCtrl endFrame = this.FOT("endFrame");
                 GuiTextEditCtrl startFrame = this.FOT("startFrame");
                 ShapeEditor ShapeEditor = "ShapeEditor";
@@ -4561,11 +4478,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (Util.getFields(oldSource, 0, 3) != (from + '\t' + "" + '\t' + start + '\t' + end))
                         ShapeEditor.doEditSeqSource(seqName, from, start, end);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onToggleCyclic()
-                {
+            {
                 GuiCheckBoxCtrl cyclicFlag = this.FOT("cyclicFlag");
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEditor ShapeEditor = "ShapeEditor";
@@ -4576,11 +4493,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string cyclic = cyclicFlag.getValue();
                     ShapeEditor.doEditCyclic(seqName, cyclic);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditPriority()
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -4593,11 +4510,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (newPriority != "")
                         ShapeEditor.doEditSequencePriority(seqName, newPriority);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditBlend()
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -4623,8 +4540,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     blendFrame = blendFrame.getText();
                     if ((blendSeq == "") || (blendFrame == ""))
                         {
-                        messageBox.MessageBoxOK("Blend reference not set", "The blend reference sequence and " +
-                                                                           "frame must be set before changing the blend flag or frame.");
+                        messageBox.MessageBoxOK("Blend reference not set", "The blend reference sequence and " + "frame must be set before changing the blend flag or frame.");
                         blendFlag.setStateOn(oldBlend.AsBool());
                         return;
                         }
@@ -4638,15 +4554,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         oldBlendFrame = blendFrame;
 
                     // Check if there is anything to do
-                    if ((oldBlend + '\t' + oldBlendSeq + '\t' + oldBlendFrame) !=
-                        (blend.AsString() + '\t' + blendSeq + '\t' + blendFrame))
+                    if ((oldBlend + '\t' + oldBlendSeq + '\t' + oldBlendFrame) != (blend.AsString() + '\t' + blendSeq + '\t' + blendFrame))
                         ShapeEditor.doEditBlend(seqName, blend.AsString(), blendSeq, blendFrame);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onAddSequence(string name)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEdSeqFromMenu ShapeEdSeqFromMenu = "ShapeEdSeqFromMenu";
@@ -4665,8 +4580,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 if (from == "")
                     {
                     // No sequence selected => open dialog to browse for one
-        WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog.getLoadFilename("DSQ Files|*.dsq|COLLADA Files|*.dae|Google Earth Files|*.kmz",
-                        this + ".onAddSequenceFromBrowse", ShapeEdSeqFromMenu["lastPath"]);
+                    OpenFileDialog.getLoadFilename("DSQ Files|*.dsq|COLLADA Files|*.dae|Google Earth Files|*.kmz", this + ".onAddSequenceFromBrowse", ShapeEdSeqFromMenu["lastPath"]);
                     return;
                     }
                 else
@@ -4676,11 +4590,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string end = endFrame.getText();
                     ShapeEditor.doAddSequence(name, from, start, end);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onAddSequenceFromBrowse(string path)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdSeqFromMenu ShapeEdSeqFromMenu = "ShapeEdSeqFromMenu";
 
@@ -4690,12 +4604,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 string name = ShapeEditor.getUniqueName("sequence", "mySequence");
                 ShapeEditor.doAddSequence(name, path, "0", "-1");
-                }
+            }
 
             // Delete the selected sequence
             [ConsoleInteraction]
             public void onDeleteSequence()
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
 
@@ -4705,11 +4619,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     string seqName = ShapeEdSequenceList.getItemName(row);
                     ShapeEditor.doRemoveShapeData("Sequence", seqName);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditName()
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 GuiTextEditCtrl sequenceName = this.FOT("seqName");
 
@@ -4722,11 +4636,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (newName != "")
                         ShapeEditor.doRenameSequence(seqName, newName);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onAddTrigger()
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEdSeqSlider ShapeEdSeqSlider = "ShapeEdSeqSlider";
                 ShapeEdTriggerList ShapeEdTriggerList = "ShapeEdTriggerList";
@@ -4737,11 +4651,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 if (seqName != "")
                     {
                     // Add a new trigger at the current frame
-                    int frame =(int) Util.mRound(ShapeEdSeqSlider.getValue());
+                    int frame = (int) Util.mRound(ShapeEdSeqSlider.getValue());
                     float state = ShapeEdTriggerList.rowCount()%30;
                     ShapeEditor.doAddTrigger(seqName, frame.AsString(), state.AsString());
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4752,20 +4666,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdSequences ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4773,9 +4685,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4784,12 +4696,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdSequences ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4797,9 +4708,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdSequences ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4807,10 +4718,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSequences(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdSequences) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSequences));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4818,9 +4729,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdSequences ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4828,9 +4739,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdSequences(int simobjectid)
-                {
+            {
                 return (ShapeEdSequences) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdSequences));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4838,29 +4749,29 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdSequences ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdSequences(uint simobjectid)
-                {
+            {
                 return (ShapeEdSequences) Omni.self.getSimObject(simobjectid, typeof (ShapeEdSequences));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdShapeTreeView>))]
         public class ShapeEdShapeTreeView : GuiTreeViewCtrl
-            {
+        {
             // Handle a selection in the MissionGroup shape selector
             [ConsoleInteraction]
             public override void onSelect(string obj, string y)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
                 SimGroup ShapeHintGroup = "ShapeHintGroup";
@@ -4884,12 +4795,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         break;
                         }
                     else if (Util.isMemberOfClass(objClass, hint["objectType"]))
-                        {
                         hintId = hint;
-                        }
                     }
                 ShapeEdHintMenu.setSelected(hintId);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4900,20 +4809,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdShapeTreeView ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4921,9 +4828,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4932,12 +4839,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdShapeTreeView ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4945,9 +4851,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdShapeTreeView ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4955,10 +4861,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdShapeTreeView(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdShapeTreeView) Omni.self.getSimObject(simobjectid, typeof (ShapeEdShapeTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4966,9 +4872,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdShapeTreeView ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4976,9 +4882,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdShapeTreeView(int simobjectid)
-                {
+            {
                 return (ShapeEdShapeTreeView) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdShapeTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4986,28 +4892,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdShapeTreeView ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdShapeTreeView(uint simobjectid)
-                {
+            {
                 return (ShapeEdShapeTreeView) Omni.self.getSimObject(simobjectid, typeof (ShapeEdShapeTreeView));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdShapeView>))]
         public class ShapeEdShapeView : GuiShapeEdPreview
-            {
+        {
             [ConsoleInteraction]
             public override void onNodeSelected(string index)
-                {
+            {
                 ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -5019,18 +4925,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     if (id > 0)
                         ShapeEdNodeTreeView.selectItem(id);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public override void onEditNodeTransform(string node, string txfm, string gizmoID)
-                {
+            {
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEditor.doEditNodeTransform(node, txfm, true, gizmoID);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onThreadPosChanged(float pos, bool inTransition)
-                {
+            {
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
                 ShapeEdSeqSlider ShapeEdSeqSlider = "ShapeEdSeqSlider";
                 ShapeEdThreadWindow ShapeEdThreadWindow = "ShapeEdThreadWindow";
@@ -5052,11 +4958,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     else
                         ShapeEdThreadSlider["profile"] = "ToolsGuiSliderProfile";
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onDetailChanged()
-                {
+            {
                 ShapeEdAdvancedWindow ShapeEdAdvancedWindow = "ShapeEdAdvancedWindow";
                 ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
                 ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
@@ -5081,7 +4987,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         ShapeEdDetailTree.selectItem(id);
                         }
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5092,20 +4998,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdShapeView ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5113,9 +5017,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5124,12 +5028,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdShapeView ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5137,9 +5040,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdShapeView ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5147,10 +5050,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdShapeView(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdShapeView) Omni.self.getSimObject(simobjectid, typeof (ShapeEdShapeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5158,9 +5061,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdShapeView ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5168,9 +5071,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdShapeView(int simobjectid)
-                {
+            {
                 return (ShapeEdShapeView) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdShapeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5178,28 +5081,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdShapeView ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdShapeView(uint simobjectid)
-                {
+            {
                 return (ShapeEdShapeView) Omni.self.getSimObject(simobjectid, typeof (ShapeEdShapeView));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdThreadList>))]
         public class ShapeEdThreadList : GuiTextListCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onSelect(string row, string text)
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
                 ShapeEditor ShapeEditor = "ShapeEditor";
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
@@ -5236,7 +5139,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                             break;
                     }
                 console.Call("SetToggleButtonValue", new string[] {pingpong, ShapeEdShapeView["threadPingPong"]});
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5247,20 +5150,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdThreadList ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5268,9 +5169,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5279,12 +5180,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdThreadList ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5292,9 +5192,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdThreadList ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5302,10 +5202,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadList(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdThreadList) Omni.self.getSimObject(simobjectid, typeof (ShapeEdThreadList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5313,9 +5213,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdThreadList ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5323,9 +5223,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadList(int simobjectid)
-                {
+            {
                 return (ShapeEdThreadList) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdThreadList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5333,28 +5233,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdThreadList ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadList(uint simobjectid)
-                {
+            {
                 return (ShapeEdThreadList) Omni.self.getSimObject(simobjectid, typeof (ShapeEdThreadList));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdThreadSlider>))]
         public class ShapeEdThreadSlider : GuiSliderCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseDragged()
-                {
+            {
                 ShapeEdThreadWindow ShapeEdThreadWindow = "ShapeEdThreadWindow";
                 GuiPopUpMenuCtrl transitionTo = ShapeEdThreadWindow.FOT("transitionTo");
 
@@ -5369,7 +5269,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                     ShapeEdAnimWindow.setKeyframe(this.getValue());
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5380,20 +5280,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdThreadSlider ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5401,9 +5299,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5412,12 +5310,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdThreadSlider ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5425,9 +5322,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdThreadSlider ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5435,10 +5332,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadSlider(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdThreadSlider) Omni.self.getSimObject(simobjectid, typeof (ShapeEdThreadSlider));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5446,9 +5343,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdThreadSlider ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5456,9 +5353,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadSlider(int simobjectid)
-                {
+            {
                 return (ShapeEdThreadSlider) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdThreadSlider));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5466,28 +5363,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdThreadSlider ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadSlider(uint simobjectid)
-                {
+            {
                 return (ShapeEdThreadSlider) Omni.self.getSimObject(simobjectid, typeof (ShapeEdThreadSlider));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdThreadWindow>))]
         public class ShapeEdThreadWindow : GuiContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiCheckBoxCtrl useTransitions = this.FOT("useTransitions");
                 GuiTextEditCtrl transitionTime = this.FOT("transitionTime");
                 GuiPopUpMenuCtrl transitionTo = this.FOT("transitionTo");
@@ -5505,23 +5402,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 transitionTarget.add("plays during transition", 0);
                 transitionTarget.add("pauses during transition", 1);
                 transitionTarget.setSelected(0);
-                }
+            }
 
             // Update the GUI in response to the shape selection changing
             [ConsoleInteraction]
             public void update_onShapeSelectionChanged()
-                {
+            {
                 ShapeEdThreadList ShapeEdThreadList = "ShapeEdThreadList";
                 GuiTextListCtrl seqList = this.FOT("seqList");
 
                 ShapeEdThreadList.clear();
                 seqList.clear();
                 seqList.addRow(0, "<rootpose>", -1);
-                }
+            }
 
             [ConsoleInteraction]
             public void onAddThread()
-                {
+            {
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
                 ShapeEdThreadList ShapeEdThreadList = "ShapeEdThreadList";
 
@@ -5530,11 +5427,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                 ShapeEdShapeView.addThread();
                 ShapeEdThreadList.addRow(threadID++, ShapeEdThreadList.rowCount().AsString(), -1);
                 ShapeEdThreadList.setSelectedRow(ShapeEdThreadList.rowCount() - 1);
-                }
+            }
 
             [ConsoleInteraction]
             public void onRemoveThread()
-                {
+            {
                 ShapeEdThreadList ShapeEdThreadList = "ShapeEdThreadList";
                 ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
 
@@ -5556,7 +5453,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                     ShapeEdThreadList.setSelectedRow(row);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5567,20 +5464,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdThreadWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5588,9 +5483,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5599,12 +5494,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdThreadWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5612,9 +5506,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdThreadWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5622,10 +5516,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdThreadWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdThreadWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5633,9 +5527,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdThreadWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5643,9 +5537,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadWindow(int simobjectid)
-                {
+            {
                 return (ShapeEdThreadWindow) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdThreadWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5653,42 +5547,42 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdThreadWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdThreadWindow(uint simobjectid)
-                {
+            {
                 return (ShapeEdThreadWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdThreadWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ShapeEdTriggerList>))]
         public class ShapeEdTriggerList : GuiTextListCtrl
-            {
+        {
             public int triggerId
-                {
+            {
                 get { return this["triggerId"].AsInt(); }
                 set { this["triggerId"] = value.AsString(); }
-                }
+            }
 
             [ConsoleInteraction]
             public string getTriggerText(int frame, float state)
-                {
+            {
                 // First column is invisible and used only for sorting
                 float sortKey = (frame*1000) + (Util.mAbs(state)*10) + ((state > 0) ? 1 : 0);
                 return sortKey + '\t' + frame + '\t' + Util.mAbs(state) + '\t' + ((state > 0) ? "on" : "off");
-                }
+            }
 
             [ConsoleInteraction]
             public void addItem(int frame, float state)
-                {
+            {
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
 
                 GuiTextEditCtrl seqIn = ShapeEdAnimWindow.FOT("seqIn");
@@ -5715,14 +5609,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 
                 GuiBitmapCtrl ctrl = ctrlCreator.Create();
 
-
                 ((GuiControl) ShapeEdAnimWindow.getObject(0)).addGuiControl(ctrl);
                 this.triggerId++;
-                }
+            }
 
             [ConsoleInteraction]
             public void removeItem(int frame, float state)
-                {
+            {
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
 
                 // Remove from text list
@@ -5733,11 +5626,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     trigger.delete();
                     this.removeRow(row);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void removeAll()
-                {
+            {
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
 
                 int count = this.rowCount();
@@ -5747,11 +5640,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                     trigger.delete();
                     this.removeRow(row);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void updateItem(int oldFrame, float oldState, int frame, float state)
-                {
+            {
                 ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
 
                 GuiTextEditCtrl seqIn = ShapeEdAnimWindow.FOT("seqIn");
@@ -5781,11 +5674,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         ctrl["position"] = pos + ' ' + "0";
                         }
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onDeleteSelection()
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEditor ShapeEditor = "ShapeEditor";
 
@@ -5803,11 +5696,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         ShapeEditor.doRemoveTrigger(seqName, frame.AsString(), state.AsString());
                         }
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void onEditSelection()
-                {
+            {
                 ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
                 ShapeEdTriggerList ShapeEdTriggerList = "ShapeEdTriggerList";
                 ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
@@ -5829,16 +5722,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
                         float oldState = Util.getWord(text, 2).AsFloat();
                         oldState *= (Util.getWord(text, 3) == "on") ? 1 : -1;
 
-                        int frame =(int) Util.mRound(triggerFrame.getText().AsFloat());
-                        int state = (int)Util.mRound(Util.mAbs(triggerNum.getText().AsFloat()));
+                        int frame = (int) Util.mRound(triggerFrame.getText().AsFloat());
+                        int state = (int) Util.mRound(Util.mAbs(triggerNum.getText().AsFloat()));
                         state *= triggerOnOff.getValue().AsBool() ? 1 : -1;
 
                         if ((frame >= 0) && (state != 0))
-                            ShapeEditor.doEditTrigger(seqName, oldFrame, oldState.AsString(), frame.AsString(),
-                                state.AsString());
+                            ShapeEditor.doEditTrigger(seqName, oldFrame, oldState.AsString(), frame.AsString(), state.AsString());
                         }
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5849,20 +5741,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ShapeEdTriggerList ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5870,9 +5760,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5881,12 +5771,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ShapeEdTriggerList ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5894,9 +5783,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ShapeEdTriggerList ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5904,10 +5793,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdTriggerList(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ShapeEdTriggerList) Omni.self.getSimObject(simobjectid, typeof (ShapeEdTriggerList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5915,9 +5804,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ShapeEdTriggerList ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5925,9 +5814,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ShapeEdTriggerList(int simobjectid)
-                {
+            {
                 return (ShapeEdTriggerList) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdTriggerList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5935,21 +5824,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ShapeEdTriggerList ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ShapeEdTriggerList(uint simobjectid)
-                {
+            {
                 return (ShapeEdTriggerList) Omni.self.getSimObject(simobjectid, typeof (ShapeEdTriggerList));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -5960,18 +5849,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(ShapeEditor ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -5979,9 +5868,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -5990,12 +5879,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(ShapeEditor ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -6003,9 +5891,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(ShapeEditor ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -6013,10 +5901,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator ShapeEditor(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (ShapeEditor) Omni.self.getSimObject(simobjectid, typeof (ShapeEditor));
-            }
+        }
 
         /// <summary>
         /// 
@@ -6024,9 +5912,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(ShapeEditor ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -6034,9 +5922,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator ShapeEditor(int simobjectid)
-            {
+        {
             return (ShapeEditor) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEditor));
-            }
+        }
 
         /// <summary>
         /// 
@@ -6044,23 +5932,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(ShapeEditor ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator ShapeEditor(uint simobjectid)
-            {
+        {
             return (ShapeEditor) Omni.self.getSimObject(simobjectid, typeof (ShapeEditor));
-            }
+        }
 
         #endregion
 
         //------------------------------------------------------------------------------
         // Material Editing
         //------------------------------------------------------------------------------
-        }
     }
+}

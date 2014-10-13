@@ -1,12 +1,46 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
-using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Classes.Interopt;
+using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind
@@ -19,12 +53,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         public static int alphaIconCompare(SimObject a, SimObject b)
         {
             if (a["class"] == "CreatorFolderIconBtn")
+                {
                 if (b["class"] != "CreatorFolderIconBtn")
                     return -1;
+                }
 
             if (b["class"] == "CreatorFolderIconBtn")
+                {
                 if (a["class"] != "CreatorFolderIconBtn")
                     return 1;
+                }
 
             int result = omni.Util.stricmp(a["text"], b["text"]);
             return result;
@@ -37,10 +75,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
 
             if (!omni.Util.isClass(className))
-            {
+                {
                 omni.Util._warn("createObject( " + className + " ) - Was not a valid class.");
                 return "";
-            }
+                }
 
             string cmd = "return new " + className + "();";
 
@@ -50,7 +88,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             return obj;
         }
 
-        [TypeConverter(typeof(TypeConverterGeneric<CreatorPopupMenu>))]
+        [TypeConverter(typeof (TypeConverterGeneric<CreatorPopupMenu>))]
         public class CreatorPopupMenu : GuiPopUpMenuCtrl
         {
             [ConsoleInteraction]
@@ -72,9 +110,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static bool operator ==(CreatorPopupMenu ts, string simobjectid)
             {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
             }
 
             /// <summary>
@@ -93,7 +129,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public override bool Equals(object obj)
             {
-                return (this._ID == (string)myReflections.ChangeType(obj, typeof(string)));
+                return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
             }
 
             /// <summary>
@@ -104,11 +140,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static bool operator !=(CreatorPopupMenu ts, string simobjectid)
             {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
             }
-
 
             /// <summary>
             /// 
@@ -128,7 +163,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             public static implicit operator CreatorPopupMenu(string ts)
             {
                 uint simobjectid = resolveobject(ts);
-                return (CreatorPopupMenu)Omni.self.getSimObject(simobjectid, typeof(CreatorPopupMenu));
+                return (CreatorPopupMenu) Omni.self.getSimObject(simobjectid, typeof (CreatorPopupMenu));
             }
 
             /// <summary>
@@ -138,7 +173,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator int(CreatorPopupMenu ts)
             {
-                return (int)ts._iID;
+                return (int) ts._iID;
             }
 
             /// <summary>
@@ -148,7 +183,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator CreatorPopupMenu(int simobjectid)
             {
-                return (CreatorPopupMenu)Omni.self.getSimObject((uint)simobjectid, typeof(CreatorPopupMenu));
+                return (CreatorPopupMenu) Omni.self.getSimObject((uint) simobjectid, typeof (CreatorPopupMenu));
             }
 
             /// <summary>
@@ -167,13 +202,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator CreatorPopupMenu(uint simobjectid)
             {
-                return (CreatorPopupMenu)Omni.self.getSimObject(simobjectid, typeof(CreatorPopupMenu));
+                return (CreatorPopupMenu) Omni.self.getSimObject(simobjectid, typeof (CreatorPopupMenu));
             }
 
             #endregion
         }
 
-        [TypeConverter(typeof(CreatorTabBook))]
+        [TypeConverter(typeof (CreatorTabBook))]
         public class CreatorTabBook : GuiTabBookCtrl
         {
             [ConsoleInteraction]
@@ -182,10 +217,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
 
                 if (this.isAwake())
-                {
+                    {
                     EWCreatorWindow.tab = text;
                     EWCreatorWindow.navigate("");
-                }
+                    }
             }
 
             #region ProxyObjects Operator Overrides
@@ -198,9 +233,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static bool operator ==(CreatorTabBook ts, string simobjectid)
             {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
             }
 
             /// <summary>
@@ -219,7 +252,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public override bool Equals(object obj)
             {
-                return (this._ID == (string)myReflections.ChangeType(obj, typeof(string)));
+                return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
             }
 
             /// <summary>
@@ -230,11 +263,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static bool operator !=(CreatorTabBook ts, string simobjectid)
             {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
             }
-
 
             /// <summary>
             /// 
@@ -254,7 +286,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             public static implicit operator CreatorTabBook(string ts)
             {
                 uint simobjectid = resolveobject(ts);
-                return (CreatorTabBook)Omni.self.getSimObject(simobjectid, typeof(CreatorTabBook));
+                return (CreatorTabBook) Omni.self.getSimObject(simobjectid, typeof (CreatorTabBook));
             }
 
             /// <summary>
@@ -264,7 +296,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator int(CreatorTabBook ts)
             {
-                return (int)ts._iID;
+                return (int) ts._iID;
             }
 
             /// <summary>
@@ -274,7 +306,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator CreatorTabBook(int simobjectid)
             {
-                return (CreatorTabBook)Omni.self.getSimObject((uint)simobjectid, typeof(CreatorTabBook));
+                return (CreatorTabBook) Omni.self.getSimObject((uint) simobjectid, typeof (CreatorTabBook));
             }
 
             /// <summary>
@@ -293,13 +325,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator CreatorTabBook(uint simobjectid)
             {
-                return (CreatorTabBook)Omni.self.getSimObject(simobjectid, typeof(CreatorTabBook));
+                return (CreatorTabBook) Omni.self.getSimObject(simobjectid, typeof (CreatorTabBook));
             }
 
             #endregion
         }
 
-        [TypeConverter(typeof(EWCreatorWindow))]
+        [TypeConverter(typeof (EWCreatorWindow))]
         public class EWCreatorWindow : GuiTabPageCtrl
         {
             public ArrayObject array
@@ -432,7 +464,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 this.registerMissionObject("TSPathShape", "PathShape Object", "", "");
 
                 this.endGroup("");
-
             }
 
             [ConsoleInteraction]
@@ -460,12 +491,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             public string getCreateObjectPosition()
             {
                 GameConnection LocalClientConnection = "LocalClientConnection";
-                string focusPoint = ((ShapeBase)LocalClientConnection.getControlObject()).getLookAtPoint();
+                string focusPoint = ((ShapeBase) LocalClientConnection.getControlObject()).getLookAtPoint();
                 if (focusPoint == "")
                     return "0 0 0";
                 else
-                    return Util.getWord(focusPoint, 1) + " " + Util.getWord(focusPoint, 2) + " " +
-                           Util.getWord(focusPoint, 3);
+                    return Util.getWord(focusPoint, 1) + " " + Util.getWord(focusPoint, 2) + " " + Util.getWord(focusPoint, 3);
             }
 
             [ConsoleInteraction]
@@ -480,10 +510,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                     group = this.currentGroup;
 
                 if (className == "" || group == "")
-                {
+                    {
                     Util._warn("EWCreatorWindow::registerMissionObject, invalid parameters!");
                     return;
-                }
+                    }
 
                 ObjectCreator argsCreator = new ObjectCreator("ScriptObject");
                 argsCreator["val[0]"] = className;
@@ -507,19 +537,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 EditorTree EditorTree = "EditorTree";
 
                 if (this.objectGroup != 0)
-                {
+                    {
                     int oldItemId = EditorTree.findItemByObjectId(this.objectGroup);
                     if (oldItemId > 0)
                         EditorTree.markItem(oldItemId, false);
-                }
+                    }
 
                 //group = group.getID().AsString();
                 if (group != "-1")
-                {
+                    {
                     this.objectGroup = group;
                     int itemId = EditorTree.findItemByObjectId(group.AsInt());
                     EditorTree.markItem(itemId);
-                }
+                    }
             }
 
             [ConsoleInteraction]
@@ -529,7 +559,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
                 if (!bGlobal["$missionRunning"])
                     return "";
-
 
                 if (!this.objectGroup.isObject())
                     this.setNewObjectGroup(MissionGroup);
@@ -553,7 +582,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 if (!bGlobal["$missionRunning"])
                     return "";
 
-
                 if (!this.objectGroup.isObject())
                     this.setNewObjectGroup(MissionGroup);
 
@@ -576,7 +604,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 if (!bGlobal["$missionRunning"])
                     return "";
 
-
                 if (!this.objectGroup.isObject())
                     this.setNewObjectGroup(MissionGroup);
 
@@ -596,12 +623,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 this.objectGroup.add(objId);
 
                 if (objId.isMemberOfClass("SceneObject"))
-                {
+                    {
                     objId["position"] = this.getCreateObjectPosition();
 
                     //flush new position
                     objId.call("setTransform", objId.call("getTransform"));
-                }
+                    }
 
                 this.onObjectCreated(objId);
             }
@@ -636,12 +663,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 CreatorPopupMenu.clear();
 
                 if (this.tab.ToLower() == "Scripted".ToLower())
-                {
+                    {
                     string category = Util.getWord(address, 1);
                     SimSet dataGroup = "DataBlockGroup";
 
                     for (uint i = 0; i < dataGroup.getCount(); i++)
-                    {
+                        {
                         SimObject obj = dataGroup.getObject(i);
                         // echo ("Obj: " + obj.getName() + " - " + obj.category );
 
@@ -653,44 +680,39 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                             CreatorPopupMenu.add(obj["category"]);
 
                         if (address == "")
-                        {
+                            {
                             string ctrl = this.findIconCtrl(obj["category"]);
                             if (ctrl == "-1")
-                            {
                                 this.addFolderIcon(obj["category"]);
                             }
-                        }
                         else if (address.ToLower() == obj["category"].ToLower())
-                        {
+                            {
                             string ctrl = this.findIconCtrl(obj.getName());
                             if (ctrl == "-1")
                                 this.addShapeIcon(obj);
+                            }
                         }
                     }
-                }
 
                 if (this.tab.ToLower() == "Meshes".ToLower())
-                {
-                    string fullPath =
-                        Util.findFirstFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif", true);
+                    {
+                    string fullPath = Util.findFirstFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif", true);
 
                     while (fullPath != "")
-                    {
-                        if (Util.strstr(fullPath, "cached.dts") != -1)
                         {
-                            fullPath =
-                                Util.findNextFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif");
+                        if (Util.strstr(fullPath, "cached.dts") != -1)
+                            {
+                            fullPath = Util.findNextFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif");
                             continue;
-                        }
+                            }
 
                         fullPath = Util.makeRelativePath(fullPath, Util.getMainDotCsDir());
                         string splitPath = Util.strreplace(fullPath, "/", " ");
                         if (Util.getWord(splitPath, 0) == "tools")
-                        {
-                            fullPath =
-                                Util.findNextFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif");
+                            {
+                            fullPath = Util.findNextFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif");
                             continue;
-                        }
+                            }
 
                         int dirCount = Util.getWordCount(splitPath) - 1;
 
@@ -701,57 +723,53 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                         string temp = Util.strreplace(pathFolders, " ", "/");
                         int re = CreatorPopupMenu.findText(temp);
                         if (re == -1)
-                        {
                             CreatorPopupMenu.add(temp);
-                        }
 
                         // Is this file in the current folder?        
                         if (Util.stricmp(pathFolders, address) == 0)
-                        {
                             this.addStaticIcon(fullPath);
-                        }
-                        // Then is this file in a subfolder we need to add
-                        // a folder icon for?
+                            // Then is this file in a subfolder we need to add
+                            // a folder icon for?
                         else
-                        {
+                            {
                             int wordIdx = 0;
                             bool add = false;
 
                             if (address == "")
-                            {
+                                {
                                 add = true;
                                 wordIdx = 0;
-                            }
+                                }
                             else
-                            {
-                                for (; wordIdx < dirCount; wordIdx++)
                                 {
+                                for (; wordIdx < dirCount; wordIdx++)
+                                    {
                                     temp = Util.getWords(splitPath, 0, wordIdx);
                                     if (Util.stricmp(temp, address) == 0)
-                                    {
+                                        {
                                         add = true;
                                         wordIdx++;
                                         break;
+                                        }
                                     }
                                 }
-                            }
 
                             if (add == true)
-                            {
+                                {
                                 string folder = Util.getWord(splitPath, wordIdx);
 
                                 SimObject ctrl = this.findIconCtrl(folder);
                                 if (ctrl == 0)
                                     this.addFolderIcon(folder);
+                                }
                             }
-                        }
 
                         fullPath = Util.findNextFileMultiExpr("*.dts" + '\t' + "*.dae" + '\t' + "*.kmz" + '\t' + "*.dif");
+                        }
                     }
-                }
 
                 if (this.tab.ToLower() == "Level".ToLower())
-                {
+                    {
                     // Add groups to popup menu
                     array = this.array;
                     array.sortk(false);
@@ -759,50 +777,50 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                     int count = array.count();
 
                     if (count > 0)
-                    {
+                        {
                         string lastGroup = "";
 
                         for (int i = 0; i < count; i++)
-                        {
+                            {
                             string group = array.getKey(i);
 
                             if (group != lastGroup)
-                            {
+                                {
                                 CreatorPopupMenu.add(group);
 
                                 if (address == "")
                                     this.addFolderIcon(group);
-                            }
+                                }
 
                             if (address.ToLower() == group.ToLower())
-                            {
+                                {
                                 ScriptObject args = array.getValue(i);
                                 string className = args["val[0]"];
                                 string name = args["val[1]"];
                                 string func = args["val[2]"];
 
                                 this.addMissionObjectIcon(className, name, func);
-                            }
+                                }
 
                             lastGroup = group;
+                            }
                         }
                     }
-                }
 
                 if (this.tab.ToLower() == "Prefabs".ToLower())
-                {
+                    {
                     string expr = "*.prefab";
                     string fullPath = Util.findFirstFile(expr);
 
                     while (fullPath != "")
-                    {
+                        {
                         fullPath = Util.makeRelativePath(fullPath, Util.getMainDotCsDir());
                         string splitPath = Util.strreplace(fullPath, "/", " ");
                         if (Util.getWord(splitPath, 0) == "tools")
-                        {
+                            {
                             fullPath = Util.findNextFile(expr);
                             continue;
-                        }
+                            }
 
                         int dirCount = Util.getWordCount(splitPath) - 1;
 
@@ -813,61 +831,55 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                         string temp = Util.strreplace(pathFolders, " ", "/");
                         int re = CreatorPopupMenu.findText(temp);
                         if (re == -1)
-                        {
                             CreatorPopupMenu.add(temp);
-                        }
 
                         // Is this file in the current folder?        
                         if (Util.stricmp(pathFolders, address) == 0)
-                        {
                             this.addPrefabIcon(fullPath);
-                        }
-                        // Then is this file in a subfolder we need to add
-                        // a folder icon for?
+                            // Then is this file in a subfolder we need to add
+                            // a folder icon for?
                         else
-                        {
+                            {
                             int wordIdx = 0;
                             bool add = false;
 
                             if (address == "")
-                            {
+                                {
                                 add = true;
                                 wordIdx = 0;
-                            }
+                                }
                             else
-                            {
-                                for (; wordIdx < dirCount; wordIdx++)
                                 {
+                                for (; wordIdx < dirCount; wordIdx++)
+                                    {
                                     temp = Util.getWords(splitPath, 0, wordIdx);
                                     if (Util.stricmp(temp, address) == 0)
-                                    {
+                                        {
                                         add = true;
                                         wordIdx++;
                                         break;
+                                        }
                                     }
                                 }
-                            }
 
                             if (add == true)
-                            {
+                                {
                                 string folder = Util.getWord(splitPath, wordIdx);
 
                                 SimObject ctrl = this.findIconCtrl(folder);
                                 if (ctrl == 0)
                                     this.addFolderIcon(folder);
+                                }
                             }
-                        }
 
                         fullPath = Util.findNextFile(expr);
+                        }
                     }
-                }
 
                 CreatorIconArray.sort("alphaIconCompare");
 
                 for (uint i = 0; i < CreatorIconArray.getCount(); i++)
-                {
-                    ((SimObject)CreatorIconArray.getObject(i))["autoSize"] = false.AsString();
-                }
+                    ((SimObject) CreatorIconArray.getObject(i))["autoSize"] = false.AsString();
 
                 CreatorIconArray.frozen = false;
                 CreatorIconArray.refresh();
@@ -881,17 +893,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
                 string str = Util.strreplace(address, " ", "/");
                 if (str != "")
-                {
+                    {
                     int r = CreatorPopupMenu.findText(str);
                     if (r != -1)
                         CreatorPopupMenu.setSelected(r, false);
                     else
                         CreatorPopupMenu.setText(str);
-                }
+                    }
                 else
-                {
                     CreatorPopupMenu.setText("");
-                }
                 CreatorPopupMenu.tooltip = str;
             }
 
@@ -963,11 +973,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             public string findIconCtrl(string name)
             {
                 for (uint i = 0; i < this.contentCtrl.getCount(); i++)
-                {
+                    {
                     SimObject ctrl = this.contentCtrl.getObject(i);
                     if (ctrl["text"] == name)
                         return ctrl;
-                }
+                    }
 
                 return "-1";
             }
@@ -984,20 +994,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 ctrl["profile"] = "GuiCreatorIconButtonProfile";
 
                 if (this.isList)
-                {
+                    {
                     ctrl.iconLocation = "Left";
                     ctrl.textLocation = "Right";
                     ctrl.extent = "348 19".AsPoint2I();
                     ctrl.textMargin = 8;
                     ctrl.buttonMargin = "2 2".AsPoint2I();
                     ctrl.autoSize = true;
-                }
+                    }
                 else
-                {
+                    {
                     ctrl.iconLocation = "Center";
                     ctrl.textLocation = "Bottom";
                     ctrl.extent = "40 40".AsPoint2I();
-                }
+                    }
 
                 return ctrl;
             }
@@ -1025,7 +1035,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 objectBuilderGui ObjectBuilderGui = "ObjectBuilderGui";
                 GuiIconButtonCtrl ctrl = this.createIcon();
 
-
                 // If we don't find a specific function for building an
                 // object then fall back to the stock one
                 string method = "build" + buildfunc;
@@ -1039,11 +1048,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 else
                     cmd = "ObjectBuilderGui." + method + "();";
 
-                ctrl.altCommand =
-                    "ObjectBuilderGui.newObjectCallback = \"EWCreatorWindow.onFinishCreateObject\"; EWCreatorWindow.createObject( \"" +
-                    cmd + "\" );";
-                ctrl.iconBitmap = console.Call_Classname("EditorIconRegistry", "findIconByClassName",
-                    new string[] { className });
+                ctrl.altCommand = "ObjectBuilderGui.newObjectCallback = \"EWCreatorWindow.onFinishCreateObject\"; EWCreatorWindow.createObject( \"" + cmd + "\" );";
+                ctrl.iconBitmap = console.Call_Classname("EditorIconRegistry", "findIconByClassName", new string[] {className});
                 ctrl.text = name;
                 ctrl["class"] = "CreatorMissionObjectIconBtn";
                 ctrl.tooltip = className;
@@ -1068,8 +1074,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 string createCmd = "EWCreatorWindow.createObject( \\\"" + cmd + "\\\" );";
                 ctrl.altCommand = "ColladaImportDlg.showDialog( \"" + shapePath + "\", \"" + createCmd + "\" );";
 
-                ctrl.iconBitmap = console.Call_Classname("EditorIconRegistry", "findIconByClassName",
-                    new string[] { className });
+                ctrl.iconBitmap = console.Call_Classname("EditorIconRegistry", "findIconByClassName", new string[] {className});
                 ctrl.text = name;
                 //ctrl["class"] = "CreatorShapeIconBtn";
                 ctrl.tooltip = name;
@@ -1088,17 +1093,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 string ext = Util.fileExt(fullPath);
                 string file = Util.fileBase(fullPath);
                 string fileLong = file + ext;
-                string tip = fileLong + '\n' +
-                             "Size: " + Util.fileSize(fullPath) / 1000.0 + ' ' + "KB" + '\n' +
-                             "Date Created: " + Util.fileCreatedTime(fullPath) + '\n' +
-                             "Last Modified: " + Util.fileModifiedTime(fullPath);
+                string tip = fileLong + '\n' + "Size: " + Util.fileSize(fullPath)/1000.0 + ' ' + "KB" + '\n' + "Date Created: " + Util.fileCreatedTime(fullPath) + '\n' + "Last Modified: " + Util.fileModifiedTime(fullPath);
 
                 string createCmd = "EWCreatorWindow.createStatic( \\\"" + fullPath + "\\\" );";
                 ctrl.altCommand = "ColladaImportDlg.showDialog( \"" + fullPath + "\", \"" + createCmd + "\" );";
 
-                ctrl.iconBitmap = ((ext == ".dts")
-                    ? console.Call_Classname("EditorIconRegistry", "findIconByClassName", new string[] { "TSStatic" })
-                    : "tools/gui/images/iconCollada");
+                ctrl.iconBitmap = ((ext == ".dts") ? console.Call_Classname("EditorIconRegistry", "findIconByClassName", new string[] {"TSStatic"}) : "tools/gui/images/iconCollada");
                 ctrl.text = file;
                 ctrl["class"] = "CreatorStaticIconBtn";
                 ctrl.tooltip = tip;
@@ -1117,14 +1117,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 string ext = Util.fileExt(fullPath);
                 string file = Util.fileBase(fullPath);
                 string fileLong = file + ext;
-                string tip = fileLong + '\n' +
-                             "Size: " + Util.fileSize(fullPath) / 1000.0 + ' ' + "KB" + '\n' +
-                             "Date Created: " + Util.fileCreatedTime(fullPath) + '\n' +
-                             "Last Modified: " + Util.fileModifiedTime(fullPath);
+                string tip = fileLong + '\n' + "Size: " + Util.fileSize(fullPath)/1000.0 + ' ' + "KB" + '\n' + "Date Created: " + Util.fileCreatedTime(fullPath) + '\n' + "Last Modified: " + Util.fileModifiedTime(fullPath);
 
                 ctrl.altCommand = "EWCreatorWindow.createPrefab( \"" + fullPath + "\" );";
-                ctrl.iconBitmap = console.Call_Classname("EditorIconRegistry", "findIconByClassName",
-                    new string[] { "Prefab" });
+                ctrl.iconBitmap = console.Call_Classname("EditorIconRegistry", "findIconByClassName", new string[] {"Prefab"});
                 ctrl.text = file;
                 ctrl["class"] = "CreatorPrefabIconBtn";
                 ctrl.tooltip = tip;
@@ -1145,9 +1141,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static bool operator ==(EWCreatorWindow ts, string simobjectid)
             {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
             }
 
             /// <summary>
@@ -1166,7 +1160,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public override bool Equals(object obj)
             {
-                return (this._ID == (string)myReflections.ChangeType(obj, typeof(string)));
+                return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
             }
 
             /// <summary>
@@ -1177,11 +1171,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static bool operator !=(EWCreatorWindow ts, string simobjectid)
             {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
             }
-
 
             /// <summary>
             /// 
@@ -1201,7 +1194,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             public static implicit operator EWCreatorWindow(string ts)
             {
                 uint simobjectid = resolveobject(ts);
-                return (EWCreatorWindow)Omni.self.getSimObject(simobjectid, typeof(EWCreatorWindow));
+                return (EWCreatorWindow) Omni.self.getSimObject(simobjectid, typeof (EWCreatorWindow));
             }
 
             /// <summary>
@@ -1211,7 +1204,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator int(EWCreatorWindow ts)
             {
-                return (int)ts._iID;
+                return (int) ts._iID;
             }
 
             /// <summary>
@@ -1221,7 +1214,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator EWCreatorWindow(int simobjectid)
             {
-                return (EWCreatorWindow)Omni.self.getSimObject((uint)simobjectid, typeof(EWCreatorWindow));
+                return (EWCreatorWindow) Omni.self.getSimObject((uint) simobjectid, typeof (EWCreatorWindow));
             }
 
             /// <summary>
@@ -1240,7 +1233,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             /// <returns></returns>
             public static implicit operator EWCreatorWindow(uint simobjectid)
             {
-                return (EWCreatorWindow)Omni.self.getSimObject(simobjectid, typeof(EWCreatorWindow));
+                return (EWCreatorWindow) Omni.self.getSimObject(simobjectid, typeof (EWCreatorWindow));
             }
 
             #endregion

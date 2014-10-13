@@ -1,15 +1,50 @@
-﻿using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
-using WinterLeaf.Engine.Classes;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.View.Creators;
+using Creator = WinterLeaf.Engine.Classes.View.Creators.Creator;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
-    {
+{
     public class ObjectEditorSettingsTab
-        {
+    {
         [ConsoleInteraction(true, "ObjectEditorSettingsTab_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (ObjectEditorSettingsTab,EditorGuiGroup)        oc_Newobject50
 
             ObjectCreator oc_Newobject50 = new ObjectCreator("GuiControl", "ObjectEditorSettingsTab,EditorGuiGroup");
@@ -114,8 +149,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject6["extent"] = "208 95";
             oc_Newobject6["Caption"] = "Render";
             oc_Newobject6["Margin"] = "4 3 0 0";
-            oc_Newobject6["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject6["container"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject6["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject6["container"] = new Creator.StringNoQuote("true");
 
             #region GuiStackControl ()        oc_Newobject5
 
@@ -139,8 +174,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject1
 
-            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowCheckbox));
+            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ESettingsWindow.ESettingsWindowCheckbox));
             oc_Newobject1["useInactiveState"] = "0";
             oc_Newobject1["text"] = "Object Icons";
             oc_Newobject1["groupNum"] = "-1";
@@ -170,8 +204,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject2
 
-            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowCheckbox));
+            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ESettingsWindow.ESettingsWindowCheckbox));
             oc_Newobject2["useInactiveState"] = "0";
             oc_Newobject2["text"] = "Object Text";
             oc_Newobject2["groupNum"] = "-1";
@@ -201,8 +234,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject3
 
-            ObjectCreator oc_Newobject3 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowCheckbox));
+            ObjectCreator oc_Newobject3 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ESettingsWindow.ESettingsWindowCheckbox));
             oc_Newobject3["useInactiveState"] = "0";
             oc_Newobject3["text"] = "Mouse Popup Info";
             oc_Newobject3["groupNum"] = "-1";
@@ -232,8 +264,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject4
 
-            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowCheckbox));
+            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ESettingsWindow.ESettingsWindowCheckbox));
             oc_Newobject4["useInactiveState"] = "0";
             oc_Newobject4["text"] = "Popup Menu Background";
             oc_Newobject4["groupNum"] = "-1";
@@ -279,8 +310,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject36["extent"] = "208 95";
             oc_Newobject36["Caption"] = "Colors";
             oc_Newobject36["Margin"] = "0 3 0 0";
-            oc_Newobject36["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject36["container"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject36["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject36["container"] = new Creator.StringNoQuote("true");
 
             #region GuiStackControl ()        oc_Newobject35
 
@@ -304,8 +335,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject10
 
-            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject10["isContainer"] = "1";
             oc_Newobject10["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject10["horizSizing"] = "right";
@@ -355,8 +385,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject8
 
-            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject8["historySize"] = "0";
             oc_Newobject8["password"] = "0";
             oc_Newobject8["tabComplete"] = "0";
@@ -391,8 +420,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject9
 
-            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject9["color"] = "1 1 1 1";
             oc_Newobject9["groupNum"] = "-1";
             oc_Newobject9["buttonType"] = "PushButton";
@@ -423,8 +451,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject14
 
-            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject14["isContainer"] = "1";
             oc_Newobject14["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject14["horizSizing"] = "right";
@@ -474,8 +501,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject12
 
-            ObjectCreator oc_Newobject12 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject12 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject12["historySize"] = "0";
             oc_Newobject12["password"] = "0";
             oc_Newobject12["tabComplete"] = "0";
@@ -510,8 +536,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject13
 
-            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject13["color"] = "1 1 1 1";
             oc_Newobject13["groupNum"] = "-1";
             oc_Newobject13["buttonType"] = "PushButton";
@@ -541,8 +566,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject18
 
-            ObjectCreator oc_Newobject18 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject18 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject18["isContainer"] = "1";
             oc_Newobject18["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject18["horizSizing"] = "right";
@@ -592,8 +616,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject16
 
-            ObjectCreator oc_Newobject16 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject16 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject16["historySize"] = "0";
             oc_Newobject16["password"] = "0";
             oc_Newobject16["tabComplete"] = "0";
@@ -628,8 +651,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject17
 
-            ObjectCreator oc_Newobject17 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject17 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject17["color"] = "1 1 1 1";
             oc_Newobject17["groupNum"] = "-1";
             oc_Newobject17["buttonType"] = "PushButton";
@@ -660,8 +682,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject22
 
-            ObjectCreator oc_Newobject22 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject22 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject22["isContainer"] = "1";
             oc_Newobject22["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject22["horizSizing"] = "right";
@@ -711,8 +732,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject20
 
-            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject20["historySize"] = "0";
             oc_Newobject20["password"] = "0";
             oc_Newobject20["tabComplete"] = "0";
@@ -747,8 +767,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject21
 
-            ObjectCreator oc_Newobject21 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject21 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject21["color"] = "1 1 1 1";
             oc_Newobject21["groupNum"] = "-1";
             oc_Newobject21["buttonType"] = "PushButton";
@@ -779,8 +798,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject26
 
-            ObjectCreator oc_Newobject26 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject26 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject26["isContainer"] = "1";
             oc_Newobject26["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject26["horizSizing"] = "right";
@@ -830,8 +848,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject24
 
-            ObjectCreator oc_Newobject24 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject24 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject24["historySize"] = "0";
             oc_Newobject24["password"] = "0";
             oc_Newobject24["tabComplete"] = "0";
@@ -866,8 +883,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject25
 
-            ObjectCreator oc_Newobject25 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject25 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject25["color"] = "1 1 1 1";
             oc_Newobject25["groupNum"] = "-1";
             oc_Newobject25["buttonType"] = "PushButton";
@@ -898,8 +914,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject30
 
-            ObjectCreator oc_Newobject30 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject30 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject30["isContainer"] = "1";
             oc_Newobject30["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject30["horizSizing"] = "right";
@@ -949,8 +964,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject28
 
-            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject28["historySize"] = "0";
             oc_Newobject28["password"] = "0";
             oc_Newobject28["tabComplete"] = "0";
@@ -985,8 +999,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject29
 
-            ObjectCreator oc_Newobject29 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject29 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject29["color"] = "1 1 1 1";
             oc_Newobject29["groupNum"] = "-1";
             oc_Newobject29["buttonType"] = "PushButton";
@@ -1017,8 +1030,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiControl ()        oc_Newobject34
 
-            ObjectCreator oc_Newobject34 = new ObjectCreator("GuiControl", "",
-                typeof (ESettingsWindow.ESettingsWindowColor));
+            ObjectCreator oc_Newobject34 = new ObjectCreator("GuiControl", "", typeof (ESettingsWindow.ESettingsWindowColor));
             oc_Newobject34["isContainer"] = "1";
             oc_Newobject34["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject34["horizSizing"] = "right";
@@ -1068,8 +1080,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject32
 
-            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorEdit));
+            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorEdit));
             oc_Newobject32["historySize"] = "0";
             oc_Newobject32["password"] = "0";
             oc_Newobject32["tabComplete"] = "0";
@@ -1104,8 +1115,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiSwatchButtonCtrl ()        oc_Newobject33
 
-            ObjectCreator oc_Newobject33 = new ObjectCreator("GuiSwatchButtonCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowColorButton));
+            ObjectCreator oc_Newobject33 = new ObjectCreator("GuiSwatchButtonCtrl", "", typeof (ESettingsWindow.ESettingsWindowColorButton));
             oc_Newobject33["color"] = "1 1 1 1";
             oc_Newobject33["groupNum"] = "-1";
             oc_Newobject33["buttonType"] = "PushButton";
@@ -1152,8 +1162,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject46["extent"] = "208 95";
             oc_Newobject46["Caption"] = "Misc";
             oc_Newobject46["Margin"] = "0 3 0 0";
-            oc_Newobject46["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject46["container"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject46["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject46["container"] = new Creator.StringNoQuote("true");
 
             #region GuiStackControl ()        oc_Newobject45
 
@@ -1188,8 +1198,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject37
 
-            ObjectCreator oc_Newobject37 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowCheckbox));
+            ObjectCreator oc_Newobject37 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ESettingsWindow.ESettingsWindowCheckbox));
             oc_Newobject37["useInactiveState"] = "0";
             oc_Newobject37["text"] = "Force Load DAE";
             oc_Newobject37["groupNum"] = "-1";
@@ -1263,8 +1272,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject40
 
-            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowTextEdit));
+            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowTextEdit));
             oc_Newobject40["historySize"] = "0";
             oc_Newobject40["password"] = "0";
             oc_Newobject40["tabComplete"] = "0";
@@ -1344,8 +1352,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject43
 
-            ObjectCreator oc_Newobject43 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ESettingsWindow.ESettingsWindowTextEdit));
+            ObjectCreator oc_Newobject43 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ESettingsWindow.ESettingsWindowTextEdit));
             oc_Newobject43["historySize"] = "0";
             oc_Newobject43["password"] = "0";
             oc_Newobject43["tabComplete"] = "0";
@@ -1407,6 +1414,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             #endregion
 
             oc_Newobject50.Create();
-            }
         }
     }
+}
