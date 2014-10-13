@@ -1,25 +1,58 @@
-﻿using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.PlugIns;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.PlugIns;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<MaterialEditorPropertiesWindow>))]
     public class MaterialEditorPropertiesWindow : GuiWindowCollapseCtrl
-        {
+    {
         [ConsoleInteraction(true, "MaterialEditorPropertiesWindow_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (MaterialEditorGui,EditorGuiGroup)        oc_Newobject224
 
-            ObjectCreator oc_Newobject224 = new ObjectCreator("GuiControl", "MaterialEditorGui,EditorGuiGroup",
-                typeof (CodeBehind.MaterialEditor.MaterialEditorGui));
+            ObjectCreator oc_Newobject224 = new ObjectCreator("GuiControl", "MaterialEditorGui,EditorGuiGroup", typeof (CodeBehind.MaterialEditor.MaterialEditorGui));
             oc_Newobject224["canSaveDynamicFields"] = "0";
             oc_Newobject224["internalName"] = "MatEdPropertiesWindowContainer";
             oc_Newobject224["Enabled"] = "1";
@@ -36,8 +69,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiWindowCollapseCtrl (MaterialEditorPropertiesWindow)        oc_Newobject223
 
-            ObjectCreator oc_Newobject223 = new ObjectCreator("GuiWindowCollapseCtrl", "MaterialEditorPropertiesWindow",
-                typeof (MaterialEditorPropertiesWindow));
+            ObjectCreator oc_Newobject223 = new ObjectCreator("GuiWindowCollapseCtrl", "MaterialEditorPropertiesWindow", typeof (MaterialEditorPropertiesWindow));
             oc_Newobject223["AllowPopWindow"] = "1";
             oc_Newobject223["canSaveDynamicFields"] = "0";
             oc_Newobject223["internalName"] = "MaterialEditorPropertiesWindow";
@@ -48,9 +80,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject223["VertSizing"] = "windowRelative";
             oc_Newobject223["Extent"] = "210 446";
             oc_Newobject223["MinExtent"] = "210 316";
-            oc_Newobject223["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($pref::Video::mode, 0) - 209         SPC getWord(EditorGuiToolbar.extent, 1) + getWord(MaterialEditorPreviewWindow.extent, 1) - 2");
+            oc_Newobject223["Position"] = new Creator.StringNoQuote("getWord($pref::Video::mode, 0) - 209         SPC getWord(EditorGuiToolbar.extent, 1) + getWord(MaterialEditorPreviewWindow.extent, 1) - 2");
             oc_Newobject223["canSave"] = "1";
             oc_Newobject223["Visible"] = "1";
             oc_Newobject223["hovertime"] = "1000";
@@ -115,8 +145,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             ObjectCreator oc_Newobject2 = new ObjectCreator("GuiTextEditCtrl", "");
             oc_Newobject2["internalName"] = "selMaterialName";
             oc_Newobject2["Profile"] = "ToolsGuiTextEditProfile";
-            oc_Newobject2["AltCommand"] =
-                "MaterialEditorGui.setMaterialDirty();MaterialEditorGui.updateActiveMaterialName($ThisControl.getText());";
+            oc_Newobject2["AltCommand"] = "MaterialEditorGui.setMaterialDirty();MaterialEditorGui.updateActiveMaterialName($ThisControl.getText());";
             oc_Newobject2["HorizSizing"] = "width";
             oc_Newobject2["VertSizing"] = "bottom";
             oc_Newobject2["Position"] = "45 0";
@@ -175,8 +204,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject6["HorizSizing"] = "left";
             oc_Newobject6["tooltip"] = "Swap material on the object with existing";
             oc_Newobject6["bitmap"] = "tools/materialEditor/gui/change-material-btn";
-            oc_Newobject6["command"] =
-                "materialSelector.showDialog(\\\"MaterialEditorGui.showMaterialChangeSaveDialog\\\");";
+            oc_Newobject6["command"] = "materialSelector.showDialog(\\\"MaterialEditorGui.showMaterialChangeSaveDialog\\\");";
 
             #endregion
 
@@ -187,8 +215,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             ObjectCreator oc_Newobject7 = new ObjectCreator("GuiTextEditCtrl", "");
             oc_Newobject7["internalName"] = "selMaterialName";
             oc_Newobject7["Profile"] = "ToolsGuiTextEditProfile";
-            oc_Newobject7["AltCommand"] =
-                "MaterialEditorGui.setMaterialDirty();MaterialEditorGui.updateActiveMaterialName($ThisControl.getText());";
+            oc_Newobject7["AltCommand"] = "MaterialEditorGui.setMaterialDirty();MaterialEditorGui.updateActiveMaterialName($ThisControl.getText());";
             oc_Newobject7["HorizSizing"] = "width";
             oc_Newobject7["VertSizing"] = "bottom";
             oc_Newobject7["Position"] = "76 21";
@@ -230,8 +257,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiPopupMenuCtrlEx (SubMaterialSelector)        oc_Newobject10
 
-            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiPopupMenuCtrlEx", "SubMaterialSelector",
-                typeof (CodeBehind.MaterialEditor.MaterialEditorGui.SubMaterialSelector));
+            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiPopupMenuCtrlEx", "SubMaterialSelector", typeof (CodeBehind.MaterialEditor.MaterialEditorGui.SubMaterialSelector));
             oc_Newobject10["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject10["Position"] = "76 0";
             oc_Newobject10["Extent"] = "126 17";
@@ -330,7 +356,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             ObjectCreator oc_Newobject40 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject40["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject40["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject40["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject40["Profile"] = "GuiRolloutProfile";
             oc_Newobject40["HorizSizing"] = "width";
             oc_Newobject40["VertSizing"] = "bottom";
@@ -338,10 +364,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject40["Extent"] = "185 0";
             oc_Newobject40["Caption"] = "Basic Texture Maps";
             oc_Newobject40["Margin"] = "4 4 4 0";
-            oc_Newobject40["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject40["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject40["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject40["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject40["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject40["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject40["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject40["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject39
 
@@ -496,8 +522,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject18["MinExtent"] = "8 2";
             oc_Newobject18["canSave"] = "1";
             oc_Newobject18["Visible"] = "1";
-            oc_Newobject18["Command"] =
-                "getColorF(materialEd_previewMaterial.diffuseColor[MaterialEditorGui.currentLayer], \\\"MaterialEditorGui.updateColorMultiply\\\");";
+            oc_Newobject18["Command"] = "getColorF(materialEd_previewMaterial.diffuseColor[MaterialEditorGui.currentLayer], \\\"MaterialEditorGui.updateColorMultiply\\\");";
             oc_Newobject18["hovertime"] = "1000";
             oc_Newobject18["groupNum"] = "-1";
             oc_Newobject18["buttonType"] = "PushButton";
@@ -911,26 +936,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject39["#Newobject38"] = oc_Newobject38;
 
             #region GuiBitmapCtrl ()        oc_Newobject000011
-            var oc_Newobject000011 = new ObjectCreator("GuiBitmapCtrl", "");
+
+            ObjectCreator oc_Newobject000011 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject000011["position"] = "6 360";
             oc_Newobject000011["extent"] = "175 2";
             oc_Newobject000011["HorizSizing"] = "width";
             oc_Newobject000011["bitmap"] = "core/art/gui/images/separator-v";
+
             #endregion
+
             oc_Newobject39["#Newobject000011"] = oc_Newobject000011;
 
             #region GuiContainer ()        oc_Newobject00008
-            var oc_Newobject00008 = new ObjectCreator("GuiContainer", "");
+
+            ObjectCreator oc_Newobject00008 = new ObjectCreator("GuiContainer", "");
             oc_Newobject00008["profile"] = "GuiDefaultProfile";
             oc_Newobject00008["isContainer"] = "1";
             oc_Newobject00008["position"] = "6 364";
             oc_Newobject00008["Extent"] = "185 52";
             oc_Newobject00008["HorizSizing"] = "width";
             if (true)
-            {
-
+                {
                 #region GuiBitmapCtrl ()        oc_Newobject000021
-                var oc_Newobject000021 = new ObjectCreator("GuiBitmapCtrl", "");
+
+                ObjectCreator oc_Newobject000021 = new ObjectCreator("GuiBitmapCtrl", "");
                 oc_Newobject000021["canSaveDynamicFields"] = "0";
                 oc_Newobject000021["internalName"] = "accuMapDisplayBitmap";
                 oc_Newobject000021["Enabled"] = "1";
@@ -946,12 +975,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject000021["hovertime"] = "1000";
                 oc_Newobject000021["bitmap"] = "tools/materialeditor/gui/unknownImage";
                 oc_Newobject000021["wrap"] = "0";
+
                 #endregion
 
                 oc_Newobject00008["#Newobject000021"] = oc_Newobject000021;
 
                 #region GuiTextCtrl ()        oc_Newobject000031
-                var oc_Newobject000031 = new ObjectCreator("GuiTextCtrl", "");
+
+                ObjectCreator oc_Newobject000031 = new ObjectCreator("GuiTextCtrl", "");
                 oc_Newobject000031["canSaveDynamicFields"] = "0";
                 oc_Newobject000031["Enabled"] = "1";
                 oc_Newobject000031["isContainer"] = "0";
@@ -972,12 +1003,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject000031["AnchorRight"] = "0";
                 oc_Newobject000031["text"] = "Accu Map";
                 oc_Newobject000031["maxLength"] = "1024";
+
                 #endregion
 
                 oc_Newobject00008["#Newobject000031"] = oc_Newobject000031;
 
                 #region GuiBitmapButtonCtrl ()        oc_Newobject000041
-                var oc_Newobject000041 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+
+                ObjectCreator oc_Newobject000041 = new ObjectCreator("GuiBitmapButtonCtrl", "");
                 oc_Newobject000041["canSaveDynamicFields"] = "0";
                 oc_Newobject000041["Enabled"] = "1";
                 oc_Newobject000041["isContainer"] = "0";
@@ -997,12 +1030,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject000041["buttonType"] = "PushButton";
                 oc_Newobject000041["useMouseEvents"] = "0";
                 oc_Newobject000041["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
                 #endregion
 
                 oc_Newobject00008["#Newobject000041"] = oc_Newobject000041;
 
                 #region GuiTextCtrl ()        oc_Newobject00005
-                var oc_Newobject00005 = new ObjectCreator("GuiTextCtrl", "");
+
+                ObjectCreator oc_Newobject00005 = new ObjectCreator("GuiTextCtrl", "");
                 oc_Newobject00005["canSaveDynamicFields"] = "0";
                 oc_Newobject00005["internalName"] = "accuMapNameText";
                 oc_Newobject00005["Enabled"] = "1";
@@ -1024,12 +1059,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject00005["AnchorRight"] = "0";
                 oc_Newobject00005["text"] = "None";
                 oc_Newobject00005["maxLength"] = "1024";
+
                 #endregion
 
                 oc_Newobject00008["#Newobject00005"] = oc_Newobject00005;
 
                 #region GuiButtonCtrl ()        oc_Newobject00006
-                var oc_Newobject00006 = new ObjectCreator("GuiButtonCtrl", "");
+
+                ObjectCreator oc_Newobject00006 = new ObjectCreator("GuiButtonCtrl", "");
                 oc_Newobject00006["profile"] = "GuiButtonProfile";
                 oc_Newobject00006["text"] = "Edit";
                 oc_Newobject00006["HorizSizing"] = "left";
@@ -1038,12 +1075,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject00006["Extent"] = "40 16";
                 oc_Newobject00006["buttonType"] = "PushButton";
                 oc_Newobject00006["command"] = "MaterialEditorGui.updateAccuMap(1);";
+
                 #endregion
 
                 oc_Newobject00008["#Newobject00006"] = oc_Newobject00006;
 
                 #region GuiBitmapButtonCtrl ()        oc_Newobject00007
-                var oc_Newobject00007 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+
+                ObjectCreator oc_Newobject00007 = new ObjectCreator("GuiBitmapButtonCtrl", "");
                 oc_Newobject00007["canSaveDynamicFields"] = "0";
                 oc_Newobject00007["Enabled"] = "1";
                 oc_Newobject00007["isContainer"] = "0";
@@ -1061,12 +1100,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject00007["buttonType"] = "PushButton";
                 oc_Newobject00007["useMouseEvents"] = "0";
                 oc_Newobject00007["bitmap"] = "tools/gui/images/delete";
+
                 #endregion
 
                 oc_Newobject00008["#Newobject00007"] = oc_Newobject00007;
+                }
 
-            }
             #endregion
+
             oc_Newobject39["#Newobject00008"] = oc_Newobject00008;
 
             #endregion
@@ -1077,1049 +1118,1049 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             oc_Newobject212["#Newobject40"] = oc_Newobject40;
 
-          //  #region GuiRolloutCtrl ()        oc_Newobject300
-
-          //  ObjectCreator oc_Newobject300 = new ObjectCreator("GuiRolloutCtrl", "");
-          //  oc_Newobject300["class"] = "BehaviorQuickEditRollout";
-          //  oc_Newobject300["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
-          //  oc_Newobject300["Profile"] = "GuiRolloutProfile";
-          //  oc_Newobject300["HorizSizing"] = "width";
-          //  oc_Newobject300["VertSizing"] = "bottom";
-          //  oc_Newobject300["Position"] = "0 0";
-          //  oc_Newobject300["Extent"] = "185 0";
-          //  oc_Newobject300["Caption"] = "Shader Maps";
-          //  oc_Newobject300["Expanded"] = new ObjectCreator.StringNoQuote("false");
-          //  oc_Newobject300["Margin"] = "4 4 4 0";
-          //  oc_Newobject300["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-          //  oc_Newobject300["container"] = new ObjectCreator.StringNoQuote("true");
-          //  oc_Newobject300["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-          //  oc_Newobject300["object"] = new ObjectCreator.StringNoQuote("%behavior");
-
-          //  #region GuiStackControl ()        oc_Newobject301
-
-          //  ObjectCreator oc_Newobject301 = new ObjectCreator("GuiStackControl", "");
-          //  oc_Newobject301["StackingType"] = "Vertical";
-          //  oc_Newobject301["HorizStacking"] = "Left to Right";
-          //  oc_Newobject301["VertStacking"] = "Top to Bottom";
-          //  oc_Newobject301["Padding"] = "0";
-          //  oc_Newobject301["canSaveDynamicFields"] = "0";
-          //  oc_Newobject301["Enabled"] = "1";
-          //  oc_Newobject301["isContainer"] = "1";
-          //  oc_Newobject301["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject301["HorizSizing"] = "width";
-          //  oc_Newobject301["VertSizing"] = "bottom";
-          //  oc_Newobject301["Position"] = "1 3";
-          //  oc_Newobject301["Extent"] = "185 16";
-          //  oc_Newobject301["MinExtent"] = "16 16";
-          //  oc_Newobject301["canSave"] = "1";
-          //  oc_Newobject301["isDecoy"] = "0";
-          //  oc_Newobject301["Visible"] = "1";
-          //  oc_Newobject301["tooltipprofile"] = "ToolsGuiToolTipProfile";
-          //  oc_Newobject301["hovertime"] = "1000";
-
-          //  #region GuiContainer ()        oc_Newobject302
-
-          //  ObjectCreator oc_Newobject302 = new ObjectCreator("GuiContainer", "");
-          //  oc_Newobject302["profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject302["isContainer"] = "1";
-          //  oc_Newobject302["position"] = "6 136";
-          //  oc_Newobject302["Extent"] = "185 52";
-          //  oc_Newobject302["HorizSizing"] = "width";
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject303
-
-          //  ObjectCreator oc_Newobject303 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  oc_Newobject303["canSaveDynamicFields"] = "0";
-          //  oc_Newobject303["internalName"] = "furMapDisplayBitmap";
-          //  oc_Newobject303["Enabled"] = "1";
-          //  oc_Newobject303["isContainer"] = "0";
-          //  oc_Newobject303["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject303["HorizSizing"] = "right";
-          //  oc_Newobject303["VertSizing"] = "bottom";
-          //  oc_Newobject303["position"] = "1 1";
-          //  oc_Newobject303["Extent"] = "48 48";
-          //  oc_Newobject303["MinExtent"] = "8 2";
-          //  oc_Newobject303["canSave"] = "1";
-          //  oc_Newobject303["Visible"] = "1";
-          //  oc_Newobject303["hovertime"] = "1000";
-          //  oc_Newobject303["bitmap"] = "tools/materialeditor/gui/unknownImage";
-          //  oc_Newobject303["wrap"] = "0";
-
-          //  #endregion
-
-          //  oc_Newobject302["#Newobject303"] = oc_Newobject303;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject304
-
-          //  ObjectCreator oc_Newobject304 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject304["canSaveDynamicFields"] = "0";
-          //  oc_Newobject304["Enabled"] = "1";
-          //  oc_Newobject304["isContainer"] = "0";
-          //  oc_Newobject304["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject304["HorizSizing"] = "right";
-          //  oc_Newobject304["VertSizing"] = "bottom";
-          //  oc_Newobject304["position"] = "1 1";
-          //  oc_Newobject304["Extent"] = "48 48";
-          //  oc_Newobject304["MinExtent"] = "8 2";
-          //  oc_Newobject304["canSave"] = "1";
-          //  oc_Newobject304["Visible"] = "1";
-          //  oc_Newobject304["Command"] = "MaterialEditorGui.updateTextureMap(\\\"fur\\\", 1);";
-          //  oc_Newobject304["tooltipprofile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject304["ToolTip"] = "Change the active Fur Map for this layer.";
-          //  oc_Newobject304["hovertime"] = "1000";
-          //  oc_Newobject304["groupNum"] = "-1";
-          //  oc_Newobject304["buttonType"] = "PushButton";
-          //  oc_Newobject304["useMouseEvents"] = "0";
-          //  oc_Newobject304["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
-
-          //  #endregion
-
-          //  oc_Newobject302["#Newobject304"] = oc_Newobject304;
-
-          //  #region GuiTextCtrl ()        oc_Newobject305
-
-          //  ObjectCreator oc_Newobject305 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject305["canSaveDynamicFields"] = "0";
-          //  oc_Newobject305["Enabled"] = "1";
-          //  oc_Newobject305["isContainer"] = "0";
-          //  oc_Newobject305["Profile"] = "EditorTextProfile";
-          //  oc_Newobject305["HorizSizing"] = "right";
-          //  oc_Newobject305["VertSizing"] = "bottom";
-          //  oc_Newobject305["position"] = "56 -3";
-          //  oc_Newobject305["Extent"] = "72 18";
-          //  oc_Newobject305["MinExtent"] = "8 2";
-          //  oc_Newobject305["canSave"] = "1";
-          //  oc_Newobject305["Visible"] = "1";
-          //  oc_Newobject305["hovertime"] = "1000";
-          //  oc_Newobject305["Margin"] = "0 0 0 0";
-          //  oc_Newobject305["Padding"] = "0 0 0 0";
-          //  oc_Newobject305["AnchorTop"] = "1";
-          //  oc_Newobject305["AnchorBottom"] = "0";
-          //  oc_Newobject305["AnchorLeft"] = "1";
-          //  oc_Newobject305["AnchorRight"] = "0";
-          //  oc_Newobject305["text"] = "Fur Map";
-          //  oc_Newobject305["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject302["#Newobject305"] = oc_Newobject305;
-
-          //  #region GuiTextCtrl ()        oc_Newobject306
-
-          //  ObjectCreator oc_Newobject306 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject306["canSaveDynamicFields"] = "0";
-          //  oc_Newobject306["internalName"] = "furMapNameText";
-          //  oc_Newobject306["Enabled"] = "1";
-          //  oc_Newobject306["isContainer"] = "0";
-          //  oc_Newobject306["Profile"] = "ToolsGuiTextProfile";
-          //  oc_Newobject306["HorizSizing"] = "width";
-          //  oc_Newobject306["VertSizing"] = "bottom";
-          //  oc_Newobject306["position"] = "56 16";
-          //  oc_Newobject306["Extent"] = "143 17";
-          //  oc_Newobject306["MinExtent"] = "8 2";
-          //  oc_Newobject306["canSave"] = "1";
-          //  oc_Newobject306["Visible"] = "1";
-          //  oc_Newobject306["hovertime"] = "1000";
-          //  oc_Newobject306["Margin"] = "0 0 0 0";
-          //  oc_Newobject306["Padding"] = "0 0 0 0";
-          //  oc_Newobject306["AnchorTop"] = "1";
-          //  oc_Newobject306["AnchorBottom"] = "0";
-          //  oc_Newobject306["AnchorLeft"] = "1";
-          //  oc_Newobject306["AnchorRight"] = "0";
-          //  oc_Newobject306["text"] = "None";
-          //  oc_Newobject306["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject302["#Newobject306"] = oc_Newobject306;
-
-          //  #region GuiButtonCtrl ()        oc_Newobject307
-
-          //  ObjectCreator oc_Newobject307 = new ObjectCreator("GuiButtonCtrl", "");
-          //  oc_Newobject307["profile"] = "ToolsGuiButtonProfile";
-          //  oc_Newobject307["text"] = "Edit";
-          //  oc_Newobject307["HorizSizing"] = "left";
-          //  oc_Newobject307["VertSizing"] = "bottom";
-          //  oc_Newobject307["position"] = "134 34";
-          //  oc_Newobject307["Extent"] = "40 16";
-          //  oc_Newobject307["buttonType"] = "PushButton";
-          //  oc_Newobject307["command"] = "MaterialEditorGui.updateTextureMap(\\\"fur\\\", 1);";
-
-          //  #endregion
-
-          //  oc_Newobject302["#Newobject307"] = oc_Newobject307;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject308
-
-          //  ObjectCreator oc_Newobject308 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject308["canSaveDynamicFields"] = "0";
-          //  oc_Newobject308["Enabled"] = "1";
-          //  oc_Newobject308["isContainer"] = "0";
-          //  oc_Newobject308["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject308["HorizSizing"] = "left";
-          //  oc_Newobject308["VertSizing"] = "bottom";
-          //  oc_Newobject308["position"] = "177 34";
-          //  oc_Newobject308["Extent"] = "16 16";
-          //  oc_Newobject308["MinExtent"] = "8 2";
-          //  oc_Newobject308["canSave"] = "1";
-          //  oc_Newobject308["Visible"] = "1";
-          //  oc_Newobject308["Command"] = "MaterialEditorGui.updateTextureMap(\\\"fur\\\", 0);";
-          //  oc_Newobject308["hovertime"] = "1000";
-          //  oc_Newobject308["groupNum"] = "-1";
-          //  oc_Newobject308["buttonType"] = "PushButton";
-          //  oc_Newobject308["useMouseEvents"] = "0";
-          //  oc_Newobject308["bitmap"] = "tools/gui/images/delete";
-
-          //  #endregion
-
-          //  oc_Newobject302["#Newobject308"] = oc_Newobject308;
-
-          //  #endregion
-
-          //  oc_Newobject301["#Newobject302"] = oc_Newobject302;
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject309
-
-          //  ObjectCreator oc_Newobject309 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  oc_Newobject309["position"] = "6 189";
-          //  oc_Newobject309["extent"] = "175 2";
-          //  oc_Newobject309["HorizSizing"] = "width";
-          //  oc_Newobject309["bitmap"] = "tools/gui/images/separator-v";
-
-          //  #endregion
-
-          //  oc_Newobject301["#Newobject309"] = oc_Newobject309;
-
-          //  #region GuiContainer ()        oc_Newobject310
-
-          //  //ObjectCreator oc_Newobject310 = new ObjectCreator("GuiContainer", "");
-          //  //oc_Newobject310["profile"] = "ToolsGuiDefaultProfile";
-          //  //oc_Newobject310["isContainer"] = "1";
-          //  //oc_Newobject310["position"] = "6 136";
-          //  //oc_Newobject310["Extent"] = "185 52";
-          //  //oc_Newobject310["HorizSizing"] = "width";
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject311
-
-          //  //ObjectCreator oc_Newobject311 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  //oc_Newobject311["canSaveDynamicFields"] = "0";
-          //  //oc_Newobject311["internalName"] = "skinMapDisplayBitmap";
-          //  //oc_Newobject311["Enabled"] = "1";
-          //  //oc_Newobject311["isContainer"] = "0";
-          //  //oc_Newobject311["Profile"] = "ToolsGuiDefaultProfile";
-          //  //oc_Newobject311["HorizSizing"] = "right";
-          //  //oc_Newobject311["VertSizing"] = "bottom";
-          //  //oc_Newobject311["position"] = "1 1";
-          //  //oc_Newobject311["Extent"] = "48 48";
-          //  //oc_Newobject311["MinExtent"] = "8 2";
-          //  //oc_Newobject311["canSave"] = "1";
-          //  //oc_Newobject311["Visible"] = "1";
-          //  //oc_Newobject311["hovertime"] = "1000";
-          //  //oc_Newobject311["bitmap"] = "tools/materialeditor/gui/unknownImage";
-          //  //oc_Newobject311["wrap"] = "0";
-
-          //  #endregion
-
-          ////  oc_Newobject310["#Newobject311"] = oc_Newobject311;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject312
-
-          //  //ObjectCreator oc_Newobject312 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  //oc_Newobject312["canSaveDynamicFields"] = "0";
-          //  //oc_Newobject312["Enabled"] = "1";
-          //  //oc_Newobject312["isContainer"] = "0";
-          //  //oc_Newobject312["Profile"] = "ToolsGuiDefaultProfile";
-          //  //oc_Newobject312["HorizSizing"] = "right";
-          //  //oc_Newobject312["VertSizing"] = "bottom";
-          //  //oc_Newobject312["position"] = "1 1";
-          //  //oc_Newobject312["Extent"] = "48 48";
-          //  //oc_Newobject312["MinExtent"] = "8 2";
-          //  //oc_Newobject312["canSave"] = "1";
-          //  //oc_Newobject312["Visible"] = "1";
-          //  //oc_Newobject312["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skin\\\", 1);";
-          //  //oc_Newobject312["tooltipprofile"] = "ToolsGuiDefaultProfile";
-          //  //oc_Newobject312["ToolTip"] = "Change the active Skin Map for this layer.";
-          //  //oc_Newobject312["hovertime"] = "1000";
-          //  //oc_Newobject312["groupNum"] = "-1";
-          //  //oc_Newobject312["buttonType"] = "PushButton";
-          //  //oc_Newobject312["useMouseEvents"] = "0";
-          //  //oc_Newobject312["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
-
-          //  #endregion
-
-          // // oc_Newobject310["#Newobject312"] = oc_Newobject312;
-
-          //  #region GuiTextCtrl ()        oc_Newobject313
-
-          //  //ObjectCreator oc_Newobject313 = new ObjectCreator("GuiTextCtrl", "");
-          //  //oc_Newobject313["canSaveDynamicFields"] = "0";
-          //  //oc_Newobject313["Enabled"] = "1";
-          //  //oc_Newobject313["isContainer"] = "0";
-          //  //oc_Newobject313["Profile"] = "EditorTextProfile";
-          //  //oc_Newobject313["HorizSizing"] = "right";
-          //  //oc_Newobject313["VertSizing"] = "bottom";
-          //  //oc_Newobject313["position"] = "56 -3";
-          //  //oc_Newobject313["Extent"] = "72 18";
-          //  //oc_Newobject313["MinExtent"] = "8 2";
-          //  //oc_Newobject313["canSave"] = "1";
-          //  //oc_Newobject313["Visible"] = "1";
-          //  //oc_Newobject313["hovertime"] = "1000";
-          //  //oc_Newobject313["Margin"] = "0 0 0 0";
-          //  //oc_Newobject313["Padding"] = "0 0 0 0";
-          //  //oc_Newobject313["AnchorTop"] = "1";
-          //  //oc_Newobject313["AnchorBottom"] = "0";
-          //  //oc_Newobject313["AnchorLeft"] = "1";
-          //  //oc_Newobject313["AnchorRight"] = "0";
-          //  //oc_Newobject313["text"] = "Skin Map";
-          //  //oc_Newobject313["maxLength"] = "1024";
-
-          //  #endregion
-
-          ////  oc_Newobject310["#Newobject313"] = oc_Newobject313;
-
-          //  #region GuiTextCtrl ()        oc_Newobject314
-
-          //  //ObjectCreator oc_Newobject314 = new ObjectCreator("GuiTextCtrl", "");
-          //  //oc_Newobject314["canSaveDynamicFields"] = "0";
-          //  //oc_Newobject314["internalName"] = "skinMapNameText";
-          //  //oc_Newobject314["Enabled"] = "1";
-          //  //oc_Newobject314["isContainer"] = "0";
-          //  //oc_Newobject314["Profile"] = "ToolsGuiTextProfile";
-          //  //oc_Newobject314["HorizSizing"] = "width";
-          //  //oc_Newobject314["VertSizing"] = "bottom";
-          //  //oc_Newobject314["position"] = "56 16";
-          //  //oc_Newobject314["Extent"] = "143 17";
-          //  //oc_Newobject314["MinExtent"] = "8 2";
-          //  //oc_Newobject314["canSave"] = "1";
-          //  //oc_Newobject314["Visible"] = "1";
-          //  //oc_Newobject314["hovertime"] = "1000";
-          //  //oc_Newobject314["Margin"] = "0 0 0 0";
-          //  //oc_Newobject314["Padding"] = "0 0 0 0";
-          //  //oc_Newobject314["AnchorTop"] = "1";
-          //  //oc_Newobject314["AnchorBottom"] = "0";
-          //  //oc_Newobject314["AnchorLeft"] = "1";
-          //  //oc_Newobject314["AnchorRight"] = "0";
-          //  //oc_Newobject314["text"] = "None";
-          //  //oc_Newobject314["maxLength"] = "1024";
-
-          //  #endregion
-
-          // // oc_Newobject310["#Newobject314"] = oc_Newobject314;
-
-          //  #region GuiButtonCtrl ()        oc_Newobject315
-
-          //  //ObjectCreator oc_Newobject315 = new ObjectCreator("GuiButtonCtrl", "");
-          //  //oc_Newobject315["profile"] = "ToolsGuiButtonProfile";
-          //  //oc_Newobject315["text"] = "Edit";
-          //  //oc_Newobject315["HorizSizing"] = "left";
-          //  //oc_Newobject315["VertSizing"] = "bottom";
-          //  //oc_Newobject315["position"] = "134 34";
-          //  //oc_Newobject315["Extent"] = "40 16";
-          //  //oc_Newobject315["buttonType"] = "PushButton";
-          //  //oc_Newobject315["command"] = "MaterialEditorGui.updateTextureMap(\\\"skin\\\", 1);";
-
-          //  #endregion
-
-          //  //oc_Newobject310["#Newobject315"] = oc_Newobject315;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject316
-
-          //  //ObjectCreator oc_Newobject316 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  //oc_Newobject316["canSaveDynamicFields"] = "0";
-          //  //oc_Newobject316["Enabled"] = "1";
-          //  //oc_Newobject316["isContainer"] = "0";
-          //  //oc_Newobject316["Profile"] = "ToolsGuiDefaultProfile";
-          //  //oc_Newobject316["HorizSizing"] = "left";
-          //  //oc_Newobject316["VertSizing"] = "bottom";
-          //  //oc_Newobject316["position"] = "177 34";
-          //  //oc_Newobject316["Extent"] = "16 16";
-          //  //oc_Newobject316["MinExtent"] = "8 2";
-          //  //oc_Newobject316["canSave"] = "1";
-          //  //oc_Newobject316["Visible"] = "1";
-          //  //oc_Newobject316["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skin\\\", 0);";
-          //  //oc_Newobject316["hovertime"] = "1000";
-          //  //oc_Newobject316["groupNum"] = "-1";
-          //  //oc_Newobject316["buttonType"] = "PushButton";
-          //  //oc_Newobject316["useMouseEvents"] = "0";
-          //  //oc_Newobject316["bitmap"] = "tools/gui/images/delete";
-
-          //  #endregion
-
-          ////  oc_Newobject310["#Newobject316"] = oc_Newobject316;
-
-          //  #endregion
-
-          //  //oc_Newobject301["#Newobject310"] = oc_Newobject310;
-
-          //  #region GuiContainer ()        oc_Newobject317
-
-          //  ObjectCreator oc_Newobject317 = new ObjectCreator("GuiContainer", "");
-          //  oc_Newobject317["profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject317["isContainer"] = "1";
-          //  oc_Newobject317["position"] = "6 136";
-          //  oc_Newobject317["Extent"] = "185 52";
-          //  oc_Newobject317["HorizSizing"] = "width";
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject318
-
-          //  ObjectCreator oc_Newobject318 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  oc_Newobject318["canSaveDynamicFields"] = "0";
-          //  oc_Newobject318["internalName"] = "skinPoreMapDisplayBitmap";
-          //  oc_Newobject318["Enabled"] = "1";
-          //  oc_Newobject318["isContainer"] = "0";
-          //  oc_Newobject318["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject318["HorizSizing"] = "right";
-          //  oc_Newobject318["VertSizing"] = "bottom";
-          //  oc_Newobject318["position"] = "1 1";
-          //  oc_Newobject318["Extent"] = "48 48";
-          //  oc_Newobject318["MinExtent"] = "8 2";
-          //  oc_Newobject318["canSave"] = "1";
-          //  oc_Newobject318["Visible"] = "1";
-          //  oc_Newobject318["hovertime"] = "1000";
-          //  oc_Newobject318["bitmap"] = "tools/materialeditor/gui/unknownImage";
-          //  oc_Newobject318["wrap"] = "0";
-
-          //  #endregion
-
-          //  oc_Newobject317["#Newobject318"] = oc_Newobject318;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject319
-
-          //  ObjectCreator oc_Newobject319 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject319["canSaveDynamicFields"] = "0";
-          //  oc_Newobject319["Enabled"] = "1";
-          //  oc_Newobject319["isContainer"] = "0";
-          //  oc_Newobject319["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject319["HorizSizing"] = "right";
-          //  oc_Newobject319["VertSizing"] = "bottom";
-          //  oc_Newobject319["position"] = "1 1";
-          //  oc_Newobject319["Extent"] = "48 48";
-          //  oc_Newobject319["MinExtent"] = "8 2";
-          //  oc_Newobject319["canSave"] = "1";
-          //  oc_Newobject319["Visible"] = "1";
-          //  oc_Newobject319["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinPore\\\", 1);";
-          //  oc_Newobject319["tooltipprofile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject319["ToolTip"] = "Change the active Skin Pore Map for this layer.";
-          //  oc_Newobject319["hovertime"] = "1000";
-          //  oc_Newobject319["groupNum"] = "-1";
-          //  oc_Newobject319["buttonType"] = "PushButton";
-          //  oc_Newobject319["useMouseEvents"] = "0";
-          //  oc_Newobject319["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
-
-          //  #endregion
-
-          //  oc_Newobject317["#Newobject319"] = oc_Newobject319;
-
-          //  #region GuiTextCtrl ()        oc_Newobject320
-
-          //  ObjectCreator oc_Newobject320 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject320["canSaveDynamicFields"] = "0";
-          //  oc_Newobject320["Enabled"] = "1";
-          //  oc_Newobject320["isContainer"] = "0";
-          //  oc_Newobject320["Profile"] = "EditorTextProfile";
-          //  oc_Newobject320["HorizSizing"] = "right";
-          //  oc_Newobject320["VertSizing"] = "bottom";
-          //  oc_Newobject320["position"] = "56 -3";
-          //  oc_Newobject320["Extent"] = "72 18";
-          //  oc_Newobject320["MinExtent"] = "8 2";
-          //  oc_Newobject320["canSave"] = "1";
-          //  oc_Newobject320["Visible"] = "1";
-          //  oc_Newobject320["hovertime"] = "1000";
-          //  oc_Newobject320["Margin"] = "0 0 0 0";
-          //  oc_Newobject320["Padding"] = "0 0 0 0";
-          //  oc_Newobject320["AnchorTop"] = "1";
-          //  oc_Newobject320["AnchorBottom"] = "0";
-          //  oc_Newobject320["AnchorLeft"] = "1";
-          //  oc_Newobject320["AnchorRight"] = "0";
-          //  oc_Newobject320["text"] = "Skin Pore Map";
-          //  oc_Newobject320["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject317["#Newobject320"] = oc_Newobject320;
-
-          //  #region GuiTextCtrl ()        oc_Newobject321
-
-          //  ObjectCreator oc_Newobject321 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject321["canSaveDynamicFields"] = "0";
-          //  oc_Newobject321["internalName"] = "skinPoreMapNameText";
-          //  oc_Newobject321["Enabled"] = "1";
-          //  oc_Newobject321["isContainer"] = "0";
-          //  oc_Newobject321["Profile"] = "ToolsGuiTextProfile";
-          //  oc_Newobject321["HorizSizing"] = "width";
-          //  oc_Newobject321["VertSizing"] = "bottom";
-          //  oc_Newobject321["position"] = "56 16";
-          //  oc_Newobject321["Extent"] = "143 17";
-          //  oc_Newobject321["MinExtent"] = "8 2";
-          //  oc_Newobject321["canSave"] = "1";
-          //  oc_Newobject321["Visible"] = "1";
-          //  oc_Newobject321["hovertime"] = "1000";
-          //  oc_Newobject321["Margin"] = "0 0 0 0";
-          //  oc_Newobject321["Padding"] = "0 0 0 0";
-          //  oc_Newobject321["AnchorTop"] = "1";
-          //  oc_Newobject321["AnchorBottom"] = "0";
-          //  oc_Newobject321["AnchorLeft"] = "1";
-          //  oc_Newobject321["AnchorRight"] = "0";
-          //  oc_Newobject321["text"] = "None";
-          //  oc_Newobject321["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject317["#Newobject321"] = oc_Newobject321;
-
-          //  #region GuiButtonCtrl ()        oc_Newobject322
-
-          //  ObjectCreator oc_Newobject322 = new ObjectCreator("GuiButtonCtrl", "");
-          //  oc_Newobject322["profile"] = "ToolsGuiButtonProfile";
-          //  oc_Newobject322["text"] = "Edit";
-          //  oc_Newobject322["HorizSizing"] = "left";
-          //  oc_Newobject322["VertSizing"] = "bottom";
-          //  oc_Newobject322["position"] = "134 34";
-          //  oc_Newobject322["Extent"] = "40 16";
-          //  oc_Newobject322["buttonType"] = "PushButton";
-          //  oc_Newobject322["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinPore\\\", 1);";
-
-          //  #endregion
-
-          //  oc_Newobject317["#Newobject322"] = oc_Newobject322;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject323
-
-          //  ObjectCreator oc_Newobject323 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject323["canSaveDynamicFields"] = "0";
-          //  oc_Newobject323["Enabled"] = "1";
-          //  oc_Newobject323["isContainer"] = "0";
-          //  oc_Newobject323["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject323["HorizSizing"] = "left";
-          //  oc_Newobject323["VertSizing"] = "bottom";
-          //  oc_Newobject323["position"] = "177 34";
-          //  oc_Newobject323["Extent"] = "16 16";
-          //  oc_Newobject323["MinExtent"] = "8 2";
-          //  oc_Newobject323["canSave"] = "1";
-          //  oc_Newobject323["Visible"] = "1";
-          //  oc_Newobject323["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinPore\\\", 0);";
-          //  oc_Newobject323["hovertime"] = "1000";
-          //  oc_Newobject323["groupNum"] = "-1";
-          //  oc_Newobject323["buttonType"] = "PushButton";
-          //  oc_Newobject323["useMouseEvents"] = "0";
-          //  oc_Newobject323["bitmap"] = "tools/gui/images/delete";
-
-          //  #endregion
-
-          //  oc_Newobject317["#Newobject323"] = oc_Newobject323;
-
-          //  #endregion
-
-          //  oc_Newobject301["#Newobject317"] = oc_Newobject317;
-
-          //  #region GuiContainer ()        oc_Newobject324
-
-          //  ObjectCreator oc_Newobject324 = new ObjectCreator("GuiContainer", "");
-          //  oc_Newobject324["profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject324["isContainer"] = "1";
-          //  oc_Newobject324["position"] = "6 136";
-          //  oc_Newobject324["Extent"] = "185 52";
-          //  oc_Newobject324["HorizSizing"] = "width";
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject325
-
-          //  ObjectCreator oc_Newobject325 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  oc_Newobject325["canSaveDynamicFields"] = "0";
-          //  oc_Newobject325["internalName"] = "skinForeheadMapDisplayBitmap";
-          //  oc_Newobject325["Enabled"] = "1";
-          //  oc_Newobject325["isContainer"] = "0";
-          //  oc_Newobject325["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject325["HorizSizing"] = "right";
-          //  oc_Newobject325["VertSizing"] = "bottom";
-          //  oc_Newobject325["position"] = "1 1";
-          //  oc_Newobject325["Extent"] = "48 48";
-          //  oc_Newobject325["MinExtent"] = "8 2";
-          //  oc_Newobject325["canSave"] = "1";
-          //  oc_Newobject325["Visible"] = "1";
-          //  oc_Newobject325["hovertime"] = "1000";
-          //  oc_Newobject325["bitmap"] = "tools/materialeditor/gui/unknownImage";
-          //  oc_Newobject325["wrap"] = "0";
-
-          //  #endregion
-
-          //  oc_Newobject324["#Newobject325"] = oc_Newobject325;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject326
-
-          //  ObjectCreator oc_Newobject326 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject326["canSaveDynamicFields"] = "0";
-          //  oc_Newobject326["Enabled"] = "1";
-          //  oc_Newobject326["isContainer"] = "0";
-          //  oc_Newobject326["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject326["HorizSizing"] = "right";
-          //  oc_Newobject326["VertSizing"] = "bottom";
-          //  oc_Newobject326["position"] = "1 1";
-          //  oc_Newobject326["Extent"] = "48 48";
-          //  oc_Newobject326["MinExtent"] = "8 2";
-          //  oc_Newobject326["canSave"] = "1";
-          //  oc_Newobject326["Visible"] = "1";
-          //  oc_Newobject326["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinForehead\\\", 1);";
-          //  oc_Newobject326["tooltipprofile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject326["ToolTip"] = "Change the active Skin Forehead Map for this layer.";
-          //  oc_Newobject326["hovertime"] = "1000";
-          //  oc_Newobject326["groupNum"] = "-1";
-          //  oc_Newobject326["buttonType"] = "PushButton";
-          //  oc_Newobject326["useMouseEvents"] = "0";
-          //  oc_Newobject326["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
-
-          //  #endregion
-
-          //  oc_Newobject324["#Newobject326"] = oc_Newobject326;
-
-          //  #region GuiTextCtrl ()        oc_Newobject327
-
-          //  ObjectCreator oc_Newobject327 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject327["canSaveDynamicFields"] = "0";
-          //  oc_Newobject327["Enabled"] = "1";
-          //  oc_Newobject327["isContainer"] = "0";
-          //  oc_Newobject327["Profile"] = "EditorTextProfile";
-          //  oc_Newobject327["HorizSizing"] = "right";
-          //  oc_Newobject327["VertSizing"] = "bottom";
-          //  oc_Newobject327["position"] = "56 -3";
-          //  oc_Newobject327["Extent"] = "72 18";
-          //  oc_Newobject327["MinExtent"] = "8 2";
-          //  oc_Newobject327["canSave"] = "1";
-          //  oc_Newobject327["Visible"] = "1";
-          //  oc_Newobject327["hovertime"] = "1000";
-          //  oc_Newobject327["Margin"] = "0 0 0 0";
-          //  oc_Newobject327["Padding"] = "0 0 0 0";
-          //  oc_Newobject327["AnchorTop"] = "1";
-          //  oc_Newobject327["AnchorBottom"] = "0";
-          //  oc_Newobject327["AnchorLeft"] = "1";
-          //  oc_Newobject327["AnchorRight"] = "0";
-          //  oc_Newobject327["text"] = "Skin Forehead Map";
-          //  oc_Newobject327["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject324["#Newobject327"] = oc_Newobject327;
-
-          //  #region GuiTextCtrl ()        oc_Newobject328
-
-          //  ObjectCreator oc_Newobject328 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject328["canSaveDynamicFields"] = "0";
-          //  oc_Newobject328["internalName"] = "skinForeheadMapNameText";
-          //  oc_Newobject328["Enabled"] = "1";
-          //  oc_Newobject328["isContainer"] = "0";
-          //  oc_Newobject328["Profile"] = "ToolsGuiTextProfile";
-          //  oc_Newobject328["HorizSizing"] = "width";
-          //  oc_Newobject328["VertSizing"] = "bottom";
-          //  oc_Newobject328["position"] = "56 16";
-          //  oc_Newobject328["Extent"] = "143 17";
-          //  oc_Newobject328["MinExtent"] = "8 2";
-          //  oc_Newobject328["canSave"] = "1";
-          //  oc_Newobject328["Visible"] = "1";
-          //  oc_Newobject328["hovertime"] = "1000";
-          //  oc_Newobject328["Margin"] = "0 0 0 0";
-          //  oc_Newobject328["Padding"] = "0 0 0 0";
-          //  oc_Newobject328["AnchorTop"] = "1";
-          //  oc_Newobject328["AnchorBottom"] = "0";
-          //  oc_Newobject328["AnchorLeft"] = "1";
-          //  oc_Newobject328["AnchorRight"] = "0";
-          //  oc_Newobject328["text"] = "None";
-          //  oc_Newobject328["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject324["#Newobject328"] = oc_Newobject328;
-
-          //  #region GuiButtonCtrl ()        oc_Newobject329
-
-          //  ObjectCreator oc_Newobject329 = new ObjectCreator("GuiButtonCtrl", "");
-          //  oc_Newobject329["profile"] = "ToolsGuiButtonProfile";
-          //  oc_Newobject329["text"] = "Edit";
-          //  oc_Newobject329["HorizSizing"] = "left";
-          //  oc_Newobject329["VertSizing"] = "bottom";
-          //  oc_Newobject329["position"] = "134 34";
-          //  oc_Newobject329["Extent"] = "40 16";
-          //  oc_Newobject329["buttonType"] = "PushButton";
-          //  oc_Newobject329["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinForehead\\\", 1);";
-
-          //  #endregion
-
-          //  oc_Newobject324["#Newobject329"] = oc_Newobject329;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject330
-
-          //  ObjectCreator oc_Newobject330 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject330["canSaveDynamicFields"] = "0";
-          //  oc_Newobject330["Enabled"] = "1";
-          //  oc_Newobject330["isContainer"] = "0";
-          //  oc_Newobject330["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject330["HorizSizing"] = "left";
-          //  oc_Newobject330["VertSizing"] = "bottom";
-          //  oc_Newobject330["position"] = "177 34";
-          //  oc_Newobject330["Extent"] = "16 16";
-          //  oc_Newobject330["MinExtent"] = "8 2";
-          //  oc_Newobject330["canSave"] = "1";
-          //  oc_Newobject330["Visible"] = "1";
-          //  oc_Newobject330["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinForehead\\\", 0);";
-          //  oc_Newobject330["hovertime"] = "1000";
-          //  oc_Newobject330["groupNum"] = "-1";
-          //  oc_Newobject330["buttonType"] = "PushButton";
-          //  oc_Newobject330["useMouseEvents"] = "0";
-          //  oc_Newobject330["bitmap"] = "tools/gui/images/delete";
-
-          //  #endregion
-
-          //  oc_Newobject324["#Newobject330"] = oc_Newobject330;
-
-          //  #endregion
-
-          //  oc_Newobject301["#Newobject324"] = oc_Newobject324;
-
-          //  #region GuiContainer ()        oc_Newobject331
-
-          //  ObjectCreator oc_Newobject331 = new ObjectCreator("GuiContainer", "");
-          //  oc_Newobject331["profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject331["isContainer"] = "1";
-          //  oc_Newobject331["position"] = "6 136";
-          //  oc_Newobject331["Extent"] = "185 52";
-          //  oc_Newobject331["HorizSizing"] = "width";
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject332
-
-          //  ObjectCreator oc_Newobject332 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  oc_Newobject332["canSaveDynamicFields"] = "0";
-          //  oc_Newobject332["internalName"] = "skinNoseMapDisplayBitmap";
-          //  oc_Newobject332["Enabled"] = "1";
-          //  oc_Newobject332["isContainer"] = "0";
-          //  oc_Newobject332["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject332["HorizSizing"] = "right";
-          //  oc_Newobject332["VertSizing"] = "bottom";
-          //  oc_Newobject332["position"] = "1 1";
-          //  oc_Newobject332["Extent"] = "48 48";
-          //  oc_Newobject332["MinExtent"] = "8 2";
-          //  oc_Newobject332["canSave"] = "1";
-          //  oc_Newobject332["Visible"] = "1";
-          //  oc_Newobject332["hovertime"] = "1000";
-          //  oc_Newobject332["bitmap"] = "tools/materialeditor/gui/unknownImage";
-          //  oc_Newobject332["wrap"] = "0";
-
-          //  #endregion
-
-          //  oc_Newobject331["#Newobject332"] = oc_Newobject332;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject333
-
-          //  ObjectCreator oc_Newobject333 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject333["canSaveDynamicFields"] = "0";
-          //  oc_Newobject333["Enabled"] = "1";
-          //  oc_Newobject333["isContainer"] = "0";
-          //  oc_Newobject333["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject333["HorizSizing"] = "right";
-          //  oc_Newobject333["VertSizing"] = "bottom";
-          //  oc_Newobject333["position"] = "1 1";
-          //  oc_Newobject333["Extent"] = "48 48";
-          //  oc_Newobject333["MinExtent"] = "8 2";
-          //  oc_Newobject333["canSave"] = "1";
-          //  oc_Newobject333["Visible"] = "1";
-          //  oc_Newobject333["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinNose\\\", 1);";
-          //  oc_Newobject333["tooltipprofile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject333["ToolTip"] = "Change the active Skin Nose Map for this layer.";
-          //  oc_Newobject333["hovertime"] = "1000";
-          //  oc_Newobject333["groupNum"] = "-1";
-          //  oc_Newobject333["buttonType"] = "PushButton";
-          //  oc_Newobject333["useMouseEvents"] = "0";
-          //  oc_Newobject333["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
-
-          //  #endregion
-
-          //  oc_Newobject331["#Newobject333"] = oc_Newobject333;
-
-          //  #region GuiTextCtrl ()        oc_Newobject334
-
-          //  ObjectCreator oc_Newobject334 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject334["canSaveDynamicFields"] = "0";
-          //  oc_Newobject334["Enabled"] = "1";
-          //  oc_Newobject334["isContainer"] = "0";
-          //  oc_Newobject334["Profile"] = "EditorTextProfile";
-          //  oc_Newobject334["HorizSizing"] = "right";
-          //  oc_Newobject334["VertSizing"] = "bottom";
-          //  oc_Newobject334["position"] = "56 -3";
-          //  oc_Newobject334["Extent"] = "72 18";
-          //  oc_Newobject334["MinExtent"] = "8 2";
-          //  oc_Newobject334["canSave"] = "1";
-          //  oc_Newobject334["Visible"] = "1";
-          //  oc_Newobject334["hovertime"] = "1000";
-          //  oc_Newobject334["Margin"] = "0 0 0 0";
-          //  oc_Newobject334["Padding"] = "0 0 0 0";
-          //  oc_Newobject334["AnchorTop"] = "1";
-          //  oc_Newobject334["AnchorBottom"] = "0";
-          //  oc_Newobject334["AnchorLeft"] = "1";
-          //  oc_Newobject334["AnchorRight"] = "0";
-          //  oc_Newobject334["text"] = "Skin Nose Map";
-          //  oc_Newobject334["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject331["#Newobject334"] = oc_Newobject334;
-
-          //  #region GuiTextCtrl ()        oc_Newobject335
-
-          //  ObjectCreator oc_Newobject335 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject335["canSaveDynamicFields"] = "0";
-          //  oc_Newobject335["internalName"] = "skinNoseMapNameText";
-          //  oc_Newobject335["Enabled"] = "1";
-          //  oc_Newobject335["isContainer"] = "0";
-          //  oc_Newobject335["Profile"] = "ToolsGuiTextProfile";
-          //  oc_Newobject335["HorizSizing"] = "width";
-          //  oc_Newobject335["VertSizing"] = "bottom";
-          //  oc_Newobject335["position"] = "56 16";
-          //  oc_Newobject335["Extent"] = "143 17";
-          //  oc_Newobject335["MinExtent"] = "8 2";
-          //  oc_Newobject335["canSave"] = "1";
-          //  oc_Newobject335["Visible"] = "1";
-          //  oc_Newobject335["hovertime"] = "1000";
-          //  oc_Newobject335["Margin"] = "0 0 0 0";
-          //  oc_Newobject335["Padding"] = "0 0 0 0";
-          //  oc_Newobject335["AnchorTop"] = "1";
-          //  oc_Newobject335["AnchorBottom"] = "0";
-          //  oc_Newobject335["AnchorLeft"] = "1";
-          //  oc_Newobject335["AnchorRight"] = "0";
-          //  oc_Newobject335["text"] = "None";
-          //  oc_Newobject335["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject331["#Newobject335"] = oc_Newobject335;
-
-          //  #region GuiButtonCtrl ()        oc_Newobject336
-
-          //  ObjectCreator oc_Newobject336 = new ObjectCreator("GuiButtonCtrl", "");
-          //  oc_Newobject336["profile"] = "ToolsGuiButtonProfile";
-          //  oc_Newobject336["text"] = "Edit";
-          //  oc_Newobject336["HorizSizing"] = "left";
-          //  oc_Newobject336["VertSizing"] = "bottom";
-          //  oc_Newobject336["position"] = "134 34";
-          //  oc_Newobject336["Extent"] = "40 16";
-          //  oc_Newobject336["buttonType"] = "PushButton";
-          //  oc_Newobject336["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinNose\\\", 1);";
-
-          //  #endregion
-
-          //  oc_Newobject331["#Newobject336"] = oc_Newobject336;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject337
-
-          //  ObjectCreator oc_Newobject337 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject337["canSaveDynamicFields"] = "0";
-          //  oc_Newobject337["Enabled"] = "1";
-          //  oc_Newobject337["isContainer"] = "0";
-          //  oc_Newobject337["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject337["HorizSizing"] = "left";
-          //  oc_Newobject337["VertSizing"] = "bottom";
-          //  oc_Newobject337["position"] = "177 34";
-          //  oc_Newobject337["Extent"] = "16 16";
-          //  oc_Newobject337["MinExtent"] = "8 2";
-          //  oc_Newobject337["canSave"] = "1";
-          //  oc_Newobject337["Visible"] = "1";
-          //  oc_Newobject337["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinNose\\\", 0);";
-          //  oc_Newobject337["hovertime"] = "1000";
-          //  oc_Newobject337["groupNum"] = "-1";
-          //  oc_Newobject337["buttonType"] = "PushButton";
-          //  oc_Newobject337["useMouseEvents"] = "0";
-          //  oc_Newobject337["bitmap"] = "tools/gui/images/delete";
-
-          //  #endregion
-
-          //  oc_Newobject331["#Newobject337"] = oc_Newobject337;
-
-          //  #endregion
-
-          //  oc_Newobject301["#Newobject331"] = oc_Newobject331;
-
-          //  #region GuiContainer ()        oc_Newobject338
-
-          //  ObjectCreator oc_Newobject338 = new ObjectCreator("GuiContainer", "");
-          //  oc_Newobject338["profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject338["isContainer"] = "1";
-          //  oc_Newobject338["position"] = "6 136";
-          //  oc_Newobject338["Extent"] = "185 52";
-          //  oc_Newobject338["HorizSizing"] = "width";
-
-          //  #region GuiBitmapCtrl ()        oc_Newobject339
-
-          //  ObjectCreator oc_Newobject339 = new ObjectCreator("GuiBitmapCtrl", "");
-          //  oc_Newobject339["canSaveDynamicFields"] = "0";
-          //  oc_Newobject339["internalName"] = "skinCheekMapDisplayBitmap";
-          //  oc_Newobject339["Enabled"] = "1";
-          //  oc_Newobject339["isContainer"] = "0";
-          //  oc_Newobject339["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject339["HorizSizing"] = "right";
-          //  oc_Newobject339["VertSizing"] = "bottom";
-          //  oc_Newobject339["position"] = "1 1";
-          //  oc_Newobject339["Extent"] = "48 48";
-          //  oc_Newobject339["MinExtent"] = "8 2";
-          //  oc_Newobject339["canSave"] = "1";
-          //  oc_Newobject339["Visible"] = "1";
-          //  oc_Newobject339["hovertime"] = "1000";
-          //  oc_Newobject339["bitmap"] = "tools/materialeditor/gui/unknownImage";
-          //  oc_Newobject339["wrap"] = "0";
-
-          //  #endregion
-
-          //  oc_Newobject338["#Newobject339"] = oc_Newobject339;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject340
-
-          //  ObjectCreator oc_Newobject340 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject340["canSaveDynamicFields"] = "0";
-          //  oc_Newobject340["Enabled"] = "1";
-          //  oc_Newobject340["isContainer"] = "0";
-          //  oc_Newobject340["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject340["HorizSizing"] = "right";
-          //  oc_Newobject340["VertSizing"] = "bottom";
-          //  oc_Newobject340["position"] = "1 1";
-          //  oc_Newobject340["Extent"] = "48 48";
-          //  oc_Newobject340["MinExtent"] = "8 2";
-          //  oc_Newobject340["canSave"] = "1";
-          //  oc_Newobject340["Visible"] = "1";
-          //  oc_Newobject340["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinCheek\\\", 1);";
-          //  oc_Newobject340["tooltipprofile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject340["ToolTip"] = "Change the active Skin Cheek Map for this layer.";
-          //  oc_Newobject340["hovertime"] = "1000";
-          //  oc_Newobject340["groupNum"] = "-1";
-          //  oc_Newobject340["buttonType"] = "PushButton";
-          //  oc_Newobject340["useMouseEvents"] = "0";
-          //  oc_Newobject340["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
-
-          //  #endregion
-
-          //  oc_Newobject338["#Newobject340"] = oc_Newobject340;
-
-          //  #region GuiTextCtrl ()        oc_Newobject341
-
-          //  ObjectCreator oc_Newobject341 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject341["canSaveDynamicFields"] = "0";
-          //  oc_Newobject341["Enabled"] = "1";
-          //  oc_Newobject341["isContainer"] = "0";
-          //  oc_Newobject341["Profile"] = "EditorTextProfile";
-          //  oc_Newobject341["HorizSizing"] = "right";
-          //  oc_Newobject341["VertSizing"] = "bottom";
-          //  oc_Newobject341["position"] = "56 -3";
-          //  oc_Newobject341["Extent"] = "72 18";
-          //  oc_Newobject341["MinExtent"] = "8 2";
-          //  oc_Newobject341["canSave"] = "1";
-          //  oc_Newobject341["Visible"] = "1";
-          //  oc_Newobject341["hovertime"] = "1000";
-          //  oc_Newobject341["Margin"] = "0 0 0 0";
-          //  oc_Newobject341["Padding"] = "0 0 0 0";
-          //  oc_Newobject341["AnchorTop"] = "1";
-          //  oc_Newobject341["AnchorBottom"] = "0";
-          //  oc_Newobject341["AnchorLeft"] = "1";
-          //  oc_Newobject341["AnchorRight"] = "0";
-          //  oc_Newobject341["text"] = "Skin Cheek Map";
-          //  oc_Newobject341["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject338["#Newobject341"] = oc_Newobject341;
-
-          //  #region GuiTextCtrl ()        oc_Newobject342
-
-          //  ObjectCreator oc_Newobject342 = new ObjectCreator("GuiTextCtrl", "");
-          //  oc_Newobject342["canSaveDynamicFields"] = "0";
-          //  oc_Newobject342["internalName"] = "skinCheekMapNameText";
-          //  oc_Newobject342["Enabled"] = "1";
-          //  oc_Newobject342["isContainer"] = "0";
-          //  oc_Newobject342["Profile"] = "ToolsGuiTextProfile";
-          //  oc_Newobject342["HorizSizing"] = "width";
-          //  oc_Newobject342["VertSizing"] = "bottom";
-          //  oc_Newobject342["position"] = "56 16";
-          //  oc_Newobject342["Extent"] = "143 17";
-          //  oc_Newobject342["MinExtent"] = "8 2";
-          //  oc_Newobject342["canSave"] = "1";
-          //  oc_Newobject342["Visible"] = "1";
-          //  oc_Newobject342["hovertime"] = "1000";
-          //  oc_Newobject342["Margin"] = "0 0 0 0";
-          //  oc_Newobject342["Padding"] = "0 0 0 0";
-          //  oc_Newobject342["AnchorTop"] = "1";
-          //  oc_Newobject342["AnchorBottom"] = "0";
-          //  oc_Newobject342["AnchorLeft"] = "1";
-          //  oc_Newobject342["AnchorRight"] = "0";
-          //  oc_Newobject342["text"] = "None";
-          //  oc_Newobject342["maxLength"] = "1024";
-
-          //  #endregion
-
-          //  oc_Newobject338["#Newobject342"] = oc_Newobject342;
-
-          //  #region GuiButtonCtrl ()        oc_Newobject343
-
-          //  ObjectCreator oc_Newobject343 = new ObjectCreator("GuiButtonCtrl", "");
-          //  oc_Newobject343["profile"] = "ToolsGuiButtonProfile";
-          //  oc_Newobject343["text"] = "Edit";
-          //  oc_Newobject343["HorizSizing"] = "left";
-          //  oc_Newobject343["VertSizing"] = "bottom";
-          //  oc_Newobject343["position"] = "134 34";
-          //  oc_Newobject343["Extent"] = "40 16";
-          //  oc_Newobject343["buttonType"] = "PushButton";
-          //  oc_Newobject343["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinCheek\\\", 1);";
-
-          //  #endregion
-
-          //  oc_Newobject338["#Newobject343"] = oc_Newobject343;
-
-          //  #region GuiBitmapButtonCtrl ()        oc_Newobject344
-
-          //  ObjectCreator oc_Newobject344 = new ObjectCreator("GuiBitmapButtonCtrl", "");
-          //  oc_Newobject344["canSaveDynamicFields"] = "0";
-          //  oc_Newobject344["Enabled"] = "1";
-          //  oc_Newobject344["isContainer"] = "0";
-          //  oc_Newobject344["Profile"] = "ToolsGuiDefaultProfile";
-          //  oc_Newobject344["HorizSizing"] = "left";
-          //  oc_Newobject344["VertSizing"] = "bottom";
-          //  oc_Newobject344["position"] = "177 34";
-          //  oc_Newobject344["Extent"] = "16 16";
-          //  oc_Newobject344["MinExtent"] = "8 2";
-          //  oc_Newobject344["canSave"] = "1";
-          //  oc_Newobject344["Visible"] = "1";
-          //  oc_Newobject344["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinCheek\\\", 0);";
-          //  oc_Newobject344["hovertime"] = "1000";
-          //  oc_Newobject344["groupNum"] = "-1";
-          //  oc_Newobject344["buttonType"] = "PushButton";
-          //  oc_Newobject344["useMouseEvents"] = "0";
-          //  oc_Newobject344["bitmap"] = "tools/gui/images/delete";
-
-          //  #endregion
-
-          //  oc_Newobject338["#Newobject344"] = oc_Newobject344;
-
-          //  #endregion
-
-          //  oc_Newobject301["#Newobject338"] = oc_Newobject338;
-
-          //  #endregion
-
-          //  oc_Newobject300["#Newobject301"] = oc_Newobject301;
-
-          //  #endregion
-
-          //  oc_Newobject212["#Newobject300"] = oc_Newobject300;
+            //  #region GuiRolloutCtrl ()        oc_Newobject300
+
+            //  ObjectCreator oc_Newobject300 = new ObjectCreator("GuiRolloutCtrl", "");
+            //  oc_Newobject300["class"] = "BehaviorQuickEditRollout";
+            //  oc_Newobject300["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            //  oc_Newobject300["Profile"] = "GuiRolloutProfile";
+            //  oc_Newobject300["HorizSizing"] = "width";
+            //  oc_Newobject300["VertSizing"] = "bottom";
+            //  oc_Newobject300["Position"] = "0 0";
+            //  oc_Newobject300["Extent"] = "185 0";
+            //  oc_Newobject300["Caption"] = "Shader Maps";
+            //  oc_Newobject300["Expanded"] = new ObjectCreator.StringNoQuote("false");
+            //  oc_Newobject300["Margin"] = "4 4 4 0";
+            //  oc_Newobject300["DragSizable"] = new ObjectCreator.StringNoQuote("false");
+            //  oc_Newobject300["container"] = new ObjectCreator.StringNoQuote("true");
+            //  oc_Newobject300["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
+            //  oc_Newobject300["object"] = new ObjectCreator.StringNoQuote("%behavior");
+
+            //  #region GuiStackControl ()        oc_Newobject301
+
+            //  ObjectCreator oc_Newobject301 = new ObjectCreator("GuiStackControl", "");
+            //  oc_Newobject301["StackingType"] = "Vertical";
+            //  oc_Newobject301["HorizStacking"] = "Left to Right";
+            //  oc_Newobject301["VertStacking"] = "Top to Bottom";
+            //  oc_Newobject301["Padding"] = "0";
+            //  oc_Newobject301["canSaveDynamicFields"] = "0";
+            //  oc_Newobject301["Enabled"] = "1";
+            //  oc_Newobject301["isContainer"] = "1";
+            //  oc_Newobject301["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject301["HorizSizing"] = "width";
+            //  oc_Newobject301["VertSizing"] = "bottom";
+            //  oc_Newobject301["Position"] = "1 3";
+            //  oc_Newobject301["Extent"] = "185 16";
+            //  oc_Newobject301["MinExtent"] = "16 16";
+            //  oc_Newobject301["canSave"] = "1";
+            //  oc_Newobject301["isDecoy"] = "0";
+            //  oc_Newobject301["Visible"] = "1";
+            //  oc_Newobject301["tooltipprofile"] = "ToolsGuiToolTipProfile";
+            //  oc_Newobject301["hovertime"] = "1000";
+
+            //  #region GuiContainer ()        oc_Newobject302
+
+            //  ObjectCreator oc_Newobject302 = new ObjectCreator("GuiContainer", "");
+            //  oc_Newobject302["profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject302["isContainer"] = "1";
+            //  oc_Newobject302["position"] = "6 136";
+            //  oc_Newobject302["Extent"] = "185 52";
+            //  oc_Newobject302["HorizSizing"] = "width";
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject303
+
+            //  ObjectCreator oc_Newobject303 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  oc_Newobject303["canSaveDynamicFields"] = "0";
+            //  oc_Newobject303["internalName"] = "furMapDisplayBitmap";
+            //  oc_Newobject303["Enabled"] = "1";
+            //  oc_Newobject303["isContainer"] = "0";
+            //  oc_Newobject303["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject303["HorizSizing"] = "right";
+            //  oc_Newobject303["VertSizing"] = "bottom";
+            //  oc_Newobject303["position"] = "1 1";
+            //  oc_Newobject303["Extent"] = "48 48";
+            //  oc_Newobject303["MinExtent"] = "8 2";
+            //  oc_Newobject303["canSave"] = "1";
+            //  oc_Newobject303["Visible"] = "1";
+            //  oc_Newobject303["hovertime"] = "1000";
+            //  oc_Newobject303["bitmap"] = "tools/materialeditor/gui/unknownImage";
+            //  oc_Newobject303["wrap"] = "0";
+
+            //  #endregion
+
+            //  oc_Newobject302["#Newobject303"] = oc_Newobject303;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject304
+
+            //  ObjectCreator oc_Newobject304 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject304["canSaveDynamicFields"] = "0";
+            //  oc_Newobject304["Enabled"] = "1";
+            //  oc_Newobject304["isContainer"] = "0";
+            //  oc_Newobject304["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject304["HorizSizing"] = "right";
+            //  oc_Newobject304["VertSizing"] = "bottom";
+            //  oc_Newobject304["position"] = "1 1";
+            //  oc_Newobject304["Extent"] = "48 48";
+            //  oc_Newobject304["MinExtent"] = "8 2";
+            //  oc_Newobject304["canSave"] = "1";
+            //  oc_Newobject304["Visible"] = "1";
+            //  oc_Newobject304["Command"] = "MaterialEditorGui.updateTextureMap(\\\"fur\\\", 1);";
+            //  oc_Newobject304["tooltipprofile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject304["ToolTip"] = "Change the active Fur Map for this layer.";
+            //  oc_Newobject304["hovertime"] = "1000";
+            //  oc_Newobject304["groupNum"] = "-1";
+            //  oc_Newobject304["buttonType"] = "PushButton";
+            //  oc_Newobject304["useMouseEvents"] = "0";
+            //  oc_Newobject304["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
+            //  #endregion
+
+            //  oc_Newobject302["#Newobject304"] = oc_Newobject304;
+
+            //  #region GuiTextCtrl ()        oc_Newobject305
+
+            //  ObjectCreator oc_Newobject305 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject305["canSaveDynamicFields"] = "0";
+            //  oc_Newobject305["Enabled"] = "1";
+            //  oc_Newobject305["isContainer"] = "0";
+            //  oc_Newobject305["Profile"] = "EditorTextProfile";
+            //  oc_Newobject305["HorizSizing"] = "right";
+            //  oc_Newobject305["VertSizing"] = "bottom";
+            //  oc_Newobject305["position"] = "56 -3";
+            //  oc_Newobject305["Extent"] = "72 18";
+            //  oc_Newobject305["MinExtent"] = "8 2";
+            //  oc_Newobject305["canSave"] = "1";
+            //  oc_Newobject305["Visible"] = "1";
+            //  oc_Newobject305["hovertime"] = "1000";
+            //  oc_Newobject305["Margin"] = "0 0 0 0";
+            //  oc_Newobject305["Padding"] = "0 0 0 0";
+            //  oc_Newobject305["AnchorTop"] = "1";
+            //  oc_Newobject305["AnchorBottom"] = "0";
+            //  oc_Newobject305["AnchorLeft"] = "1";
+            //  oc_Newobject305["AnchorRight"] = "0";
+            //  oc_Newobject305["text"] = "Fur Map";
+            //  oc_Newobject305["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject302["#Newobject305"] = oc_Newobject305;
+
+            //  #region GuiTextCtrl ()        oc_Newobject306
+
+            //  ObjectCreator oc_Newobject306 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject306["canSaveDynamicFields"] = "0";
+            //  oc_Newobject306["internalName"] = "furMapNameText";
+            //  oc_Newobject306["Enabled"] = "1";
+            //  oc_Newobject306["isContainer"] = "0";
+            //  oc_Newobject306["Profile"] = "ToolsGuiTextProfile";
+            //  oc_Newobject306["HorizSizing"] = "width";
+            //  oc_Newobject306["VertSizing"] = "bottom";
+            //  oc_Newobject306["position"] = "56 16";
+            //  oc_Newobject306["Extent"] = "143 17";
+            //  oc_Newobject306["MinExtent"] = "8 2";
+            //  oc_Newobject306["canSave"] = "1";
+            //  oc_Newobject306["Visible"] = "1";
+            //  oc_Newobject306["hovertime"] = "1000";
+            //  oc_Newobject306["Margin"] = "0 0 0 0";
+            //  oc_Newobject306["Padding"] = "0 0 0 0";
+            //  oc_Newobject306["AnchorTop"] = "1";
+            //  oc_Newobject306["AnchorBottom"] = "0";
+            //  oc_Newobject306["AnchorLeft"] = "1";
+            //  oc_Newobject306["AnchorRight"] = "0";
+            //  oc_Newobject306["text"] = "None";
+            //  oc_Newobject306["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject302["#Newobject306"] = oc_Newobject306;
+
+            //  #region GuiButtonCtrl ()        oc_Newobject307
+
+            //  ObjectCreator oc_Newobject307 = new ObjectCreator("GuiButtonCtrl", "");
+            //  oc_Newobject307["profile"] = "ToolsGuiButtonProfile";
+            //  oc_Newobject307["text"] = "Edit";
+            //  oc_Newobject307["HorizSizing"] = "left";
+            //  oc_Newobject307["VertSizing"] = "bottom";
+            //  oc_Newobject307["position"] = "134 34";
+            //  oc_Newobject307["Extent"] = "40 16";
+            //  oc_Newobject307["buttonType"] = "PushButton";
+            //  oc_Newobject307["command"] = "MaterialEditorGui.updateTextureMap(\\\"fur\\\", 1);";
+
+            //  #endregion
+
+            //  oc_Newobject302["#Newobject307"] = oc_Newobject307;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject308
+
+            //  ObjectCreator oc_Newobject308 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject308["canSaveDynamicFields"] = "0";
+            //  oc_Newobject308["Enabled"] = "1";
+            //  oc_Newobject308["isContainer"] = "0";
+            //  oc_Newobject308["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject308["HorizSizing"] = "left";
+            //  oc_Newobject308["VertSizing"] = "bottom";
+            //  oc_Newobject308["position"] = "177 34";
+            //  oc_Newobject308["Extent"] = "16 16";
+            //  oc_Newobject308["MinExtent"] = "8 2";
+            //  oc_Newobject308["canSave"] = "1";
+            //  oc_Newobject308["Visible"] = "1";
+            //  oc_Newobject308["Command"] = "MaterialEditorGui.updateTextureMap(\\\"fur\\\", 0);";
+            //  oc_Newobject308["hovertime"] = "1000";
+            //  oc_Newobject308["groupNum"] = "-1";
+            //  oc_Newobject308["buttonType"] = "PushButton";
+            //  oc_Newobject308["useMouseEvents"] = "0";
+            //  oc_Newobject308["bitmap"] = "tools/gui/images/delete";
+
+            //  #endregion
+
+            //  oc_Newobject302["#Newobject308"] = oc_Newobject308;
+
+            //  #endregion
+
+            //  oc_Newobject301["#Newobject302"] = oc_Newobject302;
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject309
+
+            //  ObjectCreator oc_Newobject309 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  oc_Newobject309["position"] = "6 189";
+            //  oc_Newobject309["extent"] = "175 2";
+            //  oc_Newobject309["HorizSizing"] = "width";
+            //  oc_Newobject309["bitmap"] = "tools/gui/images/separator-v";
+
+            //  #endregion
+
+            //  oc_Newobject301["#Newobject309"] = oc_Newobject309;
+
+            //  #region GuiContainer ()        oc_Newobject310
+
+            //  //ObjectCreator oc_Newobject310 = new ObjectCreator("GuiContainer", "");
+            //  //oc_Newobject310["profile"] = "ToolsGuiDefaultProfile";
+            //  //oc_Newobject310["isContainer"] = "1";
+            //  //oc_Newobject310["position"] = "6 136";
+            //  //oc_Newobject310["Extent"] = "185 52";
+            //  //oc_Newobject310["HorizSizing"] = "width";
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject311
+
+            //  //ObjectCreator oc_Newobject311 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  //oc_Newobject311["canSaveDynamicFields"] = "0";
+            //  //oc_Newobject311["internalName"] = "skinMapDisplayBitmap";
+            //  //oc_Newobject311["Enabled"] = "1";
+            //  //oc_Newobject311["isContainer"] = "0";
+            //  //oc_Newobject311["Profile"] = "ToolsGuiDefaultProfile";
+            //  //oc_Newobject311["HorizSizing"] = "right";
+            //  //oc_Newobject311["VertSizing"] = "bottom";
+            //  //oc_Newobject311["position"] = "1 1";
+            //  //oc_Newobject311["Extent"] = "48 48";
+            //  //oc_Newobject311["MinExtent"] = "8 2";
+            //  //oc_Newobject311["canSave"] = "1";
+            //  //oc_Newobject311["Visible"] = "1";
+            //  //oc_Newobject311["hovertime"] = "1000";
+            //  //oc_Newobject311["bitmap"] = "tools/materialeditor/gui/unknownImage";
+            //  //oc_Newobject311["wrap"] = "0";
+
+            //  #endregion
+
+            ////  oc_Newobject310["#Newobject311"] = oc_Newobject311;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject312
+
+            //  //ObjectCreator oc_Newobject312 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  //oc_Newobject312["canSaveDynamicFields"] = "0";
+            //  //oc_Newobject312["Enabled"] = "1";
+            //  //oc_Newobject312["isContainer"] = "0";
+            //  //oc_Newobject312["Profile"] = "ToolsGuiDefaultProfile";
+            //  //oc_Newobject312["HorizSizing"] = "right";
+            //  //oc_Newobject312["VertSizing"] = "bottom";
+            //  //oc_Newobject312["position"] = "1 1";
+            //  //oc_Newobject312["Extent"] = "48 48";
+            //  //oc_Newobject312["MinExtent"] = "8 2";
+            //  //oc_Newobject312["canSave"] = "1";
+            //  //oc_Newobject312["Visible"] = "1";
+            //  //oc_Newobject312["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skin\\\", 1);";
+            //  //oc_Newobject312["tooltipprofile"] = "ToolsGuiDefaultProfile";
+            //  //oc_Newobject312["ToolTip"] = "Change the active Skin Map for this layer.";
+            //  //oc_Newobject312["hovertime"] = "1000";
+            //  //oc_Newobject312["groupNum"] = "-1";
+            //  //oc_Newobject312["buttonType"] = "PushButton";
+            //  //oc_Newobject312["useMouseEvents"] = "0";
+            //  //oc_Newobject312["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
+            //  #endregion
+
+            // // oc_Newobject310["#Newobject312"] = oc_Newobject312;
+
+            //  #region GuiTextCtrl ()        oc_Newobject313
+
+            //  //ObjectCreator oc_Newobject313 = new ObjectCreator("GuiTextCtrl", "");
+            //  //oc_Newobject313["canSaveDynamicFields"] = "0";
+            //  //oc_Newobject313["Enabled"] = "1";
+            //  //oc_Newobject313["isContainer"] = "0";
+            //  //oc_Newobject313["Profile"] = "EditorTextProfile";
+            //  //oc_Newobject313["HorizSizing"] = "right";
+            //  //oc_Newobject313["VertSizing"] = "bottom";
+            //  //oc_Newobject313["position"] = "56 -3";
+            //  //oc_Newobject313["Extent"] = "72 18";
+            //  //oc_Newobject313["MinExtent"] = "8 2";
+            //  //oc_Newobject313["canSave"] = "1";
+            //  //oc_Newobject313["Visible"] = "1";
+            //  //oc_Newobject313["hovertime"] = "1000";
+            //  //oc_Newobject313["Margin"] = "0 0 0 0";
+            //  //oc_Newobject313["Padding"] = "0 0 0 0";
+            //  //oc_Newobject313["AnchorTop"] = "1";
+            //  //oc_Newobject313["AnchorBottom"] = "0";
+            //  //oc_Newobject313["AnchorLeft"] = "1";
+            //  //oc_Newobject313["AnchorRight"] = "0";
+            //  //oc_Newobject313["text"] = "Skin Map";
+            //  //oc_Newobject313["maxLength"] = "1024";
+
+            //  #endregion
+
+            ////  oc_Newobject310["#Newobject313"] = oc_Newobject313;
+
+            //  #region GuiTextCtrl ()        oc_Newobject314
+
+            //  //ObjectCreator oc_Newobject314 = new ObjectCreator("GuiTextCtrl", "");
+            //  //oc_Newobject314["canSaveDynamicFields"] = "0";
+            //  //oc_Newobject314["internalName"] = "skinMapNameText";
+            //  //oc_Newobject314["Enabled"] = "1";
+            //  //oc_Newobject314["isContainer"] = "0";
+            //  //oc_Newobject314["Profile"] = "ToolsGuiTextProfile";
+            //  //oc_Newobject314["HorizSizing"] = "width";
+            //  //oc_Newobject314["VertSizing"] = "bottom";
+            //  //oc_Newobject314["position"] = "56 16";
+            //  //oc_Newobject314["Extent"] = "143 17";
+            //  //oc_Newobject314["MinExtent"] = "8 2";
+            //  //oc_Newobject314["canSave"] = "1";
+            //  //oc_Newobject314["Visible"] = "1";
+            //  //oc_Newobject314["hovertime"] = "1000";
+            //  //oc_Newobject314["Margin"] = "0 0 0 0";
+            //  //oc_Newobject314["Padding"] = "0 0 0 0";
+            //  //oc_Newobject314["AnchorTop"] = "1";
+            //  //oc_Newobject314["AnchorBottom"] = "0";
+            //  //oc_Newobject314["AnchorLeft"] = "1";
+            //  //oc_Newobject314["AnchorRight"] = "0";
+            //  //oc_Newobject314["text"] = "None";
+            //  //oc_Newobject314["maxLength"] = "1024";
+
+            //  #endregion
+
+            // // oc_Newobject310["#Newobject314"] = oc_Newobject314;
+
+            //  #region GuiButtonCtrl ()        oc_Newobject315
+
+            //  //ObjectCreator oc_Newobject315 = new ObjectCreator("GuiButtonCtrl", "");
+            //  //oc_Newobject315["profile"] = "ToolsGuiButtonProfile";
+            //  //oc_Newobject315["text"] = "Edit";
+            //  //oc_Newobject315["HorizSizing"] = "left";
+            //  //oc_Newobject315["VertSizing"] = "bottom";
+            //  //oc_Newobject315["position"] = "134 34";
+            //  //oc_Newobject315["Extent"] = "40 16";
+            //  //oc_Newobject315["buttonType"] = "PushButton";
+            //  //oc_Newobject315["command"] = "MaterialEditorGui.updateTextureMap(\\\"skin\\\", 1);";
+
+            //  #endregion
+
+            //  //oc_Newobject310["#Newobject315"] = oc_Newobject315;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject316
+
+            //  //ObjectCreator oc_Newobject316 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  //oc_Newobject316["canSaveDynamicFields"] = "0";
+            //  //oc_Newobject316["Enabled"] = "1";
+            //  //oc_Newobject316["isContainer"] = "0";
+            //  //oc_Newobject316["Profile"] = "ToolsGuiDefaultProfile";
+            //  //oc_Newobject316["HorizSizing"] = "left";
+            //  //oc_Newobject316["VertSizing"] = "bottom";
+            //  //oc_Newobject316["position"] = "177 34";
+            //  //oc_Newobject316["Extent"] = "16 16";
+            //  //oc_Newobject316["MinExtent"] = "8 2";
+            //  //oc_Newobject316["canSave"] = "1";
+            //  //oc_Newobject316["Visible"] = "1";
+            //  //oc_Newobject316["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skin\\\", 0);";
+            //  //oc_Newobject316["hovertime"] = "1000";
+            //  //oc_Newobject316["groupNum"] = "-1";
+            //  //oc_Newobject316["buttonType"] = "PushButton";
+            //  //oc_Newobject316["useMouseEvents"] = "0";
+            //  //oc_Newobject316["bitmap"] = "tools/gui/images/delete";
+
+            //  #endregion
+
+            ////  oc_Newobject310["#Newobject316"] = oc_Newobject316;
+
+            //  #endregion
+
+            //  //oc_Newobject301["#Newobject310"] = oc_Newobject310;
+
+            //  #region GuiContainer ()        oc_Newobject317
+
+            //  ObjectCreator oc_Newobject317 = new ObjectCreator("GuiContainer", "");
+            //  oc_Newobject317["profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject317["isContainer"] = "1";
+            //  oc_Newobject317["position"] = "6 136";
+            //  oc_Newobject317["Extent"] = "185 52";
+            //  oc_Newobject317["HorizSizing"] = "width";
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject318
+
+            //  ObjectCreator oc_Newobject318 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  oc_Newobject318["canSaveDynamicFields"] = "0";
+            //  oc_Newobject318["internalName"] = "skinPoreMapDisplayBitmap";
+            //  oc_Newobject318["Enabled"] = "1";
+            //  oc_Newobject318["isContainer"] = "0";
+            //  oc_Newobject318["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject318["HorizSizing"] = "right";
+            //  oc_Newobject318["VertSizing"] = "bottom";
+            //  oc_Newobject318["position"] = "1 1";
+            //  oc_Newobject318["Extent"] = "48 48";
+            //  oc_Newobject318["MinExtent"] = "8 2";
+            //  oc_Newobject318["canSave"] = "1";
+            //  oc_Newobject318["Visible"] = "1";
+            //  oc_Newobject318["hovertime"] = "1000";
+            //  oc_Newobject318["bitmap"] = "tools/materialeditor/gui/unknownImage";
+            //  oc_Newobject318["wrap"] = "0";
+
+            //  #endregion
+
+            //  oc_Newobject317["#Newobject318"] = oc_Newobject318;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject319
+
+            //  ObjectCreator oc_Newobject319 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject319["canSaveDynamicFields"] = "0";
+            //  oc_Newobject319["Enabled"] = "1";
+            //  oc_Newobject319["isContainer"] = "0";
+            //  oc_Newobject319["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject319["HorizSizing"] = "right";
+            //  oc_Newobject319["VertSizing"] = "bottom";
+            //  oc_Newobject319["position"] = "1 1";
+            //  oc_Newobject319["Extent"] = "48 48";
+            //  oc_Newobject319["MinExtent"] = "8 2";
+            //  oc_Newobject319["canSave"] = "1";
+            //  oc_Newobject319["Visible"] = "1";
+            //  oc_Newobject319["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinPore\\\", 1);";
+            //  oc_Newobject319["tooltipprofile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject319["ToolTip"] = "Change the active Skin Pore Map for this layer.";
+            //  oc_Newobject319["hovertime"] = "1000";
+            //  oc_Newobject319["groupNum"] = "-1";
+            //  oc_Newobject319["buttonType"] = "PushButton";
+            //  oc_Newobject319["useMouseEvents"] = "0";
+            //  oc_Newobject319["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
+            //  #endregion
+
+            //  oc_Newobject317["#Newobject319"] = oc_Newobject319;
+
+            //  #region GuiTextCtrl ()        oc_Newobject320
+
+            //  ObjectCreator oc_Newobject320 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject320["canSaveDynamicFields"] = "0";
+            //  oc_Newobject320["Enabled"] = "1";
+            //  oc_Newobject320["isContainer"] = "0";
+            //  oc_Newobject320["Profile"] = "EditorTextProfile";
+            //  oc_Newobject320["HorizSizing"] = "right";
+            //  oc_Newobject320["VertSizing"] = "bottom";
+            //  oc_Newobject320["position"] = "56 -3";
+            //  oc_Newobject320["Extent"] = "72 18";
+            //  oc_Newobject320["MinExtent"] = "8 2";
+            //  oc_Newobject320["canSave"] = "1";
+            //  oc_Newobject320["Visible"] = "1";
+            //  oc_Newobject320["hovertime"] = "1000";
+            //  oc_Newobject320["Margin"] = "0 0 0 0";
+            //  oc_Newobject320["Padding"] = "0 0 0 0";
+            //  oc_Newobject320["AnchorTop"] = "1";
+            //  oc_Newobject320["AnchorBottom"] = "0";
+            //  oc_Newobject320["AnchorLeft"] = "1";
+            //  oc_Newobject320["AnchorRight"] = "0";
+            //  oc_Newobject320["text"] = "Skin Pore Map";
+            //  oc_Newobject320["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject317["#Newobject320"] = oc_Newobject320;
+
+            //  #region GuiTextCtrl ()        oc_Newobject321
+
+            //  ObjectCreator oc_Newobject321 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject321["canSaveDynamicFields"] = "0";
+            //  oc_Newobject321["internalName"] = "skinPoreMapNameText";
+            //  oc_Newobject321["Enabled"] = "1";
+            //  oc_Newobject321["isContainer"] = "0";
+            //  oc_Newobject321["Profile"] = "ToolsGuiTextProfile";
+            //  oc_Newobject321["HorizSizing"] = "width";
+            //  oc_Newobject321["VertSizing"] = "bottom";
+            //  oc_Newobject321["position"] = "56 16";
+            //  oc_Newobject321["Extent"] = "143 17";
+            //  oc_Newobject321["MinExtent"] = "8 2";
+            //  oc_Newobject321["canSave"] = "1";
+            //  oc_Newobject321["Visible"] = "1";
+            //  oc_Newobject321["hovertime"] = "1000";
+            //  oc_Newobject321["Margin"] = "0 0 0 0";
+            //  oc_Newobject321["Padding"] = "0 0 0 0";
+            //  oc_Newobject321["AnchorTop"] = "1";
+            //  oc_Newobject321["AnchorBottom"] = "0";
+            //  oc_Newobject321["AnchorLeft"] = "1";
+            //  oc_Newobject321["AnchorRight"] = "0";
+            //  oc_Newobject321["text"] = "None";
+            //  oc_Newobject321["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject317["#Newobject321"] = oc_Newobject321;
+
+            //  #region GuiButtonCtrl ()        oc_Newobject322
+
+            //  ObjectCreator oc_Newobject322 = new ObjectCreator("GuiButtonCtrl", "");
+            //  oc_Newobject322["profile"] = "ToolsGuiButtonProfile";
+            //  oc_Newobject322["text"] = "Edit";
+            //  oc_Newobject322["HorizSizing"] = "left";
+            //  oc_Newobject322["VertSizing"] = "bottom";
+            //  oc_Newobject322["position"] = "134 34";
+            //  oc_Newobject322["Extent"] = "40 16";
+            //  oc_Newobject322["buttonType"] = "PushButton";
+            //  oc_Newobject322["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinPore\\\", 1);";
+
+            //  #endregion
+
+            //  oc_Newobject317["#Newobject322"] = oc_Newobject322;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject323
+
+            //  ObjectCreator oc_Newobject323 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject323["canSaveDynamicFields"] = "0";
+            //  oc_Newobject323["Enabled"] = "1";
+            //  oc_Newobject323["isContainer"] = "0";
+            //  oc_Newobject323["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject323["HorizSizing"] = "left";
+            //  oc_Newobject323["VertSizing"] = "bottom";
+            //  oc_Newobject323["position"] = "177 34";
+            //  oc_Newobject323["Extent"] = "16 16";
+            //  oc_Newobject323["MinExtent"] = "8 2";
+            //  oc_Newobject323["canSave"] = "1";
+            //  oc_Newobject323["Visible"] = "1";
+            //  oc_Newobject323["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinPore\\\", 0);";
+            //  oc_Newobject323["hovertime"] = "1000";
+            //  oc_Newobject323["groupNum"] = "-1";
+            //  oc_Newobject323["buttonType"] = "PushButton";
+            //  oc_Newobject323["useMouseEvents"] = "0";
+            //  oc_Newobject323["bitmap"] = "tools/gui/images/delete";
+
+            //  #endregion
+
+            //  oc_Newobject317["#Newobject323"] = oc_Newobject323;
+
+            //  #endregion
+
+            //  oc_Newobject301["#Newobject317"] = oc_Newobject317;
+
+            //  #region GuiContainer ()        oc_Newobject324
+
+            //  ObjectCreator oc_Newobject324 = new ObjectCreator("GuiContainer", "");
+            //  oc_Newobject324["profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject324["isContainer"] = "1";
+            //  oc_Newobject324["position"] = "6 136";
+            //  oc_Newobject324["Extent"] = "185 52";
+            //  oc_Newobject324["HorizSizing"] = "width";
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject325
+
+            //  ObjectCreator oc_Newobject325 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  oc_Newobject325["canSaveDynamicFields"] = "0";
+            //  oc_Newobject325["internalName"] = "skinForeheadMapDisplayBitmap";
+            //  oc_Newobject325["Enabled"] = "1";
+            //  oc_Newobject325["isContainer"] = "0";
+            //  oc_Newobject325["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject325["HorizSizing"] = "right";
+            //  oc_Newobject325["VertSizing"] = "bottom";
+            //  oc_Newobject325["position"] = "1 1";
+            //  oc_Newobject325["Extent"] = "48 48";
+            //  oc_Newobject325["MinExtent"] = "8 2";
+            //  oc_Newobject325["canSave"] = "1";
+            //  oc_Newobject325["Visible"] = "1";
+            //  oc_Newobject325["hovertime"] = "1000";
+            //  oc_Newobject325["bitmap"] = "tools/materialeditor/gui/unknownImage";
+            //  oc_Newobject325["wrap"] = "0";
+
+            //  #endregion
+
+            //  oc_Newobject324["#Newobject325"] = oc_Newobject325;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject326
+
+            //  ObjectCreator oc_Newobject326 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject326["canSaveDynamicFields"] = "0";
+            //  oc_Newobject326["Enabled"] = "1";
+            //  oc_Newobject326["isContainer"] = "0";
+            //  oc_Newobject326["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject326["HorizSizing"] = "right";
+            //  oc_Newobject326["VertSizing"] = "bottom";
+            //  oc_Newobject326["position"] = "1 1";
+            //  oc_Newobject326["Extent"] = "48 48";
+            //  oc_Newobject326["MinExtent"] = "8 2";
+            //  oc_Newobject326["canSave"] = "1";
+            //  oc_Newobject326["Visible"] = "1";
+            //  oc_Newobject326["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinForehead\\\", 1);";
+            //  oc_Newobject326["tooltipprofile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject326["ToolTip"] = "Change the active Skin Forehead Map for this layer.";
+            //  oc_Newobject326["hovertime"] = "1000";
+            //  oc_Newobject326["groupNum"] = "-1";
+            //  oc_Newobject326["buttonType"] = "PushButton";
+            //  oc_Newobject326["useMouseEvents"] = "0";
+            //  oc_Newobject326["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
+            //  #endregion
+
+            //  oc_Newobject324["#Newobject326"] = oc_Newobject326;
+
+            //  #region GuiTextCtrl ()        oc_Newobject327
+
+            //  ObjectCreator oc_Newobject327 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject327["canSaveDynamicFields"] = "0";
+            //  oc_Newobject327["Enabled"] = "1";
+            //  oc_Newobject327["isContainer"] = "0";
+            //  oc_Newobject327["Profile"] = "EditorTextProfile";
+            //  oc_Newobject327["HorizSizing"] = "right";
+            //  oc_Newobject327["VertSizing"] = "bottom";
+            //  oc_Newobject327["position"] = "56 -3";
+            //  oc_Newobject327["Extent"] = "72 18";
+            //  oc_Newobject327["MinExtent"] = "8 2";
+            //  oc_Newobject327["canSave"] = "1";
+            //  oc_Newobject327["Visible"] = "1";
+            //  oc_Newobject327["hovertime"] = "1000";
+            //  oc_Newobject327["Margin"] = "0 0 0 0";
+            //  oc_Newobject327["Padding"] = "0 0 0 0";
+            //  oc_Newobject327["AnchorTop"] = "1";
+            //  oc_Newobject327["AnchorBottom"] = "0";
+            //  oc_Newobject327["AnchorLeft"] = "1";
+            //  oc_Newobject327["AnchorRight"] = "0";
+            //  oc_Newobject327["text"] = "Skin Forehead Map";
+            //  oc_Newobject327["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject324["#Newobject327"] = oc_Newobject327;
+
+            //  #region GuiTextCtrl ()        oc_Newobject328
+
+            //  ObjectCreator oc_Newobject328 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject328["canSaveDynamicFields"] = "0";
+            //  oc_Newobject328["internalName"] = "skinForeheadMapNameText";
+            //  oc_Newobject328["Enabled"] = "1";
+            //  oc_Newobject328["isContainer"] = "0";
+            //  oc_Newobject328["Profile"] = "ToolsGuiTextProfile";
+            //  oc_Newobject328["HorizSizing"] = "width";
+            //  oc_Newobject328["VertSizing"] = "bottom";
+            //  oc_Newobject328["position"] = "56 16";
+            //  oc_Newobject328["Extent"] = "143 17";
+            //  oc_Newobject328["MinExtent"] = "8 2";
+            //  oc_Newobject328["canSave"] = "1";
+            //  oc_Newobject328["Visible"] = "1";
+            //  oc_Newobject328["hovertime"] = "1000";
+            //  oc_Newobject328["Margin"] = "0 0 0 0";
+            //  oc_Newobject328["Padding"] = "0 0 0 0";
+            //  oc_Newobject328["AnchorTop"] = "1";
+            //  oc_Newobject328["AnchorBottom"] = "0";
+            //  oc_Newobject328["AnchorLeft"] = "1";
+            //  oc_Newobject328["AnchorRight"] = "0";
+            //  oc_Newobject328["text"] = "None";
+            //  oc_Newobject328["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject324["#Newobject328"] = oc_Newobject328;
+
+            //  #region GuiButtonCtrl ()        oc_Newobject329
+
+            //  ObjectCreator oc_Newobject329 = new ObjectCreator("GuiButtonCtrl", "");
+            //  oc_Newobject329["profile"] = "ToolsGuiButtonProfile";
+            //  oc_Newobject329["text"] = "Edit";
+            //  oc_Newobject329["HorizSizing"] = "left";
+            //  oc_Newobject329["VertSizing"] = "bottom";
+            //  oc_Newobject329["position"] = "134 34";
+            //  oc_Newobject329["Extent"] = "40 16";
+            //  oc_Newobject329["buttonType"] = "PushButton";
+            //  oc_Newobject329["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinForehead\\\", 1);";
+
+            //  #endregion
+
+            //  oc_Newobject324["#Newobject329"] = oc_Newobject329;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject330
+
+            //  ObjectCreator oc_Newobject330 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject330["canSaveDynamicFields"] = "0";
+            //  oc_Newobject330["Enabled"] = "1";
+            //  oc_Newobject330["isContainer"] = "0";
+            //  oc_Newobject330["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject330["HorizSizing"] = "left";
+            //  oc_Newobject330["VertSizing"] = "bottom";
+            //  oc_Newobject330["position"] = "177 34";
+            //  oc_Newobject330["Extent"] = "16 16";
+            //  oc_Newobject330["MinExtent"] = "8 2";
+            //  oc_Newobject330["canSave"] = "1";
+            //  oc_Newobject330["Visible"] = "1";
+            //  oc_Newobject330["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinForehead\\\", 0);";
+            //  oc_Newobject330["hovertime"] = "1000";
+            //  oc_Newobject330["groupNum"] = "-1";
+            //  oc_Newobject330["buttonType"] = "PushButton";
+            //  oc_Newobject330["useMouseEvents"] = "0";
+            //  oc_Newobject330["bitmap"] = "tools/gui/images/delete";
+
+            //  #endregion
+
+            //  oc_Newobject324["#Newobject330"] = oc_Newobject330;
+
+            //  #endregion
+
+            //  oc_Newobject301["#Newobject324"] = oc_Newobject324;
+
+            //  #region GuiContainer ()        oc_Newobject331
+
+            //  ObjectCreator oc_Newobject331 = new ObjectCreator("GuiContainer", "");
+            //  oc_Newobject331["profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject331["isContainer"] = "1";
+            //  oc_Newobject331["position"] = "6 136";
+            //  oc_Newobject331["Extent"] = "185 52";
+            //  oc_Newobject331["HorizSizing"] = "width";
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject332
+
+            //  ObjectCreator oc_Newobject332 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  oc_Newobject332["canSaveDynamicFields"] = "0";
+            //  oc_Newobject332["internalName"] = "skinNoseMapDisplayBitmap";
+            //  oc_Newobject332["Enabled"] = "1";
+            //  oc_Newobject332["isContainer"] = "0";
+            //  oc_Newobject332["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject332["HorizSizing"] = "right";
+            //  oc_Newobject332["VertSizing"] = "bottom";
+            //  oc_Newobject332["position"] = "1 1";
+            //  oc_Newobject332["Extent"] = "48 48";
+            //  oc_Newobject332["MinExtent"] = "8 2";
+            //  oc_Newobject332["canSave"] = "1";
+            //  oc_Newobject332["Visible"] = "1";
+            //  oc_Newobject332["hovertime"] = "1000";
+            //  oc_Newobject332["bitmap"] = "tools/materialeditor/gui/unknownImage";
+            //  oc_Newobject332["wrap"] = "0";
+
+            //  #endregion
+
+            //  oc_Newobject331["#Newobject332"] = oc_Newobject332;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject333
+
+            //  ObjectCreator oc_Newobject333 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject333["canSaveDynamicFields"] = "0";
+            //  oc_Newobject333["Enabled"] = "1";
+            //  oc_Newobject333["isContainer"] = "0";
+            //  oc_Newobject333["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject333["HorizSizing"] = "right";
+            //  oc_Newobject333["VertSizing"] = "bottom";
+            //  oc_Newobject333["position"] = "1 1";
+            //  oc_Newobject333["Extent"] = "48 48";
+            //  oc_Newobject333["MinExtent"] = "8 2";
+            //  oc_Newobject333["canSave"] = "1";
+            //  oc_Newobject333["Visible"] = "1";
+            //  oc_Newobject333["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinNose\\\", 1);";
+            //  oc_Newobject333["tooltipprofile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject333["ToolTip"] = "Change the active Skin Nose Map for this layer.";
+            //  oc_Newobject333["hovertime"] = "1000";
+            //  oc_Newobject333["groupNum"] = "-1";
+            //  oc_Newobject333["buttonType"] = "PushButton";
+            //  oc_Newobject333["useMouseEvents"] = "0";
+            //  oc_Newobject333["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
+            //  #endregion
+
+            //  oc_Newobject331["#Newobject333"] = oc_Newobject333;
+
+            //  #region GuiTextCtrl ()        oc_Newobject334
+
+            //  ObjectCreator oc_Newobject334 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject334["canSaveDynamicFields"] = "0";
+            //  oc_Newobject334["Enabled"] = "1";
+            //  oc_Newobject334["isContainer"] = "0";
+            //  oc_Newobject334["Profile"] = "EditorTextProfile";
+            //  oc_Newobject334["HorizSizing"] = "right";
+            //  oc_Newobject334["VertSizing"] = "bottom";
+            //  oc_Newobject334["position"] = "56 -3";
+            //  oc_Newobject334["Extent"] = "72 18";
+            //  oc_Newobject334["MinExtent"] = "8 2";
+            //  oc_Newobject334["canSave"] = "1";
+            //  oc_Newobject334["Visible"] = "1";
+            //  oc_Newobject334["hovertime"] = "1000";
+            //  oc_Newobject334["Margin"] = "0 0 0 0";
+            //  oc_Newobject334["Padding"] = "0 0 0 0";
+            //  oc_Newobject334["AnchorTop"] = "1";
+            //  oc_Newobject334["AnchorBottom"] = "0";
+            //  oc_Newobject334["AnchorLeft"] = "1";
+            //  oc_Newobject334["AnchorRight"] = "0";
+            //  oc_Newobject334["text"] = "Skin Nose Map";
+            //  oc_Newobject334["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject331["#Newobject334"] = oc_Newobject334;
+
+            //  #region GuiTextCtrl ()        oc_Newobject335
+
+            //  ObjectCreator oc_Newobject335 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject335["canSaveDynamicFields"] = "0";
+            //  oc_Newobject335["internalName"] = "skinNoseMapNameText";
+            //  oc_Newobject335["Enabled"] = "1";
+            //  oc_Newobject335["isContainer"] = "0";
+            //  oc_Newobject335["Profile"] = "ToolsGuiTextProfile";
+            //  oc_Newobject335["HorizSizing"] = "width";
+            //  oc_Newobject335["VertSizing"] = "bottom";
+            //  oc_Newobject335["position"] = "56 16";
+            //  oc_Newobject335["Extent"] = "143 17";
+            //  oc_Newobject335["MinExtent"] = "8 2";
+            //  oc_Newobject335["canSave"] = "1";
+            //  oc_Newobject335["Visible"] = "1";
+            //  oc_Newobject335["hovertime"] = "1000";
+            //  oc_Newobject335["Margin"] = "0 0 0 0";
+            //  oc_Newobject335["Padding"] = "0 0 0 0";
+            //  oc_Newobject335["AnchorTop"] = "1";
+            //  oc_Newobject335["AnchorBottom"] = "0";
+            //  oc_Newobject335["AnchorLeft"] = "1";
+            //  oc_Newobject335["AnchorRight"] = "0";
+            //  oc_Newobject335["text"] = "None";
+            //  oc_Newobject335["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject331["#Newobject335"] = oc_Newobject335;
+
+            //  #region GuiButtonCtrl ()        oc_Newobject336
+
+            //  ObjectCreator oc_Newobject336 = new ObjectCreator("GuiButtonCtrl", "");
+            //  oc_Newobject336["profile"] = "ToolsGuiButtonProfile";
+            //  oc_Newobject336["text"] = "Edit";
+            //  oc_Newobject336["HorizSizing"] = "left";
+            //  oc_Newobject336["VertSizing"] = "bottom";
+            //  oc_Newobject336["position"] = "134 34";
+            //  oc_Newobject336["Extent"] = "40 16";
+            //  oc_Newobject336["buttonType"] = "PushButton";
+            //  oc_Newobject336["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinNose\\\", 1);";
+
+            //  #endregion
+
+            //  oc_Newobject331["#Newobject336"] = oc_Newobject336;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject337
+
+            //  ObjectCreator oc_Newobject337 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject337["canSaveDynamicFields"] = "0";
+            //  oc_Newobject337["Enabled"] = "1";
+            //  oc_Newobject337["isContainer"] = "0";
+            //  oc_Newobject337["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject337["HorizSizing"] = "left";
+            //  oc_Newobject337["VertSizing"] = "bottom";
+            //  oc_Newobject337["position"] = "177 34";
+            //  oc_Newobject337["Extent"] = "16 16";
+            //  oc_Newobject337["MinExtent"] = "8 2";
+            //  oc_Newobject337["canSave"] = "1";
+            //  oc_Newobject337["Visible"] = "1";
+            //  oc_Newobject337["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinNose\\\", 0);";
+            //  oc_Newobject337["hovertime"] = "1000";
+            //  oc_Newobject337["groupNum"] = "-1";
+            //  oc_Newobject337["buttonType"] = "PushButton";
+            //  oc_Newobject337["useMouseEvents"] = "0";
+            //  oc_Newobject337["bitmap"] = "tools/gui/images/delete";
+
+            //  #endregion
+
+            //  oc_Newobject331["#Newobject337"] = oc_Newobject337;
+
+            //  #endregion
+
+            //  oc_Newobject301["#Newobject331"] = oc_Newobject331;
+
+            //  #region GuiContainer ()        oc_Newobject338
+
+            //  ObjectCreator oc_Newobject338 = new ObjectCreator("GuiContainer", "");
+            //  oc_Newobject338["profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject338["isContainer"] = "1";
+            //  oc_Newobject338["position"] = "6 136";
+            //  oc_Newobject338["Extent"] = "185 52";
+            //  oc_Newobject338["HorizSizing"] = "width";
+
+            //  #region GuiBitmapCtrl ()        oc_Newobject339
+
+            //  ObjectCreator oc_Newobject339 = new ObjectCreator("GuiBitmapCtrl", "");
+            //  oc_Newobject339["canSaveDynamicFields"] = "0";
+            //  oc_Newobject339["internalName"] = "skinCheekMapDisplayBitmap";
+            //  oc_Newobject339["Enabled"] = "1";
+            //  oc_Newobject339["isContainer"] = "0";
+            //  oc_Newobject339["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject339["HorizSizing"] = "right";
+            //  oc_Newobject339["VertSizing"] = "bottom";
+            //  oc_Newobject339["position"] = "1 1";
+            //  oc_Newobject339["Extent"] = "48 48";
+            //  oc_Newobject339["MinExtent"] = "8 2";
+            //  oc_Newobject339["canSave"] = "1";
+            //  oc_Newobject339["Visible"] = "1";
+            //  oc_Newobject339["hovertime"] = "1000";
+            //  oc_Newobject339["bitmap"] = "tools/materialeditor/gui/unknownImage";
+            //  oc_Newobject339["wrap"] = "0";
+
+            //  #endregion
+
+            //  oc_Newobject338["#Newobject339"] = oc_Newobject339;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject340
+
+            //  ObjectCreator oc_Newobject340 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject340["canSaveDynamicFields"] = "0";
+            //  oc_Newobject340["Enabled"] = "1";
+            //  oc_Newobject340["isContainer"] = "0";
+            //  oc_Newobject340["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject340["HorizSizing"] = "right";
+            //  oc_Newobject340["VertSizing"] = "bottom";
+            //  oc_Newobject340["position"] = "1 1";
+            //  oc_Newobject340["Extent"] = "48 48";
+            //  oc_Newobject340["MinExtent"] = "8 2";
+            //  oc_Newobject340["canSave"] = "1";
+            //  oc_Newobject340["Visible"] = "1";
+            //  oc_Newobject340["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinCheek\\\", 1);";
+            //  oc_Newobject340["tooltipprofile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject340["ToolTip"] = "Change the active Skin Cheek Map for this layer.";
+            //  oc_Newobject340["hovertime"] = "1000";
+            //  oc_Newobject340["groupNum"] = "-1";
+            //  oc_Newobject340["buttonType"] = "PushButton";
+            //  oc_Newobject340["useMouseEvents"] = "0";
+            //  oc_Newobject340["bitmap"] = "tools/materialEditor/gui/cubemapBtnBorder";
+
+            //  #endregion
+
+            //  oc_Newobject338["#Newobject340"] = oc_Newobject340;
+
+            //  #region GuiTextCtrl ()        oc_Newobject341
+
+            //  ObjectCreator oc_Newobject341 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject341["canSaveDynamicFields"] = "0";
+            //  oc_Newobject341["Enabled"] = "1";
+            //  oc_Newobject341["isContainer"] = "0";
+            //  oc_Newobject341["Profile"] = "EditorTextProfile";
+            //  oc_Newobject341["HorizSizing"] = "right";
+            //  oc_Newobject341["VertSizing"] = "bottom";
+            //  oc_Newobject341["position"] = "56 -3";
+            //  oc_Newobject341["Extent"] = "72 18";
+            //  oc_Newobject341["MinExtent"] = "8 2";
+            //  oc_Newobject341["canSave"] = "1";
+            //  oc_Newobject341["Visible"] = "1";
+            //  oc_Newobject341["hovertime"] = "1000";
+            //  oc_Newobject341["Margin"] = "0 0 0 0";
+            //  oc_Newobject341["Padding"] = "0 0 0 0";
+            //  oc_Newobject341["AnchorTop"] = "1";
+            //  oc_Newobject341["AnchorBottom"] = "0";
+            //  oc_Newobject341["AnchorLeft"] = "1";
+            //  oc_Newobject341["AnchorRight"] = "0";
+            //  oc_Newobject341["text"] = "Skin Cheek Map";
+            //  oc_Newobject341["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject338["#Newobject341"] = oc_Newobject341;
+
+            //  #region GuiTextCtrl ()        oc_Newobject342
+
+            //  ObjectCreator oc_Newobject342 = new ObjectCreator("GuiTextCtrl", "");
+            //  oc_Newobject342["canSaveDynamicFields"] = "0";
+            //  oc_Newobject342["internalName"] = "skinCheekMapNameText";
+            //  oc_Newobject342["Enabled"] = "1";
+            //  oc_Newobject342["isContainer"] = "0";
+            //  oc_Newobject342["Profile"] = "ToolsGuiTextProfile";
+            //  oc_Newobject342["HorizSizing"] = "width";
+            //  oc_Newobject342["VertSizing"] = "bottom";
+            //  oc_Newobject342["position"] = "56 16";
+            //  oc_Newobject342["Extent"] = "143 17";
+            //  oc_Newobject342["MinExtent"] = "8 2";
+            //  oc_Newobject342["canSave"] = "1";
+            //  oc_Newobject342["Visible"] = "1";
+            //  oc_Newobject342["hovertime"] = "1000";
+            //  oc_Newobject342["Margin"] = "0 0 0 0";
+            //  oc_Newobject342["Padding"] = "0 0 0 0";
+            //  oc_Newobject342["AnchorTop"] = "1";
+            //  oc_Newobject342["AnchorBottom"] = "0";
+            //  oc_Newobject342["AnchorLeft"] = "1";
+            //  oc_Newobject342["AnchorRight"] = "0";
+            //  oc_Newobject342["text"] = "None";
+            //  oc_Newobject342["maxLength"] = "1024";
+
+            //  #endregion
+
+            //  oc_Newobject338["#Newobject342"] = oc_Newobject342;
+
+            //  #region GuiButtonCtrl ()        oc_Newobject343
+
+            //  ObjectCreator oc_Newobject343 = new ObjectCreator("GuiButtonCtrl", "");
+            //  oc_Newobject343["profile"] = "ToolsGuiButtonProfile";
+            //  oc_Newobject343["text"] = "Edit";
+            //  oc_Newobject343["HorizSizing"] = "left";
+            //  oc_Newobject343["VertSizing"] = "bottom";
+            //  oc_Newobject343["position"] = "134 34";
+            //  oc_Newobject343["Extent"] = "40 16";
+            //  oc_Newobject343["buttonType"] = "PushButton";
+            //  oc_Newobject343["command"] = "MaterialEditorGui.updateTextureMap(\\\"skinCheek\\\", 1);";
+
+            //  #endregion
+
+            //  oc_Newobject338["#Newobject343"] = oc_Newobject343;
+
+            //  #region GuiBitmapButtonCtrl ()        oc_Newobject344
+
+            //  ObjectCreator oc_Newobject344 = new ObjectCreator("GuiBitmapButtonCtrl", "");
+            //  oc_Newobject344["canSaveDynamicFields"] = "0";
+            //  oc_Newobject344["Enabled"] = "1";
+            //  oc_Newobject344["isContainer"] = "0";
+            //  oc_Newobject344["Profile"] = "ToolsGuiDefaultProfile";
+            //  oc_Newobject344["HorizSizing"] = "left";
+            //  oc_Newobject344["VertSizing"] = "bottom";
+            //  oc_Newobject344["position"] = "177 34";
+            //  oc_Newobject344["Extent"] = "16 16";
+            //  oc_Newobject344["MinExtent"] = "8 2";
+            //  oc_Newobject344["canSave"] = "1";
+            //  oc_Newobject344["Visible"] = "1";
+            //  oc_Newobject344["Command"] = "MaterialEditorGui.updateTextureMap(\\\"skinCheek\\\", 0);";
+            //  oc_Newobject344["hovertime"] = "1000";
+            //  oc_Newobject344["groupNum"] = "-1";
+            //  oc_Newobject344["buttonType"] = "PushButton";
+            //  oc_Newobject344["useMouseEvents"] = "0";
+            //  oc_Newobject344["bitmap"] = "tools/gui/images/delete";
+
+            //  #endregion
+
+            //  oc_Newobject338["#Newobject344"] = oc_Newobject344;
+
+            //  #endregion
+
+            //  oc_Newobject301["#Newobject338"] = oc_Newobject338;
+
+            //  #endregion
+
+            //  oc_Newobject300["#Newobject301"] = oc_Newobject301;
+
+            //  #endregion
+
+            //  oc_Newobject212["#Newobject300"] = oc_Newobject300;
 
             #region GuiRolloutCtrl (advancedTextureMapsRollout)        oc_Newobject93
 
             ObjectCreator oc_Newobject93 = new ObjectCreator("GuiRolloutCtrl", "advancedTextureMapsRollout");
             oc_Newobject93["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject93["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject93["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject93["Profile"] = "GuiRolloutProfile";
             oc_Newobject93["HorizSizing"] = "width";
             oc_Newobject93["VertSizing"] = "bottom";
             oc_Newobject93["Position"] = "0 0";
             oc_Newobject93["Extent"] = "185 0";
             oc_Newobject93["Caption"] = "Advanced Texture Maps";
-            oc_Newobject93["Expanded"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject93["Expanded"] = new Creator.StringNoQuote("false");
             oc_Newobject93["Margin"] = "4 4 4 0";
-            oc_Newobject93["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject93["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject93["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject93["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject93["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject93["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject93["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject93["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject92
 
@@ -3232,9 +3273,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject212["#Newobject93"] = oc_Newobject93;
 
             #region GuiRolloutCtrl ()        oc_Newobject00027
-            var oc_Newobject00027 = new ObjectCreator("GuiRolloutCtrl", "");
+
+            ObjectCreator oc_Newobject00027 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject00027["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject00027["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject00027["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject00027["Profile"] = "GuiRolloutProfile";
             oc_Newobject00027["HorizSizing"] = "width";
             oc_Newobject00027["VertSizing"] = "bottom";
@@ -3242,15 +3284,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject00027["Extent"] = "195 0";
             oc_Newobject00027["Caption"] = "Accumulation Properties";
             oc_Newobject00027["Margin"] = "-1 0 0 0";
-            oc_Newobject00027["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject00027["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject00027["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject00027["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject00027["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject00027["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject00027["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject00027["object"] = new Creator.StringNoQuote("%behavior");
             if (true)
-            {
-
+                {
                 #region GuiStackControl ()        oc_Newobject00026
-                var oc_Newobject00026 = new ObjectCreator("GuiStackControl", "");
+
+                ObjectCreator oc_Newobject00026 = new ObjectCreator("GuiStackControl", "");
                 oc_Newobject00026["StackingType"] = "Vertical";
                 oc_Newobject00026["HorizStacking"] = "Left to Right";
                 oc_Newobject00026["VertStacking"] = "Top to Bottom";
@@ -3270,20 +3312,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject00026["tooltipprofile"] = "GuiToolTipProfile";
                 oc_Newobject00026["hovertime"] = "1000";
                 if (true)
-                {
-
+                    {
                     #region GuiContainer ()        oc_Newobject00005
-                    var oc_Newobject00005 = new ObjectCreator("GuiContainer", "");
+
+                    ObjectCreator oc_Newobject00005 = new ObjectCreator("GuiContainer", "");
                     oc_Newobject00005["profile"] = "GuiTransparentProfile";
                     oc_Newobject00005["isContainer"] = "1";
                     oc_Newobject00005["position"] = "0 0";
                     oc_Newobject00005["Extent"] = "195 24";
                     oc_Newobject00005["HorizSizing"] = "width";
                     if (true)
-                    {
-
+                        {
                         #region GuiTextCtrl ()        oc_Newobject0001
-                        var oc_Newobject0001 = new ObjectCreator("GuiTextCtrl", "");
+
+                        ObjectCreator oc_Newobject0001 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject0001["canSaveDynamicFields"] = "0";
                         oc_Newobject0001["Enabled"] = "1";
                         oc_Newobject0001["isContainer"] = "0";
@@ -3304,20 +3346,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                         oc_Newobject0001["AnchorRight"] = "0";
                         oc_Newobject0001["text"] = "Scale";
                         oc_Newobject0001["maxLength"] = "1024";
+
                         #endregion
 
                         oc_Newobject00005["#Newobject00001"] = oc_Newobject0001;
 
                         #region GuiControl ()        oc_Newobject0004
-                        var oc_Newobject0004 = new ObjectCreator("GuiControl", "", typeof(AggregateControl));
+
+                        ObjectCreator oc_Newobject0004 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
                         //oc_Newobject0004["class"] = "AggregateControl";
                         oc_Newobject0004["position"] = "70 3";
                         oc_Newobject0004["Extent"] = "96 20";
                         if (true)
-                        {
-
+                            {
                             #region GuiSliderCtrl ()        oc_Newobject0002
-                            var oc_Newobject0002 = new ObjectCreator("GuiSliderCtrl", "");
+
+                            ObjectCreator oc_Newobject0002 = new ObjectCreator("GuiSliderCtrl", "");
                             oc_Newobject0002["canSaveDynamicFields"] = "0";
                             oc_Newobject0002["internalName"] = "accuScaleSlider";
                             oc_Newobject0002["Enabled"] = "1";
@@ -3338,11 +3382,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject0002["range"] = "0.03125 32";
                             oc_Newobject0002["ticks"] = "0";
                             oc_Newobject0002["value"] = "1";
+
                             #endregion
+
                             oc_Newobject0004["#Newobject00002"] = oc_Newobject0002;
 
                             #region GuiTextEditCtrl ()        oc_Newobject0003
-                            var oc_Newobject0003 = new ObjectCreator("GuiTextEditCtrl", "");
+
+                            ObjectCreator oc_Newobject0003 = new ObjectCreator("GuiTextEditCtrl", "");
                             oc_Newobject0003["canSaveDynamicFields"] = "0";
                             oc_Newobject0003["internalName"] = "accuScaleTextEdit";
                             oc_Newobject0003["Enabled"] = "1";
@@ -3363,32 +3410,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject0003["AnchorRight"] = "0";
                             oc_Newobject0003["text"] = "1";
                             oc_Newobject0003["maxLength"] = "3";
+
                             #endregion
 
                             oc_Newobject0004["#Newobject00003"] = oc_Newobject0003;
+                            }
 
-                        }
                         #endregion
 
                         oc_Newobject00005["#Newobject00004"] = oc_Newobject0004;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00026["#Newobject00005"] = oc_Newobject00005;
 
                     #region GuiContainer ()        oc_Newobject00010
-                    var oc_Newobject00010 = new ObjectCreator("GuiContainer", "");
+
+                    ObjectCreator oc_Newobject00010 = new ObjectCreator("GuiContainer", "");
                     oc_Newobject00010["profile"] = "GuiTransparentProfile";
                     oc_Newobject00010["isContainer"] = "1";
                     oc_Newobject00010["position"] = "0 0";
                     oc_Newobject00010["Extent"] = "195 24";
                     oc_Newobject00010["HorizSizing"] = "width";
                     if (true)
-                    {
-
+                        {
                         #region GuiTextCtrl ()        oc_Newobject00006
-                        var oc_Newobject00006 = new ObjectCreator("GuiTextCtrl", "");
+
+                        ObjectCreator oc_Newobject00006 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00006["canSaveDynamicFields"] = "0";
                         oc_Newobject00006["Enabled"] = "1";
                         oc_Newobject00006["isContainer"] = "0";
@@ -3409,20 +3458,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                         oc_Newobject00006["AnchorRight"] = "0";
                         oc_Newobject00006["text"] = "Direction";
                         oc_Newobject00006["maxLength"] = "1024";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00006"] = oc_Newobject00006;
 
                         #region GuiControl ()        oc_Newobject00009
-                        var oc_Newobject00009 = new ObjectCreator("GuiControl", "", typeof(AggregateControl));
+
+                        ObjectCreator oc_Newobject00009 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
                         //oc_Newobject00009["class"] = "AggregateControl";
                         oc_Newobject00009["position"] = "70 3";
                         oc_Newobject00009["Extent"] = "96 20";
                         if (true)
-                        {
-
+                            {
                             #region GuiSliderCtrl ()        oc_Newobject00007
-                            var oc_Newobject00007 = new ObjectCreator("GuiSliderCtrl", "");
+
+                            ObjectCreator oc_Newobject00007 = new ObjectCreator("GuiSliderCtrl", "");
                             oc_Newobject00007["canSaveDynamicFields"] = "0";
                             oc_Newobject00007["internalName"] = "accuDirectionSlider";
                             oc_Newobject00007["Enabled"] = "1";
@@ -3443,12 +3494,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00007["range"] = "-1 1";
                             oc_Newobject00007["ticks"] = "0";
                             oc_Newobject00007["value"] = "-1";
+
                             #endregion
 
                             oc_Newobject00009["#Newobject00007"] = oc_Newobject00007;
 
                             #region GuiTextEditCtrl ()        oc_Newobject0008
-                            var oc_Newobject0008 = new ObjectCreator("GuiTextEditCtrl", "");
+
+                            ObjectCreator oc_Newobject0008 = new ObjectCreator("GuiTextEditCtrl", "");
                             oc_Newobject0008["canSaveDynamicFields"] = "0";
                             oc_Newobject0008["internalName"] = "accuDirectionTextEdit";
                             oc_Newobject0008["Enabled"] = "1";
@@ -3469,32 +3522,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject0008["AnchorRight"] = "0";
                             oc_Newobject0008["text"] = "-1";
                             oc_Newobject0008["maxLength"] = "3";
+
                             #endregion
 
                             oc_Newobject00009["#Newobject00008"] = oc_Newobject0008;
+                            }
 
-                        }
                         #endregion
 
                         oc_Newobject00010["#Newobject00009"] = oc_Newobject00009;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00026["#Newobject00010"] = oc_Newobject00010;
 
                     #region GuiContainer ()        oc_Newobject00015
-                    var oc_Newobject00015 = new ObjectCreator("GuiContainer", "");
+
+                    ObjectCreator oc_Newobject00015 = new ObjectCreator("GuiContainer", "");
                     oc_Newobject00015["profile"] = "GuiTransparentProfile";
                     oc_Newobject00015["isContainer"] = "1";
                     oc_Newobject00015["position"] = "0 0";
                     oc_Newobject00015["Extent"] = "195 24";
                     oc_Newobject00015["HorizSizing"] = "width";
                     if (true)
-                    {
-
+                        {
                         #region GuiTextCtrl ()        oc_Newobject00011
-                        var oc_Newobject00011 = new ObjectCreator("GuiTextCtrl", "");
+
+                        ObjectCreator oc_Newobject00011 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00011["canSaveDynamicFields"] = "0";
                         oc_Newobject00011["Enabled"] = "1";
                         oc_Newobject00011["isContainer"] = "0";
@@ -3515,20 +3570,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                         oc_Newobject00011["AnchorRight"] = "0";
                         oc_Newobject00011["text"] = "Strength";
                         oc_Newobject00011["maxLength"] = "1024";
+
                         #endregion
 
                         oc_Newobject00015["#Newobject00011"] = oc_Newobject00011;
 
                         #region GuiControl ()        oc_Newobject00014
-                        var oc_Newobject00014 = new ObjectCreator("GuiControl", "", typeof(AggregateControl));
+
+                        ObjectCreator oc_Newobject00014 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
                         //oc_Newobject00014["class"] = "AggregateControl";
                         oc_Newobject00014["position"] = "70 3";
                         oc_Newobject00014["Extent"] = "96 20";
                         if (true)
-                        {
-
+                            {
                             #region GuiSliderCtrl ()        oc_Newobject00012
-                            var oc_Newobject00012 = new ObjectCreator("GuiSliderCtrl", "");
+
+                            ObjectCreator oc_Newobject00012 = new ObjectCreator("GuiSliderCtrl", "");
                             oc_Newobject00012["canSaveDynamicFields"] = "0";
                             oc_Newobject00012["internalName"] = "accuStrengthSlider";
                             oc_Newobject00012["Enabled"] = "1";
@@ -3549,12 +3606,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00012["range"] = "0 1";
                             oc_Newobject00012["ticks"] = "0";
                             oc_Newobject00012["value"] = "0.6";
+
                             #endregion
 
                             oc_Newobject00014["#Newobject00012"] = oc_Newobject00012;
 
                             #region GuiTextEditCtrl ()        oc_Newobject00013
-                            var oc_Newobject00013 = new ObjectCreator("GuiTextEditCtrl", "");
+
+                            ObjectCreator oc_Newobject00013 = new ObjectCreator("GuiTextEditCtrl", "");
                             oc_Newobject00013["canSaveDynamicFields"] = "0";
                             oc_Newobject00013["internalName"] = "accuStrengthTextEdit";
                             oc_Newobject00013["Enabled"] = "1";
@@ -3575,32 +3634,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00013["AnchorRight"] = "0";
                             oc_Newobject00013["text"] = "0.6";
                             oc_Newobject00013["maxLength"] = "3";
+
                             #endregion
 
                             oc_Newobject00014["#Newobject00013"] = oc_Newobject00013;
+                            }
 
-                        }
                         #endregion
 
                         oc_Newobject00015["#Newobject00014"] = oc_Newobject00014;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00026["#Newobject00015"] = oc_Newobject00015;
 
                     #region GuiContainer ()        oc_Newobject00020
-                    var oc_Newobject00020 = new ObjectCreator("GuiContainer", "");
+
+                    ObjectCreator oc_Newobject00020 = new ObjectCreator("GuiContainer", "");
                     oc_Newobject00020["profile"] = "GuiTransparentProfile";
                     oc_Newobject00020["isContainer"] = "1";
                     oc_Newobject00020["position"] = "0 0";
                     oc_Newobject00020["Extent"] = "195 24";
                     oc_Newobject00020["HorizSizing"] = "width";
                     if (true)
-                    {
-
+                        {
                         #region GuiTextCtrl ()        oc_Newobject00016
-                        var oc_Newobject00016 = new ObjectCreator("GuiTextCtrl", "");
+
+                        ObjectCreator oc_Newobject00016 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00016["canSaveDynamicFields"] = "0";
                         oc_Newobject00016["Enabled"] = "1";
                         oc_Newobject00016["isContainer"] = "0";
@@ -3621,20 +3682,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                         oc_Newobject00016["AnchorRight"] = "0";
                         oc_Newobject00016["text"] = "Coverage";
                         oc_Newobject00016["maxLength"] = "1024";
+
                         #endregion
 
                         oc_Newobject00020["#Newobject00016"] = oc_Newobject00016;
 
                         #region GuiControl ()        oc_Newobject00019
-                        var oc_Newobject00019 = new ObjectCreator("GuiControl", "", typeof(AggregateControl));
+
+                        ObjectCreator oc_Newobject00019 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
                         //oc_Newobject00019["class"] = "AggregateControl";
                         oc_Newobject00019["position"] = "70 3";
                         oc_Newobject00019["Extent"] = "96 20";
                         if (true)
-                        {
-
+                            {
                             #region GuiSliderCtrl ()        oc_Newobject00017
-                            var oc_Newobject00017 = new ObjectCreator("GuiSliderCtrl", "");
+
+                            ObjectCreator oc_Newobject00017 = new ObjectCreator("GuiSliderCtrl", "");
                             oc_Newobject00017["canSaveDynamicFields"] = "0";
                             oc_Newobject00017["internalName"] = "accuCoverageSlider";
                             oc_Newobject00017["Enabled"] = "1";
@@ -3655,12 +3718,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00017["range"] = "0 2";
                             oc_Newobject00017["ticks"] = "0";
                             oc_Newobject00017["value"] = "1";
+
                             #endregion
 
                             oc_Newobject00019["#Newobject00017"] = oc_Newobject00017;
 
                             #region GuiTextEditCtrl ()        oc_Newobject00018
-                            var oc_Newobject00018 = new ObjectCreator("GuiTextEditCtrl", "");
+
+                            ObjectCreator oc_Newobject00018 = new ObjectCreator("GuiTextEditCtrl", "");
                             oc_Newobject00018["canSaveDynamicFields"] = "0";
                             oc_Newobject00018["internalName"] = "accuCoverageTextEdit";
                             oc_Newobject00018["Enabled"] = "1";
@@ -3681,32 +3746,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00018["AnchorRight"] = "0";
                             oc_Newobject00018["text"] = "1";
                             oc_Newobject00018["maxLength"] = "3";
+
                             #endregion
 
                             oc_Newobject00019["#Newobject00018"] = oc_Newobject00018;
+                            }
 
-                        }
                         #endregion
 
                         oc_Newobject00020["#Newobject00019"] = oc_Newobject00019;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00026["#Newobject00020"] = oc_Newobject00020;
 
                     #region GuiContainer ()        oc_Newobject00025
-                    var oc_Newobject00025 = new ObjectCreator("GuiContainer", "");
+
+                    ObjectCreator oc_Newobject00025 = new ObjectCreator("GuiContainer", "");
                     oc_Newobject00025["profile"] = "GuiTransparentProfile";
                     oc_Newobject00025["isContainer"] = "1";
                     oc_Newobject00025["position"] = "0 0";
                     oc_Newobject00025["Extent"] = "195 24";
                     oc_Newobject00025["HorizSizing"] = "width";
                     if (true)
-                    {
-
+                        {
                         #region GuiTextCtrl ()        oc_Newobject00021
-                        var oc_Newobject00021 = new ObjectCreator("GuiTextCtrl", "");
+
+                        ObjectCreator oc_Newobject00021 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00021["canSaveDynamicFields"] = "0";
                         oc_Newobject00021["Enabled"] = "1";
                         oc_Newobject00021["isContainer"] = "0";
@@ -3727,20 +3794,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                         oc_Newobject00021["AnchorRight"] = "0";
                         oc_Newobject00021["text"] = "Specular scale";
                         oc_Newobject00021["maxLength"] = "1024";
+
                         #endregion
 
                         oc_Newobject00025["#Newobject00021"] = oc_Newobject00021;
 
                         #region GuiControl ()        oc_Newobject00024
-                        var oc_Newobject00024 = new ObjectCreator("GuiControl", "", typeof(AggregateControl));
+
+                        ObjectCreator oc_Newobject00024 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
                         //oc_Newobject00024["class"] = "AggregateControl";
                         oc_Newobject00024["position"] = "70 3";
                         oc_Newobject00024["Extent"] = "96 20";
                         if (true)
-                        {
-
+                            {
                             #region GuiSliderCtrl ()        oc_Newobject00022
-                            var oc_Newobject00022 = new ObjectCreator("GuiSliderCtrl", "");
+
+                            ObjectCreator oc_Newobject00022 = new ObjectCreator("GuiSliderCtrl", "");
                             oc_Newobject00022["canSaveDynamicFields"] = "0";
                             oc_Newobject00022["internalName"] = "accuSpecularSlider";
                             oc_Newobject00022["Enabled"] = "1";
@@ -3761,12 +3830,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00022["range"] = "0 2";
                             oc_Newobject00022["ticks"] = "0";
                             oc_Newobject00022["value"] = "1";
+
                             #endregion
 
                             oc_Newobject00024["#Newobject00022"] = oc_Newobject00022;
 
                             #region GuiTextEditCtrl ()        oc_Newobject00023
-                            var oc_Newobject00023 = new ObjectCreator("GuiTextEditCtrl", "");
+
+                            ObjectCreator oc_Newobject00023 = new ObjectCreator("GuiTextEditCtrl", "");
                             oc_Newobject00023["canSaveDynamicFields"] = "0";
                             oc_Newobject00023["internalName"] = "accuSpecularTextEdit";
                             oc_Newobject00023["Enabled"] = "1";
@@ -3787,26 +3858,27 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                             oc_Newobject00023["AnchorRight"] = "0";
                             oc_Newobject00023["text"] = "1";
                             oc_Newobject00023["maxLength"] = "3";
+
                             #endregion
 
                             oc_Newobject00024["#Newobject00023"] = oc_Newobject00023;
+                            }
 
-                        }
                         #endregion
 
                         oc_Newobject00025["#Newobject00024"] = oc_Newobject00024;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00026["#Newobject00025"] = oc_Newobject00025;
+                    }
 
-                }
                 #endregion
 
                 oc_Newobject00027["#Newobject00026"] = oc_Newobject00026;
+                }
 
-            }
             #endregion
 
             oc_Newobject212["#Newobject00027"] = oc_Newobject00027;
@@ -3815,7 +3887,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             ObjectCreator oc_Newobject118 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject118["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject118["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject118["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject118["Profile"] = "GuiRolloutProfile";
             oc_Newobject118["HorizSizing"] = "width";
             oc_Newobject118["VertSizing"] = "bottom";
@@ -3823,10 +3895,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject118["Extent"] = "185 0";
             oc_Newobject118["Caption"] = "Lighting Properties";
             oc_Newobject118["Margin"] = "-1 0 0 0";
-            oc_Newobject118["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject118["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject118["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject118["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject118["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject118["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject118["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject118["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject117
 
@@ -3903,8 +3975,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject95["MinExtent"] = "8 2";
             oc_Newobject95["canSave"] = "1";
             oc_Newobject95["Visible"] = "1";
-            oc_Newobject95["Command"] =
-                "getColorF(materialEd_previewMaterial.specular[MaterialEditorGui.currentLayer], \\\"MaterialEditorGui.updateSpecular\\\");";
+            oc_Newobject95["Command"] = "getColorF(materialEd_previewMaterial.specular[MaterialEditorGui.currentLayer], \\\"MaterialEditorGui.updateSpecular\\\");";
             oc_Newobject95["hovertime"] = "1000";
             oc_Newobject95["groupNum"] = "-1";
             oc_Newobject95["buttonType"] = "PushButton";
@@ -3915,20 +3986,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject99["#Newobject95"] = oc_Newobject95;
 
             #region GuiTextCtrl ()        oc_Newobject00001
+
             ObjectCreator oc_Newobject00001 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject00001["HorizSizing"] = "right";
             oc_Newobject00001["VertSizing"] = "bottom";
             oc_Newobject00001["position"] = "9 26";
             oc_Newobject00001["Extent"] = "72 16";
             oc_Newobject00001["text"] = "Spec strength";
+
             #endregion
 
             oc_Newobject99["#Newobject00001"] = oc_Newobject00001;
 
             #region GuiControl ()        oc_Newobject98
 
-            ObjectCreator oc_Newobject98 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject98 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject98["class"] = "AggregateControl";
             oc_Newobject98["position"] = "91 4";
             oc_Newobject98["Extent"] = "96 20";
@@ -3948,10 +4020,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject96["MinExtent"] = "8 2";
             oc_Newobject96["canSave"] = "1";
             oc_Newobject96["Visible"] = "1";
-            oc_Newobject96["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"specularPower[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", mCeil($ThisControl.getValue()), true, true);";
-            oc_Newobject96["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"specularPower[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", mCeil($ThisControl.getValue()), true, false);";
+            oc_Newobject96["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"specularPower[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", mCeil($ThisControl.getValue()), true, true);";
+            oc_Newobject96["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"specularPower[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", mCeil($ThisControl.getValue()), true, false);";
             oc_Newobject96["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject96["ToolTip"] = "Sets the strength of the Pixel Specular value.";
             oc_Newobject96["hovertime"] = "1000";
@@ -3978,8 +4048,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject97["MinExtent"] = "8 2";
             oc_Newobject97["canSave"] = "1";
             oc_Newobject97["Visible"] = "1";
-            oc_Newobject97["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"specularPower[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", mCeil($ThisControl.getValue()));";
+            oc_Newobject97["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"specularPower[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", mCeil($ThisControl.getValue()));";
             oc_Newobject97["hovertime"] = "1000";
             oc_Newobject97["AnchorTop"] = "1";
             oc_Newobject97["AnchorBottom"] = "0";
@@ -4000,13 +4069,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             ObjectCreator oc_Newobject00002;
             ObjectCreator oc_Newobject00003;
-            ObjectCreator oc_Newobject00004 = new ObjectCreator("GuiControl", "", typeof(AggregateControl));
+            ObjectCreator oc_Newobject00004 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             oc_Newobject00004["position"] = "91 26";
             oc_Newobject00004["Extent"] = "96 20";
             if (true)
-            {
-
+                {
                 #region GuiSliderCtrl ()        oc_Newobject00002
+
                 oc_Newobject00002 = new ObjectCreator("GuiSliderCtrl", "");
                 oc_Newobject00002["canSaveDynamicFields"] = "0";
                 oc_Newobject00002["internalName"] = "specularStrengthSlider";
@@ -4028,11 +4097,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject00002["range"] = "0 5";
                 oc_Newobject00002["ticks"] = "0";
                 oc_Newobject00002["value"] = "1";
+
                 #endregion
 
                 oc_Newobject00004["#Newobject00002"] = oc_Newobject00002;
 
                 #region GuiTextEditCtrl ()        oc_Newobject00003
+
                 oc_Newobject00003 = new ObjectCreator("GuiTextEditCtrl", "");
                 oc_Newobject00003["canSaveDynamicFields"] = "0";
                 oc_Newobject00003["internalName"] = "specularStrengthTextEdit";
@@ -4054,11 +4125,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
                 oc_Newobject00003["AnchorRight"] = "0";
                 oc_Newobject00003["text"] = "1";
                 oc_Newobject00003["maxLength"] = "3";
+
                 #endregion
 
                 oc_Newobject00004["#Newobject00003"] = oc_Newobject00003;
+                }
 
-            }
             #endregion
 
             oc_Newobject99["#Newobject00004"] = oc_Newobject00004;
@@ -4091,8 +4163,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject100["MinExtent"] = "8 2";
             oc_Newobject100["canSave"] = "1";
             oc_Newobject100["Visible"] = "1";
-            oc_Newobject100["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"glow[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
+            oc_Newobject100["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"glow[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
             oc_Newobject100["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject100["ToolTip"] = "Determines if this layer will Glow or not.";
             oc_Newobject100["hovertime"] = "1000";
@@ -4121,11 +4192,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject101["MinExtent"] = "8 2";
             oc_Newobject101["canSave"] = "1";
             oc_Newobject101["Visible"] = "1";
-            oc_Newobject101["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"emissive[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue());";
+            oc_Newobject101["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"emissive[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue());";
             oc_Newobject101["tooltipprofile"] = "ToolsGuiDefaultProfile";
-            oc_Newobject101["ToolTip"] =
-                "Emissive causes an object to not be affected by lights. Good for light sources.";
+            oc_Newobject101["ToolTip"] = "Emissive causes an object to not be affected by lights. Good for light sources.";
             oc_Newobject101["hovertime"] = "1000";
             oc_Newobject101["text"] = "Emissive";
             oc_Newobject101["groupNum"] = "-1";
@@ -4180,8 +4249,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject106
 
-            ObjectCreator oc_Newobject106 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject106 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject106["class"] = "AggregateControl";
             oc_Newobject106["position"] = "70 3";
             oc_Newobject106["Extent"] = "115 20";
@@ -4201,10 +4269,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject104["MinExtent"] = "8 2";
             oc_Newobject104["canSave"] = "1";
             oc_Newobject104["Visible"] = "1";
-            oc_Newobject104["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"parallaxScale[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue(), true, true);";
-            oc_Newobject104["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateActiveMaterial(\\\"parallaxScale[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue(), true, false);";
+            oc_Newobject104["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"parallaxScale[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue(), true, true);";
+            oc_Newobject104["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateActiveMaterial(\\\"parallaxScale[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue(), true, false);";
             oc_Newobject104["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject104["ToolTip"] = "Parallax Scale";
             oc_Newobject104["hovertime"] = "1000";
@@ -4231,8 +4297,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject105["MinExtent"] = "8 2";
             oc_Newobject105["canSave"] = "1";
             oc_Newobject105["Visible"] = "1";
-            oc_Newobject105["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateActiveMaterial(\\\"parallaxScale[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue());";
+            oc_Newobject105["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateActiveMaterial(\\\"parallaxScale[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\",$ThisControl.getValue());";
             oc_Newobject105["hovertime"] = "1000";
             oc_Newobject105["AnchorTop"] = "1";
             oc_Newobject105["AnchorBottom"] = "0";
@@ -4277,8 +4342,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject108["MinExtent"] = "8 2";
             oc_Newobject108["canSave"] = "1";
             oc_Newobject108["Visible"] = "1";
-            oc_Newobject108["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"useAnisotropic[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
+            oc_Newobject108["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"useAnisotropic[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
             oc_Newobject108["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject108["ToolTip"] = "Enables the use of anisotropic filtering for this layer.";
             oc_Newobject108["hovertime"] = "1000";
@@ -4307,8 +4371,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject109["MinExtent"] = "8 2";
             oc_Newobject109["canSave"] = "1";
             oc_Newobject109["Visible"] = "1";
-            oc_Newobject109["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"vertLit[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
+            oc_Newobject109["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"vertLit[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
             oc_Newobject109["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject109["ToolTip"] = "Enables the use of vertex lighting for this layer.";
             oc_Newobject109["hovertime"] = "1000";
@@ -4337,8 +4400,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject110["MinExtent"] = "8 2";
             oc_Newobject110["canSave"] = "1";
             oc_Newobject110["Visible"] = "1";
-            oc_Newobject110["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"vertColor[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
+            oc_Newobject110["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"vertColor[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
             oc_Newobject110["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject110["ToolTip"] = "Multiply vertex colors with diffuse colors for this layer.";
             oc_Newobject110["hovertime"] = "1000";
@@ -4367,8 +4429,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject111["MinExtent"] = "8 2";
             oc_Newobject111["canSave"] = "1";
             oc_Newobject111["Visible"] = "1";
-            oc_Newobject111["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"subSurface[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
+            oc_Newobject111["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"subSurface[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getValue());";
             oc_Newobject111["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject111["ToolTip"] = "Enables the use of subsurface scattering for this layer.";
             oc_Newobject111["hovertime"] = "1000";
@@ -4397,8 +4458,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject112["MinExtent"] = "8 2";
             oc_Newobject112["canSave"] = "1";
             oc_Newobject112["Visible"] = "1";
-            oc_Newobject112["Command"] =
-                "getColorF(materialEd_previewMaterial.subSurfaceColor[MaterialEditorGui.currentLayer], \\\"MaterialEditorGui.updateSubSurfaceColor\\\");";
+            oc_Newobject112["Command"] = "getColorF(materialEd_previewMaterial.subSurfaceColor[MaterialEditorGui.currentLayer], \\\"MaterialEditorGui.updateSubSurfaceColor\\\");";
             oc_Newobject112["tooltip"] = "Set the subsurface scattering color";
             oc_Newobject112["hovertime"] = "1000";
             oc_Newobject112["groupNum"] = "-1";
@@ -4425,8 +4485,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject113["canSave"] = "1";
             oc_Newobject113["Visible"] = "1";
             oc_Newobject113["tooltip"] = "Set the subsurface rolloff factor";
-            oc_Newobject113["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"subSurfaceRolloff[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getText());";
+            oc_Newobject113["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"subSurfaceRolloff[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getText());";
             oc_Newobject113["hovertime"] = "1000";
             oc_Newobject113["AnchorTop"] = "1";
             oc_Newobject113["AnchorBottom"] = "0";
@@ -4467,8 +4526,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject115["MinExtent"] = "8 2";
             oc_Newobject115["canSave"] = "1";
             oc_Newobject115["Visible"] = "1";
-            oc_Newobject115["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"minnaertConstant[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getText());";
+            oc_Newobject115["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"minnaertConstant[\\\" @ MaterialEditorGui.currentLayer @ \\\"]\\\", $ThisControl.getText());";
             oc_Newobject115["hovertime"] = "1000";
             oc_Newobject115["AnchorTop"] = "1";
             oc_Newobject115["AnchorBottom"] = "0";
@@ -4497,7 +4555,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             ObjectCreator oc_Newobject183 = new ObjectCreator("GuiRolloutCtrl", "materialAnimationPropertiesRollout");
             oc_Newobject183["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject183["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject183["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject183["Profile"] = "GuiRolloutProfile";
             oc_Newobject183["HorizSizing"] = "width";
             oc_Newobject183["VertSizing"] = "bottom";
@@ -4505,11 +4563,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject183["Extent"] = "185 0";
             oc_Newobject183["Caption"] = "Animation Properties";
             oc_Newobject183["Margin"] = "-1 0 0 0";
-            oc_Newobject183["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject183["Expanded"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject183["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject183["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject183["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject183["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject183["Expanded"] = new Creator.StringNoQuote("false");
+            oc_Newobject183["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject183["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject183["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject182
 
@@ -4574,8 +4632,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject123
 
-            ObjectCreator oc_Newobject123 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject123 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject123["class"] = "AggregateControl";
             oc_Newobject123["position"] = "0 29";
             oc_Newobject123["Extent"] = "135 20";
@@ -4603,8 +4660,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject121["position"] = "25 2";
             oc_Newobject121["Extent"] = "68 15";
             oc_Newobject121["Command"] = "MaterialEditorGui.updateRotationOffset(true, true);";
-            oc_Newobject121["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationOffset(true, false);";
+            oc_Newobject121["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationOffset(true, false);";
             oc_Newobject121["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject121["ToolTip"] = "Change U Scroll Direction";
             oc_Newobject121["hovertime"] = "1000";
@@ -4637,8 +4693,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject127
 
-            ObjectCreator oc_Newobject127 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject127 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject127["class"] = "AggregateControl";
             oc_Newobject127["position"] = "0 50";
             oc_Newobject127["Extent"] = "135 20";
@@ -4666,8 +4721,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject125["position"] = "25 2";
             oc_Newobject125["Extent"] = "68 15";
             oc_Newobject125["Command"] = "MaterialEditorGui.updateRotationOffset(true, true);";
-            oc_Newobject125["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationOffset(true, false);";
+            oc_Newobject125["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationOffset(true, false);";
             oc_Newobject125["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject125["ToolTip"] = "Change V Scroll Direction";
             oc_Newobject125["hovertime"] = "1000";
@@ -4688,8 +4742,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject126["position"] = "98 0";
             oc_Newobject126["Extent"] = "34 18";
             oc_Newobject126["text"] = "0";
-            oc_Newobject126["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationOffset();";
+            oc_Newobject126["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationOffset();";
 
             #endregion
 
@@ -4719,7 +4772,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject131["VertSizing"] = "bottom";
             oc_Newobject131["position"] = "136 20";
             oc_Newobject131["Extent"] = "48 48";
-            oc_Newobject131["isContainer"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject131["isContainer"] = new Creator.StringNoQuote("true");
             oc_Newobject131["bitmap"] = "";
 
             #region GuiBitmapCtrl ()        oc_Newobject129
@@ -4756,8 +4809,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject135
 
-            ObjectCreator oc_Newobject135 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject135 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject135["class"] = "AggregateControl";
             oc_Newobject135["position"] = "0 70";
             oc_Newobject135["Extent"] = "187 20";
@@ -4791,8 +4843,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject133["canSave"] = "1";
             oc_Newobject133["Visible"] = "1";
             oc_Newobject133["Command"] = "MaterialEditorGui.updateRotationSpeed(true, true);";
-            oc_Newobject133["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationSpeed(true, false);";
+            oc_Newobject133["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationSpeed(true, false);";
             oc_Newobject133["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject133["ToolTip"] = "Scrolling Speed";
             oc_Newobject133["hovertime"] = "1000";
@@ -4819,8 +4870,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject134["MinExtent"] = "8 2";
             oc_Newobject134["canSave"] = "1";
             oc_Newobject134["Visible"] = "1";
-            oc_Newobject134["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationSpeed();";
+            oc_Newobject134["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateRotationSpeed();";
             oc_Newobject134["hovertime"] = "1000";
             oc_Newobject134["Margin"] = "0 0 0 0";
             oc_Newobject134["Padding"] = "0 0 0 0";
@@ -4889,8 +4939,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject141
 
-            ObjectCreator oc_Newobject141 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject141 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject141["class"] = "AggregateControl";
             oc_Newobject141["position"] = "0 29";
             oc_Newobject141["Extent"] = "135 20";
@@ -4918,8 +4967,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject139["position"] = "25 2";
             oc_Newobject139["Extent"] = "68 15";
             oc_Newobject139["Command"] = "MaterialEditorGui.updateScrollOffset(true, true);";
-            oc_Newobject139["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset(true, false);";
+            oc_Newobject139["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset(true, false);";
             oc_Newobject139["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject139["ToolTip"] = "Change U Scroll Direction";
             oc_Newobject139["hovertime"] = "1000";
@@ -4940,8 +4988,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject140["position"] = "98 0";
             oc_Newobject140["Extent"] = "34 18";
             oc_Newobject140["text"] = "0";
-            oc_Newobject140["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset();";
+            oc_Newobject140["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset();";
 
             #endregion
 
@@ -4953,8 +5000,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject145
 
-            ObjectCreator oc_Newobject145 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject145 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject145["class"] = "AggregateControl";
             oc_Newobject145["position"] = "0 50";
             oc_Newobject145["Extent"] = "135 20";
@@ -4982,8 +5028,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject143["position"] = "25 2";
             oc_Newobject143["Extent"] = "68 15";
             oc_Newobject143["Command"] = "MaterialEditorGui.updateScrollOffset(true, true);";
-            oc_Newobject143["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset(true, false);";
+            oc_Newobject143["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset(true, false);";
             oc_Newobject143["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject143["ToolTip"] = "Change V Scroll Direction";
             oc_Newobject143["hovertime"] = "1000";
@@ -5004,8 +5049,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject144["position"] = "98 0";
             oc_Newobject144["Extent"] = "34 18";
             oc_Newobject144["text"] = "0";
-            oc_Newobject144["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset();";
+            oc_Newobject144["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollOffset();";
 
             #endregion
 
@@ -5035,7 +5079,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject150["VertSizing"] = "bottom";
             oc_Newobject150["position"] = "136 20";
             oc_Newobject150["Extent"] = "48 48";
-            oc_Newobject150["isContainer"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject150["isContainer"] = new Creator.StringNoQuote("true");
             oc_Newobject150["bitmap"] = "";
 
             #region GuiBitmapCtrl ()        oc_Newobject147
@@ -5086,8 +5130,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject154
 
-            ObjectCreator oc_Newobject154 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject154 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject154["class"] = "AggregateControl";
             oc_Newobject154["position"] = "0 70";
             oc_Newobject154["Extent"] = "187 20";
@@ -5121,8 +5164,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject152["canSave"] = "1";
             oc_Newobject152["Visible"] = "1";
             oc_Newobject152["Command"] = "MaterialEditorGui.updateScrollSpeed(true, true);";
-            oc_Newobject152["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollSpeed(true, false);";
+            oc_Newobject152["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollSpeed(true, false);";
             oc_Newobject152["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject152["ToolTip"] = "Scrolling Speed";
             oc_Newobject152["hovertime"] = "1000";
@@ -5149,8 +5191,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject153["MinExtent"] = "8 2";
             oc_Newobject153["canSave"] = "1";
             oc_Newobject153["Visible"] = "1";
-            oc_Newobject153["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollSpeed();";
+            oc_Newobject153["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl);MaterialEditorGui.updateScrollSpeed();";
             oc_Newobject153["hovertime"] = "1000";
             oc_Newobject153["Margin"] = "0 0 0 0";
             oc_Newobject153["Padding"] = "0 0 0 0";
@@ -5306,8 +5347,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject166
 
-            ObjectCreator oc_Newobject166 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject166 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject166["class"] = "AggregateControl";
             oc_Newobject166["position"] = "0 61";
             oc_Newobject166["Extent"] = "187 20";
@@ -5341,8 +5381,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject164["MinExtent"] = "8 2";
             oc_Newobject164["canSave"] = "1";
             oc_Newobject164["Visible"] = "1";
-            oc_Newobject164["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveFreq();";
+            oc_Newobject164["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveFreq();";
             oc_Newobject164["hovertime"] = "1000";
             oc_Newobject164["Margin"] = "0 0 0 0";
             oc_Newobject164["Padding"] = "0 0 0 0";
@@ -5378,8 +5417,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject165["canSave"] = "1";
             oc_Newobject165["Visible"] = "1";
             oc_Newobject165["Command"] = "MaterialEditorGui.updateWaveFreq(true, true);";
-            oc_Newobject165["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveFreq(true, false);";
+            oc_Newobject165["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveFreq(true, false);";
             oc_Newobject165["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject165["ToolTip"] = "Changes Wave Frequency";
             oc_Newobject165["hovertime"] = "1000";
@@ -5397,8 +5435,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject170
 
-            ObjectCreator oc_Newobject170 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject170 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject170["class"] = "AggregateControl";
             oc_Newobject170["position"] = "0 40";
             oc_Newobject170["Extent"] = "187 20";
@@ -5426,8 +5463,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject168["VertSizing"] = "bottom";
             oc_Newobject168["position"] = "150 1";
             oc_Newobject168["Extent"] = "34 18";
-            oc_Newobject168["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveAmp();";
+            oc_Newobject168["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveAmp();";
             oc_Newobject168["hovertime"] = "1000";
             oc_Newobject168["text"] = "0";
 
@@ -5451,8 +5487,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject169["canSave"] = "1";
             oc_Newobject169["Visible"] = "1";
             oc_Newobject169["Command"] = "MaterialEditorGui.updateWaveAmp(true, true);";
-            oc_Newobject169["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveAmp(true, false);";
+            oc_Newobject169["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateWaveAmp(true, false);";
             oc_Newobject169["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject169["ToolTip"] = "Changes Wave Amplitude";
             oc_Newobject169["hovertime"] = "1000";
@@ -5501,8 +5536,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject176
 
-            ObjectCreator oc_Newobject176 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject176 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject176["class"] = "AggregateControl";
             oc_Newobject176["position"] = "0 21";
             oc_Newobject176["Extent"] = "187 20";
@@ -5536,8 +5570,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject174["MinExtent"] = "8 2";
             oc_Newobject174["canSave"] = "1";
             oc_Newobject174["Visible"] = "1";
-            oc_Newobject174["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceFPS();";
+            oc_Newobject174["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceFPS();";
             oc_Newobject174["hovertime"] = "1000";
             oc_Newobject174["Margin"] = "0 0 0 0";
             oc_Newobject174["Padding"] = "0 0 0 0";
@@ -5568,8 +5601,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject175["canSave"] = "1";
             oc_Newobject175["Visible"] = "1";
             oc_Newobject175["Command"] = "MaterialEditorGui.updateSequenceFPS(true, true);";
-            oc_Newobject175["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceFPS(true, false);";
+            oc_Newobject175["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceFPS(true, false);";
             oc_Newobject175["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject175["ToolTip"] = "How many frames to display per second.";
             oc_Newobject175["hovertime"] = "1000";
@@ -5587,8 +5619,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject180
 
-            ObjectCreator oc_Newobject180 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject180 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject180["class"] = "AggregateControl";
             oc_Newobject180["position"] = "0 42";
             oc_Newobject180["Extent"] = "187 20";
@@ -5616,8 +5647,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject178["VertSizing"] = "bottom";
             oc_Newobject178["position"] = "150 1";
             oc_Newobject178["Extent"] = "34 18";
-            oc_Newobject178["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceSSS();";
+            oc_Newobject178["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceSSS();";
             oc_Newobject178["hovertime"] = "1000";
             oc_Newobject178["text"] = "0";
 
@@ -5641,8 +5671,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject179["canSave"] = "1";
             oc_Newobject179["Visible"] = "1";
             oc_Newobject179["Command"] = "MaterialEditorGui.updateSequenceSSS(true, true);";
-            oc_Newobject179["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceSSS(true, false);";
+            oc_Newobject179["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateSequenceSSS(true, false);";
             oc_Newobject179["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject179["ToolTip"] = "How many frames in the sequence.";
             oc_Newobject179["hovertime"] = "1000";
@@ -5674,7 +5703,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             ObjectCreator oc_Newobject211 = new ObjectCreator("GuiRolloutCtrl", "materialAdvancedPropertiesRollout");
             oc_Newobject211["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject211["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject211["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject211["Profile"] = "GuiRolloutProfile";
             oc_Newobject211["HorizSizing"] = "width";
             oc_Newobject211["VertSizing"] = "bottom";
@@ -5682,10 +5711,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject211["Extent"] = "202 0";
             oc_Newobject211["Caption"] = "Advanced (all layers)";
             oc_Newobject211["Margin"] = "4 4 4 0";
-            oc_Newobject211["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject211["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject211["parentRollout"] = new ObjectCreator.StringNoQuote("%this.rollout");
-            oc_Newobject211["object"] = new ObjectCreator.StringNoQuote("%behavior");
+            oc_Newobject211["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject211["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject211["parentRollout"] = new Creator.StringNoQuote("%this.rollout");
+            oc_Newobject211["object"] = new Creator.StringNoQuote("%behavior");
 
             #region GuiStackControl ()        oc_Newobject210
 
@@ -5728,8 +5757,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject184["MinExtent"] = "8 2";
             oc_Newobject184["canSave"] = "1";
             oc_Newobject184["Visible"] = "1";
-            oc_Newobject184["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"translucentBlendOp\\\",$ThisControl.getValue());";
+            oc_Newobject184["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"translucentBlendOp\\\",$ThisControl.getValue());";
             oc_Newobject184["ToolTip"] = "Determines the type of blending to be applied on the transparent object.";
             oc_Newobject184["hovertime"] = "1000";
             oc_Newobject184["Margin"] = "0 0 0 0";
@@ -5764,11 +5792,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject185["MinExtent"] = "8 2";
             oc_Newobject185["canSave"] = "1";
             oc_Newobject185["Visible"] = "1";
-            oc_Newobject185["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"alphaTest\\\",$ThisControl.getValue());";
+            oc_Newobject185["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"alphaTest\\\",$ThisControl.getValue());";
             oc_Newobject185["tooltipprofile"] = "ToolsGuiDefaultProfile";
-            oc_Newobject185["ToolTip"] =
-                "When enabled, caused pixels under a specific alpha threshold to get discarded rather than be computed. Only valid for transparent objects.";
+            oc_Newobject185["ToolTip"] = "When enabled, caused pixels under a specific alpha threshold to get discarded rather than be computed. Only valid for transparent objects.";
             oc_Newobject185["hovertime"] = "1000";
             oc_Newobject185["text"] = "Alpha Threshold";
             oc_Newobject185["groupNum"] = "-1";
@@ -5782,8 +5808,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
 
             #region GuiControl ()        oc_Newobject188
 
-            ObjectCreator oc_Newobject188 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject188 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject188["class"] = "AggregateControl";
             oc_Newobject188["HorizSizing"] = "width";
             oc_Newobject188["position"] = "100 39";
@@ -5804,13 +5829,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject186["MinExtent"] = "8 2";
             oc_Newobject186["canSave"] = "1";
             oc_Newobject186["Visible"] = "1";
-            oc_Newobject186["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"alphaRef\\\",$ThisControl.getValue(), true, true );";
-            oc_Newobject186["AltCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"alphaRef\\\",$ThisControl.getValue(), true, false );";
+            oc_Newobject186["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"alphaRef\\\",$ThisControl.getValue(), true, true );";
+            oc_Newobject186["AltCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"alphaRef\\\",$ThisControl.getValue(), true, false );";
             oc_Newobject186["tooltipprofile"] = "ToolsGuiDefaultProfile";
-            oc_Newobject186["ToolTip"] =
-                "Sets the minimum transparency value that a pixel must have to be calculated. Anything below this value will simply not be rendered at all.";
+            oc_Newobject186["ToolTip"] = "Sets the minimum transparency value that a pixel must have to be calculated. Anything below this value will simply not be rendered at all.";
             oc_Newobject186["hovertime"] = "1000";
             oc_Newobject186["range"] = "0 255";
             oc_Newobject186["ticks"] = "0";
@@ -5835,8 +5857,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject187["MinExtent"] = "8 2";
             oc_Newobject187["canSave"] = "1";
             oc_Newobject187["Visible"] = "1";
-            oc_Newobject187["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"alphaRef\\\",$ThisControl.getValue());";
+            oc_Newobject187["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); MaterialEditorGui.updateActiveMaterial(\\\"alphaRef\\\",$ThisControl.getValue());";
             oc_Newobject187["hovertime"] = "1000";
             oc_Newobject187["Margin"] = "0 0 0 0";
             oc_Newobject187["Padding"] = "0 0 0 0";
@@ -5870,11 +5891,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject189["MinExtent"] = "8 2";
             oc_Newobject189["canSave"] = "1";
             oc_Newobject189["Visible"] = "1";
-            oc_Newobject189["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"translucentZWrite\\\",$ThisControl.getValue());";
+            oc_Newobject189["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"translucentZWrite\\\",$ThisControl.getValue());";
             oc_Newobject189["tooltipprofile"] = "ToolsGuiDefaultProfile";
-            oc_Newobject189["ToolTip"] =
-                "Can be used to help force a proper Z-Ordering when Z-Ordering issues occur. Only valid for materials with Transparency.";
+            oc_Newobject189["ToolTip"] = "Can be used to help force a proper Z-Ordering when Z-Ordering issues occur. Only valid for materials with Transparency.";
             oc_Newobject189["hovertime"] = "1000";
             oc_Newobject189["text"] = "Transparent Z-Write";
             oc_Newobject189["groupNum"] = "-1";
@@ -5901,8 +5920,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject190["MinExtent"] = "8 2";
             oc_Newobject190["canSave"] = "1";
             oc_Newobject190["Visible"] = "1";
-            oc_Newobject190["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"translucent\\\",$ThisControl.getValue());";
+            oc_Newobject190["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"translucent\\\",$ThisControl.getValue());";
             oc_Newobject190["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject190["ToolTip"] = "Sets material to use transparent blending modes.";
             oc_Newobject190["hovertime"] = "1000";
@@ -5931,8 +5949,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject191["MinExtent"] = "8 2";
             oc_Newobject191["canSave"] = "1";
             oc_Newobject191["Visible"] = "1";
-            oc_Newobject191["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"castShadows\\\", $ThisControl.getValue());";
+            oc_Newobject191["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"castShadows\\\", $ThisControl.getValue());";
             oc_Newobject191["tooltipprofile"] = "ToolsGuiDefaultProfile";
             oc_Newobject191["ToolTip"] = "Alows object to cast shadows.";
             oc_Newobject191["hovertime"] = "1000";
@@ -5961,11 +5978,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject192["MinExtent"] = "8 2";
             oc_Newobject192["canSave"] = "1";
             oc_Newobject192["Visible"] = "1";
-            oc_Newobject192["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"doubleSided\\\",$ThisControl.getValue());";
+            oc_Newobject192["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"doubleSided\\\",$ThisControl.getValue());";
             oc_Newobject192["tooltipprofile"] = "ToolsGuiDefaultProfile";
-            oc_Newobject192["ToolTip"] =
-                "Determines if this material will be rendered from both sides of the polygon, or just the \'front facing\' side. ";
+            oc_Newobject192["ToolTip"] = "Determines if this material will be rendered from both sides of the polygon, or just the \'front facing\' side. ";
             oc_Newobject192["hovertime"] = "1000";
             oc_Newobject192["text"] = "Double Sided";
             oc_Newobject192["groupNum"] = "-1";
@@ -6135,8 +6150,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject201["profile"] = "GuiInspectorSwatchButtonProfile";
             oc_Newobject201["visible"] = "1";
             oc_Newobject201["active"] = "1";
-            oc_Newobject201["command"] =
-                "getColorF(materialEd_previewMaterial.effectColor[0], \\\"MaterialEditorGui.updateEffectColor0\\\");";
+            oc_Newobject201["command"] = "getColorF(materialEd_previewMaterial.effectColor[0], \\\"MaterialEditorGui.updateEffectColor0\\\");";
             oc_Newobject201["tooltipProfile"] = "ToolsGuiToolTipProfile";
             oc_Newobject201["hovertime"] = "1000";
             oc_Newobject201["isContainer"] = "0";
@@ -6161,8 +6175,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject202["profile"] = "GuiInspectorSwatchButtonProfile";
             oc_Newobject202["visible"] = "1";
             oc_Newobject202["active"] = "1";
-            oc_Newobject202["command"] =
-                "getColorF(materialEd_previewMaterial.effectColor[1], \\\"MaterialEditorGui.updateEffectColor1\\\");";
+            oc_Newobject202["command"] = "getColorF(materialEd_previewMaterial.effectColor[1], \\\"MaterialEditorGui.updateEffectColor1\\\");";
             oc_Newobject202["tooltipProfile"] = "ToolsGuiToolTipProfile";
             oc_Newobject202["hovertime"] = "1000";
             oc_Newobject202["isContainer"] = "0";
@@ -6187,8 +6200,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject203["profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject203["visible"] = "1";
             oc_Newobject203["active"] = "1";
-            oc_Newobject203["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"showFootprints\\\", $ThisControl.getValue());";
+            oc_Newobject203["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"showFootprints\\\", $ThisControl.getValue());";
             oc_Newobject203["tooltipProfile"] = "ToolsGuiDefaultProfile";
             oc_Newobject203["tooltip"] = "Enables Player footprints on surfaces that use this Material.";
             oc_Newobject203["hovertime"] = "1000";
@@ -6214,8 +6226,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject204["profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject204["visible"] = "1";
             oc_Newobject204["active"] = "1";
-            oc_Newobject204["Command"] =
-                "MaterialEditorGui.updateActiveMaterial(\\\"showDust\\\", $ThisControl.getValue());";
+            oc_Newobject204["Command"] = "MaterialEditorGui.updateActiveMaterial(\\\"showDust\\\", $ThisControl.getValue());";
             oc_Newobject204["tooltipProfile"] = "ToolsGuiDefaultProfile";
             oc_Newobject204["tooltip"] = "Enables dust particles on surfaces that use this Material.";
             oc_Newobject204["hovertime"] = "1000";
@@ -6261,8 +6272,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject206["profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject206["visible"] = "1";
             oc_Newobject206["active"] = "1";
-            oc_Newobject206["command"] =
-                "MaterialEditorGui.updateBehaviorSound(\\\"Footstep\\\", $ThisControl.getText());";
+            oc_Newobject206["command"] = "MaterialEditorGui.updateBehaviorSound(\\\"Footstep\\\", $ThisControl.getText());";
             oc_Newobject206["tooltipProfile"] = "ToolsGuiToolTipProfile";
             oc_Newobject206["tooltip"] = "Determines the footstep sound to use when the Player walks on this Material.";
             oc_Newobject206["hovertime"] = "1000";
@@ -6308,11 +6318,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             oc_Newobject208["profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject208["visible"] = "1";
             oc_Newobject208["active"] = "1";
-            oc_Newobject208["command"] =
-                "MaterialEditorGui.updateBehaviorSound(\\\"Impact\\\", $ThisControl.getText());";
+            oc_Newobject208["command"] = "MaterialEditorGui.updateBehaviorSound(\\\"Impact\\\", $ThisControl.getText());";
             oc_Newobject208["tooltipProfile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject208["tooltip"] =
-                "Determines the impact sound to use when an object collides with this Material.";
+            oc_Newobject208["tooltip"] = "Determines the impact sound to use when an object collides with this Material.";
             oc_Newobject208["hovertime"] = "1000";
             oc_Newobject208["isContainer"] = "0";
             oc_Newobject208["internalName"] = "impactSoundPopUp";
@@ -6969,22 +6977,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
             #endregion
 
             oc_Newobject239.Create();
-            }
+        }
 
         [ConsoleInteraction]
         public override void onPopWindow()
-            {
+        {
             EditorGui.DeactivateAll();
             ((WorldEditorPlugin) "MaterialEditorPlugin").onActivated();
-            }
+        }
 
         [ConsoleInteraction]
         public override void onPopWindowClosed()
-            {
+        {
             EditorGui.DeactivateAll();
             ((WorldEditorPlugin) "MaterialEditorPlugin").onActivated();
             this.attachTo("MaterialEditorPropertiesWindow");
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -6995,18 +7003,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(MaterialEditorPropertiesWindow ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -7014,9 +7022,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -7025,12 +7033,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(MaterialEditorPropertiesWindow ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -7038,9 +7045,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(MaterialEditorPropertiesWindow ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -7048,12 +7055,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator MaterialEditorPropertiesWindow(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-            return
-                (MaterialEditorPropertiesWindow)
-                    Omni.self.getSimObject(simobjectid, typeof (MaterialEditorPropertiesWindow));
-            }
+            return (MaterialEditorPropertiesWindow) Omni.self.getSimObject(simobjectid, typeof (MaterialEditorPropertiesWindow));
+        }
 
         /// <summary>
         /// 
@@ -7061,9 +7066,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(MaterialEditorPropertiesWindow ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -7071,11 +7076,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator MaterialEditorPropertiesWindow(int simobjectid)
-            {
-            return
-                (MaterialEditorPropertiesWindow)
-                    Omni.self.getSimObject((uint) simobjectid, typeof (MaterialEditorPropertiesWindow));
-            }
+        {
+            return (MaterialEditorPropertiesWindow) Omni.self.getSimObject((uint) simobjectid, typeof (MaterialEditorPropertiesWindow));
+        }
 
         /// <summary>
         /// 
@@ -7083,21 +7086,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(MaterialEditorPropertiesWindow ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator MaterialEditorPropertiesWindow(uint simobjectid)
-            {
-            return
-                (MaterialEditorPropertiesWindow)
-                    Omni.self.getSimObject(simobjectid, typeof (MaterialEditorPropertiesWindow));
-            }
+        {
+            return (MaterialEditorPropertiesWindow) Omni.self.getSimObject(simobjectid, typeof (MaterialEditorPropertiesWindow));
+        }
 
         #endregion
-        }
     }
+}

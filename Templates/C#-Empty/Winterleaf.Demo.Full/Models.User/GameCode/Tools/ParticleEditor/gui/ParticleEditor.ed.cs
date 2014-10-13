@@ -1,10 +1,44 @@
-﻿using System;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.CodeBehind;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
@@ -12,15 +46,14 @@ using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<ParticleEditor>))]
     public class ParticleEditor : ScriptObject
-        {
-        
+    {
 
         [ConsoleInteraction(true, "ParticleEditor_initialize")]
         public static void initialize()
-            {
+        {
             omni.sGlobal["$PE_guielement_pos_single_container"] = "0 0";
             omni.sGlobal["$PE_guielement_ext_single_container"] = "184 20";
             omni.sGlobal["$PE_guielement_pos_name"] = "1 0";
@@ -45,9 +78,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject243["Enabled"] = "1";
             oc_Newobject243["isContainer"] = "1";
             oc_Newobject243["Profile"] = "ToolsGuiWindowProfile";
-            oc_Newobject243["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord($pref::Video::mode) - 209      SPC getWord(EditorGuiToolbar.extent, 1) -1");
+            oc_Newobject243["Position"] = new Creator.StringNoQuote("firstWord($pref::Video::mode) - 209      SPC getWord(EditorGuiToolbar.extent, 1) -1");
             oc_Newobject243["Extent"] = "210 696";
             oc_Newobject243["MinExtent"] = "210 140";
             oc_Newobject243["HorizSizing"] = "windowRelative";
@@ -100,8 +131,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiTabPageCtrl (PE_EmitterEditor)        oc_Newobject127
 
-            ObjectCreator oc_Newobject127 = new ObjectCreator("GuiTabPageCtrl", "PE_EmitterEditor",
-                typeof (ParticleEmitterEditor.PE_EmitterEditor));
+            ObjectCreator oc_Newobject127 = new ObjectCreator("GuiTabPageCtrl", "PE_EmitterEditor", typeof (ParticleEmitterEditor.PE_EmitterEditor));
             oc_Newobject127["canSaveDynamicFields"] = "0";
             oc_Newobject127["Enabled"] = "1";
             oc_Newobject127["isContainer"] = "1";
@@ -141,7 +171,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject126["willFirstRespond"] = "1";
             oc_Newobject126["hScrollBar"] = "alwaysOff";
             oc_Newobject126["vScrollBar"] = "dynamic";
-            oc_Newobject126["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject126["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject126["lockVertScroll"] = "false";
             oc_Newobject126["constantThumbHeight"] = "0";
             oc_Newobject126["childMargin"] = "0 0";
@@ -170,13 +200,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl (PEE_EmitterSelector_Control)        oc_Newobject6
 
-            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiControl", "PEE_EmitterSelector_Control",
-                typeof (ParticleEmitterEditor.PEE_EmitterSelector_Control));
+            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiControl", "PEE_EmitterSelector_Control", typeof (ParticleEmitterEditor.PEE_EmitterSelector_Control));
             //oc_Newobject6["class"] = "QuickEditDropDownTextEditCtrl";
             oc_Newobject6["isContainer"] = "1";
             oc_Newobject6["HorizSizing"] = "width";
             oc_Newobject6["VertSizing"] = "bottom";
-            oc_Newobject6["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject6["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
             oc_Newobject6["Extent"] = "197 26";
 
             #region GuiPopUpMenuCtrl (PEE_EmitterSelector)        oc_Newobject1
@@ -194,8 +223,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject1["MinExtent"] = "8 2";
             oc_Newobject1["canSave"] = "1";
             oc_Newobject1["Visible"] = "1";
-            oc_Newobject1["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.onNewEmitter();";
+            oc_Newobject1["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.onNewEmitter();";
             oc_Newobject1["hovertime"] = "1000";
             oc_Newobject1["Margin"] = "0 0 0 0";
             oc_Newobject1["Padding"] = "0 0 0 0";
@@ -289,9 +317,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject4["buttonType"] = "PushButton";
             oc_Newobject4["useMouseEvents"] = "0";
             oc_Newobject4["bitmap"] = "tools/gui/images/save-icon";
-            oc_Newobject4["command"] =
-                new ObjectCreator.StringNoQuote(
-                    "\"PE_EmitterEditor.saveEmitter( \" @ PE_EmitterEditor.currEmitter @ \" ); PE_ParticleEditor.saveParticle( PE_ParticleEditor.currParticle );\"");
+            oc_Newobject4["command"] = new Creator.StringNoQuote("\"PE_EmitterEditor.saveEmitter( \" @ PE_EmitterEditor.currEmitter @ \" ); PE_ParticleEditor.saveParticle( PE_ParticleEditor.currParticle );\"");
             oc_Newobject4["tooltip"] = "Save Current Emitter";
 
             #endregion
@@ -332,7 +358,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject29 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject29["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject29["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject29["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject29["Profile"] = "GuiRolloutProfile";
             oc_Newobject29["HorizSizing"] = "width";
             oc_Newobject29["VertSizing"] = "bottom";
@@ -340,10 +366,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject29["Extent"] = "197 0";
             oc_Newobject29["Caption"] = "Basic";
             oc_Newobject29["Margin"] = "4 4 4 0";
-            oc_Newobject29["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject29["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject29["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject29["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject29["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject29["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject29["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject29["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject28
 
@@ -369,14 +395,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject10
 
-            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             oc_Newobject10["isContainer"] = "1";
             //oc_Newobject10["class"] = "AggregateControl";
             oc_Newobject10["HorizSizing"] = "width";
             oc_Newobject10["VertSizing"] = "bottom";
-            oc_Newobject10["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject10["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject10["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject10["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject7
 
@@ -387,8 +412,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject7["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject7["HorizSizing"] = "width";
             oc_Newobject7["VertSizing"] = "bottom";
-            oc_Newobject7["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject7["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject7["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject7["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject7["MinExtent"] = "8 2";
             oc_Newobject7["canSave"] = "1";
             oc_Newobject7["Visible"] = "1";
@@ -416,15 +441,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject8["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject8["HorizSizing"] = "left";
             oc_Newobject8["VertSizing"] = "bottom";
-            oc_Newobject8["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject8["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject8["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject8["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject8["MinExtent"] = "8 2";
             oc_Newobject8["canSave"] = "1";
             oc_Newobject8["Visible"] = "1";
-            oc_Newobject8["Command"] =
-                "PE_EmitterEditor.updateLifeFields( false, $ThisControl.getValue(), true, true );";
-            oc_Newobject8["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( false, $ThisControl.getValue(), true, false );";
+            oc_Newobject8["Command"] = "PE_EmitterEditor.updateLifeFields( false, $ThisControl.getValue(), true, true );";
+            oc_Newobject8["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( false, $ThisControl.getValue(), true, false );";
             oc_Newobject8["hovertime"] = "1000";
             oc_Newobject8["range"] = "0 1000";
             oc_Newobject8["ticks"] = "0";
@@ -441,10 +464,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject9["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject9["HorizSizing"] = "left";
             oc_Newobject9["VertSizing"] = "bottom";
-            oc_Newobject9["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( false, $ThisControl.getValue() );";
-            oc_Newobject9["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject9["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject9["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( false, $ThisControl.getValue() );";
+            oc_Newobject9["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject9["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
 
             #endregion
 
@@ -456,14 +478,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject14
 
-            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             oc_Newobject14["isContainer"] = "1";
             // oc_Newobject14["class"] = "AggregateControl";
             oc_Newobject14["HorizSizing"] = "width";
             oc_Newobject14["VertSizing"] = "bottom";
-            oc_Newobject14["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject14["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject14["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject14["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject11
 
@@ -474,8 +495,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject11["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject11["HorizSizing"] = "width";
             oc_Newobject11["VertSizing"] = "bottom";
-            oc_Newobject11["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject11["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject11["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject11["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject11["MinExtent"] = "8 2";
             oc_Newobject11["canSave"] = "1";
             oc_Newobject11["Visible"] = "1";
@@ -503,15 +524,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject12["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject12["HorizSizing"] = "left";
             oc_Newobject12["VertSizing"] = "bottom";
-            oc_Newobject12["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject12["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject12["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject12["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject12["MinExtent"] = "8 2";
             oc_Newobject12["canSave"] = "1";
             oc_Newobject12["Visible"] = "1";
-            oc_Newobject12["Command"] =
-                "PE_EmitterEditor.updateLifeFields( true, $ThisControl.getValue(), true, true );";
-            oc_Newobject12["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( true, $ThisControl.getValue(), true, false );";
+            oc_Newobject12["Command"] = "PE_EmitterEditor.updateLifeFields( true, $ThisControl.getValue(), true, true );";
+            oc_Newobject12["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( true, $ThisControl.getValue(), true, false );";
             oc_Newobject12["hovertime"] = "1000";
             oc_Newobject12["range"] = "0 1000";
             oc_Newobject12["ticks"] = "0";
@@ -528,10 +547,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject13["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject13["HorizSizing"] = "left";
             oc_Newobject13["VertSizing"] = "bottom";
-            oc_Newobject13["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject13["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject13["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( true, $ThisControl.getValue() );";
+            oc_Newobject13["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject13["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject13["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateLifeFields( true, $ThisControl.getValue() );";
 
             #endregion
 
@@ -547,8 +565,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject17["isContainer"] = "1";
             oc_Newobject17["HorizSizing"] = "width";
             oc_Newobject17["VertSizing"] = "bottom";
-            oc_Newobject17["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject17["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject17["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject17["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject15
 
@@ -556,8 +574,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject15["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject15["HorizSizing"] = "width";
             oc_Newobject15["VertSizing"] = "bottom";
-            oc_Newobject15["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject15["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject15["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject15["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject15["text"] = "Infinite Loop";
 
             #endregion
@@ -571,8 +589,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject16["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject16["HorizSizing"] = "left";
             oc_Newobject16["VertSizing"] = "bottom";
-            oc_Newobject16["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject16["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject16["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject16["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject16["Command"] = "PE_EmitterEditor.updateLifeFieldsInfiniteLoop();";
             oc_Newobject16["text"] = "";
 
@@ -610,14 +628,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject23
 
-            ObjectCreator oc_Newobject23 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject23 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject23["class"] = "AggregateControl";
             oc_Newobject23["isContainer"] = "1";
             oc_Newobject23["HorizSizing"] = "width";
             oc_Newobject23["VertSizing"] = "bottom";
-            oc_Newobject23["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject23["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject23["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject23["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject20
 
@@ -625,8 +642,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject20["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject20["HorizSizing"] = "width";
             oc_Newobject20["VertSizing"] = "bottom";
-            oc_Newobject20["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject20["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject20["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject20["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject20["text"] = "Amount";
 
             #endregion
@@ -643,15 +660,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject21["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject21["HorizSizing"] = "left";
             oc_Newobject21["VertSizing"] = "bottom";
-            oc_Newobject21["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject21["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject21["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject21["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject21["MinExtent"] = "8 2";
             oc_Newobject21["canSave"] = "1";
             oc_Newobject21["Visible"] = "1";
-            oc_Newobject21["Command"] =
-                "PE_EmitterEditor.updateAmountFields( false, $ThisControl.getValue(), true, true );";
-            oc_Newobject21["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( false, $ThisControl.getValue(), true, false );";
+            oc_Newobject21["Command"] = "PE_EmitterEditor.updateAmountFields( false, $ThisControl.getValue(), true, true );";
+            oc_Newobject21["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( false, $ThisControl.getValue(), true, false );";
             oc_Newobject21["hovertime"] = "1000";
             oc_Newobject21["range"] = "1 1000";
             oc_Newobject21["ticks"] = "0";
@@ -668,10 +683,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject22["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject22["HorizSizing"] = "left";
             oc_Newobject22["VertSizing"] = "bottom";
-            oc_Newobject22["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject22["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject22["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( false, $ThisControl.getValue() );";
+            oc_Newobject22["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject22["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject22["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( false, $ThisControl.getValue() );";
 
             #endregion
 
@@ -683,14 +697,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject27
 
-            ObjectCreator oc_Newobject27 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject27 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject27["class"] = "AggregateControl";
             oc_Newobject27["isContainer"] = "1";
             oc_Newobject27["HorizSizing"] = "width";
             oc_Newobject27["VertSizing"] = "bottom";
-            oc_Newobject27["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject27["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject27["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject27["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject24
 
@@ -698,8 +711,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject24["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject24["HorizSizing"] = "width";
             oc_Newobject24["VertSizing"] = "bottom";
-            oc_Newobject24["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject24["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject24["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject24["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject24["text"] = "Amount Random";
 
             #endregion
@@ -716,15 +729,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject25["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject25["HorizSizing"] = "left";
             oc_Newobject25["VertSizing"] = "bottom";
-            oc_Newobject25["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject25["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject25["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject25["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject25["MinExtent"] = "8 2";
             oc_Newobject25["canSave"] = "1";
             oc_Newobject25["Visible"] = "1";
-            oc_Newobject25["Command"] =
-                "PE_EmitterEditor.updateAmountFields( true, $ThisControl.getValue(), true, true );";
-            oc_Newobject25["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( true, $ThisControl.getValue(), true, false );";
+            oc_Newobject25["Command"] = "PE_EmitterEditor.updateAmountFields( true, $ThisControl.getValue(), true, true );";
+            oc_Newobject25["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( true, $ThisControl.getValue(), true, false );";
             oc_Newobject25["hovertime"] = "1000";
             oc_Newobject25["range"] = "0 999";
             oc_Newobject25["ticks"] = "0";
@@ -741,10 +752,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject26["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject26["HorizSizing"] = "left";
             oc_Newobject26["VertSizing"] = "bottom";
-            oc_Newobject26["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject26["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject26["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( true, $ThisControl.getValue() );";
+            oc_Newobject26["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject26["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject26["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateAmountFields( true, $ThisControl.getValue() );";
 
             #endregion
 
@@ -766,7 +776,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject50 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject50["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject50["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject50["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject50["Profile"] = "GuiRolloutProfile";
             oc_Newobject50["HorizSizing"] = "width";
             oc_Newobject50["VertSizing"] = "bottom";
@@ -774,10 +784,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject50["Extent"] = "197 0";
             oc_Newobject50["Caption"] = "Motion";
             oc_Newobject50["Margin"] = "4 4 4 0";
-            oc_Newobject50["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject50["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject50["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject50["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject50["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject50["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject50["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject50["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject49
 
@@ -803,14 +813,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject33
 
-            ObjectCreator oc_Newobject33 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject33 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             // oc_Newobject33["class"] = "AggregateControl";
             oc_Newobject33["isContainer"] = "1";
             oc_Newobject33["HorizSizing"] = "width";
             oc_Newobject33["VertSizing"] = "bottom";
-            oc_Newobject33["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject33["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject33["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject33["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject30
 
@@ -818,8 +827,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject30["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject30["HorizSizing"] = "width";
             oc_Newobject30["VertSizing"] = "bottom";
-            oc_Newobject30["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject30["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject30["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject30["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject30["text"] = "Speed";
 
             #endregion
@@ -836,15 +845,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject31["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject31["HorizSizing"] = "left";
             oc_Newobject31["VertSizing"] = "bottom";
-            oc_Newobject31["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject31["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject31["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject31["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject31["MinExtent"] = "8 2";
             oc_Newobject31["canSave"] = "1";
             oc_Newobject31["Visible"] = "1";
-            oc_Newobject31["Command"] =
-                "PE_EmitterEditor.updateSpeedFields( false, $ThisControl.getValue(), true, true );";
-            oc_Newobject31["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( false, $ThisControl.getValue(), true, false );";
+            oc_Newobject31["Command"] = "PE_EmitterEditor.updateSpeedFields( false, $ThisControl.getValue(), true, true );";
+            oc_Newobject31["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( false, $ThisControl.getValue(), true, false );";
             oc_Newobject31["hovertime"] = "1000";
             oc_Newobject31["range"] = "0 100";
             oc_Newobject31["ticks"] = "0";
@@ -861,10 +868,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject32["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject32["HorizSizing"] = "left";
             oc_Newobject32["VertSizing"] = "bottom";
-            oc_Newobject32["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject32["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject32["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( false, $ThisControl.getValue() );";
+            oc_Newobject32["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject32["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject32["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( false, $ThisControl.getValue() );";
 
             #endregion
 
@@ -876,14 +882,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject37
 
-            ObjectCreator oc_Newobject37 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject37 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject37["class"] = "AggregateControl";
             oc_Newobject37["isContainer"] = "1";
             oc_Newobject37["HorizSizing"] = "width";
             oc_Newobject37["VertSizing"] = "bottom";
-            oc_Newobject37["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject37["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject37["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject37["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject34
 
@@ -891,8 +896,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject34["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject34["HorizSizing"] = "width";
             oc_Newobject34["VertSizing"] = "bottom";
-            oc_Newobject34["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject34["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject34["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject34["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject34["text"] = "Speed Random";
 
             #endregion
@@ -909,15 +914,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject35["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject35["HorizSizing"] = "left";
             oc_Newobject35["VertSizing"] = "bottom";
-            oc_Newobject35["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject35["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject35["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject35["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject35["MinExtent"] = "8 2";
             oc_Newobject35["canSave"] = "1";
             oc_Newobject35["Visible"] = "1";
-            oc_Newobject35["Command"] =
-                "PE_EmitterEditor.updateSpeedFields( true, $ThisControl.getValue(), true, true );";
-            oc_Newobject35["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( true, $ThisControl.getValue(), true, false );";
+            oc_Newobject35["Command"] = "PE_EmitterEditor.updateSpeedFields( true, $ThisControl.getValue(), true, true );";
+            oc_Newobject35["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( true, $ThisControl.getValue(), true, false );";
             oc_Newobject35["hovertime"] = "1000";
             oc_Newobject35["range"] = "0 100";
             oc_Newobject35["ticks"] = "0";
@@ -934,10 +937,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject36["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject36["HorizSizing"] = "left";
             oc_Newobject36["VertSizing"] = "bottom";
-            oc_Newobject36["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject36["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject36["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( true, $ThisControl.getValue() );";
+            oc_Newobject36["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject36["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject36["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateSpeedFields( true, $ThisControl.getValue() );";
 
             #endregion
 
@@ -977,8 +979,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject42["isContainer"] = "1";
             oc_Newobject42["HorizSizing"] = "width";
             oc_Newobject42["VertSizing"] = "bottom";
-            oc_Newobject42["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject42["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject42["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject42["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject40
 
@@ -986,8 +988,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject40["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject40["HorizSizing"] = "width";
             oc_Newobject40["VertSizing"] = "bottom";
-            oc_Newobject40["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject40["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject40["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject40["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject40["text"] = "Orient to Movment Direction";
 
             #endregion
@@ -1001,11 +1003,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject41["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject41["HorizSizing"] = "left";
             oc_Newobject41["VertSizing"] = "bottom";
-            oc_Newobject41["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject41["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject41["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject41["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject41["text"] = "";
-            oc_Newobject41["command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"orientParticles\\\", $ThisControl.getValue());";
+            oc_Newobject41["command"] = "PE_EmitterEditor.updateEmitter( \\\"orientParticles\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -1021,8 +1022,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject45["isContainer"] = "1";
             oc_Newobject45["HorizSizing"] = "width";
             oc_Newobject45["VertSizing"] = "bottom";
-            oc_Newobject45["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject45["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject45["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject45["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject43
 
@@ -1030,8 +1031,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject43["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject43["HorizSizing"] = "width";
             oc_Newobject43["VertSizing"] = "bottom";
-            oc_Newobject43["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject43["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject43["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject43["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject43["text"] = "Align to a Direction";
 
             #endregion
@@ -1045,11 +1046,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject44["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject44["HorizSizing"] = "left";
             oc_Newobject44["VertSizing"] = "bottom";
-            oc_Newobject44["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject44["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject44["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject44["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject44["text"] = "";
-            oc_Newobject44["command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"alignParticles\\\", $ThisControl.getValue());";
+            oc_Newobject44["command"] = "PE_EmitterEditor.updateEmitter( \\\"alignParticles\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -1065,8 +1065,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject48["isContainer"] = "1";
             oc_Newobject48["HorizSizing"] = "width";
             oc_Newobject48["VertSizing"] = "bottom";
-            oc_Newobject48["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject48["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject48["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject48["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject46
 
@@ -1074,8 +1074,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject46["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject46["HorizSizing"] = "width";
             oc_Newobject46["VertSizing"] = "bottom";
-            oc_Newobject46["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject46["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject46["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject46["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject46["text"] = "Align Direction";
 
             #endregion
@@ -1089,11 +1089,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject47["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject47["HorizSizing"] = "left";
             oc_Newobject47["VertSizing"] = "bottom";
-            oc_Newobject47["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_textedit");
-            oc_Newobject47["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_textedit");
+            oc_Newobject47["position"] = new Creator.StringNoQuote("$PE_guielement_pos_textedit");
+            oc_Newobject47["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_textedit");
             oc_Newobject47["text"] = "0  0  0";
-            oc_Newobject47["altCommand"] =
-                "PE_EmitterEditor.updateEmitter( \\\"alignDirection\\\", $ThisControl.getText());";
+            oc_Newobject47["altCommand"] = "PE_EmitterEditor.updateEmitter( \\\"alignDirection\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -1115,7 +1114,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject80 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject80["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject80["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject80["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject80["Profile"] = "GuiRolloutProfile";
             oc_Newobject80["HorizSizing"] = "width";
             oc_Newobject80["VertSizing"] = "bottom";
@@ -1123,10 +1122,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject80["Extent"] = "197 0";
             oc_Newobject80["Caption"] = "Spread";
             oc_Newobject80["Margin"] = "4 4 4 0";
-            oc_Newobject80["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject80["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject80["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject80["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject80["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject80["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject80["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject80["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject79
 
@@ -1152,21 +1151,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject59
 
-            ObjectCreator oc_Newobject59 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject59 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             oc_Newobject59["isContainer"] = "1";
             //oc_Newobject59["class"] = "AggregateControl";
             oc_Newobject59["HorizSizing"] = "width";
             oc_Newobject59["VertSizing"] = "bottom";
-            oc_Newobject59["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject59["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject59["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject59["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiBitmapCtrl ()        oc_Newobject51
 
             ObjectCreator oc_Newobject51 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject51["HorizSizing"] = "left";
-            oc_Newobject51["position"] =
-                new ObjectCreator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+4 SPC \"0\"");
+            oc_Newobject51["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+4 SPC \"0\"");
             oc_Newobject51["Extent"] = "2 18";
             oc_Newobject51["minExtent"] = "0 0";
             oc_Newobject51["bitmap"] = "tools/gui/images/separator-h";
@@ -1180,9 +1177,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject52 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject52["HorizSizing"] = "left";
-            oc_Newobject52["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/4)+1 SPC \"0\"");
+            oc_Newobject52["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/4)+1 SPC \"0\"");
             oc_Newobject52["Extent"] = "2 18";
             oc_Newobject52["minExtent"] = "0 0";
             oc_Newobject52["bitmap"] = "tools/gui/images/separator-h";
@@ -1196,9 +1191,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject53 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject53["HorizSizing"] = "left";
-            oc_Newobject53["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
+            oc_Newobject53["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
             oc_Newobject53["Extent"] = "2 18";
             oc_Newobject53["minExtent"] = "0 0";
             oc_Newobject53["bitmap"] = "tools/gui/images/separator-h";
@@ -1212,9 +1205,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject54 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject54["HorizSizing"] = "left";
-            oc_Newobject54["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2+mCeil(getWord($PE_guielement_ext_slider,0)/4))-4 SPC \"0\"");
+            oc_Newobject54["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2+mCeil(getWord($PE_guielement_ext_slider,0)/4))-4 SPC \"0\"");
             oc_Newobject54["Extent"] = "2 18";
             oc_Newobject54["minExtent"] = "0 0";
             oc_Newobject54["bitmap"] = "tools/gui/images/separator-h";
@@ -1228,9 +1219,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject55 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject55["HorizSizing"] = "left";
-            oc_Newobject55["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0))-5 SPC \"0\"");
+            oc_Newobject55["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0))-5 SPC \"0\"");
             oc_Newobject55["Extent"] = "2 18";
             oc_Newobject55["minExtent"] = "0 0";
             oc_Newobject55["bitmap"] = "tools/gui/images/separator-h";
@@ -1246,8 +1235,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject56["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject56["HorizSizing"] = "width";
             oc_Newobject56["VertSizing"] = "bottom";
-            oc_Newobject56["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject56["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject56["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject56["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject56["text"] = "Angle Min";
 
             #endregion
@@ -1264,15 +1253,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject57["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject57["HorizSizing"] = "left";
             oc_Newobject57["VertSizing"] = "bottom";
-            oc_Newobject57["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject57["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject57["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject57["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject57["MinExtent"] = "8 2";
             oc_Newobject57["canSave"] = "1";
             oc_Newobject57["Visible"] = "1";
-            oc_Newobject57["Command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"thetaMin\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject57["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMin\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject57["Command"] = "PE_EmitterEditor.updateEmitter( \\\"thetaMin\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject57["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMin\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject57["hovertime"] = "1000";
             oc_Newobject57["range"] = "0 180";
             oc_Newobject57["ticks"] = "0";
@@ -1289,10 +1276,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject58["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject58["HorizSizing"] = "left";
             oc_Newobject58["VertSizing"] = "bottom";
-            oc_Newobject58["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject58["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject58["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMin\\\", $ThisControl.getText());";
+            oc_Newobject58["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject58["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject58["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMin\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -1304,21 +1290,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject68
 
-            ObjectCreator oc_Newobject68 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject68 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             oc_Newobject68["isContainer"] = "1";
             //oc_Newobject68["class"] = "AggregateControl";
             oc_Newobject68["HorizSizing"] = "width";
             oc_Newobject68["VertSizing"] = "bottom";
-            oc_Newobject68["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject68["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject68["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject68["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiBitmapCtrl ()        oc_Newobject60
 
             ObjectCreator oc_Newobject60 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject60["HorizSizing"] = "left";
-            oc_Newobject60["position"] =
-                new ObjectCreator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+4 SPC \"0\"");
+            oc_Newobject60["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+4 SPC \"0\"");
             oc_Newobject60["Extent"] = "2 18";
             oc_Newobject60["minExtent"] = "0 0";
             oc_Newobject60["bitmap"] = "tools/gui/images/separator-h";
@@ -1332,9 +1316,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject61 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject61["HorizSizing"] = "left";
-            oc_Newobject61["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/4)+1 SPC \"0\"");
+            oc_Newobject61["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/4)+1 SPC \"0\"");
             oc_Newobject61["Extent"] = "2 18";
             oc_Newobject61["minExtent"] = "0 0";
             oc_Newobject61["bitmap"] = "tools/gui/images/separator-h";
@@ -1349,9 +1331,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             ObjectCreator oc_Newobject62 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject62["HorizSizing"] = "left";
             oc_Newobject62["minExtent"] = "0 0";
-            oc_Newobject62["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
+            oc_Newobject62["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
             oc_Newobject62["Extent"] = "2 18";
             oc_Newobject62["bitmap"] = "tools/gui/images/separator-h";
             oc_Newobject62["tooltip"] = "180 Degrees ( Down )";
@@ -1364,9 +1344,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject63 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject63["HorizSizing"] = "left";
-            oc_Newobject63["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2+mCeil(getWord($PE_guielement_ext_slider,0)/4))-4 SPC \"0\"");
+            oc_Newobject63["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2+mCeil(getWord($PE_guielement_ext_slider,0)/4))-4 SPC \"0\"");
             oc_Newobject63["Extent"] = "2 18";
             oc_Newobject63["minExtent"] = "0 0";
             oc_Newobject63["bitmap"] = "tools/gui/images/separator-h";
@@ -1380,9 +1358,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject64 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject64["HorizSizing"] = "left";
-            oc_Newobject64["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0))-5 SPC \"0\"");
+            oc_Newobject64["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0))-5 SPC \"0\"");
             oc_Newobject64["Extent"] = "2 18";
             oc_Newobject64["minExtent"] = "0 0";
             oc_Newobject64["bitmap"] = "tools/gui/images/separator-h";
@@ -1398,8 +1374,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject65["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject65["HorizSizing"] = "width";
             oc_Newobject65["VertSizing"] = "bottom";
-            oc_Newobject65["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject65["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject65["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject65["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject65["text"] = "Angle Max";
 
             #endregion
@@ -1416,15 +1392,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject66["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject66["HorizSizing"] = "left";
             oc_Newobject66["VertSizing"] = "bottom";
-            oc_Newobject66["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject66["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject66["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject66["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject66["MinExtent"] = "8 2";
             oc_Newobject66["canSave"] = "1";
             oc_Newobject66["Visible"] = "1";
-            oc_Newobject66["Command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"thetaMax\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject66["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMax\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject66["Command"] = "PE_EmitterEditor.updateEmitter( \\\"thetaMax\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject66["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMax\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject66["hovertime"] = "1000";
             oc_Newobject66["range"] = "0 180";
             oc_Newobject66["ticks"] = "0";
@@ -1441,10 +1415,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject67["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject67["HorizSizing"] = "left";
             oc_Newobject67["VertSizing"] = "bottom";
-            oc_Newobject67["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject67["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject67["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMax\\\", $ThisControl.getText());";
+            oc_Newobject67["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject67["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject67["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"thetaMax\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -1480,14 +1453,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject74
 
-            ObjectCreator oc_Newobject74 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject74 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             oc_Newobject74["isContainer"] = "1";
             //oc_Newobject74["class"] = "AggregateControl";
             oc_Newobject74["HorizSizing"] = "width";
             oc_Newobject74["VertSizing"] = "bottom";
-            oc_Newobject74["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject74["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject74["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject74["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject71
 
@@ -1495,8 +1467,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject71["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject71["HorizSizing"] = "width";
             oc_Newobject71["VertSizing"] = "bottom";
-            oc_Newobject71["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject71["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject71["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject71["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject71["text"] = "Depth";
 
             #endregion
@@ -1513,15 +1485,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject72["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject72["HorizSizing"] = "left";
             oc_Newobject72["VertSizing"] = "bottom";
-            oc_Newobject72["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject72["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject72["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject72["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject72["MinExtent"] = "8 2";
             oc_Newobject72["canSave"] = "1";
             oc_Newobject72["Visible"] = "1";
-            oc_Newobject72["Command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"phiVariance\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject72["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"phiVariance\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject72["Command"] = "PE_EmitterEditor.updateEmitter( \\\"phiVariance\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject72["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"phiVariance\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject72["hovertime"] = "1000";
             oc_Newobject72["range"] = "0 360";
             oc_Newobject72["ticks"] = "0";
@@ -1538,10 +1508,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject73["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject73["HorizSizing"] = "left";
             oc_Newobject73["VertSizing"] = "bottom";
-            oc_Newobject73["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject73["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject73["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"phiVariance\\\", $ThisControl.getText());";
+            oc_Newobject73["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject73["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject73["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"phiVariance\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -1553,14 +1522,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject78
 
-            ObjectCreator oc_Newobject78 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject78 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject78["class"] = "AggregateControl";
             oc_Newobject78["isContainer"] = "1";
             oc_Newobject78["HorizSizing"] = "width";
             oc_Newobject78["VertSizing"] = "bottom";
-            oc_Newobject78["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject78["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject78["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject78["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject75
 
@@ -1568,8 +1536,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject75["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject75["HorizSizing"] = "width";
             oc_Newobject75["VertSizing"] = "bottom";
-            oc_Newobject75["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject75["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject75["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject75["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject75["text"] = "Offset";
 
             #endregion
@@ -1586,15 +1554,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject76["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject76["HorizSizing"] = "left";
             oc_Newobject76["VertSizing"] = "bottom";
-            oc_Newobject76["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject76["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject76["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject76["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject76["MinExtent"] = "8 2";
             oc_Newobject76["canSave"] = "1";
             oc_Newobject76["Visible"] = "1";
-            oc_Newobject76["Command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"ejectionOffset\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject76["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ejectionOffset\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject76["Command"] = "PE_EmitterEditor.updateEmitter( \\\"ejectionOffset\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject76["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ejectionOffset\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject76["hovertime"] = "1000";
             oc_Newobject76["range"] = "0 10";
             oc_Newobject76["ticks"] = "0";
@@ -1611,10 +1577,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject77["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject77["HorizSizing"] = "left";
             oc_Newobject77["VertSizing"] = "bottom";
-            oc_Newobject77["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject77["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject77["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ejectionOffset\\\", $ThisControl.getText());";
+            oc_Newobject77["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject77["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject77["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ejectionOffset\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -1636,7 +1601,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject97 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject97["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject97["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject97["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject97["Profile"] = "GuiRolloutProfile";
             oc_Newobject97["HorizSizing"] = "width";
             oc_Newobject97["VertSizing"] = "bottom";
@@ -1644,10 +1609,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject97["Extent"] = "197 0";
             oc_Newobject97["Caption"] = "Particles";
             oc_Newobject97["Margin"] = "4 4 4 0";
-            oc_Newobject97["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject97["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject97["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject97["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject97["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject97["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject97["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject97["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject96
 
@@ -1677,8 +1642,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject83["isContainer"] = "1";
             oc_Newobject83["HorizSizing"] = "width";
             oc_Newobject83["VertSizing"] = "bottom";
-            oc_Newobject83["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject83["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject83["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject83["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject81
 
@@ -1686,8 +1651,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject81["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject81["HorizSizing"] = "width";
             oc_Newobject81["VertSizing"] = "bottom";
-            oc_Newobject81["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject81["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject81["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject81["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject81["text"] = "Particle 1";
 
             #endregion
@@ -1701,8 +1666,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject82["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject82["HorizSizing"] = "left";
             oc_Newobject82["VertSizing"] = "bottom";
-            oc_Newobject82["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_textedit");
-            oc_Newobject82["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_textedit");
+            oc_Newobject82["position"] = new Creator.StringNoQuote("$PE_guielement_pos_textedit");
+            oc_Newobject82["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_textedit");
             oc_Newobject82["text"] = "";
             oc_Newobject82["command"] = "PE_EmitterEditor.updateParticlesFields($ThisControl);";
 
@@ -1720,8 +1685,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject87["isContainer"] = "1";
             oc_Newobject87["HorizSizing"] = "width";
             oc_Newobject87["VertSizing"] = "bottom";
-            oc_Newobject87["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject87["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject87["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject87["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject84
 
@@ -1729,8 +1694,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject84["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject84["HorizSizing"] = "width";
             oc_Newobject84["VertSizing"] = "bottom";
-            oc_Newobject84["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject84["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject84["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject84["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject84["text"] = "Particle 2";
 
             #endregion
@@ -1744,8 +1709,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject85["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject85["HorizSizing"] = "left";
             oc_Newobject85["VertSizing"] = "bottom";
-            oc_Newobject85["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_textedit");
-            oc_Newobject85["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_textedit");
+            oc_Newobject85["position"] = new Creator.StringNoQuote("$PE_guielement_pos_textedit");
+            oc_Newobject85["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_textedit");
             oc_Newobject85["text"] = "None";
             oc_Newobject85["command"] = "PE_EmitterEditor.updateParticlesFields();";
 
@@ -1767,8 +1732,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject86["MinExtent"] = "8 2";
             oc_Newobject86["canSave"] = "1";
             oc_Newobject86["Visible"] = "1";
-            oc_Newobject86["Command"] =
-                "particleId = PEE_EmitterParticle2-->PopUpMenu.findText( \\\"None\\\" ); PEE_EmitterParticle2-->PopUpMenu.setSelected( particleId );PE_EmitterEditor.updateParticlesFields();";
+            oc_Newobject86["Command"] = "particleId = PEE_EmitterParticle2-->PopUpMenu.findText( \\\"None\\\" ); PEE_EmitterParticle2-->PopUpMenu.setSelected( particleId );PE_EmitterEditor.updateParticlesFields();";
             oc_Newobject86["hovertime"] = "1000";
             oc_Newobject86["tooltip"] = "Clear Particle 2 from Emitter";
             oc_Newobject86["text"] = "";
@@ -1791,8 +1755,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject91["isContainer"] = "1";
             oc_Newobject91["HorizSizing"] = "width";
             oc_Newobject91["VertSizing"] = "bottom";
-            oc_Newobject91["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject91["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject91["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject91["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject88
 
@@ -1800,8 +1764,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject88["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject88["HorizSizing"] = "width";
             oc_Newobject88["VertSizing"] = "bottom";
-            oc_Newobject88["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject88["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject88["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject88["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject88["text"] = "Particle 3";
 
             #endregion
@@ -1815,8 +1779,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject89["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject89["HorizSizing"] = "left";
             oc_Newobject89["VertSizing"] = "bottom";
-            oc_Newobject89["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_textedit");
-            oc_Newobject89["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_textedit");
+            oc_Newobject89["position"] = new Creator.StringNoQuote("$PE_guielement_pos_textedit");
+            oc_Newobject89["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_textedit");
             oc_Newobject89["text"] = "None";
             oc_Newobject89["command"] = "PE_EmitterEditor.updateParticlesFields();";
 
@@ -1838,8 +1802,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject90["MinExtent"] = "8 2";
             oc_Newobject90["canSave"] = "1";
             oc_Newobject90["Visible"] = "1";
-            oc_Newobject90["Command"] =
-                "particleId = PEE_EmitterParticle3-->PopUpMenu.findText( \\\"None\\\" ); PEE_EmitterParticle3-->PopUpMenu.setSelected( particleId );PE_EmitterEditor.updateParticlesFields();";
+            oc_Newobject90["Command"] = "particleId = PEE_EmitterParticle3-->PopUpMenu.findText( \\\"None\\\" ); PEE_EmitterParticle3-->PopUpMenu.setSelected( particleId );PE_EmitterEditor.updateParticlesFields();";
             oc_Newobject90["hovertime"] = "1000";
             oc_Newobject90["tooltip"] = "Clear Particle 3 from Emitter";
             oc_Newobject90["text"] = "";
@@ -1862,8 +1825,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject95["isContainer"] = "1";
             oc_Newobject95["HorizSizing"] = "width";
             oc_Newobject95["VertSizing"] = "bottom";
-            oc_Newobject95["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject95["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject95["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject95["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject92
 
@@ -1871,8 +1834,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject92["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject92["HorizSizing"] = "width";
             oc_Newobject92["VertSizing"] = "bottom";
-            oc_Newobject92["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject92["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject92["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject92["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject92["text"] = "Particle 4";
 
             #endregion
@@ -1886,8 +1849,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject93["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject93["HorizSizing"] = "left";
             oc_Newobject93["VertSizing"] = "bottom";
-            oc_Newobject93["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_textedit");
-            oc_Newobject93["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_textedit");
+            oc_Newobject93["position"] = new Creator.StringNoQuote("$PE_guielement_pos_textedit");
+            oc_Newobject93["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_textedit");
             oc_Newobject93["text"] = "None";
             oc_Newobject93["command"] = "PE_EmitterEditor.updateParticlesFields();";
 
@@ -1909,8 +1872,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject94["MinExtent"] = "8 2";
             oc_Newobject94["canSave"] = "1";
             oc_Newobject94["Visible"] = "1";
-            oc_Newobject94["Command"] =
-                "particleId = PEE_EmitterParticle4-->PopUpMenu.findText( \\\"None\\\" ); PEE_EmitterParticle4-->PopUpMenu.setSelected( particleId );PE_EmitterEditor.updateParticlesFields();";
+            oc_Newobject94["Command"] = "particleId = PEE_EmitterParticle4-->PopUpMenu.findText( \\\"None\\\" ); PEE_EmitterParticle4-->PopUpMenu.setSelected( particleId );PE_EmitterEditor.updateParticlesFields();";
             oc_Newobject94["hovertime"] = "1000";
             oc_Newobject94["tooltip"] = "Clear Particle 4 from Emitter";
             oc_Newobject94["text"] = "";
@@ -1939,7 +1901,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject124 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject124["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject124["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject124["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject124["Profile"] = "GuiRolloutProfile";
             oc_Newobject124["HorizSizing"] = "width";
             oc_Newobject124["VertSizing"] = "bottom";
@@ -1947,10 +1909,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject124["Extent"] = "197 0";
             oc_Newobject124["Caption"] = "Blending";
             oc_Newobject124["Margin"] = "4 4 4 0";
-            oc_Newobject124["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject124["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject124["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject124["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject124["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject124["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject124["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject124["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject123
 
@@ -1980,8 +1942,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject100["isContainer"] = "1";
             oc_Newobject100["HorizSizing"] = "width";
             oc_Newobject100["VertSizing"] = "bottom";
-            oc_Newobject100["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject100["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject100["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject100["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject98
 
@@ -1989,8 +1951,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject98["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject98["HorizSizing"] = "width";
             oc_Newobject98["VertSizing"] = "bottom";
-            oc_Newobject98["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject98["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject98["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject98["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject98["text"] = "Blend Type";
 
             #endregion
@@ -2003,8 +1965,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject99["internalName"] = "PEE_blendType";
             oc_Newobject99["HorizSizing"] = "left";
             oc_Newobject99["VertSizing"] = "bottom";
-            oc_Newobject99["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_textedit");
-            oc_Newobject99["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_textedit");
+            oc_Newobject99["position"] = new Creator.StringNoQuote("$PE_guielement_pos_textedit");
+            oc_Newobject99["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_textedit");
             oc_Newobject99["command"] = "PE_EmitterEditor.updateEmitter( \\\"blendStyle\\\", $ThisControl.getText());";
 
             #endregion
@@ -2017,14 +1979,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject104
 
-            ObjectCreator oc_Newobject104 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject104 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject104["class"] = "AggregateControl";
             oc_Newobject104["isContainer"] = "1";
             oc_Newobject104["HorizSizing"] = "width";
             oc_Newobject104["VertSizing"] = "bottom";
-            oc_Newobject104["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject104["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject104["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject104["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject101
 
@@ -2032,8 +1993,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject101["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject101["HorizSizing"] = "width";
             oc_Newobject101["VertSizing"] = "bottom";
-            oc_Newobject101["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject101["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject101["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject101["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject101["text"] = "Softness Distance ";
 
             #endregion
@@ -2050,8 +2011,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject102["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject102["HorizSizing"] = "left";
             oc_Newobject102["VertSizing"] = "bottom";
-            oc_Newobject102["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject102["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject102["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject102["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject102["MinExtent"] = "8 2";
             oc_Newobject102["canSave"] = "1";
             oc_Newobject102["Visible"] = "1";
@@ -2060,10 +2021,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject102["range"] = "0 1000";
             oc_Newobject102["ticks"] = "0";
             oc_Newobject102["value"] = "0";
-            oc_Newobject102["Command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"softnessDistance\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject102["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"softnessDistance\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject102["Command"] = "PE_EmitterEditor.updateEmitter( \\\"softnessDistance\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject102["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"softnessDistance\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -2076,10 +2035,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject103["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject103["HorizSizing"] = "left";
             oc_Newobject103["VertSizing"] = "bottom";
-            oc_Newobject103["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject103["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject103["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"softnessDistance\\\", $ThisControl.getText());";
+            oc_Newobject103["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject103["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject103["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"softnessDistance\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -2091,14 +2049,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject108
 
-            ObjectCreator oc_Newobject108 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject108 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject108["class"] = "AggregateControl";
             oc_Newobject108["isContainer"] = "1";
             oc_Newobject108["HorizSizing"] = "width";
             oc_Newobject108["VertSizing"] = "bottom";
-            oc_Newobject108["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject108["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject108["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject108["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject105
 
@@ -2106,8 +2063,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject105["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject105["HorizSizing"] = "width";
             oc_Newobject105["VertSizing"] = "bottom";
-            oc_Newobject105["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject105["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject105["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject105["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject105["text"] = "Ambient Factor";
 
             #endregion
@@ -2124,8 +2081,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject106["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject106["HorizSizing"] = "left";
             oc_Newobject106["VertSizing"] = "bottom";
-            oc_Newobject106["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject106["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject106["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject106["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject106["MinExtent"] = "8 2";
             oc_Newobject106["canSave"] = "1";
             oc_Newobject106["Visible"] = "1";
@@ -2134,10 +2091,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject106["range"] = "0 10";
             oc_Newobject106["ticks"] = "0";
             oc_Newobject106["value"] = "0";
-            oc_Newobject106["Command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"ambientFactor\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject106["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ambientFactor\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject106["Command"] = "PE_EmitterEditor.updateEmitter( \\\"ambientFactor\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject106["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ambientFactor\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -2150,10 +2105,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject107["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject107["HorizSizing"] = "left";
             oc_Newobject107["VertSizing"] = "bottom";
-            oc_Newobject107["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject107["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject107["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ambientFactor\\\", $ThisControl.getText));";
+            oc_Newobject107["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject107["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject107["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_EmitterEditor.updateEmitter( \\\"ambientFactor\\\", $ThisControl.getText));";
 
             #endregion
 
@@ -2193,8 +2147,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject113["isContainer"] = "1";
             oc_Newobject113["HorizSizing"] = "width";
             oc_Newobject113["VertSizing"] = "bottom";
-            oc_Newobject113["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject113["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject113["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject113["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject111
 
@@ -2202,8 +2156,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject111["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject111["HorizSizing"] = "width";
             oc_Newobject111["VertSizing"] = "bottom";
-            oc_Newobject111["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject111["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject111["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject111["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject111["text"] = "Sort Particles";
 
             #endregion
@@ -2217,11 +2171,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject112["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject112["HorizSizing"] = "left";
             oc_Newobject112["VertSizing"] = "bottom";
-            oc_Newobject112["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject112["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject112["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject112["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject112["text"] = "";
-            oc_Newobject112["command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"softParticles\\\", $ThisControl.getValue());";
+            oc_Newobject112["command"] = "PE_EmitterEditor.updateEmitter( \\\"softParticles\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -2237,8 +2190,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject116["isContainer"] = "1";
             oc_Newobject116["HorizSizing"] = "width";
             oc_Newobject116["VertSizing"] = "bottom";
-            oc_Newobject116["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject116["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject116["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject116["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject114
 
@@ -2246,8 +2199,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject114["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject114["HorizSizing"] = "width";
             oc_Newobject114["VertSizing"] = "bottom";
-            oc_Newobject114["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject114["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject114["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject114["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject114["text"] = "Reverse Order";
 
             #endregion
@@ -2261,11 +2214,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject115["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject115["HorizSizing"] = "left";
             oc_Newobject115["VertSizing"] = "bottom";
-            oc_Newobject115["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject115["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject115["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject115["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject115["text"] = "";
-            oc_Newobject115["command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"reverseOrder\\\", $ThisControl.getValue());";
+            oc_Newobject115["command"] = "PE_EmitterEditor.updateEmitter( \\\"reverseOrder\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -2281,8 +2233,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject119["isContainer"] = "1";
             oc_Newobject119["HorizSizing"] = "width";
             oc_Newobject119["VertSizing"] = "bottom";
-            oc_Newobject119["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject119["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject119["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject119["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject117
 
@@ -2290,8 +2242,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject117["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject117["HorizSizing"] = "width";
             oc_Newobject117["VertSizing"] = "bottom";
-            oc_Newobject117["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject117["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject117["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject117["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject117["text"] = "Use Emitter Size";
 
             #endregion
@@ -2305,11 +2257,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject118["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject118["HorizSizing"] = "left";
             oc_Newobject118["VertSizing"] = "bottom";
-            oc_Newobject118["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject118["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject118["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject118["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject118["text"] = "";
-            oc_Newobject118["command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"useEmitterSizes\\\", $ThisControl.getValue());";
+            oc_Newobject118["command"] = "PE_EmitterEditor.updateEmitter( \\\"useEmitterSizes\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -2325,8 +2276,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject122["isContainer"] = "1";
             oc_Newobject122["HorizSizing"] = "width";
             oc_Newobject122["VertSizing"] = "bottom";
-            oc_Newobject122["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject122["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject122["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject122["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject120
 
@@ -2334,8 +2285,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject120["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject120["HorizSizing"] = "width";
             oc_Newobject120["VertSizing"] = "bottom";
-            oc_Newobject120["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject120["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox_name");
+            oc_Newobject120["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject120["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox_name");
             oc_Newobject120["text"] = "Use Material Effect Color";
 
             #endregion
@@ -2349,11 +2300,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject121["Profile"] = "ToolsGuiCheckBoxProfile";
             oc_Newobject121["HorizSizing"] = "left";
             oc_Newobject121["VertSizing"] = "bottom";
-            oc_Newobject121["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_checkbox");
-            oc_Newobject121["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_checkbox");
+            oc_Newobject121["position"] = new Creator.StringNoQuote("$PE_guielement_pos_checkbox");
+            oc_Newobject121["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_checkbox");
             oc_Newobject121["text"] = "";
-            oc_Newobject121["command"] =
-                "PE_EmitterEditor.updateEmitter( \\\"useEmitterColors\\\", $ThisControl.getValue());";
+            oc_Newobject121["command"] = "PE_EmitterEditor.updateEmitter( \\\"useEmitterColors\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -2385,8 +2335,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiTabPageCtrl (PE_ParticleEditor)        oc_Newobject239
 
-            ObjectCreator oc_Newobject239 = new ObjectCreator("GuiTabPageCtrl", "PE_ParticleEditor",
-                typeof (ParticleParticleEditor.PE_ParticleEditor));
+            ObjectCreator oc_Newobject239 = new ObjectCreator("GuiTabPageCtrl", "PE_ParticleEditor", typeof (ParticleParticleEditor.PE_ParticleEditor));
             oc_Newobject239["canSaveDynamicFields"] = "0";
             oc_Newobject239["Enabled"] = "1";
             oc_Newobject239["isContainer"] = "1";
@@ -2426,7 +2375,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject238["willFirstRespond"] = "1";
             oc_Newobject238["hScrollBar"] = "alwaysOff";
             oc_Newobject238["vScrollBar"] = "dynamic";
-            oc_Newobject238["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject238["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject238["lockVertScroll"] = "false";
             oc_Newobject238["constantThumbHeight"] = "0";
             oc_Newobject238["childMargin"] = "0 0";
@@ -2455,13 +2404,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl (PEP_ParticleSelector_Control)        oc_Newobject133
 
-            ObjectCreator oc_Newobject133 = new ObjectCreator("GuiControl", "PEP_ParticleSelector_Control",
-                typeof (ParticleParticleEditor.PEP_ParticleSelector_Control));
+            ObjectCreator oc_Newobject133 = new ObjectCreator("GuiControl", "PEP_ParticleSelector_Control", typeof (ParticleParticleEditor.PEP_ParticleSelector_Control));
             oc_Newobject133["isContainer"] = "1";
             //oc_Newobject133["class"] = "QuickEditDropDownTextEditCtrl";
             oc_Newobject133["HorizSizing"] = "width";
             oc_Newobject133["VertSizing"] = "bottom";
-            oc_Newobject133["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject133["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
             oc_Newobject133["Extent"] = "197 26";
 
             #region GuiPopUpMenuCtrl (PEP_ParticleSelector)        oc_Newobject128
@@ -2479,8 +2427,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject128["MinExtent"] = "8 2";
             oc_Newobject128["canSave"] = "1";
             oc_Newobject128["Visible"] = "1";
-            oc_Newobject128["Command"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.onNewParticle();";
+            oc_Newobject128["Command"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.onNewParticle();";
             oc_Newobject128["hovertime"] = "1000";
             oc_Newobject128["Margin"] = "0 0 0 0";
             oc_Newobject128["Padding"] = "0 0 0 0";
@@ -2530,8 +2477,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiBitmapButtonCtrl ( PEP_NewParticleButton )        oc_Newobject130
 
-            ObjectCreator oc_Newobject130 = new ObjectCreator("GuiBitmapButtonCtrl", "PEP_NewParticleButton",
-                typeof (ParticleParticleEditor.PEP_NewParticleButton));
+            ObjectCreator oc_Newobject130 = new ObjectCreator("GuiBitmapButtonCtrl", "PEP_NewParticleButton", typeof (ParticleParticleEditor.PEP_NewParticleButton));
             oc_Newobject130["canSaveDynamicFields"] = "0";
             oc_Newobject130["Enabled"] = "1";
             oc_Newobject130["isContainer"] = "0";
@@ -2615,7 +2561,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject153 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject153["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject153["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject153["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject153["Profile"] = "GuiRolloutProfile";
             oc_Newobject153["HorizSizing"] = "width";
             oc_Newobject153["VertSizing"] = "bottom";
@@ -2623,10 +2569,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject153["Extent"] = "197 0";
             oc_Newobject153["Caption"] = "Basic";
             oc_Newobject153["Margin"] = "4 4 4 0";
-            oc_Newobject153["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject153["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject153["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject153["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject153["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject153["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject153["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject153["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject152
 
@@ -2775,8 +2721,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject138["Extent"] = "84 18";
             oc_Newobject138["MinExtent"] = "8 2";
             oc_Newobject138["text"] = "Inverse Alpha";
-            oc_Newobject138["command"] =
-                "PE_ParticleEditor.updateParticle( \\\"useInvAlpha\\\", $ThisControl.getValue());";
+            oc_Newobject138["command"] = "PE_ParticleEditor.updateParticle( \\\"useInvAlpha\\\", $ThisControl.getValue());";
 
             #endregion
 
@@ -2857,14 +2802,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject147
 
-            ObjectCreator oc_Newobject147 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject147 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject147["class"] = "AggregateControl";
             oc_Newobject147["isContainer"] = "1";
             oc_Newobject147["HorizSizing"] = "width";
             oc_Newobject147["VertSizing"] = "bottom";
-            oc_Newobject147["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject147["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject147["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject147["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject144
 
@@ -2875,8 +2819,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject144["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject144["HorizSizing"] = "width";
             oc_Newobject144["VertSizing"] = "bottom";
-            oc_Newobject144["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject144["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject144["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject144["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject144["MinExtent"] = "8 2";
             oc_Newobject144["canSave"] = "1";
             oc_Newobject144["Visible"] = "1";
@@ -2904,15 +2848,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject145["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject145["HorizSizing"] = "left";
             oc_Newobject145["VertSizing"] = "bottom";
-            oc_Newobject145["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject145["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject145["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject145["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject145["MinExtent"] = "8 2";
             oc_Newobject145["canSave"] = "1";
             oc_Newobject145["Visible"] = "1";
-            oc_Newobject145["Command"] =
-                "PE_ParticleEditor.updateLifeFields( false, $ThisControl.getValue(), true, true );";
-            oc_Newobject145["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( false, $ThisControl.getValue(), true, false );";
+            oc_Newobject145["Command"] = "PE_ParticleEditor.updateLifeFields( false, $ThisControl.getValue(), true, true );";
+            oc_Newobject145["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( false, $ThisControl.getValue(), true, false );";
             oc_Newobject145["hovertime"] = "1000";
             oc_Newobject145["range"] = "1 9000";
             oc_Newobject145["ticks"] = "0";
@@ -2929,10 +2871,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject146["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject146["HorizSizing"] = "left";
             oc_Newobject146["VertSizing"] = "bottom";
-            oc_Newobject146["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject146["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject146["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( false, $ThisControl.getText() );";
+            oc_Newobject146["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject146["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject146["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( false, $ThisControl.getText() );";
 
             #endregion
 
@@ -2944,14 +2885,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject151
 
-            ObjectCreator oc_Newobject151 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject151 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject151["class"] = "AggregateControl";
             oc_Newobject151["isContainer"] = "1";
             oc_Newobject151["HorizSizing"] = "width";
             oc_Newobject151["VertSizing"] = "bottom";
-            oc_Newobject151["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject151["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject151["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject151["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject148
 
@@ -2962,8 +2902,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject148["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject148["HorizSizing"] = "width";
             oc_Newobject148["VertSizing"] = "bottom";
-            oc_Newobject148["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject148["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject148["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject148["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject148["MinExtent"] = "8 2";
             oc_Newobject148["canSave"] = "1";
             oc_Newobject148["Visible"] = "1";
@@ -2991,15 +2931,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject149["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject149["HorizSizing"] = "left";
             oc_Newobject149["VertSizing"] = "bottom";
-            oc_Newobject149["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject149["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject149["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject149["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject149["MinExtent"] = "8 2";
             oc_Newobject149["canSave"] = "1";
             oc_Newobject149["Visible"] = "1";
-            oc_Newobject149["Command"] =
-                "PE_ParticleEditor.updateLifeFields( true, $ThisControl.getValue(), true, true );";
-            oc_Newobject149["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( true, $ThisControl.getValue(), true, false );";
+            oc_Newobject149["Command"] = "PE_ParticleEditor.updateLifeFields( true, $ThisControl.getValue(), true, true );";
+            oc_Newobject149["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( true, $ThisControl.getValue(), true, false );";
             oc_Newobject149["hovertime"] = "1000";
             oc_Newobject149["range"] = "0 8999";
             oc_Newobject149["ticks"] = "0";
@@ -3016,10 +2954,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject150["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject150["HorizSizing"] = "left";
             oc_Newobject150["VertSizing"] = "bottom";
-            oc_Newobject150["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject150["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject150["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( true, $ThisControl.getText() );";
+            oc_Newobject150["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject150["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject150["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateLifeFields( true, $ThisControl.getText() );";
 
             #endregion
 
@@ -3041,7 +2978,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject174 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject174["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject174["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject174["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject174["Profile"] = "GuiRolloutProfile";
             oc_Newobject174["HorizSizing"] = "width";
             oc_Newobject174["VertSizing"] = "bottom";
@@ -3049,10 +2986,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject174["Extent"] = "197 0";
             oc_Newobject174["Caption"] = "Motion";
             oc_Newobject174["Margin"] = "4 4 4 0";
-            oc_Newobject174["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject174["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject174["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject174["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject174["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject174["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject174["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject174["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject173
 
@@ -3078,14 +3015,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject157
 
-            ObjectCreator oc_Newobject157 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject157 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject157["class"] = "AggregateControl";
             oc_Newobject157["isContainer"] = "1";
             oc_Newobject157["HorizSizing"] = "width";
             oc_Newobject157["VertSizing"] = "bottom";
-            oc_Newobject157["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject157["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject157["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject157["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject154
 
@@ -3093,8 +3029,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject154["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject154["HorizSizing"] = "width";
             oc_Newobject154["VertSizing"] = "bottom";
-            oc_Newobject154["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject154["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject154["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject154["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject154["text"] = "Initial Speed";
 
             #endregion
@@ -3111,15 +3047,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject155["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject155["HorizSizing"] = "left";
             oc_Newobject155["VertSizing"] = "bottom";
-            oc_Newobject155["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject155["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject155["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject155["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject155["MinExtent"] = "8 2";
             oc_Newobject155["canSave"] = "1";
             oc_Newobject155["Visible"] = "1";
-            oc_Newobject155["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"inheritedVelFactor\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject155["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"inheritedVelFactor\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject155["Command"] = "PE_ParticleEditor.updateParticle( \\\"inheritedVelFactor\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject155["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"inheritedVelFactor\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject155["hovertime"] = "1000";
             oc_Newobject155["range"] = "0 10";
             oc_Newobject155["ticks"] = "0";
@@ -3136,10 +3070,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject156["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject156["HorizSizing"] = "left";
             oc_Newobject156["VertSizing"] = "bottom";
-            oc_Newobject156["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject156["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject156["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"inheritedVelFactor\\\", $ThisControl.getText());";
+            oc_Newobject156["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject156["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject156["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"inheritedVelFactor\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -3151,14 +3084,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject161
 
-            ObjectCreator oc_Newobject161 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject161 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject161["class"] = "AggregateControl";
             oc_Newobject161["isContainer"] = "1";
             oc_Newobject161["HorizSizing"] = "width";
             oc_Newobject161["VertSizing"] = "bottom";
-            oc_Newobject161["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject161["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject161["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject161["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject158
 
@@ -3166,8 +3098,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject158["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject158["HorizSizing"] = "width";
             oc_Newobject158["VertSizing"] = "bottom";
-            oc_Newobject158["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject158["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject158["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject158["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject158["text"] = "Acceleration";
 
             #endregion
@@ -3184,15 +3116,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject159["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject159["HorizSizing"] = "left";
             oc_Newobject159["VertSizing"] = "bottom";
-            oc_Newobject159["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject159["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject159["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject159["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject159["MinExtent"] = "8 2";
             oc_Newobject159["canSave"] = "1";
             oc_Newobject159["Visible"] = "1";
-            oc_Newobject159["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"constantAcceleration\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject159["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"constantAcceleration\\\", $ThisControl.getValue(), true, false);";
+            oc_Newobject159["Command"] = "PE_ParticleEditor.updateParticle( \\\"constantAcceleration\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject159["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"constantAcceleration\\\", $ThisControl.getValue(), true, false);";
             oc_Newobject159["hovertime"] = "1000";
             oc_Newobject159["range"] = "-10 10";
             oc_Newobject159["ticks"] = "0";
@@ -3209,10 +3139,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject160["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject160["HorizSizing"] = "left";
             oc_Newobject160["VertSizing"] = "bottom";
-            oc_Newobject160["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject160["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject160["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"constantAcceleration\\\", $ThisControl.getText());";
+            oc_Newobject160["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject160["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject160["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"constantAcceleration\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -3248,22 +3177,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject168
 
-            ObjectCreator oc_Newobject168 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject168 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject168["class"] = "AggregateControl";
             oc_Newobject168["isContainer"] = "1";
             oc_Newobject168["HorizSizing"] = "width";
             oc_Newobject168["VertSizing"] = "bottom";
-            oc_Newobject168["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject168["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject168["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject168["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiBitmapCtrl ()        oc_Newobject164
 
             ObjectCreator oc_Newobject164 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject164["HorizSizing"] = "left";
-            oc_Newobject164["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
+            oc_Newobject164["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
             oc_Newobject164["Extent"] = "2 18";
             oc_Newobject164["minExtent"] = "0 0";
             oc_Newobject164["bitmap"] = "tools/gui/images/separator-h";
@@ -3279,8 +3205,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject165["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject165["HorizSizing"] = "width";
             oc_Newobject165["VertSizing"] = "bottom";
-            oc_Newobject165["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject165["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject165["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject165["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject165["text"] = "Gravity";
 
             #endregion
@@ -3297,15 +3223,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject166["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject166["HorizSizing"] = "left";
             oc_Newobject166["VertSizing"] = "bottom";
-            oc_Newobject166["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject166["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject166["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject166["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject166["MinExtent"] = "8 2";
             oc_Newobject166["canSave"] = "1";
             oc_Newobject166["Visible"] = "1";
-            oc_Newobject166["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"gravityCoefficient\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject166["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"gravityCoefficient\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject166["Command"] = "PE_ParticleEditor.updateParticle( \\\"gravityCoefficient\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject166["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"gravityCoefficient\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject166["hovertime"] = "1000";
             oc_Newobject166["range"] = "-1 1";
             oc_Newobject166["ticks"] = "0";
@@ -3322,10 +3246,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject167["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject167["HorizSizing"] = "left";
             oc_Newobject167["VertSizing"] = "bottom";
-            oc_Newobject167["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject167["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject167["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"gravityCoefficient\\\", $ThisControl.getText());";
+            oc_Newobject167["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject167["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject167["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"gravityCoefficient\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -3337,14 +3260,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject172
 
-            ObjectCreator oc_Newobject172 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject172 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject172["class"] = "AggregateControl";
             oc_Newobject172["isContainer"] = "1";
             oc_Newobject172["HorizSizing"] = "width";
             oc_Newobject172["VertSizing"] = "bottom";
-            oc_Newobject172["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject172["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject172["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject172["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject169
 
@@ -3352,8 +3274,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject169["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject169["HorizSizing"] = "width";
             oc_Newobject169["VertSizing"] = "bottom";
-            oc_Newobject169["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject169["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject169["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject169["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject169["text"] = "Drag";
 
             #endregion
@@ -3370,15 +3292,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject170["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject170["HorizSizing"] = "left";
             oc_Newobject170["VertSizing"] = "bottom";
-            oc_Newobject170["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject170["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject170["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject170["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject170["MinExtent"] = "8 2";
             oc_Newobject170["canSave"] = "1";
             oc_Newobject170["Visible"] = "1";
-            oc_Newobject170["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"dragCoefficient\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject170["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"dragCoefficient\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject170["Command"] = "PE_ParticleEditor.updateParticle( \\\"dragCoefficient\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject170["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"dragCoefficient\\\", $ThisControl.getValue(), true, false );";
             oc_Newobject170["hovertime"] = "1000";
             oc_Newobject170["range"] = "0 1";
             oc_Newobject170["ticks"] = "0";
@@ -3395,10 +3315,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject171["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject171["HorizSizing"] = "left";
             oc_Newobject171["VertSizing"] = "bottom";
-            oc_Newobject171["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject171["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject171["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"dragCoefficient\\\", $ThisControl.getText());";
+            oc_Newobject171["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject171["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject171["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"dragCoefficient\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -3420,7 +3339,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject192 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject192["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject192["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject192["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject192["Profile"] = "GuiRolloutProfile";
             oc_Newobject192["HorizSizing"] = "width";
             oc_Newobject192["VertSizing"] = "bottom";
@@ -3428,10 +3347,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject192["Extent"] = "197 0";
             oc_Newobject192["Caption"] = "Spin";
             oc_Newobject192["Margin"] = "4 4 4 0";
-            oc_Newobject192["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject192["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject192["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject192["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject192["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject192["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject192["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject192["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject191
 
@@ -3457,22 +3376,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject179
 
-            ObjectCreator oc_Newobject179 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject179 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject179["class"] = "AggregateControl";
             oc_Newobject179["isContainer"] = "1";
             oc_Newobject179["HorizSizing"] = "width";
             oc_Newobject179["VertSizing"] = "bottom";
-            oc_Newobject179["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject179["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject179["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject179["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiBitmapCtrl ()        oc_Newobject175
 
             ObjectCreator oc_Newobject175 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject175["HorizSizing"] = "left";
-            oc_Newobject175["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
+            oc_Newobject175["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
             oc_Newobject175["Extent"] = "2 18";
             oc_Newobject175["minExtent"] = "0 0";
             oc_Newobject175["bitmap"] = "tools/gui/images/separator-h";
@@ -3488,8 +3404,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject176["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject176["HorizSizing"] = "width";
             oc_Newobject176["VertSizing"] = "bottom";
-            oc_Newobject176["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject176["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject176["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject176["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject176["text"] = "Spin Min";
 
             #endregion
@@ -3506,15 +3422,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject177["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject177["HorizSizing"] = "left";
             oc_Newobject177["VertSizing"] = "bottom";
-            oc_Newobject177["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject177["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject177["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject177["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject177["MinExtent"] = "8 2";
             oc_Newobject177["canSave"] = "1";
             oc_Newobject177["Visible"] = "1";
-            oc_Newobject177["Command"] =
-                "PE_ParticleEditor.updateSpinFields( true, $ThisControl.getValue(), true, true );";
-            oc_Newobject177["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( true, $ThisControl.getValue(), true, false );";
+            oc_Newobject177["Command"] = "PE_ParticleEditor.updateSpinFields( true, $ThisControl.getValue(), true, true );";
+            oc_Newobject177["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( true, $ThisControl.getValue(), true, false );";
             oc_Newobject177["hovertime"] = "1000";
             oc_Newobject177["range"] = "-1000 999";
             oc_Newobject177["ticks"] = "0";
@@ -3531,10 +3445,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject178["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject178["HorizSizing"] = "left";
             oc_Newobject178["VertSizing"] = "bottom";
-            oc_Newobject178["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject178["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject178["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( true, $ThisControl.getText() );";
+            oc_Newobject178["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject178["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject178["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( true, $ThisControl.getText() );";
 
             #endregion
 
@@ -3546,22 +3459,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject184
 
-            ObjectCreator oc_Newobject184 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject184 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject184["class"] = "AggregateControl";
             oc_Newobject184["isContainer"] = "1";
             oc_Newobject184["HorizSizing"] = "width";
             oc_Newobject184["VertSizing"] = "bottom";
-            oc_Newobject184["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject184["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject184["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject184["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiBitmapCtrl ()        oc_Newobject180
 
             ObjectCreator oc_Newobject180 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject180["HorizSizing"] = "left";
-            oc_Newobject180["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
+            oc_Newobject180["position"] = new Creator.StringNoQuote("getWord($PE_guielement_pos_slider,0)+mCeil(getWord($PE_guielement_ext_slider,0)/2)-1 SPC \"0\"");
             oc_Newobject180["Extent"] = "2 18";
             oc_Newobject180["minExtent"] = "0 0";
             oc_Newobject180["bitmap"] = "tools/gui/images/separator-h";
@@ -3577,8 +3487,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject181["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject181["HorizSizing"] = "width";
             oc_Newobject181["VertSizing"] = "bottom";
-            oc_Newobject181["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject181["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject181["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject181["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject181["text"] = "Spin Max";
 
             #endregion
@@ -3595,15 +3505,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject182["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject182["HorizSizing"] = "left";
             oc_Newobject182["VertSizing"] = "bottom";
-            oc_Newobject182["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject182["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject182["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject182["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject182["MinExtent"] = "8 2";
             oc_Newobject182["canSave"] = "1";
             oc_Newobject182["Visible"] = "1";
-            oc_Newobject182["Command"] =
-                "PE_ParticleEditor.updateSpinFields( false, $ThisControl.getValue(), true, true );";
-            oc_Newobject182["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( false, $ThisControl.getValue(), true, false );";
+            oc_Newobject182["Command"] = "PE_ParticleEditor.updateSpinFields( false, $ThisControl.getValue(), true, true );";
+            oc_Newobject182["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( false, $ThisControl.getValue(), true, false );";
             oc_Newobject182["hovertime"] = "1000";
             oc_Newobject182["range"] = "-999 1000";
             oc_Newobject182["ticks"] = "0";
@@ -3620,10 +3528,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject183["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject183["HorizSizing"] = "left";
             oc_Newobject183["VertSizing"] = "bottom";
-            oc_Newobject183["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject183["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject183["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( false, $ThisControl.getText() );";
+            oc_Newobject183["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject183["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject183["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateSpinFields( false, $ThisControl.getText() );";
 
             #endregion
 
@@ -3659,14 +3566,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject190
 
-            ObjectCreator oc_Newobject190 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject190 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject190["class"] = "AggregateControl";
             oc_Newobject190["isContainer"] = "1";
             oc_Newobject190["HorizSizing"] = "width";
             oc_Newobject190["VertSizing"] = "bottom";
-            oc_Newobject190["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject190["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject190["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject190["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject187
 
@@ -3674,8 +3580,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject187["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject187["HorizSizing"] = "width";
             oc_Newobject187["VertSizing"] = "bottom";
-            oc_Newobject187["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject187["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject187["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject187["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject187["text"] = "Spin Speed";
 
             #endregion
@@ -3692,8 +3598,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject188["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject188["HorizSizing"] = "left";
             oc_Newobject188["VertSizing"] = "bottom";
-            oc_Newobject188["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject188["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject188["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject188["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject188["MinExtent"] = "8 2";
             oc_Newobject188["canSave"] = "1";
             oc_Newobject188["Visible"] = "1";
@@ -3701,10 +3607,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject188["range"] = "0 1";
             oc_Newobject188["ticks"] = "0";
             oc_Newobject188["value"] = "0";
-            oc_Newobject188["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"spinSpeed\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject188["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"spinSpeed\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject188["Command"] = "PE_ParticleEditor.updateParticle( \\\"spinSpeed\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject188["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"spinSpeed\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -3717,10 +3621,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject189["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject189["HorizSizing"] = "left";
             oc_Newobject189["VertSizing"] = "bottom";
-            oc_Newobject189["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject189["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject189["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"spinSpeed\\\", $ThisControl.getText());";
+            oc_Newobject189["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject189["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject189["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"spinSpeed\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -3742,7 +3645,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             ObjectCreator oc_Newobject236 = new ObjectCreator("GuiRolloutCtrl", "");
             oc_Newobject236["class"] = "BehaviorQuickEditRollout";
-            oc_Newobject236["superclass"] = new ObjectCreator.StringNoQuote("LBQuickEditRollout");
+            oc_Newobject236["superclass"] = new Creator.StringNoQuote("LBQuickEditRollout");
             oc_Newobject236["Profile"] = "GuiRolloutProfile";
             oc_Newobject236["HorizSizing"] = "width";
             oc_Newobject236["VertSizing"] = "bottom";
@@ -3750,10 +3653,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject236["Extent"] = "197 0";
             oc_Newobject236["Caption"] = "Overtime";
             oc_Newobject236["Margin"] = "4 4 4 0";
-            oc_Newobject236["DragSizable"] = new ObjectCreator.StringNoQuote("false");
-            oc_Newobject236["container"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject236["parentRollout"] = new ObjectCreator.StringNoQuote("this.rollout");
-            oc_Newobject236["object"] = new ObjectCreator.StringNoQuote("behavior");
+            oc_Newobject236["DragSizable"] = new Creator.StringNoQuote("false");
+            oc_Newobject236["container"] = new Creator.StringNoQuote("true");
+            oc_Newobject236["parentRollout"] = new Creator.StringNoQuote("this.rollout");
+            oc_Newobject236["object"] = new Creator.StringNoQuote("behavior");
 
             #region GuiStackControl ()        oc_Newobject235
 
@@ -3784,8 +3687,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject198["isContainer"] = "1";
             oc_Newobject198["HorizSizing"] = "width";
             oc_Newobject198["VertSizing"] = "bottom";
-            oc_Newobject198["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject198["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject198["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject198["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject193
 
@@ -3793,8 +3696,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject193["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject193["HorizSizing"] = "width";
             oc_Newobject193["VertSizing"] = "bottom";
-            oc_Newobject193["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject193["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject193["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject193["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject193["text"] = "Colors";
 
             #endregion
@@ -3803,8 +3706,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiSwatchButtonCtrl (PE_ColorTintSwatch0)        oc_Newobject194
 
-            ObjectCreator oc_Newobject194 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch0",
-                typeof (ParticleParticleEditor.PE_ColorTintSwatch));
+            ObjectCreator oc_Newobject194 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch0", typeof (ParticleParticleEditor.PE_ColorTintSwatch));
             oc_Newobject194["canSaveDynamicFields"] = "0";
             oc_Newobject194["Enabled"] = "1";
             oc_Newobject194["isContainer"] = "0";
@@ -3812,12 +3714,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject194["HorizSizing"] = "left";
             oc_Newobject194["VertSizing"] = "bottom";
             oc_Newobject194["position"] = "75 0";
-            oc_Newobject194["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_colorpicker");
+            oc_Newobject194["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_colorpicker");
             oc_Newobject194["MinExtent"] = "8 2";
             oc_Newobject194["canSave"] = "1";
             oc_Newobject194["Visible"] = "1";
-            oc_Newobject194["Command"] =
-                "getColorF( PE_ParticleEditor.currParticle.colors[0], \\\"PE_ColorTintSwatch0.updateParticleColor\\\");";
+            oc_Newobject194["Command"] = "getColorF( PE_ParticleEditor.currParticle.colors[0], \\\"PE_ColorTintSwatch0.updateParticleColor\\\");";
             oc_Newobject194["altCommand"] = "$ThisControl.updateParticleColor( $ThisControl.color );";
             oc_Newobject194["hovertime"] = "1000";
             oc_Newobject194["groupNum"] = "-1";
@@ -3832,8 +3733,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiSwatchButtonCtrl (PE_ColorTintSwatch1)        oc_Newobject195
 
-            ObjectCreator oc_Newobject195 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch1",
-                typeof (ParticleParticleEditor.PE_ColorTintSwatch));
+            ObjectCreator oc_Newobject195 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch1", typeof (ParticleParticleEditor.PE_ColorTintSwatch));
             oc_Newobject195["canSaveDynamicFields"] = "0";
             oc_Newobject195["Enabled"] = "1";
             oc_Newobject195["isContainer"] = "0";
@@ -3841,12 +3741,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject195["HorizSizing"] = "left";
             oc_Newobject195["VertSizing"] = "bottom";
             oc_Newobject195["position"] = "102 0";
-            oc_Newobject195["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_colorpicker");
+            oc_Newobject195["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_colorpicker");
             oc_Newobject195["MinExtent"] = "8 2";
             oc_Newobject195["canSave"] = "1";
             oc_Newobject195["Visible"] = "1";
-            oc_Newobject195["Command"] =
-                "getColorF( PE_ParticleEditor.currParticle.colors[1], \\\"PE_ColorTintSwatch1.updateParticleColor\\\");";
+            oc_Newobject195["Command"] = "getColorF( PE_ParticleEditor.currParticle.colors[1], \\\"PE_ColorTintSwatch1.updateParticleColor\\\");";
             oc_Newobject195["altCommand"] = "$ThisControl.updateParticleColor( $ThisControl.color );";
             oc_Newobject195["hovertime"] = "1000";
             oc_Newobject195["groupNum"] = "-1";
@@ -3861,8 +3760,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiSwatchButtonCtrl (PE_ColorTintSwatch2)        oc_Newobject196
 
-            ObjectCreator oc_Newobject196 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch2",
-                typeof (ParticleParticleEditor.PE_ColorTintSwatch));
+            ObjectCreator oc_Newobject196 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch2", typeof (ParticleParticleEditor.PE_ColorTintSwatch));
             oc_Newobject196["canSaveDynamicFields"] = "0";
             oc_Newobject196["Enabled"] = "1";
             oc_Newobject196["isContainer"] = "0";
@@ -3870,12 +3768,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject196["HorizSizing"] = "left";
             oc_Newobject196["VertSizing"] = "bottom";
             oc_Newobject196["position"] = "129 0";
-            oc_Newobject196["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_colorpicker");
+            oc_Newobject196["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_colorpicker");
             oc_Newobject196["MinExtent"] = "8 2";
             oc_Newobject196["canSave"] = "1";
             oc_Newobject196["Visible"] = "1";
-            oc_Newobject196["Command"] =
-                "getColorF( PE_ParticleEditor.currParticle.colors[2], \\\"PE_ColorTintSwatch2.updateParticleColor\\\");";
+            oc_Newobject196["Command"] = "getColorF( PE_ParticleEditor.currParticle.colors[2], \\\"PE_ColorTintSwatch2.updateParticleColor\\\");";
             oc_Newobject196["altCommand"] = "$ThisControl.updateParticleColor( $ThisControl.color );";
             oc_Newobject196["hovertime"] = "1000";
             oc_Newobject196["groupNum"] = "-1";
@@ -3890,8 +3787,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiSwatchButtonCtrl (PE_ColorTintSwatch3)        oc_Newobject197
 
-            ObjectCreator oc_Newobject197 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch3",
-                typeof (ParticleParticleEditor.PE_ColorTintSwatch));
+            ObjectCreator oc_Newobject197 = new ObjectCreator("GuiSwatchButtonCtrl", "PE_ColorTintSwatch3", typeof (ParticleParticleEditor.PE_ColorTintSwatch));
             oc_Newobject197["canSaveDynamicFields"] = "0";
             oc_Newobject197["Enabled"] = "1";
             oc_Newobject197["isContainer"] = "0";
@@ -3899,12 +3795,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject197["HorizSizing"] = "left";
             oc_Newobject197["VertSizing"] = "bottom";
             oc_Newobject197["position"] = "156 0";
-            oc_Newobject197["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_colorpicker");
+            oc_Newobject197["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_colorpicker");
             oc_Newobject197["MinExtent"] = "8 2";
             oc_Newobject197["canSave"] = "1";
             oc_Newobject197["Visible"] = "1";
-            oc_Newobject197["Command"] =
-                "getColorF( PE_ParticleEditor.currParticle.colors[3], \\\"PE_ColorTintSwatch3.updateParticleColor\\\");";
+            oc_Newobject197["Command"] = "getColorF( PE_ParticleEditor.currParticle.colors[3], \\\"PE_ColorTintSwatch3.updateParticleColor\\\");";
             oc_Newobject197["altCommand"] = "$ThisControl.updateParticleColor( $ThisControl.color );";
             oc_Newobject197["hovertime"] = "1000";
             oc_Newobject197["groupNum"] = "-1";
@@ -3947,14 +3842,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject204
 
-            ObjectCreator oc_Newobject204 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject204 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject204["class"] = "AggregateControl";
             oc_Newobject204["isContainer"] = "1";
             oc_Newobject204["HorizSizing"] = "width";
             oc_Newobject204["VertSizing"] = "bottom";
-            oc_Newobject204["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject204["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject204["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject204["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject201
 
@@ -3962,8 +3856,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject201["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject201["HorizSizing"] = "width";
             oc_Newobject201["VertSizing"] = "bottom";
-            oc_Newobject201["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject201["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject201["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject201["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject201["text"] = "Size 1";
 
             #endregion
@@ -3980,8 +3874,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject202["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject202["HorizSizing"] = "left";
             oc_Newobject202["VertSizing"] = "bottom";
-            oc_Newobject202["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject202["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject202["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject202["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject202["MinExtent"] = "8 2";
             oc_Newobject202["canSave"] = "1";
             oc_Newobject202["Visible"] = "1";
@@ -3990,10 +3884,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject202["range"] = "0 50";
             oc_Newobject202["ticks"] = "0";
             oc_Newobject202["value"] = "0";
-            oc_Newobject202["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"sizes[0]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject202["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[0]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject202["Command"] = "PE_ParticleEditor.updateParticle( \\\"sizes[0]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject202["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[0]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4006,10 +3898,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject203["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject203["HorizSizing"] = "left";
             oc_Newobject203["VertSizing"] = "bottom";
-            oc_Newobject203["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject203["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject203["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[0]\\\", $ThisControl.getText());";
+            oc_Newobject203["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject203["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject203["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[0]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4021,14 +3912,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject208
 
-            ObjectCreator oc_Newobject208 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject208 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject208["class"] = "AggregateControl";
             oc_Newobject208["isContainer"] = "1";
             oc_Newobject208["HorizSizing"] = "width";
             oc_Newobject208["VertSizing"] = "bottom";
-            oc_Newobject208["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject208["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject208["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject208["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject205
 
@@ -4036,8 +3926,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject205["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject205["HorizSizing"] = "width";
             oc_Newobject205["VertSizing"] = "bottom";
-            oc_Newobject205["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject205["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject205["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject205["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject205["text"] = "Size 2";
 
             #endregion
@@ -4054,8 +3944,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject206["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject206["HorizSizing"] = "left";
             oc_Newobject206["VertSizing"] = "bottom";
-            oc_Newobject206["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject206["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject206["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject206["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject206["MinExtent"] = "8 2";
             oc_Newobject206["canSave"] = "1";
             oc_Newobject206["Visible"] = "1";
@@ -4064,10 +3954,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject206["range"] = "0 50";
             oc_Newobject206["ticks"] = "0";
             oc_Newobject206["value"] = "0";
-            oc_Newobject206["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"sizes[1]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject206["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[1]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject206["Command"] = "PE_ParticleEditor.updateParticle( \\\"sizes[1]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject206["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[1]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4080,10 +3968,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject207["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject207["HorizSizing"] = "left";
             oc_Newobject207["VertSizing"] = "bottom";
-            oc_Newobject207["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject207["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject207["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[1]\\\", $ThisControl.getText());";
+            oc_Newobject207["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject207["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject207["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[1]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4095,14 +3982,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject212
 
-            ObjectCreator oc_Newobject212 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject212 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject212["class"] = "AggregateControl";
             oc_Newobject212["isContainer"] = "1";
             oc_Newobject212["HorizSizing"] = "width";
             oc_Newobject212["VertSizing"] = "bottom";
-            oc_Newobject212["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject212["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject212["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject212["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject209
 
@@ -4110,8 +3996,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject209["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject209["HorizSizing"] = "width";
             oc_Newobject209["VertSizing"] = "bottom";
-            oc_Newobject209["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject209["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject209["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject209["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject209["text"] = "Size 3";
 
             #endregion
@@ -4128,8 +4014,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject210["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject210["HorizSizing"] = "left";
             oc_Newobject210["VertSizing"] = "bottom";
-            oc_Newobject210["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject210["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject210["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject210["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject210["MinExtent"] = "8 2";
             oc_Newobject210["canSave"] = "1";
             oc_Newobject210["Visible"] = "1";
@@ -4138,10 +4024,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject210["range"] = "0 50";
             oc_Newobject210["ticks"] = "0";
             oc_Newobject210["value"] = "0";
-            oc_Newobject210["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"sizes[2]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject210["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[2]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject210["Command"] = "PE_ParticleEditor.updateParticle( \\\"sizes[2]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject210["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[2]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4154,10 +4038,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject211["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject211["HorizSizing"] = "left";
             oc_Newobject211["VertSizing"] = "bottom";
-            oc_Newobject211["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject211["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject211["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[2]\\\", $ThisControl.getText());";
+            oc_Newobject211["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject211["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject211["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[2]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4169,14 +4052,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject216
 
-            ObjectCreator oc_Newobject216 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject216 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject216["class"] = "AggregateControl";
             oc_Newobject216["isContainer"] = "1";
             oc_Newobject216["HorizSizing"] = "width";
             oc_Newobject216["VertSizing"] = "bottom";
-            oc_Newobject216["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject216["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject216["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject216["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject213
 
@@ -4184,8 +4066,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject213["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject213["HorizSizing"] = "width";
             oc_Newobject213["VertSizing"] = "bottom";
-            oc_Newobject213["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject213["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject213["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject213["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject213["text"] = "Size 4";
 
             #endregion
@@ -4202,8 +4084,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject214["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject214["HorizSizing"] = "left";
             oc_Newobject214["VertSizing"] = "bottom";
-            oc_Newobject214["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject214["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject214["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject214["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject214["MinExtent"] = "8 2";
             oc_Newobject214["canSave"] = "1";
             oc_Newobject214["Visible"] = "1";
@@ -4212,10 +4094,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject214["range"] = "0 50";
             oc_Newobject214["ticks"] = "0";
             oc_Newobject214["value"] = "0";
-            oc_Newobject214["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"sizes[3]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject214["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[3]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject214["Command"] = "PE_ParticleEditor.updateParticle( \\\"sizes[3]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject214["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[3]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4228,10 +4108,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject215["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject215["HorizSizing"] = "left";
             oc_Newobject215["VertSizing"] = "bottom";
-            oc_Newobject215["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject215["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject215["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[3]\\\", $ThisControl.getText());";
+            oc_Newobject215["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject215["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject215["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"sizes[3]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4267,14 +4146,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject222
 
-            ObjectCreator oc_Newobject222 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject222 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject222["class"] = "AggregateControl";
             oc_Newobject222["isContainer"] = "1";
             oc_Newobject222["HorizSizing"] = "width";
             oc_Newobject222["VertSizing"] = "bottom";
-            oc_Newobject222["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject222["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject222["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject222["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject219
 
@@ -4282,8 +4160,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject219["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject219["HorizSizing"] = "width";
             oc_Newobject219["VertSizing"] = "bottom";
-            oc_Newobject219["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject219["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject219["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject219["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject219["text"] = "Time 1";
 
             #endregion
@@ -4300,8 +4178,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject220["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject220["HorizSizing"] = "left";
             oc_Newobject220["VertSizing"] = "bottom";
-            oc_Newobject220["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject220["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject220["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject220["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject220["MinExtent"] = "8 2";
             oc_Newobject220["canSave"] = "1";
             oc_Newobject220["Visible"] = "1";
@@ -4310,10 +4188,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject220["range"] = "0 1";
             oc_Newobject220["ticks"] = "0";
             oc_Newobject220["value"] = "0";
-            oc_Newobject220["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"times[0]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject220["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[0]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject220["Command"] = "PE_ParticleEditor.updateParticle( \\\"times[0]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject220["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[0]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4326,10 +4202,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject221["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject221["HorizSizing"] = "left";
             oc_Newobject221["VertSizing"] = "bottom";
-            oc_Newobject221["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject221["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject221["altCommand"] =
-                "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[0]\\\", $ThisControl.getText());";
+            oc_Newobject221["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject221["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject221["altCommand"] = "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[0]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4341,14 +4216,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject226
 
-            ObjectCreator oc_Newobject226 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject226 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject226["class"] = "AggregateControl";
             oc_Newobject226["isContainer"] = "1";
             oc_Newobject226["HorizSizing"] = "width";
             oc_Newobject226["VertSizing"] = "bottom";
-            oc_Newobject226["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject226["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject226["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject226["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject223
 
@@ -4356,8 +4230,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject223["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject223["HorizSizing"] = "width";
             oc_Newobject223["VertSizing"] = "bottom";
-            oc_Newobject223["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject223["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject223["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject223["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject223["text"] = "Time 2";
 
             #endregion
@@ -4374,8 +4248,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject224["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject224["HorizSizing"] = "left";
             oc_Newobject224["VertSizing"] = "bottom";
-            oc_Newobject224["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject224["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject224["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject224["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject224["MinExtent"] = "8 2";
             oc_Newobject224["canSave"] = "1";
             oc_Newobject224["Visible"] = "1";
@@ -4384,10 +4258,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject224["range"] = "0 1";
             oc_Newobject224["ticks"] = "0";
             oc_Newobject224["value"] = "0";
-            oc_Newobject224["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"times[1]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject224["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[1]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject224["Command"] = "PE_ParticleEditor.updateParticle( \\\"times[1]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject224["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[1]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4400,10 +4272,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject225["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject225["HorizSizing"] = "left";
             oc_Newobject225["VertSizing"] = "bottom";
-            oc_Newobject225["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject225["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject225["altCommand"] =
-                "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[1]\\\", $ThisControl.getText());";
+            oc_Newobject225["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject225["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject225["altCommand"] = "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[1]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4415,14 +4286,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject230
 
-            ObjectCreator oc_Newobject230 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject230 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject230["class"] = "AggregateControl";
             oc_Newobject230["isContainer"] = "1";
             oc_Newobject230["HorizSizing"] = "width";
             oc_Newobject230["VertSizing"] = "bottom";
-            oc_Newobject230["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject230["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject230["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject230["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject227
 
@@ -4430,8 +4300,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject227["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject227["HorizSizing"] = "width";
             oc_Newobject227["VertSizing"] = "bottom";
-            oc_Newobject227["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject227["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject227["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject227["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject227["text"] = "Time 3";
 
             #endregion
@@ -4448,8 +4318,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject228["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject228["HorizSizing"] = "left";
             oc_Newobject228["VertSizing"] = "bottom";
-            oc_Newobject228["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject228["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject228["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject228["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject228["MinExtent"] = "8 2";
             oc_Newobject228["canSave"] = "1";
             oc_Newobject228["Visible"] = "1";
@@ -4458,10 +4328,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject228["range"] = "0 1";
             oc_Newobject228["ticks"] = "0";
             oc_Newobject228["value"] = "0";
-            oc_Newobject228["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"times[2]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject228["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[2]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject228["Command"] = "PE_ParticleEditor.updateParticle( \\\"times[2]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject228["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[2]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4474,10 +4342,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject229["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject229["HorizSizing"] = "left";
             oc_Newobject229["VertSizing"] = "bottom";
-            oc_Newobject229["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject229["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject229["altCommand"] =
-                "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[2]\\\", $ThisControl.getText());";
+            oc_Newobject229["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject229["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject229["altCommand"] = "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[2]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4489,14 +4356,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             #region GuiControl ()        oc_Newobject234
 
-            ObjectCreator oc_Newobject234 = new ObjectCreator("GuiControl", "",
-                typeof (WinterLeaf.Demo.Full.Models.User.GameCode.Common.AggregateControl));
+            ObjectCreator oc_Newobject234 = new ObjectCreator("GuiControl", "", typeof (AggregateControl));
             //oc_Newobject234["class"] = "AggregateControl";
             oc_Newobject234["isContainer"] = "1";
             oc_Newobject234["HorizSizing"] = "width";
             oc_Newobject234["VertSizing"] = "bottom";
-            oc_Newobject234["Position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_single_container");
-            oc_Newobject234["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_single_container");
+            oc_Newobject234["Position"] = new Creator.StringNoQuote("$PE_guielement_pos_single_container");
+            oc_Newobject234["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_single_container");
 
             #region GuiTextCtrl ()        oc_Newobject231
 
@@ -4504,8 +4370,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject231["Profile"] = "ToolsGuiTextProfile";
             oc_Newobject231["HorizSizing"] = "width";
             oc_Newobject231["VertSizing"] = "bottom";
-            oc_Newobject231["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_name");
-            oc_Newobject231["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_name");
+            oc_Newobject231["position"] = new Creator.StringNoQuote("$PE_guielement_pos_name");
+            oc_Newobject231["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_name");
             oc_Newobject231["text"] = "Time 4";
 
             #endregion
@@ -4522,8 +4388,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject232["Profile"] = "ToolsGuiSliderProfile";
             oc_Newobject232["HorizSizing"] = "left";
             oc_Newobject232["VertSizing"] = "bottom";
-            oc_Newobject232["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_slider");
-            oc_Newobject232["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_slider");
+            oc_Newobject232["position"] = new Creator.StringNoQuote("$PE_guielement_pos_slider");
+            oc_Newobject232["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_slider");
             oc_Newobject232["MinExtent"] = "8 2";
             oc_Newobject232["canSave"] = "1";
             oc_Newobject232["Visible"] = "1";
@@ -4532,10 +4398,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject232["range"] = "0 1";
             oc_Newobject232["ticks"] = "0";
             oc_Newobject232["value"] = "0";
-            oc_Newobject232["Command"] =
-                "PE_ParticleEditor.updateParticle( \\\"times[3]\\\", $ThisControl.getValue(), true, true );";
-            oc_Newobject232["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[3]\\\", $ThisControl.getValue(), true, false );";
+            oc_Newobject232["Command"] = "PE_ParticleEditor.updateParticle( \\\"times[3]\\\", $ThisControl.getValue(), true, true );";
+            oc_Newobject232["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[3]\\\", $ThisControl.getValue(), true, false );";
 
             #endregion
 
@@ -4548,10 +4412,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             oc_Newobject233["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject233["HorizSizing"] = "left";
             oc_Newobject233["VertSizing"] = "bottom";
-            oc_Newobject233["position"] = new ObjectCreator.StringNoQuote("$PE_guielement_pos_value");
-            oc_Newobject233["Extent"] = new ObjectCreator.StringNoQuote("$PE_guielement_ext_value");
-            oc_Newobject233["altCommand"] =
-                "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[3]\\\", $ThisControl.getText());";
+            oc_Newobject233["position"] = new Creator.StringNoQuote("$PE_guielement_pos_value");
+            oc_Newobject233["Extent"] = new Creator.StringNoQuote("$PE_guielement_ext_value");
+            oc_Newobject233["altCommand"] = "$ThisControl.setText(mClamp( $ThisControl.getValue(), 0.0, 1.0)); $ThisControl.getParent().updateFromChild($ThisControl); PE_ParticleEditor.updateParticle( \\\"times[3]\\\", $ThisControl.getText());";
 
             #endregion
 
@@ -4644,11 +4507,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             #endregion
 
             oc_Newobject243.Create();
-            }
+        }
 
         [ConsoleInteraction]
         public void initEditor()
-            {
+        {
             SimSet PE_UnlistedEmitters = "PE_UnlistedEmitters";
             GuiPopUpMenuCtrl PEE_EmitterSelector = "PEE_EmitterSelector";
             GuiPopUpMenuCtrl PEE_EmitterParticleSelector1 = "PEE_EmitterParticleSelector1";
@@ -4700,15 +4563,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             PEE_blendType.add("SUBTRACTIVE", 2);
             PEE_blendType.add("PREMULTALPHA", 3);
 
-
             PEE_EmitterSelector.setFirstSelected();
 
             EditorTabBook.selectPage(0);
-            }
+        }
 
         [ConsoleInteraction]
         public void createParticleList()
-            {
+        {
             SimGroup DatablockGroup = "DatablockGroup";
             SimSet PE_UnlistedEmitters = "PE_UnlistedEmitters";
             SimSet PE_UnlistedParticles = "PE_UnlistedParticles";
@@ -4792,13 +4654,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             PEE_EmitterParticleSelector4.sort();
 
             Util._echo("Found" + ' ' + emitterCount + ' ' + "emitters and" + ' ' + particleCount + ' ' + "particles.");
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void openEmitterPane()
-            {
+        {
             GuiWindowCollapseCtrl PE_Window = "PE_Window";
             ParticleEmitterEditor.PE_EmitterEditor PE_EmitterEditor = "PE_EmitterEditor";
 
@@ -4808,13 +4670,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             if (!PE_EmitterEditor["dirty"].AsBool())
                 PE_EmitterEditor.setEmitterNotDirty();
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void openParticlePane()
-            {
+        {
             GuiWindowCollapseCtrl PE_Window = "PE_Window";
             ParticleParticleEditor.PE_ParticleEditor PE_ParticleEditor = "PE_ParticleEditor";
 
@@ -4825,13 +4687,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             if (!PE_ParticleEditor["dirty"].AsBool())
                 PE_ParticleEditor.setParticleNotDirty();
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void resetEmitterNode()
-            {
+        {
             GameConnection ServerConnection = "ServerConnection";
             GuiPopUpMenuCtrl PEE_EmitterSelector = "PEE_EmitterSelector";
 
@@ -4839,12 +4701,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             string tform = controlObject.getEyeTransform().AsString();
             string vec = Util.VectorNormalize(controlObject.getForwardVector()).AsString();
             vec = Util.VectorScale(vec.AsPoint3F(), 4).AsString();
-            tform = Util.setWord(tform, 0,
-                (Util.getWord(tform, 0).AsFloat() + Util.getWord(vec, 0).AsFloat()).AsString());
-            tform = Util.setWord(tform, 1,
-                (Util.getWord(tform, 1).AsFloat() + Util.getWord(vec, 1).AsFloat()).AsString());
-            tform = Util.setWord(tform, 2,
-                (Util.getWord(tform, 2).AsFloat() + Util.getWord(vec, 2).AsFloat()).AsString());
+            tform = Util.setWord(tform, 0, (Util.getWord(tform, 0).AsFloat() + Util.getWord(vec, 0).AsFloat()).AsString());
+            tform = Util.setWord(tform, 1, (Util.getWord(tform, 1).AsFloat() + Util.getWord(vec, 1).AsFloat()).AsString());
+            tform = Util.setWord(tform, 2, (Util.getWord(tform, 2).AsFloat() + Util.getWord(vec, 2).AsFloat()).AsString());
 
             if (!sGlobal["$ParticleEditor::emitterNode"].isObject())
                 {
@@ -4861,7 +4720,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
                 object2["position"] = Util.getWords(tform, 0, 2);
                 object2["rotation"] = Util.getWords(tform, 3, 6);
                 object2["datablock"] = TestEmitterNodeData;
-                object2["parentGroup"] = new ObjectCreator.StringNoQuote("MissionCleanup");
+                object2["parentGroup"] = new Creator.StringNoQuote("MissionCleanup");
 
                 sGlobal["$ParticleEditor::emitterNode"] = object2.Create().AsString();
                 }
@@ -4869,22 +4728,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
                 {
                 ((ParticleEmitterNode) sGlobal["$ParticleEditor::emitterNode"]).setTransform(tform.AsTransformF());
 
-                SimObject clientObject =
-                    ((ParticleEmitterNode) sGlobal["$ParticleEditor::emitterNode"]).getClientObject();
+                SimObject clientObject = ((ParticleEmitterNode) sGlobal["$ParticleEditor::emitterNode"]).getClientObject();
                 if (clientObject.isObject())
                     clientObject.call("setTransform", tform);
 
                 this.updateEmitterNode();
                 }
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void updateEmitterNode()
-            {
-            ParticleEmitterEditor.PEE_EmitterSelector_Control PEE_EmitterSelector_Control =
-                "PEE_EmitterSelector_Control";
+        {
+            ParticleEmitterEditor.PEE_EmitterSelector_Control PEE_EmitterSelector_Control = "PEE_EmitterSelector_Control";
 
             GuiPopUpMenuCtrl PopUpMenu = PEE_EmitterSelector_Control.FOT("PopUpMenu");
 
@@ -4892,21 +4749,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
                 {
                 int id = PopUpMenu.getSelected();
 
-                SimObject clientObject =
-                    ((SimObject) sGlobal["$ParticleEditor::emitterNode"]).call("getClientObject");
+                SimObject clientObject = ((SimObject) sGlobal["$ParticleEditor::emitterNode"]).call("getClientObject");
                 if (clientObject.isObject())
                     clientObject.call("setEmitterDataBlock", id.AsString());
                 }
             else
                 this.resetEmitterNode();
-            }
+        }
 
-       // [ConsoleInteraction]
+        // [ConsoleInteraction]
         public T createUndo<T>(string desc)
-            {
+        {
             Util.pushInstantGroup();
 
-            ObjectCreator actionCreator = new ObjectCreator("UndoScriptAction", "", typeof(T));
+            ObjectCreator actionCreator = new ObjectCreator("UndoScriptAction", "", typeof (T));
             //class = %class;
             //superClass = BaseParticleEdAction;
             actionCreator["actionName"] = desc;
@@ -4915,16 +4771,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
 
             Util.popInstantGroup();
             return action;
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
         [ConsoleInteraction]
         public void submitUndo(UndoScriptAction action)
-            {
+        {
             editor Editor = "Editor";
 
             action.addToManager(Editor.getUndoManager());
-            }
+        }
 
         //=============================================================================================
         //    PE_TabBook.
@@ -4933,10 +4789,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         //---------------------------------------------------------------------------------------------
         [TypeConverter(typeof (TypeConverterGeneric<PE_TabBook>))]
         public class PE_TabBook : GuiTabBookCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onTabSelected(string text, uint index)
-                {
+            {
                 if (!"ParticleEditor".isObject())
                     return;
 
@@ -4946,7 +4802,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
                     ParticleEditor.openEmitterPane();
                 else
                     ParticleEditor.openParticlePane();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4957,20 +4813,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PE_TabBook ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4978,9 +4832,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4989,12 +4843,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PE_TabBook ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5002,9 +4855,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PE_TabBook ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5012,10 +4865,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PE_TabBook(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (PE_TabBook) Omni.self.getSimObject(simobjectid, typeof (PE_TabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5023,9 +4876,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PE_TabBook ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5033,9 +4886,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PE_TabBook(int simobjectid)
-                {
+            {
                 return (PE_TabBook) Omni.self.getSimObject((uint) simobjectid, typeof (PE_TabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5043,42 +4896,42 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PE_TabBook ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PE_TabBook(uint simobjectid)
-                {
+            {
                 return (PE_TabBook) Omni.self.getSimObject(simobjectid, typeof (PE_TabBook));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<PE_Window>))]
         public class PE_Window : GuiWindowCollapseCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onPopWindow()
-                {
+            {
                 ParticleEditorPlugin ParticleEditorPlugin = "ParticleEditorPlugin";
 
                 EditorGui.DeactivateAll();
                 ParticleEditorPlugin.onActivated();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onPopWindowClosed()
-                {
+            {
                 ParticleEditorPlugin ParticleEditorPlugin = "ParticleEditorPlugin";
 
                 EditorGui.DeactivateAll();
                 ParticleEditorPlugin.onActivated();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5089,20 +4942,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PE_Window ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5110,9 +4961,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5121,12 +4972,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PE_Window ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5134,9 +4984,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PE_Window ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5144,10 +4994,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PE_Window(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (PE_Window) Omni.self.getSimObject(simobjectid, typeof (PE_Window));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5155,9 +5005,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PE_Window ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5165,9 +5015,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PE_Window(int simobjectid)
-                {
+            {
                 return (PE_Window) Omni.self.getSimObject((uint) simobjectid, typeof (PE_Window));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5175,21 +5025,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PE_Window ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PE_Window(uint simobjectid)
-                {
+            {
                 return (PE_Window) Omni.self.getSimObject(simobjectid, typeof (PE_Window));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -5200,18 +5050,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(ParticleEditor ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -5219,9 +5069,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -5230,12 +5080,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(ParticleEditor ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -5243,9 +5092,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(ParticleEditor ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -5253,10 +5102,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator ParticleEditor(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (ParticleEditor) Omni.self.getSimObject(simobjectid, typeof (ParticleEditor));
-            }
+        }
 
         /// <summary>
         /// 
@@ -5264,9 +5113,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(ParticleEditor ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -5274,9 +5123,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator ParticleEditor(int simobjectid)
-            {
+        {
             return (ParticleEditor) Omni.self.getSimObject((uint) simobjectid, typeof (ParticleEditor));
-            }
+        }
 
         /// <summary>
         /// 
@@ -5284,19 +5133,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(ParticleEditor ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator ParticleEditor(uint simobjectid)
-            {
+        {
             return (ParticleEditor) Omni.self.getSimObject(simobjectid, typeof (ParticleEditor));
-            }
+        }
 
         #endregion
-        }
     }
+}

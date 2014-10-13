@@ -1,24 +1,57 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Base.Utils;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<GuiObjectInspector>))]
     public class GuiObjectInspector : GuiWindowCollapseCtrl
-        {
-        
+    {
 
         [ConsoleInteraction(true, "GuiObjectInspector_initialize")]
         public static uint initialize()
-            {
+        {
             #region GuiWindowCollapseCtrl ()        oc_Newobject15
 
             ObjectCreator oc_Newobject15 = new ObjectCreator("GuiWindowCollapseCtrl", "", typeof (GuiObjectInspector));
@@ -126,8 +159,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject2
 
-            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiBitmapButtonCtrl", "",
-                typeof (GuiObjectInspectorTreeFilterClearButton));
+            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof (GuiObjectInspectorTreeFilterClearButton));
             oc_Newobject2["bitmap"] = "tools/gui/images/clear-icon";
             oc_Newobject2["groupNum"] = "-1";
             oc_Newobject2["buttonType"] = "PushButton";
@@ -496,12 +528,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             #endregion
 
             return oc_Newobject15.Create();
-            }
+        }
 
         [ConsoleInteraction]
         /// Bring up a new inspector window on the given object.
         public static void inspectObject(string objectx)
-            {
+        {
             GuiCanvas Canvas = "Canvas";
 
             if (!objectx.isObject())
@@ -525,7 +557,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             guiContent.init(objectx);
 
             ((GuiControl) Canvas.getContent()).add(guiContent);
-            }
+        }
 
         //=============================================================================================
         //    GuiObjectInspector
@@ -535,7 +567,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
         [ConsoleInteraction]
         public void init(SimObject objectx)
-            {
+        {
             GuiPanel panel2 = this.FOT("panel2");
             GuiSplitContainer splitter = this.FOT("Splitter");
             GuiInspector inspector = this.FOT("inspector");
@@ -569,23 +601,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 caption = caption + " - " + name;
 
             this.text = caption;
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public override void onClose()
-            {
+        {
             // Delete us.
             this.schedule("1", "delete");
-            }
+        }
 
         //=============================================================================================
         //    GuiObjectInspectorTree
         //=============================================================================================
 
         //---------------------------------------------------------------------------------------------
-
 
         //=============================================================================================
         //    GuiObjectInspectorMethodList
@@ -595,10 +626,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
         [TypeConverter(typeof (TypeConverterGeneric<GuiObjectInspectorMethodList>))]
         public class GuiObjectInspectorMethodList : GuiTreeViewCtrl
-            {
+        {
             [ConsoleInteraction]
             public void init(SimObject objectx)
-                {
+            {
                 this.clear();
 
                 ArrayObject methods = objectx.dumpMethods();
@@ -648,13 +679,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     }
 
                 this.sort(0, true);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onRightMouseUp(int item, string mousePos, SimObject objectx)
-                {
+            {
                 string value = this.getItemValue(item);
                 if (value == "")
                     return;
@@ -670,12 +701,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                     if (!GuiInspectorMethodListPopup.isObject())
                         {
-                        ObjectCreator ocf =
-                            new ObjectCreator("PopupMenu", "GuiInspectorMethodListPopup", typeof (MenuBuilder));
+                        ObjectCreator ocf = new ObjectCreator("PopupMenu", "GuiInspectorMethodListPopup", typeof (MenuBuilder));
                         ocf["isPopup"] = true.AsString();
 
-                        ocf["item[0]"] = "Jump to Definition in Torsion" + '\t' + "" + '\t' +
-                                         "EditorOpenFileInTorsion( this.jumpFileName, this.jumpLineNumber );";
+                        ocf["item[0]"] = "Jump to Definition in Torsion" + '\t' + "" + '\t' + "EditorOpenFileInTorsion( this.jumpFileName, this.jumpLineNumber );";
 
                         ocf["jumpFileName"] = "";
                         ocf["jumpLineNumber"] = "";
@@ -688,7 +717,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                     GuiInspectorMethodListPopup.showPopup(Canvas);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -699,20 +728,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiObjectInspectorMethodList ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -720,9 +747,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -731,12 +758,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiObjectInspectorMethodList ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -744,9 +770,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiObjectInspectorMethodList ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -754,12 +780,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorMethodList(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (GuiObjectInspectorMethodList)
-                        Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorMethodList));
-                }
+                return (GuiObjectInspectorMethodList) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorMethodList));
+            }
 
             /// <summary>
             /// 
@@ -767,9 +791,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiObjectInspectorMethodList ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -777,11 +801,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorMethodList(int simobjectid)
-                {
-                return
-                    (GuiObjectInspectorMethodList)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorMethodList));
-                }
+            {
+                return (GuiObjectInspectorMethodList) Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorMethodList));
+            }
 
             /// <summary>
             /// 
@@ -789,65 +811,61 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiObjectInspectorMethodList ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorMethodList(uint simobjectid)
-                {
-                return
-                    (GuiObjectInspectorMethodList)
-                        Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorMethodList));
-                }
+            {
+                return (GuiObjectInspectorMethodList) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorMethodList));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<GuiObjectInspectorTree>))]
         public class GuiObjectInspectorTree : GuiTreeViewCtrl
-            {
+        {
             public GuiInspector inspectorCtrl
-                {
+            {
                 get { return this["inspectorCtrl"]; }
                 set { this["inspectorCtrl"] = value; }
-                }
+            }
 
             public GuiObjectInspectorMethodList methodList
-                {
+            {
                 get { return this["methodList"]; }
                 set { this["methodList"] = value; }
-                }
+            }
 
             [ConsoleInteraction]
             public override void onSelect(string objectx, string y)
-                {
+            {
                 if (objectx.isObject())
                     {
                     this.inspectorCtrl.inspect(objectx);
                     this.methodList.init(objectx);
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onRightMouseUp(int itemId, string mousePos, SimObject objectx)
-                {
+            {
                 MenuBuilder GuiObjectInspectorTreePopup = "GuiObjectInspectorTreePopup";
                 GuiCanvas Canvas = "Canvas";
 
                 if (!GuiObjectInspectorTreePopup.isObject())
                     {
-                    ObjectCreator ocf =
-                        new ObjectCreator("PopupMenu", "GuiObjectInspectorTreePopup", typeof (MenuBuilder));
+                    ObjectCreator ocf = new ObjectCreator("PopupMenu", "GuiObjectInspectorTreePopup", typeof (MenuBuilder));
                     ocf["isPopup"] = true.AsString();
 
-                    ocf["item[0]"] = "Jump to Definition in Torsion" + '\t' + "" + '\t' +
-                                     "EditorOpenDeclarationInTorsion( GuiObjectInspectorTreePopup.object );";
+                    ocf["item[0]"] = "Jump to Definition in Torsion" + '\t' + "" + '\t' + "EditorOpenDeclarationInTorsion( GuiObjectInspectorTreePopup.object );";
 
                     ocf["object"] = "";
 
@@ -856,7 +874,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                 GuiObjectInspectorTreePopup["object"] = objectx;
                 GuiObjectInspectorTreePopup.showPopup(Canvas);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -867,20 +885,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiObjectInspectorTree ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -888,9 +904,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -899,12 +915,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiObjectInspectorTree ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -912,9 +927,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiObjectInspectorTree ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -922,10 +937,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTree(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (GuiObjectInspectorTree) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTree));
-                }
+            }
 
             /// <summary>
             /// 
@@ -933,9 +948,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiObjectInspectorTree ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -943,10 +958,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTree(int simobjectid)
-                {
-                return
-                    (GuiObjectInspectorTree) Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorTree));
-                }
+            {
+                return (GuiObjectInspectorTree) Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorTree));
+            }
 
             /// <summary>
             /// 
@@ -954,22 +968,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiObjectInspectorTree ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTree(uint simobjectid)
-                {
+            {
                 return (GuiObjectInspectorTree) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTree));
-                }
-
-            #endregion
             }
 
+            #endregion
+        }
 
         //=============================================================================================
         //    GuiObjectInspectorTreeFilter
@@ -979,16 +992,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
         [TypeConverter(typeof (TypeConverterGeneric<GuiObjectInspectorTreeFilter>))]
         public class GuiObjectInspectorTreeFilter : treeViewFilterCtrls.GuiTreeViewFilterText
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiTreeViewCtrl treeView = ((GuiControl) this.getParent()).FOT("TreeView");
                 if (treeView.isObject())
                     this["treeView"] = treeView;
 
                 base.onWake();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -999,20 +1012,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiObjectInspectorTreeFilter ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1020,9 +1031,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1031,12 +1042,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiObjectInspectorTreeFilter ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1044,9 +1054,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiObjectInspectorTreeFilter ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1054,12 +1064,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTreeFilter(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (GuiObjectInspectorTreeFilter)
-                        Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilter));
-                }
+                return (GuiObjectInspectorTreeFilter) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilter));
+            }
 
             /// <summary>
             /// 
@@ -1067,9 +1075,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiObjectInspectorTreeFilter ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1077,11 +1085,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTreeFilter(int simobjectid)
-                {
-                return
-                    (GuiObjectInspectorTreeFilter)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorTreeFilter));
-                }
+            {
+                return (GuiObjectInspectorTreeFilter) Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorTreeFilter));
+            }
 
             /// <summary>
             /// 
@@ -1089,24 +1095,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiObjectInspectorTreeFilter ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTreeFilter(uint simobjectid)
-                {
-                return
-                    (GuiObjectInspectorTreeFilter)
-                        Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilter));
-                }
-
-            #endregion
+            {
+                return (GuiObjectInspectorTreeFilter) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilter));
             }
 
+            #endregion
+        }
 
         //=============================================================================================
         //    GuiObjectInspectorTreeFilter
@@ -1116,14 +1119,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
         [TypeConverter(typeof (TypeConverterGeneric<GuiObjectInspectorTreeFilterClearButton>))]
         public class GuiObjectInspectorTreeFilterClearButton : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiTextEditCtrl filterText = ((GuiControl) this.getParent()).FOT("FilterText");
                 if (filterText.isObject())
                     this["textCtrl"] = filterText;
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1134,20 +1137,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiObjectInspectorTreeFilterClearButton ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1155,9 +1156,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1166,12 +1167,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiObjectInspectorTreeFilterClearButton ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1179,9 +1179,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiObjectInspectorTreeFilterClearButton ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1189,12 +1189,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTreeFilterClearButton(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (GuiObjectInspectorTreeFilterClearButton)
-                        Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilterClearButton));
-                }
+                return (GuiObjectInspectorTreeFilterClearButton) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilterClearButton));
+            }
 
             /// <summary>
             /// 
@@ -1202,9 +1200,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiObjectInspectorTreeFilterClearButton ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1212,11 +1210,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTreeFilterClearButton(int simobjectid)
-                {
-                return
-                    (GuiObjectInspectorTreeFilterClearButton)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorTreeFilterClearButton));
-                }
+            {
+                return (GuiObjectInspectorTreeFilterClearButton) Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspectorTreeFilterClearButton));
+            }
 
             /// <summary>
             /// 
@@ -1224,23 +1220,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiObjectInspectorTreeFilterClearButton ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiObjectInspectorTreeFilterClearButton(uint simobjectid)
-                {
-                return
-                    (GuiObjectInspectorTreeFilterClearButton)
-                        Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilterClearButton));
-                }
+            {
+                return (GuiObjectInspectorTreeFilterClearButton) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspectorTreeFilterClearButton));
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -1251,18 +1245,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(GuiObjectInspector ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -1270,9 +1264,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -1281,12 +1275,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(GuiObjectInspector ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -1294,9 +1287,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(GuiObjectInspector ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -1304,10 +1297,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator GuiObjectInspector(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (GuiObjectInspector) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspector));
-            }
+        }
 
         /// <summary>
         /// 
@@ -1315,9 +1308,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(GuiObjectInspector ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -1325,9 +1318,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator GuiObjectInspector(int simobjectid)
-            {
+        {
             return (GuiObjectInspector) Omni.self.getSimObject((uint) simobjectid, typeof (GuiObjectInspector));
-            }
+        }
 
         /// <summary>
         /// 
@@ -1335,19 +1328,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(GuiObjectInspector ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator GuiObjectInspector(uint simobjectid)
-            {
+        {
             return (GuiObjectInspector) Omni.self.getSimObject(simobjectid, typeof (GuiObjectInspector));
-            }
+        }
 
         #endregion
-        }
     }
+}

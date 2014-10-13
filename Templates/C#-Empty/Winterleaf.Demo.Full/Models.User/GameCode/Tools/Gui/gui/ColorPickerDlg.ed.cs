@@ -1,8 +1,42 @@
-﻿using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
@@ -10,19 +44,17 @@ using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<ColorPickerDlg>))]
     public class ColorPickerDlg : GuiColorPickerCtrl
-        {
-        
+    {
 
         [ConsoleInteraction(true, "ColorPickerDlg_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiColorPickerCtrl (ColorPickerDlg,EditorGuiGroup)        oc_Newobject25
 
-            ObjectCreator oc_Newobject25 = new ObjectCreator("GuiColorPickerCtrl", "ColorPickerDlg,EditorGuiGroup",
-                typeof (ColorPickerDlg));
+            ObjectCreator oc_Newobject25 = new ObjectCreator("GuiColorPickerCtrl", "ColorPickerDlg,EditorGuiGroup", typeof (ColorPickerDlg));
             oc_Newobject25["canSaveDynamicFields"] = "0";
             oc_Newobject25["isContainer"] = "1";
             oc_Newobject25["Profile"] = "ToolsGuiDefaultProfile";
@@ -60,8 +92,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject24["canMinimize"] = "0";
             oc_Newobject24["canMaximize"] = "0";
             oc_Newobject24["minSize"] = "50 50";
-            oc_Newobject24["closeCommand"] =
-                "DoColorPickerCancelCallback(); ColorPickerDlg.getRoot().popDialog(ColorPickerDlg);";
+            oc_Newobject24["closeCommand"] = "DoColorPickerCancelCallback(); ColorPickerDlg.getRoot().popDialog(ColorPickerDlg);";
 
             #region GuiBitmapBorderCtrl ()        oc_Newobject1
 
@@ -321,8 +352,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject15["MinExtent"] = "8 2";
             oc_Newobject15["canSave"] = "1";
             oc_Newobject15["Visible"] = "1";
-            oc_Newobject15["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); updateColorPickerAlpha( $ThisControl.getValue() );";
+            oc_Newobject15["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); updateColorPickerAlpha( $ThisControl.getValue() );";
             oc_Newobject15["hovertime"] = "1000";
             oc_Newobject15["range"] = "0 1";
             oc_Newobject15["ticks"] = "0";
@@ -343,8 +373,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject16["Extent"] = "34 18";
             oc_Newobject16["text"] = "0";
             oc_Newobject16["maxLength"] = "4";
-            oc_Newobject16["altCommand"] =
-                "$ThisControl.getParent().updateFromChild($ThisControl); updateColorPickerAlpha( $ThisControl.getValue() );";
+            oc_Newobject16["altCommand"] = "$ThisControl.getParent().updateFromChild($ThisControl); updateColorPickerAlpha( $ThisControl.getValue() );";
 
             #endregion
 
@@ -460,38 +489,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             omni.sGlobal["$ColorPickerCancelCallback"] = "";
             omni.sGlobal["$ColorPickerUpdateCallback"] = "";
             omni.iGlobal["$ColorCallbackType"] = 1; // ColorI
-            }
+        }
 
         [ConsoleInteraction]
         public static string ColorFloatToInt(string color)
-            {
+        {
             string red = omni.Util.getWord(color, 0);
             string green = omni.Util.getWord(color, 1);
             string blue = omni.Util.getWord(color, 2);
             string alpha = omni.Util.getWord(color, 3);
 
-            return omni.Util.mCeil(red.AsFloat()*255).AsString() + " " + omni.Util.mCeil(green.AsFloat()*255).AsString() +
-                   " " + omni.Util.mCeil(blue.AsFloat()*255).AsString() + " " +
-                   omni.Util.mCeil(alpha.AsFloat()*255).AsString();
-            }
+            return omni.Util.mCeil(red.AsFloat()*255).AsString() + " " + omni.Util.mCeil(green.AsFloat()*255).AsString() + " " + omni.Util.mCeil(blue.AsFloat()*255).AsString() + " " + omni.Util.mCeil(alpha.AsFloat()*255).AsString();
+        }
 
         [ConsoleInteraction]
         public static string ColorIntToFloat(string color)
-            {
+        {
             string red = omni.Util.getWord(color, 0);
             string green = omni.Util.getWord(color, 1);
             string blue = omni.Util.getWord(color, 2);
             string alpha = omni.Util.getWord(color, 3);
 
-            return (red.AsFloat()/255).AsString() + " " + (green.AsFloat()/255).AsString() + " " +
-                   (blue.AsFloat()/255).AsString() + " " + (alpha.AsFloat()/255).AsString();
-            }
+            return (red.AsFloat()/255).AsString() + " " + (green.AsFloat()/255).AsString() + " " + (blue.AsFloat()/255).AsString() + " " + (alpha.AsFloat()/255).AsString();
+        }
 
         [ConsoleInteraction]
         // This function pushes the color picker dialog and returns to a callback the selected value
-        public static void GetColorI(string currentColor, string callback, string root, string updateCallback,
-            string cancelCallback)
-            {
+        public static void GetColorI(string currentColor, string callback, string root, string updateCallback, string cancelCallback)
+        {
             GuiSwatchButtonCtrl oldColor = "oldColor";
             GuiSwatchButtonCtrl myColor = "myColor";
             GuiColorPickerCtrl ColorRangeSelect = "ColorRangeSelect";
@@ -535,12 +560,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // update the alpha value first
             ColorAlphaSelect.setValue(alpha.AsString());
             Channel_A_Val.setText(alpha.AsString());
-            }
+        }
 
         [ConsoleInteraction]
-        public static void GetColorF(string currentColor, string callback, string root, string updateCallback,
-            string cancelCallback)
-            {
+        public static void GetColorF(string currentColor, string callback, string root, string updateCallback, string cancelCallback)
+        {
             GuiSwatchButtonCtrl oldColor = "oldColor";
             GuiSwatchButtonCtrl myColor = "myColor";
             GuiColorPickerCtrl ColorRangeSelect = "ColorRangeSelect";
@@ -583,12 +607,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // update the alpha value first
             ColorAlphaSelect.setValue(alpha);
             Channel_A_Val.setText(alpha);
-            }
+        }
 
         [ConsoleInteraction]
         // This function is used to update the text controls at the top
         public static void setColorInfo()
-            {
+        {
             GuiTextEditCtrl Channel_R_Val = "Channel_R_Val";
             GuiTextEditCtrl Channel_G_Val = "Channel_G_Val";
             GuiTextEditCtrl Channel_B_Val = "Channel_B_Val";
@@ -609,47 +633,43 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             ColorBlendSelect.baseColor = (red + " " + green + " " + blue + " " + "1.0").AsColorF();
             ColorBlendSelect.updateColor();
-            }
+        }
 
         [ConsoleInteraction]
         // return mycolor.color
         public static void DoColorPickerCallback()
-            {
+        {
             ColorPickerDlg ColorPickerDlg = "ColorPickerDlg";
             GuiSwatchButtonCtrl myColor = "myColor";
 
-            omni.Util.eval(omni.sGlobal["$ColorPickerCallback"] + "(\"" +
-                            constructNewColor(myColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
+            omni.Util.eval(omni.sGlobal["$ColorPickerCallback"] + "(\"" + constructNewColor(myColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
             ((GuiCanvas) ColorPickerDlg.getRoot()).popDialog(ColorPickerDlg);
-            }
+        }
 
         [ConsoleInteraction]
         public static void DoColorPickerCancelCallback()
-            {
+        {
             ColorPickerDlg ColorPickerDlg = "ColorPickerDlg";
             GuiSwatchButtonCtrl oldColor = "oldColor";
 
             ((GuiCanvas) ColorPickerDlg.getRoot()).popDialog(ColorPickerDlg);
             if (omni.sGlobal["$ColorPickerCancelCallback"] != "")
-                omni.Util.eval(omni.sGlobal["$ColorPickerCancelCallback"] + "(\"" +
-                                constructNewColor(oldColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) +
-                                "\");");
-            }
+                omni.Util.eval(omni.sGlobal["$ColorPickerCancelCallback"] + "(\"" + constructNewColor(oldColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
+        }
 
         [ConsoleInteraction]
         public static void DoColorPickerUpdateCallback()
-            {
+        {
             GuiSwatchButtonCtrl myColor = "myColor";
 
             if (omni.sGlobal["$ColorPickerUpdateCallback"] != "")
-                omni.Util.eval(omni.sGlobal["$ColorPickerUpdateCallback"] + "(\"" +
-                                constructNewColor(myColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
-            }
+                omni.Util.eval(omni.sGlobal["$ColorPickerUpdateCallback"] + "(\"" + constructNewColor(myColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
+        }
 
         [ConsoleInteraction]
         // this is called from ColorRangeSelect.updateColor
         public static void updatePickerBaseColor(bool location)
-            {
+        {
             GuiColorPickerCtrl ColorRangeSelect = "ColorRangeSelect";
             GuiColorPickerCtrl ColorBlendSelect = "ColorBlendSelect";
 
@@ -669,12 +689,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             ColorBlendSelect.baseColor = (red + " " + green + " " + blue + " " + "1.0").AsColorF();
             ColorBlendSelect.updateColor();
-            }
+        }
 
         [ConsoleInteraction]
         // this is called from ColorBlendSelect.updateColor
         public static void updateRGBValues(bool location)
-            {
+        {
             GuiColorPickerCtrl ColorBlendSelect = "ColorBlendSelect";
             GuiTextEditCtrl Channel_R_Val = "Channel_R_Val";
             GuiTextEditCtrl Channel_G_Val = "Channel_G_Val";
@@ -721,11 +741,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             Channel_B_Val.setValue(blue);
 
             omni.bGlobal["$ColorPickerSignal"] = false;
-            }
+        }
 
         [ConsoleInteraction]
         public static void updateColorPickerAlpha(string alphaVal)
-            {
+        {
             GuiSwatchButtonCtrl myColor = "myColor";
 
             //lets prepare the color
@@ -740,11 +760,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             myColor.color = (red + " " + green + " " + blue + " " + alpha).AsColorF();
 
             DoColorPickerUpdateCallback();
-            }
+        }
 
         [ConsoleInteraction]
         public static string constructNewColor(string pickColor, int colorType)
-            {
+        {
             string red = omni.Util.getWord(pickColor, 0);
             string green = omni.Util.getWord(pickColor, 1);
             string blue = omni.Util.getWord(pickColor, 2);
@@ -753,14 +773,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // Update the text controls to reflect new color
             //setColorInfo(red, green, blue, alpha);
             if (colorType == 1) // ColorI
-                return omni.Util.mCeil(red.AsFloat()*255).AsString() + " " +
-                       omni.Util.mCeil(green.AsFloat()*255).AsString() + " " +
-                       omni.Util.mCeil(blue.AsFloat()*255).AsString() + " " +
-                       /* Copyright (C) 2013 WinterLeaf Entertainment LLC. */
-                       omni.Util.mCeil(alpha.AsFloat()*255).AsString();
+                return omni.Util.mCeil(red.AsFloat()*255).AsString() + " " + omni.Util.mCeil(green.AsFloat()*255).AsString() + " " + omni.Util.mCeil(blue.AsFloat()*255).AsString() + " " +/* Copyright (C) 2013 WinterLeaf Entertainment LLC. */ omni.Util.mCeil(alpha.AsFloat()*255).AsString();
             else // ColorF
                 return red + " " + green + " " + blue + " " + alpha;
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -771,18 +787,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(ColorPickerDlg ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -790,9 +806,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -801,12 +817,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(ColorPickerDlg ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -814,9 +829,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(ColorPickerDlg ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -824,10 +839,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator ColorPickerDlg(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (ColorPickerDlg) Omni.self.getSimObject(simobjectid, typeof (ColorPickerDlg));
-            }
+        }
 
         /// <summary>
         /// 
@@ -835,9 +850,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(ColorPickerDlg ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -845,9 +860,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator ColorPickerDlg(int simobjectid)
-            {
+        {
             return (ColorPickerDlg) Omni.self.getSimObject((uint) simobjectid, typeof (ColorPickerDlg));
-            }
+        }
 
         /// <summary>
         /// 
@@ -855,19 +870,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(ColorPickerDlg ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator ColorPickerDlg(uint simobjectid)
-            {
+        {
             return (ColorPickerDlg) Omni.self.getSimObject(simobjectid, typeof (ColorPickerDlg));
-            }
+        }
 
         #endregion
-        }
     }
+}
