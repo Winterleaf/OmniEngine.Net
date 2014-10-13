@@ -1,0 +1,24 @@
+﻿<OverrideConfig Type ="MemberConsoleFunctionOverride">
+  <NameSpace>WinterLeaf.Demo.Full.Models.User.Extendable.Player</NameSpace>
+  <Files>
+    <FileName>Player\Player_Script.cs</FileName>
+  </Files>
+  <ClassName>Player_Script</ClassName>
+  <ReferencedAssemblies>
+    <Assembly>System.dll</Assembly>
+    <Assembly>Microsoft.CSharp.dll</Assembly>
+    <Assembly>System.Core.dll</Assembly>
+    <Assembly>System.Data.dll</Assembly>
+    <Assembly>System.Data.DataSetExtensions.dll</Assembly>
+    <Assembly>System.Xml.dll</Assembly>
+    <Assembly>System.Xml.Linq.dll</Assembly>
+    <Assembly>Winterleaf.Demo.Full.dll</Assembly>
+    <Assembly>WinterLeaf.Engine.Omni.dll</Assembly>
+  </ReferencedAssemblies>
+  <FunctionOverrides>
+    <Function>playPain</Function>
+    <Function>playDeathCry</Function>
+    <function>DoSomethingcool</function>
+  </FunctionOverrides>
+</OverrideConfig>
+

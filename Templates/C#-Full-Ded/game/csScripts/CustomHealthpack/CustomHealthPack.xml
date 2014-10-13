@@ -1,0 +1,18 @@
+﻿<WLEOverrideConfig Type="Classes">
+  <Files>
+    <FileName>CustomHealthpack\CustomHealthPack.cs</FileName>
+  </Files>
+  <ReferencedAssemblies>
+    <Assembly>System.dll</Assembly>
+    <Assembly>Microsoft.CSharp.dll</Assembly>
+    <Assembly>System.Core.dll</Assembly>
+    <Assembly>System.Data.dll</Assembly>
+    <Assembly>System.Data.DataSetExtensions.dll</Assembly>
+    <Assembly>System.Xml.dll</Assembly>
+    <Assembly>System.Xml.Linq.dll</Assembly>
+    <Assembly>Winterleaf.Demo.Full.dll</Assembly>
+    <Assembly>WinterLeaf.Engine.Omni.dll</Assembly>
+  </ReferencedAssemblies>
+</WLEOverrideConfig>
+
+

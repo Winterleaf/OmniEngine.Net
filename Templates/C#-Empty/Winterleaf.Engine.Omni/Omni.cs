@@ -263,6 +263,12 @@ namespace WinterLeaf.Engine
             set { _ScriptExtensions_HandleExceptions = value; }
         }
 
+        public Exception LastError
+        {
+            get { return mLastError; }
+            set { mLastError = value; }
+        }
+
         private static object CreateObject(Type type)
         {
             //No leak here, constructor only gets created once.
@@ -282,6 +288,8 @@ namespace WinterLeaf.Engine
             OnShutDownEvent();
         }
 
+        private volatile Exception mLastError = null;
+
         private void bwr_InitializeTorque(object sender, DoWorkEventArgs e)
         {
             Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
@@ -297,7 +305,11 @@ namespace WinterLeaf.Engine
                 }
             catch (Exception err)
                 {
+                LastError = err;
                 _mStop = true;
+                if (_ScriptExtensions_Allow)
+                    csFactory.Instance.StopMonitoring();
+
                 return;
                 }
             //create a list of pointers for our parameters
