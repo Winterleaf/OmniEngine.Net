@@ -117,7 +117,7 @@ const MatrixF& SceneRenderState::getProjectionMatrix() const
 }
 
 //-----------------------------------------------------------------------------
-
+// Copyright (c) 2014 Winterleaf Entertainment, LLC
      //Box used for temporarily storing the object to compare's bounding box.
 	  //This object is passed into a helper function "BoxToPlane" for using the
 	  // half space test on the 6 planes of the view frustum
@@ -137,7 +137,7 @@ const MatrixF& SceneRenderState::getProjectionMatrix() const
 	  //This variable will be used as the camera's position for generating the view frustum sides.
 	  //It will also be used as the center of the near plane for finding the corners first.
 	  Point3F pCP; 
-
+	  // Copyright (c) 2014 Winterleaf Entertainment, LLC
 	 
 
 void SceneRenderState::renderObjects( SceneObject** objects, U32 numObjects )
@@ -145,6 +145,7 @@ void SceneRenderState::renderObjects( SceneObject** objects, U32 numObjects )
 	PROFILE_START( SceneRenderState_prepRenderImages );
    // Let the objects batch their stuff.
   // Make sure it's a client render
+	// Copyright (c) 2014 Winterleaf Entertainment, LLC
 #ifndef DISABLE_CULLING
    if(this->mSceneManager->GetIsClient())
    {
@@ -286,12 +287,13 @@ void SceneRenderState::renderObjects( SceneObject** objects, U32 numObjects )
    }
 #endif
    PROFILE_END();
-
+   // Copyright (c) 2014 Winterleaf Entertainment, LLC
    // Render what the objects have batched.
 
    getRenderPass()->renderPass( this );
 }
 
+// Copyright (c) 2014 Winterleaf Entertainment, LLC
 DefineConsoleFunction( setFarClippingDistance, void, ( F32 dist ),,
    "Sets the clients far clipping.\n"
    )
@@ -305,7 +307,7 @@ DefineConsoleFunction( getFarClippingDistance, F32,() ,,
 {
    return CameraAndFOV::mFarClippingDistance;
 }
-
+// Copyright (c) 2014 Winterleaf Entertainment, LLC
 
 
 
