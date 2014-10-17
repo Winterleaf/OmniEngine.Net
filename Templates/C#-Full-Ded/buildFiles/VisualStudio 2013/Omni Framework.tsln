@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Game", "..\..\Winterleaf.Game\Winterleaf.Game.csproj", "{F725FE41-5176-429B-BD79-F86E30F748E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Engine", "..\..\Winterleaf.Engine.Omni\Winterleaf.Engine.csproj", "{F08948D7-0E15-408A-B1F6-EC395895656F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinterLeaf.Demo.Full.Dedicated", "..\..\WinterLeaf.Demo.Full.Dedicated\WinterLeaf.Demo.Full.Dedicated.csproj", "{6A6B388C-7C5E-49E2-938E-E4EC95570673}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Debug|x64.ActiveCfg = Debug|x64
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Debug|x64.Build.0 = Debug|x64
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Debug|x86.ActiveCfg = Debug|x86
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Debug|x86.Build.0 = Debug|x86
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Release|x64.ActiveCfg = Release|x64
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Release|x64.Build.0 = Release|x64
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Release|x86.ActiveCfg = Release|x86
+		{F725FE41-5176-429B-BD79-F86E30F748E5}.Release|x86.Build.0 = Release|x86
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Debug|x64.ActiveCfg = Debug|x64
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Debug|x64.Build.0 = Debug|x64
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Debug|x86.ActiveCfg = Debug|x86
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Debug|x86.Build.0 = Debug|x86
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Release|x64.ActiveCfg = Release|x64
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Release|x64.Build.0 = Release|x64
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Release|x86.ActiveCfg = Release|x86
+		{F08948D7-0E15-408A-B1F6-EC395895656F}.Release|x86.Build.0 = Release|x86
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Debug|x64.ActiveCfg = Debug|x64
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Debug|x64.Build.0 = Debug|x64
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Debug|x86.ActiveCfg = Debug|x86
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Debug|x86.Build.0 = Debug|x86
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Release|x64.ActiveCfg = Release|x64
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Release|x64.Build.0 = Release|x64
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Release|x86.ActiveCfg = Release|x86
+		{6A6B388C-7C5E-49E2-938E-E4EC95570673}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
