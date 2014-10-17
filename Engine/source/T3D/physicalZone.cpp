@@ -509,7 +509,6 @@ if (!object)
 {
    if (object->isClientObject())
       return;
-
    object->activate();
 }
 }
@@ -521,7 +520,6 @@ if (!object)
 {
    if (object->isClientObject())
       return;
-
    object->deactivate();
 }
 }

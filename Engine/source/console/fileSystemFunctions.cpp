@@ -1266,12 +1266,10 @@ const char* pattern = (const char*)x__pattern;
 
 {
    S32 numResults = buildFileList( pattern, recurse, false );
-
    if(numResults < 0)
    {
      return (S32)( 0);
    }
-
   return (S32)( numResults);
 };
 }
@@ -1281,12 +1279,10 @@ const char* pattern = (const char*)x__pattern;
 
 {
    S32 numResults = buildFileList(pattern, recurse, true);
-
    if(numResults < 0)
    {
      return (S32)( 0);
    }
-
   return (S32)( numResults);
 };
 }
@@ -1296,16 +1292,13 @@ const char* fileName = (const char*)x__fileName;
 {
    String cleanfilename(Torque::Path::CleanSeparators(fileName));
    Con::expandScriptFilename(sgScriptFilenameBuffer, sizeof(sgScriptFilenameBuffer), cleanfilename.c_str());
-
    Torque::Path givenPath(Torque::Path::CompressPath(sgScriptFilenameBuffer));
    Torque::FS::FileNodeRef fileRef = Torque::FS::GetFileNode( givenPath );
-
    if ( fileRef == NULL )
    {
       Con::errorf("getFileCRC() - could not access file: [%s]", givenPath.getFullPath().c_str() );
      return (S32)( -1);
    }
-
   return (S32)( fileRef->getChecksum());
 };
 }

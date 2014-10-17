@@ -1,34 +1,67 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
-using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Classes.Interopt;
+using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.CodeBehind
-    {
+{
     public class ParticleParticleEditor
-        {
+    {
         private static readonly pInvokes omni = new pInvokes();
 
         [ConsoleInteraction(true, "ParticleParticleEditor_intialize")]
         public static void initialize()
-            {
+        {
             omni.sGlobal["$PE_PARTICLEEDITOR_DEFAULT_FILENAME"] = "art/particles/managedParticleData.cs";
-            }
+        }
 
         //=============================================================================================
         //    PE_ParticleEditor.
         //=============================================================================================
 
         //---------------------------------------------------------------------------------------------
-
 
         //=============================================================================================
         //    PEP_NewParticleButton.
@@ -37,19 +70,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
         //---------------------------------------------------------------------------------------------
         [TypeConverter(typeof (TypeConverterGeneric<PEP_NewParticleButton>))]
         public class PEP_NewParticleButton : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onDefaultClick()
-                {
+            {
                 PE_ParticleEditor PE_ParticleEditor = "PE_ParticleEditor";
 
                 PE_ParticleEditor.showNewDialog("");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public override void onCtrlClick()
-                {
+            {
                 PE_ParticleEditor PE_ParticleEditor = "PE_ParticleEditor";
                 GuiPopUpMenuCtrl PEP_ParticleSelector = "PEP_ParticleSelector";
 
@@ -66,7 +99,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                     }
 
                 PE_ParticleEditor.showNewDialog(replaceSlot.AsString());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -77,20 +110,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PEP_NewParticleButton ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -98,9 +129,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -109,12 +140,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PEP_NewParticleButton ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -122,9 +152,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PEP_NewParticleButton ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -132,10 +162,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PEP_NewParticleButton(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (PEP_NewParticleButton) Omni.self.getSimObject(simobjectid, typeof (PEP_NewParticleButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -143,9 +173,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PEP_NewParticleButton ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -153,10 +183,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PEP_NewParticleButton(int simobjectid)
-                {
-                return
-                    (PEP_NewParticleButton) Omni.self.getSimObject((uint) simobjectid, typeof (PEP_NewParticleButton));
-                }
+            {
+                return (PEP_NewParticleButton) Omni.self.getSimObject((uint) simobjectid, typeof (PEP_NewParticleButton));
+            }
 
             /// <summary>
             /// 
@@ -164,28 +193,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PEP_NewParticleButton ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PEP_NewParticleButton(uint simobjectid)
-                {
+            {
                 return (PEP_NewParticleButton) Omni.self.getSimObject(simobjectid, typeof (PEP_NewParticleButton));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<PEP_ParticleSelector_Control>))]
         public class PEP_ParticleSelector_Control : QuickEditDropDownTextEditCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onRenameItem()
-                {
+            {
                 PE_ParticleEditor PE_ParticleEditor = "PE_ParticleEditor";
 
                 GuiPopUpMenuCtrl PopupMenu = this.FOT("PopupMenu");
@@ -199,7 +228,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 // Resort menu.
 
                 PopupMenu.sort();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -210,20 +239,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PEP_ParticleSelector_Control ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -231,9 +258,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -242,12 +269,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PEP_ParticleSelector_Control ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -255,9 +281,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PEP_ParticleSelector_Control ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -265,12 +291,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PEP_ParticleSelector_Control(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (PEP_ParticleSelector_Control)
-                        Omni.self.getSimObject(simobjectid, typeof (PEP_ParticleSelector_Control));
-                }
+                return (PEP_ParticleSelector_Control) Omni.self.getSimObject(simobjectid, typeof (PEP_ParticleSelector_Control));
+            }
 
             /// <summary>
             /// 
@@ -278,9 +302,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PEP_ParticleSelector_Control ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -288,11 +312,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PEP_ParticleSelector_Control(int simobjectid)
-                {
-                return
-                    (PEP_ParticleSelector_Control)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (PEP_ParticleSelector_Control));
-                }
+            {
+                return (PEP_ParticleSelector_Control) Omni.self.getSimObject((uint) simobjectid, typeof (PEP_ParticleSelector_Control));
+            }
 
             /// <summary>
             /// 
@@ -300,30 +322,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PEP_ParticleSelector_Control ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PEP_ParticleSelector_Control(uint simobjectid)
-                {
-                return
-                    (PEP_ParticleSelector_Control)
-                        Omni.self.getSimObject(simobjectid, typeof (PEP_ParticleSelector_Control));
-                }
+            {
+                return (PEP_ParticleSelector_Control) Omni.self.getSimObject(simobjectid, typeof (PEP_ParticleSelector_Control));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<PE_ColorTintSwatch>))]
         public class PE_ColorTintSwatch : GuiSwatchButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public void updateParticleColor(string color)
-                {
+            {
                 PE_ParticleEditor PE_ParticleEditor = "PE_ParticleEditor";
 
                 string arrayNum = this["arrayNum"];
@@ -337,7 +357,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 this["color"] = color;
 
                 PE_ParticleEditor.updateParticle("colors[" + arrayNum + "]", color, false, false);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -348,20 +368,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PE_ColorTintSwatch ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -369,9 +387,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -380,12 +398,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PE_ColorTintSwatch ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -393,9 +410,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PE_ColorTintSwatch ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -403,10 +420,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PE_ColorTintSwatch(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (PE_ColorTintSwatch) Omni.self.getSimObject(simobjectid, typeof (PE_ColorTintSwatch));
-                }
+            }
 
             /// <summary>
             /// 
@@ -414,9 +431,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PE_ColorTintSwatch ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -424,9 +441,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PE_ColorTintSwatch(int simobjectid)
-                {
+            {
                 return (PE_ColorTintSwatch) Omni.self.getSimObject((uint) simobjectid, typeof (PE_ColorTintSwatch));
-                }
+            }
 
             /// <summary>
             /// 
@@ -434,40 +451,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PE_ColorTintSwatch ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PE_ColorTintSwatch(uint simobjectid)
-                {
+            {
                 return (PE_ColorTintSwatch) Omni.self.getSimObject(simobjectid, typeof (PE_ColorTintSwatch));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (PE_ParticleEditor))]
         public class PE_ParticleEditor : GuiTabPageCtrl
-            {
+        {
             public SimObject currParticle
-                {
+            {
                 get { return this["currParticle"]; }
                 set { this["currParticle"] = value; }
-                }
+            }
 
             public bool dirty
-                {
+            {
                 get { return this["dirty"].AsBool(); }
                 set { this["dirty"] = value.AsString(); }
-                }
+            }
 
             [ConsoleInteraction]
             public void guiSync()
-                {
+            {
                 GuiPopUpMenuCtrl PEP_ParticleSelector = "PEP_ParticleSelector";
                 ParticleEmitterEditor.PE_EmitterEditor PE_EmitterEditor = "PE_EmitterEditor";
                 MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
@@ -540,7 +557,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 popup.setSelected(data);
 
                 string bitmap = MaterialEditorGui.searchForTexture(data.getName(), data["textureName"]);
-
 
                 if (bitmap != "")
                     {
@@ -615,22 +631,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                 PEP_pointTime_slider3.setValue(data["times[3]"]);
                 PEP_pointTime_textEdit3.setText(data["times[3]"]);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             // Generic updateParticle method
             [ConsoleInteraction]
             public void updateParticle(string propertyField, string value, bool isSlider, bool onMouseUp)
-                {
+            {
                 editor Editor = "Editor";
                 ParticleEditor ParticleEditor = "ParticleEditor";
 
                 this.setParticleDirty();
                 SimObject particle = this.currParticle;
 
-                SimObject last =
-                    Editor.getUndoManager().getUndoAction((Editor.getUndoManager().getUndoCount() - 1));
+                SimObject last = Editor.getUndoManager().getUndoAction((Editor.getUndoManager().getUndoCount() - 1));
                 if ((isSlider) && (last["isSlider"].AsBool()) && (!last["onMouseUp"].AsBool()))
                     {
                     last["field"] = propertyField;
@@ -640,7 +655,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                     }
                 else
                     {
-                    var action = ParticleEditor.createUndo<ParticleEditorUndo.ActionUpdateActiveParticle>("Update Active Particle");
+                    ParticleEditorUndo.ActionUpdateActiveParticle action = ParticleEditor.createUndo<ParticleEditorUndo.ActionUpdateActiveParticle>("Update Active Particle");
                     action["particle"] = particle;
                     action["field"] = propertyField;
                     action["isSlider"] = isSlider.AsString();
@@ -653,19 +668,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                 particle.setFieldValue(propertyField, value, -1);
                 particle.call("reload");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             // Special case updateEmitter methods
             [ConsoleInteraction]
             public void updateParticleTexture(bool action)
-                {
+            {
                 MaterialEditor.gui.CodeBehind.MaterialEditor.MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
 
                 GuiBitmapButtonCtrl PEP_previewImage = this.FOT("PEP_previewImage");
                 GuiTextEditCtrl PEP_previewImageName = this.FOT("PEP_previewImageName");
-
 
                 if (action)
                     {
@@ -687,13 +701,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                     this.updateParticle("textureName", "", false, false);
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void updateLifeFields(bool isRandom, float value, bool isSlider, bool onMouseUp)
-                {
+            {
                 editor Editor = "Editor";
                 ParticleEditor ParticleEditor = "ParticleEditor";
 
@@ -727,8 +741,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                     }
 
                 // Submit undo.
-                SimObject last =
-                    Editor.getUndoManager().getUndoAction((Editor.getUndoManager().getUndoCount() - 1));
+                SimObject last = Editor.getUndoManager().getUndoAction((Editor.getUndoManager().getUndoCount() - 1));
                 if ((isSlider) && (last["isSlider"].AsBool()) && (!last["onMouseUp"].AsBool()))
                     {
                     last["isSlider"] = isSlider.AsString();
@@ -738,7 +751,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                     }
                 else
                     {
-                    var action = ParticleEditor.createUndo<ParticleEditorUndo.ActionUpdateActiveParticleLifeFields>("Update Active Particle");
+                    ParticleEditorUndo.ActionUpdateActiveParticleLifeFields action = ParticleEditor.createUndo<ParticleEditorUndo.ActionUpdateActiveParticleLifeFields>("Update Active Particle");
                     action["particle"] = particle;
                     action["isSlider"] = isSlider.AsString();
                     action["onMouseUp"] = onMouseUp.AsString();
@@ -754,12 +767,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 particle["lifetimeMS"] = PEP_lifetimeMS_textEdit.getText();
                 particle["lifetimeVarianceMS"] = PEP_lifetimeVarianceMS_textEdit.getText();
                 particle.call("reload");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void updateSpinFields(bool isMax, float value, bool isSlider, bool onMouseUp)
-                {
+            {
                 editor Editor = "Editor";
                 ParticleEditor ParticleEditor = "ParticleEditor";
 
@@ -792,8 +805,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                     }
 
                 // Submit undo.
-                SimObject last =
-                    Editor.getUndoManager().getUndoAction((Editor.getUndoManager().getUndoCount() - 1));
+                SimObject last = Editor.getUndoManager().getUndoAction((Editor.getUndoManager().getUndoCount() - 1));
                 if ((isSlider) && (last["isSlider"].AsBool()) && (!last["onMouseUp"].AsBool()))
                     {
                     last["isSlider"] = isSlider.AsString();
@@ -803,7 +815,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                     }
                 else
                     {
-                    var action = ParticleEditor.createUndo<ParticleEditorUndo.ActionUpdateActiveParticleSpinFields>("Update Active Particle");
+                    ParticleEditorUndo.ActionUpdateActiveParticleSpinFields action = ParticleEditor.createUndo<ParticleEditorUndo.ActionUpdateActiveParticleSpinFields>("Update Active Particle");
                     action["particle"] = particle;
                     action["isSlider"] = isSlider.AsString();
                     action["onMouseUp"] = onMouseUp.AsString();
@@ -819,13 +831,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 particle["spinRandomMax"] = PEP_spinRandomMax_textEdit.getText();
                 particle["spinRandomMin"] = PEP_spinRandomMin_textEdit.getText();
                 particle.call("reload");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void onNewParticle()
-                {
+            {
                 GuiPopUpMenuCtrl PEP_ParticleSelector = "PEP_ParticleSelector";
 
                 // Bail if the user selected the same particle.
@@ -836,25 +848,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                 // Load new particle if we're not in a dirty state
                 if (this.dirty)
-                    {
-                    messageBox.MessageBoxYesNoCancel("Save Existing Particle?",
-                        "Do you want to save changes to <br><br>" + this.currParticle.getName(),
-                        "PE_ParticleEditor.saveParticle(" + this.currParticle + ");",
-                        "PE_ParticleEditor.saveParticleDialogDontSave(" + this.currParticle +
-                        "); PE_ParticleEditor.loadNewParticle();"
-                        );
-                    }
+                    messageBox.MessageBoxYesNoCancel("Save Existing Particle?", "Do you want to save changes to <br><br>" + this.currParticle.getName(), "PE_ParticleEditor.saveParticle(" + this.currParticle + ");", "PE_ParticleEditor.saveParticleDialogDontSave(" + this.currParticle + "); PE_ParticleEditor.loadNewParticle();");
                 else
-                    {
                     this.loadNewParticle("");
-                    }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void loadNewParticle(SimObject particle)
-                {
+            {
                 GuiPopUpMenuCtrl PEP_ParticleSelector = "PEP_ParticleSelector";
                 ParticleData PE_ParticleEditor_NotDirtyParticle = "PE_ParticleEditor_NotDirtyParticle";
 
@@ -872,66 +875,54 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                 this.guiSync();
                 this.setParticleNotDirty();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void setParticleDirty()
-                {
+            {
                 PersistenceManager PE_ParticleSaver = "PE_ParticleSaver";
                 this["text"] = "Particle *";
                 this.dirty = true;
 
                 SimObject particle = this.currParticle;
 
-                if (particle.getFilename() == "" ||
-                    particle.getFilename() == "tools/particleEditor/particleParticleEditor.ed.cs")
+                if (particle.getFilename() == "" || particle.getFilename() == "tools/particleEditor/particleParticleEditor.ed.cs")
                     PE_ParticleSaver.setDirty(particle, sGlobal["$PE_PARTICLEEDITOR_DEFAULT_FILENAME"]);
                 else
                     PE_ParticleSaver.setDirty(particle);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void setParticleNotDirty()
-                {
+            {
                 PersistenceManager PE_ParticleSaver = "PE_ParticleSaver";
 
                 this["text"] = "Particle";
                 this.dirty = false;
 
                 PE_ParticleSaver.clearAll();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void showNewDialog(string replaceSlot)
-                {
+            {
                 // Open a dialog if the current Particle is dirty
                 if (this.dirty)
-                    {
-                    messageBox.MessageBoxYesNoCancel("Save Particle Changes?",
-                        "Do you wish to save the changes made to the <br>current particle before changing the particle?",
-                        "PE_ParticleEditor.saveParticle( " + this.currParticle.getName() +
-                        " ); PE_ParticleEditor.createParticle( " + replaceSlot + " );",
-                        "PE_ParticleEditor.saveParticleDialogDontSave( " + this.currParticle.getName() +
-                        " ); PE_ParticleEditor.createParticle( " + replaceSlot + " );"
-                        );
-                    }
+                    messageBox.MessageBoxYesNoCancel("Save Particle Changes?", "Do you wish to save the changes made to the <br>current particle before changing the particle?", "PE_ParticleEditor.saveParticle( " + this.currParticle.getName() + " ); PE_ParticleEditor.createParticle( " + replaceSlot + " );", "PE_ParticleEditor.saveParticleDialogDontSave( " + this.currParticle.getName() + " ); PE_ParticleEditor.createParticle( " + replaceSlot + " );");
                 else
-                    {
                     this.createParticle(replaceSlot);
-                    }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void createParticle(string replaceSlot)
-                {
+            {
                 ParticleEmitterEditor.PE_EmitterEditor PE_EmitterEditor = "PE_EmitterEditor";
                 ParticleEditor ParticleEditor = "ParticleEditor";
-
 
                 int particleIndex;
                 // Make sure we have a spare slot on the current emitter.
@@ -954,16 +945,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                 string newParticle = Util.getUniqueName("newParticle");
 
-                SimObject newParticleNode = new DatablockCreator("ParticleData", newParticle + " : DefaultParticle", typeof(ParticleData)).Create();
+                SimObject newParticleNode = new DatablockCreator("ParticleData", newParticle + " : DefaultParticle", typeof (ParticleData)).Create();
 
                 // Submit undo.
 
-                var action = ParticleEditor.createUndo<ParticleEditorUndo.ActionCreateNewParticle>("Create New Particle");
+                ParticleEditorUndo.ActionCreateNewParticle action = ParticleEditor.createUndo<ParticleEditorUndo.ActionCreateNewParticle>("Create New Particle");
                 action["particle"] = newParticleNode;
                 action["particleIndex"] = particleIndex.AsString();
-                action["prevParticle"] =
-                    ((GuiPopUpMenuCtrl) ("PEE_EmitterParticleSelector" + (particleIndex + 1))).getSelected()
-                        .AsString();
+                action["prevParticle"] = ((GuiPopUpMenuCtrl) ("PEE_EmitterParticleSelector" + (particleIndex + 1))).getSelected().AsString();
                 action["emitter"] = PE_EmitterEditor.currEmitter;
 
                 ParticleEditor.submitUndo(action);
@@ -971,12 +960,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 // Execute action.
 
                 action.redo();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void showDeleteDialog()
-                {
+            {
                 ParticleEmitterEditor.PE_EmitterEditor PE_EmitterEditor = "PE_EmitterEditor";
 
                 // Don't allow deleting DefaultParticle.
@@ -998,22 +987,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 // Bring up requester for confirmation.
 
                 if (this.currParticle.isObject())
-                    {
-                    messageBox.MessageBoxYesNoCancel("Delete Particle?",
-                        "Are you sure you want to delete<br><br>" + this.currParticle.getName() +
-                        "<br><br> Particle deletion won't take affect until the engine is quit.",
-                        "PE_ParticleEditor.saveParticleDialogDontSave( " + this.currParticle.getName() +
-                        " ); PE_ParticleEditor.deleteParticle();",
-                        "",
-                        ""
-                        );
-                    }
-                }
+                    messageBox.MessageBoxYesNoCancel("Delete Particle?", "Are you sure you want to delete<br><br>" + this.currParticle.getName() + "<br><br> Particle deletion won't take affect until the engine is quit.", "PE_ParticleEditor.saveParticleDialogDontSave( " + this.currParticle.getName() + " ); PE_ParticleEditor.deleteParticle();", "", "");
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void deleteParticle()
-                {
+            {
                 ParticleEditor ParticleEditor = "ParticleEditor";
                 ParticleEmitterEditor.PE_EmitterEditor PE_EmitterEditor = "PE_EmitterEditor";
 
@@ -1021,7 +1001,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 
                 // Submit undo.
 
-                var action = ParticleEditor.createUndo<ParticleEditorUndo.ActionDeleteParticle>("Delete Particle");
+                ParticleEditorUndo.ActionDeleteParticle action = ParticleEditor.createUndo<ParticleEditorUndo.ActionDeleteParticle>("Delete Particle");
                 action["particle"] = particle;
                 action["emitter"] = PE_EmitterEditor.currEmitter;
 
@@ -1030,12 +1010,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 // Execute action.
 
                 action.redo();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void saveParticle(SimObject particle)
-                {
+            {
                 GuiPopUpMenuCtrl PEP_ParticleSelector = "PEP_ParticleSelector";
                 ParticleData PE_ParticleEditor_NotDirtyParticle = "PE_ParticleEditor_NotDirtyParticle";
                 PersistenceManager PE_ParticleSaver = "PE_ParticleSaver";
@@ -1050,19 +1030,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
                 this.setParticleNotDirty();
 
                 ParticleEditor.createParticleList();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
             [ConsoleInteraction]
             public void saveParticleDialogDontSave(SimObject particle)
-                {
+            {
                 ParticleData PE_ParticleEditor_NotDirtyParticle = "PE_ParticleEditor_NotDirtyParticle";
 
                 particle.setName(PE_ParticleEditor_NotDirtyParticle["originalName"]);
                 particle.assignFieldsFrom(PE_ParticleEditor_NotDirtyParticle);
 
                 this.setParticleNotDirty();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1073,20 +1053,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PE_ParticleEditor ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1094,9 +1072,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1105,12 +1083,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PE_ParticleEditor ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1118,9 +1095,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PE_ParticleEditor ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1128,10 +1105,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PE_ParticleEditor(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (PE_ParticleEditor) Omni.self.getSimObject(simobjectid, typeof (PE_ParticleEditor));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1139,9 +1116,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PE_ParticleEditor ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1149,9 +1126,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PE_ParticleEditor(int simobjectid)
-                {
+            {
                 return (PE_ParticleEditor) Omni.self.getSimObject((uint) simobjectid, typeof (PE_ParticleEditor));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1159,20 +1136,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PE_ParticleEditor ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PE_ParticleEditor(uint simobjectid)
-                {
+            {
                 return (PE_ParticleEditor) Omni.self.getSimObject(simobjectid, typeof (PE_ParticleEditor));
-                }
+            }
 
             #endregion
-            }
         }
     }
+}

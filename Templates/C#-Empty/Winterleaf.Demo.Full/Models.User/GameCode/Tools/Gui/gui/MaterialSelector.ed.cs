@@ -1,83 +1,116 @@
-﻿using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<MaterialSelector>))]
     public class MaterialSelector : GuiWindowCtrl
-        {
-        
+    {
 
         internal string selectCallback
-            {
+        {
             get { return this["selectCallback"]; }
             set { this["selectCallback"] = value; }
-            }
+        }
 
         internal bool terrainMaterials
-            {
+        {
             get { return this["terrainMaterials"].AsBool(); }
             set { this["terrainMaterials"] = value.AsString(); }
-            }
+        }
 
         internal string returnType
-            {
+        {
             get { return this["returnType"]; }
             set { this["returnType"] = value; }
-            }
+        }
 
         internal string selectedPreviewImagePath
-            {
+        {
             get { return this["selectedPreviewImagePath"]; }
             set { this["selectedPreviewImagePath"] = value; }
-            }
+        }
 
         internal string currentFilter
-            {
+        {
             get { return this["currentFilter"]; }
             set { this["currentFilter"] = value; }
-            }
+        }
 
         internal ArrayObject currentStaticFilter
-            {
+        {
             get { return this["currentStaticFilter"]; }
             set { this["currentStaticFilter"] = value; }
-            }
+        }
 
         internal SimObject selectedMaterial
-            {
+        {
             get { return this["selectedMaterial"]; }
             set { this["selectedMaterial"] = value; }
-            }
+        }
 
         internal int currentPreviewPage
-            {
+        {
             get { return this["currentPreviewPage"].AsInt(); }
             set { this["currentPreviewPage"] = value.AsString(); }
-            }
+        }
 
         internal int staticFilterObjects
-            {
+        {
             get { return this["staticFilterObjects"].AsInt(); }
             set { this["staticFilterObjects"] = value.AsString(); }
-            }
+        }
 
         internal int totalPages
-            {
+        {
             get { return this["totalPages"].AsInt(); }
             set { this["totalPages"] = value.AsString(); }
-            }
+        }
 
         [ConsoleInteraction(true, "MaterialSelector_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (MaterialSelectorOverlay, EditorGuiGroup)        oc_Newobject42
 
             ObjectCreator oc_Newobject42 = new ObjectCreator("GuiControl", "MaterialSelectorOverlay, EditorGuiGroup");
@@ -96,8 +129,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             #region GuiWindowCtrl (MaterialSelector)        oc_Newobject36
 
-            ObjectCreator oc_Newobject36 = new ObjectCreator("GuiWindowCtrl", "MaterialSelector",
-                typeof (MaterialSelector));
+            ObjectCreator oc_Newobject36 = new ObjectCreator("GuiWindowCtrl", "MaterialSelector", typeof (MaterialSelector));
             oc_Newobject36["profile"] = "ToolsGuiWindowProfile";
             oc_Newobject36["HorizSizing"] = "center";
             oc_Newobject36["VertSizing"] = "center";
@@ -180,7 +212,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject4["willFirstRespond"] = "1";
             oc_Newobject4["hScrollBar"] = "alwaysOff";
             oc_Newobject4["vScrollBar"] = "dynamic";
-            oc_Newobject4["lockHorizScroll"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject4["lockHorizScroll"] = new Creator.StringNoQuote("true");
             oc_Newobject4["lockVertScroll"] = "false";
             oc_Newobject4["constantThumbHeight"] = "0";
             oc_Newobject4["childMargin"] = "0 0";
@@ -346,8 +378,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject12["VertSizing"] = "bottom";
             oc_Newobject12["Position"] = "0 0";
             oc_Newobject12["Extent"] = "128 0";
-            oc_Newobject12["changeChildPosition"] = new ObjectCreator.StringNoQuote("0");
-            oc_Newobject12["changeChildSizeToFit"] = new ObjectCreator.StringNoQuote("1");
+            oc_Newobject12["changeChildPosition"] = new Creator.StringNoQuote("0");
+            oc_Newobject12["changeChildSizeToFit"] = new Creator.StringNoQuote("1");
 
             #region GuiControl ()        oc_Newobject10
 
@@ -440,12 +472,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject21["VertSizing"] = "bottom";
             oc_Newobject21["Position"] = "480 2";
             oc_Newobject21["Extent"] = "0 16";
-            oc_Newobject21["dynamic"] = new ObjectCreator.StringNoQuote("1");
-            oc_Newobject21["dynamicPos"] = new ObjectCreator.StringNoQuote("1");
+            oc_Newobject21["dynamic"] = new Creator.StringNoQuote("1");
+            oc_Newobject21["dynamicPos"] = new Creator.StringNoQuote("1");
             oc_Newobject21["stackingType"] = "Horizontal";
-            oc_Newobject21["changeChildPosition"] = new ObjectCreator.StringNoQuote("1");
-            oc_Newobject21["changeChildSizeToFit"] = new ObjectCreator.StringNoQuote("1");
-            oc_Newobject21["padding"] = new ObjectCreator.StringNoQuote("2");
+            oc_Newobject21["changeChildPosition"] = new Creator.StringNoQuote("1");
+            oc_Newobject21["changeChildSizeToFit"] = new Creator.StringNoQuote("1");
+            oc_Newobject21["padding"] = new Creator.StringNoQuote("2");
 
             #region GuiButtonCtrl ()        oc_Newobject16
 
@@ -511,11 +543,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject18["VertSizing"] = "bottom";
             oc_Newobject18["Position"] = "0 0";
             oc_Newobject18["Extent"] = "0 16";
-            oc_Newobject18["dynamic"] = new ObjectCreator.StringNoQuote("1");
+            oc_Newobject18["dynamic"] = new Creator.StringNoQuote("1");
             oc_Newobject18["stackingType"] = "Horizontal";
-            oc_Newobject18["changeChildPosition"] = new ObjectCreator.StringNoQuote("1");
-            oc_Newobject18["changeChildSizeToFit"] = new ObjectCreator.StringNoQuote("1");
-            oc_Newobject18["padding"] = new ObjectCreator.StringNoQuote("2");
+            oc_Newobject18["changeChildPosition"] = new Creator.StringNoQuote("1");
+            oc_Newobject18["changeChildSizeToFit"] = new Creator.StringNoQuote("1");
+            oc_Newobject18["padding"] = new Creator.StringNoQuote("2");
 
             #endregion
 
@@ -742,7 +774,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject32["position"] = "612 39";
             oc_Newobject32["extent"] = "150 150";
             oc_Newobject32["bitmap"] = "tools/worldEditor/images/terrainpainter/terrain-painter-border-large";
-            oc_Newobject32["visible"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject32["visible"] = new Creator.StringNoQuote("false");
 
             #endregion
 
@@ -909,8 +941,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject39["buttonType"] = "PushButton";
             oc_Newobject39["useMouseEvents"] = "0";
             oc_Newobject39["text"] = "Create";
-            oc_Newobject39["Command"] =
-                "MaterialSelector.createFilter( MaterialSelector_addFilterWindow-->tagName.getText() );MaterialSelector_addFilterWindow.setVisible(0);";
+            oc_Newobject39["Command"] = "MaterialSelector.createFilter( MaterialSelector_addFilterWindow-->tagName.getText() );MaterialSelector_addFilterWindow.setVisible(0);";
 
             #endregion
 
@@ -971,11 +1002,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             UnlistedMaterials.add("unlistedMaterials", matEdCubeMapPreviewMat);
             UnlistedMaterials.add("unlistedMaterials", materialEd_justAlphaMaterial);
             UnlistedMaterials.add("unlistedMaterials", materialEd_justAlphaShader);
-            }
+        }
 
         [ConsoleInteraction]
         public void selectMaterial(Material material)
-            {
+        {
             SimSet TerrainMaterialSet = "TerrainMaterialSet";
 
             string name = "";
@@ -986,9 +1017,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 material = TerrainMaterialSet.findObjectByInternalName(name, false);
                 }
             else
-                {
-                name =  material.getName();
-                }
+                name = material.getName();
 
             // The callback function should be ready to intake the returned material
             //eval("materialEd_previewMaterial." + propertyField + " = " + value + ";");
@@ -1033,26 +1062,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             else
                 Util.eval("" + this.selectCallback + "(" + material + ");");
             this.hideDialog();
-            }
+        }
 
         [ConsoleInteraction]
         public void showDialog(string selectCallback, string returnType)
-            {
+        {
             if (this.isVisible())
                 return;
 
             this.showDialogBase(selectCallback, returnType, false);
-            }
+        }
 
         [ConsoleInteraction]
         public void showTerrainDialog(string selectCallback, string returnType)
-            {
+        {
             this.showDialogBase(selectCallback, returnType, true);
-            }
+        }
 
         [ConsoleInteraction]
         public void showDialogBase(string selectCallback, string returnType, bool useTerrainMaterials)
-            {
+        {
             GuiPopUpMenuCtrlEx materialPreviewCountPopup = this.FOT("materialPreviewCountPopup");
             GuiCanvas Canvas = "Canvas";
             GuiControl MaterialSelectorOverlay = "MaterialSelectorOverlay";
@@ -1071,7 +1100,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             materialPreviewCountPopup.add("25", 2);
             materialPreviewCountPopup.add("50", 3);
             materialPreviewCountPopup.add("75", 4);
-            materialPreviewCountPopup.add("100",5);
+            materialPreviewCountPopup.add("100", 5);
             materialPreviewCountPopup.setSelected(iGlobal["$Pref::MaterialSelector::ThumbnailCountIndex"]);
 
             Canvas.pushDialog(MaterialSelectorOverlay);
@@ -1082,22 +1111,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             this.selectedMaterial = "";
             this.loadMaterialFilters();
-            }
+        }
 
         [ConsoleInteraction]
         public void hideDialog()
-            {
+        {
             GuiCanvas Canvas = "Canvas";
             GuiControl MaterialSelectorOverlay = "MaterialSelectorOverlay";
 
             this.breakdown();
             this.setVisible(false);
             Canvas.popDialog(MaterialSelectorOverlay);
-            }
+        }
 
         [ConsoleInteraction]
         public void breakdown()
-            {
+        {
             ArrayObject MaterialFilterAllArray = "MaterialFilterAllArray";
             ArrayObject MaterialFilterMappedArray = "MaterialFilterMappedArray";
             ArrayObject MaterialFilterUnmappedArray = "MaterialFilterUnmappedArray";
@@ -1118,11 +1147,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             MaterialFilterAllArray.delete();
             MaterialFilterMappedArray.delete();
             MaterialFilterUnmappedArray.delete();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildStaticFilters()
-            {
+        {
             TerrainEditor ETerrainEditor = "ETerrainEditor";
             SimSet materialSet = "materialSet";
             SimSet TerrainMaterialSet = "TerrainMaterialSet";
@@ -1151,7 +1180,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject46["HorizSizing"] = "right";
             oc_Newobject46["VertSizing"] = "bottom";
             oc_Newobject46["isContainer"] = "1";
-            oc_Newobject46["parentGroup"] = new ObjectCreator.StringNoQuote("%filter");
+            oc_Newobject46["parentGroup"] = new Creator.StringNoQuote("%filter");
 
             #region GuiContainer ()        oc_Newobject44
 
@@ -1192,7 +1221,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject48["HorizSizing"] = "right";
             oc_Newobject48["VertSizing"] = "bottom";
             oc_Newobject48["isContainer"] = "1";
-            oc_Newobject48["parentGroup"] = new ObjectCreator.StringNoQuote("%filter");
+            oc_Newobject48["parentGroup"] = new Creator.StringNoQuote("%filter");
 
             #region GuiCheckBoxCtrl (MaterialFilterAllArrayCheckbox)        oc_Newobject47
 
@@ -1220,7 +1249,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject50["HorizSizing"] = "right";
             oc_Newobject50["VertSizing"] = "bottom";
             oc_Newobject50["isContainer"] = "1";
-            oc_Newobject50["parentGroup"] = new ObjectCreator.StringNoQuote("%filter");
+            oc_Newobject50["parentGroup"] = new Creator.StringNoQuote("%filter");
 
             #region GuiCheckBoxCtrl (MaterialFilterMappedArrayCheckbox)        oc_Newobject49
 
@@ -1248,7 +1277,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject52["HorizSizing"] = "right";
             oc_Newobject52["VertSizing"] = "bottom";
             oc_Newobject52["isContainer"] = "1";
-            oc_Newobject52["parentGroup"] = new ObjectCreator.StringNoQuote("%filter");
+            oc_Newobject52["parentGroup"] = new Creator.StringNoQuote("%filter");
 
             #region GuiCheckBoxCtrl (MaterialFilterUnmappedArrayCheckbox)        oc_Newobject51
 
@@ -1276,7 +1305,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject57["HorizSizing"] = "right";
             oc_Newobject57["VertSizing"] = "bottom";
             oc_Newobject57["isContainer"] = "1";
-            oc_Newobject57["parentGroup"] = new ObjectCreator.StringNoQuote("%filter");
+            oc_Newobject57["parentGroup"] = new Creator.StringNoQuote("%filter");
 
             #region GuiContainer ()        oc_Newobject53
 
@@ -1318,8 +1347,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject55["MinExtent"] = "8 2";
             oc_Newobject55["canSave"] = "1";
             oc_Newobject55["Visible"] = "1";
-            oc_Newobject55["Command"] =
-                "MaterialSelector_addFilterWindow.setVisible(1); MaterialSelectorOverlay.pushToBack(MaterialSelector_addFilterWindow);";
+            oc_Newobject55["Command"] = "MaterialSelector_addFilterWindow.setVisible(1); MaterialSelectorOverlay.pushToBack(MaterialSelector_addFilterWindow);";
             oc_Newobject55["hovertime"] = "1000";
             oc_Newobject55["tooltip"] = "Create New Tag";
             oc_Newobject55["bitmap"] = "tools/gui/images/new";
@@ -1376,10 +1404,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // Create our category array used in the selector, this code should be taken out
             // in order to make the material selector agnostic
             ArrayObject MaterialFilterAllArray = new ObjectCreator("ArrayObject", "MaterialFilterAllArray").Create();
-            ArrayObject MaterialFilterMappedArray =
-                new ObjectCreator("ArrayObject", "MaterialFilterMappedArray").Create();
-            ArrayObject MaterialFilterUnmappedArray =
-                new ObjectCreator("ArrayObject", "MaterialFilterUnmappedArray").Create();
+            ArrayObject MaterialFilterMappedArray = new ObjectCreator("ArrayObject", "MaterialFilterMappedArray").Create();
+            ArrayObject MaterialFilterUnmappedArray = new ObjectCreator("ArrayObject", "MaterialFilterUnmappedArray").Create();
 
             string mats = "";
             int count = 0;
@@ -1389,9 +1415,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 count = Util.getRecordCount(mats);
                 }
             else
-                {
                 count = materialSet.getCount();
-                }
 
             for (uint i = 0; i < count; i++)
                 {
@@ -1452,31 +1476,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             MaterialFilterAllArrayCheckbox.setText("All ( " + MaterialFilterAllArray.count() + " ) ");
             MaterialFilterMappedArrayCheckbox.setText("Mapped ( " + MaterialFilterMappedArray.count() + " ) ");
             MaterialFilterUnmappedArrayCheckbox.setText("Unmapped ( " + MaterialFilterUnmappedArray.count() + " ) ");
-            }
+        }
 
         [ConsoleInteraction]
         public void preloadFilter()
-            {
+        {
             GuiDynamicCtrlArrayControl filterArray = this.FOT("filterArray");
 
             string selectedFilter = "";
             for (uint i = (uint) this.staticFilterObjects; i < filterArray.getCount(); i++)
                 {
-                    if (((GuiCheckBoxCtrl)((SimSet)filterArray.getObject(i)).getObject(0)).getValue().AsInt() == 1)
+                if (((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(i)).getObject(0)).getValue().AsInt() == 1)
                     {
                     if (selectedFilter == "")
                         selectedFilter = ((SimObject) ((SimSet) filterArray.getObject(i)).getObject(0))["filter"];
                     else
-                        selectedFilter = selectedFilter + " " +
-                                         ((SimObject) ((SimSet) filterArray.getObject(i)).getObject(0))["filter"];
+                        selectedFilter = selectedFilter + " " + ((SimObject) ((SimSet) filterArray.getObject(i)).getObject(0))["filter"];
                     }
                 }
             this.loadFilter(selectedFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void loadFilter(string selectedFilter, string staticFilter = "")
-            {
+        {
             ArrayObject MatEdScheduleArray = "MatEdScheduleArray";
             ArrayObject MatEdPreviewArray = "MatEdPreviewArray";
 
@@ -1525,8 +1548,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                         {
                         string currentTag = Util.getWord(this.currentFilter, j);
                         if (this.currentStaticFilter.getKey(i) == currentTag)
-                            filteredObjectsArray.add(this.currentStaticFilter.getKey(i),
-                                this.currentStaticFilter.getValue(i));
+                            filteredObjectsArray.add(this.currentStaticFilter.getKey(i), this.currentStaticFilter.getValue(i));
                         }
                     }
 
@@ -1589,18 +1611,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                 int start = this.currentPreviewPage*previewsPerPage;
                 for (int i = start; i < start + previewCount; i++)
-                    {
                     this.buildPreviewArray(noTagArray.getValue(i));
-                    }
                 }
 
-
             this.loadImages(0);
-            }
+        }
 
         [ConsoleInteraction]
         public void buildPreviewArray(Material material)
-            {
+        {
             GuiDynamicCtrlArrayControl materialSelection = this.FOT("materialSelection");
             ArrayObject MatEdPreviewArray = "MatEdPreviewArray";
 
@@ -1704,7 +1723,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject65["bitmap"] = "";
             oc_Newobject65["Command"] = "";
             oc_Newobject65["text"] = "Loading...";
-            oc_Newobject65["useStates"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject65["useStates"] = new Creator.StringNoQuote("false");
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject64
 
@@ -1740,8 +1759,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             oc_Newobject66["Variable"] = "";
             oc_Newobject66["buttonType"] = "ToggleButton";
             oc_Newobject66["tooltip"] = matName;
-            oc_Newobject66["Command"] =
-                "MaterialSelector.updateSelection( $ThisControl.getParent().getObject(1).internalName, $ThisControl.getParent().getObject(1).bitmap );";
+            oc_Newobject66["Command"] = "MaterialSelector.updateSelection( $ThisControl.getParent().getObject(1).internalName, $ThisControl.getParent().getObject(1).bitmap );";
             oc_Newobject66["groupNum"] = "0";
             oc_Newobject66["text"] = "";
 
@@ -1756,11 +1774,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             // add to the array object for reference later
             MatEdPreviewArray.add(previewButton, previewImage);
-            }
+        }
 
         [ConsoleInteraction]
         public void loadImages(int materialNum)
-            {
+        {
             ArrayObject MatEdPreviewArray = "MatEdPreviewArray";
             ArrayObject MatEdScheduleArray = "MatEdScheduleArray";
 
@@ -1782,22 +1800,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 int tempSchedule = this.schedule("64", "loadImages", materialNum.AsString());
                 MatEdScheduleArray.add(tempSchedule.AsString(), materialNum.AsString());
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void clearMaterialFilters()
-            {
+        {
             GuiDynamicCtrlArrayControl filterArray = this.FOT("filterArray");
 
             for (uint i = (uint) this.staticFilterObjects; i < filterArray.getCount(); i++)
                 ((GuiButtonCtrl) ((SimSet) filterArray.getObject(i)).getObject(0)).setStateOn(false);
 
             this.loadFilter("", "");
-            }
+        }
 
         [ConsoleInteraction]
         public void loadMaterialFilters()
-            {
+        {
             ArrayObject MaterialFilterAllArray = "MaterialFilterAllArray";
 
             GuiDynamicCtrlArrayControl filterArray = this.FOT("filterArray");
@@ -1852,7 +1870,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
                 GuiCheckBoxCtrl checkbox = oc_Newobject68.Create();
 
-
                 container.add(checkbox);
                 filterArray.add(container);
 
@@ -1874,12 +1891,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             this.loadFilter(selectedFilter);
 
             filteredTypesArray.delete();
-            }
+        }
 
         [ConsoleInteraction]
         // create category and update current material if there is one
         public void createFilter(string filter)
-            {
+        {
             ArrayObject MaterialFilterAllArray = "MaterialFilterAllArray";
             GuiWindowCtrl MaterialSelector_addFilterWindow = "MaterialSelector_addFilterWindow";
             GuiTextEditCtrl tagName = MaterialSelector_addFilterWindow.FOT("tagName");
@@ -1944,11 +1961,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             // material category text field to blank
             tagName.setText("");
-            }
+        }
 
         [ConsoleInteraction]
         public void updateSelection(SimObject material, string previewImagePath)
-            {
+        {
             GuiDynamicCtrlArrayControl filterArray = this.FOT("filterArray");
             GuiDynamicCtrlArrayControl materialCategories = this.FOT("materialCategories");
             GuiTextCtrl previewSelectionText = this.FOT("previewSelectionText");
@@ -1961,16 +1978,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             bool isMaterialBorder = false;
             isMaterialBorder = this.FOT(material + "Border").isObject();
             if (isMaterialBorder)
-                {
                 ((GuiButtonCtrl) this.FOT(material + "Border")).setStateOn(true);
-                }
 
             bool isMaterialBorderPrevious = false;
             isMaterialBorderPrevious = this.FOT(sGlobal["$prevSelectedMaterialHL"] + "Border").isObject();
             if (isMaterialBorderPrevious)
-                {
                 ((GuiButtonCtrl) this.FOT(sGlobal["$prevSelectedMaterialHL"] + "Border")).setStateOn(false);
-                }
 
             materialCategories.deleteAllObjects();
             this.selectedMaterial = material;
@@ -1991,8 +2004,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 oc_Newobject72["Profile"] = "ToolsGuiCheckBoxListProfile";
                 oc_Newobject72["position"] = "5 2";
                 oc_Newobject72["Extent"] = "118 18";
-                oc_Newobject72["Command"] =
-                    "MaterialSelector.updateMaterialTags( $ThisControl.materialName, $ThisControl.getText(), $ThisControl.getValue() );";
+                oc_Newobject72["Command"] = "MaterialSelector.updateMaterialTags( $ThisControl.materialName, $ThisControl.getText(), $ThisControl.getValue() );";
                 oc_Newobject72["text"] = filter;
 
                 #endregion
@@ -2020,11 +2032,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 }
 
             sGlobal["$prevSelectedMaterialHL"] = material;
-            }
+        }
 
         [ConsoleInteraction]
         public void updateMaterialTags(Material material, string tag, bool tagValue)
-            {
+        {
             ArrayObject MaterialFilterAllArray = "MaterialFilterAllArray";
             ArrayObject MaterialFilterUnmappedArray = "MaterialFilterUnmappedArray";
             ArrayObject MaterialFilterMappedArray = "MaterialFilterMappedArray";
@@ -2056,14 +2068,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                         for (uint j = (uint) this.staticFilterObjects; j < filterArray.getCount(); j++)
                             {
                             if (tag == ((SimObject) ((SimSet) filterArray.getObject(j)).getObject(0))["filter"])
-                            {
-                                int count =
-                                    Util.getWord(
-                                        ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).getText(),
-                                        2).AsInt();
+                                {
+                                int count = Util.getWord(((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).getText(), 2).AsInt();
                                 count++;
-                                    ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).setText(
-                                        tag + " ( " + count + " )");
+                                ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).setText(tag + " ( " + count + " )");
                                 }
                             }
 
@@ -2105,7 +2113,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                         }
                     }
 
-
                 this.updateFilterCount(tag, false);
 
                 string tagField = this.getTagField(material, tag);
@@ -2113,9 +2120,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 string lastValidTagField = this.getLastValidTagField(material, tag);
 
                 if (tagField == lastValidTagField || lastValidTagField == "")
-                    {
                     MaterialSelectorPerMan.removeField(material, tagField);
-                    }
                 else
                     {
                     // Replace the current tagFieldValue with the last tagFieldValue
@@ -2130,9 +2135,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // so were not going to save materials that dont current exist...
             // technically all the data is stored in dynamic fields if the user feels like saving
             // their auto-generated or new material
-            if (material.getFilename() != "" &&
-                material.getFilename() != "tools/gui/MaterialSelector.ed.gui" &&
-                material.getFilename() != "tools/materialEditor/scripts/materialEditor.ed.cs")
+            if (material.getFilename() != "" && material.getFilename() != "tools/gui/MaterialSelector.ed.gui" && material.getFilename() != "tools/materialEditor/scripts/materialEditor.ed.cs")
                 {
                 MaterialSelectorPerMan.setDirty(material);
                 MaterialSelectorPerMan.saveDirty();
@@ -2141,11 +2144,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 if (!tagValue)
                     material.setFieldValue(lastTagField, "", -1);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void updateFilterCount(string tag, bool add)
-            {
+        {
             GuiDynamicCtrlArrayControl filterArray = this.FOT("filterArray");
 
             for (uint i = (uint) this.staticFilterObjects; i < filterArray.getCount(); i++)
@@ -2153,25 +2156,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 if (tag == ((SimObject) ((SimSet) filterArray.getObject(i)).getObject(0))["filter"])
                     {
                     // Get the filter count and apply the operation
-                    int idx =
-                        Util.getWord(
-                            ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(i)).getObject(0)).getText(), 2)
-                            .AsInt();
+                    int idx = Util.getWord(((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(i)).getObject(0)).getText(), 2).AsInt();
 
                     if (add)
                         idx++;
                     else
                         idx--;
 
-                    ((GuiCheckBoxCtrl)((SimSet)filterArray.getObject(i)).getObject(0)).setText( tag + " ( " + idx + " )");
+                    ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(i)).getObject(0)).setText(tag + " ( " + idx + " )");
                     }
                 }
-            }
+        }
 
         [ConsoleInteraction]
         // this should create a new material pretty nicely
         public void createNewMaterial()
-            {
+        {
             ArrayObject MaterialFilterAllArray = "MaterialFilterAllArray";
             ArrayObject MaterialFilterUnmappedArray = "MaterialFilterUnmappedArray";
             GuiCheckBoxCtrl MaterialFilterAllArrayCheckbox = "MaterialFilterAllArrayCheckbox";
@@ -2187,7 +2187,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             ObjectCreator oc_Newobject73 = new ObjectCreator("Material", materialName);
             oc_Newobject73["diffuseMap[0]"] = "core/art/warnMat";
             oc_Newobject73["mapTo"] = "unmapped_mat";
-            oc_Newobject73["parentGroup"] = new ObjectCreator.StringNoQuote("RootGroup");
+            oc_Newobject73["parentGroup"] = new Creator.StringNoQuote("RootGroup");
 
             #endregion
 
@@ -2243,7 +2243,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 oc_Newobject77["bitmap"] = "core/art/warnMat";
                 oc_Newobject77["Command"] = "";
                 oc_Newobject77["text"] = "Loading...";
-                oc_Newobject77["useStates"] = new ObjectCreator.StringNoQuote("false");
+                oc_Newobject77["useStates"] = new Creator.StringNoQuote("false");
 
                 #region GuiBitmapButtonCtrl ()        oc_Newobject76
 
@@ -2279,8 +2279,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 oc_Newobject78["Variable"] = "";
                 oc_Newobject78["buttonType"] = "ToggleButton";
                 oc_Newobject78["tooltip"] = material.name;
-                oc_Newobject78["Command"] =
-                    "MaterialSelector.updateSelection( $ThisControl.getParent().getObject(1).internalName, $ThisControl.getParent().getObject(1).bitmap );";
+                oc_Newobject78["Command"] = "MaterialSelector.updateSelection( $ThisControl.getParent().getObject(1).internalName, $ThisControl.getParent().getObject(1).bitmap );";
                 oc_Newobject78["groupNum"] = "0";
                 oc_Newobject78["text"] = "";
 
@@ -2296,13 +2295,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             // select me
             this.updateSelection(material, "core/art/warnMat.png");
-            }
+        }
 
         [ConsoleInteraction]
         //needs to be deleted with the persistence manager and needs to be blanked out of the matmanager
         //also need to update instances... i guess which is the tricky part....
         public void showDeleteDialog()
-            {
+        {
             ArrayObject MaterialFilterUnmappedArray = "MaterialFilterUnmappedArray";
 
             SimObject material = this.selectedMaterial;
@@ -2320,20 +2319,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 }
 
             if (material.isObject())
-                {
-                messageBox.MessageBoxYesNoCancel("Delete Material?",
-                    "Are you sure you want to delete<br><br>" + material.getName() +
-                    "<br><br> Material deletion won't take affect until the engine is quit.",
-                    "MaterialSelector.deleteMaterial( " + material + ", " + secondFilter + ", " + secondFilterName +
-                    " );",
-                    "",
-                    "");
-                }
-            }
+                messageBox.MessageBoxYesNoCancel("Delete Material?", "Are you sure you want to delete<br><br>" + material.getName() + "<br><br> Material deletion won't take affect until the engine is quit.", "MaterialSelector.deleteMaterial( " + material + ", " + secondFilter + ", " + secondFilterName + " );", "", "");
+        }
 
         [ConsoleInteraction]
         public void deleteMaterial(SimObject materialName, ArrayObject secondFilter, string secondFilterName)
-            {
+        {
             ArrayObject MaterialFilterAllArray = "MaterialFilterAllArray";
             ArrayObject UnlistedMaterials = "UnlistedMaterials";
             PersistenceManager MaterialSelectorPerMan = "MaterialSelectorPerMan";
@@ -2368,24 +2359,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     {
                     if (materialTag == ((SimObject) ((SimSet) filterArray.getObject(j)).getObject(0))["filter"])
                         {
-                        int count =
-                            Util.getWord(
-                                ((GuiCheckBoxCtrl)((SimSet)filterArray.getObject(j)).getObject(0)).getText(), 2)
-                                .AsInt();
+                        int count = Util.getWord(((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).getText(), 2).AsInt();
                         count--;
-                            ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).setText(materialTag +
-                                                                                                         " ( " + count +
-                                                                                                         " )");
+                        ((GuiCheckBoxCtrl) ((SimSet) filterArray.getObject(j)).getObject(0)).setText(materialTag + " ( " + count + " )");
                         }
                     }
                 }
 
-
             UnlistedMaterials.add("unlistedMaterials", materialName);
 
-            if (materialName.getFilename() != "" &&
-                materialName.getFilename() != "tools/gui/MaterialSelector.ed.gui" &&
-                materialName.getFilename() != "tools/materialEditor/scripts/materialEditor.ed.cs")
+            if (materialName.getFilename() != "" && materialName.getFilename() != "tools/gui/MaterialSelector.ed.gui" && materialName.getFilename() != "tools/materialEditor/scripts/materialEditor.ed.cs")
                 {
                 MaterialSelectorPerMan.removeObjectFromFile(materialName);
                 MaterialSelectorPerMan.saveDirty();
@@ -2393,11 +2376,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             this.preloadFilter();
             //MaterialSelector.selectMaterial( "WarningMaterial" );
-            }
+        }
 
         [ConsoleInteraction]
         public void switchStaticFilters(string staticFilter)
-            {
+        {
             GuiCheckBoxCtrl MaterialFilterAllArrayCheckbox = "MaterialFilterAllArrayCheckbox";
             GuiCheckBoxCtrl MaterialFilterMappedArrayCheckbox = "MaterialFilterMappedArrayCheckbox";
             GuiCheckBoxCtrl MaterialFilterUnmappedArrayCheckbox = "MaterialFilterUnmappedArrayCheckbox";
@@ -2424,13 +2407,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // kinda goofy were passing a class variable... we can't do an empty check right now
             // on load filter because we actually pass "" as a filter...
             this.loadFilter(this.currentFilter, staticFilter);
-            }
+        }
 
         // Tagging Functionality
 
         [ConsoleInteraction]
         public string getTagField(SimObject material, string tag)
-            {
+        {
             string tagField = "";
             for (int i = 0; material.getFieldValue("materialTag" + i, -1) != ""; i++)
                 {
@@ -2443,24 +2426,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 }
 
             return tagField;
-            }
+        }
 
         [ConsoleInteraction]
         public string getLastTagField(SimObject material)
-            {
+        {
             string tagField = "";
 
             for (int i = 0; material.getFieldValue("materialTag" + i, -1) != ""; i++)
-                {
                 tagField = "materialTag" + i;
-                }
 
             return tagField;
-            }
+        }
 
         [ConsoleInteraction]
         public string getLastValidTagField(SimObject material, string invalidTag)
-            {
+        {
             string tag, tagField = "";
 
             for (int i = 0; material.getFieldValue("materialTag" + i, -1) != ""; i++)
@@ -2475,30 +2456,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 }
 
             return tagField;
-            }
+        }
 
         // Preview Page Navigation
 
         [ConsoleInteraction]
         public void firstPage()
-            {
+        {
             this.currentPreviewPage = 0;
             this.loadFilter(this.currentFilter, this.currentStaticFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void previousPage()
-            {
+        {
             this.currentPreviewPage--;
             if (this.currentPreviewPage < 0)
                 this.currentPreviewPage = 0;
 
             this.loadFilter(this.currentFilter, this.currentStaticFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void nextPage()
-            {
+        {
             this.currentPreviewPage++;
             if (this.currentPreviewPage >= this.totalPages)
                 this.currentPreviewPage = this.totalPages - 1;
@@ -2506,37 +2487,37 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 this.currentPreviewPage = 0;
 
             this.loadFilter(this.currentFilter, this.currentStaticFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void lastPage()
-            {
+        {
             this.currentPreviewPage = this.totalPages - 1;
             if (this.currentPreviewPage < 0)
                 this.currentPreviewPage = 0;
 
             this.loadFilter(this.currentFilter, this.currentStaticFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void selectPage(int page)
-            {
+        {
             this.currentPreviewPage = page;
             this.loadFilter(this.currentFilter, this.currentStaticFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void thumbnailCountUpdate()
-            {
+        {
             GuiPopUpMenuCtrlEx materialPreviewCountPopup = this.FOT("materialPreviewCountPopup");
 
             iGlobal["$Pref::MaterialSelector::ThumbnailCountIndex"] = materialPreviewCountPopup.getSelected();
             this.loadFilter(this.currentFilter, this.currentStaticFilter);
-            }
+        }
 
         [ConsoleInteraction]
         public void buildPagesButtons(int currentPage, int totalPages)
-            {
+        {
             GuiStackControl materialPreviewPagesStack = this.FOT("materialPreviewPagesStack");
 
             bool startbracket, endbracket;
@@ -2552,9 +2533,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     startbracket = false;
                     }
                 else
-                    {
                     startbracket = true;
-                    }
 
                 if ((totalPages - start) < 8)
                     {
@@ -2569,9 +2548,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     endbracket = false;
                     }
                 else
-                    {
                     endbracket = true;
-                    }
                 }
             else
                 {
@@ -2671,7 +2648,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 GuiTextCtrl control = oc_Newobject82.Create();
                 materialPreviewPagesStack.add(control);
                 }
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -2682,18 +2659,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(MaterialSelector ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -2701,9 +2678,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2712,12 +2689,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(MaterialSelector ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -2725,9 +2701,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(MaterialSelector ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2735,10 +2711,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator MaterialSelector(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (MaterialSelector) Omni.self.getSimObject(simobjectid, typeof (MaterialSelector));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2746,9 +2722,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(MaterialSelector ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2756,9 +2732,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator MaterialSelector(int simobjectid)
-            {
+        {
             return (MaterialSelector) Omni.self.getSimObject((uint) simobjectid, typeof (MaterialSelector));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2766,19 +2742,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(MaterialSelector ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator MaterialSelector(uint simobjectid)
-            {
+        {
             return (MaterialSelector) Omni.self.getSimObject(simobjectid, typeof (MaterialSelector));
-            }
+        }
 
         #endregion
-        }
     }
+}

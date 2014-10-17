@@ -1,35 +1,70 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using System.Windows.Forms;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind
-    {
-    [TypeConverter(typeof(TypeConverterGeneric<TerrainMaterialDlg>))]
+{
+    [TypeConverter(typeof (TypeConverterGeneric<TerrainMaterialDlg>))]
     public class TerrainMaterialDlg : GuiControl
-        {
+    {
         internal int matIndex
-            {
+        {
             get { return this["matIndex"].AsInt(); }
             set { this["matIndex"] = value.AsString(); }
-            }
+        }
 
         internal string onApplyCallback
-            {
+        {
             get { return this["onApplyCallback"]; }
             set { this["onApplyCallback"] = value; }
-            }
+        }
 
         [ConsoleInteraction]
         public void show(int matIndex, string terrMat, string onApplyCallback)
-            {
-            ((GuiCanvas)"Canvas").pushDialog(this);
+        {
+            ((GuiCanvas) "Canvas").pushDialog(this);
             this.matIndex = matIndex;
             this.onApplyCallback = onApplyCallback;
 
@@ -53,12 +88,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                         }
                     }
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void showByObjectID(string matObjectID, string onApplyCallback)
-            {
-            ((GuiCanvas)"canvas").pushDialog(this);
+        {
+            ((GuiCanvas) "canvas").pushDialog(this);
             matIndex = -1;
             this.onApplyCallback = onApplyCallback;
             GuiTreeViewCtrl matLibTree = this.findObjectByInternalName("matLibTree", true);
@@ -69,11 +104,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 matLibTree.selectItem(item);
                 matLibTree.scrollVisible(item);
                 }
-            }
-
+        }
 
         public override void onWake()
-            {
+        {
             if (!"ETerrainMaterialPersistMan".isObject())
                 new ObjectCreator("PersistenceManager", "ETerrainMaterialPersistMan").Create();
 
@@ -99,20 +133,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
             //matLibTree.selectItem(1);
             //activateMaterialCtrls(true);
-            }
-
+        }
 
         public override void onSleep()
-            {
+        {
             if ("TerrainMaterialDlgSnapshot".isObject())
                 "TerrainMaterialDlgSnapshot".delete();
             GuiTreeViewCtrl matLibTree = this.findObjectByInternalName("matLibTree", true);
             matLibTree.clear();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildTree()
-            {
+        {
             // Refresh the material list.
             GuiTreeViewCtrl matLibTree = FOT("matLibTree");
             matLibTree.clear();
@@ -137,13 +170,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
                 if (matLibTree.getParentItem(folder) == root)
                     matLibTree.insertObject(folder, mat, true);
-
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void setTerrainFolder(string terrainFolder)
-            {
+        {
             TerrainMaterial mat = this["activeMat"];
             GuiTreeViewCtrl matLibTree = FOT("matLibTree");
 
@@ -152,11 +184,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 mat["terrainFolder"] = terrainFolder;
                 matLibTree.buildVisibleTree(false);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void dialogApply()
-            {
+        {
             SimGroup TerrainMaterialDlgNewGroup = "TerrainMaterialDlgNewGroup";
             SimGroup TerrainMaterialDlgDeleteGroup = "TerrainMaterialDlgDeleteGroup";
             PersistenceManager ETerrainMaterialPersistMan = "ETerrainMaterialPersistMan";
@@ -192,15 +224,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             // Delete the snapshot.
             "TerrainMaterialDlgSnapshot".delete();
 
-            ((GuiCanvas)"Canvas").popDialog(this);
+            ((GuiCanvas) "Canvas").popDialog(this);
 
             Util._call(onApplyCallback, this["activeMat"], this.matIndex.AsString());
-            }
-
+        }
 
         [ConsoleInteraction]
         public void dialogCancel()
-            {
+        {
             PersistenceManager ETerrainMaterialPersistMan = "ETerrainMaterialPersistMan";
             SimGroup TerrainMaterialDlgNewGroup = "TerrainMaterialDlgNewGroup";
             SimGroup TerrainMaterialDlgDeleteGroup = "TerrainMaterialDlgDeleteGroup";
@@ -224,34 +255,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 SimObject mat = TerrainMaterialDlgDeleteGroup.getObject(i);
                 mat.parentGroup = "RootGroup";
 
-                ((SimSet)"TerrainMaterialSet").add(mat);
+                ((SimSet) "TerrainMaterialSet").add(mat);
                 }
-            ((GuiCanvas)"Canvas").popDialog(this);
-            }
+            ((GuiCanvas) "Canvas").popDialog(this);
+        }
 
         [ConsoleInteraction]
         public void setMaterialName(string newName)
-            {
+        {
             GuiTreeViewCtrl matLibTree = this.findObjectByInternalName("matLibTree", true);
             SimObject mat = this["activeMat"];
             if (mat.internalName != newName)
                 {
-                SimObject existingMat = ((SimSet)"TerrainMaterialSet").findObjectByInternalName(newName, true);
+                SimObject existingMat = ((SimSet) "TerrainMaterialSet").findObjectByInternalName(newName, true);
                 if (existingMat.isObject())
-                    {
                     messageBox.MessageBoxOK("Error", "There already is a terrain material called '" + newName + "'.");
-                    }
                 else
                     {
                     mat.setInternalName(newName);
                     matLibTree.buildVisibleTree(false);
                     }
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void changeBase()
-            {
+        {
             GuiBitmapCtrl ctrl = this.findObjectByInternalName("baseTexCtrl", true);
             string file = ctrl.bitmap;
             if (file.StartsWith("tools/"))
@@ -268,12 +297,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
             file = Util.makeRelativePath(file, Util.getMainDotCsDir());
             ctrl.setBitmapX(file);
-            }
-
+        }
 
         [ConsoleInteraction]
         public void changeDetail()
-            {
+        {
             GuiBitmapCtrl ctrl = this.findObjectByInternalName("detailTexCtrl", true);
             string file = ctrl.bitmap;
             if (file.StartsWith("tools/"))
@@ -290,11 +318,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
             file = Util.makeRelativePath(file, Util.getMainDotCsDir());
             ctrl.setBitmapX(file);
-            }
+        }
 
         [ConsoleInteraction]
         public void changeMacro()
-            {
+        {
             GuiBitmapCtrl ctrl = this.findObjectByInternalName("macroTexCtrl", true);
             string file = ctrl.bitmap;
             if (file.StartsWith("tools/"))
@@ -310,11 +338,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 }
             file = Util.makeRelativePath(file, Util.getMainDotCsDir());
             ctrl.setBitmapX(file);
-            }
+        }
 
         [ConsoleInteraction]
         public void changeNormal()
-            {
+        {
             GuiBitmapCtrl ctrl = this.findObjectByInternalName("normTexCtrl", true);
             string file = ctrl.bitmap;
             if (file.StartsWith("tools/"))
@@ -330,11 +358,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 }
             file = Util.makeRelativePath(file, Util.getMainDotCsDir());
             ctrl.setBitmapX(file);
-            }
+        }
 
         [ConsoleInteraction]
         public void newMat()
-            {
+        {
             // Create a unique material name.
             string matName = Util.getUniqueInternalName("newMaterial", "TerrainMaterialSet", true);
             // Create the new material.
@@ -361,11 +389,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             matLibTree.buildVisibleTree(true);
             SimObject item = matLibTree.findItemByObjectId(newMat);
             matLibTree.selectItem(item);
-            }
+        }
 
         [ConsoleInteraction]
         public void deleteMat()
-            {
+        {
             SimSet TerrainMaterialSet = "TerrainMaterialSet";
             SimGroup TerrainMaterialDlgDeleteGroup = "TerrainMaterialDlgDeleteGroup";
             TerrainEditor ETerrainEditor = "ETerrainEditor";
@@ -373,11 +401,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 return;
 
             // Cannot delete this material if it is the only one left on the Terrain
-            if ((ETerrainEditor.getMaterialCount() == 1) &&
-                ETerrainEditor.getMaterialIndex(((SimObject)this["activeMat"]).internalName) != -1)
+            if ((ETerrainEditor.getMaterialCount() == 1) && ETerrainEditor.getMaterialIndex(((SimObject) this["activeMat"]).internalName) != -1)
                 {
-                messageBox.MessageBoxOK("Error",
-                    "Cannot delete this Material, it is the only Material still in use by the active Terrain.");
+                messageBox.MessageBoxOK("Error", "Cannot delete this Material, it is the only Material still in use by the active Terrain.");
                 return;
                 }
             TerrainMaterialSet.remove(this["activeMat"]);
@@ -386,36 +412,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             buildTree();
             //matLibTree.open("TerrainMaterialSet", false);
             //matLibTree.selectItem(1);
-            }
+        }
 
         [ConsoleInteraction]
         public void activateMaterialCtrls(bool active)
-            {
+        {
             GuiContainer parent = this.findObjectByInternalName("matSettingsParent", true);
             int count = parent.getCount();
             for (uint i = 0; i < count; i++)
-                ((GuiControl)parent.getObject(i)).setActive(active);
-            }
+                ((GuiControl) parent.getObject(i)).setActive(active);
+        }
 
         [ConsoleInteraction]
         public void onSelect(SimObject item)
-            {
-            if (item.GetType() == typeof(TerrainMaterial))
-                setActiveMaterial( item.unSafeCast<TerrainMaterial>());
+        {
+            if (item.GetType() == typeof (TerrainMaterial))
+                setActiveMaterial(item.unSafeCast<TerrainMaterial>());
             else
                 setActiveMaterial(0);
-            }
+        }
 
         [ConsoleInteraction]
         public void onUnSelect(TerrainMaterial item)
-            {
+        {
             saveDirtyMaterial(item);
             setActiveMaterial(0);
-            }
+        }
 
         [ConsoleInteraction]
         public void setActiveMaterial(TerrainMaterial mat)
-            {
+        {
             if (mat.isObject())
                 {
                 GuiTextEditCtrl matNameCtrl = this.findObjectByInternalName("matNameCtrl", true);
@@ -466,11 +492,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 this["activeMat"] = "0";
                 activateMaterialCtrls(false);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void saveDirtyMaterial(TerrainMaterial mat)
-            {
+        {
             // Skip over obviously bad cases.
             if (!mat.isObject())
                 return;
@@ -514,7 +540,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             if (macroTexCtrl.bitmap != "tools/materialeditor/gui/unknownImage")
                 newMacro = macroTexCtrl.bitmap;
 
-
             string detailSize = detSizeCtrl.getText();
             string diffuseSize = baseSizeCtrl.getText();
             string detailStrength = detStrengthCtrl.getText();
@@ -528,28 +553,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
             string terrainFolder = terrainFolderCtrl.getText();
 
-            if (mat.internalName == newName &&
-                mat.diffuseMap == newDiffuse &&
-                mat.normalMap == newNormal &&
-                mat.detailMap == newDetail &&
-                mat["macroMap"] == newMacro &&
-                mat["detailSize"] == detailSize &&
-                mat["diffuseSize"] == diffuseSize &&
-                mat["detailStrength"] == detailStrength &&
-                mat["detailDistance"] == detailDistance &&
-                mat["useSideProjection"] == useSideProjection &&
-                mat["macroSize"] == macroSize &&
-                mat["macroStrength"] == macroStrength &&
-                mat["macroDistance"] == macroDistance &&
-                mat.parallaxScale.AsString() == parallaxScale &&
-                mat["terrainFolder"] == terrainFolder)
+            if (mat.internalName == newName && mat.diffuseMap == newDiffuse && mat.normalMap == newNormal && mat.detailMap == newDetail && mat["macroMap"] == newMacro && mat["detailSize"] == detailSize && mat["diffuseSize"] == diffuseSize && mat["detailStrength"] == detailStrength && mat["detailDistance"] == detailDistance && mat["useSideProjection"] == useSideProjection && mat["macroSize"] == macroSize && mat["macroStrength"] == macroStrength && mat["macroDistance"] == macroDistance && mat.parallaxScale.AsString() == parallaxScale && mat["terrainFolder"] == terrainFolder)
                 return;
-
 
             // Make sure the material name is unique.
             if (mat.internalName != newName)
                 {
-                TerrainMaterial existingMat = ((SimSet)"TerrainMaterialSet").findObjectByInternalName(newName, true);
+                TerrainMaterial existingMat = ((SimSet) "TerrainMaterialSet").findObjectByInternalName(newName, true);
                 if (existingMat.isObject())
                     {
                     messageBox.MessageBoxOK("Error", "There already is a terrain material called '" + newName + "'.");
@@ -557,9 +567,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                     matNameCtrl.setText(mat.internalName);
                     }
                 else
-                    {
                     mat.setInternalName(newName);
-                    }
                 }
             mat["diffuseMap"] = newDiffuse;
             mat["normalMap"] = newNormal;
@@ -586,11 +594,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
             PersistenceManager ETerrainMaterialPersistMan = "ETerrainMaterialPersistMan";
             ETerrainMaterialPersistMan.setDirty(mat, fileName);
-            }
+        }
 
         [ConsoleInteraction]
         public void snapshotMaterials()
-            {
+        {
             if (!"TerrainMaterialDlgSnapshot".isObject())
                 new ObjectCreator("SimGroup", "TerrainMaterialDlgSnapshot").Create();
 
@@ -624,11 +632,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 oc["parallaxScale"] = mat["parallaxScale"];
                 oc.Create();
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void restoreMaterials()
-            {
+        {
             if (!"TerrainMaterialDlgSnapshot".isObject())
                 {
                 Util._error("TerrainMaterial::restoreMaterials - no snapshot present");
@@ -658,22 +666,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 mat["useSideProjection"] = obj["useSideProjection"];
                 mat["parallaxScale"] = obj["parallaxScale"];
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public string _selectTextureFileDialog(string defaultFileName)
-            {
+        {
             if (sGlobal["$Pref::TerrainEditor::LastPath"] == "")
                 sGlobal["$Pref::TerrainEditor::LastPath"] = "art/terrains";
 
-            var ofd = new System.Windows.Forms.OpenFileDialog
-            {
-                InitialDirectory = sGlobal["$Pref::TerrainEditor::LastPath"],
-                Filter = sGlobal["$TerrainEditor::TextureFileSpec"],
-                FileName = defaultFileName,
-                CheckFileExists = true,
-                Multiselect = false
-            };
+            OpenFileDialog ofd = new OpenFileDialog {InitialDirectory = sGlobal["$Pref::TerrainEditor::LastPath"], Filter = sGlobal["$TerrainEditor::TextureFileSpec"], FileName = defaultFileName, CheckFileExists = true, Multiselect = false};
 
             string file = "";
 
@@ -681,22 +682,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 
             switch (dr)
                 {
-                case DialogResult.Abort:
-                case DialogResult.Ignore:
-                case DialogResult.No:
-                case DialogResult.Cancel:
-                case DialogResult.None:
-                    return "";
-                case DialogResult.OK:
-                    file = Dialogs.GetForwardSlashFile(ofd.FileName);
-                    sGlobal["$Pref::TerrainEditor::LastPath"] = Util.filePath(file);
-                    break;
+                    case DialogResult.Abort:
+                    case DialogResult.Ignore:
+                    case DialogResult.No:
+                    case DialogResult.Cancel:
+                    case DialogResult.None:
+                        return "";
+                    case DialogResult.OK:
+                        file = Dialogs.GetForwardSlashFile(ofd.FileName);
+                        sGlobal["$Pref::TerrainEditor::LastPath"] = Util.filePath(file);
+                        break;
                 }
 
             file = Util.filePath(file) + "/" + Util.fileBase(file);
 
             return file;
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -707,18 +708,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(TerrainMaterialDlg ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -726,9 +727,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
-            return (this._ID == (string)myReflections.ChangeType(obj, typeof(string)));
-            }
+        {
+            return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
+        }
 
         /// <summary>
         /// 
@@ -737,12 +738,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(TerrainMaterialDlg ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -750,9 +750,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(TerrainMaterialDlg ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -760,10 +760,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator TerrainMaterialDlg(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-            return (TerrainMaterialDlg)Omni.self.getSimObject(simobjectid, typeof(TerrainMaterialDlg));
-            }
+            return (TerrainMaterialDlg) Omni.self.getSimObject(simobjectid, typeof (TerrainMaterialDlg));
+        }
 
         /// <summary>
         /// 
@@ -771,9 +771,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(TerrainMaterialDlg ts)
-            {
-            return (int)ts._iID;
-            }
+        {
+            return (int) ts._iID;
+        }
 
         /// <summary>
         /// 
@@ -781,9 +781,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator TerrainMaterialDlg(int simobjectid)
-            {
-            return (TerrainMaterialDlg)Omni.self.getSimObject((uint)simobjectid, typeof(TerrainMaterialDlg));
-            }
+        {
+            return (TerrainMaterialDlg) Omni.self.getSimObject((uint) simobjectid, typeof (TerrainMaterialDlg));
+        }
 
         /// <summary>
         /// 
@@ -791,19 +791,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(TerrainMaterialDlg ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator TerrainMaterialDlg(uint simobjectid)
-            {
-            return (TerrainMaterialDlg)Omni.self.getSimObject(simobjectid, typeof(TerrainMaterialDlg));
-            }
+        {
+            return (TerrainMaterialDlg) Omni.self.getSimObject(simobjectid, typeof (TerrainMaterialDlg));
+        }
 
         #endregion
-        }
     }
+}

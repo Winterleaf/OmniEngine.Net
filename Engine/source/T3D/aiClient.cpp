@@ -688,16 +688,13 @@ const char* ns = (const char*)x__ns;
    
       SimGroup *g = Sim::getClientGroup();
    g->addObject( aiPlayer );
-
       
       
          aiPlayer->onConnect_callback( name );
-
          if( ns != "" )
       aiPlayer->onAdd( ns );
    else
       aiPlayer->onAdd( "AIClient" );
-
   return (S32)( aiPlayer->getId());
 };
 }
@@ -768,7 +765,6 @@ if (!object)
 	return (S32)( 0);
 {
    AIClient *ai = static_cast<AIClient *>( object );
-
   return (S32)( ai->getTargetObject());
 };
 }
@@ -804,7 +800,6 @@ if (!object)
    Point3F location;
    MatrixF const &myTransform = player->getTransform();
    myTransform.getColumn( 3, &location );
-
    location.y += 100.0f;
    
    ai->setMoveDestination( location );
@@ -819,7 +814,6 @@ Point3F v = Point3F();
 sscanf(x__v,"%f %f %f",&v.x,&v.y,&v.z);
 {
    AIClient *ai = static_cast<AIClient *>( object );
-
    ai->setAimLocation( v );
 }
 }

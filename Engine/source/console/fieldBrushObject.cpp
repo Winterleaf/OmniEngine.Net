@@ -662,13 +662,11 @@ const char* simObjName = (const char*)x__simObjName;
 const char* pFieldList = (const char*)x__pFieldList;
 {
         SimObject* pSimObject = dynamic_cast<SimObject*>( Sim::findObject( simObjName ) );
-
         if ( pSimObject == NULL )
     {
                 Con::warnf("FieldBrushObject::copyFields() - Invalid SimObject!");
         return;
     }
-
             
         object->copyFields( pSimObject, pFieldList );
 }
@@ -681,13 +679,11 @@ if (!object)
 const char* simObjName = (const char*)x__simObjName;
 {
             SimObject* pSimObject = dynamic_cast<SimObject*>( Sim::findObject( simObjName ) );
-
         if ( pSimObject == NULL )
     {
                 Con::warnf("FieldBrushObject::pasteFields() - Invalid SimObject!");
         return;
     }
-
         object->pasteFields( pSimObject );
 }
 }

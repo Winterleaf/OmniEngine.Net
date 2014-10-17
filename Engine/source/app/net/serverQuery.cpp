@@ -2286,12 +2286,9 @@ const char* missionType = (const char*)x__missionType;
       
             
                         U32 buddyList = 0;
-
    clearServerList();
-
    queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
       maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
-
    queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
 	   regionMask, maxPing, minCPU, filterFlags);
     
@@ -2314,7 +2311,6 @@ const char* missionType = (const char*)x__missionType;
    clearServerList();
    queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
 	   regionMask, maxPing, minCPU, filterFlags);
-
       }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryMasterServer(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
@@ -2331,11 +2327,9 @@ const char* missionType = (const char*)x__missionType;
    
             
                         U32 buddyList = 0;
-
    clearServerList();
    queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
       maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
-
       }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_querySingleServer(char * x__addrText, U8 flags)

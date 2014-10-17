@@ -2003,9 +2003,7 @@ const char* z = (const char*)x__z;
         return (S32)( 0);
       }
    }
-
    SFXSource* source = NULL;
-
    if ( track )
    {
             if ( x == "" )
@@ -2039,14 +2037,11 @@ const char* z = (const char*)x__z;
                         transform.set(EulerF(0,0,0), Point3F( dAtof(x),dAtof(y),dAtof(z) ));
             source = SFX->createSource( tempProfile, &transform );
          }
-
          tempProfile->setAutoDelete( true );
       }
    }
-
    if ( source )
      return (S32)( source->getId());
-
   return (S32)( 0);
 };
 }
@@ -2178,14 +2173,12 @@ const char* z = (const char*)x__z;
         return (S32)( source->getId());
       }
    }
-
       SFXTrack* track = dynamic_cast<SFXTrack*>( Sim::findObject( trackName ) );
    if ( !track )
    {
             Con::printf( "Unable to locate sfx track '%s'", trackName );
      return (S32)( 0);
    }
-
    Point3F pos(0.f, 0.f, 0.f);
       if ( pointOrX != "" && y == ""&& z == "" )
    {
@@ -2193,14 +2186,11 @@ const char* z = (const char*)x__z;
    }
       else if( pointOrX != "" && y != "" && z != "" )
             pos.set( dAtof(pointOrX), dAtof(y), dAtof(z) );
-
    MatrixF transform;
    transform.set( EulerF(0,0,0), pos );
-
    SFXSource* source = SFX->playOnce( track, &transform );
    if ( source )
      return (S32)( source->getId());
-
   return (S32)( 0);
 };
 }
@@ -2224,7 +2214,6 @@ const char* z = (const char*)x__z;
         return (S32)( 0);
       }
    }
-
    SFXSource* source = NULL;
    if( track )
    {
@@ -2265,7 +2254,6 @@ const char* z = (const char*)x__z;
          Sim::getRootGroup()->addObject( tempProfile );
       }
    }
-
    if( !source )
      return (S32)( 0);
       
@@ -2287,7 +2275,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_sfxSetDopplerFactor(F32 va
       Con::errorf( "sfxSetDopplerFactor - factor must be >0" );
       return;
    }
-
    SFX->setDopplerFactor( value );
 }
 }
@@ -2299,7 +2286,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_sfxSetRolloffFactor(F32 va
       Con::errorf( "sfxSetRolloffFactor - factor must be >0" );
       return;
    }
-
    SFX->setRolloffFactor( value );
 }
 }

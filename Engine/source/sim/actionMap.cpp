@@ -2513,13 +2513,11 @@ const char* fileName = (const char*)x__fileName;
 
 {
    char buffer[1024];
-
    if(fileName)
    {
       if(Con::expandScriptFilename(buffer, sizeof(buffer), fileName))
          fileName = buffer;
    }
-
    object->dumpActionMap( fileName, append );
 }
 }

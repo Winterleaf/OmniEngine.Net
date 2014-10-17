@@ -1,54 +1,87 @@
-﻿using System;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using System.ComponentModel;
 using System.Windows.Forms;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 using WinterLeaf.Engine.Enums;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.CodeBehind
-    {
+{
     public class MaterialEditor
-        {
+    {
         [TypeConverter(typeof (TypeConverterGeneric<MaterialEditorGui>))]
         public class MaterialEditorGui : GuiControl
-            {
+        {
             internal Material currentMaterial
-                {
+            {
                 get { return this["currentMaterial"]; }
                 set { this["currentMaterial"] = value; }
-                }
+            }
 
             internal SimObject currentObject
-                {
+            {
                 get { return this["currentObject"]; }
                 set { this["currentObject"] = value; }
-                }
+            }
 
             internal string currentMode
-                {
+            {
                 get { return this["currentMode"]; }
                 set { this["currentMode"] = value; }
-                }
+            }
 
             internal string currentMeshMode
-                {
+            {
                 get { return this["currentMeshMode"]; }
                 set { this["currentMeshMode"] = value; }
-                }
+            }
 
             [ConsoleInteraction]
             public void establishMaterials()
-                {
+            {
                 //Cubemap used to preview other cubemaps in the editor.
-
 
                 CubemapData matEdCubeMapPreviewMat = "matEdCubeMapPreviewMat";
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
@@ -92,8 +125,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     {
                     #region CustomMaterial ( materialEd_justAlphaMaterial )        oc_Newobject2
 
-                    SingletonCreator oc_Newobject2 = new SingletonCreator("CustomMaterial",
-                        " materialEd_justAlphaMaterial ");
+                    SingletonCreator oc_Newobject2 = new SingletonCreator("CustomMaterial", " materialEd_justAlphaMaterial ");
                     oc_Newobject2["mapTo"] = "matEd_mappedMatB";
                     oc_Newobject2["texture[0]"] = materialEd_previewMaterial.diffuseMap[0];
 
@@ -117,10 +149,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                     materialEd_justAlphaShader = oc_Newobject3.Create();
                     }
-                }
+            }
 
             public void open()
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiButtonCtrl matEd_cubemapEditBtn = MaterialEditorPropertiesWindow.FOT("matEd_cubemapEditBtn");
                 GuiPopUpMenuCtrl blendingTypePopUp = MaterialEditorPropertiesWindow.FOT("blendingTypePopUp");
@@ -217,11 +249,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     this.prepareActiveMaterial("", true);
 
                 this["preventUndo"] = false.AsString();
-                }
+            }
 
             [ConsoleInteraction]
             public void quit()
-                {
+            {
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
                 GuiMaterialPreview matEd_previewObjectView = "matEd_previewObjectView";
                 CubemapData matEdCubeMapPreviewMat = "matEdCubeMapPreviewMat";
@@ -242,9 +274,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     }
 
                 if (this.currentMaterial.isObject())
-                    {
                     this["lastMaterial"] = this.currentMaterial.getName();
-                    }
 
                 this.setMaterialNotDirty();
 
@@ -264,11 +294,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 if (materialEd_previewMaterial.isObject())
                     materialEd_previewMaterial.delete();
                 //Copyright Winterleaf Entertainment L.L.C. 2013	  
-                }
+            }
 
             [ConsoleInteraction]
             public string openFile(string fileType)
-                {
+            {
                 string filters = "", defaultFileName = "", defaultPath = "", filename = "";
                 switch (fileType)
                     {
@@ -290,40 +320,33 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                             break;
                     }
 
-                var ofd = new System.Windows.Forms.OpenFileDialog
-                {
-                    FileName = defaultFileName,
-                    InitialDirectory = defaultPath,
-                    Filter = filters,
-                    CheckFileExists = true,
-                    Multiselect = false
-                };
+                OpenFileDialog ofd = new OpenFileDialog {FileName = defaultFileName, InitialDirectory = defaultPath, Filter = filters, CheckFileExists = true, Multiselect = false};
 
                 DialogResult dr = Dialogs.OpenFileDialog(ref ofd);
                 switch (dr)
-                {
-                    case DialogResult.OK:
-                        var fileName = Dialogs.GetForwardSlashFile(ofd.FileName);
-                        switch (fileType)
-                        {
-                            case "texture":
-                                this["lastTexturePath"] = Util.filePath(fileName);
-                                this["lastTextureFile"] = filename = fileName;
-                                break;
+                    {
+                        case DialogResult.OK:
+                            string fileName = Dialogs.GetForwardSlashFile(ofd.FileName);
+                            switch (fileType)
+                                {
+                                    case "texture":
+                                        this["lastTexturePath"] = Util.filePath(fileName);
+                                        this["lastTextureFile"] = filename = fileName;
+                                        break;
 
-                            case "model":
-                                this["lastModelPath"] = Util.filePath(fileName);
-                                this["lastModelFile"] = filename = fileName;
-                                break;
-                        }
-                        break;
-                    case DialogResult.Abort:
-                    case DialogResult.Ignore:
-                    case DialogResult.No:
-                    case DialogResult.Cancel:
-                    case DialogResult.None:
-                        return "";
-                }
+                                    case "model":
+                                        this["lastModelPath"] = Util.filePath(fileName);
+                                        this["lastModelFile"] = filename = fileName;
+                                        break;
+                                }
+                            break;
+                        case DialogResult.Abort:
+                        case DialogResult.Ignore:
+                        case DialogResult.No:
+                        case DialogResult.Cancel:
+                        case DialogResult.None:
+                            return "";
+                    }
                 return Util.makeRelativePath(filename, Util.getMainDotCsDir());
             }
 
@@ -332,7 +355,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [ConsoleInteraction]
             public void setMode()
-                {
+            {
                 GuiContainer MatEdMaterialMode = "MatEdMaterialMode";
                 GuiContainer MatEdTargetMode = "MatEdTargetMode";
                 MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
@@ -352,11 +375,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     MatEdMaterialMode.setVisible(true);
                     EWorldEditor.clearSelection();
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void prepareActiveObject(bool bOverride)
-                {
+            {
                 SimObject obj = sGlobal["$Tools::materialEditorList"];
                 SubMaterialSelector SubMaterialSelector = "SubMaterialSelector";
 
@@ -418,21 +441,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     SubMaterialSelector.setSelected(id);
                 else
                     SubMaterialSelector.setSelected(0);
-                }
+            }
 
             //==============================================================================
             // Helper functions to help create categories and manage category lists
 
             [ConsoleInteraction]
             public void updateAllFields()
-                {
+            {
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
                 matEd_cubemapEd_availableCubemapList.clear();
-                }
+            }
 
             [ConsoleInteraction]
             public void updatePreviewObject()
-                {
+            {
                 GuiPopUpMenuCtrl matEd_quickPreview_Popup = "matEd_quickPreview_Popup";
                 GuiMaterialPreview matEd_previewObjectView = "matEd_previewObjectView";
 
@@ -475,7 +498,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                             matEd_previewObjectView.setModel("tools/materialeditor/gui/torusknotPreview.dts");
                             break;
                     }
-                }
+            }
 
             //==============================================================================
             // Helper functions to help load and update the preview and active material
@@ -484,7 +507,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [ConsoleInteraction]
             public void prepareActiveMaterial(Material material, bool bOverride)
-                {
+            {
                 SimSet MaterialSet = "MaterialSet";
                 // If were not valid, grab the first valid material out of the materialSet
                 if (!material.isObject())
@@ -493,9 +516,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 // Check made in order to avoid loading the same material. Overriding
                 // made in special cases
                 if (material == this["lastMaterial"] && !bOverride)
-                    {
                     return;
-                    }
                 else
                     {
                     if (this["materialDirty"].AsBool())
@@ -506,19 +527,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                     this.setActiveMaterial(material);
                     }
-                }
+            }
 
             // Updates the preview material to use the same properties as the selected material,
             // and makes that material active in the editor.
 
             [ConsoleInteraction]
             public void setActiveMaterial(Material material)
-                {
+            {
                 // Warn if selecting a CustomMaterial (they can't be properly previewed or edited)
                 if (material.isObject() && material.isMemberOfClass("CustomMaterial"))
                     {
-                    messageBox.MessageBoxOK("Warning", "The selected Material (" + material.getName() +
-                                                       ") is a CustomMaterial, and cannot be edited using the Material Editor.");
+                    messageBox.MessageBoxOK("Warning", "The selected Material (" + material.getName() + ") is a CustomMaterial, and cannot be edited using the Material Editor.");
                     return;
                     }
                 //oh Aswin my friend...
@@ -564,19 +584,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 MaterialEditorGui.currentMaterial.reload();
 
                 MaterialEditorGui.setMaterialNotDirty();
-                }
+            }
 
             [ConsoleInteraction]
             public bool isMatEditorMaterial(SimObject material)
-                {
-                return (material.getFilename() == "" ||
-                        material.getFilename() == "tools/gui/materialSelector.ed.gui" ||
-                        material.getFilename() == "tools/materialEditor/scripts/materialEditor.ed.cs");
-                }
+            {
+                return (material.getFilename() == "" || material.getFilename() == "tools/gui/materialSelector.ed.gui" || material.getFilename() == "tools/materialEditor/scripts/materialEditor.ed.cs");
+            }
 
             [ConsoleInteraction]
             public void setMaterialNotDirty()
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiWindowCollapseCtrl MaterialEditorPreviewWindow = "MaterialEditorPreviewWindow";
                 PersistenceManager matEd_PersistMan = "matEd_PersistMan";
@@ -588,11 +606,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 this["materialDirty"] = false.AsString();
                 matEd_PersistMan.removeDirty(this.currentMaterial);
-                }
+            }
 
             [ConsoleInteraction]
             public void setMaterialDirty()
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiWindowCollapseCtrl MaterialEditorPreviewWindow = "MaterialEditorPreviewWindow";
                 PersistenceManager matEd_PersistMan = "matEd_PersistMan";
@@ -632,17 +650,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         matEd_PersistMan.setDirty(this.currentMaterial, savePath);
                         }
                     else
-                        {
                         matEd_PersistMan.setDirty(this.currentMaterial, "art/materials.cs");
-                        }
                     }
                 else
                     matEd_PersistMan.setDirty(this.currentMaterial);
-                }
+            }
 
             [ConsoleInteraction]
             public void convertTextureFields()
-                {
+            {
                 // Find the absolute paths for the texture filenames so that
                 // we can properly wire up the preview materials and controls.
 
@@ -708,13 +724,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     accuMap = this.searchForTexture(this.currentMaterial, accuMap);
                     this.currentMaterial["accuMap[" + accuI + "]"] = accuMap.AsTypeImageFilename();
                     }
-                
-                }
+            }
 
             // still needs to be optimized further
             [ConsoleInteraction]
             public string searchForTexture(SimObject material, string texture)
-                {
+            {
                 if (texture != "")
                     {
                     // set the find signal as false to start out with 
@@ -807,11 +822,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         return texture; //Texture exists and can be found - just return the input argument.
                     }
                 return ""; //No texture associated with this property.
-                }
+            }
 
             [ConsoleInteraction]
             public void updateLivePreview(bool preview)
-                {
+            {
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
                 Material notDirtyMaterial = "notDirtyMaterial";
 
@@ -823,20 +838,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 this.currentMaterial.flush();
                 this.currentMaterial.reload();
-                }
+            }
 
             [ConsoleInteraction]
             public void copyMaterials(Material copyFrom, Material copyTo)
-                {
+            {
                 // Make sure we copy and restore the map to.
                 string mapTo = copyTo["mapTo"];
                 copyTo.assignFieldsFrom(copyFrom);
                 copyTo["mapTo"] = mapTo;
-                }
+            }
 
             [ConsoleInteraction]
             public void guiSync(Material material)
-                {
+            {
                 GuiContainer MatEdMaterialMode = "MatEdMaterialMode";
                 GuiTextEditCtrl MatEdMaterialModeSelMaterialName = MatEdMaterialMode.FOT("selMaterialName");
                 GuiTextCtrl MatEdMaterialModeSelMaterialMapTo = MatEdMaterialMode.FOT("selMaterialMapTo");
@@ -874,8 +889,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 GuiBitmapCtrl detailMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("detailMapDisplayBitmap");
 
                 GuiTextCtrl detailNormalMapNameText = MaterialEditorPropertiesWindow.FOT("detailNormalMapNameText");
-                GuiBitmapCtrl detailNormalMapDisplayBitmap =
-                    MaterialEditorPropertiesWindow.FOT("detailNormalMapDisplayBitmap");
+                GuiBitmapCtrl detailNormalMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("detailNormalMapDisplayBitmap");
 
                 GuiTextCtrl lightMapNameText = MaterialEditorPropertiesWindow.FOT("lightMapNameText");
                 GuiBitmapCtrl lightMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("lightMapDisplayBitmap");
@@ -885,7 +899,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 GuiTextCtrl specMapNameText = MaterialEditorPropertiesWindow.FOT("specMapNameText");
                 GuiBitmapCtrl specMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("specMapDisplayBitmap");
-                
+
                 GuiTextCtrl accuMapNameText = MaterialEditorPropertiesWindow.FOT("accuMapNameText");
                 GuiBitmapCtrl accuMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("accuMapDisplayBitmap");
 
@@ -908,8 +922,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 //GuiBitmapCtrl skinCheekMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("skinCheekMapDisplayBitmap");
 
                 GuiTextEditCtrl detailScaleTextEdit = MaterialEditorPropertiesWindow.FOT("detailScaleTextEdit");
-                GuiTextEditCtrl detailNormalStrengthTextEdit =
-                    MaterialEditorPropertiesWindow.FOT("detailNormalStrengthTextEdit");
+                GuiTextEditCtrl detailNormalStrengthTextEdit = MaterialEditorPropertiesWindow.FOT("detailNormalStrengthTextEdit");
                 GuiSwatchButtonCtrl colorTintSwatch = MaterialEditorPropertiesWindow.FOT("colorTintSwatch");
                 GuiSwatchButtonCtrl specularColorSwatch = MaterialEditorPropertiesWindow.FOT("specularColorSwatch");
                 GuiTextEditCtrl specularPowerTextEdit = MaterialEditorPropertiesWindow.FOT("specularPowerTextEdit");
@@ -927,8 +940,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 GuiSwatchButtonCtrl vertColorSwatch = MaterialEditorPropertiesWindow.FOT("vertColorSwatch");
                 GuiCheckBoxCtrl subSurfaceCheckbox = MaterialEditorPropertiesWindow.FOT("subSurfaceCheckbox");
                 GuiSwatchButtonCtrl subSurfaceColorSwatch = MaterialEditorPropertiesWindow.FOT("subSurfaceColorSwatch");
-                GuiTextEditCtrl subSurfaceRolloffTextEdit =
-                    MaterialEditorPropertiesWindow.FOT("subSurfaceRolloffTextEdit");
+                GuiTextEditCtrl subSurfaceRolloffTextEdit = MaterialEditorPropertiesWindow.FOT("subSurfaceRolloffTextEdit");
                 GuiTextEditCtrl minnaertTextEdit = MaterialEditorPropertiesWindow.FOT("minnaertTextEdit");
 
                 GuiCheckBoxCtrl RotationAnimation = MaterialEditorPropertiesWindow.FOT("RotationAnimation");
@@ -970,7 +982,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 GuiTextEditCtrl accuCoverageTextEdit = MaterialEditorPropertiesWindow.FOT("accuCoverageTextEdit");
                 GuiTextEditCtrl accuSpecularTextEdit = MaterialEditorPropertiesWindow.FOT("accuSpecularTextEdit");
 
-
                 this["preventUndo"] = true.AsString();
                 //Setup our headers
                 if (this.currentMode == "material")
@@ -1010,29 +1021,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 int selectedNum = 0;
                 if (material.translucentBlendOp == TypeMaterialBlendOp.None)
-                    {
                     selectedNum = 0;
-                    }
                 else if (material.translucentBlendOp == TypeMaterialBlendOp.Mul)
-                    {
                     selectedNum = 1;
-                    }
                 else if (material.translucentBlendOp == TypeMaterialBlendOp.Add)
-                    {
                     selectedNum = 2;
-                    }
                 else if (material.translucentBlendOp == TypeMaterialBlendOp.AddAlpha)
-                    {
                     selectedNum = 3;
-                    }
                 else if (material.translucentBlendOp == TypeMaterialBlendOp.Sub)
-                    {
                     selectedNum = 4;
-                    }
                 else if (material.translucentBlendOp == TypeMaterialBlendOp.LerpAlpha)
-                    {
                     selectedNum = 5;
-                    }
                 blendingTypePopUp.setSelected(selectedNum);
 
                 if (material.cubemap != "")
@@ -1153,17 +1152,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     specMapNameText.setText(material.specularMap[layer]);
                     specMapDisplayBitmap.setBitmapX(material.specularMap[layer]);
                     }
-                if(material["accuMap[" + layer + "]"] == "") 
-                {
-                    accuMapNameText.setText( "None" );
-                    accuMapDisplayBitmap.setBitmapX( "tools/materialeditor/gui/unknownImage" );
-                }
+                if (material["accuMap[" + layer + "]"] == "")
+                    {
+                    accuMapNameText.setText("None");
+                    accuMapDisplayBitmap.setBitmapX("tools/materialeditor/gui/unknownImage");
+                    }
                 else
-                {
-                    accuMapNameText.setText( material["accuMap[" + layer + "]"] );
-                    accuMapDisplayBitmap.setBitmapX( material["accuMap[" + layer + "]"] );
-                }
-   
+                    {
+                    accuMapNameText.setText(material["accuMap[" + layer + "]"]);
+                    accuMapDisplayBitmap.setBitmapX(material["accuMap[" + layer + "]"]);
+                    }
+
                 accuScaleTextEdit.setText(material["accuScale[" + layer + "]"]);
                 //accuScaleTextEdit.setText(material.accuScale[layer]);
                 accuDirectionTextEdit.setText(material["accuDirection[" + layer + "]"]);
@@ -1236,8 +1235,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 //    }
 
                 detailScaleTextEdit.setText(Util.getWord(material.detailScale[layer].AsString(), 0));
-                detailNormalStrengthTextEdit.setText(Util.getWord(material.detailNormalMapStrength[layer].AsString(),
-                    0));
+                detailNormalStrengthTextEdit.setText(Util.getWord(material.detailNormalMapStrength[layer].AsString(), 0));
 
                 colorTintSwatch.color = material.diffuseColor[layer];
                 specularColorSwatch.color = material.specular[layer];
@@ -1271,7 +1269,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 ScaleAnimation.setValue("0");
                 SequenceAnimation.setValue("0");
 
-                string flags = material.getAnimFlags((uint)layer);
+                string flags = material.getAnimFlags((uint) layer);
                 int wordCount = Util.getWordCount(flags);
                 for (int i = 0; i != wordCount; i++)
                     {
@@ -1301,9 +1299,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 RotationSliderU.setValue(Util.getWord(material.rotPivotOffset[layer].AsString(), 0));
                 RotationSliderV.setValue(Util.getWord(material.rotPivotOffset[layer].AsString(), 1));
                 RotationSpeedSlider.setValue(material.rotSpeed[layer].AsString());
-                RotationCrosshair.setPosition(
-                    (int) (45*Util.mAbs(Util.getWord(material.rotPivotOffset[layer].AsString(), 0).AsFloat()) - 2),
-                    (int) (45*Util.mAbs(Util.getWord(material.rotPivotOffset[layer].AsString(), 1).AsFloat()) - 2));
+                RotationCrosshair.setPosition((int) (45*Util.mAbs(Util.getWord(material.rotPivotOffset[layer].AsString(), 0).AsFloat()) - 2), (int) (45*Util.mAbs(Util.getWord(material.rotPivotOffset[layer].AsString(), 1).AsFloat()) - 2));
 
                 ScrollTextEditU.setText(Util.getWord(material.scrollDir[layer].AsString(), 0));
                 ScrollTextEditV.setText(Util.getWord(material.scrollDir[layer].AsString(), 1));
@@ -1311,9 +1307,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 ScrollSliderU.setValue(Util.getWord(material.scrollDir[layer].AsString(), 0));
                 ScrollSliderV.setValue(Util.getWord(material.scrollDir[layer].AsString(), 1));
                 ScrollSpeedSlider.setValue(material.scrollSpeed[layer].AsString());
-                ScrollCrosshair.setPosition(
-                    (int) -(23*Util.getWord(material.scrollDir[layer].AsString(), 0).AsFloat()) + 20,
-                    (int) -(23*Util.getWord(material.scrollDir[layer].AsString(), 1).AsFloat()) + 20);
+                ScrollCrosshair.setPosition((int) -(23*Util.getWord(material.scrollDir[layer].AsString(), 0).AsFloat()) + 20, (int) -(23*Util.getWord(material.scrollDir[layer].AsString(), 1).AsFloat()) + 20);
 
                 string waveType = material["waveType[layer]"];
                 for (uint radioButton = 0; radioButton < WaveButtonContainer.getCount(); radioButton++)
@@ -1327,7 +1321,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 WaveSliderAmp.setValue(material.waveAmp[layer].AsString());
                 WaveSliderFreq.setValue(material.waveAmp[layer].AsString());
 
-                int numFrames = (int)Util.mRound(1/material.sequenceSegmentSize[layer].AsString().AsFloat());
+                int numFrames = (int) Util.mRound(1/material.sequenceSegmentSize[layer].AsString().AsFloat());
 
                 SequenceTextEditFPS.setText(material.sequenceFramePerSec[layer].AsString());
                 SequenceTextEditSSS.setText(numFrames.AsString());
@@ -1335,25 +1329,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 SequenceSliderSSS.setValue(numFrames.AsString());
 
                 this["preventUndo"] = false.AsString();
-                }
+            }
 
             //=======================================
             // Material Update Functionality
 
             [ConsoleInteraction]
             public void changeLayer(string layer)
-                {
+            {
                 if (this["currentLayer"] == Util.getWord(layer, 1))
                     return;
 
                 this["currentLayer"] = Util.getWord(layer, 1);
                 this.guiSync("materialEd_previewMaterial");
-                }
+            }
 
             [ConsoleInteraction]
-            public void updateActiveMaterial(string propertyField, string value, bool isSlider = false,
-                bool onMouseUp = false)
-                {
+            public void updateActiveMaterial(string propertyField, string value, bool isSlider = false, bool onMouseUp = false)
+            {
                 editor Editor = "Editor";
                 UndoManager undoManager = Editor.getUndoManager();
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
@@ -1361,7 +1354,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.setMaterialDirty();
 
                 //if (value == "")
-                    //value = "\"\"";
+                //value = "\"\"";
 
                 // Here is where we handle undo actions with slider controls. We want to be able to
                 // undo every onMouseUp; so we overrite the same undo action when necessary in order
@@ -1376,7 +1369,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     }
                 else
                     {
-                    var action = this.createUndo<MaterialEditorUndo.ActionUpdateActiveMaterial>("Update Active Material");
+                    MaterialEditorUndo.ActionUpdateActiveMaterial action = this.createUndo<MaterialEditorUndo.ActionUpdateActiveMaterial>("Update Active Material");
                     action["material"] = this.currentMaterial;
                     action["object"] = this.currentObject;
                     action["field"] = propertyField;
@@ -1394,16 +1387,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 if (this["livePreview"].AsBool())
                     {
-                    this.currentMaterial[propertyField] = Util.strreplace(value, "\"", ""); ;
+                    this.currentMaterial[propertyField] = Util.strreplace(value, "\"", "");
+                    ;
                     this.currentMaterial.flush();
                     this.currentMaterial.reload();
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void updateActiveMaterialName(string name)
-                {
-                var action = this.createUndo<MaterialEditorUndo.ActionUpdateActiveMaterialName>("Update Active Material Name");
+            {
+                MaterialEditorUndo.ActionUpdateActiveMaterialName action = this.createUndo<MaterialEditorUndo.ActionUpdateActiveMaterialName>("Update Active Material Name");
                 action["material"] = this.currentMaterial;
                 action["object"] = this.currentObject;
                 action["oldName"] = this.currentMaterial.getName();
@@ -1416,11 +1410,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 // to find and update all these references so they don't break when we rename the
                 // Material.
                 this.updateMaterialReferences("MissionGroup", action["oldName"], action["newName"]);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateMaterialReferences(SimObject obj, string oldName, string newName)
-                {
+            {
                 if (obj.isMemberOfClass("SimSet"))
                     {
                     // invoke on children
@@ -1437,8 +1431,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     for (int i = 0; i < count; i++)
                         {
                         string fieldName = obj.getField(i);
-                        if ((obj.getFieldType(fieldName) == "TypeMaterialName") &&
-                            (obj.getFieldValue(fieldName, -1) == oldName))
+                        if ((obj.getFieldType(fieldName) == "TypeMaterialName") && (obj.getFieldValue(fieldName, -1) == oldName))
                             {
                             obj[fieldName] = newName;
                             objChanged = true;
@@ -1449,13 +1442,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     if (objChanged && obj.isMethod("postApply"))
                         obj.call("postApply");
                     }
-                }
+            }
 
             // Global Material Options
 
             [ConsoleInteraction]
             public void updateReflectionType(string type)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiButtonCtrl matEd_cubemapEditBtn = MaterialEditorPropertiesWindow.FOT("matEd_cubemapEditBtn");
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
@@ -1476,11 +1469,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         this.updateActiveMaterial(type, materialEd_previewMaterial.cubemap);
                         }
                     else
-                        {
                         this.updateActiveMaterial(type, true.AsString());
-                        }
                     }
-                }
+            }
 
             // Per-Layer Material Options
 
@@ -1490,15 +1481,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [ConsoleInteraction]
             public void updateTextureMap(string type, bool action)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
 
                 string layer = this["currentLayer"];
 
-                GuiBitmapCtrl bitmapCtrl =
-                    MaterialEditorPropertiesWindow.findObjectByInternalName(type + "MapDisplayBitmap", true);
-                GuiTextCtrl textCtrl = MaterialEditorPropertiesWindow.findObjectByInternalName(type + "MapNameText",
-                    true);
+                GuiBitmapCtrl bitmapCtrl = MaterialEditorPropertiesWindow.findObjectByInternalName(type + "MapDisplayBitmap", true);
+                GuiTextCtrl textCtrl = MaterialEditorPropertiesWindow.findObjectByInternalName(type + "MapNameText", true);
 
                 if (action)
                     {
@@ -1520,29 +1509,29 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     bitmapCtrl.setBitmapX("tools/materialeditor/gui/unknownImage");
                     this.updateActiveMaterial(type + "Map[" + layer + "]", "");
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void updateDetailScale(string newScale)
-                {
+            {
                 string layer = this["currentLayer"];
 
                 string detailScale = "\"" + newScale + ' ' + newScale + "\"";
                 this.updateActiveMaterial("detailScale[" + layer + "]", detailScale);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateDetailNormalStrength(string newStrength)
-                {
+            {
                 string layer = this["currentLayer"];
 
                 string detailStrength = "\"" + newStrength + "\"";
                 this.updateActiveMaterial("detailNormalMapStrength[" + layer + "]", detailStrength);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSpecMap(bool action)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextCtrl specMapNameText = MaterialEditorPropertiesWindow.FOT("specMapNameText");
                 GuiBitmapCtrl specMapDisplayBitmap = MaterialEditorPropertiesWindow.FOT("specMapDisplayBitmap");
@@ -1573,7 +1562,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     }
 
                 this.guiSync("materialEd_previewMaterial");
-                }
+            }
 
             [ConsoleInteraction]
             public void updateAccuMap(bool action)
@@ -1585,11 +1574,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 string layer = this["currentLayer"];
 
                 if (action)
-                {
+                    {
                     string texture = this.openFile("texture");
                     if (texture != "")
-                    {
-
+                        {
                         accuMapDisplayBitmap.setBitmapX(texture);
 
                         string bitmap = accuMapDisplayBitmap["bitmap"];
@@ -1597,21 +1585,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         accuMapDisplayBitmap.setBitmapX(bitmap);
                         accuMapNameText.setText(bitmap);
                         this.updateActiveMaterial("accuMap[" + layer + "]", "\"" + bitmap + "\"");
+                        }
                     }
-                }
                 else
-                {
+                    {
                     accuMapNameText.setText("None");
                     accuMapDisplayBitmap.setBitmapX("tools/materialeditor/gui/unknownImage");
                     this.updateActiveMaterial("accuMap[" + layer + "]", "");
-                }
+                    }
 
                 this.guiSync("materialEd_previewMaterial");
             }
 
             [ConsoleInteraction]
             public void updateRotationOffset(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl RotationTextEditU = MaterialEditorPropertiesWindow.FOT("RotationTextEditU");
                 GuiTextEditCtrl RotationTextEditV = MaterialEditorPropertiesWindow.FOT("RotationTextEditV");
@@ -1620,27 +1608,25 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 string layer = this["currentLayer"];
                 string X = RotationTextEditU.getText();
                 string Y = RotationTextEditV.getText();
-                RotationCrosshair.setPosition((int) (45*Util.mAbs(X.AsFloat()) - 2),
-                    (int) (45*Util.mAbs(Y.AsFloat()) - 2));
+                RotationCrosshair.setPosition((int) (45*Util.mAbs(X.AsFloat()) - 2), (int) (45*Util.mAbs(Y.AsFloat()) - 2));
 
-                this.updateActiveMaterial("rotPivotOffset[" + layer + "]", "\"" + X + ' ' + Y + "\"", isSlider,
-                    onMouseUp);
-                }
+                this.updateActiveMaterial("rotPivotOffset[" + layer + "]", "\"" + X + ' ' + Y + "\"", isSlider, onMouseUp);
+            }
 
             [ConsoleInteraction]
             public void updateRotationSpeed(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl RotationSpeedTextEdit = MaterialEditorPropertiesWindow.FOT("RotationSpeedTextEdit");
 
                 string layer = this["currentLayer"];
                 string speed = RotationSpeedTextEdit.getText();
                 this.updateActiveMaterial("rotSpeed[" + layer + "]", speed, isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateScrollOffset(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl ScrollTextEditU = MaterialEditorPropertiesWindow.FOT("ScrollTextEditU");
                 GuiTextEditCtrl ScrollTextEditV = MaterialEditorPropertiesWindow.FOT("ScrollTextEditV");
@@ -1652,22 +1638,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 ScrollCrosshair.setPosition((int) -(23*X.AsFloat()) + 20, (int) -(23*Y.AsFloat()) + 20);
 
                 this.updateActiveMaterial("scrollDir[" + layer + "]", "\"" + X + ' ' + Y + "\"", isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateScrollSpeed(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl ScrollSpeedTextEdit = MaterialEditorPropertiesWindow.FOT("ScrollSpeedTextEdit");
 
                 string layer = this["currentLayer"];
                 string speed = ScrollSpeedTextEdit.getText();
                 this.updateActiveMaterial("scrollSpeed[" + layer + "]", speed, isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateWaveType()
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiContainer WaveButtonContainer = "WaveButtonContainer";
                 string type = "";
@@ -1680,55 +1666,55 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 string layer = this["currentLayer"];
                 this.updateActiveMaterial("waveType[" + layer + "]", type);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateWaveAmp(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl WaveTextEditAmp = MaterialEditorPropertiesWindow.FOT("WaveTextEditAmp");
 
                 string layer = this["currentLayer"];
                 string amp = WaveTextEditAmp.getText();
                 this.updateActiveMaterial("waveAmp[" + layer + "]", amp, isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateWaveFreq(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl WaveTextEditFreq = MaterialEditorPropertiesWindow.FOT("WaveTextEditFreq");
 
                 string layer = this["currentLayer"];
                 string freq = WaveTextEditFreq.getText();
                 this.updateActiveMaterial("waveFreq[" + layer + "]", freq, isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSequenceFPS(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl SequenceTextEditFPS = MaterialEditorPropertiesWindow.FOT("SequenceTextEditFPS");
 
                 string layer = this["currentLayer"];
                 string fps = SequenceTextEditFPS.getText();
                 this.updateActiveMaterial("sequenceFramePerSec[" + layer + "]", fps, isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSequenceSSS(bool isSlider, bool onMouseUp)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiTextEditCtrl SequenceTextEditSSS = MaterialEditorPropertiesWindow.FOT("SequenceTextEditSSS");
 
                 string layer = this["currentLayer"];
                 string sss = (1/SequenceTextEditSSS.getText().AsFloat()).AsString();
                 this.updateActiveMaterial("sequenceSegmentSize[" + layer + "]", sss, isSlider, onMouseUp);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateAnimationFlags()
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiCheckBoxCtrl RotationAnimation = MaterialEditorPropertiesWindow.FOT("RotationAnimation");
                 GuiCheckBoxCtrl ScrollAnimation = MaterialEditorPropertiesWindow.FOT("ScrollAnimation");
@@ -1790,7 +1776,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 if (flags == "")
                     flags = "\"\"";
 
-                var action = this.createUndo<MaterialEditorUndo.ActionUpdateActiveMaterialAnimationFlags>("Update Active Material");
+                MaterialEditorUndo.ActionUpdateActiveMaterialAnimationFlags action = this.createUndo<MaterialEditorUndo.ActionUpdateActiveMaterialAnimationFlags>("Update Active Material");
                 action["material"] = this.currentMaterial;
                 action["object"] = this.currentObject;
                 action["layer"] = this["currentLayer"];
@@ -1810,12 +1796,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 if (this["livePreview"].AsBool())
                     {
-                    Util.eval("MaterialEditorGui.currentMaterial.animFlags[" + this["currentLayer"] + "] =" + flags +
-                               ";");
+                    Util.eval("MaterialEditorGui.currentMaterial.animFlags[" + this["currentLayer"] + "] =" + flags + ";");
                     this.currentMaterial.flush();
                     this.currentMaterial.reload();
                     }
-                }
+            }
 
             //==============================================================================
             // Color Picker Helpers - They are all using colorPicker.ed.gui in order to function
@@ -1823,7 +1808,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [ConsoleInteraction]
             public void syncGuiColor(GuiSwatchButtonCtrl guiCtrl, string propName, string color)
-                {
+            {
                 string layer = this["currentLayer"];
 
                 string r = Util.getWord(color, 0);
@@ -1836,68 +1821,68 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 guiCtrl["color"] = colorSwatch;
                 this.updateActiveMaterial(propName, color);
-                }
+            }
 
             //These two functions are focused on object/layer specific functionality
 
             [ConsoleInteraction]
             public void updateColorMultiply(string color)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiSwatchButtonCtrl colorTintSwatch = MaterialEditorPropertiesWindow.FOT("colorTintSwatch");
 
                 string propName = "diffuseColor[" + this["currentLayer"] + "]";
                 this.syncGuiColor(colorTintSwatch, propName, color);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSpecularCheckbox(string value)
-                {
+            {
                 this.updateActiveMaterial("pixelSpecular[" + this["currentLayer"] + "]", value);
                 this.guiSync("materialEd_previewMaterial");
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSpecular(string color)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiSwatchButtonCtrl specularColorSwatch = MaterialEditorPropertiesWindow.FOT("specularColorSwatch");
 
                 string propName = "specular[" + this["currentLayer"] + "]";
                 this.syncGuiColor(specularColorSwatch, propName, color);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSubSurfaceColor(string color)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiSwatchButtonCtrl subSurfaceColorSwatch = MaterialEditorPropertiesWindow.FOT("subSurfaceColorSwatch");
 
                 string propName = "subSurfaceColor[" + this["currentLayer"] + "]";
                 this.syncGuiColor(subSurfaceColorSwatch, propName, color);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateEffectColor0(string color)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiSwatchButtonCtrl effectColor0Swatch = MaterialEditorPropertiesWindow.FOT("effectColor0Swatch");
 
                 this.syncGuiColor(effectColor0Swatch, "effectColor[0]", color);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateEffectColor1(string color)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 GuiSwatchButtonCtrl effectColor1Swatch = MaterialEditorPropertiesWindow.FOT("effectColor1Swatch");
 
                 this.syncGuiColor(effectColor1Swatch, "effectColor[1]", color);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateBehaviorSound(string type, string sound)
-                {
+            {
                 int defaultId = -1;
                 string customName = "";
 
@@ -1922,16 +1907,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 this.updateActiveMaterial(type + "SoundId", defaultId.AsString());
                 this.updateActiveMaterial("custom" + type + "Sound", customName);
-                }
+            }
 
             [ConsoleInteraction]
             public void updateSoundPopup(string type, string defaultId, string customName)
-                {
+            {
                 GuiWindowCollapseCtrl MaterialEditorPropertiesWindow = "MaterialEditorPropertiesWindow";
                 string name = "";
 
-                GuiPopUpMenuCtrl ctrl = MaterialEditorPropertiesWindow.findObjectByInternalName(type + "SoundPopup",
-                    true);
+                GuiPopUpMenuCtrl ctrl = MaterialEditorPropertiesWindow.findObjectByInternalName(type + "SoundPopup", true);
 
                 switch (defaultId)
                     {
@@ -1957,57 +1941,57 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     ctrl.setSelected(r, false);
                 else
                     ctrl.setText(name);
-                }
+            }
 
             //These two functions are focused on environment specific functionality
 
             [ConsoleInteraction]
             public void updateLightColor(string color)
-                {
+            {
                 GuiMaterialPreview matEd_previewObjectView = "matEd_previewObjectView";
                 GuiSwatchButtonCtrl matEd_lightColorPicker = "matEd_lightColorPicker";
 
                 matEd_previewObjectView.setLightColor(color.AsColorF());
                 matEd_lightColorPicker["color"] = color;
-                }
+            }
 
             [ConsoleInteraction]
             public void updatePreviewBackground(string color)
-                {
+            {
                 GuiSwatchButtonCtrl matEd_previewBackground = "matEd_previewBackground";
                 GuiSwatchButtonCtrl MaterialPreviewBackgroundPicker = "MaterialPreviewBackgroundPicker";
 
                 matEd_previewBackground["color"] = color;
                 MaterialPreviewBackgroundPicker["color"] = color;
-                }
+            }
 
             [ConsoleInteraction]
             public void updateAmbientColor(string color)
-                {
+            {
                 GuiMaterialPreview matEd_previewObjectView = "matEd_previewObjectView";
                 GuiSwatchButtonCtrl matEd_ambientLightColorPicker = "matEd_ambientLightColorPicker";
 
                 matEd_previewObjectView.setAmbientLightColor(color.AsColorF());
                 matEd_ambientLightColorPicker["color"] = color;
-                }
+            }
 
             //==============================================================================
             // Commands for the Cubemap Editor
 
             [ConsoleInteraction]
             public void selectCubemap()
-                {
+            {
                 CubemapData cubemap = this["currentCubemap"];
                 if (!cubemap.isObject())
                     return;
 
                 this.updateActiveMaterial("cubemap", cubemap["name"]);
                 this.hideCubemapEditor(false);
-                }
+            }
 
             [ConsoleInteraction]
             public void cancelCubemap()
-                {
+            {
                 CubemapData cubemap = this["currentCubemap"];
                 CubemapData notDirtyCubemap = "notDirtyCubemap";
                 CubemapData matEdCubeMapPreviewMat = "matEdCubeMapPreviewMat";
@@ -2022,11 +2006,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 cubemap.updateFaces();
                 matEdCubeMapPreviewMat.updateFaces();
-                }
+            }
 
             [ConsoleInteraction]
             public void showCubemapEditor()
-                {
+            {
                 GuiWindowCtrl matEd_cubemapEditor = "matEd_cubemapEditor";
                 SimSet RootGroup = "RootGroup";
                 ArrayObject UnlistedCubemaps = "UnlistedCubemaps";
@@ -2061,8 +2045,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     if (unlistedFound)
                         continue;
 
-                    matEd_cubemapEd_availableCubemapList.addItem(((SimObject) RootGroup.getObject(i))["name"],
-                        "0.0 0.0 1.0");
+                    matEd_cubemapEd_availableCubemapList.addItem(((SimObject) RootGroup.getObject(i))["name"], "0.0 0.0 1.0");
                     }
 
                 CubemapData notDirtyCubemap = new SingletonCreator("CubemapData", "notDirtyCubemap").Create();
@@ -2094,11 +2077,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.copyCubemaps(cubemap, notDirtyCubemap);
                 this.copyCubemaps(cubemap, "matEdCubeMapPreviewMat");
                 this.syncCubemap(cubemap);
-                }
+            }
 
             [ConsoleInteraction]
             public void hideCubemapEditor(bool cancel)
-                {
+            {
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
                 PersistenceManager matEd_cubemapEdPerMan = "matEd_cubemapEdPerMan";
                 GuiWindowCtrl matEd_cubemapEditor = "matEd_cubemapEditor";
@@ -2108,13 +2091,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 matEd_cubemapEd_availableCubemapList.clearItems();
                 matEd_cubemapEdPerMan.delete();
                 matEd_cubemapEditor.setVisible(false);
-                }
+            }
 
             // create category and update current material if there is one
 
             [ConsoleInteraction]
             public void addCubemap(string cubemapName)
-                {
+            {
                 SimSet RootGroup = "RootGroup";
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
                 GuiWindowCtrl matEd_addCubemapWindow = "matEd_addCubemapWindow";
@@ -2142,11 +2125,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 // material category text field to blank
                 matEd_addCubemapWindowCubemapName.setText("");
-                }
+            }
 
             [ConsoleInteraction]
             public string createNewCubemap(string cubemap)
-                {
+            {
                 PersistenceManager matEd_cubemapEdPerMan = "matEd_cubemapEdPerMan";
 
                 if (cubemap == "")
@@ -2168,7 +2151,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 oc_Newobject9["cubeFace[3]"] = "tools/materialeditor/gui/cube_ZPos";
                 oc_Newobject9["cubeFace[4]"] = "tools/materialeditor/gui/cube_YNeg";
                 oc_Newobject9["cubeFace[5]"] = "tools/materialeditor/gui/cube_YPos";
-                oc_Newobject9["parentGroup"] = new ObjectCreator.StringNoQuote("RootGroup");
+                oc_Newobject9["parentGroup"] = new Creator.StringNoQuote("RootGroup");
 
                 #endregion
 
@@ -2178,11 +2161,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 matEd_cubemapEdPerMan.saveDirty();
 
                 return cubemap;
-                }
+            }
 
             [ConsoleInteraction]
             public void setCubemapDirty()
-                {
+            {
                 GuiWindowCtrl matEd_cubemapEditor = "matEd_cubemapEditor";
                 GuiBitmapButtonCtrl saveCubemap = matEd_cubemapEditor.FOT("saveCubemap");
                 PersistenceManager matEd_cubemapEdPerMan = "matEd_cubemapEdPerMan";
@@ -2199,11 +2182,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     matEd_cubemapEdPerMan.setDirty(cubemap, "art/materials.cs");
                 else
                     matEd_cubemapEdPerMan.setDirty(cubemap);
-                }
+            }
 
             [ConsoleInteraction]
             public void setCubemapNotDirty()
-                {
+            {
                 GuiWindowCtrl matEd_cubemapEditor = "matEd_cubemapEditor";
                 GuiBitmapButtonCtrl saveCubemap = matEd_cubemapEditor.FOT("saveCubemap");
                 PersistenceManager matEd_cubemapEdPerMan = "matEd_cubemapEdPerMan";
@@ -2216,11 +2199,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 CubemapData cubemap = this["currentCubemap"];
                 matEd_cubemapEdPerMan.removeDirty(cubemap);
-                }
+            }
 
             [ConsoleInteraction]
             public void showDeleteCubemapDialog()
-                {
+            {
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
 
                 int idx = matEd_cubemapEd_availableCubemapList.getSelectedItem();
@@ -2231,19 +2214,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     return;
 
                 if (cubemap.isObject())
-                    {
-                    messageBox.MessageBoxYesNoCancel("Delete Cubemap?",
-                        "Are you sure you want to delete<br><br>" + cubemap.getName() +
-                        "<br><br> Cubemap deletion won't take affect until the engine is quit.",
-                        "MaterialEditorGui.deleteCubemap( " + cubemap + ", " + idx + " );",
-                        "",
-                        "");
-                    }
-                }
+                    messageBox.MessageBoxYesNoCancel("Delete Cubemap?", "Are you sure you want to delete<br><br>" + cubemap.getName() + "<br><br> Cubemap deletion won't take affect until the engine is quit.", "MaterialEditorGui.deleteCubemap( " + cubemap + ", " + idx + " );", "", "");
+            }
 
             [ConsoleInteraction]
             public void deleteCubemap(CubemapData cubemap, int idx)
-                {
+            {
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
                 ArrayObject UnlistedCubemaps = "UnlistedCubemaps";
                 PersistenceManager matEd_cubemapEdPerMan = "matEd_cubemapEdPerMan";
@@ -2259,9 +2235,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     }
 
                 if (matEd_cubemapEd_availableCubemapList.getItemCount() > 0)
-                    {
                     matEd_cubemapEd_availableCubemapList.setSelected(0, true);
-                    }
                 else
                     {
                     // if there are no cubemaps, then create one, select, and bail
@@ -2269,25 +2243,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     matEd_cubemapEd_availableCubemapList.addItem(cubemap.getName(), "0.0 0.0 1.0");
                     matEd_cubemapEd_availableCubemapList.setSelected(0, true);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void showSaveCubemapDialog()
-                {
+            {
                 CubemapData cubemap = this["currentCubemap"];
                 if (!cubemap.isObject())
                     return;
 
-                messageBox.MessageBoxYesNoCancel("Save Cubemap?",
-                    "Do you want to save changes to <br><br>" + cubemap.getName(),
-                    "MaterialEditorGui.saveCubemap( " + cubemap + " );",
-                    "",
-                    "");
-                }
+                messageBox.MessageBoxYesNoCancel("Save Cubemap?", "Do you want to save changes to <br><br>" + cubemap.getName(), "MaterialEditorGui.saveCubemap( " + cubemap + " );", "", "");
+            }
 
             [ConsoleInteraction]
             public void saveCubemap(string cubemap)
-                {
+            {
                 CubemapData notDirtyCubemap = "notDirtyCubemap";
                 PersistenceManager matEd_cubemapEdPerMan = "matEd_cubemapEdPerMan";
 
@@ -2298,11 +2268,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 matEd_cubemapEdPerMan.saveDirty();
 
                 this.setCubemapNotDirty();
-                }
+            }
 
             [ConsoleInteraction]
             public void saveCubemapDialogDontSave(CubemapData newCubemap)
-                {
+            {
                 //deal with old cubemap first
                 CubemapData oldCubemap = this["currentCubemap"];
                 CubemapData notDirtyCubemap = "notDirtyCubemap";
@@ -2318,22 +2288,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.syncCubemap(oldCubemap);
 
                 this.changeCubemap(newCubemap);
-                }
+            }
 
             [ConsoleInteraction]
             public void saveCubemapDialogCancel()
-                {
+            {
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
 
                 CubemapData cubemap = this["currentCubemap"];
                 int idx = matEd_cubemapEd_availableCubemapList.findItemText(cubemap.getName(), false);
                 matEd_cubemapEd_availableCubemapList.clearSelection();
                 matEd_cubemapEd_availableCubemapList.setSelected(idx, true);
-                }
+            }
 
             [ConsoleInteraction]
             public void changeCubemap(CubemapData cubemap)
-                {
+            {
                 CubemapData notDirtyCubemap = "notDirtyCubemap";
 
                 this.setCubemapNotDirty();
@@ -2343,11 +2313,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.copyCubemaps(cubemap, notDirtyCubemap);
                 this.copyCubemaps(cubemap, "matEdCubeMapPreviewMat");
                 this.syncCubemap(cubemap);
-                }
+            }
 
             [ConsoleInteraction]
             public void editCubemapImage(string face)
-                {
+            {
                 this.setCubemapDirty();
 
                 CubemapData cubemap = this["currentCubemap"];
@@ -2358,11 +2328,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     this.copyCubemaps(cubemap, "matEdCubeMapPreviewMat");
                     this.syncCubemap(cubemap);
                     }
-                }
+            }
 
             [ConsoleInteraction]
             public void editCubemapName(string newName)
-                {
+            {
                 GuiListBoxCtrl matEd_cubemapEd_availableCubemapList = "matEd_cubemapEd_availableCubemapList";
 
                 this.setCubemapDirty();
@@ -2374,11 +2344,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 cubemap.setName(newName);
 
                 this.syncCubemap(cubemap);
-                }
+            }
 
             [ConsoleInteraction]
             public void syncCubemap(CubemapData cubemap)
-                {
+            {
                 GuiBitmapCtrl matEd_cubemapEd_XPos = "matEd_cubemapEd_XPos";
                 GuiBitmapCtrl matEd_cubemapEd_XNeg = "matEd_cubemapEd_XNeg";
                 GuiBitmapCtrl matEd_cubemapEd_YNeG = "matEd_cubemapEd_YNeG";
@@ -2416,49 +2386,35 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                 cubemap.updateFaces();
                 matEdCubeMapPreviewMat.updateFaces();
-                }
+            }
 
             [ConsoleInteraction]
             public void copyCubemaps(CubemapData copyFrom, CubemapData copyTo)
-                {
+            {
                 copyTo["cubeFace[0]"] = copyFrom["cubeFace[0]"];
                 copyTo["cubeFace[1]"] = copyFrom["cubeFace[1]"];
                 copyTo["cubeFace[2]"] = copyFrom["cubeFace[2]"];
                 copyTo["cubeFace[3]"] = copyFrom["cubeFace[3]"];
                 copyTo["cubeFace[4]"] = copyFrom["cubeFace[4]"];
                 copyTo["cubeFace[5]"] = copyFrom["cubeFace[5]"];
-                }
-
+            }
 
             //==============================================================================
             // showSaveDialog logic
 
             [ConsoleInteraction]
             public void showSaveDialog(Material toMaterial)
-                {
-                messageBox.MessageBoxYesNoCancel("Save Material?",
-                    "The material " + this.currentMaterial.getName() + " has unsaved changes. <br>Do you want to save?",
-                    "MaterialEditorGui.saveDialogSave(" + toMaterial + ");",
-                    "MaterialEditorGui.saveDialogDontSave(" + toMaterial + ");",
-                    "MaterialEditorGui.saveDialogCancel();");
-                }
+            {
+                messageBox.MessageBoxYesNoCancel("Save Material?", "The material " + this.currentMaterial.getName() + " has unsaved changes. <br>Do you want to save?", "MaterialEditorGui.saveDialogSave(" + toMaterial + ");", "MaterialEditorGui.saveDialogDontSave(" + toMaterial + ");", "MaterialEditorGui.saveDialogCancel();");
+            }
 
             [ConsoleInteraction]
             public void showMaterialChangeSaveDialog(Material toMaterial)
-                {
+            {
                 Material fromMaterial = this.currentMaterial;
 
-                messageBox.MessageBoxYesNoCancel("Save Material?",
-                    "The material " + fromMaterial.getName() +
-                    " has unsaved changes. <br>Do you want to save before changing the material?",
-                    "MaterialEditorGui.saveDialogSave(" + toMaterial + "); MaterialEditorGui.changeMaterial(" +
-                    fromMaterial + ", " + toMaterial +
-                    ");",
-                    "MaterialEditorGui.saveDialogDontSave(" + toMaterial + "); MaterialEditorGui.changeMaterial(" +
-                    fromMaterial + ", " +
-                    toMaterial + ");",
-                    "MaterialEditorGui.saveDialogCancel();");
-                }
+                messageBox.MessageBoxYesNoCancel("Save Material?", "The material " + fromMaterial.getName() + " has unsaved changes. <br>Do you want to save before changing the material?", "MaterialEditorGui.saveDialogSave(" + toMaterial + "); MaterialEditorGui.changeMaterial(" + fromMaterial + ", " + toMaterial + ");", "MaterialEditorGui.saveDialogDontSave(" + toMaterial + "); MaterialEditorGui.changeMaterial(" + fromMaterial + ", " + toMaterial + ");", "MaterialEditorGui.saveDialogCancel();");
+            }
 
             /*
             internal void showCreateNewMaterialSaveDialog( toMaterial )
@@ -2473,13 +2429,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [ConsoleInteraction]
             public void saveDialogCancel()
-                {
+            {
                 this.guiSync("materialEd_previewMaterial");
-                }
+            }
 
             [ConsoleInteraction]
             public void saveDialogDontSave(Material material)
-                {
+            {
                 Material notDirtyMaterial = "notDirtyMaterial";
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
 
@@ -2498,24 +2454,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.setMaterialNotDirty();
 
                 this.setActiveMaterial(material);
-                }
+            }
 
             [ConsoleInteraction]
             public void saveDialogSave(Material material)
-                {
+            {
                 this.save();
                 this.setActiveMaterial(material);
-                }
+            }
 
             [ConsoleInteraction]
             public void save()
-                {
+            {
                 PersistenceManager matEd_PersistMan = "matEd_PersistMan";
 
                 if (this.currentMaterial.getName() == "")
                     {
-                    messageBox.MessageBoxOK("Cannot perform operation",
-                        "Saved materials cannot be named \"\". A name must be given before operation is performed");
+                    messageBox.MessageBoxOK("Cannot perform operation", "Saved materials cannot be named \"\". A name must be given before operation is performed");
                     return;
                     }
 
@@ -2539,15 +2494,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 // Clean up the Material Editor
                 this.copyMaterials("materialEd_previewMaterial", "notDirtyMaterial");
                 this.setMaterialNotDirty();
-                }
+            }
 
             //==============================================================================
             // Create New and Delete Material
 
             [ConsoleInteraction]
             public void createNewMaterial()
-                {
-                var action = this.createUndo<MaterialEditorUndo.ActionCreateNewMaterial>("Create New Material");
+            {
+                MaterialEditorUndo.ActionCreateNewMaterial action = this.createUndo<MaterialEditorUndo.ActionCreateNewMaterial>("Create New Material");
                 action["object"] = "";
 
                 string material = Util.getUniqueName("newMaterial");
@@ -2557,7 +2512,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 ObjectCreator oc_Newobject10 = new ObjectCreator("Material", material);
                 oc_Newobject10["diffuseMap[0]"] = "core/art/warnmat";
                 oc_Newobject10["mapTo"] = "unmapped_mat";
-                oc_Newobject10["parentGroup"] = new ObjectCreator.StringNoQuote("RootGroup");
+                oc_Newobject10["parentGroup"] = new Creator.StringNoQuote("RootGroup");
 
                 #endregion
 
@@ -2571,15 +2526,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.currentObject = "";
                 this.setMode();
                 this.prepareActiveMaterial(material, true);
-                }
+            }
 
             [ConsoleInteraction]
             public void deleteMaterial()
-                {
+            {
                 PersistenceManager matEd_PersistMan = "matEd_PersistMan";
                 ArrayObject UnlistedMaterials = "UnlistedMaterials";
 
-                var action = this.createUndo<MaterialEditorUndo.ActionDeleteMaterial>("Delete Material");
+                MaterialEditorUndo.ActionDeleteMaterial action = this.createUndo<MaterialEditorUndo.ActionDeleteMaterial>("Delete Material");
                 action["object"] = this.currentObject;
                 action["currentMode"] = this.currentMode;
 
@@ -2630,7 +2585,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 ObjectCreator oc_Newobject11 = new ObjectCreator("Material", newMaterial);
                 oc_Newobject11["diffuseMap[0]"] = "core/art/warnmat";
                 oc_Newobject11["mapTo"] = "unmapped_mat";
-                oc_Newobject11["parentGroup"] = new ObjectCreator.StringNoQuote("RootGroup");
+                oc_Newobject11["parentGroup"] = new Creator.StringNoQuote("RootGroup");
 
                 #endregion
 
@@ -2658,14 +2613,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.currentObject = "";
                 this.setMode();
                 this.prepareActiveMaterial(newMaterial, true);
-                }
+            }
 
             //==============================================================================
             // Clear and Refresh Material
 
             [ConsoleInteraction]
             public void clearMaterial()
-                {
+            {
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
 
                 UndoScriptAction action = this.createUndo<MaterialEditorUndo.ActionClearMaterial>("Clear Material");
@@ -2686,7 +2641,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 ObjectCreator oc_Newobject12 = new ObjectCreator("Material", "");
                 oc_Newobject12["name"] = "tempMaterial";
                 oc_Newobject12["mapTo"] = "unmapped_mat";
-                oc_Newobject12["parentGroup"] = new ObjectCreator.StringNoQuote("RootGroup");
+                oc_Newobject12["parentGroup"] = new Creator.StringNoQuote("RootGroup");
 
                 #endregion
 
@@ -2708,14 +2663,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 this.setMaterialDirty();
 
                 tempMat.delete();
-                }
+            }
 
             [ConsoleInteraction]
             public void refreshMaterial()
-                {
+            {
                 Material materialEd_previewMaterial = "materialEd_previewMaterial";
 
-                var action = this.createUndo<MaterialEditorUndo.ActionRefreshMaterial>("Refresh Material");
+                MaterialEditorUndo.ActionRefreshMaterial action = this.createUndo<MaterialEditorUndo.ActionRefreshMaterial>("Refresh Material");
                 action["material"] = this.currentMaterial;
                 action["object"] = this.currentObject;
 
@@ -2747,19 +2702,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     }
 
                 this.setMaterialNotDirty();
-                }
+            }
 
             //==============================================================================
             // Switching and Changing Materials
 
             [ConsoleInteraction]
             public void switchMaterial(Material material)
-                {
+            {
                 //this.currentMaterial = material.getId();
                 this.currentObject = "";
                 this.setMode();
                 this.prepareActiveMaterial(material.getId(), true);
-                }
+            }
 
             /*------------------------------------------------------------------------------
             This changes the map to's of possibly two materials (fromMaterial, toMaterial)
@@ -2773,12 +2728,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [ConsoleInteraction]
             public void changeMaterial(Material fromMaterial, Material toMaterial)
-                {
+            {
                 GuiPopUpMenuCtrlEx SubMaterialSelector = "SubMaterialSelector";
                 PersistenceManager matEd_PersistMan = "matEd_PersistMan";
                 string sourcePath = "";
 
-                var action = this.createUndo<MaterialEditorUndo.ActionChangeMaterial>("Change Material");
+                MaterialEditorUndo.ActionChangeMaterial action = this.createUndo<MaterialEditorUndo.ActionChangeMaterial>("Change Material");
 
                 string materialTarget = SubMaterialSelector["text"];
                 action["materialTarget"] = materialTarget;
@@ -2792,8 +2747,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     {
                     action["mode"] = "model";
 
-                    this.currentObject.call("changeMaterial", materialTarget, fromMaterial.getName(),
-                        toMaterial.getName());
+                    this.currentObject.call("changeMaterial", materialTarget, fromMaterial.getName(), toMaterial.getName());
 
                     if (this.currentObject["shapeName"] != "")
                         sourcePath = this.currentObject["shapeName"];
@@ -2817,9 +2771,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
                     this.prepareActiveMaterial(toMaterial, true);
                     if (!this.isMatEditorMaterial(toMaterial))
-                        {
                         matEd_PersistMan.removeObjectFromFile(toMaterial);
-                        }
 
                     matEd_PersistMan.setDirty(fromMaterial);
                     matEd_PersistMan.setDirty(toMaterial, fileName);
@@ -2840,30 +2792,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     }
 
                 this.submitUndo(action);
-                }
+            }
 
-           // [ConsoleInteraction]
+            // [ConsoleInteraction]
             public T createUndo<T>(string desc)
-                {
+            {
                 Util.pushInstantGroup();
-                ObjectCreator actionCreator = new ObjectCreator("UndoScriptAction", "", typeof(T));
+                ObjectCreator actionCreator = new ObjectCreator("UndoScriptAction", "", typeof (T));
                 //action["class"] = className;
                 //action["superClass"] = "BaseMaterialEdAction";
                 actionCreator["actionName"] = desc;
 
-                var action = myReflections.ChangeType<T>(actionCreator.Create());
+                T action = myReflections.ChangeType<T>(actionCreator.Create());
 
                 Util.popInstantGroup();
                 return action;
-                }
+            }
 
             [ConsoleInteraction]
             public void submitUndo(UndoScriptAction action)
-                {
+            {
                 editor Editor = "Editor";
                 if (!this["preventUndo"].AsBool())
                     action.addToManager(Editor.getUndoManager());
-                }
+            }
 
             //==============================================================================
             // Image thumbnail right-clicks.
@@ -2871,10 +2823,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             // not yet functional
             [TypeConverter(typeof (TypeConverterGeneric<MaterialEditorMapThumbnail>))]
             public class MaterialEditorMapThumbnail : GuiBitmapCtrl
-                {
+            {
                 [ConsoleInteraction]
                 public void onRightClick()
-                    {
+                {
                     MenuBuilder MaterialEditorMapThumbnailPopup = "MaterialEditorMapThumbnailPopup";
                     MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
                     GuiCanvas Canvas = "Canvas";
@@ -2883,13 +2835,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         {
                         #region PopupMenu ( MaterialEditorMapThumbnailPopup )        
 
-                        ObjectCreator materialCreator = new ObjectCreator("PopupMenu",
-                            "MaterialEditorMapThumbnailPopup", typeof (MenuBuilder));
+                        ObjectCreator materialCreator = new ObjectCreator("PopupMenu", "MaterialEditorMapThumbnailPopup", typeof (MenuBuilder));
                         materialCreator["isPopup"] = true.AsString();
-                        materialCreator["item[0]"] = "Open File" + '\t' + "" + '\t' +
-                                                     "openFile( MaterialEditorMapThumbnailPopup.filePath );";
-                        materialCreator["item[1]"] = "Open Folder" + '\t' + "" + '\t' +
-                                                     "openFolder( filePath( MaterialEditorMapThumbnailPopup.filePath ) );";
+                        materialCreator["item[0]"] = "Open File" + '\t' + "" + '\t' + "openFile( MaterialEditorMapThumbnailPopup.filePath );";
+                        materialCreator["item[1]"] = "Open Folder" + '\t' + "" + '\t' + "openFolder( filePath( MaterialEditorMapThumbnailPopup.filePath ) );";
                         materialCreator["filePath"] = "";
 
                         #endregion
@@ -2898,8 +2847,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         }
                     // Find the text control containing the filename.
 
-                    GuiTextEditCtrl textCtrl =
-                        ((SimSet) this.parentGroup).findObjectByInternalName(this["fileNameTextCtrl"], true);
+                    GuiTextEditCtrl textCtrl = ((SimSet) this.parentGroup).findObjectByInternalName(this["fileNameTextCtrl"], true);
                     if (!textCtrl.isObject())
                         return;
 
@@ -2923,8 +2871,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                             Material material = MaterialEditorGui.currentMaterial;
                             if (material.isObject())
                                 {
-                                string materialPath =
-                                    Util.filePath(Util.makeFullPath(material.getFilename(), Util.getMainDotCsDir()));
+                                string materialPath = Util.filePath(Util.makeFullPath(material.getFilename(), Util.getMainDotCsDir()));
                                 fullPath = Util.makeFullPath(fileName, materialPath);
                                 isValid = Util.isFile(fullPath);
                                 }
@@ -2937,8 +2884,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     popup["filePath"] = fullPath;
 
                     popup.showPopup(Canvas);
-                    }
                 }
+            }
 
             //==============================================================================
             // SubMaterial(Material Target) -- Supports different ways to grab the 
@@ -2949,10 +2896,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
 
             [TypeConverter(typeof (TypeConverterGeneric<SubMaterialSelector>))]
             public class SubMaterialSelector : GuiPopUpMenuCtrlEx
-                {
+            {
                 [ConsoleInteraction]
                 public override void onSelect(string id, string text)
-                    {
+                {
                     MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
                     string material = "";
 
@@ -2978,7 +2925,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         ObjectCreator oc_Newobject5 = new ObjectCreator("Material", material);
                         oc_Newobject5["diffuseMap[0]"] = origMat;
                         oc_Newobject5["mapTo"] = origMat;
-                        oc_Newobject5["parentGroup"] = new ObjectCreator.StringNoQuote("RootGroup");
+                        oc_Newobject5["parentGroup"] = new Creator.StringNoQuote("RootGroup");
 
                         #endregion
 
@@ -2991,7 +2938,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                         }
 
                     MaterialEditorGui.prepareActiveMaterial(material, false);
-                    }
+                }
 
                 #region ProxyObjects Operator Overrides
 
@@ -3002,20 +2949,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="simobjectid"></param>
                 /// <returns></returns>
                 public static bool operator ==(SubMaterialSelector ts, string simobjectid)
-                    {
-                    return object.ReferenceEquals(ts, null)
-                        ? object.ReferenceEquals(simobjectid, null)
-                        : ts.Equals(simobjectid);
-                    }
+                {
+                    return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+                }
 
                 /// <summary>
                 /// 
                 /// </summary>
                 /// <returns></returns>
                 public override int GetHashCode()
-                    {
+                {
                     return base.GetHashCode();
-                    }
+                }
 
                 /// <summary>
                 /// 
@@ -3023,9 +2968,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="obj"></param>
                 /// <returns></returns>
                 public override bool Equals(object obj)
-                    {
+                {
                     return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                    }
+                }
 
                 /// <summary>
                 /// 
@@ -3034,12 +2979,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="simobjectid"></param>
                 /// <returns></returns>
                 public static bool operator !=(SubMaterialSelector ts, string simobjectid)
-                    {
-                    if (object.ReferenceEquals(ts, null))
-                        return !object.ReferenceEquals(simobjectid, null);
+                {
+                    if (ReferenceEquals(ts, null))
+                        return !ReferenceEquals(simobjectid, null);
                     return !ts.Equals(simobjectid);
-                    }
-
+                }
 
                 /// <summary>
                 /// 
@@ -3047,9 +2991,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="ts"></param>
                 /// <returns></returns>
                 public static implicit operator string(SubMaterialSelector ts)
-                    {
+                {
                     return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                    }
+                }
 
                 /// <summary>
                 /// 
@@ -3057,10 +3001,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="ts"></param>
                 /// <returns></returns>
                 public static implicit operator SubMaterialSelector(string ts)
-                    {
+                {
                     uint simobjectid = resolveobject(ts);
                     return (SubMaterialSelector) Omni.self.getSimObject(simobjectid, typeof (SubMaterialSelector));
-                    }
+                }
 
                 /// <summary>
                 /// 
@@ -3068,9 +3012,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="ts"></param>
                 /// <returns></returns>
                 public static implicit operator int(SubMaterialSelector ts)
-                    {
+                {
                     return (int) ts._iID;
-                    }
+                }
 
                 /// <summary>
                 /// 
@@ -3078,10 +3022,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="simobjectid"></param>
                 /// <returns></returns>
                 public static implicit operator SubMaterialSelector(int simobjectid)
-                    {
-                    return
-                        (SubMaterialSelector) Omni.self.getSimObject((uint) simobjectid, typeof (SubMaterialSelector));
-                    }
+                {
+                    return (SubMaterialSelector) Omni.self.getSimObject((uint) simobjectid, typeof (SubMaterialSelector));
+                }
 
                 /// <summary>
                 /// 
@@ -3089,28 +3032,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                 /// <param name="ts"></param>
                 /// <returns></returns>
                 public static implicit operator uint(SubMaterialSelector ts)
-                    {
+                {
                     return ts._iID;
-                    }
+                }
 
                 /// <summary>
                 /// 
                 /// </summary>
                 /// <returns></returns>
                 public static implicit operator SubMaterialSelector(uint simobjectid)
-                    {
+                {
                     return (SubMaterialSelector) Omni.self.getSimObject(simobjectid, typeof (SubMaterialSelector));
-                    }
+                }
 
                 #endregion
-                }
+            }
 
             [TypeConverter(typeof (TypeConverterGeneric<matEd_cubemapEd_availableCubemapList>))]
             public class matEd_cubemapEd_availableCubemapList : GuiListBoxCtrl
-                {
+            {
                 [ConsoleInteraction]
                 public override void onSelect(string id, string cubemap)
-                    {
+                {
                     MaterialEditorGui MaterialEditorGui = "MaterialEditorGui";
                     GuiWindowCtrl matEd_cubemapEditor = "matEd_cubemapEditor";
                     CubemapData cubemapData = cubemap;
@@ -3120,16 +3063,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
                     if (matEd_cubemapEditor["dirty"].AsBool())
                         {
                         CubemapData savedCubemap = MaterialEditorGui["currentCubemap"];
-                        messageBox.MessageBoxYesNoCancel("Save Existing Cubemap?",
-                            "Do you want to save changes to <br><br>" + savedCubemap.getName(),
-                            "MaterialEditorGui.saveCubemap(" + true + ");",
-                            "MaterialEditorGui.saveCubemapDialogDontSave(" + cubemapData + ");",
-                            "MaterialEditorGui.saveCubemapDialogCancel();");
+                        messageBox.MessageBoxYesNoCancel("Save Existing Cubemap?", "Do you want to save changes to <br><br>" + savedCubemap.getName(), "MaterialEditorGui.saveCubemap(" + true + ");", "MaterialEditorGui.saveCubemapDialogDontSave(" + cubemapData + ");", "MaterialEditorGui.saveCubemapDialogCancel();");
                         }
                     else
                         MaterialEditorGui.changeCubemap(cubemapData);
-                    }
                 }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3140,20 +3079,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(MaterialEditorGui ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3161,9 +3098,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3172,12 +3109,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(MaterialEditorGui ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3185,9 +3121,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(MaterialEditorGui ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3195,10 +3131,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator MaterialEditorGui(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (MaterialEditorGui) Omni.self.getSimObject(simobjectid, typeof (MaterialEditorGui));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3206,9 +3142,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(MaterialEditorGui ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3216,9 +3152,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator MaterialEditorGui(int simobjectid)
-                {
+            {
                 return (MaterialEditorGui) Omni.self.getSimObject((uint) simobjectid, typeof (MaterialEditorGui));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3226,20 +3162,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MaterialEditor.gui.Cod
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(MaterialEditorGui ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator MaterialEditorGui(uint simobjectid)
-                {
+            {
                 return (MaterialEditorGui) Omni.self.getSimObject(simobjectid, typeof (MaterialEditorGui));
-                }
+            }
 
             #endregion
-            }
         }
     }
+}

@@ -1353,7 +1353,6 @@ if (!object)
 	 return;
 {
    Vector<S32> * columns = object->columnOffsets();
-
    if(columns->size() > 0)
    {
       columns->setSize(columns->size() - 1);
@@ -1370,7 +1369,6 @@ if (!object)
 	 return;
 {
    Vector<S32> * rows = object->rowOffsets();
-
    if(rows->size() > 0)
    {
       rows->setSize(rows->size() - 1);
@@ -1388,20 +1386,17 @@ if (!object)
 
 {
    Vector<S32> & columns = *(object->columnOffsets());
-
    if(index < 0 || index > columns.size())
    {
       Con::errorf(ConsoleLogEntry::General, "Column index out of range");
       return;
    }
-
       if(((index > 0) && (offset < columns[index-1])) ||
       ((index < (columns.size() - 1)) && (offset > columns[index+1])))
    {
       Con::errorf(ConsoleLogEntry::General, "Invalid column offset");
       return;
    }
-
    columns[index] = offset;
    object->updateSizes();
 }
@@ -1414,20 +1409,17 @@ if (!object)
 
 {
    Vector<S32> & rows = *(object->rowOffsets());
-
    if(index < 0 || index > rows.size())
    {
       Con::errorf(ConsoleLogEntry::General, "Row index out of range");
       return;
    }
-
       if(((index > 0) && (offset < rows[index-1])) ||
       ((index < (rows.size() - 1)) && (offset > rows[index+1])))
    {
       Con::errorf(ConsoleLogEntry::General, "Invalid row offset");
       return;
    }
-
    rows[index] = offset;
    object->updateSizes();
 }

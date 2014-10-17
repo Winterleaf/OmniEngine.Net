@@ -1326,7 +1326,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_cleanupTexturePool()
 {
    if ( !GFX || !TEXMGR )
       return;
-
    TEXMGR->cleanupPool();
 }
 }
@@ -1335,7 +1334,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_flushTextureCache()
 {
    if ( !GFX || !TEXMGR )
       return;
-
    TEXMGR->zombify();
    TEXMGR->resurrect();
 }
@@ -1345,7 +1343,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_reloadTextures()
 {
    if ( !GFX || !TEXMGR )
       return;
-
    TEXMGR->reloadTextures();
 }
 }

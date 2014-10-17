@@ -1,10 +1,42 @@
-﻿using System;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System;
 using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
@@ -12,15 +44,15 @@ using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
-    {
-    [TypeConverter(typeof(TypeConverterGeneric<OptionsDlg>))]
+{
+    [TypeConverter(typeof (TypeConverterGeneric<OptionsDlg>))]
     public class OptionsDlg : GuiControl
-        {
-
+    {
 
         public static void initialize()
-            {
+        {
             #region GuiControl (OptionsDlg)        oc_Newobject65
+
             ObjectCreator oc_Newobject65 = new ObjectCreator("GuiControl", "OptionsDlg");
             oc_Newobject65["position"] = "0 0";
             oc_Newobject65["extent"] = "1024 768";
@@ -59,6 +91,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject65["fixedAspectRatio"] = "0";
 
             #region GuiWindowCtrl ()        oc_Newobject64
+
             ObjectCreator oc_Newobject64 = new ObjectCreator("GuiWindowCtrl", "");
             oc_Newobject64["text"] = "Options";
             oc_Newobject64["resizeWidth"] = "0";
@@ -115,6 +148,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject64["Enabled"] = "1";
 
             #region GuiBitmapBorderCtrl ()        oc_Newobject7
+
             ObjectCreator oc_Newobject7 = new ObjectCreator("GuiBitmapBorderCtrl", "");
             oc_Newobject7["position"] = "9 55";
             oc_Newobject7["extent"] = "358 242";
@@ -153,6 +187,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject7["Enabled"] = "1";
 
             #region GuiScrollCtrl ()        oc_Newobject2
+
             ObjectCreator oc_Newobject2 = new ObjectCreator("GuiScrollCtrl", "");
             oc_Newobject2["willFirstRespond"] = "1";
             oc_Newobject2["hScrollBar"] = "alwaysOff";
@@ -201,6 +236,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject2["Enabled"] = "1";
 
             #region GuiTextListCtrl ()        oc_Newobject1
+
             ObjectCreator oc_Newobject1 = new ObjectCreator("GuiTextListCtrl", "");
             oc_Newobject1["columns"] = "0 160";
             oc_Newobject1["fitParentWidth"] = "1";
@@ -240,6 +276,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject1["canSave"] = "1";
             oc_Newobject1["canSaveDynamicFields"] = "0";
             oc_Newobject1["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject2["#Newobject1"] = oc_Newobject1;
@@ -249,6 +286,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject7["#Newobject2"] = oc_Newobject2;
 
             #region GuiTextCtrl ()        oc_Newobject3
+
             ObjectCreator oc_Newobject3 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject3["text"] = "Control Name";
             oc_Newobject3["maxLength"] = "255";
@@ -291,11 +329,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject3["canSave"] = "1";
             oc_Newobject3["canSaveDynamicFields"] = "0";
             oc_Newobject3["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject7["#Newobject3"] = oc_Newobject3;
 
             #region GuiTextCtrl ()        oc_Newobject4
+
             ObjectCreator oc_Newobject4 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject4["text"] = "Control Binding";
             oc_Newobject4["maxLength"] = "255";
@@ -338,11 +378,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject4["canSave"] = "1";
             oc_Newobject4["canSaveDynamicFields"] = "0";
             oc_Newobject4["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject7["#Newobject4"] = oc_Newobject4;
 
             #region GuiSliderCtrl (OptMouseSensitivity)        oc_Newobject5
+
             ObjectCreator oc_Newobject5 = new ObjectCreator("GuiSliderCtrl", "OptMouseSensitivity");
             oc_Newobject5["range"] = "0.02 2";
             oc_Newobject5["ticks"] = "10";
@@ -380,11 +422,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject5["canSave"] = "1";
             oc_Newobject5["canSaveDynamicFields"] = "0";
             oc_Newobject5["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject7["#Newobject5"] = oc_Newobject5;
 
             #region GuiTextCtrl ()        oc_Newobject6
+
             ObjectCreator oc_Newobject6 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject6["text"] = "Mouse Sensitivity:";
             oc_Newobject6["maxLength"] = "255";
@@ -427,6 +471,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject6["canSave"] = "1";
             oc_Newobject6["canSaveDynamicFields"] = "0";
             oc_Newobject6["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject7["#Newobject6"] = oc_Newobject6;
@@ -436,6 +481,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject64["#Newobject7"] = oc_Newobject7;
 
             #region GuiButtonCtrl ()        oc_Newobject8
+
             ObjectCreator oc_Newobject8 = new ObjectCreator("GuiButtonCtrl", "");
             oc_Newobject8["text"] = "Done";
             oc_Newobject8["groupNum"] = "-1";
@@ -471,11 +517,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject8["canSave"] = "1";
             oc_Newobject8["canSaveDynamicFields"] = "0";
             oc_Newobject8["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject64["#Newobject8"] = oc_Newobject8;
 
             #region GuiBitmapBorderCtrl ()        oc_Newobject26
+
             ObjectCreator oc_Newobject26 = new ObjectCreator("GuiBitmapBorderCtrl", "");
             oc_Newobject26["position"] = "9 55";
             oc_Newobject26["extent"] = "358 210";
@@ -514,6 +562,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject26["Enabled"] = "1";
 
             #region GuiMLTextCtrl ()        oc_Newobject9
+
             ObjectCreator oc_Newobject9 = new ObjectCreator("GuiMLTextCtrl", "");
             oc_Newobject9["lineSpacing"] = "2";
             oc_Newobject9["allowColorChars"] = "0";
@@ -551,11 +600,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject9["canSave"] = "1";
             oc_Newobject9["canSaveDynamicFields"] = "0";
             oc_Newobject9["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject26["#Newobject9"] = oc_Newobject9;
 
             #region GuiTextCtrl ()        oc_Newobject10
+
             ObjectCreator oc_Newobject10 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject10["text"] = "Audio Provider:";
             oc_Newobject10["maxLength"] = "255";
@@ -598,11 +649,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject10["canSave"] = "1";
             oc_Newobject10["canSaveDynamicFields"] = "0";
             oc_Newobject10["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject26["#Newobject10"] = oc_Newobject10;
 
             #region GuiPopUpMenuCtrl (OptAudioProviderList)        oc_Newobject11
+
             ObjectCreator oc_Newobject11 = new ObjectCreator("GuiPopUpMenuCtrl", "OptAudioProviderList");
             oc_Newobject11["maxPopupHeight"] = "200";
             oc_Newobject11["sbUsesNAColor"] = "0";
@@ -650,11 +703,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject11["canSaveDynamicFields"] = "0";
             oc_Newobject11["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.optaudioproviderlist";
             oc_Newobject11["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject26["#Newobject11"] = oc_Newobject11;
 
             #region GuiTextCtrl ()        oc_Newobject12
+
             ObjectCreator oc_Newobject12 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject12["text"] = "Audio Device:";
             oc_Newobject12["maxLength"] = "255";
@@ -697,11 +752,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject12["canSave"] = "1";
             oc_Newobject12["canSaveDynamicFields"] = "0";
             oc_Newobject12["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject26["#Newobject12"] = oc_Newobject12;
 
             #region GuiPopUpMenuCtrl (OptAudioDeviceList)        oc_Newobject13
+
             ObjectCreator oc_Newobject13 = new ObjectCreator("GuiPopUpMenuCtrl", "OptAudioDeviceList");
             oc_Newobject13["maxPopupHeight"] = "200";
             oc_Newobject13["sbUsesNAColor"] = "0";
@@ -749,11 +806,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject13["canSaveDynamicFields"] = "0";
             oc_Newobject13["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.optaudiodevicelist";
             oc_Newobject13["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject26["#Newobject13"] = oc_Newobject13;
 
             #region GuiControl ()        oc_Newobject16
+
             ObjectCreator oc_Newobject16 = new ObjectCreator("GuiControl", "");
             oc_Newobject16["position"] = "18 84";
             oc_Newobject16["extent"] = "325 17";
@@ -790,6 +849,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject16["Enabled"] = "1";
 
             #region GuiTextCtrl ()        oc_Newobject14
+
             ObjectCreator oc_Newobject14 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject14["text"] = "Master Volume";
             oc_Newobject14["maxLength"] = "255";
@@ -832,11 +892,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject14["canSave"] = "1";
             oc_Newobject14["canSaveDynamicFields"] = "0";
             oc_Newobject14["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject16["#Newobject14"] = oc_Newobject14;
 
             #region GuiSliderCtrl ()        oc_Newobject15
+
             ObjectCreator oc_Newobject15 = new ObjectCreator("GuiSliderCtrl", "");
             oc_Newobject15["range"] = "0 1";
             oc_Newobject15["ticks"] = "0";
@@ -875,6 +937,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject15["canSave"] = "1";
             oc_Newobject15["canSaveDynamicFields"] = "0";
             oc_Newobject15["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject16["#Newobject15"] = oc_Newobject15;
@@ -884,6 +947,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject26["#Newobject16"] = oc_Newobject16;
 
             #region GuiControl ()        oc_Newobject19
+
             ObjectCreator oc_Newobject19 = new ObjectCreator("GuiControl", "");
             oc_Newobject19["position"] = "9 115";
             oc_Newobject19["extent"] = "334 17";
@@ -920,6 +984,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject19["Enabled"] = "1";
 
             #region GuiTextCtrl ()        oc_Newobject17
+
             ObjectCreator oc_Newobject17 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject17["text"] = "Interface Volume";
             oc_Newobject17["maxLength"] = "255";
@@ -962,11 +1027,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject17["canSave"] = "1";
             oc_Newobject17["canSaveDynamicFields"] = "0";
             oc_Newobject17["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject19["#Newobject17"] = oc_Newobject17;
 
             #region GuiSliderCtrl ()        oc_Newobject18
+
             ObjectCreator oc_Newobject18 = new ObjectCreator("GuiSliderCtrl", "");
             oc_Newobject18["range"] = "0 1";
             oc_Newobject18["ticks"] = "0";
@@ -1005,6 +1072,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject18["canSave"] = "1";
             oc_Newobject18["canSaveDynamicFields"] = "0";
             oc_Newobject18["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject19["#Newobject18"] = oc_Newobject18;
@@ -1014,6 +1082,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject26["#Newobject19"] = oc_Newobject19;
 
             #region GuiControl ()        oc_Newobject22
+
             ObjectCreator oc_Newobject22 = new ObjectCreator("GuiControl", "");
             oc_Newobject22["position"] = "18 146";
             oc_Newobject22["extent"] = "325 17";
@@ -1050,6 +1119,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject22["Enabled"] = "1";
 
             #region GuiTextCtrl ()        oc_Newobject20
+
             ObjectCreator oc_Newobject20 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject20["text"] = "Effects Volume";
             oc_Newobject20["maxLength"] = "255";
@@ -1092,11 +1162,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject20["canSave"] = "1";
             oc_Newobject20["canSaveDynamicFields"] = "0";
             oc_Newobject20["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject22["#Newobject20"] = oc_Newobject20;
 
             #region GuiSliderCtrl ()        oc_Newobject21
+
             ObjectCreator oc_Newobject21 = new ObjectCreator("GuiSliderCtrl", "");
             oc_Newobject21["range"] = "0 1";
             oc_Newobject21["ticks"] = "0";
@@ -1135,6 +1207,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject21["canSave"] = "1";
             oc_Newobject21["canSaveDynamicFields"] = "0";
             oc_Newobject21["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject22["#Newobject21"] = oc_Newobject21;
@@ -1144,6 +1217,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject26["#Newobject22"] = oc_Newobject22;
 
             #region GuiControl ()        oc_Newobject25
+
             ObjectCreator oc_Newobject25 = new ObjectCreator("GuiControl", "");
             oc_Newobject25["position"] = "23 177";
             oc_Newobject25["extent"] = "320 17";
@@ -1180,6 +1254,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject25["Enabled"] = "1";
 
             #region GuiSliderCtrl ()        oc_Newobject23
+
             ObjectCreator oc_Newobject23 = new ObjectCreator("GuiSliderCtrl", "");
             oc_Newobject23["range"] = "0 1";
             oc_Newobject23["ticks"] = "0";
@@ -1218,11 +1293,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject23["canSave"] = "1";
             oc_Newobject23["canSaveDynamicFields"] = "0";
             oc_Newobject23["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject25["#Newobject23"] = oc_Newobject23;
 
             #region GuiTextCtrl ()        oc_Newobject24
+
             ObjectCreator oc_Newobject24 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject24["text"] = "Music Volume";
             oc_Newobject24["maxLength"] = "255";
@@ -1265,6 +1342,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject24["canSave"] = "1";
             oc_Newobject24["canSaveDynamicFields"] = "0";
             oc_Newobject24["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject25["#Newobject24"] = oc_Newobject24;
@@ -1278,6 +1356,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject64["#Newobject26"] = oc_Newobject26;
 
             #region GuiBitmapBorderCtrl ()        oc_Newobject58
+
             ObjectCreator oc_Newobject58 = new ObjectCreator("GuiBitmapBorderCtrl", "");
             oc_Newobject58["position"] = "9 53";
             oc_Newobject58["extent"] = "358 257";
@@ -1315,6 +1394,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject58["Enabled"] = "1";
 
             #region GuiTextCtrl ()        oc_Newobject27
+
             ObjectCreator oc_Newobject27 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject27["text"] = "Display Driver:";
             oc_Newobject27["maxLength"] = "255";
@@ -1357,11 +1437,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject27["canSave"] = "1";
             oc_Newobject27["canSaveDynamicFields"] = "0";
             oc_Newobject27["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject27"] = oc_Newobject27;
 
             #region GuiTextCtrl ()        oc_Newobject28
+
             ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject28["text"] = "Resolution:";
             oc_Newobject28["maxLength"] = "255";
@@ -1404,11 +1486,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject28["canSave"] = "1";
             oc_Newobject28["canSaveDynamicFields"] = "0";
             oc_Newobject28["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject28"] = oc_Newobject28;
 
             #region GuiCheckBoxCtrl ()        oc_Newobject29
+
             ObjectCreator oc_Newobject29 = new ObjectCreator("GuiCheckBoxCtrl", "");
             oc_Newobject29["text"] = "Fullscreen";
             oc_Newobject29["groupNum"] = "-1";
@@ -1445,11 +1529,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject29["canSave"] = "1";
             oc_Newobject29["canSaveDynamicFields"] = "0";
             oc_Newobject29["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject29"] = oc_Newobject29;
 
             #region GuiPopUpMenuCtrl (OptGraphicsDriverMenu)        oc_Newobject30
+
             ObjectCreator oc_Newobject30 = new ObjectCreator("GuiPopUpMenuCtrl", "OptGraphicsDriverMenu");
             oc_Newobject30["maxPopupHeight"] = "200";
             oc_Newobject30["sbUsesNAColor"] = "0";
@@ -1497,11 +1583,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject30["canSaveDynamicFields"] = "0";
             oc_Newobject30["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.optgraphicsdrivermenu";
             oc_Newobject30["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject30"] = oc_Newobject30;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject31
+
             ObjectCreator oc_Newobject31 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject31["maxPopupHeight"] = "200";
             oc_Newobject31["sbUsesNAColor"] = "0";
@@ -1550,11 +1638,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject31["canSave"] = "1";
             oc_Newobject31["canSaveDynamicFields"] = "0";
             oc_Newobject31["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject31"] = oc_Newobject31;
 
             #region GuiTextCtrl ()        oc_Newobject32
+
             ObjectCreator oc_Newobject32 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject32["text"] = "Refresh:";
             oc_Newobject32["maxLength"] = "255";
@@ -1597,11 +1687,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject32["canSave"] = "1";
             oc_Newobject32["canSaveDynamicFields"] = "0";
             oc_Newobject32["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject32"] = oc_Newobject32;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject33
+
             ObjectCreator oc_Newobject33 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject33["maxPopupHeight"] = "200";
             oc_Newobject33["sbUsesNAColor"] = "0";
@@ -1650,11 +1742,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject33["canSave"] = "1";
             oc_Newobject33["canSaveDynamicFields"] = "0";
             oc_Newobject33["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject33"] = oc_Newobject33;
 
             #region GuiTextCtrl ()        oc_Newobject34
+
             ObjectCreator oc_Newobject34 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject34["text"] = "Mesh Quality:";
             oc_Newobject34["maxLength"] = "255";
@@ -1697,11 +1791,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject34["canSave"] = "1";
             oc_Newobject34["canSaveDynamicFields"] = "0";
             oc_Newobject34["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject34"] = oc_Newobject34;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject35
+
             ObjectCreator oc_Newobject35 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject35["maxPopupHeight"] = "200";
             oc_Newobject35["sbUsesNAColor"] = "0";
@@ -1752,11 +1848,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject35["canSaveDynamicFields"] = "0";
             oc_Newobject35["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.graphicsqualitypopup";
             oc_Newobject35["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject35"] = oc_Newobject35;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject36
+
             ObjectCreator oc_Newobject36 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject36["maxPopupHeight"] = "200";
             oc_Newobject36["sbUsesNAColor"] = "0";
@@ -1807,11 +1905,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject36["canSaveDynamicFields"] = "0";
             oc_Newobject36["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.graphicsqualitypopup";
             oc_Newobject36["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject36"] = oc_Newobject36;
 
             #region GuiTextCtrl ()        oc_Newobject37
+
             ObjectCreator oc_Newobject37 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject37["text"] = "Texture Quality:";
             oc_Newobject37["maxLength"] = "255";
@@ -1854,11 +1954,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject37["canSave"] = "1";
             oc_Newobject37["canSaveDynamicFields"] = "0";
             oc_Newobject37["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject37"] = oc_Newobject37;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject38
+
             ObjectCreator oc_Newobject38 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject38["maxPopupHeight"] = "200";
             oc_Newobject38["sbUsesNAColor"] = "0";
@@ -1909,11 +2011,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject38["canSaveDynamicFields"] = "0";
             oc_Newobject38["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.graphicsqualitypopup";
             oc_Newobject38["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject38"] = oc_Newobject38;
 
             #region GuiTextCtrl ()        oc_Newobject39
+
             ObjectCreator oc_Newobject39 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject39["text"] = "Lighting Quality:";
             oc_Newobject39["maxLength"] = "255";
@@ -1956,11 +2060,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject39["canSave"] = "1";
             oc_Newobject39["canSaveDynamicFields"] = "0";
             oc_Newobject39["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject39"] = oc_Newobject39;
 
             #region GuiTextCtrl ()        oc_Newobject40
+
             ObjectCreator oc_Newobject40 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject40["text"] = "Effect Quality:";
             oc_Newobject40["maxLength"] = "255";
@@ -2003,11 +2109,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject40["canSave"] = "1";
             oc_Newobject40["canSaveDynamicFields"] = "0";
             oc_Newobject40["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject40"] = oc_Newobject40;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject41
+
             ObjectCreator oc_Newobject41 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject41["maxPopupHeight"] = "200";
             oc_Newobject41["sbUsesNAColor"] = "0";
@@ -2057,11 +2165,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject41["canSaveDynamicFields"] = "0";
             oc_Newobject41["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.graphicsqualitypopup";
             oc_Newobject41["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject41"] = oc_Newobject41;
 
             #region GuiTextCtrl ()        oc_Newobject42
+
             ObjectCreator oc_Newobject42 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject42["text"] = "Shader Quality:";
             oc_Newobject42["maxLength"] = "255";
@@ -2104,11 +2214,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject42["canSave"] = "1";
             oc_Newobject42["canSaveDynamicFields"] = "0";
             oc_Newobject42["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject42"] = oc_Newobject42;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject43
+
             ObjectCreator oc_Newobject43 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject43["maxPopupHeight"] = "200";
             oc_Newobject43["sbUsesNAColor"] = "0";
@@ -2159,11 +2271,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject43["canSaveDynamicFields"] = "0";
             oc_Newobject43["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.graphicsqualitypopup";
             oc_Newobject43["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject43"] = oc_Newobject43;
 
             #region GuiTextCtrl ()        oc_Newobject44
+
             ObjectCreator oc_Newobject44 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject44["text"] = "Particle Quality:";
             oc_Newobject44["maxLength"] = "255";
@@ -2207,11 +2321,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject44["canSave"] = "1";
             oc_Newobject44["canSaveDynamicFields"] = "0";
             oc_Newobject44["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject44"] = oc_Newobject44;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject45
+
             ObjectCreator oc_Newobject45 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject45["maxPopupHeight"] = "200";
             oc_Newobject45["sbUsesNAColor"] = "0";
@@ -2262,11 +2378,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject45["canSaveDynamicFields"] = "0";
             oc_Newobject45["WLE_OVERRIDE_PROXY_CLASSTYPE"] = "WinterLeaf.Demo.Full.Models.User.GameCode.client.gui.optionsdlg.graphicsqualitypopup";
             oc_Newobject45["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject45"] = oc_Newobject45;
 
             #region GuiTextCtrl ()        oc_Newobject46
+
             ObjectCreator oc_Newobject46 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject46["text"] = "Anisotropic Filtering:";
             oc_Newobject46["maxLength"] = "255";
@@ -2309,11 +2427,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject46["canSave"] = "1";
             oc_Newobject46["canSaveDynamicFields"] = "0";
             oc_Newobject46["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject46"] = oc_Newobject46;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject47
+
             ObjectCreator oc_Newobject47 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject47["maxPopupHeight"] = "200";
             oc_Newobject47["sbUsesNAColor"] = "0";
@@ -2362,11 +2482,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject47["canSave"] = "1";
             oc_Newobject47["canSaveDynamicFields"] = "0";
             oc_Newobject47["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject47"] = oc_Newobject47;
 
             #region GuiCheckBoxCtrl ()        oc_Newobject48
+
             ObjectCreator oc_Newobject48 = new ObjectCreator("GuiCheckBoxCtrl", "");
             oc_Newobject48["text"] = "Vertical Sync";
             oc_Newobject48["groupNum"] = "-1";
@@ -2403,11 +2525,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject48["canSave"] = "1";
             oc_Newobject48["canSaveDynamicFields"] = "0";
             oc_Newobject48["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject48"] = oc_Newobject48;
 
             #region GuiButtonCtrl ()        oc_Newobject49
+
             ObjectCreator oc_Newobject49 = new ObjectCreator("GuiButtonCtrl", "");
             oc_Newobject49["text"] = "Auto Detect Quality";
             oc_Newobject49["groupNum"] = "-1";
@@ -2443,11 +2567,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject49["canSave"] = "1";
             oc_Newobject49["canSaveDynamicFields"] = "0";
             oc_Newobject49["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject49"] = oc_Newobject49;
 
             #region GuiPopUpMenuCtrl ()        oc_Newobject50
+
             ObjectCreator oc_Newobject50 = new ObjectCreator("GuiPopUpMenuCtrl", "");
             oc_Newobject50["maxPopupHeight"] = "200";
             oc_Newobject50["sbUsesNAColor"] = "0";
@@ -2496,11 +2622,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject50["canSave"] = "1";
             oc_Newobject50["canSaveDynamicFields"] = "0";
             oc_Newobject50["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject50"] = oc_Newobject50;
 
             #region GuiTextCtrl ()        oc_Newobject51
+
             ObjectCreator oc_Newobject51 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject51["text"] = "Anti-aliasing";
             oc_Newobject51["maxLength"] = "255";
@@ -2543,11 +2671,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject51["canSave"] = "1";
             oc_Newobject51["canSaveDynamicFields"] = "0";
             oc_Newobject51["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject51"] = oc_Newobject51;
 
             #region GuiControl ()        oc_Newobject54
+
             ObjectCreator oc_Newobject54 = new ObjectCreator("GuiControl", "");
             oc_Newobject54["position"] = "0 210";
             oc_Newobject54["extent"] = "352 15";
@@ -2585,6 +2715,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject54["Enabled"] = "1";
 
             #region GuiSliderCtrl ()        oc_Newobject52
+
             ObjectCreator oc_Newobject52 = new ObjectCreator("GuiSliderCtrl", "");
             oc_Newobject52["range"] = "0.001 2.2";
             oc_Newobject52["ticks"] = "0";
@@ -2622,11 +2753,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject52["canSave"] = "1";
             oc_Newobject52["canSaveDynamicFields"] = "0";
             oc_Newobject52["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject54["#Newobject52"] = oc_Newobject52;
 
             #region GuiTextCtrl ()        oc_Newobject53
+
             ObjectCreator oc_Newobject53 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject53["text"] = "Gamma:";
             oc_Newobject53["maxLength"] = "255";
@@ -2669,6 +2802,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject53["canSave"] = "1";
             oc_Newobject53["canSaveDynamicFields"] = "0";
             oc_Newobject53["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject54["#Newobject53"] = oc_Newobject53;
@@ -2678,6 +2812,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject58["#Newobject54"] = oc_Newobject54;
 
             #region GuiCheckBoxCtrl ()        oc_Newobject55
+
             ObjectCreator oc_Newobject55 = new ObjectCreator("GuiCheckBoxCtrl", "");
             oc_Newobject55["text"] = "Hardware Acc";
             oc_Newobject55["groupNum"] = "-1";
@@ -2714,11 +2849,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject55["canSave"] = "1";
             oc_Newobject55["canSaveDynamicFields"] = "0";
             oc_Newobject55["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject55"] = oc_Newobject55;
 
             #region GuiTextCtrl ()        oc_Newobject56
+
             ObjectCreator oc_Newobject56 = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject56["text"] = "Far distance Clip";
             oc_Newobject56["maxLength"] = "1024";
@@ -2761,10 +2898,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject56["canSave"] = "1";
             oc_Newobject56["canSaveDynamicFields"] = "0";
             oc_Newobject56["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject56"] = oc_Newobject56;
+
             #region GuiTextCtrl ()        oc_Newobject56a
+
             ObjectCreator oc_Newobject56a = new ObjectCreator("GuiTextCtrl", "");
             oc_Newobject56a["variable"] = "$pref::Camera::FarDistance";
             oc_Newobject56a["maxLength"] = "1024";
@@ -2807,10 +2947,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject56a["canSave"] = "1";
             oc_Newobject56a["canSaveDynamicFields"] = "0";
             oc_Newobject56a["Enabled"] = "1";
+
             #endregion
+
             oc_Newobject58["#Newobject56a"] = oc_Newobject56a;
 
             #region GuiSliderCtrl (FarDistanceClipSlider)        oc_Newobject57
+
             ObjectCreator oc_Newobject57 = new ObjectCreator("GuiSliderCtrl", "FarDistanceClipSlider");
             oc_Newobject57["range"] = "0 1000";
             oc_Newobject57["ticks"] = "0";
@@ -2848,6 +2991,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject57["canSave"] = "1";
             oc_Newobject57["canSaveDynamicFields"] = "0";
             oc_Newobject57["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject58["#Newobject57"] = oc_Newobject57;
@@ -2857,6 +3001,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject64["#Newobject58"] = oc_Newobject58;
 
             #region GuiControl ()        oc_Newobject59
+
             ObjectCreator oc_Newobject59 = new ObjectCreator("GuiControl", "");
             oc_Newobject59["position"] = "9 55";
             oc_Newobject59["extent"] = "357 208";
@@ -2893,11 +3038,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject59["canSave"] = "1";
             oc_Newobject59["canSaveDynamicFields"] = "0";
             oc_Newobject59["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject64["#Newobject59"] = oc_Newobject59;
 
             #region GuiButtonCtrl ()        oc_Newobject60
+
             ObjectCreator oc_Newobject60 = new ObjectCreator("GuiButtonCtrl", "");
             oc_Newobject60["text"] = "Graphics";
             oc_Newobject60["groupNum"] = "-1";
@@ -2934,11 +3081,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject60["canSave"] = "1";
             oc_Newobject60["canSaveDynamicFields"] = "0";
             oc_Newobject60["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject64["#Newobject60"] = oc_Newobject60;
 
             #region GuiButtonCtrl ()        oc_Newobject61
+
             ObjectCreator oc_Newobject61 = new ObjectCreator("GuiButtonCtrl", "");
             oc_Newobject61["text"] = "Audio";
             oc_Newobject61["groupNum"] = "-1";
@@ -2974,11 +3123,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject61["canSave"] = "1";
             oc_Newobject61["canSaveDynamicFields"] = "0";
             oc_Newobject61["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject64["#Newobject61"] = oc_Newobject61;
 
             #region GuiButtonCtrl ()        oc_Newobject62
+
             ObjectCreator oc_Newobject62 = new ObjectCreator("GuiButtonCtrl", "");
             oc_Newobject62["text"] = "Controls";
             oc_Newobject62["groupNum"] = "-1";
@@ -3014,11 +3165,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject62["canSave"] = "1";
             oc_Newobject62["canSaveDynamicFields"] = "0";
             oc_Newobject62["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject64["#Newobject62"] = oc_Newobject62;
 
             #region GuiButtonCtrl ()        oc_Newobject63
+
             ObjectCreator oc_Newobject63 = new ObjectCreator("GuiButtonCtrl", "");
             oc_Newobject63["text"] = "Apply";
             oc_Newobject63["groupNum"] = "-1";
@@ -3055,6 +3208,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject63["canSave"] = "1";
             oc_Newobject63["canSaveDynamicFields"] = "0";
             oc_Newobject63["Enabled"] = "1";
+
             #endregion
 
             oc_Newobject64["#Newobject63"] = oc_Newobject63;
@@ -3064,24 +3218,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             oc_Newobject65["#Newobject64"] = oc_Newobject64;
 
             #endregion
-            oc_Newobject65.Create();
-            }
 
+            oc_Newobject65.Create();
+        }
 
         public override bool OnFunctionNotFoundCallTorqueScript()
-            {
+        {
             return false;
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string _makePrettyResString(string resString)
-            {
+        {
             string width = omni.Util.getWord(resString, omni.iGlobal["$WORD::RES_X"]);
             string height = omni.Util.getWord(resString, omni.iGlobal["$WORD::RES_Y"]);
 
-            float aspect = width.AsFloat() / height.AsFloat();
+            float aspect = width.AsFloat()/height.AsFloat();
 
-            aspect = (float)Math.Round(aspect, 2); // omni.Util.mRound(aspect * 100.0f) * .01f;
+            aspect = (float) Math.Round(aspect, 2); // omni.Util.mRound(aspect * 100.0f) * .01f;
             string newaspect = "";
             if (aspect == 1.33f)
                 newaspect = "4:3";
@@ -3092,67 +3246,60 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             if (newaspect != "")
                 outRes = outRes + " (" + newaspect + ")";
             return outRes;
-            }
+        }
 
         [ConsoleInteraction(true)]
         public void setPane(string pane)
-            {
-            ((GuiBitmapBorderCtrl)findObjectByInternalName("OptAudioPane", true)).setVisible(false);
-            ((GuiBitmapBorderCtrl)findObjectByInternalName("OptGraphicsPane", true)).setVisible(false);
-            ((GuiControl)findObjectByInternalName("OptNetworkPane", true)).setVisible(false);
-            ((GuiBitmapBorderCtrl)findObjectByInternalName("OptControlsPane", true)).setVisible(false);
+        {
+            ((GuiBitmapBorderCtrl) findObjectByInternalName("OptAudioPane", true)).setVisible(false);
+            ((GuiBitmapBorderCtrl) findObjectByInternalName("OptGraphicsPane", true)).setVisible(false);
+            ((GuiControl) findObjectByInternalName("OptNetworkPane", true)).setVisible(false);
+            ((GuiBitmapBorderCtrl) findObjectByInternalName("OptControlsPane", true)).setVisible(false);
 
-            ((GuiControl)findObjectByInternalName("Opt" + pane + "Pane", true)).setVisible(true);
+            ((GuiControl) findObjectByInternalName("Opt" + pane + "Pane", true)).setVisible(true);
 
             fillRemapList();
 
             // Update the state of the apply button.
             _updateApplyState();
-            }
+        }
 
         public override void onWake()
-            {
+        {
             if (Util.isFunction("getWebDeployment") && Util.getWebDeployment())
                 {
                 // Cannot enable full screen under web deployment
-                ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setStateOn(false);
-                ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setVisible(false);
+                ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setStateOn(false);
+                ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setVisible(false);
                 }
             else
-                ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setStateOn(
-                    ((GuiCanvas)"Canvas").isFullscreen());
+                ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setStateOn(((GuiCanvas) "Canvas").isFullscreen());
 
-            ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsVSyncToggle", true)).setStateOn(
-                !bGlobal["$pref::Video::disableVerticalSync"]);
+            ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsVSyncToggle", true)).setStateOn(!bGlobal["$pref::Video::disableVerticalSync"]);
             initResMenu();
 
-            int resSelID =
-                ((GuiPopUpMenuCtrl)findObjectByInternalName("OptGraphicsResolutionMenu", true)).findText(
-                    _makePrettyResString(sGlobal["$pref::Video::Canvas::mode"]));
+            int resSelID = ((GuiPopUpMenuCtrl) findObjectByInternalName("OptGraphicsResolutionMenu", true)).findText(_makePrettyResString(sGlobal["$pref::Video::Canvas::mode"]));
             if (resSelID != -1)
-                ((GuiPopUpMenuCtrl)findObjectByInternalName("OptGraphicsResolutionMenu", true)).setSelected(
-                    resSelID);
+                ((GuiPopUpMenuCtrl) findObjectByInternalName("OptGraphicsResolutionMenu", true)).setSelected(resSelID);
 
-            ((GuiPopUpMenuCtrl)"OptGraphicsDriverMenu").clear();
+            ((GuiPopUpMenuCtrl) "OptGraphicsDriverMenu").clear();
 
             string buffer = Util.getDisplayDeviceList();
             int count = Util.getFieldCount(buffer);
             for (int i = 0; i < count; i++)
-                ((GuiPopUpMenuCtrl)"OptGraphicsDriverMenu").add(Util.getField(buffer, i), i);
+                ((GuiPopUpMenuCtrl) "OptGraphicsDriverMenu").add(Util.getField(buffer, i), i);
 
-            int selId = ((GuiPopUpMenuCtrl)"OptGraphicsDriverMenu").findText(Util.getDisplayDeviceInformation());
+            int selId = ((GuiPopUpMenuCtrl) "OptGraphicsDriverMenu").findText(Util.getDisplayDeviceInformation());
 
             if (selId == -1)
-                ((GuiPopUpMenuCtrl)"OptGraphicsDriverMenu").setFirstSelected();
+                ((GuiPopUpMenuCtrl) "OptGraphicsDriverMenu").setFirstSelected();
             else
-                ((GuiPopUpMenuCtrl)"OptGraphicsDriverMenu").setSelected(selId);
+                ((GuiPopUpMenuCtrl) "OptGraphicsDriverMenu").setSelected(selId);
 
-            ((GraphicsQualityPopup)findObjectByInternalName("OptMeshQualityPopup", true)).init("MeshQualityGroup");
-            ((GraphicsQualityPopup)findObjectByInternalName("OptTextureQualityPopup", true)).init("TextureQualityGroup");
-            ((GraphicsQualityPopup)findObjectByInternalName("OptLightingQualityPopup", true)).init(
-                "LightingQualityGroup");
-            ((GraphicsQualityPopup)findObjectByInternalName("OptShaderQualityPopup", true)).init("ShaderQualityGroup");
-
+            ((GraphicsQualityPopup) findObjectByInternalName("OptMeshQualityPopup", true)).init("MeshQualityGroup");
+            ((GraphicsQualityPopup) findObjectByInternalName("OptTextureQualityPopup", true)).init("TextureQualityGroup");
+            ((GraphicsQualityPopup) findObjectByInternalName("OptLightingQualityPopup", true)).init("LightingQualityGroup");
+            ((GraphicsQualityPopup) findObjectByInternalName("OptShaderQualityPopup", true)).init("ShaderQualityGroup");
 
             // Setup the anisotropic filtering menu.
             GuiPopUpMenuCtrl ansioCtrl = findObjectByInternalName("OptAnisotropicPopup", true);
@@ -3164,7 +3311,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             ansioCtrl.setSelected(sGlobal["$pref::Video::defaultAnisotropy"].AsInt(), true);
             // set up the Refresh Rate menu.
 
-
             GuiPopUpMenuCtrl refreshMenu = findObjectByInternalName("OptRefreshSelectMenu", true);
             refreshMenu.clear();
             refreshMenu.add("60", 60);
@@ -3175,15 +3321,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             //OptAudioHardwareToggle.setStateOn($pref::SFX::useHardware);
             //OptAudioHardwareToggle.setActive( true );
 
-            ((GuiSliderCtrl)findObjectByInternalName("OptAudioVolumeMaster", true)).setValue(
-                sGlobal["$pref::SFX::masterVolume"]);
-            ((GuiSliderCtrl)findObjectByInternalName("OptAudioVolumeShell", true)).setValue(
-                sGlobal["$pref::SFX::channelVolume[" + sGlobal["$GuiAudioType"] + "]"]);
+            ((GuiSliderCtrl) findObjectByInternalName("OptAudioVolumeMaster", true)).setValue(sGlobal["$pref::SFX::masterVolume"]);
+            ((GuiSliderCtrl) findObjectByInternalName("OptAudioVolumeShell", true)).setValue(sGlobal["$pref::SFX::channelVolume[" + sGlobal["$GuiAudioType"] + "]"]);
 
-            ((GuiSliderCtrl)findObjectByInternalName("OptAudioVolumeSim", true)).setValue(
-                sGlobal["$pref::SFX::channelVolume[" + sGlobal["$SimAudioType"] + "]"]);
-            ((GuiSliderCtrl)findObjectByInternalName("OptAudioVolumeMusic", true)).setValue(
-                sGlobal["$pref::SFX::channelVolume[" + sGlobal["$MusicAudioType"] + "]"]);
+            ((GuiSliderCtrl) findObjectByInternalName("OptAudioVolumeSim", true)).setValue(sGlobal["$pref::SFX::channelVolume[" + sGlobal["$SimAudioType"] + "]"]);
+            ((GuiSliderCtrl) findObjectByInternalName("OptAudioVolumeMusic", true)).setValue(sGlobal["$pref::SFX::channelVolume[" + sGlobal["$MusicAudioType"] + "]"]);
 
             GuiPopUpMenuCtrl OptAudioProviderList = "OptAudioProviderList";
             OptAudioProviderList.clear();
@@ -3223,23 +3365,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                 aaMenu.setSelected(0);
                 }
 
-
-
-            ((GuiSliderCtrl)"OptMouseSensitivity").value = fGlobal["$pref::Input::LinkMouseSensitivity"];
+            ((GuiSliderCtrl) "OptMouseSensitivity").value = fGlobal["$pref::Input::LinkMouseSensitivity"];
             // Set the graphics pane to start.
 
-            ((GuiButtonCtrl)findObjectByInternalName("OptGraphicsButton", true)).performClick();
-            }
+            ((GuiButtonCtrl) findObjectByInternalName("OptGraphicsButton", true)).performClick();
+        }
 
         public override void onSleep()
-            {
+        {
             // write out the control config into the rw/config.cs file
-            ((ActionMap)"moveMap").save("scripts/client/config.cs", false);
-            }
+            ((ActionMap) "moveMap").save("scripts/client/config.cs", false);
+        }
 
         [ConsoleInteraction(true)]
         public void initResMenu()
-            {
+        {
             GuiPopUpMenuCtrl resMenu = findObjectByInternalName("OptGraphicsResolutionMenu", true);
             resMenu.clear();
             // If we are in a browser then we can't change our resolution through
@@ -3247,17 +3387,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             int count = 0;
             if (Util.getWebDeployment())
                 {
-                string currRes = Util.getWords(((GuiCanvas)"Canvas").getVideoMode(), iGlobal["$WORD::RES_X"],
-                    iGlobal["$WORD::RES_Y"]);
+                string currRes = Util.getWords(((GuiCanvas) "Canvas").getVideoMode(), iGlobal["$WORD::RES_X"], iGlobal["$WORD::RES_Y"]);
                 resMenu.add(currRes, count);
                 count++;
                 return;
                 }
             // Loop through all and add all valid resolutions
-            int resCount = ((GuiCanvas)"Canvas").getModeCount();
+            int resCount = ((GuiCanvas) "Canvas").getModeCount();
             for (int i = 0; i < resCount; i++)
                 {
-                string testResString = ((GuiCanvas)"Canvas").getMode(i);
+                string testResString = ((GuiCanvas) "Canvas").getMode(i);
                 string testRes = _makePrettyResString(testResString);
                 // Only add to list if it isn't there already.
                 if (resMenu.findText(testRes) == -1)
@@ -3267,20 +3406,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                     }
                 }
             resMenu.sort();
-            }
+        }
 
         [ConsoleInteraction(true)]
         public bool applyGraphics(bool testNeedApply)
-            {
-            string newAdapter = ((GuiPopUpMenuCtrl)"OptGraphicsDriverMenu").getText();
+        {
+            string newAdapter = ((GuiPopUpMenuCtrl) "OptGraphicsDriverMenu").getText();
             int numAdapters = console.Call_Classname("GFXInit", "getAdapterCount").AsInt();
             string newDevice = sGlobal["$pref::Video::displayDevice"];
 
             for (int i = 0; i < numAdapters; i++)
                 {
-                if (console.Call_Classname("GFXInit", "getAdapterName", new string[] { i.AsString() }) == newAdapter)
+                if (console.Call_Classname("GFXInit", "getAdapterName", new string[] {i.AsString()}) == newAdapter)
                     {
-                    newDevice = console.Call_Classname("GFXInit", "getAdapterType", new string[] { i.AsString() });
+                    newDevice = console.Call_Classname("GFXInit", "getAdapterType", new string[] {i.AsString()});
                     break;
                     }
                 }
@@ -3292,31 +3431,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
 
                 sGlobal["$pref::Video::displayDevice"] = newDevice;
                 if (newAdapter != Util.getDisplayDeviceInformation())
-                    messageBox.MessageBoxOK("Change requires restart",
-                        "Please restart the game for a display device change to take effect.", "");
+                    messageBox.MessageBoxOK("Change requires restart", "Please restart the game for a display device change to take effect.", "");
                 }
 
             string newRes = "";
             // Gather the new video mode.
             if (Util.getWebDeployment())
-                newRes = ((GuiPopUpMenuCtrl)findObjectByInternalName("OptGraphicsResolutionMenu", true)).getText();
+                newRes = ((GuiPopUpMenuCtrl) findObjectByInternalName("OptGraphicsResolutionMenu", true)).getText();
             else
-                newRes = Util.getWords(((GuiCanvas)"Canvas").getMode(
-                    ((GuiPopUpMenuCtrl)findObjectByInternalName("OptGraphicsResolutionMenu", true)).getSelected()),
-                    iGlobal["$WORD::RES_X"],
-                    iGlobal["$WORD::RES_Y"]);
+                newRes = Util.getWords(((GuiCanvas) "Canvas").getMode(((GuiPopUpMenuCtrl) findObjectByInternalName("OptGraphicsResolutionMenu", true)).getSelected()), iGlobal["$WORD::RES_X"], iGlobal["$WORD::RES_Y"]);
 
             int newBpp = 32; //... its not 1997 anymore.
-            bool newFullScreen =
-                ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsFullscreenToggle", true)).getValue().AsBool();
-            int newRefresh = ((GuiPopUpMenuCtrl)findObjectByInternalName("OptRefreshSelectMenu", true)).getSelected();
-            string newVsync =
-                (!((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsVSyncToggle", true)).getValue().AsBool())
-                    .AsString();
-            int newFSAA = ((GuiPopUpMenuCtrl)findObjectByInternalName("OptAAQualityPopup", true)).getSelected();
+            bool newFullScreen = ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsFullscreenToggle", true)).getValue().AsBool();
+            int newRefresh = ((GuiPopUpMenuCtrl) findObjectByInternalName("OptRefreshSelectMenu", true)).getSelected();
+            string newVsync = (!((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsVSyncToggle", true)).getValue().AsBool()).AsString();
+            int newFSAA = ((GuiPopUpMenuCtrl) findObjectByInternalName("OptAAQualityPopup", true)).getSelected();
             // Under web deployment we can't be full screen.
 
-            bool newHardwareAcc = ((GuiCheckBoxCtrl)findObjectByInternalName("OptHardwareAcc", true)).getValue().AsBool();
+            bool newHardwareAcc = ((GuiCheckBoxCtrl) findObjectByInternalName("OptHardwareAcc", true)).getValue().AsBool();
 
             if (newHardwareAcc == bGlobal["$pref::Video::disableHardwareAA"])
                 {
@@ -3339,19 +3471,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                 deskResX = deskRes.x;
                 deskResY = deskRes.y;
                 if (!(deskRes.x == 0.0 && deskRes.y == 0.0))
-                    if ((Util.getWord(newRes, iGlobal["$WORD::RES_X"]).AsFloat() > deskResX) ||
-                        (Util.getWord(newRes, iGlobal["$WORD::RES_Y"]).AsFloat() > deskResY))
+                    {
+                    if ((Util.getWord(newRes, iGlobal["$WORD::RES_X"]).AsFloat() > deskResX) || (Util.getWord(newRes, iGlobal["$WORD::RES_Y"]).AsFloat() > deskResY))
                         {
                         newFullScreen = true;
-                        ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setStateOn(
-                            true);
+                        ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsFullscreenToggle", true)).setStateOn(true);
                         }
+                    }
                 }
             // Build the final mode string.
             string newMode = newRes + " " + newFullScreen + " " + newBpp + " " + newRefresh + " " + newFSAA;
 
-            if (newMode != sGlobal["$pref::Video::Canvas::mode"] ||
-                newVsync != sGlobal["$pref::Video::disableVerticalSync"])
+            if (newMode != sGlobal["$pref::Video::Canvas::mode"] || newVsync != sGlobal["$pref::Video::disableVerticalSync"])
                 {
                 if (testNeedApply)
                     return true;
@@ -3360,26 +3491,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                 console.print("New Video Mode: " + newMode);
 
                 sGlobal["$pref::Video::disableVerticalSync"] = newVsync;
-                ((GuiCheckBoxCtrl)findObjectByInternalName("OptGraphicsVSyncToggle", true)).setStateOn(
-                    !bGlobal["$pref::Video::disableVerticalSync"]);
+                ((GuiCheckBoxCtrl) findObjectByInternalName("OptGraphicsVSyncToggle", true)).setStateOn(!bGlobal["$pref::Video::disableVerticalSync"]);
                 canvas.configureCanvas();
                 }
             // Test and apply the graphics settings.
 
-            if (((GraphicsQualityPopup)findObjectByInternalName("OptMeshQualityPopup", true)).apply(
-                "MeshQualityGroup", testNeedApply)) return true;
-            if (
-                ((GraphicsQualityPopup)findObjectByInternalName("OptTextureQualityPopup", true)).apply(
-                    "TextureQualityGroup", testNeedApply)) return true;
-            if (
-                ((GraphicsQualityPopup)findObjectByInternalName("OptLightingQualityPopup", true)).apply(
-                    "LightingQualityGroup", testNeedApply)) return true;
-            if (
-                ((GraphicsQualityPopup)findObjectByInternalName("OptShaderQualityPopup", true)).apply(
-                    "ShaderQualityGroup", testNeedApply)) return true;
+            if (((GraphicsQualityPopup) findObjectByInternalName("OptMeshQualityPopup", true)).apply("MeshQualityGroup", testNeedApply))
+                return true;
+            if (((GraphicsQualityPopup) findObjectByInternalName("OptTextureQualityPopup", true)).apply("TextureQualityGroup", testNeedApply))
+                return true;
+            if (((GraphicsQualityPopup) findObjectByInternalName("OptLightingQualityPopup", true)).apply("LightingQualityGroup", testNeedApply))
+                return true;
+            if (((GraphicsQualityPopup) findObjectByInternalName("OptShaderQualityPopup", true)).apply("ShaderQualityGroup", testNeedApply))
+                return true;
 
             // Check the anisotropic filtering.  
-            int level = ((GuiPopUpMenuCtrl)findObjectByInternalName("OptAnisotropicPopup", true)).getSelected();
+            int level = ((GuiPopUpMenuCtrl) findObjectByInternalName("OptAnisotropicPopup", true)).getSelected();
             if (level != iGlobal["$pref::Video::defaultAnisotropy"])
                 {
                 if (testNeedApply)
@@ -3394,54 +3521,53 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
 
             omni.Util.export("$pref::*", "prefs.client.cs", false);
             return false;
-            }
+        }
 
         [ConsoleInteraction(true)]
         public void _updateApplyState()
-            {
-            GuiButtonCtrl applyCtrl = ((GuiButtonCtrl)findObjectByInternalName("Apply", true));
+        {
+            GuiButtonCtrl applyCtrl = ((GuiButtonCtrl) findObjectByInternalName("Apply", true));
             GuiBitmapBorderCtrl graphicsPane = findObjectByInternalName("OptGraphicsPane", true);
 
             applyCtrl.active = graphicsPane.isVisible() && applyGraphics(true);
-            }
+        }
 
         [ConsoleInteraction(true)]
         public void _autoDetectQuality()
-            {
+        {
             string msg = client.GraphicsQualityAutodetect();
             onWake();
             if (msg != "")
                 messageBox.MessageBoxOK("Notice", msg, "");
-            }
+        }
 
         [ConsoleInteraction(true)]
         public void fillRemapList()
-            {
+        {
             GuiTextListCtrl remapList = findObjectByInternalName("OptRemapList", true);
             remapList.clear();
             for (int i = 0; i < iGlobal["$RemapCount"]; i++)
                 remapList.addRow(i, buildFullMapString(i), -1);
-            }
+        }
 
         [ConsoleInteraction(true)]
         public void doRemap()
-            {
+        {
             GuiTextListCtrl remapList = findObjectByInternalName("OptRemapList", true);
             int selId = remapList.getSelectedId();
             string name = sGlobal["$RemapName[" + selId + "]"];
 
-            ((GuiTextCtrl)remapList.findObjectByInternalName("OptRemapText", true)).setText("Re-bind '" + name +
-                                                                                               "' to....");
-            ((GuiInputCtrl)"OptRemapInputCtrl")["index"] = selId.AsString();
-            ((GuiCanvas)"Canvas").pushDialog("RemapDlg");
-            }
+            ((GuiTextCtrl) remapList.findObjectByInternalName("OptRemapText", true)).setText("Re-bind '" + name + "' to....");
+            ((GuiInputCtrl) "OptRemapInputCtrl")["index"] = selId.AsString();
+            ((GuiCanvas) "Canvas").pushDialog("RemapDlg");
+        }
 
         [ConsoleInteraction(true)]
         public static string buildFullMapString(int index)
-            {
+        {
             string name = omni.sGlobal["$RemapName[" + index + "]"];
             string cmd = omni.sGlobal["$RemapCmd[" + index + "]"];
-            string temp = ((ActionMap)"moveMap").getBinding(cmd);
+            string temp = ((ActionMap) "moveMap").getBinding(cmd);
 
             if (temp == "")
                 return name + "\t" + "";
@@ -3458,11 +3584,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                 mapString = mapString + getMapDisplayName(device, obj);
                 }
             return name + "\t" + mapString;
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string getMapDisplayName(string device, string action)
-            {
+        {
             string mods = "";
             string Object = "";
             string instance = "";
@@ -3503,33 +3629,33 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                         Object = omni.Util.getWord(action, wordCount - 1);
                         switch (Object)
                             {
-                            case "upov":
-                                Object = "POV1 up";
-                                break;
-                            case "dpov":
-                                Object = "POV1 down";
-                                break;
-                            case "lpov":
-                                Object = "POV1 left";
-                                break;
-                            case "rpov":
-                                Object = "POV1 right";
-                                break;
-                            case "upov2":
-                                Object = "POV2 up";
-                                break;
-                            case "dpov2":
-                                Object = "POV2 down";
-                                break;
-                            case "lpov2":
-                                Object = "POV2 left";
-                                break;
-                            case "rpov2":
-                                Object = "POV2 right";
-                                break;
-                            default:
-                                Object = "??";
-                                break;
+                                case "upov":
+                                    Object = "POV1 up";
+                                    break;
+                                case "dpov":
+                                    Object = "POV1 down";
+                                    break;
+                                case "lpov":
+                                    Object = "POV1 left";
+                                    break;
+                                case "rpov":
+                                    Object = "POV1 right";
+                                    break;
+                                case "upov2":
+                                    Object = "POV2 up";
+                                    break;
+                                case "dpov2":
+                                    Object = "POV2 down";
+                                    break;
+                                case "lpov2":
+                                    Object = "POV2 left";
+                                    break;
+                                case "rpov2":
+                                    Object = "POV2 right";
+                                    break;
+                                default:
+                                    Object = "??";
+                                    break;
                             }
                         return mods + Object;
                         }
@@ -3539,13 +3665,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                     }
                 }
             return "??";
-            }
+        }
 
         [ConsoleInteraction]
         public void CloseScreen()
-            {
-            ((canvas)"Canvas").popDialog("optionsDlg");
-            }
+        {
+            ((canvas) "Canvas").popDialog("optionsDlg");
+        }
 
         #region AutoGen Operator Overrides
 
@@ -3556,20 +3682,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(OptionsDlg ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return ReferenceEquals(simobjectid, null);
             return ts.Equals(simobjectid);
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -3577,9 +3703,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
-            return (this._ID == (string)myReflections.ChangeType(obj, typeof(string)));
-            }
+        {
+            return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
+        }
 
         /// <summary>
         /// 
@@ -3588,12 +3714,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(OptionsDlg ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -3601,11 +3726,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(OptionsDlg ts)
-            {
-            if (object.ReferenceEquals(ts, null))
+        {
+            if (ReferenceEquals(ts, null))
                 return "0";
             return ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -3613,10 +3738,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator OptionsDlg(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-            return (OptionsDlg)Omni.self.getSimObject(simobjectid, typeof(OptionsDlg));
-            }
+            return (OptionsDlg) Omni.self.getSimObject(simobjectid, typeof (OptionsDlg));
+        }
 
         /// <summary>
         /// 
@@ -3624,12 +3749,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(OptionsDlg ts)
-            {
-            if (object.ReferenceEquals(ts, null))
+        {
+            if (ReferenceEquals(ts, null))
                 return 0;
             int i;
             return int.TryParse(ts._ID, out i) ? i : 0;
-            }
+        }
 
         /// <summary>
         /// 
@@ -3637,9 +3762,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator OptionsDlg(int simobjectid)
-            {
-            return (OptionsDlg)Omni.self.getSimObject((uint)simobjectid, typeof(OptionsDlg));
-            }
+        {
+            return (OptionsDlg) Omni.self.getSimObject((uint) simobjectid, typeof (OptionsDlg));
+        }
 
         /// <summary>
         /// 
@@ -3647,22 +3772,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(OptionsDlg ts)
-            {
-            if (object.ReferenceEquals(ts, null))
+        {
+            if (ReferenceEquals(ts, null))
                 return 0;
             uint i;
             return uint.TryParse(ts._ID, out i) ? i : 0;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator OptionsDlg(uint simobjectid)
-            {
-            return (OptionsDlg)Omni.self.getSimObject(simobjectid, typeof(OptionsDlg));
-            }
+        {
+            return (OptionsDlg) Omni.self.getSimObject(simobjectid, typeof (OptionsDlg));
+        }
 
         #endregion
-        }
     }
+}

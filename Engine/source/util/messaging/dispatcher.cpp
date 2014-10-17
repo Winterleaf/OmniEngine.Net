@@ -568,7 +568,6 @@ const char* listenerName = (const char*)x__listenerName;
       Con::errorf("unregisterMessageListener - Unable to find listener object, not an IMessageListener ?!");
       return;
    }
-
       Dispatcher::unregisterMessageListener(queueName, listener);
 }
 }

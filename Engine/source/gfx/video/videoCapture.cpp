@@ -428,16 +428,12 @@ sscanf(x__resolution,"%i %i",&resolution.x,&resolution.y);
 {
    if ( !videoFile )
       videoFile = journalFile;
-
    VIDCAP->setFilename( Torque::Path( videoFile ).getFileName() );   
    VIDCAP->setEncoderName( encoder );   
    VIDCAP->setFramerate( framerate );
-
    if ( !resolution.isZero() )
       VIDCAP->setResolution(resolution);
-
    VIDCAP->waitForCanvas();
-
    Journal::Play( journalFile );
 }
 }
@@ -455,14 +451,12 @@ sscanf(x__resolution,"%i %i",&resolution.x,&resolution.y);
       Con::errorf("startVideoCapture -Please specify a GuiCanvas object to record from!");
       return;
    }
-
    VIDCAP->setFilename( filename );   
    VIDCAP->setEncoderName( encoder );   
    VIDCAP->setFramerate( framerate );
    
    if ( !resolution.isZero() )
       VIDCAP->setResolution(resolution);
-
    VIDCAP->begin(canvas);
 }
 }

@@ -498,7 +498,6 @@ ParticleEmitterData* emitterDatablock; Sim::findObject(x__emitterDatablock, emit
       Con::errorf("ParticleEmitterData datablock could not be found when calling setEmitterDataBlock in particleEmitterNode.");
       return;
    }
-
    object->setEmitterDataBlock(emitterDatablock);
 }
 }

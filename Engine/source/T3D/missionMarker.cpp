@@ -687,10 +687,8 @@ String additionalProps = String( x__additionalProps);
    
       
    SimObject* obj = object->spawnObject(additionalProps);
-
    if (obj)
      return (S32)( obj->getId());
-
   return (S32)( -1);
 };
 }

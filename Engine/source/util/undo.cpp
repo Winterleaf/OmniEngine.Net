@@ -805,13 +805,10 @@ if (!object)
 	return (S32)( 0);
 {
       UndoAction * action = object->getRedoAction(index);
-
    if ( !action )
      return (S32)( -1);
-
    if ( !action->isProperlyAdded() )
       action->registerObject();
-
   return (S32)( action->getId());
 };
 }
@@ -852,7 +849,6 @@ if (!object)
    
    if ( !action->isProperlyAdded() )
       action->registerObject();
-
   return (S32)( action->getId());
 };
 }

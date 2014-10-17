@@ -1,89 +1,120 @@
-﻿using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 using WinterLeaf.Engine.Enums;
-using Creator = WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.Creator;
+using OpenFileDialog = WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
-    {
-    [TypeConverter(typeof(TypeConverterGeneric<objectBuilderGui>))]
+{
+    [TypeConverter(typeof (TypeConverterGeneric<objectBuilderGui>))]
     public class objectBuilderGui : GuiControl
-        {
-
+    {
 
         private string objectClassName
-            {
+        {
             get { return this["objectClassName"]; }
             set { this["objectClassName"] = value; }
-            }
+        }
 
         private string createCallback
-            {
+        {
             get { return this["createCallback"]; }
             set { this["createCallback"] = value; }
-            }
+        }
 
         private GuiTextEditCtrl OBObjectName
-            {
+        {
             get { return "OBObjectName"; }
-            }
+        }
 
         private int defaultFieldStep
-            {
+        {
             get { return this["defaultFieldStep"].AsInt(); }
             set { this["defaultFieldStep"] = value.AsString(); }
-            }
+        }
 
         private int columnOffset
-            {
+        {
             get { return this["columnOffset"].AsInt(); }
             set { this["columnOffset"] = value.AsString(); }
-            }
+        }
 
         private int curXPos
-            {
+        {
             get { return this["curXPos"].AsInt(); }
             set { this["curXPos"] = value.AsString(); }
-            }
+        }
 
         private int curYPos
-            {
+        {
             get { return this["curYPos"].AsInt(); }
             set { this["curYPos"] = value.AsString(); }
-            }
+        }
 
         public GuiBitmapBorderCtrl OBContentWindow
-            {
+        {
             get { return "OBContentWindow"; }
-            }
+        }
 
         private int numControls
-            {
+        {
             get { return this["numControls"].AsInt(); }
             set { this["numControls"] = value.AsString(); }
-            }
+        }
 
         private int numFields
-            {
+        {
             get { return this["numFields"].AsInt(); }
             set { this["numFields"] = value.AsString(); }
-            }
+        }
 
         [ConsoleInteraction(true, "objectBuilderGui_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (ObjectBuilderGui, EditorGuiGroup)        oc_Newobject7
 
-            ObjectCreator oc_Newobject7 = new ObjectCreator("GuiControl", "ObjectBuilderGui, EditorGuiGroup",
-                typeof(objectBuilderGui));
+            ObjectCreator oc_Newobject7 = new ObjectCreator("GuiControl", "ObjectBuilderGui, EditorGuiGroup", typeof (objectBuilderGui));
             oc_Newobject7["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject7["horizSizing"] = "right";
             oc_Newobject7["vertSizing"] = "bottom";
@@ -139,7 +170,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             #region GuiTextEditCtrl (OBObjectName)        oc_Newobject2
 
             ObjectCreator oc_Newobject2 = new ObjectCreator("GuiTextEditCtrl", "OBObjectName");
-            oc_Newobject2["class"] = new ObjectCreator.StringNoQuote("ObjectBuilderGuiTextEditCtrl");
+            oc_Newobject2["class"] = new Creator.StringNoQuote("ObjectBuilderGuiTextEditCtrl");
             oc_Newobject2["profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject2["horizSizing"] = "width";
             oc_Newobject2["vertSizing"] = "bottom";
@@ -225,11 +256,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject7.Create();
 
             GenerateScriptObjectCreators();
-            }
-
+        }
 
         public static void GenerateScriptObjectCreators()
-            {
+        {
             const string toeval = @"
 
 function PhysicsEntityData::create(%data)
@@ -374,12 +404,11 @@ function ProximityMineData::create( %datablock )
 ";
 
             omni.Util.eval(toeval);
-            }
-
+        }
 
         [ConsoleInteraction]
         public void init()
-            {
+        {
             this["baseOffsetX"] = "5";
             this["baseOffsetY"] = "5";
             this["defaultObjectName"] = "";
@@ -397,11 +426,11 @@ function ProximityMineData::create( %datablock )
             this["lastPath"] = "";
 
             reset();
-            }
+        }
 
         [ConsoleInteraction]
         public void reset()
-            {
+        {
             this["objectGroup"] = "";
             this["curXPos"] = this["baseOffsetX"];
             this["curYPos"] = this["baseOffsetY"];
@@ -420,22 +449,18 @@ function ProximityMineData::create( %datablock )
                 this["controls[" + i + "]"].delete();
                 }
             numControls = 0;
-            }
-
+        }
 
         [ConsoleInteraction]
         public void createFileType(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ", name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::createFileType: invalid field");
                 return;
                 }
 
-            string nname = this["field[" + index + ",text]"] == ""
-                ? this["field[" + index + ",name]"]
-                : this["field[" + index + ",text]"];
-
+            string nname = this["field[" + index + ",text]"] == "" ? this["field[" + index + ",name]"] : this["field[" + index + ",text]"];
 
             ObjectCreator oc = new ObjectCreator("GuiTextCtrl");
             oc["profile"] = "ToolsGuiTextRightProfile";
@@ -444,9 +469,7 @@ function ProximityMineData::create( %datablock )
             oc["position"] = curXPos + " " + curYPos;
             oc["modal"] = "1";
 
-
             this["textControls[" + numControls + "]"] = oc.Create().AsString();
-
 
             oc = new ObjectCreator("GuiButtonCtrl");
             oc["HorizSizing"] = "width";
@@ -464,16 +487,14 @@ function ProximityMineData::create( %datablock )
 
             string val = this["field[" + index + "," + this["value"] + "]"];
 
-            ((GuiButtonCtrl)this["controls[" + numControls + "]"]).setValue(Util.fileBase(val) + Util.fileExt(val));
-
-
+            ((GuiButtonCtrl) this["controls[" + numControls + "]"]).setValue(Util.fileBase(val) + Util.fileExt(val));
 
             curYPos += defaultFieldStep;
-            }
+        }
 
         [ConsoleInteraction]
         public void getFileName(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ",name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::getFileName: invalid field");
@@ -484,39 +505,36 @@ function ProximityMineData::create( %datablock )
 
             this["currentControl"] = index.AsString();
 
-            WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.OpenFileDialog.getLoadFilename(val + "|" + val, this.getName() + ".gotFileName", this["lastPath"]);
-            }
+            OpenFileDialog.getLoadFilename(val + "|" + val, this.getName() + ".gotFileName", this["lastPath"]);
+        }
 
         [ConsoleInteraction]
         public void gotFileName(string name)
-            {
+        {
             int index = this["currentControl"].AsInt();
 
             name = Util.makeRelativePath(name, Util.getWorkingDirectory());
 
             this["field[" + index + ",value]"] = name;
 
-            ((GuiButtonCtrl)this["field[" + index + ",button]"]).setText(Util.fileBase(name) +
-                                                                              Util.fileExt(name));
+            ((GuiButtonCtrl) this["field[" + index + ",button]"]).setText(Util.fileBase(name) + Util.fileExt(name));
 
             this["lastPath"] = name;
 
             // This doesn't work for button controls as getValue returns their state!
             //%this.controls[%this.currentControl].setValue(%name);
-            }
+        }
 
         [ConsoleInteraction]
         public void createMaterialNameType(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ",name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::createMaterialNameType: invalid field");
                 return;
                 }
 
-            string nname = this["field[" + index + ",text]"] == ""
-                ? this["field[" + index + ",name]"]
-                : this["field[" + index + ",text]"];
+            string nname = this["field[" + index + ",text]"] == "" ? this["field[" + index + ",name]"] : this["field[" + index + ",text]"];
 
             ObjectCreator oc = new ObjectCreator("GuiTextCtrl");
             oc["profile"] = "ToolsGuiTextRightProfile";
@@ -524,7 +542,6 @@ function ProximityMineData::create( %datablock )
             oc["extent"] = this["fieldNameExtent"];
             oc["position"] = curXPos + " " + curYPos;
             oc["modal"] = "1";
-
 
             this["textControls[" + numControls + "]"] = oc.Create().AsString();
 
@@ -542,24 +559,21 @@ function ProximityMineData::create( %datablock )
             oc["internalName"] = "MatText";
             oc["HorizSizing"] = "width";
             oc["profile"] = "ToolsGuiTextEditProfile";
-            oc["extent"] = (Util.getWord(this["textEditExtent"], 0).AsInt() -
-                            Util.getWord(this["matButtonExtent"], 0).AsInt() - 2) + " " +
-                           Util.getWord(this["textEditExtent"], 1);
-            oc["text"] = new ObjectCreator.StringNoQuote(this["field[" + index + ",value]"]);
+            oc["extent"] = (Util.getWord(this["textEditExtent"], 0).AsInt() - Util.getWord(this["matButtonExtent"], 0).AsInt() - 2) + " " + Util.getWord(this["textEditExtent"], 1);
+            oc["text"] = new Creator.StringNoQuote(this["field[" + index + ",value]"]);
             oc["position"] = "0 0";
             oc["modal"] = "1";
 
             string text = oc.Create().AsString();
 
-            this["controls[" + numControls + "]"].call("addGuiControl", new string[] { text });
+            this["controls[" + numControls + "]"].call("addGuiControl", new string[] {text});
 
             oc = new ObjectCreator("GuiBitmapButtonCtrl");
             oc["internalName"] = "MatButton";
             oc["HorizSizing"] = "left";
             oc["profile"] = "ToolsGuiButtonProfile";
             oc["extent"] = this["matButtonExtent"];
-            oc["position"] = (Util.getWord(this["textEditExtent"], 0).AsInt() -
-                              Util.getWord(this["matButtonExtent"], 0).AsInt()) + " 0";
+            oc["position"] = (Util.getWord(this["textEditExtent"], 0).AsInt() - Util.getWord(this["matButtonExtent"], 0).AsInt()) + " 0";
             oc["modal"] = "1";
             oc["command"] = (this + ".getMaterialName(" + index + ");");
 
@@ -567,16 +581,16 @@ function ProximityMineData::create( %datablock )
 
             button.setBitmap("tools/materialEditor/gui/change-material-btn");
 
-            this["controls[" + numControls + "]"].call("addGuiControl", new string[] { button });
+            this["controls[" + numControls + "]"].call("addGuiControl", new string[] {button});
 
             numControls += 1;
 
             curYPos += defaultFieldStep;
-            }
+        }
 
         [ConsoleInteraction]
         public void getMaterialName(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ",name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::getMaterialName: invalid field");
@@ -585,32 +599,29 @@ function ProximityMineData::create( %datablock )
 
             this["currentControl"] = index.AsString();
 
-            "materialSelector".call("showDialog", new[] { this + ".gotMaterialName", name });
-            }
+            "materialSelector".call("showDialog", new[] {this + ".gotMaterialName", name});
+        }
 
         [ConsoleInteraction]
         public void gotMaterialName(SimObject name)
-            {
+        {
             int index = this["currentControl"].AsInt();
 
             this["field[" + index + ",value]"] = name.getName();
 
-            ((GuiControl)this["controls[" + index + "]"]).findObjectByInternalName("MatText", true)
-                .call("setText", new string[] { name.getName() });
-            }
+            ((GuiControl) this["controls[" + index + "]"]).findObjectByInternalName("MatText", true).call("setText", new string[] {name.getName()});
+        }
 
         [ConsoleInteraction]
         public void createDataBlockType(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ",name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::createDataBlockType: invalid field");
                 return;
                 }
 
-            string nname = this["field[" + index + ",text]"] == ""
-                ? this["field[" + index + ",name]"]
-                : this["field[" + index + ",text]"];
+            string nname = this["field[" + index + ",text]"] == "" ? this["field[" + index + ",name]"] : this["field[" + index + ",text]"];
 
             ObjectCreator oc = new ObjectCreator("GuiTextCtrl");
             oc["profile"] = "ToolsGuiTextRightProfile";
@@ -620,7 +631,6 @@ function ProximityMineData::create( %datablock )
             oc["modal"] = "1";
 
             this["textControls[" + numControls + "]"] = oc.Create().AsString();
-
 
             oc = new ObjectCreator("GuiPopupMenuCtrl");
             oc["HorizSizing"] = "width";
@@ -632,34 +642,30 @@ function ProximityMineData::create( %datablock )
 
             this["controls[" + numControls + "]"] = oc.Create().AsString();
 
-
             string classname = Util.getWord(this["field[" + index + ",value]"], 0);
             string classname_alt = Util.getWord(this["field[" + index + ",value]"], 1);
 
-            this["controls[" + numControls + "]"].call("add", new string[] { "", "-1" });
+            this["controls[" + numControls + "]"].call("add", new string[] {"", "-1"});
 
             SimGroup DataBlockGroup = "DataBlockGroup";
 
             for (uint i = 0; i < DataBlockGroup.getCount(); i++)
                 {
                 SimDataBlock obj = DataBlockGroup.getObject(i);
-                if (Util.isMemberOfClass(obj.getClassName(), classname) ||
-                    Util.isMemberOfClass(obj.getClassName(), classname_alt))
-                    this["controls[" + numControls + "]"].call("add", new string[] { obj.getName(), i.AsString() });
+                if (Util.isMemberOfClass(obj.getClassName(), classname) || Util.isMemberOfClass(obj.getClassName(), classname_alt))
+                    this["controls[" + numControls + "]"].call("add", new string[] {obj.getName(), i.AsString()});
                 }
 
-
-            this["controls[" + numControls + "]"].call("setValue",
-                new string[] { Util.getWord(this["field[" + index + ",value]"], 1) });
+            this["controls[" + numControls + "]"].call("setValue", new string[] {Util.getWord(this["field[" + index + ",value]"], 1)});
 
             numControls += 1;
 
             curYPos += defaultFieldStep;
-            }
+        }
 
         [ConsoleInteraction]
         public void createBoolType(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ",name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::createBoolType: invalid field");
@@ -672,9 +678,7 @@ function ProximityMineData::create( %datablock )
             else
                 value = this["field[" + index + ",value]"];
 
-            string nname = this["field[" + index + ",text]"] == ""
-                ? this["field[" + index + ",name]"]
-                : this["field[" + index + ",text]"];
+            string nname = this["field[" + index + ",text]"] == "" ? this["field[" + index + ",name]"] : this["field[" + index + ",text]"];
 
             ObjectCreator oc = new ObjectCreator("GuiTextCtrl");
             oc["profile"] = "ToolsGuiTextRightProfile";
@@ -691,30 +695,28 @@ function ProximityMineData::create( %datablock )
             oc["position"] = (curXPos + columnOffset) + " " + curYPos;
             oc["modal"] = "1";
 
-            this["controls[" + numControls + "]"].call("setValue", new string[] { value });
+            this["controls[" + numControls + "]"].call("setValue", new string[] {value});
             numControls += 1;
 
             curYPos += defaultFieldStep;
-            }
+        }
 
         public override void onGainFirstResponder(string ID)
-            {
+        {
             this.call("selectAllText");
-            }
+        }
 
         //this["columnOffset"]
 
         [ConsoleInteraction]
         public void createStringType(int index)
-            {
+        {
             if (index >= numFields || this["field[" + index + ",name]"] == "")
                 {
                 Util._error("ObjectBuilderGui::createBoolType: invalid field");
                 return;
                 }
-            string nname = this["field[" + index + ",text]"] == ""
-                ? this["field[" + index + ",name]"]
-                : this["field[" + index + ",text]"];
+            string nname = this["field[" + index + ",text]"] == "" ? this["field[" + index + ",name]"] : this["field[" + index + ",text]"];
 
             ObjectCreator oc = new ObjectCreator("GuiTextCtrl");
             oc["profile"] = "ToolsGuiTextRightProfile";
@@ -738,11 +740,11 @@ function ProximityMineData::create( %datablock )
             numControls += 1;
 
             curYPos += defaultFieldStep;
-            }
+        }
 
         [ConsoleInteraction]
         public void adjustSizes()
-            {
+        {
             if (numControls == 0)
                 curYPos = 0;
 
@@ -755,11 +757,11 @@ function ProximityMineData::create( %datablock )
             OBContentWindow.extent = new Point2I(OBContentWindow.extent.x + " " + curYPos);
             OBOKButton.position = new Point2I(OBOKButton.position.x + " " + (curYPos + 57));
             OBCancelButton.position = new Point2I(OBCancelButton.position.x + " " + (curYPos + 57));
-            }
+        }
 
         [ConsoleInteraction]
         public void process()
-            {
+        {
             if (this["objectClassName"] == "")
                 {
                 Util._error("ObjectBuilderGui::process: classname is not specified");
@@ -773,22 +775,22 @@ function ProximityMineData::create( %datablock )
                 {
                 switch (this["field[" + i + ",type]"])
                     {
-                    case "TypeBool":
-                        this.createBoolType(i);
-                        break;
-                    case "TypeDataBlock":
-                        this.createDataBlockType(i);
-                        break;
-                    case "TypeFile":
-                        createFileType(i);
-                        break;
-                    case "TypeMaterialName":
-                        createMaterialNameType(i);
-                        break;
+                        case "TypeBool":
+                            this.createBoolType(i);
+                            break;
+                        case "TypeDataBlock":
+                            this.createDataBlockType(i);
+                            break;
+                        case "TypeFile":
+                            createFileType(i);
+                            break;
+                        case "TypeMaterialName":
+                            createMaterialNameType(i);
+                            break;
 
-                    default:
-                        createStringType(i);
-                        break;
+                        default:
+                            createStringType(i);
+                            break;
                     }
                 }
 
@@ -800,13 +802,13 @@ function ProximityMineData::create( %datablock )
 
             adjustSizes();
 
-            ((GuiCanvas)"canvas").pushDialog(this);
-            }
+            ((GuiCanvas) "canvas").pushDialog(this);
+        }
 
         [ConsoleInteraction]
         public void processNewObject(string obj)
-            {
-            Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
+        {
+            CodeBehind.Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
             if (this["createCallback"] != "")
                 Util.eval(this["createCallback"]);
 
@@ -818,7 +820,7 @@ function ProximityMineData::create( %datablock )
             // Add the object to the group.
 
             if (this["objectGroup"] != "")
-                ((SimGroup)this["objectGroup"]).add(obj);
+                ((SimGroup) this["objectGroup"]).add(obj);
             else
                 EWCreatorWindow.objectGroup.add(obj);
 
@@ -832,12 +834,11 @@ function ProximityMineData::create( %datablock )
 
             if (callback != "")
                 Util.eval(callback + "(" + obj + ");");
-            }
-
+        }
 
         [ConsoleInteraction]
         public void onOk()
-            {
+        {
             editor Editor = "Editor";
             // Error out if the given object name is not valid or not unique.
             string objectName = OBObjectName.getValue();
@@ -858,13 +859,10 @@ function ProximityMineData::create( %datablock )
 
                 if (this["field[" + i + ",type]"] == "TypeMaterialName")
                     {
-                    this["field[" + i + ",value]"] =
-                        ((GuiControl)
-                            ((GuiControl)this["controls[" + i + "]"]).findObjectByInternalName("MatText", true))
-                            .getValue();
+                    this["field[" + i + ",value]"] = ((GuiControl) ((GuiControl) this["controls[" + i + "]"]).findObjectByInternalName("MatText", true)).getValue();
                     continue;
                     }
-                this["field[" + i + ",value]"] = ((GuiControl)this["controls[" + i + "]"]).getValue();
+                this["field[" + i + ",value]"] = ((GuiControl) this["controls[" + i + "]"]).getValue();
                 }
             // If we have a special creation function then
             // let it do the construction.
@@ -882,19 +880,19 @@ function ProximityMineData::create( %datablock )
 
             reset();
 
-            ((GuiCanvas)"Canvas").popDialog(this);
-            }
+            ((GuiCanvas) "Canvas").popDialog(this);
+        }
 
         [ConsoleInteraction]
         public void onCancel()
-            {
+        {
             reset();
-            ((GuiCanvas)"Canvas").popDialog(this);
-            }
+            ((GuiCanvas) "Canvas").popDialog(this);
+        }
 
         [ConsoleInteraction]
         public void addField(string name, string type, string text, string value, string ext = "")
-            {
+        {
             this["field[" + numFields + ",name]"] = name;
             this["field[" + numFields + ",type]"] = type;
             this["field[" + numFields + ",text]"] = text;
@@ -902,21 +900,17 @@ function ProximityMineData::create( %datablock )
             this["field[" + numFields + ",ext]"] = ext;
 
             numFields++;
-            }
+        }
 
         [ConsoleInteraction]
         public string buildMemento()
-            {
-            this["memento"] = this + ".newObject = new " + this["objectClassName"] + "(" + OBObjectName.getValue() +
-                              ") {";
+        {
+            this["memento"] = this + ".newObject = new " + this["objectClassName"] + "(" + OBObjectName.getValue() + ") {";
             for (int i = 0; i < numFields; i++)
-                {
-                this["memento"] = this["memento"] + this["field[" + i + ",name]"] + " = \"" +
-                                  this["field[" + i + ",value]"] + "\"; ";
-                }
+                this["memento"] = this["memento"] + this["field[" + i + ",name]"] + " = \"" + this["field[" + i + ",value]"] + "\"; ";
             this["memento"] = this["memento"] + "};";
             return this["memento"];
-            }
+        }
 
         //------------------------------------------------------------------------------
         // This function is used for objects that don't require any special
@@ -924,10 +918,10 @@ function ProximityMineData::create( %datablock )
         //------------------------------------------------------------------------------
         [ConsoleInteraction]
         public void buildObject(string className)
-            {
+        {
             this["objectClassName"] = className;
             process();
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Environment
@@ -937,58 +931,60 @@ function ProximityMineData::create( %datablock )
 
         [ConsoleInteraction]
         public void buildVolumetricFog()
-            {
+        {
             OBObjectName.setValue("");
             this.objectClassName = "VolumetricFog";
             this.addField("shapeName", "TypeFile", "Shape (Fog Volume)", "", "(Models) |*.dts;*.dae");
             this.addField("Scale", "TypePoint3", "Scale", "1 1 1");
             this.addField("FogColor", "TypeColorI", "FogColor", "200 200 200 128");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildfxFoliageReplicator()
-            {
+        {
             this["objectClassName"] = "fxFoliageReplicator";
             process();
-            }
+        }
 
         // fxShapeReplicator
 
         [ConsoleInteraction]
         public void buildfxShapeReplicator()
-            {
+        {
             this["objectClassName"] = "fxShapeReplicator";
             process();
-            }
+        }
 
         //WALKABLESHAPE
         [ConsoleInteraction]
         public void buildTSAttachable()
-            {
+        {
             OBObjectName.setValue("");
             this.objectClassName = "TSAttachable";
             this.addField("shapeName", "TypeFile", "Shape File", "", "(Models) |*.dts;*.dae");
             this.process();
-            }
+        }
+
         [ConsoleInteraction]
         public void buildTSPathShape()
-            {
+        {
             OBObjectName.setValue("");
             this.objectClassName = "TSPathShape";
             this.addField("shapeName", "TypeFile", "Shape File", "", "(Models) |*.dts;*.dae");
             this.process();
-            }
+        }
+
         //WALKABLESHAPE
 
         [ConsoleInteraction]
         public void buildScatterSky(bool dontWarnAboutSun)
-            {
+        {
             if (!dontWarnAboutSun)
                 {
                 // Check for sun object already in the level.  If there is one,
                 // warn the user.	
-                Util.initContainerTypeSearch((uint)SceneObjectTypesAsUint.EnvironmentObjectType, false);
+                Util.initContainerTypeSearch((uint) SceneObjectTypesAsUint.EnvironmentObjectType, false);
                 while (true)
                     {
                     SimObject obj = Util.containerSearchNext(false);
@@ -997,9 +993,7 @@ function ProximityMineData::create( %datablock )
 
                     if (obj.isMemberOfClass("Sun"))
                         {
-                        messageBox.MessageBoxYesNo("Warning",
-                            "A ScatterSky object will conflict with the Sun object that is already in the level.  Do you still want to create a ScatterSky object?",
-                            this + ".buildScatterSky(true);", "");
+                        messageBox.MessageBoxYesNo("Warning", "A ScatterSky object will conflict with the Sun object that is already in the level.  Do you still want to create a ScatterSky object?", this + ".buildScatterSky(true);", "");
                         return;
                         }
                     }
@@ -1018,20 +1012,20 @@ function ProximityMineData::create( %datablock )
             this.addField("moonMat", "TypeMaterialName", "Moon Material", "Moon_Glow_Mat");
             this.addField("nightCubemap", "TypeCubemapName", "Night Cubemap", "NightCubemap");
             this.addField("useNightCubemap", "TypeBool", "Use Night Cubemap", "true");
-            }
+        }
 
         [ConsoleInteraction]
         public void buildCloudLayer()
-            {
+        {
             OBObjectName.setValue("");
             this["objectClassName"] = "CloudLayer";
             this.addField("texture", "TypeImageFilename", "Texture", "art/skies/clouds/clouds_normal_displacement");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildBasicClouds()
-            {
+        {
             OBObjectName.setValue("");
             this["objectClassName"] = "BasicClouds";
             this.process();
@@ -1041,12 +1035,12 @@ function ProximityMineData::create( %datablock )
             this.addField("texture[0]", "TypeImageFilename", "Texture", "art/skies/clouds/cloud1");
             this.addField("texture[1]", "TypeImageFilename", "Texture", "art/skies/clouds/cloud2");
             this.addField("texture[2]", "TypeImageFilename", "Texture", "art/skies/clouds/cloud3");
-            }
+        }
 
         [ConsoleInteraction]
         public bool checkExists(string classname)
-            {
-            Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
+        {
+            CodeBehind.Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
 
             SimGroup grp = EWCreatorWindow.objectGroup;
             for (uint i = 0; i < grp.getCount(); i++)
@@ -1056,40 +1050,40 @@ function ProximityMineData::create( %datablock )
                     return true;
                 }
             return false;
-            }
+        }
 
         [ConsoleInteraction]
         public void buildsgMissionLightingFilter()
-            {
+        {
             this.objectClassName = "sgMissionLightingFilter";
             this.addField("dataBlock", "TypeDataBlock", "sgMissionLightingFilter Data", "sgMissionFilterData");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildsgDecalProjector()
-            {
+        {
             this.objectClassName = "sgDecalProjector";
             this.addField("dataBlock", "TypeDataBlock", "DecalData Data", "DecalData");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildsgLightObject()
-            {
+        {
             this.objectClassName = "sgLightObject";
             this.addField("dataBlock", "TypeDataBlock", "LightObject Data", "sgLightObjectData");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildSun(bool dontWarnAboutScatterSky = false)
-            {
+        {
             if (!dontWarnAboutScatterSky)
                 {
                 // Check for sun object already in the level.  If there is one,
                 // warn the user.	
-                Util.initContainerTypeSearch((uint)SceneObjectTypesAsUint.EnvironmentObjectType, false);
+                Util.initContainerTypeSearch((uint) SceneObjectTypesAsUint.EnvironmentObjectType, false);
                 while (true)
                     {
                     SimObject obj = Util.containerSearchNext(false);
@@ -1098,9 +1092,7 @@ function ProximityMineData::create( %datablock )
 
                     if (obj.isMemberOfClass("ScatterSky"))
                         {
-                        messageBox.MessageBoxYesNo("Warning",
-                            "A Sun object will conflict with the ScatterSky object that is already in the level.  Do you still want to create a Sun object?",
-                            this + ".buildSun(true);", "");
+                        messageBox.MessageBoxYesNo("Warning", "A Sun object will conflict with the ScatterSky object that is already in the level.  Do you still want to create a Sun object?", this + ".buildSun(true);", "");
                         return;
                         }
                     }
@@ -1117,19 +1109,19 @@ function ProximityMineData::create( %datablock )
             // up as controls, but will be applied to the created object.
             this.addField("coronaMaterial", "TypeMaterialName", "Corona Material", "Corona_Mat");
             this.addField("flareType", "TypeLightFlareDataPtr", "Flare", "SunFlareExample");
-            }
+        }
 
         [ConsoleInteraction]
         public void buildLightning()
-            {
+        {
             this.objectClassName = "Lightning";
             this.addField("dataBlock", "TypeDataBlock", "Data block", "LightningData DefaultStorm");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void addWaterObjectFields()
-            {
+        {
             this.addField("rippleDir[0]", "TypePoint2", "Ripple Direction", "0.000000 1.000000");
             this.addField("rippleDir[1]", "TypePoint2", "Ripple Direction", "0.707000 0.707000");
             this.addField("rippleDir[2]", "TypePoint2", "Ripple Direction", "0.500000 0.860000");
@@ -1158,11 +1150,11 @@ function ProximityMineData::create( %datablock )
             this.addField("rippleTex", "TypeImageFilename", "Ripple Texture", "art/water/ripple");
             this.addField("depthGradientTex", "TypeImageFilename", "Depth Gradient Texture", "art/water/depthcolor_ramp");
             this.addField("foamTex", "TypeImageFilename", "Foam Texture", "art/water/foam");
-            }
+        }
 
         [ConsoleInteraction]
         public void buildWaterBlock()
-            {
+        {
             this.objectClassName = "WaterBlock";
             this.addField("baseColor", "TypeColorI", "Base Color", "45 108 171 255");
             this.process();
@@ -1170,11 +1162,11 @@ function ProximityMineData::create( %datablock )
             // This is a trick... any fields added after process won't show
             // up as controls, but will be applied to the created object.
             this.addWaterObjectFields();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildWaterPlane()
-            {
+        {
             this.objectClassName = "WaterPlane";
             this.addField("baseColor", "TypeColorI", "Base Color", "45 108 171 255");
             this.process();
@@ -1182,11 +1174,11 @@ function ProximityMineData::create( %datablock )
             // This is a trick... any fields added after process won't show
             // up as controls, but will be applied to the created object.
             this.addWaterObjectFields();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildTerrainBlock()
-            {
+        {
             this.objectClassName = "TerrainBlock";
             this.createCallback = "ETerrainEditor.attachTerrain();";
 
@@ -1194,11 +1186,11 @@ function ProximityMineData::create( %datablock )
             this.addField("squareSize", "TypeInt", "Square size", "8");
 
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildGroundCover()
-            {
+        {
             this.objectClassName = "GroundCover";
             this.addField("material", "TypeMaterialName", "Material Name", "");
             this.addField("shapeFilename[0]", "TypeFile", "Shape File [Optional]", "", "(ALL)|*.*");
@@ -1207,32 +1199,32 @@ function ProximityMineData::create( %datablock )
             // This is a trick... any fields added after process won't show
             // up as controls, but will be applied to the created object.
             this.addField("probability[0]", "TypeFloat", "Probability", "1");
-            }
+        }
 
         [ConsoleInteraction]
         public void buildPrecipitation()
-            {
+        {
             this.objectClassName = "Precipitation";
             this.addField("dataBlock", "TypeDataBlock", "Precipitation data", "PrecipitationData");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildParticleEmitterNode()
-            {
+        {
             this.objectClassName = "ParticleEmitterNode";
             this.addField("dataBlock", "TypeDataBlock", "datablock", "ParticleEmitterNodeData");
             this.addField("emitter", "TypeDataBlock", "Particle data", "ParticleEmitterData");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildParticleSimulation()
-            {
+        {
             this.objectClassName = "ParticleSimulation";
             this.addField("datablock", "TypeDataBlock", "datablock", "ParticleSimulationData");
             this.process();
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Mission
@@ -1240,26 +1232,24 @@ function ProximityMineData::create( %datablock )
 
         [ConsoleInteraction]
         public void buildTrigger()
-            {
+        {
             this.objectClassName = "Trigger";
             this.addField("dataBlock", "TypeDataBlock", "Data Block", "TriggerData defaultTrigger");
-            this.addField("polyhedron", "TypeTriggerPolyhedron", "Polyhedron",
-                "-0.5 0.5 0.0 1.0 0.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0");
+            this.addField("polyhedron", "TypeTriggerPolyhedron", "Polyhedron", "-0.5 0.5 0.0 1.0 0.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildPhysicalZone()
-            {
+        {
             this.objectClassName = "PhysicalZone";
-            this.addField("polyhedron", "TypeTriggerPolyhedron", "Polyhedron",
-                "-0.5 0.5 0.0 1.0 0.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0");
+            this.addField("polyhedron", "TypeTriggerPolyhedron", "Polyhedron", "-0.5 0.5 0.0 1.0 0.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0");
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildCamera()
-            {
+        {
             this.objectClassName = "Camera";
 
             this.addField("position", "TypePoint3", "Position", "0 0 0");
@@ -1268,50 +1258,48 @@ function ProximityMineData::create( %datablock )
             this.addField("team", "TypeInt", "Team", "0");
 
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildLevelInfo()
-            {
+        {
             if (checkExists("LevelInfo"))
                 {
                 GenericPromptDialog GenericPromptDialog = "GenericPromptDialog";
                 GuiWindowCtrl GenericPromptWindow = GenericPromptDialog.FOT("GenericPromptWindow");
                 GuiTextCtrl GenericPromptText = GenericPromptDialog.FOT("GenericPromptText");
                 GenericPromptWindow.text = "Warning";
-                GenericPromptText.text =
-                    "There is already an existing LevelInfo in the scene.";
-                ((GuiCanvas)"Canvas").pushDialog(GenericPromptDialog);
+                GenericPromptText.text = "There is already an existing LevelInfo in the scene.";
+                ((GuiCanvas) "Canvas").pushDialog(GenericPromptDialog);
                 return;
                 }
 
             OBObjectName.setValue("theLevelInfo");
             this.objectClassName = "LevelInfo";
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildTimeOfDay()
-            {
+        {
             if (checkExists("TimeOfDay"))
                 {
                 GenericPromptDialog GenericPromptDialog = "GenericPromptDialog";
                 GuiWindowCtrl GenericPromptWindow = GenericPromptDialog.FOT("GenericPromptWindow");
                 GuiTextCtrl GenericPromptText = GenericPromptDialog.FOT("GenericPromptText");
                 GenericPromptWindow.text = "Warning";
-                GenericPromptText.text =
-                    "There is already an existing TimeOfDay in the scene.";
-                ((GuiCanvas)"Canvas").pushDialog(GenericPromptDialog);
+                GenericPromptText.text = "There is already an existing TimeOfDay in the scene.";
+                ((GuiCanvas) "Canvas").pushDialog(GenericPromptDialog);
                 return;
                 }
             this.objectClassName = "TimeOfDay";
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildPlayerDropPoint()
-            {
-            Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
+        {
+            CodeBehind.Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
 
             this.objectClassName = "SpawnSphere";
             this.addField("dataBlock", "TypeDataBlock", "dataBlock", "MissionMarkerData SpawnSphereMarker");
@@ -1321,22 +1309,20 @@ function ProximityMineData::create( %datablock )
             this.addField("spawnClass", "TypeString", "Spawn Class", "Player");
             this.addField("spawnDatablock", "TypeDataBlock", "Spawn Data", "PlayerData DefaultPlayerData");
 
-
             if (EWCreatorWindow.objectGroup.getId() == "MissionGroup".getID())
                 {
                 if (!"PlayerDropPoints".isObject())
-                    ((SimGroup)"MissionGroup").add(
-                        new ObjectCreator("SimGroup", "PlayerDropPoints").Create().AsString());
+                    ((SimGroup) "MissionGroup").add(new ObjectCreator("SimGroup", "PlayerDropPoints").Create().AsString());
                 this["objectGroup"] = "PlayerDropPoints";
                 }
 
             this.process();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildObserverDropPoint()
-            {
-            Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
+        {
+            CodeBehind.Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
 
             this.objectClassName = "SpawnSphere";
             this.addField("dataBlock", "TypeDataBlock", "dataBlock", "MissionMarkerData SpawnSphereMarker");
@@ -1346,16 +1332,14 @@ function ProximityMineData::create( %datablock )
             this.addField("spawnClass", "TypeString", "Spawn Class", "Camera");
             this.addField("spawnDatablock", "TypeDataBlock", "Spawn Data", "CameraData Observer");
 
-
             if (EWCreatorWindow.objectGroup.getId() == "MissionGroup".getID())
                 {
                 if (!"ObserverDropPoints".isObject())
-                    ((SimGroup)"MissionGroup").add(
-                        new ObjectCreator("SimGroup", "ObserverDropPoints").Create().AsString());
+                    ((SimGroup) "MissionGroup").add(new ObjectCreator("SimGroup", "ObserverDropPoints").Create().AsString());
                 this["objectGroup"] = "ObserverDropPoints";
                 }
             this.process();
-            }
+        }
 
         //------------------------------------------------------------------------------
         // System
@@ -1363,11 +1347,11 @@ function ProximityMineData::create( %datablock )
 
         [ConsoleInteraction]
         public void buildPhysicsEntity()
-            {
+        {
             this.objectClassName = "PhysicsEntity";
             this.addField("dataBlock", "TypeDataBlock", "Data block", "PhysicsEntityData");
             this.process();
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -1378,18 +1362,18 @@ function ProximityMineData::create( %datablock )
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(objectBuilderGui ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -1397,9 +1381,9 @@ function ProximityMineData::create( %datablock )
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
-            return (this._ID == (string)myReflections.ChangeType(obj, typeof(string)));
-            }
+        {
+            return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
+        }
 
         /// <summary>
         /// 
@@ -1408,12 +1392,11 @@ function ProximityMineData::create( %datablock )
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(objectBuilderGui ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -1421,9 +1404,9 @@ function ProximityMineData::create( %datablock )
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(objectBuilderGui ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -1431,10 +1414,10 @@ function ProximityMineData::create( %datablock )
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator objectBuilderGui(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
-            return (objectBuilderGui)Omni.self.getSimObject(simobjectid, typeof(objectBuilderGui));
-            }
+            return (objectBuilderGui) Omni.self.getSimObject(simobjectid, typeof (objectBuilderGui));
+        }
 
         /// <summary>
         /// 
@@ -1442,9 +1425,9 @@ function ProximityMineData::create( %datablock )
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(objectBuilderGui ts)
-            {
-            return (int)ts._iID;
-            }
+        {
+            return (int) ts._iID;
+        }
 
         /// <summary>
         /// 
@@ -1452,9 +1435,9 @@ function ProximityMineData::create( %datablock )
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator objectBuilderGui(int simobjectid)
-            {
-            return (objectBuilderGui)Omni.self.getSimObject((uint)simobjectid, typeof(objectBuilderGui));
-            }
+        {
+            return (objectBuilderGui) Omni.self.getSimObject((uint) simobjectid, typeof (objectBuilderGui));
+        }
 
         /// <summary>
         /// 
@@ -1462,23 +1445,23 @@ function ProximityMineData::create( %datablock )
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(objectBuilderGui ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator objectBuilderGui(uint simobjectid)
-            {
-            return (objectBuilderGui)Omni.self.getSimObject(simobjectid, typeof(objectBuilderGui));
-            }
+        {
+            return (objectBuilderGui) Omni.self.getSimObject(simobjectid, typeof (objectBuilderGui));
+        }
 
         #endregion
 
         //------------------------------------------------------------------------------
         // Functions to allow scripted/datablock objects to be instantiated
         //------------------------------------------------------------------------------
-        }
     }
+}

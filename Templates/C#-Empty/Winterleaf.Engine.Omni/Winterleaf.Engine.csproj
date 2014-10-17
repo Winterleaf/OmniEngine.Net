@@ -14,14 +14,10 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -210,20 +206,5 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
-  <PropertyGroup>
-    <_TransformExe>$(CommonProgramFiles)\Microsoft Shared\TextTemplating\10.0\TextTransform.exe</_TransformExe>
-    <_TransformExe Condition="'$(VisualStudioVersion)' != ''">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\TextTransform.exe</_TransformExe>
-    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\10.0\TextTransform.exe"</_TransformExe>
-    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\11.0\TextTransform.exe"</_TransformExe>
-    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\12.0\TextTransform.exe"</_TransformExe>
-    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\13.0\TextTransform.exe"</_TransformExe>
-    <_TransformExe Condition="!Exists('$(_TransformExe)')">$(CommonProgramFiles)\Microsoft Shared\TextTemplating\14.0\TextTransform.exe"</_TransformExe>
-  </PropertyGroup>
-  <Target Name="TransformOnBuild" AfterTargets="BeforeBuild">
-    <Error Text="Failed to find TextTransform.exe tool at '$(_TransformExe)." Condition="!Exists('$(_TransformExe)')" />
-    <ItemGroup>
-      <_TextTransform Include="@(None)" Condition="'%(None.Generator)' == 'TextTemplatingFilePreprocessor' Or '%(None.Generator)' == 'TextTemplatingFileGenerator'" />
-    </ItemGroup>
-    <Exec Command="&quot;$(_TransformExe)&quot; -a !!Solution!&quot;$(SolutionPath)&quot;  @(_TextTransform) " Condition="'%(Identity)' != ''" />
-  </Target>
+ 
 </Project>

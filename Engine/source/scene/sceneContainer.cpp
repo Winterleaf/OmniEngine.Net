@@ -1778,7 +1778,6 @@ extern "C" __declspec(dllexport) F32  __cdecl wle_fn_containerSearchCurrDist(boo
 {
 {
    SceneContainer* pContainer = useClientContainer ? &gClientContainer : &gServerContainer;
-
   return (F32)( pContainer->containerSearchCurrDist());
 };
 }
@@ -1786,7 +1785,6 @@ extern "C" __declspec(dllexport) F32  __cdecl wle_fn_containerSearchCurrRadiusDi
 {
 {
    SceneContainer* pContainer = useClientContainer ? &gClientContainer : &gServerContainer;
-
   return (F32)( pContainer->containerSearchCurrRadiusDist());
 };
 }
@@ -1811,7 +1809,6 @@ sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
 
 {
    SceneContainer* pContainer = useClientContainer ? &gClientContainer : &gServerContainer;
-
    pContainer->initRadiusSearch( pos, radius, mask );
 }
 }
@@ -1820,7 +1817,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_initContainerTypeSearch(U3
 
 {
    SceneContainer* pContainer = useClientContainer ? &gClientContainer : &gServerContainer;
-
    pContainer->initTypeSearch( mask );
 }
 }

@@ -819,9 +819,7 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_StartClientReplication()
 {
 {
       SimSet *fxReplicatorSet = dynamic_cast<SimSet*>(Sim::findObject("fxReplicatorSet"));
-
       if (!fxReplicatorSet) return;
-
       for (SimSetIterator itr(fxReplicatorSet); *itr; ++itr)
    {
             fxShapeReplicator* Replicator = static_cast<fxShapeReplicator*>(*itr);

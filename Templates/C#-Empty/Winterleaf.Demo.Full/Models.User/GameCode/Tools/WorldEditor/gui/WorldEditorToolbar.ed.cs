@@ -1,14 +1,48 @@
-﻿using WinterLeaf.Engine.Classes;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
-    {
+{
     public class WorldEditorToolbar
-        {
+    {
         [ConsoleInteraction(true, "WorldEditorToolbar_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (EWorldEditorToolbar, EditorGuiGroup)        oc_Newobject38
 
             ObjectCreator oc_Newobject38 = new ObjectCreator("GuiControl", "EWorldEditorToolbar, EditorGuiGroup");
@@ -20,7 +54,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject38["HorizSizing"] = "right";
             oc_Newobject38["VertSizing"] = "bottom";
             oc_Newobject38["Position"] = "306 0";
-            oc_Newobject38["Extent"] = new ObjectCreator.StringNoQuote("\"550\" SPC getWord(EditorGuiToolbar.extent, 1)");
+            oc_Newobject38["Extent"] = new Creator.StringNoQuote("\"550\" SPC getWord(EditorGuiToolbar.extent, 1)");
             oc_Newobject38["MinExtent"] = "8 2";
             oc_Newobject38["canSave"] = "1";
             oc_Newobject38["Visible"] = "1";
@@ -46,7 +80,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject37["Visible"] = "1";
             oc_Newobject37["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject37["hovertime"] = "1000";
-            oc_Newobject37["changeChildSizeToFit"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject37["changeChildSizeToFit"] = new Creator.StringNoQuote("false");
             oc_Newobject37["padding"] = "2";
 
             #region GuiBitmapButtonCtrl (FitToSelectionBtn)        oc_Newobject1
@@ -286,8 +320,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject10["MinExtent"] = "8 16";
             oc_Newobject10["canSave"] = "1";
             oc_Newobject10["Visible"] = "1";
-            oc_Newobject10["AltCommand"] =
-                "EWorldEditor.setSoftSnapSize( $ThisControl.getText() ); EWorldEditor.syncGui();";
+            oc_Newobject10["AltCommand"] = "EWorldEditor.setSoftSnapSize( $ThisControl.getText() ); EWorldEditor.syncGui();";
             oc_Newobject10["tooltip"] = "Object Snapping Distance";
             oc_Newobject10["hovertime"] = "1000";
             oc_Newobject10["text"] = "9";
@@ -592,7 +625,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject28["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject28["Position"] = "386 3";
             oc_Newobject28["Extent"] = "63 27";
-            oc_Newobject28["visible"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject28["visible"] = new Creator.StringNoQuote("true");
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject26
 
@@ -659,12 +692,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiContainer (objectCenterDropdown)        oc_Newobject32
 
-            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiContainer", "objectCenterDropdown",
-                typeof (EditorGui.objectCenterDropdown));
+            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiContainer", "objectCenterDropdown", typeof (EditorGui.objectCenterDropdown));
             oc_Newobject32["Profile"] = "IconDropdownProfile";
-            oc_Newobject32["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(EWorldEditorToolbar.position, 0)+getWord(ToggleButtonBar.Position, 0)+getWord(EWorldEditorToolbar-->centerObject.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
+            oc_Newobject32["Position"] = new Creator.StringNoQuote("getWord(EWorldEditorToolbar.position, 0)+getWord(ToggleButtonBar.Position, 0)+getWord(EWorldEditorToolbar-->centerObject.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
             oc_Newobject32["Extent"] = "132 62";
             oc_Newobject32["isContainer"] = "1";
             oc_Newobject32["visible"] = "0";
@@ -684,8 +714,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject29["MinExtent"] = "8 8";
             oc_Newobject29["canSave"] = "1";
             oc_Newobject29["Visible"] = "1";
-            oc_Newobject29["Command"] =
-                "EWorldEditor.objectsUseBoxCenter = 0; EWorldEditor.syncGui(); objectCenterDropdown.toggle(); ";
+            oc_Newobject29["Command"] = "EWorldEditor.objectsUseBoxCenter = 0; EWorldEditor.syncGui(); objectCenterDropdown.toggle(); ";
             oc_Newobject29["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject29["ToolTip"] = "Use object defined center (O)";
             oc_Newobject29["hovertime"] = "1000";
@@ -716,8 +745,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject30["MinExtent"] = "8 8";
             oc_Newobject30["canSave"] = "1";
             oc_Newobject30["Visible"] = "1";
-            oc_Newobject30["Command"] =
-                "EWorldEditor.objectsUseBoxCenter = 1; EWorldEditor.syncGui(); objectCenterDropdown.toggle(); ";
+            oc_Newobject30["Command"] = "EWorldEditor.objectsUseBoxCenter = 1; EWorldEditor.syncGui(); objectCenterDropdown.toggle(); ";
             oc_Newobject30["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject30["ToolTip"] = "Use bounding box center (P)";
             oc_Newobject30["hovertime"] = "1000";
@@ -735,8 +763,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiDecoyCtrl (objectCenterDropdownDecoy)        oc_Newobject31
 
-            ObjectCreator oc_Newobject31 = new ObjectCreator("GuiDecoyCtrl", "objectCenterDropdownDecoy",
-                typeof (EditorGui.objectCenterDropdownDecoy));
+            ObjectCreator oc_Newobject31 = new ObjectCreator("GuiDecoyCtrl", "objectCenterDropdownDecoy", typeof (EditorGui.objectCenterDropdownDecoy));
             oc_Newobject31["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject31["horizSizing"] = "right";
             oc_Newobject31["vertSizing"] = "bottom";
@@ -758,12 +785,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiContainer (objectTransformDropdown)        oc_Newobject36
 
-            ObjectCreator oc_Newobject36 = new ObjectCreator("GuiContainer", "objectTransformDropdown",
-                typeof (EditorGui.objectTransformDropdown));
+            ObjectCreator oc_Newobject36 = new ObjectCreator("GuiContainer", "objectTransformDropdown", typeof (EditorGui.objectTransformDropdown));
             oc_Newobject36["Profile"] = "IconDropdownProfile";
-            oc_Newobject36["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(EWorldEditorToolbar.position, 0)+getWord(ToggleButtonBar.position, 0)+getWord(EWorldEditorToolbar-->objectTransform.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
+            oc_Newobject36["Position"] = new Creator.StringNoQuote("getWord(EWorldEditorToolbar.position, 0)+getWord(ToggleButtonBar.position, 0)+getWord(EWorldEditorToolbar-->objectTransform.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
             oc_Newobject36["Extent"] = "147 62";
             oc_Newobject36["isContainer"] = "1";
             oc_Newobject36["visible"] = "0";
@@ -783,8 +807,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject33["MinExtent"] = "8 8";
             oc_Newobject33["canSave"] = "1";
             oc_Newobject33["Visible"] = "1";
-            oc_Newobject33["Command"] =
-                "GlobalGizmoProfile.setFieldValue(alignment, World);  EWorldEditor.syncGui(); objectTransformDropdown.toggle(); ";
+            oc_Newobject33["Command"] = "GlobalGizmoProfile.setFieldValue(alignment, World);  EWorldEditor.syncGui(); objectTransformDropdown.toggle(); ";
             oc_Newobject33["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject33["ToolTip"] = "Use world normal for transformations (L)";
             oc_Newobject33["hovertime"] = "1000";
@@ -815,8 +838,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject34["MinExtent"] = "8 8";
             oc_Newobject34["canSave"] = "1";
             oc_Newobject34["Visible"] = "1";
-            oc_Newobject34["Command"] =
-                "GlobalGizmoProfile.setFieldValue(alignment, Object); EWorldEditor.syncGui(); objectTransformDropdown.toggle(); ";
+            oc_Newobject34["Command"] = "GlobalGizmoProfile.setFieldValue(alignment, Object); EWorldEditor.syncGui(); objectTransformDropdown.toggle(); ";
             oc_Newobject34["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject34["ToolTip"] = "Use object normal for transformations (K)";
             oc_Newobject34["hovertime"] = "1000";
@@ -834,8 +856,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiDecoyCtrl (objectTransformDropdownDecoy)        oc_Newobject35
 
-            ObjectCreator oc_Newobject35 = new ObjectCreator("GuiDecoyCtrl", "objectTransformDropdownDecoy",
-                typeof (EditorGui.objectTransformDropdownDecoy));
+            ObjectCreator oc_Newobject35 = new ObjectCreator("GuiDecoyCtrl", "objectTransformDropdownDecoy", typeof (EditorGui.objectTransformDropdownDecoy));
             oc_Newobject35["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject35["horizSizing"] = "right";
             oc_Newobject35["vertSizing"] = "bottom";
@@ -865,8 +886,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiMouseEventCtrl (softSnapSizeSliderCtrlContainer, EditorGuiGroup)        oc_Newobject40
 
-            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiMouseEventCtrl",
-                "softSnapSizeSliderCtrlContainer, EditorGuiGroup", typeof (EditorGui.softSnapSizeSliderCtrlContainer));
+            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiMouseEventCtrl", "softSnapSizeSliderCtrlContainer, EditorGuiGroup", typeof (EditorGui.softSnapSizeSliderCtrlContainer));
             oc_Newobject40["horizSizing"] = "right";
             oc_Newobject40["vertSizing"] = "bottom";
             oc_Newobject40["position"] = "0 0";
@@ -885,9 +905,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject39["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject39["HorizSizing"] = "right";
             oc_Newobject39["VertSizing"] = "bottom";
-            oc_Newobject39["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(EWorldEditorToolbar-->softSnapSizeTextEdit.getGlobalPosition()) - 12 SPC          (getWord(EWorldEditorToolbar-->softSnapSizeTextEdit.getGlobalPosition(), 1)) + 18");
+            oc_Newobject39["position"] = new Creator.StringNoQuote("firstWord(EWorldEditorToolbar-->softSnapSizeTextEdit.getGlobalPosition()) - 12 SPC          (getWord(EWorldEditorToolbar-->softSnapSizeTextEdit.getGlobalPosition(), 1)) + 18");
             oc_Newobject39["Extent"] = "112 20";
             oc_Newobject39["MinExtent"] = "8 2";
             oc_Newobject39["canSave"] = "1";
@@ -904,6 +922,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             #endregion
 
             oc_Newobject40.Create();
-            }
         }
     }
+}

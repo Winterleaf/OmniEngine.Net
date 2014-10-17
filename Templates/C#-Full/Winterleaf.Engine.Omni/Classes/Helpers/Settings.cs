@@ -1,232 +1,35 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Configuration;
-//using System.Globalization;
-//using System.ComponentModel;
-//using System.Collections.Specialized;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-
-//namespace WinterLeaf.Classes
-//    {
-//    /// <summary>
-//    /// 
-//    /// </summary>
-//    public static class Settings
-//        {
-//        private static string CleanSectionName(string section)
-//            {
-//            return (section.Trim().ToLower().Replace('/', '.'));
-//            }
-
-//        /// <summary>
-//        /// Returns whether or not the config has the section requested.
-//        /// </summary>
-//        /// <param name="section"></param>
-//        /// <returns></returns>
-//        internal static bool HasSection(string section)
-//            {
-//            section = CleanSectionName(section);
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            return (prefConfigSection != null);
-//            }
-
-//        /// <summary>
-//        /// Retrieves a Variable from the given section with the name passed
-//        /// </summary>
-//        /// <param name="section">Which Section to Load From(Not Case Sensitive)</param>
-//        /// <param name="variable">Variable Name (Not case sensitive)</param>
-//        /// <returns></returns>
-//        internal static string GetVariable(string section, string variable)
-//            {
-//            section = CleanSectionName(section);
-//            variable = variable.Trim().ToLower();
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            if (prefConfigSection == null)
-//                return string.Empty;
-//            foreach (Pref p in from Pref p in prefConfigSection.Preferences where p.Name == variable select p)
-//                return p.Value;
-//            return string.Empty;
-//            }
-
-//        /// <summary>
-//        /// Sets a variable for the given section with the value passed.
-//        /// </summary>
-//        /// <param name="section">Which Section to Load From(Not Case Sensitive)</param>
-//        /// <param name="variable">Variable Name (Not Case Sensitive)</param>
-//        /// <param name="value">New Value</param>
-//        internal static void SetVariable(string section, string variable, string value)
-//            {
-//            section = CleanSectionName(section);
-//            variable = variable.Trim().ToLower();
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            if (prefConfigSection == null)
-//                {
-//                prefConfigSection = new PrefConfigurationSection();
-//                config.Sections.Add(section, prefConfigSection);
-//                }
-//            prefConfigSection.Preferences.Add(new Pref(variable, value));
-//            config.Save(ConfigurationSaveMode.Full);
-//            }
-
-//        /// <summary>
-//        /// Returns a dictioniary of Variable Name, Variable Value for the passed section
-//        /// </summary>
-//        /// <param name="section">Section(Not Case Sensitive)</param>
-//        /// <returns></returns>
-//        internal static Dictionary<string, string> GetVariables(string section)
-//            {
-//            section = CleanSectionName(section);
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            return prefConfigSection == null ? new Dictionary<string, string>() : prefConfigSection.Preferences.Cast<Pref>().ToDictionary(p => p.Name, p => p.Value);
-//            }
-
-//        /// <summary>
-//        /// Replaces a sections variable definition with those of the passed dictionary.
-//        /// </summary>
-//        /// <param name="section">Section(Not Case Sensitive)</param>
-//        /// <param name="variables">New Dictionary of Variables to replace that sections variables with(Not Case Sensitive)</param>
-//        internal static void SetVariables(string section, Dictionary<string, string> variables)
-//            {
-//            section = CleanSectionName(section);
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            if (prefConfigSection == null)
-//                {
-//                prefConfigSection = new PrefConfigurationSection();
-//                config.Sections.Add(section, prefConfigSection);
-//                }
-//            prefConfigSection.Preferences.Clear();
-//            foreach (KeyValuePair<string, string> kvp in variables)
-//                prefConfigSection.Preferences.Add(new Pref(kvp.Key.Trim().ToLower(), kvp.Value));
-//            config.Save(ConfigurationSaveMode.Full);
-//            }
-
-//        /// <summary>
-//        /// 
-//        /// </summary>
-//        /// <param name="section"></param>
-//        internal static void ClearVariables(string section)
-//            {
-//            section = CleanSectionName(section);
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            if (prefConfigSection == null)
-//                return;
-//            prefConfigSection.Preferences.Clear();
-//            config.Save(ConfigurationSaveMode.Full);
-//            }
-
-//        internal static void LoadSection(string section)
-//            {
-//            section = CleanSectionName(section);
-//            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-//            PrefConfigurationSection prefConfigSection = config.GetSection(section) as PrefConfigurationSection;
-//            if (prefConfigSection == null)
-//                return;
-
-//            foreach (Pref p in prefConfigSection.Preferences)
-//                Omni.self.SetVar(p.Name, p.Value);
-
-//            }
-
-//        #region Settings Code
-//        private class Pref : ConfigurationElement
-//            {
-//            public Pref() { }
-
-//            public Pref(string name, string value)
-//                {
-//                Name = name;
-//                Value = value;
-//                }
-
-//            [ConfigurationProperty("Name", DefaultValue = "_NotSet_", IsRequired = true, IsKey = true)]
-//            public string Name
-//                {
-//                get { return (string)this["Name"]; }
-//                set { this["Name"] = value; }
-//                }
-
-//            [ConfigurationProperty("Value", DefaultValue = "", IsRequired = true, IsKey = false)]
-//            public string Value
-//                {
-//                get { return (string)this["Value"]; }
-//                set { this["Value"] = value; }
-//                }
-//            }
-
-//        private class PrefCollection : ConfigurationElementCollection
-//            {
-//            public Pref this[int index]
-//                {
-//                get { return (Pref)BaseGet(index); }
-//                set
-//                    {
-//                    if (BaseGet(index) != null)
-//                        {
-//                        BaseRemoveAt(index);
-//                        }
-//                    BaseAdd(index, value);
-//                    }
-//                }
-
-//            public void Add(Pref serviceConfig)
-//                {
-//                BaseAdd(serviceConfig);
-//                }
-
-//            public void Clear()
-//                {
-//                BaseClear();
-//                }
-
-//            protected override ConfigurationElement CreateNewElement()
-//                {
-//                return new Pref();
-//                }
-
-//            protected override object GetElementKey(ConfigurationElement element)
-//                {
-//                return ((Pref)element).Name;
-//                }
-
-//            public void Remove(Pref serviceConfig)
-//                {
-//                BaseRemove(serviceConfig.Name);
-//                }
-
-//            public void RemoveAt(int index)
-//                {
-//                BaseRemoveAt(index);
-//                }
-
-//            public void Remove(string name)
-//                {
-//                BaseRemove(name);
-//                }
-//            }
-
-//        private class PrefConfigurationSection : ConfigurationSection
-//            {
-//            [ConfigurationProperty("Preferences", IsDefaultCollection = false)]
-//            [ConfigurationCollection(typeof(PrefCollection), AddItemName = "add", ClearItemsName = "clear", RemoveItemName = "remove")]
-//            public PrefCollection Preferences
-//                {
-//                get
-//                    {
-//                    return (PrefCollection)base["Preferences"];
-//                    }
-//                }
-//            }
-//        #endregion
-//        }
-
-
-
-//    }

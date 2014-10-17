@@ -686,10 +686,8 @@ if (!object)
 const char* filename = (const char*)x__filename;
 const char* header = (const char*)x__header;
 {
-
             
    object->dump( filename, header );
-
 }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fnMessageVector_clear(char * x__object)
@@ -738,7 +736,6 @@ if (!object)
       Con::errorf(ConsoleLogEntry::General, "MessageVector::getLineTag(con): out of bounds line");
      return (S32)( 0);
    }
-
   return (S32)( object->getLine(pos).messageTag);
 };
 }

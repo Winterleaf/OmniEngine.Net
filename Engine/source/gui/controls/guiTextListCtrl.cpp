@@ -936,7 +936,6 @@ const char* text = (const char*)x__text;
       object->addEntry(id, text);
    else
       object->insertEntry(id, text, index);
-
   return (S32)( ret);
 };
 }
@@ -987,7 +986,6 @@ if (!object)
 {
    if(index >= object->getNumEntries())
      return (S32)( -1);
-
   return (S32)( object->mList[index].id);
 };
 }
@@ -1145,7 +1143,6 @@ if (!object)
    S32 index = object->findEntryById(id);
    if(index < 0)
       return ;
-
    object->setSelectedCell(Point2I(0, index));
 }
 }

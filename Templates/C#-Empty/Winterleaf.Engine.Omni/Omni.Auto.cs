@@ -21914,6 +21914,12 @@ if (a19 != null)
 SafeNativeMethods.mwle_fnGuiFilterCtrl_setValue(sbguifilterctrl, sba2, sba3, sba4, sba5, sba6, sba7, sba8, sba9, sba10, sba11, sba12, sba13, sba14, sba15, sba16, sba17, sba18, sba19);
 }
 /// <summary>
+/// Recalculates the position and size of this control and all its children. )
+/// 
+/// </summary>
+
+
+/// <summary>
 /// Get the ID of this form's menu.   @return The ID of the form menu )
 /// </summary>
 

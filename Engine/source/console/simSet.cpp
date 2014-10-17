@@ -1739,7 +1739,6 @@ SimObject* obj; Sim::findObject(x__obj, obj );
 {
    if( !obj )
      return (S32)( -1);
-
    object->lock();
    S32 count = 0;
    for( SimSet::iterator i = object->begin(); i != object->end(); i++)
@@ -1749,11 +1748,9 @@ SimObject* obj; Sim::findObject(x__obj, obj );
          object->unlock();
         return (S32)( count);
       }
-
       ++count;
    }
    object->unlock();
-
   return (S32)( -1);
 };
 }
@@ -1962,7 +1959,6 @@ SimObject* child2; Sim::findObject(x__child2, child2 );
 {
    SimObject* pObject = child1;
    SimObject* pTarget = child2;
-
    if(pObject && pTarget)
    {
       object->reOrder(pObject,pTarget);

@@ -481,7 +481,6 @@ const char* obj = (const char*)x__obj;
    ForestItemData *db;
       if ( !Sim::findObject( obj, db ) )
       return;
-
    object->deleteMeshSafe( db );   
 }
 }

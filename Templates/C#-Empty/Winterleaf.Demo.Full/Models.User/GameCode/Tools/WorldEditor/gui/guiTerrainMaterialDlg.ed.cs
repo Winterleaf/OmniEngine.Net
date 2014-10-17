@@ -1,20 +1,54 @@
-﻿using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Base.Utils;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Base.Utils;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.View.Creators;
+using Creator = WinterLeaf.Engine.Classes.View.Creators.Creator;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
-    {
+{
     public class guiTerrainMaterialDlg
-        {
+    {
         [ConsoleInteraction(true, "guiTerrainMaterialDlg_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (TerrainMaterialDlg, EditorGuiGroup)        oc_Newobject66
 
-            ObjectCreator oc_Newobject66 = new ObjectCreator("GuiControl", "TerrainMaterialDlg, EditorGuiGroup",
-                typeof (TerrainMaterialDlg));
+            ObjectCreator oc_Newobject66 = new ObjectCreator("GuiControl", "TerrainMaterialDlg, EditorGuiGroup", typeof (TerrainMaterialDlg));
             oc_Newobject66["canSaveDynamicFields"] = "0";
             oc_Newobject66["isContainer"] = "1";
             oc_Newobject66["Profile"] = "ToolsGuiDefaultProfile";
@@ -137,13 +171,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl (TerrainTreeFilter)        oc_Newobject100
 
-            ObjectCreator oc_Newobject100 = new ObjectCreator("GuiTextEditCtrl", "TerrainTreeFilter", typeof(treeViewFilterCtrls.GuiTreeViewFilterText));
+            ObjectCreator oc_Newobject100 = new ObjectCreator("GuiTextEditCtrl", "TerrainTreeFilter", typeof (treeViewFilterCtrls.GuiTreeViewFilterText));
             oc_Newobject100["Profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject100["HorizSizing"] = "width";
             oc_Newobject100["VertSizing"] = "bottom";
             oc_Newobject100["Position"] = "1 19";
             oc_Newobject100["Extent"] = "160 18";
-            oc_Newobject100["treeView"] = new ObjectCreator.StringNoQuote("TerrainMaterialTreeView");
+            oc_Newobject100["treeView"] = new Creator.StringNoQuote("TerrainMaterialTreeView");
 
             #endregion
 
@@ -151,7 +185,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject101
 
-            ObjectCreator oc_Newobject101 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof(treeViewFilterCtrls.GuiTreeViewFilterClearButton));
+            ObjectCreator oc_Newobject101 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof (treeViewFilterCtrls.GuiTreeViewFilterClearButton));
             oc_Newobject101["canSaveDynamicFields"] = "0";
             oc_Newobject101["isContainer"] = "0";
             oc_Newobject101["Profile"] = "ToolsGuiDefaultProfile";
@@ -168,7 +202,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject101["buttonType"] = "PushButton";
             oc_Newobject101["useMouseEvents"] = "0";
             oc_Newobject101["bitmap"] = "tools/gui/images/clear-icon";
-            oc_Newobject101["textCtrl"] = new ObjectCreator.StringNoQuote("TerrainTreeFilter");
+            oc_Newobject101["textCtrl"] = new Creator.StringNoQuote("TerrainTreeFilter");
 
             #endregion
 
@@ -504,8 +538,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject15["MinExtent"] = "8 2";
             oc_Newobject15["canSave"] = "1";
             oc_Newobject15["Visible"] = "1";
-            oc_Newobject15["Command"] =
-                "TerrainMaterialDlg-->baseTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
+            oc_Newobject15["Command"] = "TerrainMaterialDlg-->baseTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
             oc_Newobject15["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject15["hovertime"] = "1000";
             oc_Newobject15["groupNum"] = "-1";
@@ -769,8 +802,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject25["MinExtent"] = "8 2";
             oc_Newobject25["canSave"] = "1";
             oc_Newobject25["Visible"] = "1";
-            oc_Newobject25["Command"] =
-                "TerrainMaterialDlg-->normTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
+            oc_Newobject25["Command"] = "TerrainMaterialDlg-->normTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
             oc_Newobject25["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject25["hovertime"] = "1000";
             oc_Newobject25["groupNum"] = "-1";
@@ -1052,8 +1084,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject35["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject35["visible"] = "1";
             oc_Newobject35["active"] = "1";
-            oc_Newobject35["command"] =
-                "TerrainMaterialDlg-->macroTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
+            oc_Newobject35["command"] = "TerrainMaterialDlg-->macroTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
             oc_Newobject35["tooltipProfile"] = "ToolsGuiToolTipProfile";
             oc_Newobject35["hovertime"] = "1000";
             oc_Newobject35["isContainer"] = "0";
@@ -1444,8 +1475,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject49["MinExtent"] = "8 2";
             oc_Newobject49["canSave"] = "1";
             oc_Newobject49["Visible"] = "1";
-            oc_Newobject49["Command"] =
-                "TerrainMaterialDlg-->detailTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
+            oc_Newobject49["Command"] = "TerrainMaterialDlg-->detailTexCtrl.setBitmap(\\\"tools/materialeditor/gui/unknownImage\\\");";
             oc_Newobject49["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject49["hovertime"] = "1000";
             oc_Newobject49["groupNum"] = "-1";
@@ -1780,7 +1810,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTreeViewCtrl (TerrainMaterialTreeView)        oc_Newobject58
 
-            ObjectCreator oc_Newobject58 = new ObjectCreator("GuiTreeViewCtrl", "TerrainMaterialTreeView", typeof(TerrainMaterialTreeCtrl));
+            ObjectCreator oc_Newobject58 = new ObjectCreator("GuiTreeViewCtrl", "TerrainMaterialTreeView", typeof (TerrainMaterialTreeCtrl));
             oc_Newobject58["internalName"] = "matLibTree";
             oc_Newobject58["canSaveDynamicFields"] = "0";
             //oc_Newobject58["class"] = "TerrainMaterialTreeCtrl";
@@ -1881,8 +1911,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             oc_Newobject64["VertSizing"] = "height";
             oc_Newobject64["position"] = "199 23";
             oc_Newobject64["Extent"] = "190 267";
-            oc_Newobject64["isContainer"] = new ObjectCreator.StringNoQuote("true");
-            oc_Newobject64["Visible"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject64["isContainer"] = new Creator.StringNoQuote("true");
+            oc_Newobject64["Visible"] = new Creator.StringNoQuote("false");
             oc_Newobject64["bitmap"] = "tools/gui/images/inactive-overlay";
 
             #region GuiTextCtrl ()        oc_Newobject63
@@ -1911,6 +1941,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             #endregion
 
             oc_Newobject66.Create();
-            }
         }
     }
+}

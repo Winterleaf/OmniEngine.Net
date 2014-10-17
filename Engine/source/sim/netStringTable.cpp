@@ -346,10 +346,8 @@ DefineEngineFunction( dumpNetStringTable, void, (),,
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpNetStringTable()
 {
 {
-
 #ifdef TORQUE_DEBUG
    gNetStringTable->dumpToConsole();
-
 #endif
 }
 }

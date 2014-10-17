@@ -21918,16 +21918,7 @@ SafeNativeMethods.mwle_fnGuiFilterCtrl_setValue(sbguifilterctrl, sba2, sba3, sba
 /// 
 /// </summary>
 
-public void fnGuiFlexibleArrayControl_refresh (string guiflexiblearraycontrol)
-{
-if(Debugging)
-System.Console.WriteLine("----------------->Extern Call 'fnGuiFlexibleArrayControl_refresh'" + string.Format("\"{0}\" ",guiflexiblearraycontrol));
-StringBuilder sbguiflexiblearraycontrol = null;
-if (guiflexiblearraycontrol != null)
-     sbguiflexiblearraycontrol = new StringBuilder(guiflexiblearraycontrol, 1024);
 
-SafeNativeMethods.mwle_fnGuiFlexibleArrayControl_refresh(sbguiflexiblearraycontrol);
-}
 /// <summary>
 /// Get the ID of this form's menu.   @return The ID of the form menu )
 /// </summary>

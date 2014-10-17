@@ -1,28 +1,61 @@
-﻿using System.Text;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.Text;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Common;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Interopt;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
-    {
+{
     public class metrics
-        {
+    {
         private static readonly pInvokes omni = new pInvokes();
 
         public static void initialize()
-            {
+        {
             //con.error("------------------------>LOADING FRAMEOVERLAYGUI!!!!!!!!!!!!!!!!!!!!!");
             FrameOverlayGui.initialize();
             metricsGui.initialize();
-            }
-
+        }
 
         [ConsoleInteraction(true)]
         public static string fpsMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append(" | FPS | ");
             outtext.Append(omni.sGlobal["$fps::real"] + "  max: ");
@@ -35,11 +68,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$fps::realMax"] + "  min: " +
             //    t3d.sGlobal["$fps::realMin"] + "  mspf: " +
             //    (1000.0 / t3d.dGlobal["$fps::real"]);
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string gfxMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | GFX |");
             outtext.Append("  PolyCount: ");
@@ -50,7 +83,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             outtext.Append(omni.sGlobal["$GFXDeviceStatistics::renderTargetChanges"]);
             return outtext.ToString();
 
-
             //return "  | GFX |" + 
             //    "  PolyCount: " + 
             //    t3d.sGlobal["$GFXDeviceStatistics::polyCount"] + 
@@ -58,11 +90,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$GFXDeviceStatistics::drawCalls"] + 
             //    "  RTChanges: " + 
             //    t3d.sGlobal["$GFXDeviceStatistics::renderTargetChanges"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string terrainMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Terrain |");
             outtext.Append("  Cells: ");
@@ -80,11 +112,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$TerrainBlock::overrideCells"] + 
             //    "  DrawCalls: " + 
             //    t3d.sGlobal["$TerrainBlock::drawCalls"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string netMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Net |");
             outtext.Append("  BitsSent: ");
@@ -103,11 +135,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$Stats::netBitsReceived"] + 
             //    "  GhostUpd: " + 
             //    t3d.sGlobal["$Stats::netGhostUpdates"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string groundCoverMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | GroundCover |");
             outtext.Append("  Cells: ");
@@ -130,18 +162,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$GroundCover::renderedBatches"] + 
             //    "  Shapes: " + 
             //    t3d.sGlobal["$GroundCover::renderedShapes"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string sfxMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | SFX |");
             outtext.Append("  Sounds: ");
             outtext.Append(omni.sGlobal["$SFX::numSounds"]);
             outtext.Append("  Lists: ");
-            outtext.Append((omni.iGlobal["$SFX::numSources"] - omni.iGlobal["$SFX::numSounds"] -
-                            omni.iGlobal["$SFX::Device::fmodNumEventSource"]));
+            outtext.Append((omni.iGlobal["$SFX::numSources"] - omni.iGlobal["$SFX::numSounds"] - omni.iGlobal["$SFX::Device::fmodNumEventSource"]));
             outtext.Append("  Events: ");
             outtext.Append(omni.sGlobal["$SFX::fmodNumEventSources"]);
             outtext.Append("  Playing: ");
@@ -188,29 +219,29 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$SFX::parameterUpdateTime"] + 
             //    "  Time/A: " + 
             //    t3d.sGlobal["$SFX::ambientUpdateTime"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string sfxSourcesMetricsCallback()
-            {
+        {
             return omni.Util.sfxDumpSourcesToString(false);
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string sfxStatesMetricsCallback()
-            {
+        {
             return "  | SFXStates |" + omni.sGlobal["sfxGetActiveStates"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string timeMetricsCallback()
-            {
+        {
             return "  | Time |" + "  Sim Time: " + omni.Util.getSimTime() + "  Mod: " + (omni.Util.getSimTime()%32);
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string reflectMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | REFLECT |");
             outtext.Append("  Objects: ");
@@ -284,18 +315,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    "\t" + 
             //    "  " + 
             //    t3d.sGlobal["$Reflect::textureStats"].Split(' ')[0];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string decalMetricsCallback()
-            {
-            return "  | DECAL |" + " Batches: " + omni.sGlobal["$Decal::Batches"] + " Buffers: " +
-                   omni.sGlobal["$Decal::Buffers"] + " DecalsRendered: " + omni.sGlobal["$Decal::DecalsRendered"];
-            }
+        {
+            return "  | DECAL |" + " Batches: " + omni.sGlobal["$Decal::Batches"] + " Buffers: " + omni.sGlobal["$Decal::Buffers"] + " DecalsRendered: " + omni.sGlobal["$Decal::DecalsRendered"];
+        }
 
         [ConsoleInteraction(true)]
         public static string renderMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Render |");
             outtext.Append("  Int: ");
@@ -353,11 +383,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$RenderMetris::RIT_Translucent"] +
             //    "  Custom: " + 
             //    t3d.sGlobal["$RenderMetrics::RIT_Custom"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string shadowMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Shadow |");
             outtext.Append("  Active: ");
@@ -394,11 +424,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    "  PoolTexMB: " +
             //    t3d.sGlobal["$ShadowStats::poolTexMemory"] + 
             //    "MB";
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string basicShadowMetricsCallback()
-            {
+        {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Shadow |");
             outtext.Append("  Active: ");
@@ -416,42 +446,41 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //    t3d.sGlobal["$BasicLightManagerStats::shadowsUpdated"] + 
             //    "  Elapsed Ms: " + 
             //    t3d.sGlobal["$BasicLightManagerStats::elapsedUpdateMs"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string lightMetricsCallback()
-            {
-            return "  | Deferred Lights |" + "  Active: " + omni.sGlobal["$lightMetrics::activeLights"] + "  Culled: " +
-                   omni.sGlobal["$lightMetrics::culledLights"];
-            }
+        {
+            return "  | Deferred Lights |" + "  Active: " + omni.sGlobal["$lightMetrics::activeLights"] + "  Culled: " + omni.sGlobal["$lightMetrics::culledLights"];
+        }
 
         [ConsoleInteraction(true)]
         public static string particleMetricsCallback()
-            {
+        {
             return "  | Particles |" + "  # Simulated " + omni.sGlobal["$particle::numSimulated"];
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string partMetricsCallback()
-            {
+        {
             return particleMetricsCallback();
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string audioMetricsCallback()
-            {
+        {
             return sfxMetricsCallback();
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string videoMetricsCallback()
-            {
+        {
             return gfxMetricsCallback();
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static string imposterMetricsCallback()
-            {
+        {
             StringBuilder sb = new StringBuilder(1000);
             sb.Append("  | IMPOSTER |");
             sb.Append("   Rendered: ");
@@ -465,7 +494,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             sb.Append("   RtChanges: ");
             sb.Append(omni.sGlobal["$ImposterStats::rtChanges"]);
             return sb.ToString();
-            }
+        }
 
         // Add a metrics HUD.  %expr can be a vector of names where each element
         // must have a corresponding '<name>MetricsCallback()' function defined
@@ -475,7 +504,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         // Example: metrics( "fps gfx" );
         [ConsoleInteraction(true)]
         public static void Metrics(string expr)
-            {
+        {
             string metricsExpr = "";
             if (expr != "")
                 {
@@ -494,7 +523,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                             metricsExpr += " NL ";
                         metricsExpr += cb;
 
-
                         //fpsMetricsCallback() NL gfxMetricsCallback() @ " "
                         }
                     }
@@ -506,9 +534,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                 ((GuiConsoleTextCtrl) "TextOverlayControl").setValue(metricsExpr);
                 }
             else
-                {
                 ((GuiCanvas) "Canvas").popDialog("FrameOverlayGui");
-                }
-            }
         }
     }
+}

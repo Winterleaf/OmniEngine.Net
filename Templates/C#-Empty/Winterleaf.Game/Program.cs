@@ -50,6 +50,9 @@ namespace Winterleaf.Game
             omni.WindowIcon = new Icon("Omni.ico");
             while (omni.IsRunning)
                 Thread.Sleep(1000);
+
+                if (omni.LastError != null)
+                    MessageBox.Show("An Error has occurred in the application.  " + omni.LastError);
             omni = null;
             }
             catch (Exception err)

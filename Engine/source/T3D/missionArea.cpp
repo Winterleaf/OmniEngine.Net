@@ -328,13 +328,11 @@ if (!object)
       Con::errorf(ConsoleLogEntry::General, "MissionArea::cSetArea - cannot alter client object!");
       return;
    }
-
    RectI rect;
    rect.point.x = x;
    rect.point.y = y;
    rect.extent.x = width;
    rect.extent.y = height;
-
    object->setArea(rect);
 }
 }

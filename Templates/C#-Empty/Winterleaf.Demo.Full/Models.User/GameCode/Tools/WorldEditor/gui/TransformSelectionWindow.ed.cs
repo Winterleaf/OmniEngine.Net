@@ -1,15 +1,49 @@
-﻿using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
-using WinterLeaf.Engine.Classes;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
-    {
+{
     public class TransformSelectionWindow
-        {
+    {
         [ConsoleInteraction(true, "TransformSelectionWindow_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (TransformSelectionContainer, EditorGuiGroup)        oc_Newobject59
 
             ObjectCreator oc_Newobject59 = new ObjectCreator("GuiControl", "TransformSelectionContainer, EditorGuiGroup");
@@ -30,8 +64,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiWindowCollapseCtrl (ETransformSelection)        oc_Newobject58
 
-            ObjectCreator oc_Newobject58 = new ObjectCreator("GuiWindowCollapseCtrl", "ETransformSelection",
-                typeof (ETransformSelection));
+            ObjectCreator oc_Newobject58 = new ObjectCreator("GuiWindowCollapseCtrl", "ETransformSelection", typeof (ETransformSelection));
             oc_Newobject58["internalName"] = "TransformSelectionWindow";
             oc_Newobject58["Enabled"] = "1";
             oc_Newobject58["isContainer"] = "1";
@@ -122,8 +155,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject1
 
-            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject1["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject1["internalName"] = "DoPosition";
             oc_Newobject1["Enabled"] = "1";
@@ -142,8 +174,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiButtonCtrl ()        oc_Newobject2
 
-            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiButtonCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionButtonClass));
+            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiButtonCtrl", "", typeof (ETransformSelection.ETransformSelectionButtonClass));
             //oc_Newobject2["class"] = "ETransformSelectionButtonClass";
             oc_Newobject2["internalName"] = "GetPosButton";
             oc_Newobject2["canSaveDynamicFields"] = "0";
@@ -200,8 +231,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject4
 
-            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject4["class"] = "ETransformSelectionTextEdit";
             oc_Newobject4["internalName"] = "PosX";
             oc_Newobject4["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -247,8 +277,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject6
 
-            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject6["class"] = "ETransformSelectionTextEdit";
             oc_Newobject6["internalName"] = "PosY";
             oc_Newobject6["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -294,8 +323,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject8
 
-            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject8["class"] = "ETransformSelectionTextEdit";
             oc_Newobject8["internalName"] = "PosZ";
             oc_Newobject8["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -313,8 +341,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject9
 
-            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject9["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject9["internalName"] = "PosRelative";
             oc_Newobject9["Enabled"] = "1";
@@ -363,8 +390,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject12
 
-            ObjectCreator oc_Newobject12 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject12 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject12["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject12["internalName"] = "DoRotation";
             oc_Newobject12["Enabled"] = "1";
@@ -383,8 +409,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiButtonCtrl ()        oc_Newobject13
 
-            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiButtonCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionButtonClass));
+            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiButtonCtrl", "", typeof (ETransformSelection.ETransformSelectionButtonClass));
             //oc_Newobject13["class"] = "ETransformSelectionButtonClass";
             oc_Newobject13["internalName"] = "GetRotButton";
             oc_Newobject13["canSaveDynamicFields"] = "0";
@@ -441,8 +466,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject15
 
-            ObjectCreator oc_Newobject15 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject15 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject15["class"] = "ETransformSelectionTextEdit";
             oc_Newobject15["internalName"] = "Heading";
             oc_Newobject15["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -488,8 +512,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject17
 
-            ObjectCreator oc_Newobject17 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject17 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject17["class"] = "ETransformSelectionTextEdit";
             oc_Newobject17["internalName"] = "Pitch";
             oc_Newobject17["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -535,8 +558,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject19
 
-            ObjectCreator oc_Newobject19 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject19 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject19["class"] = "ETransformSelectionTextEdit";
             oc_Newobject19["internalName"] = "Bank";
             oc_Newobject19["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -554,8 +576,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject20
 
-            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject20["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject20["internalName"] = "RotRelative";
             oc_Newobject20["Enabled"] = "1";
@@ -574,8 +595,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject21
 
-            ObjectCreator oc_Newobject21 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject21 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject21["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject21["internalName"] = "RotLocal";
             oc_Newobject21["Enabled"] = "1";
@@ -693,8 +713,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject25
 
-            ObjectCreator oc_Newobject25 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject25 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject25["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject25["internalName"] = "DoScale";
             oc_Newobject25["Enabled"] = "1";
@@ -713,8 +732,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiButtonCtrl ()        oc_Newobject26
 
-            ObjectCreator oc_Newobject26 = new ObjectCreator("GuiButtonCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionButtonClass));
+            ObjectCreator oc_Newobject26 = new ObjectCreator("GuiButtonCtrl", "", typeof (ETransformSelection.ETransformSelectionButtonClass));
             //oc_Newobject26["class"] = "ETransformSelectionButtonClass";
             oc_Newobject26["internalName"] = "GetScaleButton";
             oc_Newobject26["canSaveDynamicFields"] = "0";
@@ -771,8 +789,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject28
 
-            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject28["class"] = "ETransformSelectionTextEdit";
             oc_Newobject28["internalName"] = "ScaleX";
             oc_Newobject28["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -818,8 +835,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject30
 
-            ObjectCreator oc_Newobject30 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject30 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject30["class"] = "ETransformSelectionTextEdit";
             oc_Newobject30["internalName"] = "ScaleY";
             oc_Newobject30["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -865,8 +881,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject32
 
-            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject32 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject32["class"] = "ETransformSelectionTextEdit";
             oc_Newobject32["internalName"] = "ScaleZ";
             oc_Newobject32["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -884,8 +899,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject33
 
-            ObjectCreator oc_Newobject33 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject33 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject33["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject33["internalName"] = "ScaleRelative";
             oc_Newobject33["Enabled"] = "1";
@@ -904,8 +918,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject34
 
-            ObjectCreator oc_Newobject34 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject34 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject34["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject34["internalName"] = "ScaleLocal";
             oc_Newobject34["Enabled"] = "1";
@@ -924,8 +937,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl (ETransformSelectionScaleProportional)        oc_Newobject35
 
-            ObjectCreator oc_Newobject35 = new ObjectCreator("GuiCheckBoxCtrl", "ETransformSelectionScaleProportional",
-                typeof (ETransformSelection.ETransformSelectionScaleProportional));
+            ObjectCreator oc_Newobject35 = new ObjectCreator("GuiCheckBoxCtrl", "ETransformSelectionScaleProportional", typeof (ETransformSelection.ETransformSelectionScaleProportional));
             //oc_Newobject35["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject35["internalName"] = "ScaleProportional";
             oc_Newobject35["Enabled"] = "1";
@@ -1008,8 +1020,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject39
 
-            ObjectCreator oc_Newobject39 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject39 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject39["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject39["internalName"] = "DoSize";
             oc_Newobject39["Enabled"] = "1";
@@ -1028,8 +1039,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiButtonCtrl ()        oc_Newobject40
 
-            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiButtonCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionButtonClass));
+            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiButtonCtrl", "", typeof (ETransformSelection.ETransformSelectionButtonClass));
             //oc_Newobject40["class"] = "ETransformSelectionButtonClass";
             oc_Newobject40["internalName"] = "GetSizeButton";
             oc_Newobject40["canSaveDynamicFields"] = "0";
@@ -1086,8 +1096,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject42
 
-            ObjectCreator oc_Newobject42 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject42 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject42["class"] = "ETransformSelectionTextEdit";
             oc_Newobject42["internalName"] = "SizeX";
             oc_Newobject42["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -1133,8 +1142,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject44
 
-            ObjectCreator oc_Newobject44 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject44 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject44["class"] = "ETransformSelectionTextEdit";
             oc_Newobject44["internalName"] = "SizeY";
             oc_Newobject44["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -1180,8 +1188,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiTextEditCtrl ()        oc_Newobject46
 
-            ObjectCreator oc_Newobject46 = new ObjectCreator("GuiTextEditCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionTextEdit));
+            ObjectCreator oc_Newobject46 = new ObjectCreator("GuiTextEditCtrl", "", typeof (ETransformSelection.ETransformSelectionTextEdit));
             //oc_Newobject46["class"] = "ETransformSelectionTextEdit";
             oc_Newobject46["internalName"] = "SizeZ";
             oc_Newobject46["profile"] = "ToolsGuiNumericTextEditProfile";
@@ -1199,8 +1206,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject47
 
-            ObjectCreator oc_Newobject47 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject47 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject47["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject47["internalName"] = "SizeRelative";
             oc_Newobject47["Enabled"] = "1";
@@ -1219,8 +1225,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl ()        oc_Newobject48
 
-            ObjectCreator oc_Newobject48 = new ObjectCreator("GuiCheckBoxCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
+            ObjectCreator oc_Newobject48 = new ObjectCreator("GuiCheckBoxCtrl", "", typeof (ETransformSelection.ETransformSelectionCheckBoxClass));
             //oc_Newobject48["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject48["internalName"] = "SizeLocal";
             oc_Newobject48["Enabled"] = "1";
@@ -1239,8 +1244,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiCheckBoxCtrl (ETransformSelectionSizeProportional)        oc_Newobject49
 
-            ObjectCreator oc_Newobject49 = new ObjectCreator("GuiCheckBoxCtrl", "ETransformSelectionSizeProportional",
-                typeof (ETransformSelection.ETransformSelectionSizeProportional));
+            ObjectCreator oc_Newobject49 = new ObjectCreator("GuiCheckBoxCtrl", "ETransformSelectionSizeProportional", typeof (ETransformSelection.ETransformSelectionSizeProportional));
             //oc_Newobject49["class"] = "ETransformSelectionCheckBoxClass";
             oc_Newobject49["internalName"] = "SizeProportional";
             oc_Newobject49["Enabled"] = "1";
@@ -1294,8 +1298,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiButtonCtrl ()        oc_Newobject55
 
-            ObjectCreator oc_Newobject55 = new ObjectCreator("GuiButtonCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionButtonClass));
+            ObjectCreator oc_Newobject55 = new ObjectCreator("GuiButtonCtrl", "", typeof (ETransformSelection.ETransformSelectionButtonClass));
             //oc_Newobject55["class"] = "ETransformSelectionButtonClass";
             oc_Newobject55["internalName"] = "ApplyButton";
             oc_Newobject55["canSaveDynamicFields"] = "0";
@@ -1323,8 +1326,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             #region GuiButtonCtrl ()        oc_Newobject56
 
-            ObjectCreator oc_Newobject56 = new ObjectCreator("GuiButtonCtrl", "",
-                typeof (ETransformSelection.ETransformSelectionButtonClass));
+            ObjectCreator oc_Newobject56 = new ObjectCreator("GuiButtonCtrl", "", typeof (ETransformSelection.ETransformSelectionButtonClass));
             //oc_Newobject56["class"] = "ETransformSelectionButtonClass";
             oc_Newobject56["internalName"] = "CloseButton";
             oc_Newobject56["canSaveDynamicFields"] = "0";
@@ -1361,6 +1363,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             #endregion
 
             oc_Newobject59.Create();
-            }
         }
     }
+}

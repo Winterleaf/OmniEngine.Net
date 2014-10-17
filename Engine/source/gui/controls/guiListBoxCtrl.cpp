@@ -1715,7 +1715,6 @@ const char* newItem = (const char*)x__newItem;
 	String item(newItem);
 	if( item == String::EmptyString )
 		return;
-
 	object->addFilteredItem( item );
 }
 }
@@ -1734,15 +1733,12 @@ const char* color = (const char*)x__color;
    else
    {
       U32 elementCount = GuiListBoxCtrl::getStringElementCount(color);
-
      if(elementCount == 3)
      {
          F32 red, green, blue;
-
          red = dAtof(GuiListBoxCtrl::getStringElement( color, 0 ));
          green = dAtof(GuiListBoxCtrl::getStringElement( color, 1 ));
          blue = dAtof(GuiListBoxCtrl::getStringElement( color, 2 ));
-
         return (S32)( object->addItemWithColor( newItem, ColorF(red, green, blue) ));
      }
      else if(elementCount == 1)
@@ -1872,7 +1868,6 @@ if (!object)
    GuiListBoxCtrl::LBItem *lastItem = object->mLastClickItem;
    if ( !lastItem )
      return (S32)( -1);
-
   return (S32)( object->getItemIndex( lastItem ));
 };
 }
@@ -1964,7 +1959,6 @@ const char* itemName = (const char*)x__itemName;
 	String item(itemName);
 	if( item == String::EmptyString )
 		return;
-
 	object->removeFilteredItem( item );
 }
 }

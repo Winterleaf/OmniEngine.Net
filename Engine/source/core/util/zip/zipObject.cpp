@@ -517,7 +517,6 @@ SimObject* stream; Sim::findObject(x__stream, stream );
       Con::errorf("ZipObject::closeFile - Invalid stream specified");
       return;
    }
-
    object->closeFile(so);
 }
 }

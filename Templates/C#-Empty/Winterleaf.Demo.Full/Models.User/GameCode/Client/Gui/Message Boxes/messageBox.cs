@@ -1,22 +1,56 @@
-﻿#region
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+#region
 
 using WinterLeaf.Demo.Full.Models.User.Extendable;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
-using WinterLeaf.Engine.Containers;
 using WinterLeaf.Engine.Classes.Interopt;
+using WinterLeaf.Engine.Containers;
 
 #endregion
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
-    {
+{
     internal class messageBox
-        {
+    {
         private static readonly pInvokes omni = new pInvokes();
 
         public static void initialize()
-            {
+        {
             if ("MessagePopupDlg".isObject())
                 "MessagePopupDlg".delete();
             if ("MessageBoxYesNoDlg".isObject())
@@ -37,7 +71,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
             omni.console.Eval(@"
 
 %guiContent = new GuiControl(MessageBoxOKDlg) {
-   WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof(WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.MessageBoxOKDlg).FullName + @""";
+   WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxOKDlg).FullName + @""";
    profile = ""GuiOverlayProfile"";
    horizSizing = ""width"";
    vertSizing = ""height"";
@@ -104,7 +138,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
             omni.console.Eval(@"
 %guiContent = new GuiControl(MessageBoxYesNoDlg) {
 
-WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof(WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.MessageBoxYesNoDlg).FullName + @""";
+WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoDlg).FullName + @""";
    
 	profile = ""GuiOverlayProfile"";
 	horizSizing = ""width"";
@@ -186,7 +220,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof(WinterLeaf.Demo.Full.Models.User.Gam
 
             omni.console.Eval(@"
 %guiContent = new GuiControl(MessageBoxYesNoCancelDlg) {
-WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof(WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.MessageBoxYesNoCancelDlg).FullName + @""";
+WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName + @""";
    
    canSaveDynamicFields = ""0"";
    Profile = ""GuiOverlayProfile"";
@@ -747,8 +781,6 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof(WinterLeaf.Demo.Full.Models.User.Gam
 
             #endregion
 
-
-
             #region new SFXDescription(MessageBoxAudioDescription)
 
             omni.console.Eval(@"
@@ -768,9 +800,8 @@ new SFXProfile(messageBoxBeep)
 };
 ");
 
-
             #endregion
-            }
+        }
 
         /// <summary>
         /// messageCallback
@@ -780,12 +811,12 @@ new SFXProfile(messageBoxBeep)
         /// <param name="callback"></param>
         [ConsoleInteraction(true)]
         public static void messageCallback(GuiControl dlg, string callback)
-            {
-            ((GuiCanvas)"Canvas").popDialog(dlg);
+        {
+            ((GuiCanvas) "Canvas").popDialog(dlg);
             if (callback.Trim() != "")
                 omni.Util.eval(callback);
             //omni.console.Eval(callback);
-            }
+        }
 
         /// <summary>
         /// The # in the function passed replaced with the output 
@@ -795,17 +826,17 @@ new SFXProfile(messageBoxBeep)
         /// <param name="callback"></param>
         [ConsoleInteraction(true)]
         public static void IOCallback(GuiControl dlg, string callback)
-            {
+        {
             GuiPopUpMenuCtrl IODropdownMenu = "IODropdownMenu";
             int id = IODropdownMenu.getSelected();
             string text = IODropdownMenu.getTextById(id);
             callback = callback.Replace("#", text);
             omni.console.Eval(callback);
-            ((GuiCanvas)"Canvas").popDialog(dlg);
-            }
+            ((GuiCanvas) "Canvas").popDialog(dlg);
+        }
 
         public static void MBSetText(GuiMLTextCtrl text, GuiWindowCtrl frame, string msg)
-            {
+        {
             // Get the extent of the text box.
             Point2I ext = text.getExtent();
             // Set the text in the center of the text box.
@@ -821,7 +852,7 @@ new SFXProfile(messageBoxBeep)
             // Resize the window housing the text box.
             Point2I windowPos = frame.getPosition();
             Point2I windowExt = frame.getExtent();
-            frame.resize(windowPos.x, (windowPos.y - (deltaY / 2)), windowExt.x, (windowExt.y + deltaY));
+            frame.resize(windowPos.x, (windowPos.y - (deltaY/2)), windowExt.x, (windowExt.y + deltaY));
 
             frame.canMove = false;
             frame.resizeWidth = false;
@@ -831,63 +862,60 @@ new SFXProfile(messageBoxBeep)
 
             //TODO
             //omni.Util._sfxPlayOnce("messageBoxBeep");
-            }
+        }
 
         [ConsoleInteraction(true)]
         public static void MessageBoxOK(string title, string message, string callback = "")
-            {
-            ((GuiWindowCtrl)"MBOKFrame").text = title;
-            ((GuiCanvas)"Canvas").pushDialog("MessageBoxOKDlg", 0, true);
+        {
+            ((GuiWindowCtrl) "MBOKFrame").text = title;
+            ((GuiCanvas) "Canvas").pushDialog("MessageBoxOKDlg", 0, true);
             MBSetText("MBOKText", "MBOKFrame", message);
-            ((GuiControl)"MessageBoxOKDlg")["callback"] = callback;
-            }
+            ((GuiControl) "MessageBoxOKDlg")["callback"] = callback;
+        }
 
         [ConsoleInteraction(true)]
-        public static void MessageBoxOKCancel(string title, string message, string callback = "",
-            string cancelCallBack = "")
-            {
-            ((GuiWindowCtrl)"MBOKCancelFrame").text = title;
-            ((GuiCanvas)"Canvas").pushDialog("MessageBoxOKCancelDlg");
+        public static void MessageBoxOKCancel(string title, string message, string callback = "", string cancelCallBack = "")
+        {
+            ((GuiWindowCtrl) "MBOKCancelFrame").text = title;
+            ((GuiCanvas) "Canvas").pushDialog("MessageBoxOKCancelDlg");
             MBSetText("MBOKCancelText", "MBOKCancelFrame", message);
-            ((GuiControl)"MessageBoxOKCancelDlg")["callback"] = callback;
-            ((GuiControl)"MessageBoxOKCancelDlg")["cancelCallback"] = cancelCallBack;
-            }
+            ((GuiControl) "MessageBoxOKCancelDlg")["callback"] = callback;
+            ((GuiControl) "MessageBoxOKCancelDlg")["cancelCallback"] = cancelCallBack;
+        }
 
         [ConsoleInteraction(true)]
-        public static void MessageBoxOKCancelDetails(string title, string message, string details,
-            string callback = "", string cancelCallback = "")
-            {
+        public static void MessageBoxOKCancelDetails(string title, string message, string details, string callback = "", string cancelCallback = "")
+        {
             if (details == "")
-                ((GuiButtonCtrl)"MBOKCancelDetailsButton").setVisible(false);
+                ((GuiButtonCtrl) "MBOKCancelDetailsButton").setVisible(false);
 
-            ((GuiScrollCtrl)"MBOKCancelDetailsScroll").setVisible(false);
-            ((GuiWindowCtrl)"MBOKCancelDetailsFrame").text = title;
-            ((GuiCanvas)"Canvas").pushDialog("MessageBoxOKCancelDetailsDlg");
+            ((GuiScrollCtrl) "MBOKCancelDetailsScroll").setVisible(false);
+            ((GuiWindowCtrl) "MBOKCancelDetailsFrame").text = title;
+            ((GuiCanvas) "Canvas").pushDialog("MessageBoxOKCancelDetailsDlg");
             MBSetText("MBOKCancelDetailsText", "MBOKCancelDetailsFrame", message);
-            ((GuiMLTextCtrl)"MBOKCancelDetailsInfoText").setText(details);
+            ((GuiMLTextCtrl) "MBOKCancelDetailsInfoText").setText(details);
 
-            Point2I textExtent = ((GuiMLTextCtrl)"MBOKCancelDetailsInfoText").getExtent();
+            Point2I textExtent = ((GuiMLTextCtrl) "MBOKCancelDetailsInfoText").getExtent();
             int textExtentY = textExtent.y;
 
-            Point2I textPos = ((GuiMLTextCtrl)"MBOKCancelDetailsInfoText").getPosition();
+            Point2I textPos = ((GuiMLTextCtrl) "MBOKCancelDetailsInfoText").getPosition();
             int textPosY = textPos.y;
 
             int extentY = textPosY + textExtentY + 65;
 
-            ((GuiMLTextCtrl)"MBOKCancelDetailsInfoText").setExtent(new Point2F(285, 128));
+            ((GuiMLTextCtrl) "MBOKCancelDetailsInfoText").setExtent(new Point2F(285, 128));
 
-            ((GuiWindowCtrl)"MBOKCancelDetailsFrame").setExtent(new Point2F(300, extentY));
+            ((GuiWindowCtrl) "MBOKCancelDetailsFrame").setExtent(new Point2F(300, extentY));
 
-            ((MessageBoxOKCancelDetailsDlg)"MessageBoxOKCancelDetailsDlg")["callback"] = callback;
-            ((MessageBoxOKCancelDetailsDlg)"MessageBoxOKCancelDetailsDlg")["cancelCallback"] = cancelCallback;
+            ((MessageBoxOKCancelDetailsDlg) "MessageBoxOKCancelDetailsDlg")["callback"] = callback;
+            ((MessageBoxOKCancelDetailsDlg) "MessageBoxOKCancelDetailsDlg")["cancelCallback"] = cancelCallback;
 
-            ((GuiWindowCtrl)"MBOKCancelDetailsFrame")["defaultExtent"] =
-                ((GuiWindowCtrl)"MBOKCancelDetailsFrame").getExtent().AsString();
-            }
+            ((GuiWindowCtrl) "MBOKCancelDetailsFrame")["defaultExtent"] = ((GuiWindowCtrl) "MBOKCancelDetailsFrame").getExtent().AsString();
+        }
 
         [ConsoleInteraction(true)]
         public static void MBOKCancelDetailsToggleInfoFrame()
-            {
+        {
             GuiScrollCtrl MBOKCancelDetailsScroll = "MBOKCancelDetailsScroll";
             if (!MBOKCancelDetailsScroll.isVisible())
                 {
@@ -903,7 +931,7 @@ new SFXProfile(messageBoxBeep)
                 if (verticalStretch > 260 || verticalStretch < 0)
                     verticalStretch = 260;
 
-                Point2I extent = new Point2I(((GuiWindowCtrl)"MBOKCancelDetailsFrame")["defaultExtent"]);
+                Point2I extent = new Point2I(((GuiWindowCtrl) "MBOKCancelDetailsFrame")["defaultExtent"]);
                 int height = extent.y;
 
                 int posY = textPosY + textExtentY + 10;
@@ -912,95 +940,94 @@ new SFXProfile(messageBoxBeep)
 
                 MBOKCancelDetailsScroll.setPosition(posX, posY);
                 MBOKCancelDetailsScroll.setExtent(new Point2F(MBOKCancelDetailsScroll.extent.x, verticalStretch));
-                ((GuiWindowCtrl)"MBOKCancelDetailsFrame").setExtent(new Point2F(300, (height + verticalStretch + 10)));
+                ((GuiWindowCtrl) "MBOKCancelDetailsFrame").setExtent(new Point2F(300, (height + verticalStretch + 10)));
                 }
             else
                 {
-                Point2I extent = new Point2I(((GuiWindowCtrl)"MBOKCancelDetailsFrame")["defaultExtent"]);
+                Point2I extent = new Point2I(((GuiWindowCtrl) "MBOKCancelDetailsFrame")["defaultExtent"]);
                 int width = extent.x;
                 int height = extent.y;
-                ((GuiWindowCtrl)"MBOKCancelDetailsFrame").setExtent(new Point2F(width, height));
+                ((GuiWindowCtrl) "MBOKCancelDetailsFrame").setExtent(new Point2F(width, height));
                 MBOKCancelDetailsScroll.setVisible(false);
                 }
-            }
+        }
 
         [ConsoleInteraction(true)]
-        public static void MessageBoxYesNo(string title, string message, string yesCallback = "",
-            string noCallback = "")
-            {
-            ((GuiWindowCtrl)"MBYesNoFrame").text = title;
-            ((MessageBoxYesNoDlg)"MessageBoxYesNoDlg").profile = "GuiOverlayProfile";
-            ((GuiCanvas)"Canvas").pushDialog("MessageBoxYesNoDlg");
+        public static void MessageBoxYesNo(string title, string message, string yesCallback = "", string noCallback = "")
+        {
+            ((GuiWindowCtrl) "MBYesNoFrame").text = title;
+            ((MessageBoxYesNoDlg) "MessageBoxYesNoDlg").profile = "GuiOverlayProfile";
+            ((GuiCanvas) "Canvas").pushDialog("MessageBoxYesNoDlg");
             MBSetText("MBYesNoText", "MBYesNoFrame", message);
-            ((GuiControl)"MessageBoxYesNoDlg")["yesCallBack"] = yesCallback;
-            ((GuiControl)"MessageBoxYesNoDlg")["noCallback"] = noCallback;
-            }
+            ((GuiControl) "MessageBoxYesNoDlg")["yesCallBack"] = yesCallback;
+            ((GuiControl) "MessageBoxYesNoDlg")["noCallback"] = noCallback;
+        }
 
         [ConsoleInteraction(true)]
-        public static void MessageBoxYesNoCancel(string title, string message, string yesCallback = "",
-            string noCallback = "", string cancelCallback = "")
-            {
-            ((GuiWindowCtrl)"MBYesNoCancelFrame").text = title;
-            ((MessageBoxYesNoCancelDlg)"MessageBoxYesNoCancelDlg").profile = "GuiOverlayProfile";
+        public static void MessageBoxYesNoCancel(string title, string message, string yesCallback = "", string noCallback = "", string cancelCallback = "")
+        {
+            ((GuiWindowCtrl) "MBYesNoCancelFrame").text = title;
+            ((MessageBoxYesNoCancelDlg) "MessageBoxYesNoCancelDlg").profile = "GuiOverlayProfile";
             //bug GuiCanvas.pushDialog doesn't seem to work the mouse right.
-            ((GuiCanvas)"Canvas").pushDialog("MessageBoxYesNoCancelDlg");
+            ((GuiCanvas) "Canvas").pushDialog("MessageBoxYesNoCancelDlg");
             MBSetText("MBYesNoCancelText", "MBYesNoCancelFrame", message);
-            ((GuiControl)"MessageBoxYesNoCancelDlg")["yesCallBack"] = yesCallback;
-            ((GuiControl)"MessageBoxYesNoCancelDlg")["noCallback"] = noCallback;
-            ((GuiControl)"MessageBoxYesNoCancelDlg")["cancelCallback"] = cancelCallback;
-            }
+            ((GuiControl) "MessageBoxYesNoCancelDlg")["yesCallBack"] = yesCallback;
+            ((GuiControl) "MessageBoxYesNoCancelDlg")["noCallback"] = noCallback;
+            ((GuiControl) "MessageBoxYesNoCancelDlg")["cancelCallback"] = cancelCallback;
+        }
 
         [ConsoleInteraction(true)]
         public static void MessagePopup(string title, string message, int delay = 0)
-            {
-            ((GuiWindowCtrl)"MBYesNoCancelFrame").text = title;
+        {
+            ((GuiWindowCtrl) "MBYesNoCancelFrame").text = title;
             //bug GuiCanvas.pushDialog doesn't seem to work the mouse right.
-            ((GuiCanvas)"Canvas").pushDialog("MessagePopupDlg");
+            ((GuiCanvas) "Canvas").pushDialog("MessagePopupDlg");
             MBSetText("MessagePopText", "MessagePopFrame", message);
             if (delay != 0)
                 omni.Util._schedule(delay.AsString(), "0", "CloseMessagePopup");
-            }
+        }
 
         [ConsoleInteraction(true)]
-        public static void IODropdown(string title, string message, SimGroup simgroup, string callback,
-            string cancelCallback)
-            {
-            ((GuiWindowCtrl)"IODropdownFrame").text = title;
+        public static void IODropdown(string title, string message, SimGroup simgroup, string callback, string cancelCallback)
+        {
+            ((GuiWindowCtrl) "IODropdownFrame").text = title;
             //bug GuiCanvas.pushDialog doesn't seem to work the mouse right.
-            ((GuiCanvas)"Canvas").pushDialog("IODropdownDlg");
+            ((GuiCanvas) "Canvas").pushDialog("IODropdownDlg");
             MBSetText("IODropdownText", "IODropdownFrame", message);
             GuiPopUpMenuCtrl IODropdownMenu = "IODropdownMenu";
 
             if (simgroup.isObject())
+                {
                 for (uint i = 0; i < simgroup.getCount(); i++)
                     IODropdownMenu.add(simgroup.getObject(i).getName());
+                }
 
             IODropdownMenu.sort();
             IODropdownMenu.setFirstSelected(false);
-            ((GuiControl)"IODropdownDlg")["callback"] = callback;
-            ((GuiControl)"IODropdownDlg")["cancelCallback"] = cancelCallback;
-            }
+            ((GuiControl) "IODropdownDlg")["callback"] = callback;
+            ((GuiControl) "IODropdownDlg")["cancelCallback"] = cancelCallback;
+        }
 
         [ConsoleInteraction(true)]
         public static void CloseMessagePopup()
-            {
+        {
             //bug GuiCanvas.popDialog doesn't work correctly.
-            ((GuiCanvas)"canvas").popDialog("MessagePopupDlg");
-            }
+            ((GuiCanvas) "canvas").popDialog("MessagePopupDlg");
+        }
 
         public static void MessageBoxOKOld(string title, string message, string callback)
-            {
+        {
             MessageBoxOK(title, message, callback);
-            }
+        }
 
         public static void MessageBoxOKCancelOld(string title, string message, string callback, string cancelCallback)
-            {
+        {
             MessageBoxOKCancel(title, message, callback, cancelCallback);
-            }
+        }
 
         public static void MessageBoxYesNoOld(string title, string message, string yesCallback, string noCallback)
-            {
+        {
             MessageBoxYesNo(title, message, yesCallback, noCallback);
-            }
         }
     }
+}

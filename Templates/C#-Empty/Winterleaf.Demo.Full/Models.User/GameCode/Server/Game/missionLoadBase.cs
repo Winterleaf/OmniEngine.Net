@@ -1,27 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WinterLeaf.Demo.Full.Models.User.CustomObjects.Utilities;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using WinterLeaf.Demo.Full.Models.User.Extendable;
-using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
-    {
+{
     public class missionLoadBase : pInvokes
-        {
-        
+    {
 
         public virtual void InitMissionLoad()
-            {
+        {
             iGlobal["$MissionLoadPause"] = 5000;
-            }
+        }
 
         public virtual void loadMission(string missionName, bool isFirstMission)
-            {
+        {
             EndMission();
             console.print("*** LOADING MISSION: " + missionName);
             console.print("*** Stage 1 load");
@@ -35,13 +63,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
 
             iGlobal["$missionSequence"] = iGlobal["$missionSequence"] + 1;
 
-
             bGlobal["$missionRunning"] = false;
 
             sGlobal["$Server::MissionFile"] = missionName;
 
             sGlobal["$Server::LoadFailMsg"] = string.Empty;
-
 
             // Extract mission info from the mission file,
             // including the display name and stuff to send
@@ -60,15 +86,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
                 LoadMissionStage2();
             else
                 Util._schedule(sGlobal["$MissionLoadPause"], "0", "loadMissionStage2");
-            }
+        }
 
         public virtual void LoadMissionStage2()
-            {
+        {
             console.print("*** Stage 2 load CSHARP");
             // Create the mission group off the ServerGroup
 
             sGlobal["$instantGroup"] = "ServerGroup";
-
 
             // Make sure the mission exists
             string file = sGlobal["$Server::MissionFile"];
@@ -89,15 +114,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
                     sGlobal["$Server::LoadFailMsg"] = "No 'MissionGroup' found in mission " + file;
                 }
             if (sGlobal["$Server::LoadFailMsg"] != string.Empty)
-                {
                 return;
-                }
             // Set mission name.
 
-
             if ("theLevelInfo".isObject())
-                sGlobal["$Server::MissionName"] = ((LevelInfo)"theLevelInfo")["levelName"];
-
+                sGlobal["$Server::MissionName"] = ((LevelInfo) "theLevelInfo")["levelName"];
 
             // Mission cleanup group.  This is where run time components will reside.  The MissionCleanup
             // group will be added to the ServerGroup.
@@ -106,10 +127,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
             // Make the MissionCleanup group the place where all new objects will automatically be added.
             sGlobal["$instantGroup"] = missioncleanup;
 
-
             // Create the Game object
             game.createGame();
-
 
             console.pathOnMissionLoadDone();
 
@@ -122,22 +141,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
             foreach (GameConnection client in ClientGroup)
                 client.loadMission();
 
-
             game.onMissionLoaded();
-            }
+        }
 
         public virtual void EndMission()
-            {
+        {
             if (!"MissionGroup".isObject())
                 return;
 
             console.print("*** ENDING MISSION");
             // Inform the game code we're done.
 
-
             // Inform the game code we're done.
             game.onMissionEnded();
-
 
             // Inform the clients
             foreach (GameConnection client in ClientGroup)
@@ -150,20 +166,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
             if ("MissionGroup".isObject())
                 "MissionGroup".delete();
 
-
             if ("MissionCleanup".isObject())
                 "MissionCleanup".delete();
 
             sGlobal["$instantGroup"] = "ServerGroup";
 
             console.clearServerPaths();
-            }
+        }
 
         public virtual void ResetMission()
-            {
+        {
             console.print("*** MISSION RESET");
             // Remove any temporary mission objects
-
 
             if ("MissionCleanup".isObject())
                 "MissionCleanup".delete();
@@ -180,23 +194,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
 
             game.createGame();
 
-
             Util.pathOnMissionLoadDone();
-
 
             // Allow the Game object to reset the mission
             game.onMissionReset();
-            }
+        }
 
         public virtual void onGameDurationEnd()
-            {
+        {
             if (bGlobal["$Game::Duration"] && !EditorIsActive() && !GuiEditorIsActive())
                 cycleGame();
-            }
+        }
 
         public virtual void cycleGame()
-            {
-            if (((ScriptObject)"Game")["allowCycling"].AsBool())
+        {
+            if (((ScriptObject) "Game")["allowCycling"].AsBool())
                 {
                 if (!bGlobal["$Game::Cycling"])
                     {
@@ -210,13 +222,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
                 missionLoad.EndMission();
                 // Destroy server to remove all connected clients after they've seen the
                 // end game GUI.
-                Util._schedule((iGlobal["$Game::EndGamePause"] * 1000).AsString(), "0", "gameCoreDestroyServer",
-                    sGlobal["$Server::Session"]);
+                Util._schedule((iGlobal["$Game::EndGamePause"]*1000).AsString(), "0", "gameCoreDestroyServer", sGlobal["$Server::Session"]);
                 }
-            }
+        }
 
         public virtual void gameCoreDestroyServer(string serverSession)
-            {
+        {
             if (serverSession == sGlobal["$Server::Session"])
                 {
                 if ("LocalClientConnection".isObject())
@@ -224,24 +235,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
                 else
                     server.destroyServer();
                 }
-            }
+        }
 
         public virtual void onCycleExec()
-            {
+        {
             missionLoad.EndMission();
-            iGlobal["$Game::Schedule"] = Util._schedule(
-                (iGlobal["$Game::EndGamePause"] * 1000).AsString(), "0", "onCyclePauseEnd");
-            }
+            iGlobal["$Game::Schedule"] = Util._schedule((iGlobal["$Game::EndGamePause"]*1000).AsString(), "0", "onCyclePauseEnd");
+        }
 
         public virtual void onCyclePauseEnd()
-            {
+        {
             bGlobal["$Game::Cycling"] = false;
             // Just restart the missions for now.
             missionLoad.loadMission(sGlobal["$Server::MissionFile"], false);
-            }
+        }
 
         public virtual void serverCmdMissionStartPhase1Ack(GameConnection client, int seq)
-            {
+        {
             // Make sure to ignore calls from a previous mission load
             if (seq != iGlobal["$missionSequence"] || !bGlobal["$MissionRunning"])
                 return;
@@ -258,15 +268,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
             // that they've all been received.
             console.print("Transmitting Datablocks");
             client.transmitDataBlocks(iGlobal["$missionSequence"]);
-            }
+        }
 
         public virtual void serverCmdMissionStartPhase2CacheAck(GameConnection client)
-            {
+        {
             client["currentPhase"] = "1.5";
-            }
+        }
 
         public virtual void serverCmdMissionStartPhase2Ack(GameConnection client, string seq, PlayerData playerDB)
-            {
+        {
             // Make sure to ignore calls from a previous mission load
             if (seq != sGlobal["$missionSequence"] || !bGlobal["$MissionRunning"])
                 return;
@@ -283,10 +293,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
 
             // Start ghosting objects to the client
             client.activateGhosting();
-            }
+        }
 
         public virtual void serverCmdMissionStartPhase3Ack(GameConnection client, string seq)
-            {
+        {
             if (seq != sGlobal["$missionSequence"] || !bGlobal["$MissionRunning"])
                 return;
             if (client["currentPhase"].AsDouble() != 2.0)
@@ -297,22 +307,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.Game
 
             if (iGlobal["$Pref::Server::MinPlayers"] > 1)
 
-                console.Call("PlayerReady", new string[] { client });
+                console.Call("PlayerReady", new string[] {client});
             else
                 {
                 client.startMission();
                 client.onClientEnterGame();
                 }
-            }
+        }
 
         public static bool EditorIsActive()
-            {
-            return ("EditorGui".isObject() && ((GuiCanvas)"Canvas").getContent() == "EditorGui".getID());
-            }
+        {
+            return ("EditorGui".isObject() && ((GuiCanvas) "Canvas").getContent() == "EditorGui".getID());
+        }
 
         public static bool GuiEditorIsActive()
-            {
-            return ("GuiEditorGui".isObject() && ((GuiCanvas)"Canvas").getContent() == "GuiEditorGui".getID());
-            }
+        {
+            return ("GuiEditorGui".isObject() && ((GuiCanvas) "Canvas").getContent() == "GuiEditorGui".getID());
         }
     }
+}

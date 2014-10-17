@@ -568,14 +568,12 @@ const char* anim = (const char*)x__anim;
         object->playAnimation();
         return;
     }
-
     LightAnimData *animData;
         if ( !Sim::findObject( anim, animData ) )
     {
                 Con::errorf( "LightBase::playAnimation() - Invalid LightAnimData '%s'.", anim );
         return;
     }
-
         object->playAnimation( animData );
 }
 }

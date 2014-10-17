@@ -170,7 +170,6 @@ const char* lgTable = (const char*)x__lgTable;
    {       
             Con::errorf("setCoreLangTable - Unable to find LanTable '%s'", lgTable); 
    }
-
 }
 }
 //---------------END DNTC AUTO-GENERATED-----------//

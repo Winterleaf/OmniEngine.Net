@@ -5358,24 +5358,18 @@ Material* newMat; Sim::findObject(x__newMat, newMat );
       Con::errorf("ShapeBase::changeMaterial failed: New material does not exist!");
       return;
    }
-
       ShapeBase *serverObj = object;
    ShapeBase *clientObj = dynamic_cast< ShapeBase* > ( object->getClientObject() );
-
       S32 matIndex = serverObj->getShape()->materialList->getMaterialNameList().find_next(String(mapTo));
    if (matIndex < 0)
    {
       Con::errorf("ShapeBase::changeMaterial failed: Invalid mapTo name '%s'", mapTo);
       return;
    }
-
       if( oldMat )
       oldMat->mMapTo = String("unmapped_mat");
-
    newMat->mMapTo = mapTo;
-
       MATMGR->mapMaterial( mapTo, newMat->getName() );
-
             delete serverObj->getShape()->materialList->mMatInstList[matIndex];
    serverObj->getShape()->materialList->mMatInstList[matIndex] = newMat->createMatInstance();
    if (clientObj)
@@ -5383,10 +5377,8 @@ Material* newMat; Sim::findObject(x__newMat, newMat );
       delete clientObj->getShape()->materialList->mMatInstList[matIndex];
       clientObj->getShape()->materialList->mMatInstList[matIndex] = newMat->createMatInstance();
    }
-
       const GFXVertexFormat *flags = getGFXVertexFormat<GFXVertexPNTTB>();
    FeatureSet features = MATMGR->getDefaultFeatures();
-
    serverObj->getShape()->materialList->getMaterialInst(matIndex)->init( features, flags );
    if (clientObj)
       clientObj->getShapeInstance()->mMaterialList->getMaterialInst(matIndex)->init( features, flags );
@@ -5965,10 +5957,8 @@ if (!object)
 	{
 				if ((ShapeBase*)obj->getClientObject())
 			obj = (ShapeBase*)obj->getClientObject();
-
 		return obj->getShapeInstance()->getTargetCount();
 	}
-
 	return -1;
 };
 }
@@ -6366,11 +6356,9 @@ if (!object)
 const char* prefix = (const char*)x__prefix;
 {
    if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-
       NetStringHandle prefixHandle;
       if (prefix[0] == StringTagPrefixByte)
          prefixHandle = NetStringHandle(U32(dAtoi(prefix+1)));
-
       object->setImageScriptAnimPrefix(slot, prefixHandle);
    }
 }

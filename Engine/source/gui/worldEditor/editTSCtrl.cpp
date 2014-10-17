@@ -1506,20 +1506,15 @@ sscanf(x__size,"%f %f %f",&size.x,&size.y,&size.z);
 {
    if( !object->mConsoleRendering || !object->mConsoleFillColor.alpha )
       return;
-
    GFXStateBlockDesc desc;
    desc.setBlend( true );
-
    Box3F box;
    box.set( size );
    box.setCenter( pos );
-
    MatrixF camera = GFX->getWorldMatrix();
    camera.inverse();
-
    if( box.isContained( camera.getPosition() ) )
       desc.setCullMode( GFXCullNone );
-
    GFX->getDrawUtil()->drawCube( desc, size, pos, object->mConsoleFillColor );
 }
 }
@@ -1536,17 +1531,12 @@ sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
 {
    if(!object->mConsoleRendering)
       return;
-
    if(!object->mConsoleFrameColor.alpha && !object->mConsoleFillColor.alpha)
       return;
-
    if ( segments <= 0 )
       segments = object->mConsoleCircleSegments;
-
    normal.normalizeSafe();
-
    AngAxisF aa;
-
    F32 dotUp = mDot( normal, Point3F(0,0,1) );
    if ( dotUp == 1.0f )
       aa.set( Point3F(0,0,1), 0.0f );        else if ( dotUp == -1.0f )
@@ -1556,58 +1546,40 @@ sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
       aa.axis.normalizeSafe();
       aa.angle = mAcos( mClampF( dotUp, -1.f, 1.f ) );
    }
-
    MatrixF mat;
    aa.setMatrix(&mat);
-
    F32 step = M_2PI / segments;
    F32 angle = 0.f;
-
    Vector<Point3F> points(segments);
    for(U32 i = 0; i < segments; i++)
    {
       Point3F pnt(mCos(angle), mSin(angle), 0.f);
-
       mat.mulP(pnt);
       pnt *= radius;
       pnt += pos;
-
       points.push_front(pnt);
       angle += step;
    }
-
    GFX->setStateBlock(object->mBlendSB);
-
       if(object->mConsoleFrameColor.alpha)
    {
       
       PrimBuild::color( object->mConsoleFrameColor );
-
       PrimBuild::begin( GFXLineStrip, points.size() + 1 );
-
       for( int i = 0; i < points.size(); i++ )
          PrimBuild::vertex3fv( points[i] );
-
             if( points.size() > 0 )
          PrimBuild::vertex3fv( points[0] );
-
       PrimBuild::end();
-
          }
-
       if(object->mConsoleFillColor.alpha)
    {
       PrimBuild::color( object->mConsoleFillColor );
-
       PrimBuild::begin( GFXTriangleFan, points.size() + 2 );
-
             PrimBuild::vertex3fv( pos );
-
             for( int i = 0; i < points.size(); i++ )
          PrimBuild::vertex3fv( points[i] );
-
       PrimBuild::vertex3fv( points[0] );
-
       PrimBuild::end();
    }
 }
@@ -1624,10 +1596,8 @@ sscanf(x__end,"%f %f %f",&end.x,&end.y,&end.z);
 {
    if ( !object->mConsoleRendering || !object->mConsoleFrameColor.alpha )
       return;
-
       if ( lineWidth <= 0 )
       lineWidth = object->mConsoleLineWidth;
-
    GFX->getDrawUtil()->drawLine( start, end, object->mConsoleFrameColor );
 }
 }
@@ -1642,20 +1612,16 @@ sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
 {
    if ( !object->mConsoleRendering || !object->mConsoleFillColor.alpha )
       return;
-
       if ( sphereLevel <= 0 )
       sphereLevel = object->mConsoleSphereLevel;
-
    GFXStateBlockDesc desc;
    desc.setBlend( true );
-
    MatrixF camera = GFX->getWorldMatrix();
    camera.inverse();
    
    SphereF sphere( pos, radius );
    if( sphere.isContained( camera.getPosition() ) )
       desc.setCullMode( GFXCullNone );
-
    GFX->getDrawUtil()->drawSphere( desc, radius, pos, object->mConsoleFillColor );
 }
 }
@@ -1673,14 +1639,10 @@ sscanf(x__c,"%f %f %f",&c.x,&c.y,&c.z);
 {
    if(!object->mConsoleRendering)
       return;
-
    if(!object->mConsoleFrameColor.alpha && !object->mConsoleFillColor.alpha)
       return;
-
    const Point3F* pnts[3] = { &a, &b, &c };
-
    GFX->setStateBlock(object->mBlendSB);
-
       if( object->mConsoleFrameColor.alpha )
    {
       PrimBuild::color( object->mConsoleFrameColor );
@@ -1692,13 +1654,10 @@ sscanf(x__c,"%f %f %f",&c.x,&c.y,&c.z);
          PrimBuild::vertex3fv( *pnts[2] );
          PrimBuild::vertex3fv( *pnts[0] );
       PrimBuild::end();
-
          }
-
       if( object->mConsoleFillColor.alpha )
    {
       PrimBuild::color( object->mConsoleFillColor );
-
       PrimBuild::begin( GFXTriangleList, 3 );
          PrimBuild::vertex3fv( *pnts[0] );
          PrimBuild::vertex3fv( *pnts[1] );

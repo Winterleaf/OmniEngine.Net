@@ -1342,7 +1342,6 @@ sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
 
 {
    Point3F center;
-
    SceneObject* sceneObject = NULL;
    if (Sim::findObject(id, sceneObject) == false) {
       Con::warnf(ConsoleLogEntry::General, "calcExplosionCoverage: couldn't find object: %d", id);
@@ -1352,11 +1351,9 @@ sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
       Con::warnf(ConsoleLogEntry::General, "calcExplosionCoverage: object is on the client, or not in the container system");
      return (F32)( 1.0f);
    }
-
    sceneObject->getObjBox().getCenter(&center);
    center.convolve(sceneObject->getScale());
    sceneObject->getTransform().mulP(center);
-
    RayInfo rayInfo;
    sceneObject->disableCollision();
    if (sceneObject->getContainer()->castRay(pos, center, covMask, &rayInfo) == true) {
@@ -1368,7 +1365,6 @@ sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
            return (F32)( 1.0f);
          }
       }
-
       sceneObject->enableCollision();
      return (F32)( 0.0f);
    } else {

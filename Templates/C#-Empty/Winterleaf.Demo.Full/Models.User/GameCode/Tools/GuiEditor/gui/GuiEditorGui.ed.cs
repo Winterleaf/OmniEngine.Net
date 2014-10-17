@@ -1,39 +1,71 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Server;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Base.Utils;
-using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehind;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
+using SaveFileDialog = WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.SaveFileDialog;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<GuiEditorGui>))]
     internal class GuiEditorGui : GuiControl
-        {
-        
+    {
 
         internal SimSet menuGroup
-            {
+        {
             get { return this["menuGroup"]; }
             set { this["menuGroup"] = value; }
-            }
+        }
 
         [ConsoleInteraction(true, "GuiEditorGui_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (GuiEditorGui, EditorGuiGroup)        oc_Newobject78
 
-            ObjectCreator oc_Newobject78 = new ObjectCreator("GuiControl", "GuiEditorGui, EditorGuiGroup",
-                typeof (GuiEditorGui));
+            ObjectCreator oc_Newobject78 = new ObjectCreator("GuiControl", "GuiEditorGui, EditorGuiGroup", typeof (GuiEditorGui));
             oc_Newobject78["canSaveDynamicFields"] = "0";
             oc_Newobject78["isContainer"] = "1";
             oc_Newobject78["Profile"] = "ToolsGuiDefaultProfile";
@@ -233,8 +265,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiPopUpMenuCtrl (GuiEditorContentList)        oc_Newobject6
 
-            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiPopUpMenuCtrl", "GuiEditorContentList",
-                typeof (GuiEditorContentList));
+            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiPopUpMenuCtrl", "GuiEditorContentList", typeof (GuiEditorContentList));
             oc_Newobject6["maxPopupHeight"] = "200";
             oc_Newobject6["sbUsesNAColor"] = "0";
             oc_Newobject6["reverseTextList"] = "0";
@@ -266,8 +297,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiPopUpMenuCtrl (GuiEditorResList)        oc_Newobject7
 
-            ObjectCreator oc_Newobject7 = new ObjectCreator("GuiPopUpMenuCtrl", "GuiEditorResList",
-                typeof (GuiEditorResList));
+            ObjectCreator oc_Newobject7 = new ObjectCreator("GuiPopUpMenuCtrl", "GuiEditorResList", typeof (GuiEditorResList));
             oc_Newobject7["maxPopupHeight"] = "200";
             oc_Newobject7["sbUsesNAColor"] = "0";
             oc_Newobject7["reverseTextList"] = "0";
@@ -337,8 +367,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiBitmapButtonCtrl (GuiEditorSnapCheckBox)        oc_Newobject9
 
-            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiBitmapButtonCtrl", "GuiEditorSnapCheckBox",
-                typeof (GuiEditorSnapCheckBox));
+            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiBitmapButtonCtrl", "GuiEditorSnapCheckBox", typeof (GuiEditorSnapCheckBox));
             oc_Newobject9["bitmap"] = "tools/gui/images/GUI-editor/snap-grid";
             oc_Newobject9["bitmapMode"] = "Stretched";
             oc_Newobject9["autoFitExtents"] = "0";
@@ -912,7 +941,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             oc_Newobject37["willFirstRespond"] = "1";
             oc_Newobject37["hScrollBar"] = "dynamic";
             oc_Newobject37["vScrollBar"] = "dynamic";
-            oc_Newobject37["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject37["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject37["lockVertScroll"] = "false";
             oc_Newobject37["constantThumbHeight"] = "0";
             oc_Newobject37["childMargin"] = "0 0";
@@ -1022,8 +1051,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiTabBookCtrl (GuiEditorTabBook)        oc_Newobject67
 
-            ObjectCreator oc_Newobject67 = new ObjectCreator("GuiTabBookCtrl", "GuiEditorTabBook",
-                typeof (GuiEditorTabBook));
+            ObjectCreator oc_Newobject67 = new ObjectCreator("GuiTabBookCtrl", "GuiEditorTabBook", typeof (GuiEditorTabBook));
             oc_Newobject67["tabPosition"] = "Top";
             oc_Newobject67["tabMargin"] = "7";
             oc_Newobject67["minTabWidth"] = "40";
@@ -1116,15 +1144,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiTextEditCtrl ( GuiEditorTreeFilter )        oc_Newobject39
 
-            ObjectCreator oc_Newobject39 = new ObjectCreator("GuiTextEditCtrl", "GuiEditorTreeFilter",
-                typeof (treeViewFilterCtrls.GuiTreeViewFilterText));
+            ObjectCreator oc_Newobject39 = new ObjectCreator("GuiTextEditCtrl", "GuiEditorTreeFilter", typeof (treeViewFilterCtrls.GuiTreeViewFilterText));
             oc_Newobject39["position"] = "2 4";
             oc_Newobject39["extent"] = "200 18";
             oc_Newobject39["profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject39["horizSizing"] = "width";
             oc_Newobject39["vertSizing"] = "bottom";
             //oc_Newobject39["class"] = "GuiTreeViewFilterText";
-            oc_Newobject39["treeView"] = new ObjectCreator.StringNoQuote("GuiEditorTreeView");
+            oc_Newobject39["treeView"] = new Creator.StringNoQuote("GuiEditorTreeView");
 
             #endregion
 
@@ -1132,8 +1159,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject40
 
-            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiBitmapButtonCtrl", "",
-                typeof (treeViewFilterCtrls.GuiTreeViewFilterClearButton));
+            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof (treeViewFilterCtrls.GuiTreeViewFilterClearButton));
             oc_Newobject40["bitmap"] = "tools/gui/images/clear-icon";
             oc_Newobject40["groupNum"] = "-1";
             oc_Newobject40["buttonType"] = "PushButton";
@@ -1151,7 +1177,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             oc_Newobject40["hovertime"] = "1000";
             oc_Newobject40["canSaveDynamicFields"] = "0";
             //oc_Newobject40["class"] = "GuiTreeViewFilterClearButton";
-            oc_Newobject40["textCtrl"] = new ObjectCreator.StringNoQuote("GuiEditorTreeFilter");
+            oc_Newobject40["textCtrl"] = new Creator.StringNoQuote("GuiEditorTreeFilter");
 
             #endregion
 
@@ -1189,8 +1215,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiTreeViewCtrl (GuiEditorTreeView)        oc_Newobject41
 
-            ObjectCreator oc_Newobject41 = new ObjectCreator("GuiTreeViewCtrl", "GuiEditorTreeView",
-                typeof (GuiEditorTreeView));
+            ObjectCreator oc_Newobject41 = new ObjectCreator("GuiTreeViewCtrl", "GuiEditorTreeView", typeof (GuiEditorTreeView));
             oc_Newobject41["tabSize"] = "16";
             oc_Newobject41["textOffset"] = "2";
             oc_Newobject41["fullRowSelect"] = "0";
@@ -1285,8 +1310,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiInspector (GuiEditorInspectFields)        oc_Newobject44
 
-            ObjectCreator oc_Newobject44 = new ObjectCreator("GuiInspector", "GuiEditorInspectFields",
-                typeof (GuiEditorInspectFields));
+            ObjectCreator oc_Newobject44 = new ObjectCreator("GuiInspector", "GuiEditorInspectFields", typeof (GuiEditorInspectFields));
             oc_Newobject44["dividerMargin"] = "5";
             oc_Newobject44["showCustomFields"] = "1";
             oc_Newobject44["StackingType"] = "Vertical";
@@ -1406,8 +1430,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiStackControl (GuiEditorToolbox)        oc_Newobject50
 
-            ObjectCreator oc_Newobject50 = new ObjectCreator("GuiStackControl", "GuiEditorToolbox",
-                typeof (GuiEditorToolbox));
+            ObjectCreator oc_Newobject50 = new ObjectCreator("GuiStackControl", "GuiEditorToolbox", typeof (GuiEditorToolbox));
             oc_Newobject50["StackingType"] = "Vertical";
             oc_Newobject50["HorizStacking"] = "Left to Right";
             oc_Newobject50["VertStacking"] = "Top to Bottom";
@@ -1506,15 +1529,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiTextEditCtrl ( GuiEditorProfilesTreeFilter )        oc_Newobject53
 
-            ObjectCreator oc_Newobject53 = new ObjectCreator("GuiTextEditCtrl", "GuiEditorProfilesTreeFilter",
-                typeof (treeViewFilterCtrls.GuiTreeViewFilterText));
+            ObjectCreator oc_Newobject53 = new ObjectCreator("GuiTextEditCtrl", "GuiEditorProfilesTreeFilter", typeof (treeViewFilterCtrls.GuiTreeViewFilterText));
             oc_Newobject53["position"] = "2 4";
             oc_Newobject53["extent"] = "200 18";
             oc_Newobject53["profile"] = "ToolsGuiTextEditProfile";
             oc_Newobject53["horizSizing"] = "width";
             oc_Newobject53["vertSizing"] = "bottom";
             //oc_Newobject53["class"] = "GuiTreeViewFilterText";
-            oc_Newobject53["treeView"] = new ObjectCreator.StringNoQuote("GuiEditorProfilesTree");
+            oc_Newobject53["treeView"] = new Creator.StringNoQuote("GuiEditorProfilesTree");
 
             #endregion
 
@@ -1522,8 +1544,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject54
 
-            ObjectCreator oc_Newobject54 = new ObjectCreator("GuiBitmapButtonCtrl", "",
-                typeof (treeViewFilterCtrls.GuiTreeViewFilterClearButton));
+            ObjectCreator oc_Newobject54 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof (treeViewFilterCtrls.GuiTreeViewFilterClearButton));
             oc_Newobject54["bitmap"] = "tools/gui/images/clear-icon";
             oc_Newobject54["groupNum"] = "-1";
             oc_Newobject54["buttonType"] = "PushButton";
@@ -1541,7 +1562,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             oc_Newobject54["hovertime"] = "1000";
             oc_Newobject54["canSaveDynamicFields"] = "0";
             //oc_Newobject54["class"] = "GuiTreeViewFilterClearButton";
-            oc_Newobject54["textCtrl"] = new ObjectCreator.StringNoQuote("GuiEditorProfilesTreeFilter");
+            oc_Newobject54["textCtrl"] = new Creator.StringNoQuote("GuiEditorProfilesTreeFilter");
 
             #endregion
 
@@ -1579,8 +1600,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiTreeViewCtrl (GuiEditorProfilesTree)        oc_Newobject55
 
-            ObjectCreator oc_Newobject55 = new ObjectCreator("GuiTreeViewCtrl", "GuiEditorProfilesTree",
-                typeof (GuiEditorProfiles.GuiEditorProfilesTree));
+            ObjectCreator oc_Newobject55 = new ObjectCreator("GuiTreeViewCtrl", "GuiEditorProfilesTree", typeof (GuiEditorProfiles.GuiEditorProfilesTree));
             oc_Newobject55["tabSize"] = "16";
             oc_Newobject55["textOffset"] = "2";
             oc_Newobject55["fullRowSelect"] = "0";
@@ -1688,8 +1708,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             oc_Newobject59["MinExtent"] = "8 2";
             oc_Newobject59["canSave"] = "1";
             oc_Newobject59["Visible"] = "1";
-            oc_Newobject59["Command"] =
-                "GuiEditor.saveProfile( GuiEditorProfilesTree.getSelectedProfile(), GuiEditorProfileFileName.getText() );";
+            oc_Newobject59["Command"] = "GuiEditor.saveProfile( GuiEditorProfilesTree.getSelectedProfile(), GuiEditorProfileFileName.getText() );";
             oc_Newobject59["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject59["ToolTip"] = "Save the currently selected profile.";
             oc_Newobject59["internalName"] = "saveButton";
@@ -1759,8 +1778,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiInspector (GuiEditorProfileInspector)        oc_Newobject61
 
-            ObjectCreator oc_Newobject61 = new ObjectCreator("GuiInspector", "GuiEditorProfileInspector",
-                typeof (GuiEditorProfiles.GuiEditorProfileInspector));
+            ObjectCreator oc_Newobject61 = new ObjectCreator("GuiInspector", "GuiEditorProfileInspector", typeof (GuiEditorProfiles.GuiEditorProfileInspector));
             oc_Newobject61["dividerMargin"] = "5";
             oc_Newobject61["showCustomFields"] = "1";
             oc_Newobject61["StackingType"] = "Vertical";
@@ -1955,8 +1973,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             #region GuiTextCtrl ( GuiEditorStatusBar )        oc_Newobject74
 
-            ObjectCreator oc_Newobject74 = new ObjectCreator("GuiTextCtrl", "GuiEditorStatusBar",
-                typeof (GuiEditorStatusBar));
+            ObjectCreator oc_Newobject74 = new ObjectCreator("GuiTextCtrl", "GuiEditorStatusBar", typeof (GuiEditorStatusBar));
             oc_Newobject74["profile"] = "ToolsGuiTextProfile";
             oc_Newobject74["position"] = "5 0";
             oc_Newobject74["extent"] = "500 17";
@@ -2018,11 +2035,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             function GuiCanvas::pushDialog() {}
             function GuiCanvas::popDialog() {}
             };");
-            }
+        }
 
         [ConsoleInteraction]
         public override void onWake()
-            {
+        {
             GuiEditor GuiEditor = "GuiEditor";
             GuiEditorSnapCheckBox GuiEditorSnapCheckBox = "GuiEditorSnapCheckBox";
             GuiEditorSelectDlg GuiEditorSelectDlg = "GuiEditorSelectDlg";
@@ -2043,8 +2060,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             // Attach our menus.
 
             if (this.menuGroup.isObject())
+                {
                 for (uint i = 0; i < this.menuGroup.getCount(); i ++)
                     ((PopupMenu) this.menuGroup.getObject(i)).attachToMenuBar("", 0, ""); //TODO
+                }
 
             // Read settings.
 
@@ -2074,13 +2093,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             GuiEditorSnapCheckBox.setStateOn(GuiEditor.snap2Grid);
             GuiEditorEdgeSnapping_btn.setStateOn(GuiEditor.snapToEdges);
             GuiEditorCenterSnapping_btn.setStateOn(GuiEditor.snapToCenters);
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public override void onSleep()
-            {
+        {
             GuiEditor GuiEditor = "GuiEditor";
 
             // If we are editing a control, store its guide state.
@@ -2092,19 +2111,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             // Remove our menus.
 
             if (this.menuGroup.isObject())
+                {
                 for (uint i = 0; i < this.menuGroup.getCount(); i ++)
                     ((PopupMenu) this.menuGroup.getObject(i)).removeFromMenuBar();
+                }
 
             // Store our preferences.
 
             this.writeSettings();
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void initSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
 
             EditorSettings.beginGroup("GuiEditor", true);
@@ -2143,8 +2164,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             EditorSettings.endGroup();
 
             EditorSettings.beginGroup("Help");
-            EditorSettings.setDefaultValue("documentationURL",
-                "http://www.garagegames.com/products/torque-3d/documentation/user");
+            EditorSettings.setDefaultValue("documentationURL", "http://www.garagegames.com/products/torque-3d/documentation/user");
             //RDTODO: make this point to Gui Editor docs when available
 
             // Create a path to the local documentation.  This is a bit of guesswork here.
@@ -2153,19 +2173,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             // folder is "<project>/game".
             EditorSettings.setDefaultValue("documentationLocal", "../../../Documentation/Official Documentation.html");
 
-            EditorSettings.setDefaultValue("documentationReference",
-                "../../../Documentation/Torque 3D - Script Manual.chm");
+            EditorSettings.setDefaultValue("documentationReference", "../../../Documentation/Torque 3D - Script Manual.chm");
 
             EditorSettings.endGroup();
 
             EditorSettings.endGroup();
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void readSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
             GuiEditor GuiEditor = "GuiEditor";
             GuiEditorToolbox GuiEditorToolbox = "GuiEditorToolbox";
@@ -2217,13 +2236,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             if (GuiEditor.snap2Grid)
                 GuiEditor.setSnapToGrid(GuiEditor["snap2GridSize"].AsUint());
-            }
+        }
 
         //---------------------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void writeSettings()
-            {
+        {
             GuiEditor GuiEditor = "GuiEditor";
             Settings EditorSettings = "EditorSettings";
             GuiEditorToolbox GuiEditorToolbox = "GuiEditorToolbox";
@@ -2272,19 +2291,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             EditorSettings.endGroup();
 
             EditorSettings.write();
-            }
+        }
 
         [ConsoleInteraction]
         public static void GuiEdit(string val)
-            {
+        {
             GuiCanvas Canvas = "Canvas";
             GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
             PostEffect MLAAFx = "MLAAFx";
 
             if (Canvas.isFullscreen())
                 {
-                messageBox.MessageBoxOK("Windowed Mode Required",
-                    "Please switch to windowed mode to access the GUI Editor.");
+                messageBox.MessageBoxOK("Windowed Mode Required", "Please switch to windowed mode to access the GUI Editor.");
                 return;
                 }
 
@@ -2303,14 +2321,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     }
                 }
             else
-                {
                 GuiEditCanvas.quit();
-                }
-            }
+        }
 
         [ConsoleInteraction]
         public static void GuiEditContent(SimObject content)
-            {
+        {
             GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
             GuiEditor GuiEditor = "GuiEditor";
 
@@ -2320,11 +2336,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             GuiEditor.openForEditing(content);
 
             omni.bGlobal["$InGuiEditor"] = true;
-            }
+        }
 
         [ConsoleInteraction]
         public static void toggleGuiEditor(bool make)
-            {
+        {
             GuiEditor GuiEditor = "GuiEditor";
 
             if (make)
@@ -2338,38 +2354,38 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // has elapsed.
                 omni.Util.cancel(omni.iGlobal["$Game::Schedule"]);
                 }
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<GuiEditor>))]
         public class GuiEditor : GuiEditCtrl
-            {
+        {
             public bool dontSyncTreeViewSelection
-                {
+            {
                 get { return this["dontSyncTreeViewSelection"].AsBool(); }
                 set { this["dontSyncTreeViewSelection"] = value.AsString(); }
-                }
+            }
 
             public bool snap2Grid
-                {
+            {
                 get { return this["snap2Grid"].AsBool(); }
                 set { this["snap2Grid"] = value.AsString(); }
-                }
+            }
 
             public int numDirtyProfiles
-                {
+            {
                 get { return this["numDirtyProfiles"].AsInt(); }
                 set { this["numDirtyProfiles"] = value.AsString(); }
-                }
+            }
 
             public GuiEditorUndo.GenericUndoAction pendingGenericUndoAction
-                {
+            {
                 get { return this["pendingGenericUndoAction"]; }
                 set { this["pendingGenericUndoAction"] = value; }
-                }
+            }
 
             [ConsoleInteraction]
             public void openForEditing(SimObject content)
-                {
+            {
                 GuiCanvas Canvas = "Canvas";
                 GuiEditorGui GuiEditorGui = "GuiEditorGui";
                 GuiControl GuiEditorContent = "GuiEditorContent";
@@ -2378,8 +2394,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiScrollCtrl GuiEditorScroll = "GuiEditorScroll";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiEditorProfiles.GuiEditorProfilesTree GuiEditorProfilesTree = "GuiEditorProfilesTree";
-                GuiEditorProfiles.GuiEditorProfileChangeManager GuiEditorProfileChangeManager =
-                    "GuiEditorProfileChangeManager";
+                GuiEditorProfiles.GuiEditorProfileChangeManager GuiEditorProfileChangeManager = "GuiEditorProfileChangeManager";
 
                 Canvas.setContent(GuiEditorGui);
                 while (GuiEditorContent.getCount() != 0)
@@ -2441,7 +2456,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Create profile change manager if we haven't already.
 
                 if (!GuiEditorProfileChangeManager.isObject())
-                    new ObjectCreator("SimGroup", "GuiEditorProfileChangeManager", typeof(GuiEditorProfiles.GuiEditorProfileChangeManager)).Create();
+                    new ObjectCreator("SimGroup", "GuiEditorProfileChangeManager", typeof (GuiEditorProfiles.GuiEditorProfileChangeManager)).Create();
 
                 // clear the undo manager if we're switching controls.
                 if (this["lastContent"] != content)
@@ -2451,13 +2466,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 this.updateUndoMenu();
                 this["lastContent"] = content;
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void switchToWorldEditor()
-                {
+            {
                 GuiControl GuiEditorContent = "GuiEditorContent";
 
                 bool editingWorldEditor = GuiEditorContent.getObject(0) == this.getId().AsString();
@@ -2468,13 +2483,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     MenuHandlers.EditorNewLevel("");
                 else if (!editingWorldEditor)
                     editor.toggleEditor(true);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void enableMenuItems(bool val)
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 MenuBuilder menu = GuiEditCanvas.menuBar.FOT("EditMenu");
@@ -2495,37 +2510,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 ((MenuBuilder) GuiEditCanvas.menuBar.FOT("LayoutMenu")).enableAllItems(val);
                 ((MenuBuilder) GuiEditCanvas.menuBar.FOT("MoveMenu")).enableAllItems(val);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void showPrefsDialog()
-                {
+            {
                 GuiCanvas Canvas = "Canvas";
                 GuiControl GuiEditorPrefsDlg = "GuiEditorPrefsDlg";
 
                 Canvas.pushDialog(GuiEditorPrefsDlg);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public GuiEditorUndo.GuiEditorUndoManager getUndoManager()
-                {
+            {
                 GuiEditorUndo.GuiEditorUndoManager GuiEditorUndoManager = "GuiEditorUndoManager";
                 if (!GuiEditorUndoManager.isObject())
-                    new ObjectCreator("UndoManager", "GuiEditorUndoManager", typeof (GuiEditorUndo.GuiEditorUndoManager))
-                        .Create();
+                    new ObjectCreator("UndoManager", "GuiEditorUndoManager", typeof (GuiEditorUndo.GuiEditorUndoManager)).Create();
 
                 return GuiEditorUndoManager;
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void undo()
-                {
+            {
                 string action = this.getUndoManager().getNextUndoName();
                 GuiEditorStatusBar GuiEditorStatusBar = "GuiEditorStatusBar";
 
@@ -2534,13 +2548,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 //this.clearSelection();
 
                 GuiEditorStatusBar.print("Undid '" + action + "'");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void redo()
-                {
+            {
                 GuiEditorStatusBar GuiEditorStatusBar = "GuiEditorStatusBar";
 
                 string action = this.getUndoManager().getNextRedoName();
@@ -2550,13 +2564,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 //this.clearSelection();
 
                 GuiEditorStatusBar.print("Redid '" + action + "'");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void updateUndoMenu()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 UndoManager uman = this.getUndoManager();
@@ -2570,13 +2584,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 editMenu.enableItem(0, (nextUndo != ""));
                 editMenu.enableItem(1, (nextRedo != ""));
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public bool isFilteredClass(string className)
-                {
+            {
                 // Filter out all the internal GuiInspector classes.
 
                 if (Util.startsWith(className, "GuiInspector", false) && className != "GuiInspector")
@@ -2614,26 +2628,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     }
 
                 return false;
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void editProfile(string profile)
-                {
+            {
                 GuiEditorTabBook GuiEditorTabBook = "GuiEditorTabBook";
                 GuiTabPageCtrl profilesPage = GuiEditorTabBook.FOT("profilesPage");
                 GuiEditorProfiles.GuiEditorProfilesTree GuiEditorProfilesTree = "GuiEditorProfilesTree";
 
                 profilesPage.select();
                 GuiEditorProfilesTree.setSelectedProfile(profile);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void createControl(string className)
-                {
+            {
                 SimObject ctrl = Util.eval("return new " + className + "();");
                 if (!ctrl.isObject())
                     return;
@@ -2641,14 +2655,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Add the control.
 
                 this.addNewCtrl(ctrl);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             /// Group all GuiControls in the currenct selection set under a new GuiControl.
             public void groupSelected()
-                {
+            {
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiEditorUndo.GuiEditorGroupAction GuiEditorGroupAction = "GuiEditorGroupAction";
 
@@ -2658,8 +2672,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 // Create action.
 
-                GuiEditorUndo.GuiEditorGroupAction action = GuiEditorGroupAction.create(selection,
-                    this.getContentControl().AsString());
+                GuiEditorUndo.GuiEditorGroupAction action = GuiEditorGroupAction.create(selection, this.getContentControl().AsString());
                 action.groupControls();
 
                 // Update editor tree.
@@ -2672,7 +2685,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 action.addToManager(this.getUndoManager());
                 this.updateUndoMenu();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
@@ -2680,12 +2693,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// Take all direct GuiControl instances in the selection set and reparent their child controls
             /// to each of the group's parents.  The GuiControl group objects are deleted.
             public void ungroupSelected()
-                {
+            {
                 GuiEditorUndo.GuiEditorUngroupAction GuiEditorUngroupAction = "GuiEditorUngroupAction";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
-                GuiEditorUndo.GuiEditorUngroupAction action =
-                    GuiEditorUngroupAction.create(this.getSelection().AsString(), "");
+                GuiEditorUndo.GuiEditorUngroupAction action = GuiEditorUngroupAction.create(this.getSelection().AsString(), "");
                 action.ungroupControls();
 
                 // Update editor tree.
@@ -2697,13 +2709,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 action.addToManager(this.getUndoManager());
                 this.updateUndoMenu();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void deleteControl(SimObject ctrl)
-                {
+            {
                 GuiEditorUndo.UndoActionDeleteObject UndoActionDeleteObject = "UndoActionDeleteObject";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
@@ -2718,8 +2730,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 set.add(ctrl);
 
-                GuiEditorUndo.UndoActionDeleteObject action = UndoActionDeleteObject.create(set, this.getTrash(),
-                    GuiEditorTreeView, true);
+                GuiEditorUndo.UndoActionDeleteObject action = UndoActionDeleteObject.create(set, this.getTrash(), GuiEditorTreeView, true);
                 action.addToManager(this.getUndoManager());
                 this.updateUndoMenu();
 
@@ -2729,13 +2740,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Remove.
 
                 ((SimSet) this.getTrash()).add(ctrl);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void setPreviewResolution(int width, int height)
-                {
+            {
                 GuiControl GuiEditorRegion = "GuiEditorRegion";
                 GuiControl GuiEditorContent = "GuiEditorContent";
 
@@ -2743,101 +2754,94 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 ((GuiControl) GuiEditorContent.getObject(0)).resize(0, 0, width, height);
 
                 this["previewResolution"] = width.AsString() + ' ' + height.AsString();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleEdgeSnap()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
                 GuiBitmapButtonCtrl GuiEditorEdgeSnapping_btn = "GuiEditorEdgeSnapping_btn";
 
                 this.snapToEdges = !this.snapToEdges;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_EDGESNAP_INDEX"], this.snapToEdges);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_EDGESNAP_INDEX"], this.snapToEdges);
                 GuiEditorEdgeSnapping_btn.setStateOn(this.snapToEdges);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleCenterSnap()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
                 GuiBitmapButtonCtrl GuiEditorCenterSnapping_btn = "GuiEditorCenterSnapping_btn";
 
                 this.snapToCenters = !this.snapToCenters;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_CENTERSNAP_INDEX"], this.snapToCenters);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_CENTERSNAP_INDEX"], this.snapToCenters);
                 GuiEditorCenterSnapping_btn.setStateOn(this.snapToCenters);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleFullBoxSelection()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.fullBoxSelection = !this.fullBoxSelection;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("EditMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_FULLBOXSELECT_INDEX"], this.fullBoxSelection);
-                }
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("EditMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_FULLBOXSELECT_INDEX"], this.fullBoxSelection);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleDrawGuides()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.drawGuides = !this.drawGuides;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_DRAWGUIDES_INDEX"], this.drawGuides);
-                }
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_DRAWGUIDES_INDEX"], this.drawGuides);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleGuideSnap()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.snapToGuides = !this["snapToGuides"].AsBool();
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_GUIDESNAP_INDEX"], this.snapToGuides);
-                }
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_GUIDESNAP_INDEX"], this.snapToGuides);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleControlSnap()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.snapToControls = !this.snapToControls;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_CONTROLSNAP_INDEX"], this.snapToControls);
-                }
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_CONTROLSNAP_INDEX"], this.snapToControls);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleCanvasSnap()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.snapToCanvas = !this.snapToCanvas;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_CANVASSNAP_INDEX"], this.snapToCanvas);
-                }
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_CANVASSNAP_INDEX"], this.snapToCanvas);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleGridSnap()
-                {
+            {
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
                 GuiEditorSnapCheckBox GuiEditorSnapCheckBox = "GuiEditorSnapCheckBox";
 
@@ -2847,32 +2851,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 else
                     this.setSnapToGrid(this["snap2GridSize"].AsUint());
 
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(
-                    omni.iGlobal["$GUI_EDITOR_MENU_GRIDSNAP_INDEX"], this.snap2Grid);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_GRIDSNAP_INDEX"], this.snap2Grid);
                 GuiEditorSnapCheckBox.setStateOn(this.snap2Grid);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleLockSelection()
-                {
+            {
                 this.toggleFlagInAllSelectedObjects("locked");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleHideSelection()
-                {
+            {
                 this.toggleFlagInAllSelectedObjects("hidden");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void selectAllControlsInSet(SimSet set, bool deselect)
-                {
+            {
                 if (!set.isObject())
                     return;
 
@@ -2887,13 +2890,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     else
                         this.removeSelection(obj);
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void toggleFlagInAllSelectedObjects(string flagFieldName)
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
 
                 // Use the inspector's code here to record undo information
@@ -2909,7 +2912,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     }
                 GuiEditorInspectFields.onInspectorPostFieldModification();
                 GuiEditorInspectFields.refresh();
-                }
+            }
 
             //=============================================================================================
             //    Event Handlers.
@@ -2919,40 +2922,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             [ConsoleInteraction]
             public override void onDelete()
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
                 GuiEditorTreeView.update();
                 // clear out the gui inspector.
                 GuiEditorInspectFields.update("0");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onSelectionMoved(GuiControl control)
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
 
                 GuiEditorInspectFields.update(control);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onSelectionResized(GuiControl control)
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
 
                 GuiEditorInspectFields.update(control);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void onSelect(GuiControl ctrl)
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiTextCtrl GuiEditorSelectionStatus = "GuiEditorSelectionStatus";
@@ -2966,13 +2969,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiEditorInspectFields.update(ctrl);
 
                 GuiEditorSelectionStatus.setText("1 Control Selected");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onAddSelected(GuiControl ctrl)
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiTextCtrl GuiEditorSelectionStatus = "GuiEditorSelectionStatus";
@@ -2988,13 +2991,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Add to inspection set.
 
                 GuiEditorInspectFields.addInspect(ctrl);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onRemoveSelected(GuiControl ctrl)
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiTextCtrl GuiEditorSelectionStatus = "GuiEditorSelectionStatus";
@@ -3007,13 +3010,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Remove from inspection set.
 
                 GuiEditorInspectFields.removeInspect(ctrl);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onClearSelected()
-                {
+            {
                 GuiEditorInspectFields GuiEditorInspectFields = "GuiEditorInspectFields";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiTextCtrl GuiEditorSelectionStatus = "GuiEditorSelectionStatus";
@@ -3023,13 +3026,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 GuiEditorInspectFields.update("0");
                 GuiEditorSelectionStatus.setText("");
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onControlDragged(GuiControl payload, string position)
-                {
+            {
                 GuiControl GuiEditorContent = "GuiEditorContent";
 
                 // Make sure we have the right kind of D&D.
@@ -3038,9 +3041,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     return;
 
                 // use the position under the mouse cursor, not the payload position.
-                position =
-                    Util.VectorSub(position.AsPoint3F(),
-                        (GuiEditorContent.getGlobalPosition().AsString() + ' ' + "0").AsPoint3F()).AsString();
+                position = Util.VectorSub(position.AsPoint3F(), (GuiEditorContent.getGlobalPosition().AsString() + ' ' + "0").AsPoint3F()).AsString();
                 int x = Util.getWord(position, 0).AsInt();
                 int y = Util.getWord(position, 1).AsInt();
                 GuiControl target = ((GuiControl) this.getContentControl()).findHitControl(x, y);
@@ -3052,13 +3053,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 if (target != this.getCurrentAddSet())
                     this.setCurrentAddSet(target);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onControlDropped(GuiControl payload, string position)
-                {
+            {
                 // Make sure we have the right kind of D&D.
 
                 if (!payload.parentGroup.isInNamespaceHierarchy("GuiDragAndDropControlType_GuiControl"))
@@ -3072,52 +3073,51 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 payload.setPositionGlobal(x, y);
                 this.setFirstResponderX();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onGainFirstResponder(string ID)
-                {
+            {
                 this.enableMenuItems(true);
 
                 // JCF: don't just turn them all on!
                 // Undo/Redo is only enabled if those actions exist.
                 this.updateUndoMenu();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onLoseFirstResponder(string ID)
-                {
+            {
                 this.enableMenuItems(false);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onHierarchyChanged()
-                {
+            {
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
                 GuiEditorTreeView.update();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onMouseModeChange()
-                {
+            {
                 GuiEditorStatusBar GuiEditorStatusBar = "GuiEditorStatusBar";
 
                 GuiEditorStatusBar.setText(GuiEditorStatusBar.getMouseModeHelp());
-                }
+            }
 
             [ConsoleInteraction]
             public void createNewProfile(string name, string copySource)
-                {
-
+            {
                 if (name == "")
                     return;
 
@@ -3141,8 +3141,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 SimSet group = GuiEditorProfilesTree.findChildItemByName(0, category);
 
-                int id = GuiEditorProfilesTree.insertItem(group, name + " (" + name.getID() + ")",
-                    name.getID().AsString(), "", 1, 1);
+                int id = GuiEditorProfilesTree.insertItem(group, name + " (" + name.getID() + ")", name.getID().AsString(), "", 1, 1);
 
                 GuiEditorProfilesTree.sort(0, true, true, false);
                 GuiEditorProfilesTree.clearSelection();
@@ -3151,48 +3150,43 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Mark it as needing to be saved.
 
                 this.setProfileDirty(name, true, false);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public string getProfileCategory(SimObject profile)
-                {
+            {
                 if (this.isDefaultProfile(name))
                     return "Default";
                 else if (profile["category"] != "")
                     return profile["category"];
                 else
                     return sGlobal["$GUI_EDITOR_DEFAULT_PROFILE_CATEGORY"];
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void showDeleteProfileDialog(string profile)
-                {
+            {
                 if (profile == "")
                     return;
 
                 if (profile.call("isInUse").AsBool())
                     {
-                    messageBox.MessageBoxOK("Error",
-                        "The profile '" + profile.getName() + "' is still used by Gui controls."
-                        );
+                    messageBox.MessageBoxOK("Error", "The profile '" + profile.getName() + "' is still used by Gui controls.");
                     return;
                     }
 
-                messageBox.MessageBoxYesNo("Delete Profile?",
-                    "Do you really want to delete '" + profile.getName() + "'?",
-                    "GuiEditor.deleteProfile( " + profile + " );"
-                    );
-                }
+                messageBox.MessageBoxYesNo("Delete Profile?", "Do you really want to delete '" + profile.getName() + "'?", "GuiEditor.deleteProfile( " + profile + " );");
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void deleteProfile(string profile)
-                {
+            {
                 GuiEditorProfiles.GuiEditorProfilesTree GuiEditorProfilesTree = "GuiEditorProfilesTree";
                 ProfilePane ProfilePane = "ProfilePane";
 
@@ -3218,21 +3212,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 profile.delete();
 
                 ProfilePane.onProfileDeleted();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void showSaveProfileDialog(string currentFileName)
-                {
-              WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.  SaveFileDialog.getSaveFilename("TorqueScript Files|*.cs", this + ".doSaveProfile", currentFileName);
-                }
+            {
+                SaveFileDialog.getSaveFilename("TorqueScript Files|*.cs", this + ".doSaveProfile", currentFileName);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void doSaveProfile(string fileName)
-                {
+            {
                 GuiTextEditCtrl GuiEditorProfileFileName = "GuiEditorProfileFileName";
                 GuiEditorProfiles.GuiEditorProfilesTree GuiEditorProfilesTree = "GuiEditorProfilesTree";
 
@@ -3240,20 +3234,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 GuiEditorProfileFileName.setText(path);
                 this.saveProfile(GuiEditorProfilesTree.getSelectedProfile(), path);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void saveProfile(SimObject profile, string fileName)
-                {
+            {
                 PersistenceManager GuiEditorProfilesPM = "GuiEditorProfilesPM";
 
                 if (!GuiEditorProfilesPM.isObject())
                     GuiEditorProfilesPM = new ObjectCreator("PersistenceManager", "GuiEditorProfilesPM").Create();
 
-                if (!GuiEditorProfilesPM.isDirty(profile)
-                    && (fileName == "" || fileName == profile.getFilename()))
+                if (!GuiEditorProfilesPM.isDirty(profile) && (fileName == "" || fileName == profile.getFilename()))
                     return;
 
                 // Update the filename, if requested.
@@ -3271,15 +3264,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Clear its dirty state.
 
                 this.setProfileDirty(profile, false, true);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void revertProfile(string profile)
-                {
-                GuiEditorProfiles.GuiEditorProfileChangeManager GuiEditorProfileChangeManager =
-                    "GuiEditorProfileChangeManager";
+            {
+                GuiEditorProfiles.GuiEditorProfileChangeManager GuiEditorProfileChangeManager = "GuiEditorProfileChangeManager";
                 GuiEditorProfiles.GuiEditorProfileInspector GuiEditorProfileInspector = "GuiEditorProfileInspector";
                 ProfilePane ProfilePane = "ProfilePane";
 
@@ -3297,30 +3289,29 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                 if (GuiEditorProfileInspector.getInspectObject() == profile)
                     GuiEditorProfileInspector.refresh();
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public bool isProfileDirty(string profile)
-                {
+            {
                 PersistenceManager GuiEditorProfilesPM = "GuiEditorProfilesPM";
 
                 if (!GuiEditorProfilesPM.isObject())
                     return false;
 
                 return GuiEditorProfilesPM.isDirty(profile);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void setProfileDirty(SimObject profile, bool value, bool noCheck)
-                {
+            {
                 PersistenceManager GuiEditorProfilesPM = "GuiEditorProfilesPM";
                 GuiEditorProfiles.GuiEditorProfilesTree GuiEditorProfilesTree = "GuiEditorProfilesTree";
-                GuiEditorProfiles.GuiEditorProfileChangeManager GuiEditorProfileChangeManager =
-                    "GuiEditorProfileChangeManager";
+                GuiEditorProfiles.GuiEditorProfileChangeManager GuiEditorProfileChangeManager = "GuiEditorProfileChangeManager";
 
                 if (!GuiEditorProfilesPM.isObject())
                     GuiEditorProfilesPM = new ObjectCreator("PersistenceManager", "GuiEditorProfilesPM").Create();
@@ -3342,8 +3333,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                         // Show the item as dirty in the tree.
 
                         int id = GuiEditorProfilesTree.findItemByValue(profile.getId().AsString());
-                        GuiEditorProfilesTree.editItem(id,
-                            GuiEditorProfilesTree.getItemText(id) + ' ' + "*", profile.getId().AsString());
+                        GuiEditorProfilesTree.editItem(id, GuiEditorProfilesTree.getItemText(id) + ' ' + "*", profile.getId().AsString());
 
                         // Count the number of unsaved profiles.  If this is
                         // the first one, indicate in the window title that
@@ -3364,8 +3354,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                         int id = GuiEditorProfilesTree.findItemByValue(profile.getId().AsString());
                         string text = GuiEditorProfilesTree.getItemText(id);
-                        GuiEditorProfilesTree.editItem(id, Util.getSubStr(text, 0, Util.strlen(text) - 2),
-                            profile.getId().AsString());
+                        GuiEditorProfilesTree.editItem(id, Util.getSubStr(text, 0, Util.strlen(text) - 2), profile.getId().AsString());
 
                         // Count saved profiles.  If this was the last unsaved profile,
                         // remove the unsaved changes indicator from the window title.
@@ -3377,7 +3366,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                         GuiEditorProfileChangeManager.clearEdits(profile);
                         }
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
@@ -3385,7 +3374,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// Return true if the given profile name is the default profile for a
             /// GuiControl class or if it's the GuiDefaultProfile.
             public bool isDefaultProfile(string name)
-                {
+            {
                 if (name == "GuiDefaultProfile")
                     return true;
 
@@ -3397,13 +3386,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     return false;
 
                 return true;
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void increaseNumDirtyProfiles()
-                {
+            {
                 GuiEditorTabBook GuiEditorTabBook = "GuiEditorTabBook";
                 GuiTabPageCtrl profilesPage = GuiEditorTabBook.FOT("profilesPage");
 
@@ -3413,13 +3402,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     GuiTabPageCtrl tab = profilesPage;
                     tab.setText(tab.text + " *");
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void decreaseNumDirtyProfiles()
-                {
+            {
                 GuiEditorTabBook GuiEditorTabBook = "GuiEditorTabBook";
                 GuiTabPageCtrl profilesPage = GuiEditorTabBook.FOT("profilesPage");
 
@@ -3432,14 +3421,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
                     tab.setText(title);
                     }
-                }
+            }
 
             //-----------------------------------------------------------------------------------------
             // Gui Editor Undo hooks from code
 
             [ConsoleInteraction]
             public override void onPreEdit(SimSet selection)
-                {
+            {
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
                 GuiEditorUndo.GenericUndoAction GenericUndoAction = "GenericUndoAction";
 
@@ -3457,11 +3446,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 this.pendingGenericUndoAction = act;
 
                 this.updateUndoMenu();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onPostEdit(SimSet selection)
-                {
+            {
                 if (!this.pendingGenericUndoAction.isObject())
                     Util._error("Error: attempting to complete a GenericUndoAction that hasn't been started!");
 
@@ -3482,74 +3471,71 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                     }
 
                 this.updateUndoMenu();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onPreSelectionNudged(SimSet selection)
-                {
+            {
                 this.onPreEdit(selection);
                 this.pendingGenericUndoAction.actionName = "Nudge";
-                }
+            }
 
             [ConsoleInteraction]
             public override void onPostSelectionNudged(SimSet selection)
-                {
+            {
                 this.onPostEdit(selection);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onAddNewCtrl(GuiControl ctrl)
-                {
+            {
                 GuiEditorUndo.UndoActionAddObject UndoActionAddObject = "UndoActionAddObject";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
                 SimSet set = new ObjectCreator("SimSet").Create();
                 set.add(ctrl);
-                GuiEditorUndo.UndoActionAddObject act = UndoActionAddObject.create(set, this.getTrash(),
-                    GuiEditorTreeView, false);
+                GuiEditorUndo.UndoActionAddObject act = UndoActionAddObject.create(set, this.getTrash(), GuiEditorTreeView, false);
                 set.delete();
                 act.addToManager(this.getUndoManager());
                 this.updateUndoMenu();
                 //GuiEditorInspectFields.update(0);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onAddNewCtrlSet(SimSet set)
-                {
+            {
                 GuiEditorUndo.UndoActionAddObject UndoActionAddObject = "UndoActionAddObject";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
-                GuiEditorUndo.UndoActionAddObject act = UndoActionAddObject.create(set, this.getTrash(),
-                    GuiEditorTreeView, false);
+                GuiEditorUndo.UndoActionAddObject act = UndoActionAddObject.create(set, this.getTrash(), GuiEditorTreeView, false);
                 act.addToManager(this.getUndoManager());
                 this.updateUndoMenu();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onTrashSelection(SimSet selection)
-                {
+            {
                 GuiEditorUndo.UndoActionDeleteObject UndoActionDeleteObject = "UndoActionDeleteObject";
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
-                GuiEditorUndo.UndoActionDeleteObject act = UndoActionDeleteObject.create(selection, this.getTrash(),
-                    GuiEditorTreeView, false);
+                GuiEditorUndo.UndoActionDeleteObject act = UndoActionDeleteObject.create(selection, this.getTrash(), GuiEditorTreeView, false);
                 act.addToManager(this.getUndoManager());
                 this.updateUndoMenu();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onControlInspectPreApply(GuiControl control)
-                {
+            {
                 SimSet set = new ObjectCreator("SimSet").Create();
                 set.add(control);
                 this.onPreEdit(set);
                 this.pendingGenericUndoAction.actionName = "Change Properties";
                 set.delete();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onControlInspectPostApply(GuiControl control)
-                {
+            {
                 GuiEditorTreeView GuiEditorTreeView = "GuiEditorTreeView";
 
                 SimSet set = new ObjectCreator("SimSet").Create();
@@ -3557,14 +3543,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 this.onPostEdit(set);
                 set.delete();
                 GuiEditorTreeView.update();
-                }
+            }
 
             [ConsoleInteraction]
             public override void onFitIntoParent(bool width, bool height)
-                {
+            {
                 SimObject selected = this.getSelection();
                 //TODO
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3575,20 +3561,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiEditor ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3596,9 +3580,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3607,12 +3591,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiEditor ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3620,9 +3603,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiEditor ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3630,10 +3613,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiEditor(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (GuiEditor) Omni.self.getSimObject(simobjectid, typeof (GuiEditor));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3641,9 +3624,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiEditor ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3651,9 +3634,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiEditor(int simobjectid)
-                {
+            {
                 return (GuiEditor) Omni.self.getSimObject((uint) simobjectid, typeof (GuiEditor));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3661,22 +3644,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiEditor ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiEditor(uint simobjectid)
-                {
+            {
                 return (GuiEditor) Omni.self.getSimObject(simobjectid, typeof (GuiEditor));
-                }
-
-            #endregion
             }
 
+            #endregion
+        }
 
         //=============================================================================================
         //    Resolution List.
@@ -3685,10 +3667,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         //---------------------------------------------------------------------------------------------
         [TypeConverter(typeof (TypeConverterGeneric<GuiEditorResList>))]
         public class GuiEditorResList : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public void init()
-                {
+            {
                 this.clear();
 
                 // Non-widescreen formats.
@@ -3707,13 +3689,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 this.add("1440x900 (WXGA+, 16:10)", 900);
                 this.add("1680x1050 (WSXGA+, 16:10)", 1050);
                 this.add("1920x1200 (WUXGA, 16:10)", 1200);
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public void selectFormat(string format)
-                {
+            {
                 int width = Util.getWord(format, 0).AsInt();
                 int height = Util.getWord(format, 1).AsInt();
 
@@ -3765,13 +3747,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                                 }
                             break;
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 GuiEditor GuiEditor = "GuiEditor";
 
                 switch (id.AsInt())
@@ -3816,7 +3798,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                             GuiEditor.setPreviewResolution(1920, 1200);
                             break;
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3827,20 +3809,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiEditorResList ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3848,9 +3828,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3859,12 +3839,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiEditorResList ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3872,9 +3851,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiEditorResList ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3882,10 +3861,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiEditorResList(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (GuiEditorResList) Omni.self.getSimObject(simobjectid, typeof (GuiEditorResList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3893,9 +3872,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiEditorResList ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3903,9 +3882,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiEditorResList(int simobjectid)
-                {
+            {
                 return (GuiEditorResList) Omni.self.getSimObject((uint) simobjectid, typeof (GuiEditorResList));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3913,22 +3892,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiEditorResList ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiEditorResList(uint simobjectid)
-                {
+            {
                 return (GuiEditorResList) Omni.self.getSimObject(simobjectid, typeof (GuiEditorResList));
-                }
-
-            #endregion
             }
 
+            #endregion
+        }
 
         //=============================================================================================
         //    Sidebar.
@@ -3938,28 +3916,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
         [TypeConverter(typeof (TypeConverterGeneric<GuiEditorSnapCheckBox>))]
         public class GuiEditorSnapCheckBox : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiEditor GuiEditor = "GuiEditor";
 
                 float snap = GuiEditor["snap2grid"].AsFloat()*GuiEditor["snap2gridsize"].AsFloat();
                 this.setValue(snap.AsString());
-                GuiEditor.setSnapToGrid((uint)snap);
-                }
+                GuiEditor.setSnapToGrid((uint) snap);
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onAction()
-                {
+            {
                 GuiEditor GuiEditor = "GuiEditor";
 
                 float snap = GuiEditor["snap2gridsize"].AsFloat()*this.getValue().AsFloat();
                 GuiEditor["snap2grid"] = this.getValue();
-                GuiEditor.setSnapToGrid((uint)snap);
-                }
+                GuiEditor.setSnapToGrid((uint) snap);
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3970,20 +3948,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiEditorSnapCheckBox ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3991,9 +3967,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4002,12 +3978,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiEditorSnapCheckBox ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4015,9 +3990,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiEditorSnapCheckBox ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4025,10 +4000,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiEditorSnapCheckBox(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (GuiEditorSnapCheckBox) Omni.self.getSimObject(simobjectid, typeof (GuiEditorSnapCheckBox));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4036,9 +4011,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiEditorSnapCheckBox ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4046,10 +4021,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiEditorSnapCheckBox(int simobjectid)
-                {
-                return
-                    (GuiEditorSnapCheckBox) Omni.self.getSimObject((uint) simobjectid, typeof (GuiEditorSnapCheckBox));
-                }
+            {
+                return (GuiEditorSnapCheckBox) Omni.self.getSimObject((uint) simobjectid, typeof (GuiEditorSnapCheckBox));
+            }
 
             /// <summary>
             /// 
@@ -4057,50 +4031,47 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiEditorSnapCheckBox ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiEditorSnapCheckBox(uint simobjectid)
-                {
+            {
                 return (GuiEditorSnapCheckBox) Omni.self.getSimObject(simobjectid, typeof (GuiEditorSnapCheckBox));
-                }
-
-            #endregion
             }
 
-        [TypeConverter(typeof(TypeConverterGeneric<GuiEditorTabBook>))]
+            #endregion
+        }
+
+        [TypeConverter(typeof (TypeConverterGeneric<GuiEditorTabBook>))]
         public class GuiEditorTabBook : GuiTabBookCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 MenuBuilder GuiEditorTabBookLibraryPopup = "GuiEditorTabBookLibraryPopup";
 
                 if (!GuiEditorTabBookLibraryPopup.isObject())
-                {
-                    ObjectCreator oc =
-                        new ObjectCreator("PopupMenu", "GuiEditorTabBookLibraryPopup", typeof(MenuBuilder));
+                    {
+                    ObjectCreator oc = new ObjectCreator("PopupMenu", "GuiEditorTabBookLibraryPopup", typeof (MenuBuilder));
                     oc["isPopup"] = true;
 
-                    oc["item[0]"] = "Alphabetical View" + '\t' + "" + '\t' +
-                                                              "GuiEditorToolbox.setViewType( \\\"Alphabetical\\\" );";
-                    oc["item[1]"] = "Categorized View" + '\t' + "" + '\t' +
-                                                              "GuiEditorToolbox.setViewType( \\\"Categorized\\\" );";
+                    oc["item[0]"] = "Alphabetical View" + '\t' + "" + '\t' + "GuiEditorToolbox.setViewType( \\\"Alphabetical\\\" );";
+                    oc["item[1]"] = "Categorized View" + '\t' + "" + '\t' + "GuiEditorToolbox.setViewType( \\\"Categorized\\\" );";
 
                     oc.Create();
-                }
-                }
+                    }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onTabSelected(string text, uint index)
-                {
+            {
                 GuiControl sidebar = "GuiEditorSidebar";
                 string name = ((SimObject) this.getObject(index)).getInternalName();
 
@@ -4135,8 +4106,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                             button4.setVisible(true);
 
                             button4.setBitmap("tools/gui/images/delete");
-                            button4.command =
-                                "GuiEditor.showDeleteProfileDialog( GuiEditorProfilesTree.getSelectedProfile() );";
+                            button4.command = "GuiEditor.showDeleteProfileDialog( GuiEditorProfilesTree.getSelectedProfile() );";
                             button4.tooltip = "Delete Selected Profile";
 
                             button3.setBitmap("tools/gui/images/new");
@@ -4144,8 +4114,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                             button3.tooltip = "Create New Profile with Default Values";
 
                             button2.setBitmap("tools/gui/images/copy-btn");
-                            button2.command =
-                                "GuiEditor.createNewProfile( GuiEditorProfilesTree.getSelectedProfile().getName(), GuiEditorProfilesTree.getSelectedProfile() );";
+                            button2.command = "GuiEditor.createNewProfile( GuiEditorProfilesTree.getSelectedProfile().getName(), GuiEditorProfilesTree.getSelectedProfile() );";
                             button2.tooltip = "Create New Profile by Copying the Selected Profile";
 
                             button1.setBitmap("tools/gui/images/reset-icon");
@@ -4163,13 +4132,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                             button4.setVisible(false);
                             break;
                     }
-                }
+            }
 
             //---------------------------------------------------------------------------------------------
 
             [ConsoleInteraction]
             public override void onTabRightClick(string text, uint index)
-                {
+            {
                 string name = ((SimObject) this.getObject(index)).getInternalName();
 
                 switch (name)
@@ -4196,7 +4165,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                             popup.showPopup(Canvas);
                             break;
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4207,20 +4176,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GuiEditorTabBook ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4228,9 +4195,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4239,12 +4206,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GuiEditorTabBook ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4252,9 +4218,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GuiEditorTabBook ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4262,10 +4228,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GuiEditorTabBook(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (GuiEditorTabBook) Omni.self.getSimObject(simobjectid, typeof (GuiEditorTabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4273,9 +4239,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GuiEditorTabBook ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4283,9 +4249,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GuiEditorTabBook(int simobjectid)
-                {
+            {
                 return (GuiEditorTabBook) Omni.self.getSimObject((uint) simobjectid, typeof (GuiEditorTabBook));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4293,21 +4259,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GuiEditorTabBook ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GuiEditorTabBook(uint simobjectid)
-                {
+            {
                 return (GuiEditorTabBook) Omni.self.getSimObject(simobjectid, typeof (GuiEditorTabBook));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -4318,18 +4284,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(GuiEditorGui ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -4337,9 +4303,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -4348,12 +4314,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(GuiEditorGui ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -4361,9 +4326,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(GuiEditorGui ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -4371,10 +4336,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator GuiEditorGui(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (GuiEditorGui) Omni.self.getSimObject(simobjectid, typeof (GuiEditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -4382,9 +4347,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(GuiEditorGui ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -4392,9 +4357,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator GuiEditorGui(int simobjectid)
-            {
+        {
             return (GuiEditorGui) Omni.self.getSimObject((uint) simobjectid, typeof (GuiEditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -4402,19 +4367,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(GuiEditorGui ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator GuiEditorGui(uint simobjectid)
-            {
+        {
             return (GuiEditorGui) Omni.self.getSimObject(simobjectid, typeof (GuiEditorGui));
-            }
+        }
 
         #endregion
-        }
     }
+}

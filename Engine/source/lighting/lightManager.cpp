@@ -608,7 +608,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_resetLightManager()
    LightManager *lm = LIGHTMGR;
    if ( !lm )
       return;
-
    SceneManager *sm = lm->getSceneManager();
    lm->deactivate();
    lm->activate( sm );

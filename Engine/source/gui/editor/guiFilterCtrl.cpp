@@ -508,10 +508,8 @@ arguments.push_back(a19);
 const char** argv = &arguments[0];
 {
    Filter filter;
-
    argc -= 2;
    argv += 2;
-
    filter.set(argc, argv);
 	object->set(filter);
 }

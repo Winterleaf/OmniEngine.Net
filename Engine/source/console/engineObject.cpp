@@ -438,11 +438,9 @@ DefineEngineFunction( debugDumpAllObjects, void, (),,
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_debugDumpAllObjects()
 {
 {
-
 	#ifdef TORQUE_DEBUG
    EngineObject::debugDumpInstances();
 	#endif 
-
 }
 }
 //---------------END DNTC AUTO-GENERATED-----------//

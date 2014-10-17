@@ -1795,7 +1795,6 @@ const char* position = (const char*)x__position;
 const char* direction = (const char*)x__direction;
 {
    MatrixF mat = object->getTransform();
-
    if(dStrcmp( position , "")!=0 )
    {
       Point3F pos;

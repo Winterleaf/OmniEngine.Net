@@ -1787,21 +1787,17 @@ DecalData* decalData; Sim::findObject(x__decalData, decalData );
       Con::errorf( "decalManagerAddDecal - Invalid Decal DataBlock" );
      return (S32)( -1);
    }
-
    U8 flags = 0;
    if( isImmortal )
       flags |= PermanentDecal;
-
    DecalInstance* inst = gDecalManager->addDecal( position, normal, rot, decalData, scale, -1, flags );
    if( !inst )
    {
       Con::errorf( "decalManagerAddDecal - Unable to create decal instance." );
      return (S32)( -1);
    }
-
       inst->mId = gDecalManager->mDecalInstanceVec.size();
    gDecalManager->mDecalInstanceVec.push_back( inst );
-
   return (S32)( inst->mId);
 };
 }
@@ -1849,13 +1845,10 @@ String decalSaveFile = String( x__decalSaveFile);
    if( decalSaveFile.isEmpty() )
    {
       String fileName = String::ToString( "%s.decals", Con::getVariable( "$Client::MissionFile" ) );
-
       char fullName[ 4096 ];
       Platform::makeFullPathName( fileName, fullName, sizeof( fullName ) );
-
       decalSaveFile = String( fullName );
    }
-
    
    gDecalManager->saveDecals( decalSaveFile );
 }

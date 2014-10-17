@@ -104,12 +104,10 @@ DefineConsoleFunction( getMaxFrameAllocation, S32, (), , "getMaxFrameAllocation(
 extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getMaxFrameAllocation()
 {
 {
-
 #ifdef TORQUE_DEBUG
   return (S32)( FrameAllocator::getMaxFrameAllocation());
 #else
 	return 0;
-
 #endif
 };
 }

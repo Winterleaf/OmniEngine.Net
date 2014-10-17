@@ -1,5 +1,41 @@
-﻿using System;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System;
 using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.CodeBehind;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui.CodeBehind;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ForestEditor.gui.CodeBehind;
@@ -16,101 +52,97 @@ using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.cameraBookmarks.ed.cs;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.PlugIns;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.ToolsPaletteGroups;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
-using Creator = WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.Creator;
+using Creator = WinterLeaf.Engine.Classes.View.Creators.Creator;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
-    {
+{
     public class EditorGui : GuiContainer
-        {
-        
+    {
 
         internal EditorPlugin currentEditor
-            {
+        {
             get { return this["currentEditor"]; }
             set { this["currentEditor"] = value; }
-            }
+        }
 
         internal bool isInitialized
-            {
+        {
             get { return this["isInitialized"].AsBool(); }
             set { this["isInitialized"] = value.AsString(); }
-            }
+        }
 
         internal MenuBar menuBar
-            {
+        {
             get { return this["menuBar"]; }
             set { this["menuBar"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorCameraSpeedMenu cameraSpeedMenu
-            {
+        {
             get { return this["cameraSpeedMenu"]; }
             set { this["cameraSpeedMenu"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorFreeCameraTypeMenu freeCameraTypeMenu
-            {
+        {
             get { return this["freeCameraTypeMenu"]; }
             set { this["freeCameraTypeMenu"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorPlayerCameraTypeMenu playerCameraTypeMenu
-            {
+        {
             get { return this["playerCameraTypeMenu"]; }
             set { this["playerCameraTypeMenu"] = value; }
-            }
+        }
 
         internal EditorCameraBookmarksMenu cameraBookmarksMenu
-            {
+        {
             get { return this["cameraBookmarksMenu"]; }
             set { this["cameraBookmarksMenu"] = value; }
-            }
+        }
 
         internal MenuBuilder viewTypeMenu
-            {
+        {
             get { return this["viewTypeMenu"]; }
             set { this["viewTypeMenu"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorDropTypeMenu dropTypeMenu
-            {
+        {
             get { return this["dropTypeMenu"]; }
             set { this["dropTypeMenu"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorAlignBoundsMenu alignBoundsMenu
-            {
+        {
             get { return this["alignBoundsMenu"]; }
             set { this["alignBoundsMenu"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorAlignCenterMenu alignCenterMenu
-            {
+        {
             get { return this["alignCenterMenu"]; }
             set { this["alignCenterMenu"] = value; }
-            }
+        }
 
         internal MenuHandlers.EditorWorldMenu worldMenu
-            {
+        {
             get { return this["worldMenu"]; }
             set { this["worldMenu"] = value; }
-            }
+        }
 
         [ConsoleInteraction(true, "EditorGui_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiContainer (EditorGui,EditorGuiGroup)        oc_Newobject57
 
-            ObjectCreator oc_Newobject57 = new ObjectCreator("GuiContainer", "EditorGui,EditorGuiGroup",
-                typeof (EditorGui));
+            ObjectCreator oc_Newobject57 = new ObjectCreator("GuiContainer", "EditorGui,EditorGuiGroup", typeof (EditorGui));
             oc_Newobject57["canSaveDynamicFields"] = "0";
             oc_Newobject57["Enabled"] = "1";
             oc_Newobject57["isContainer"] = "1";
@@ -243,8 +275,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiBitmapButtonCtrl (EWorldEditorToggleCamera)        oc_Newobject6
 
-            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiBitmapButtonCtrl", "EWorldEditorToggleCamera",
-                typeof (EWorldEditor.EWorldEditorToggleCamera));
+            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiBitmapButtonCtrl", "EWorldEditorToggleCamera", typeof (EWorldEditor.EWorldEditorToggleCamera));
             oc_Newobject6["canSaveDynamicFields"] = "0";
             oc_Newobject6["Enabled"] = "1";
             oc_Newobject6["isContainer"] = "0";
@@ -270,9 +301,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             ObjectCreator oc_Newobject5 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject5["HorizSizing"] = "left";
             oc_Newobject5["VertSizing"] = "top";
-            oc_Newobject5["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(EWorldEditorToggleCamera.extent, 0)-6 SPC getWord(EWorldEditorToggleCamera.extent, 1)-6");
+            oc_Newobject5["Position"] = new Creator.StringNoQuote("getWord(EWorldEditorToggleCamera.extent, 0)-6 SPC getWord(EWorldEditorToggleCamera.extent, 1)-6");
             oc_Newobject5["Extent"] = "4 4";
             oc_Newobject5["MinExtent"] = "4 4";
             oc_Newobject5["bitmap"] = "tools/gui/images/dropdown-button-arrow";
@@ -287,8 +316,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiControl (CameraSpeedDropdownContainer, EditorGuiGroup)        oc_Newobject10
 
-            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiControl",
-                "CameraSpeedDropdownContainer, EditorGuiGroup");
+            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiControl", "CameraSpeedDropdownContainer, EditorGuiGroup");
             oc_Newobject10["canSaveDynamicFields"] = "0";
             oc_Newobject10["isContainer"] = "1";
             oc_Newobject10["Profile"] = "ToolsGuiTransparentProfile";
@@ -331,8 +359,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiTextEditCtrl (EWorldEditorCameraSpeed)        oc_Newobject8
 
-            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextEditCtrl", "EWorldEditorCameraSpeed",
-                typeof (EWorldEditor.EWorldEditorCameraSpeed));
+            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextEditCtrl", "EWorldEditorCameraSpeed", typeof (EWorldEditor.EWorldEditorCameraSpeed));
             oc_Newobject8["canSaveDynamicFields"] = "0";
             oc_Newobject8["internalName"] = "textEdit";
             oc_Newobject8["isContainer"] = "0";
@@ -416,9 +443,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             ObjectCreator oc_Newobject11 = new ObjectCreator("GuiBitmapCtrl", "");
             oc_Newobject11["HorizSizing"] = "left";
             oc_Newobject11["VertSizing"] = "top";
-            oc_Newobject11["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(visibilityToggleBtn.extent, 0)-6 SPC getWord(visibilityToggleBtn.extent, 1)-6");
+            oc_Newobject11["Position"] = new Creator.StringNoQuote("getWord(visibilityToggleBtn.extent, 0)-6 SPC getWord(visibilityToggleBtn.extent, 1)-6");
             oc_Newobject11["Extent"] = "4 4";
             oc_Newobject11["MinExtent"] = "4 4";
             oc_Newobject11["bitmap"] = "tools/gui/images/dropdown-button-arrow";
@@ -447,8 +472,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiPopUpMenuCtrl (EWorldEditorAlignPopup)        oc_Newobject14
 
-            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiPopUpMenuCtrl", "EWorldEditorAlignPopup",
-                typeof (EWorldEditor.EWorldEditorAlignPopup));
+            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiPopUpMenuCtrl", "EWorldEditorAlignPopup", typeof (EWorldEditor.EWorldEditorAlignPopup));
             oc_Newobject14["canSaveDynamicFields"] = "0";
             oc_Newobject14["internalName"] = "";
             oc_Newobject14["Enabled"] = "1";
@@ -484,8 +508,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiContainer (EditorGuiStatusBar)        oc_Newobject22
 
-            ObjectCreator oc_Newobject22 = new ObjectCreator("GuiContainer", "EditorGuiStatusBar",
-                typeof (EditorGuiStatusBar));
+            ObjectCreator oc_Newobject22 = new ObjectCreator("GuiContainer", "EditorGuiStatusBar", typeof (EditorGuiStatusBar));
             oc_Newobject22["canSaveDynamicFields"] = "0";
             oc_Newobject22["Enabled"] = "1";
             oc_Newobject22["isContainer"] = "1";
@@ -590,8 +613,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiPopUpMenuCtrl (EWorldEditorStatusBarCamera)        oc_Newobject20
 
-            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiPopUpMenuCtrl", "EWorldEditorStatusBarCamera",
-                typeof (EWorldEditorStatusBarCamera));
+            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiPopUpMenuCtrl", "EWorldEditorStatusBarCamera", typeof (EWorldEditorStatusBarCamera));
             oc_Newobject20["canSaveDynamicFields"] = "0";
             oc_Newobject20["Enabled"] = "1";
             oc_Newobject20["isContainer"] = "0";
@@ -1153,10 +1175,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             ObjectCreator oc_Newobject48 = new ObjectCreator("GuiContainer", "CameraTypesDropdown");
             oc_Newobject48["Profile"] = "IconDropdownProfile";
-            oc_Newobject48["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(EWorldEditorToggleCamera.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
-            oc_Newobject48["Extent"] = new ObjectCreator.StringNoQuote("\"137\" SPC ((6*28)+6)");
+            oc_Newobject48["Position"] = new Creator.StringNoQuote("getWord(EWorldEditorToggleCamera.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
+            oc_Newobject48["Extent"] = new Creator.StringNoQuote("\"137\" SPC ((6*28)+6)");
             oc_Newobject48["isContainer"] = "1";
             oc_Newobject48["visible"] = "0";
 
@@ -1170,8 +1190,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject46["HorizSizing"] = "width";
             oc_Newobject46["VertSizing"] = "height";
             oc_Newobject46["Position"] = "5 5";
-            oc_Newobject46["Extent"] =
-                new ObjectCreator.StringNoQuote("\"132\" SPC getWord(CameraTypesDropdown.extent, 1)-5");
+            oc_Newobject46["Extent"] = new Creator.StringNoQuote("\"132\" SPC getWord(CameraTypesDropdown.extent, 1)-5");
             oc_Newobject46["MinExtent"] = "8 2";
             oc_Newobject46["canSave"] = "1";
             oc_Newobject46["Visible"] = "1";
@@ -1201,8 +1220,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject40["MinExtent"] = "8 8";
             oc_Newobject40["canSave"] = "1";
             oc_Newobject40["Visible"] = "1";
-            oc_Newobject40["Command"] =
-                "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Standard Camera\\\");";
+            oc_Newobject40["Command"] = "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Standard Camera\\\");";
             oc_Newobject40["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject40["ToolTip"] = "Free Camera";
             oc_Newobject40["hovertime"] = "1000";
@@ -1234,8 +1252,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject41["MinExtent"] = "8 8";
             oc_Newobject41["canSave"] = "1";
             oc_Newobject41["Visible"] = "1";
-            oc_Newobject41["Command"] =
-                "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Orbit Camera\\\");";
+            oc_Newobject41["Command"] = "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Orbit Camera\\\");";
             oc_Newobject41["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject41["ToolTip"] = "Toggle Orbit Cam";
             oc_Newobject41["hovertime"] = "1000";
@@ -1267,8 +1284,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject42["MinExtent"] = "8 8";
             oc_Newobject42["canSave"] = "1";
             oc_Newobject42["Visible"] = "1";
-            oc_Newobject42["Command"] =
-                "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"1st Person Camera\\\");";
+            oc_Newobject42["Command"] = "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"1st Person Camera\\\");";
             oc_Newobject42["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject42["ToolTip"] = "Player Camera";
             oc_Newobject42["hovertime"] = "1000";
@@ -1300,8 +1316,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject43["MinExtent"] = "8 8";
             oc_Newobject43["canSave"] = "1";
             oc_Newobject43["Visible"] = "1";
-            oc_Newobject43["Command"] =
-                "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"3rd Person Camera\\\");";
+            oc_Newobject43["Command"] = "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"3rd Person Camera\\\");";
             oc_Newobject43["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject43["ToolTip"] = "3rd Person Camera";
             oc_Newobject43["hovertime"] = "1000";
@@ -1333,8 +1348,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject44["MinExtent"] = "8 8";
             oc_Newobject44["canSave"] = "1";
             oc_Newobject44["Visible"] = "1";
-            oc_Newobject44["Command"] =
-                "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Smooth Camera\\\");";
+            oc_Newobject44["Command"] = "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Smooth Camera\\\");";
             oc_Newobject44["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject44["ToolTip"] = "Toggle Newtonian Cam";
             oc_Newobject44["hovertime"] = "1000";
@@ -1366,8 +1380,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             oc_Newobject45["MinExtent"] = "8 8";
             oc_Newobject45["canSave"] = "1";
             oc_Newobject45["Visible"] = "1";
-            oc_Newobject45["Command"] =
-                "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Smooth Rot Camera\\\");";
+            oc_Newobject45["Command"] = "CameraTypesDropdownToggle(); EditorGuiStatusBar.setCamera(\\\"Smooth Rot Camera\\\");";
             oc_Newobject45["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject45["ToolTip"] = "Toggle Smooth Camera with Smooth Rotation";
             oc_Newobject45["hovertime"] = "1000";
@@ -1390,15 +1403,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiDecoyCtrl (CameraTypesDropdownDecoy)        oc_Newobject47
 
-            ObjectCreator oc_Newobject47 = new ObjectCreator("GuiDecoyCtrl", "CameraTypesDropdownDecoy",
-                typeof (CameraTypesDropdownDecoy));
+            ObjectCreator oc_Newobject47 = new ObjectCreator("GuiDecoyCtrl", "CameraTypesDropdownDecoy", typeof (CameraTypesDropdownDecoy));
             oc_Newobject47["profile"] = "ToolsGuiDefaultProfile";
             oc_Newobject47["horizSizing"] = "right";
             oc_Newobject47["vertSizing"] = "bottom";
             oc_Newobject47["position"] = "0 0";
-            oc_Newobject47["extent"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(CameraTypesDropdown.extent, 0) SPC getWord(CameraTypesDropdown.extent, 1)");
+            oc_Newobject47["extent"] = new Creator.StringNoQuote("getWord(CameraTypesDropdown.extent, 0) SPC getWord(CameraTypesDropdown.extent, 1)");
             oc_Newobject47["minExtent"] = "8 8";
             oc_Newobject47["visible"] = "1";
             oc_Newobject47["helpTag"] = "0";
@@ -1417,9 +1427,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             ObjectCreator oc_Newobject56 = new ObjectCreator("GuiContainer", "VisibilityDropdown");
             oc_Newobject56["Profile"] = "IconDropdownProfile";
-            oc_Newobject56["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord(visibilityToggleBtn.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
+            oc_Newobject56["Position"] = new Creator.StringNoQuote("getWord(visibilityToggleBtn.position, 0)-5 SPC getWord(EditorGuiToolbar.extent, 1)-1");
             oc_Newobject56["Extent"] = "159 261";
             oc_Newobject56["isContainer"] = "1";
             oc_Newobject56["visible"] = "0";
@@ -1628,8 +1636,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region GuiMouseEventCtrl (CameraSpeedDropdownCtrlContainer, EditorGuiGroup)        oc_Newobject66
 
-            ObjectCreator oc_Newobject66 = new ObjectCreator("GuiMouseEventCtrl",
-                "CameraSpeedDropdownCtrlContainer, EditorGuiGroup", typeof (CameraSpeedDropdownCtrlContainer));
+            ObjectCreator oc_Newobject66 = new ObjectCreator("GuiMouseEventCtrl", "CameraSpeedDropdownCtrlContainer, EditorGuiGroup", typeof (CameraSpeedDropdownCtrlContainer));
             oc_Newobject66["internalName"] = "AggregateControl";
             oc_Newobject66["horizSizing"] = "right";
             oc_Newobject66["vertSizing"] = "bottom";
@@ -1643,9 +1650,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             #region GuiContainer ()        oc_Newobject65
 
             ObjectCreator oc_Newobject65 = new ObjectCreator("GuiContainer", "");
-            oc_Newobject65["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(CameraSpeedDropdownContainer.position) + firstWord(EditorGuiToolbar.position) + -6 SPC             (getWord(CameraSpeedDropdownContainer, 1)) + 31");
+            oc_Newobject65["position"] = new Creator.StringNoQuote("firstWord(CameraSpeedDropdownContainer.position) + firstWord(EditorGuiToolbar.position) + -6 SPC             (getWord(CameraSpeedDropdownContainer, 1)) + 31");
             oc_Newobject65["extent"] = "146 39";
             oc_Newobject65["isContainer"] = "1";
             oc_Newobject65["Profile"] = "IconDropdownProfile";
@@ -1762,11 +1767,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             #endregion
 
             oc_Newobject66.Create();
-            }
+        }
 
         [ConsoleInteraction(true, "EditorPrefs_initialize")]
         public static void editorPrefsInitialize()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
 
             EditorSettings.beginGroup("WorldEditor", true);
@@ -1846,10 +1851,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             EditorSettings.beginGroup("Docs");
             EditorSettings.setDefaultValue("documentationLocal", "../../../Documentation/Official Documentation.html");
-            EditorSettings.setDefaultValue("documentationReference",
-                "../../../Documentation/Torque 3D - Script Manual.chm");
-            EditorSettings.setDefaultValue("documentationURL",
-                "http://www.garagegames.com/products/torque-3d/documentation/user");
+            EditorSettings.setDefaultValue("documentationReference", "../../../Documentation/Torque 3D - Script Manual.chm");
+            EditorSettings.setDefaultValue("documentationURL", "http://www.garagegames.com/products/torque-3d/documentation/user");
             EditorSettings.setDefaultValue("forumURL", "http://www.garagegames.com/products/torque-3d/forums");
             EditorSettings.endGroup();
 
@@ -1907,10 +1910,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.setDefaultValue("smoothFactor", "0.1");
             EditorSettings.setDefaultValue("noiseFactor", "1.0");
             EditorSettings.setDefaultValue("softSelectRadius", "50");
-            EditorSettings.setDefaultValue("softSelectFilter",
-                "1.000000 0.833333 0.666667 0.500000 0.333333 0.166667 0.000000");
-            EditorSettings.setDefaultValue("softSelectDefaultFilter",
-                "1.000000 0.833333 0.666667 0.500000 0.333333 0.166667 0.000000");
+            EditorSettings.setDefaultValue("softSelectFilter", "1.000000 0.833333 0.666667 0.500000 0.333333 0.166667 0.000000");
+            EditorSettings.setDefaultValue("softSelectDefaultFilter", "1.000000 0.833333 0.666667 0.500000 0.333333 0.166667 0.000000");
             EditorSettings.setDefaultValue("slopeMinAngle", "0");
             EditorSettings.setDefaultValue("slopeMaxAngle", "90");
             EditorSettings.endGroup();
@@ -1926,18 +1927,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             setDefault("$pref::WorldEditor::visibleDistanceScale", "1");
             // DAW: Keep this around for now as is used by EditTSCtrl
-            }
+        }
 
         [ConsoleInteraction]
         public static void setDefault(string name, string value)
-            {
+        {
             if (!omni.Util.isDefined(name))
                 omni.Util.eval(name + ' ' + "=" + ' ' + "\"" + value + "\";");
-            }
+        }
 
         [ConsoleInteraction]
         public static void DeactivateAll()
-            {
+        {
             WorldEditorInspectorPlugin WorldEditorInspectorPlugin = "WorldEditorInspectorPlugin";
             TerrainPainterPlugin TerrainPainterPlugin = "TerrainPainterPlugin";
             ShapeEditorPlugin ShapeEditorPlugin = "ShapeEditorPlugin";
@@ -1963,11 +1964,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             DecalEditorPlugin.onDeactivated();
             DatablockEditorPlugin.onDeactivated();
             MaterialEditorPlugin.onDeactivated();
-            }
+        }
 
         [ConsoleInteraction]
         public void init()
-            {
+        {
             //EWTreeWindow EWTreeWindow = "EWTreeWindow";
             //EWInspectorWindow EWInspectorWindow = "EWInspectorWindow";
             //GuiControl EWorldEditorToolbar = "EWorldEditorToolbar";
@@ -2017,7 +2018,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             //ESelectObjectsWindow SelectObjectsWindow = this.FOT("SelectObjectsWindow");
             //GuiTabBookCtrl EditorTree = EWTreeWindow.FOT("EditorTree");
 
-
             EWorldEditor EWorldEditor = "EWorldEditor";
             TerrainEditor ETerrainEditor = "ETerrainEditor";
             EWorldEditor["isDirty"] = false.AsString();
@@ -2037,7 +2037,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             if (!FOT("ToolsPaletteWindow").isObject())
                 {
-                Tools.WorldEditor.gui.ToolsPaletteWindow.initialize();
+                ToolsPaletteWindow.initialize();
                 EWToolsPaletteWindow EWToolsPaletteWindow = "EWToolsPaletteWindow";
                 if (EWToolsPaletteWindow.isObject())
                     {
@@ -2086,7 +2086,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //WLECONVERT
                 //exec("~/worldEditor/gui/WorldEditorToolbar.ed.gui");
                 //console.Call("WorldEditorToolbar_initialize");
-                WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.WorldEditorToolbar.initialize();
+                WorldEditorToolbar.initialize();
                 GuiControl EWorldEditorToolbar = "EWorldEditorToolbar";
                 if (EWorldEditorToolbar.isObject())
                     {
@@ -2101,7 +2101,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //WLECONVERT
                 //exec("~/worldEditor/gui/TerrainEditToolbar.ed.gui");
                 //console.Call("TerrainEditToolbar_initialize");
-                Tools.WorldEditor.gui.TerrainEditToolbar.initialize();
+                TerrainEditToolbar.initialize();
                 GuiControl EWTerrainEditToolbar = "EWTerrainEditToolbar";
                 if (EWTerrainEditToolbar.isObject())
                     {
@@ -2131,7 +2131,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //console.Call("guiTerrainMaterialDlg_initialize");
                 guiTerrainMaterialDlg.initialize();
 
-
                 //WLECONVERT   
                 //exec("~/worldEditor/gui/TerrainBrushSoftnessCurveDlg.ed.gui");        
                 //console.Call("TerrainBrushSoftnessCurveDlg_initialize");
@@ -2143,7 +2142,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //WLECONVERT   
                 //exec("~/worldEditor/gui/TerrainPainterToolbar.ed.gui");
                 //console.Call("TerrainPainterToolbar_initialize");
-                Tools.WorldEditor.gui.TerrainPainterToolbar.initialize();
+                TerrainPainterToolbar.initialize();
                 GuiControl EWTerrainPainterToolbar = "EWTerrainPainterToolbar";
                 if (EWTerrainPainterToolbar.isObject())
                     {
@@ -2158,7 +2157,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //WLECONVERT   
                 //exec("~/worldEditor/gui/ToolsToolbar.ed.gui");
                 //console.Call("ToolsToolbar_initialize");
-                Tools.WorldEditor.gui.ToolsToolbar.initialize();
+                ToolsToolbar.initialize();
                 EWToolsToolbar EWToolsToolbar = "EWToolsToolbar";
                 if (EWToolsToolbar.isObject())
                     {
@@ -2184,7 +2183,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //WLECONVERT
                 //exec("~/worldEditor/gui/EditorSettingsWindow.ed.gui");
                 //console.Call("EditorSettingsWindow_initialize");
-                Tools.WorldEditor.gui.EditorSettingsWindow.initialize();
+                EditorSettingsWindow.initialize();
 
                 //Util.exec("~/worldEditor/scripts/editorSettingsWindow.ed.cs", false, false);
                 ESettingsWindow = "ESettingsWindow";
@@ -2253,7 +2252,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 //WLECONVERT
                 //exec("~/worldEditor/gui/TransformSelectionWindow.ed.gui");
                 //console.Call("TransformSelectionWindow_initialize");
-                Tools.WorldEditor.gui.TransformSelectionWindow.initialize();
+                TransformSelectionWindow.initialize();
 
                 //Util.exec("~/worldEditor/scripts/transformSelection.ed.cs", false, false);
                 ETransformSelection ETransformSelection = "ETransformSelection";
@@ -2289,7 +2288,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             ETerrainEditor.init();
 
             //Creator.init();
-            Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
+            WorldEditor.gui.CodeBehind.Creator.EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
             EWCreatorWindow.init();
             objectBuilderGui ObjectBuilderGui = "ObjectBuilderGui";
             ObjectBuilderGui.init();
@@ -2314,7 +2313,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EWorldEditorAlignPopup.add("World", 0);
             EWorldEditorAlignPopup.add("Object", 1);
             EWorldEditorAlignPopup.setSelected(0);
-
 
             // sync camera gui
             this.syncCameraGui();
@@ -2361,13 +2359,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             // Done.
 
             this.isInitialized = true;
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Editor Gui's interactions with Camera Settings
         [ConsoleInteraction]
         public void setupDefaultCameraSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
 
             EditorSettings.beginGroup("LevelInformation/levels/" + this["levelName"]);
@@ -2376,21 +2374,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.setDefaultValue("cameraSpeedMax", "200");
 
             EditorSettings.endGroup();
-            }
+        }
 
         [ConsoleInteraction]
         public void readCameraSettings(string levelName)
-            {
+        {
             MenuHandlers.EditorCameraSpeedMenu EditorCameraSpeedOptions = "EditorCameraSpeedOptions";
             if (levelName != this["levelName"])
                 return;
 
             EditorCameraSpeedOptions.setupGuiControls();
-            }
+        }
 
         [ConsoleInteraction]
         public void writeCameraSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
 
             EditorSettings.beginGroup("LevelInformation/levels/" + this["levelName"]);
@@ -2398,12 +2396,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.setValue("cameraSpeed", fGlobal["$Camera::movementSpeed"].AsString());
 
             EditorSettings.endGroup();
-            }
+        }
 
         //------------------------------------------------------------------------------
         [ConsoleInteraction]
         public void shutdown()
-            {
+        {
             SimSet EditorPluginSet = "EditorPluginSet";
 
             // Store settings.
@@ -2418,16 +2416,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 EditorPlugin plugin = EditorPluginSet.getObject(i);
                 plugin.onWorldEditorShutdown();
                 }
-            }
+        }
 
         /// This is used to add an editor to the Editors menu which
         /// will take over the default world editor window.
         [ConsoleInteraction]
         public string addToEditorsMenu(string displayName, string accel, EditorPlugin newPlugin)
-            {
+        {
             MenuBuilder windowMenu = this.findMenu("Editors");
             int count = windowMenu.getItemCount();
-
 
             bool alreadyExists = false;
             for (int i = 0; i < count; i++)
@@ -2447,11 +2444,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 windowMenu.addItem(count.AsString(), displayName + '\t' + accel + '\t' + newPlugin.getName());
 
             return accel;
-            }
+        }
 
         [ConsoleInteraction]
         public void addToToolsToolbar(string pluginName, string internalName, string bitmap, string tooltip)
-            {
+        {
             GuiDynamicCtrlArrayControl ToolsToolbarArray = "ToolsToolbarArray";
 
             int count = ToolsToolbarArray.getCount();
@@ -2459,8 +2456,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             bool alreadyExists = false;
             for (uint i = 0; i < count; i++)
                 {
-                string existingInternalName =
-                    ((SimObject) ToolsToolbarArray.getObject(i)).getFieldValue("internalName", -1);
+                string existingInternalName = ((SimObject) ToolsToolbarArray.getObject(i)).getFieldValue("internalName", -1);
 
                 if (internalName == existingInternalName)
                     {
@@ -2496,12 +2492,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 GuiBitmapButtonCtrl button = ocf.Create();
                 ToolsToolbarArray.add(button);
                 }
-            }
+        }
 
         //-----------------------------------------------------------------------------
         [ConsoleInteraction]
         public void setDisplayType(string type)
-            {
+        {
             GameConnection LocalClientConnection = "LocalClientConnection";
 
             EditTSCtrl gui = this.currentEditor["editorGui"];
@@ -2521,12 +2517,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 ((SimObject) LocalClientConnection["camera"]).call("setRotation", this["lastPerspectiveCamRotation"]);
 
             this["currentDisplayType"] = type;
-            }
+        }
 
         //-----------------------------------------------------------------------------
         [ConsoleInteraction]
         public void setEditor(EditorPlugin newEditor, bool dontActivate)
-            {
+        {
             if (this.currentEditor.isObject())
                 {
                 if (newEditor.isObject() && this.currentEditor.getId() == newEditor.getId())
@@ -2603,11 +2599,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 gui.setOrthoFOV(this["currentOrthoFOV"].AsInt());
                 this.syncCameraGui();
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void syncEditor(EditorPlugin newEditor, bool newEditorFailed)
-            {
+        {
             GuiDynamicCtrlArrayControl ToolsToolbarArray = "ToolsToolbarArray";
             EWToolsToolbar EWToolsToolbar = "EWToolsToolbar";
 
@@ -2664,11 +2660,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 }
 
             ToolsPaletteWindow.togglePalette(paletteName);
-            }
+        }
 
         [ConsoleInteraction]
         public override void onWake()
-            {
+        {
             GuiBitmapButtonCtrl EHWorldEditor = "EHWorldEditor";
             //
 
@@ -2700,9 +2696,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             int slashPos = 0;
             while (Util.strpos(sGlobal["$Server::MissionFile"], "/", slashPos) != -1)
-                {
                 slashPos = Util.strpos(sGlobal["$Server::MissionFile"], "/", slashPos) + 1;
-                }
             string levelName = Util.getSubStr(sGlobal["$Server::MissionFile"], slashPos, 99);
 
             if (levelName != this["levelName"])
@@ -2710,11 +2704,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             //if (Util._isObject(DemoEditorAlert) && DemoEditorAlert["helpTag"].AsInt() < 2)
             //Canvas.pushDialog(DemoEditorAlert);
-            }
+        }
 
         [ConsoleInteraction]
         public override void onSleep()
-            {
+        {
             SimSet EditorPluginSet = "EditorPluginSet";
             ActionMap MoveMap = "MoveMap";
             ActionMap EditorMap = "EditorMap";
@@ -2738,13 +2732,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 }
 
             if (sGlobal["$Server::CurrentScene"] != "")
+                {
                 if (sGlobal["$Server::CurrentScene"].isObject())
                     sGlobal["$Server::CurrentScene"].call("open");
-            }
+                }
+        }
 
         [ConsoleInteraction]
         public void onNewLevelLoaded(string levelName)
-            {
+        {
             CameraSettingsTab ECameraSettingsPage = "ECameraSettingsPage";
             MenuHandlers.EditorCameraSpeedMenu EditorCameraSpeedOptions = "EditorCameraSpeedOptions";
 
@@ -2756,46 +2752,44 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             #region ScriptObject ( EditorMissionCleanup )        oc_Newobject2
 
-            ObjectCreator oc_Newobject2 = new ObjectCreator("ScriptObject", " EditorMissionCleanup",
-                typeof (EditorMissionCleanup));
+            ObjectCreator oc_Newobject2 = new ObjectCreator("ScriptObject", " EditorMissionCleanup", typeof (EditorMissionCleanup));
             oc_Newobject2["parentGroup"] = "MissionCleanup";
 
             #endregion
 
             oc_Newobject2.Create();
-            }
-
+        }
 
         //-----------------------------------------------------------------------------
 
         // Called when we have been set as the content and onWake has been called
         [ConsoleInteraction]
         public override void onSetContent(string oldContent)
-            {
+        {
             this.attachMenus();
-            }
+        }
 
         // Called before onSleep when the canvas content is changed
         [ConsoleInteraction]
         public override void onUnsetContent(string newContent)
-            {
+        {
             this.detachMenus();
-            }
+        }
 
         //------------------------------------------------------------------------------
         [ConsoleInteraction]
         public void toggleSFXParametersWindow()
-            {
+        {
             GuiWindowCollapseCtrl ManageSFXParametersWindow = this.FOT("ManageSFXParametersWindow");
 
             GuiWindowCollapseCtrl window = ManageSFXParametersWindow;
             window.setVisible(!window.isVisible());
-            }
+        }
 
         //------------------------------------------------------------------------------
         [ConsoleInteraction]
         public void addCameraBookmark(string name)
-            {
+        {
             SimGroup CameraBookmarks = "CameraBookmarks";
             SimGroup MissionGroup = "MissionGroup";
             GameConnection LocalClientConnection = "LocalClientConnection";
@@ -2821,11 +2815,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             EWorldEditor.isDirty = true;
             EditorTree.buildVisibleTree(true);
-            }
+        }
 
         [ConsoleInteraction]
         public void removeCameraBookmark(string name)
-            {
+        {
             SimGroup CameraBookmarks = "CameraBookmarks";
             EWorldEditor EWorldEditor = "EWorldEditor";
             EditorTree EditorTree = "EditorTree";
@@ -2841,11 +2835,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             Extendable.MEDeleteUndoAction.submit(mark, false);
             EWorldEditor.isDirty = true;
             EditorTree.buildVisibleTree(true);
-            }
+        }
 
         [ConsoleInteraction]
         public void removeCameraBookmarkIndex(int index)
-            {
+        {
             SimGroup CameraBookmarks = "CameraBookmarks";
             EWorldEditor EWorldEditor = "EWorldEditor";
             EditorTree EditorTree = "EditorTree";
@@ -2860,11 +2854,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             Extendable.MEDeleteUndoAction.submit(obj, false);
             EWorldEditor.isDirty = true;
             EditorTree.buildVisibleTree(true);
-            }
+        }
 
         [ConsoleInteraction]
         public void jumpToBookmark(string name)
-            {
+        {
             SimGroup CameraBookmarks = "CameraBookmarks";
             GameConnection LocalClientConnection = "LocalClientConnection";
 
@@ -2878,11 +2872,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             ((SimObject) LocalClientConnection["camera"]).call("setTransform", mark.call("getTransform"));
             return;
-            }
+        }
 
         [ConsoleInteraction]
         public void jumpToBookmarkIndex(int index)
-            {
+        {
             SimGroup CameraBookmarks = "CameraBookmarks";
             GameConnection LocalClientConnection = "LocalClientConnection";
 
@@ -2892,14 +2886,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             if (index < 0 || index >= CameraBookmarks.getCount())
                 return;
 
-            TransformF trans =
-                ((SimObject) CameraBookmarks.getObject((uint) index)).call("getTransform").AsTransformF();
+            TransformF trans = ((SimObject) CameraBookmarks.getObject((uint) index)).call("getTransform").AsTransformF();
             ((SimObject) LocalClientConnection["camera"]).call("setTransform", trans.AsString());
-            }
+        }
 
         [ConsoleInteraction]
         public void addCameraBookmarkByGui()
-            {
+        {
             SimGroup CameraBookmarks = "CameraBookmarks";
 
             // look for a NewCamera name to grab
@@ -2908,42 +2901,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 {
                 name = "NewCamera_" + i;
                 if (!(CameraBookmarks.findObjectByInternalName(name, false)).isObject())
-                    {
                     break;
-                    }
                 }
             this.addCameraBookmark(name);
-            }
+        }
 
         [ConsoleInteraction]
         public void toggleCameraBookmarkWindow()
-            {
+        {
             EManageBookmarks EManageBookmarks = "EManageBookmarks";
 
             EManageBookmarks.ToggleVisibility();
-            }
+        }
 
         [ConsoleInteraction]
         public void toggleObjectSelectionsWindow()
-            {
+        {
             ESelectObjectsWindow ESelectObjectsWindow = "ESelectObjectsWindow";
 
             ESelectObjectsWindow.toggleVisibility();
-            }
+        }
 
         [ConsoleInteraction]
         public void toggleOrthoGrid()
-            {
+        {
             EWorldEditor EWorldEditor = "EWorldEditor";
 
             EWorldEditor.renderOrthoGrid = !EWorldEditor["renderOrthoGrid"].AsBool();
-            }
+        }
 
         //------------------------------------------------------------------------------
 
         [ConsoleInteraction]
         public void syncCameraGui()
-            {
+        {
             GameConnection LocalClientConnection = "LocalClientConnection";
             EditorGuiStatusBar EditorGuiStatusBar = "EditorGuiStatusBar";
             EWorldEditor.EWorldEditorToggleCamera EWorldEditorToggleCamera = "EWorldEditorToggleCamera";
@@ -3078,11 +3069,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 EditorFreeCameraTypeOptions.checkRadioItem(0, 4, -1);
                 EditorGuiStatusBar.setCamera("1st Person Camera");
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void readWorldEditorSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
             EWorldEditor EWorldEditor = "EWorldEditor";
             GizmoProfile GlobalGizmoProfile = "GlobalGizmoProfile";
@@ -3101,7 +3092,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 }
             catch (Exception)
                 {
-                
                 }
             this["torsionPath"] = EditorSettings.value("torsionPath");
 
@@ -3209,11 +3199,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.endGroup();
 
             EditorSettings.endGroup(); // AxisGizmo
-            }
+        }
 
         [ConsoleInteraction]
         public void writeWorldEditorSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
             EWorldEditor EWorldEditor = "EWorldEditor";
             GizmoProfile GlobalGizmoProfile = "GlobalGizmoProfile";
@@ -3329,11 +3319,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.endGroup();
 
             EditorSettings.endGroup(); // AxisGizmo
-            }
+        }
 
         [ConsoleInteraction]
         public void readTerrainEditorSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
             TerrainEditor ETerrainEditor = "ETerrainEditor";
 
@@ -3343,7 +3333,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             EditorSettings.beginGroup("Brush");
             ETerrainEditor["maxBrushSize"] = EditorSettings.value("maxBrushSize");
-
 
             ETerrainEditor.setBrushSize(EditorSettings.value("brushSize").Split(' ')[0].AsInt(), EditorSettings.value("brushSize").Split(' ')[1].AsInt());
             ETerrainEditor.setBrushType(EditorSettings.value("brushType"));
@@ -3365,11 +3354,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.endGroup();
 
             EditorSettings.endGroup();
-            }
+        }
 
         [ConsoleInteraction]
         public void writeTerrainEditorSettings()
-            {
+        {
             Settings EditorSettings = "EditorSettings";
             TerrainEditor ETerrainEditor = "ETerrainEditor";
 
@@ -3398,11 +3387,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.endGroup();
 
             EditorSettings.endGroup();
-            }
+        }
 
         [ConsoleInteraction]
         public void buildMenus()
-            {
+        {
             string cmdCtrl, menuCmdCtrl, quitShortcut, redoShortcut;
 
             if (this.menuBar.isObject())
@@ -3428,8 +3417,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             // The speed increments located here are overwritten in EditorCameraSpeedMenu::setupDefaultState.
             // The new min/max for the editor camera speed range can be set in each level's levelInfo object.
 
-            ObjectCreator cameraCreator = new ObjectCreator("PopupMenu", "EditorCameraSpeedOptions",
-                typeof (MenuHandlers.EditorCameraSpeedMenu));
+            ObjectCreator cameraCreator = new ObjectCreator("PopupMenu", "EditorCameraSpeedOptions", typeof (MenuHandlers.EditorCameraSpeedMenu));
 
             cameraCreator["item[0]"] = "Slowest" + '\t' + cmdCtrl + "-Shift 1" + '\t' + "5";
             cameraCreator["item[1]"] = "Slow" + '\t' + cmdCtrl + "-Shift 2" + '\t' + "35";
@@ -3441,53 +3429,37 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             this.cameraSpeedMenu = cameraCreator.Create();
 
-            ObjectCreator freeCameraCreator =
-                new ObjectCreator("PopupMenu", "EditorFreeCameraTypeOptions",
-                    typeof (MenuHandlers.EditorFreeCameraTypeMenu));
+            ObjectCreator freeCameraCreator = new ObjectCreator("PopupMenu", "EditorFreeCameraTypeOptions", typeof (MenuHandlers.EditorFreeCameraTypeMenu));
 
-            freeCameraCreator["item[0]"] = "Standard" + '\t' + "Ctrl 1" + '\t' +
-                                           "EditorGuiStatusBar.setCamera(\\\"Standard Camera\\\");";
-            freeCameraCreator["item[1]"] = "Orbit Camera" + '\t' + "Ctrl 2" + '\t' +
-                                           "EditorGuiStatusBar.setCamera(\\\"Orbit Camera\\\");";
+            freeCameraCreator["item[0]"] = "Standard" + '\t' + "Ctrl 1" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Standard Camera\\\");";
+            freeCameraCreator["item[1]"] = "Orbit Camera" + '\t' + "Ctrl 2" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Orbit Camera\\\");";
             freeCameraCreator["item[2]"] = "-";
-            freeCameraCreator["item[3]"] = "Smoothed" + '\t' + "" + '\t' +
-                                           "EditorGuiStatusBar.setCamera(\\\"Smooth Camera\\\");";
-            freeCameraCreator["item[4]"] = "Smoothed Rotate" + '\t' + "" + '\t' +
-                                           "EditorGuiStatusBar.setCamera(\\\"Smooth Rot Camera\\\");";
+            freeCameraCreator["item[3]"] = "Smoothed" + '\t' + "" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Smooth Camera\\\");";
+            freeCameraCreator["item[4]"] = "Smoothed Rotate" + '\t' + "" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Smooth Rot Camera\\\");";
 
             this.freeCameraTypeMenu = freeCameraCreator.Create();
 
-            ObjectCreator playerCameraCreator =
-                new ObjectCreator("PopupMenu", "EditorPlayerCameraTypeOptions",
-                    typeof (MenuHandlers.EditorPlayerCameraTypeMenu));
+            ObjectCreator playerCameraCreator = new ObjectCreator("PopupMenu", "EditorPlayerCameraTypeOptions", typeof (MenuHandlers.EditorPlayerCameraTypeMenu));
 
-            playerCameraCreator["item[0]"] = "First Person" + '\t' + "" + '\t' +
-                                             "EditorGuiStatusBar.setCamera(\\\"1st Person Camera\\\");";
-            playerCameraCreator["item[1]"] = "Third Person" + '\t' + "" + '\t' +
-                                             "EditorGuiStatusBar.setCamera(\\\"3rd Person Camera\\\");";
+            playerCameraCreator["item[0]"] = "First Person" + '\t' + "" + '\t' + "EditorGuiStatusBar.setCamera(\\\"1st Person Camera\\\");";
+            playerCameraCreator["item[1]"] = "Third Person" + '\t' + "" + '\t' + "EditorGuiStatusBar.setCamera(\\\"3rd Person Camera\\\");";
 
             this.playerCameraTypeMenu = playerCameraCreator.Create();
 
-            this.cameraBookmarksMenu =
-                new ObjectCreator("PopupMenu", "EditorCameraBookmarks", typeof (EditorCameraBookmarksMenu)).Create();
+            this.cameraBookmarksMenu = new ObjectCreator("PopupMenu", "EditorCameraBookmarks", typeof (EditorCameraBookmarksMenu)).Create();
 
             //item[0] = "None";
 
             ObjectCreator viewCreator = new ObjectCreator("PopupMenu", "", typeof (MenuBuilder));
 
             viewCreator["item[0]"] = "Top" + '\t' + "Alt 2" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Top View\\\");";
-            viewCreator["item[1]"] = "Bottom" + '\t' + "Alt 5" + '\t' +
-                                     "EditorGuiStatusBar.setCamera(\\\"Bottom View\\\");";
-            viewCreator["item[2]"] = "Front" + '\t' + "Alt 3" + '\t' +
-                                     "EditorGuiStatusBar.setCamera(\\\"Front View\\\");";
+            viewCreator["item[1]"] = "Bottom" + '\t' + "Alt 5" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Bottom View\\\");";
+            viewCreator["item[2]"] = "Front" + '\t' + "Alt 3" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Front View\\\");";
             viewCreator["item[3]"] = "Back" + '\t' + "Alt 6" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Back View\\\");";
             viewCreator["item[4]"] = "Left" + '\t' + "Alt 4" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Left View\\\");";
-            viewCreator["item[5]"] = "Right" + '\t' + "Alt 7" + '\t' +
-                                     "EditorGuiStatusBar.setCamera(\\\"Right View\\\");";
-            viewCreator["item[6]"] = "Perspective" + '\t' + "Alt 1" + '\t' +
-                                     "EditorGuiStatusBar.setCamera(\\\"Standard Camera\\\");";
-            viewCreator["item[7]"] = "Isometric" + '\t' + "Alt 8" + '\t' +
-                                     "EditorGuiStatusBar.setCamera(\\\"Isometric View\\\");";
+            viewCreator["item[5]"] = "Right" + '\t' + "Alt 7" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Right View\\\");";
+            viewCreator["item[6]"] = "Perspective" + '\t' + "Alt 1" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Standard Camera\\\");";
+            viewCreator["item[7]"] = "Isometric" + '\t' + "Alt 8" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Isometric View\\\");";
 
             this.viewTypeMenu = viewCreator.Create();
 
@@ -3498,8 +3470,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             this.menuBar = menuBarCreator.Create();
 
             // File Menu
-            ObjectCreator fileMenuCreator =
-                new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorFileMenu));
+            ObjectCreator fileMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorFileMenu));
             fileMenuCreator["barTitle"] = "File";
 
             MenuHandlers.EditorFileMenu fileMenu = fileMenuCreator.Create();
@@ -3507,8 +3478,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             if (!Util.isWebDemo())
                 {
                 fileMenu.appendItem("New Level" + '\t' + "" + '\t' + "schedule( 1, 0, \"EditorNewLevel\" );");
-                fileMenu.appendItem("Open Level..." + '\t' + cmdCtrl + ' ' + "O" + '\t' +
-                                    "schedule( 1, 0, \"EditorOpenMission\" );");
+                fileMenu.appendItem("Open Level..." + '\t' + cmdCtrl + ' ' + "O" + '\t' + "schedule( 1, 0, \"EditorOpenMission\" );");
                 fileMenu.appendItem("Save Level" + '\t' + cmdCtrl + ' ' + "S" + '\t' + "EditorSaveMissionMenu();");
                 fileMenu.appendItem("Save Level As..." + '\t' + "" + '\t' + "EditorSaveMissionAs();");
                 fileMenu.appendItem("-");
@@ -3526,8 +3496,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
             if (!Util.isWebDemo())
                 {
-                fileMenu.appendItem("Export Terrain Heightmap" + '\t' + "" + '\t' +
-                                    "Canvas.pushDialog( TerrainExportGui );");
+                fileMenu.appendItem("Export Terrain Heightmap" + '\t' + "" + '\t' + "Canvas.pushDialog( TerrainExportGui );");
                 fileMenu.appendItem("-");
                 fileMenu.appendItem("Export To COLLADA..." + '\t' + "" + '\t' + "EditorExportToCollada();");
                 //item[5] = "Import Terraform Data..." + '\t' + "" + '\t' + "Heightfield::import();";
@@ -3550,8 +3519,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             this.menuBar.insert(fileMenu, this.menuBar.getCount());
 
             // Edit Menu
-            ObjectCreator editMenuCreator =
-                new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorEditMenu));
+            ObjectCreator editMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorEditMenu));
             editMenuCreator["internalName"] = "EditMenu";
             editMenuCreator["barTitle"] = "Edit";
 
@@ -3566,10 +3534,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             editMenuCreator["item[8]"] = "Deselect" + '\t' + "X" + '\t' + "EditorMenuEditDeselect();";
             editMenuCreator["item[9]"] = "Select..." + '\t' + "" + '\t' + "EditorGui.toggleObjectSelectionsWindow();";
             editMenuCreator["item[10]"] = "-";
-            editMenuCreator["item[11]"] = "Audio Parameters..." + '\t' + "" + '\t' +
-                                          "EditorGui.toggleSFXParametersWindow();";
-            editMenuCreator["item[12]"] = "Editor Settings..." + '\t' + "" + '\t' +
-                                          "ESettingsWindow.ToggleVisibility();";
+            editMenuCreator["item[11]"] = "Audio Parameters..." + '\t' + "" + '\t' + "EditorGui.toggleSFXParametersWindow();";
+            editMenuCreator["item[12]"] = "Editor Settings..." + '\t' + "" + '\t' + "ESettingsWindow.ToggleVisibility();";
             editMenuCreator["item[13]"] = "Snap Options..." + '\t' + "" + '\t' + "ESnapOptions.ToggleVisibility();";
             editMenuCreator["item[14]"] = "-";
             editMenuCreator["item[15]"] = "Game Options..." + '\t' + "" + '\t' + "Canvas.pushDialog(optionsDlg);";
@@ -3580,52 +3546,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             this.menuBar.insert(editMenu, this.menuBar.getCount());
 
             // View Menu
-            ObjectCreator viewMenuCreator =
-                new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorViewMenu));
+            ObjectCreator viewMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorViewMenu));
             viewMenuCreator["internalName"] = "viewMenu";
 
             viewMenuCreator["barTitle"] = "View";
 
             viewMenuCreator["item[0]"] = "Visibility Layers" + '\t' + "Alt V" + '\t' + "VisibilityDropdownToggle();";
-            viewMenuCreator["item[1]"] =
-                "Show Grid in Ortho Views" + '\t' + cmdCtrl + "-Shift-Alt G" + '\t' + "EditorGui.toggleOrthoGrid();";
+            viewMenuCreator["item[1]"] = "Show Grid in Ortho Views" + '\t' + cmdCtrl + "-Shift-Alt G" + '\t' + "EditorGui.toggleOrthoGrid();";
 
             MenuHandlers.EditorViewMenu viewMenu = viewMenuCreator.Create();
 
             this.menuBar.insert(viewMenu, this.menuBar.getCount());
 
             // Camera Menu
-            ObjectCreator cameraMenuCreator =
-                new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorCameraMenu));
+            ObjectCreator cameraMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorCameraMenu));
 
             cameraMenuCreator["barTitle"] = "Camera";
 
             cameraMenuCreator["item[0]"] = "World Camera" + '\t' + this.freeCameraTypeMenu;
             cameraMenuCreator["item[1]"] = "Player Camera" + '\t' + this.playerCameraTypeMenu;
             cameraMenuCreator["item[2]"] = "-";
-            cameraMenuCreator["item[3]"] = "Toggle Camera" + '\t' + menuCmdCtrl + ' ' + "C" + '\t' +
-                                           "commandToServer('ToggleCamera');";
-            cameraMenuCreator["item[4]"] = "Place Camera at Selection" + '\t' + "Ctrl Q" + '\t' +
-                                           "EWorldEditor.dropCameraToSelection();";
-            cameraMenuCreator["item[5]"] = "Place Camera at Player" + '\t' + "Alt Q" + '\t' +
-                                           "commandToServer('dropCameraAtPlayer');";
-            cameraMenuCreator["item[6]"] = "Place Player at Camera" + '\t' + "Alt W" + '\t' +
-                                           "commandToServer('DropPlayerAtCamera');";
+            cameraMenuCreator["item[3]"] = "Toggle Camera" + '\t' + menuCmdCtrl + ' ' + "C" + '\t' + "commandToServer('ToggleCamera');";
+            cameraMenuCreator["item[4]"] = "Place Camera at Selection" + '\t' + "Ctrl Q" + '\t' + "EWorldEditor.dropCameraToSelection();";
+            cameraMenuCreator["item[5]"] = "Place Camera at Player" + '\t' + "Alt Q" + '\t' + "commandToServer('dropCameraAtPlayer');";
+            cameraMenuCreator["item[6]"] = "Place Player at Camera" + '\t' + "Alt W" + '\t' + "commandToServer('DropPlayerAtCamera');";
             cameraMenuCreator["item[7]"] = "-";
-            cameraMenuCreator["item[8]"] = "Fit View to Selection" + '\t' + "F" + '\t' +
-                                           "commandToServer('EditorCameraAutoFit', EWorldEditor.getSelectionRadius()+1);";
-            cameraMenuCreator["item[9]"] =
-                //new ObjectCreator.StringNoQuote(
-                "Fit View To Selection and Orbit" + '\t' + "Alt F" + '\t' +
-                "EditorGuiStatusBar.setCamera(\\\"Orbit Camera\\\"); commandToServer('EditorCameraAutoFit', EWorldEditor.getSelectionRadius()+1);";
+            cameraMenuCreator["item[8]"] = "Fit View to Selection" + '\t' + "F" + '\t' + "commandToServer('EditorCameraAutoFit', EWorldEditor.getSelectionRadius()+1);";
+            cameraMenuCreator["item[9]"] =//new ObjectCreator.StringNoQuote(
+                "Fit View To Selection and Orbit" + '\t' + "Alt F" + '\t' + "EditorGuiStatusBar.setCamera(\\\"Orbit Camera\\\"); commandToServer('EditorCameraAutoFit', EWorldEditor.getSelectionRadius()+1);";
             cameraMenuCreator["item[10]"] = "-";
             cameraMenuCreator["item[11]"] = "Speed" + '\t' + this.cameraSpeedMenu;
             cameraMenuCreator["item[12]"] = "View" + '\t' + this.viewTypeMenu;
             cameraMenuCreator["item[13]"] = "-";
-            cameraMenuCreator["item[14]"] = "Add Bookmark..." + '\t' + "Ctrl B" + '\t' +
-                                            "EditorGui.addCameraBookmarkByGui();";
-            cameraMenuCreator["item[15]"] = "Manage Bookmarks..." + '\t' + "Ctrl-Shift B" + '\t' +
-                                            "EditorGui.toggleCameraBookmarkWindow();";
+            cameraMenuCreator["item[14]"] = "Add Bookmark..." + '\t' + "Ctrl B" + '\t' + "EditorGui.addCameraBookmarkByGui();";
+            cameraMenuCreator["item[15]"] = "Manage Bookmarks..." + '\t' + "Ctrl-Shift B" + '\t' + "EditorGui.toggleCameraBookmarkWindow();";
             cameraMenuCreator["item[16]"] = "Jump to Bookmark" + '\t' + this.cameraBookmarksMenu;
 
             MenuHandlers.EditorCameraMenu cameraMenu = cameraMenuCreator.Create();
@@ -3633,8 +3587,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             this.menuBar.insert(cameraMenu, this.menuBar.getCount());
 
             // Editors Menu
-            ObjectCreator editorsMenuCreator =
-                new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorToolsMenu));
+            ObjectCreator editorsMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorToolsMenu));
 
             editorsMenuCreator["barTitle"] = "Editors";
 
@@ -3653,8 +3606,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             ObjectCreator lightingMenuCreator = new ObjectCreator("PopupMenu", "", typeof (EditorLightingMenu));
             lightingMenuCreator["barTitle"] = "Lighting";
 
-            lightingMenuCreator["item[0]"] = "Full Relight" + '\t' + "Alt L" + '\t' +
-                                             "Editor.lightScene(\\\"\\\", forceAlways);";
+            lightingMenuCreator["item[0]"] = "Full Relight" + '\t' + "Alt L" + '\t' + "Editor.lightScene(\\\"\\\", forceAlways);";
             lightingMenuCreator["item[1]"] = "Toggle ShadowViz" + '\t' + "" + '\t' + "toggleShadowViz();";
             lightingMenuCreator["item[2]"] = "-";
 
@@ -3666,26 +3618,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             this.menuBar.insert(lightingMenu, this.menuBar.getCount());
 
             // Help Menu
-            ObjectCreator helpMenuCreator =
-                new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorHelpMenu));
+            ObjectCreator helpMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorHelpMenu));
 
             helpMenuCreator["barTitle"] = "Help";
 
-            helpMenuCreator["item[0]"] = "Online Documentation..." + '\t' + "Alt F1" + '\t' +
-                                         "gotoWebPage(EWorldEditor.documentationURL);";
-            helpMenuCreator["item[1]"] = "Offline User Guide..." + '\t' + "" + '\t' +
-                                         "gotoWebPage(EWorldEditor.documentationLocal);";
-            helpMenuCreator["item[2]"] = "Offline Reference Guide..." + '\t' + "" + '\t' +
-                                         "shellexecute(EWorldEditor.documentationReference);";
-            helpMenuCreator["item[3]"] = "Torque 3D Forums..." + '\t' + "" + '\t' +
-                                         "gotoWebPage(EWorldEditor.forumURL);";
+            helpMenuCreator["item[0]"] = "Online Documentation..." + '\t' + "Alt F1" + '\t' + "gotoWebPage(EWorldEditor.documentationURL);";
+            helpMenuCreator["item[1]"] = "Offline User Guide..." + '\t' + "" + '\t' + "gotoWebPage(EWorldEditor.documentationLocal);";
+            helpMenuCreator["item[2]"] = "Offline Reference Guide..." + '\t' + "" + '\t' + "shellexecute(EWorldEditor.documentationReference);";
+            helpMenuCreator["item[3]"] = "Torque 3D Forums..." + '\t' + "" + '\t' + "gotoWebPage(EWorldEditor.forumURL);";
 
             MenuHandlers.EditorHelpMenu helpMenu = helpMenuCreator.Create();
 
             this.menuBar.insert(helpMenu, this.menuBar.getCount());
 
-            ObjectCreator oDiagnosticMenu = new ObjectCreator("PopupMenu", "DiagnosticMenu",
-                typeof (MenuHandlers.EditorHelpMenu));
+            ObjectCreator oDiagnosticMenu = new ObjectCreator("PopupMenu", "DiagnosticMenu", typeof (MenuHandlers.EditorHelpMenu));
             oDiagnosticMenu["barTitle"] = "Diagnostics";
             oDiagnosticMenu["item[0]"] = "Net Usage Graph" + "\t" + "" + "\t" + "toggleNetGraph(); DiagnosticMenu.checkItem(0, !DiagnosticMenu.isItemChecked(0));";
             oDiagnosticMenu["item[1]"] = "Metrics Menu" + "\t" + "" + "\t" + "toggleMetricsGui()";
@@ -3693,14 +3639,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             MenuHandlers.EditorHelpMenu diagMenu = oDiagnosticMenu.Create();
             this.menuBar.insert(diagMenu, this.menuBar.getCount());
 
-
             // Menus that are added/removed dynamically (temporary)
 
             // World Menu
             if (!this.worldMenu.isObject())
                 {
-                ObjectCreator dropTypeCreator =
-                    new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorDropTypeMenu));
+                ObjectCreator dropTypeCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorDropTypeMenu));
 
                 // The onSelectItem() callback for this menu re-purposes the command field
                 // as the MenuBuilder version is not used.
@@ -3715,8 +3659,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
                 this.dropTypeMenu = dropTypeCreator.Create();
 
-                ObjectCreator alignBoundsCreator =
-                    new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorAlignBoundsMenu));
+                ObjectCreator alignBoundsCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorAlignBoundsMenu));
 
                 // The onSelectItem() callback for this menu re-purposes the command field
                 // as the MenuBuilder version is not used.
@@ -3729,8 +3672,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
                 this.alignBoundsMenu = alignBoundsCreator.Create();
 
-                ObjectCreator alignCenterCreator =
-                    new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorAlignCenterMenu));
+                ObjectCreator alignCenterCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorAlignCenterMenu));
 
                 // The onSelectItem() callback for this menu re-purposes the command field
                 // as the MenuBuilder version is not used.
@@ -3740,37 +3682,27 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
                 this.alignCenterMenu = alignCenterCreator.Create();
 
-                ObjectCreator worldMenuCreator = new ObjectCreator("PopupMenu", "",
-                    typeof (MenuHandlers.EditorWorldMenu));
+                ObjectCreator worldMenuCreator = new ObjectCreator("PopupMenu", "", typeof (MenuHandlers.EditorWorldMenu));
 
                 worldMenuCreator["barTitle"] = "Object";
 
-                worldMenuCreator["item[0]"] = "Lock Selection" + '\t' + cmdCtrl + " L" + '\t' +
-                                              "EWorldEditor.lockSelection(true); EWorldEditor.syncGui();";
-                worldMenuCreator["item[1]"] = "Unlock Selection" + '\t' + cmdCtrl + "-Shift L" + '\t' +
-                                              "EWorldEditor.lockSelection(false); EWorldEditor.syncGui();";
+                worldMenuCreator["item[0]"] = "Lock Selection" + '\t' + cmdCtrl + " L" + '\t' + "EWorldEditor.lockSelection(true); EWorldEditor.syncGui();";
+                worldMenuCreator["item[1]"] = "Unlock Selection" + '\t' + cmdCtrl + "-Shift L" + '\t' + "EWorldEditor.lockSelection(false); EWorldEditor.syncGui();";
                 worldMenuCreator["item[2]"] = "-";
-                worldMenuCreator["item[3]"] = "Hide Selection" + '\t' + cmdCtrl + " H" + '\t' +
-                                              "EWorldEditor.hideSelection(true); EWorldEditor.syncGui();";
-                worldMenuCreator["item[4]"] = "Show Selection" + '\t' + cmdCtrl + "-Shift H" + '\t' +
-                                              "EWorldEditor.hideSelection(false); EWorldEditor.syncGui();";
+                worldMenuCreator["item[3]"] = "Hide Selection" + '\t' + cmdCtrl + " H" + '\t' + "EWorldEditor.hideSelection(true); EWorldEditor.syncGui();";
+                worldMenuCreator["item[4]"] = "Show Selection" + '\t' + cmdCtrl + "-Shift H" + '\t' + "EWorldEditor.hideSelection(false); EWorldEditor.syncGui();";
                 worldMenuCreator["item[5]"] = "-";
                 worldMenuCreator["item[6]"] = "Align Bounds" + '\t' + this.alignBoundsMenu;
                 worldMenuCreator["item[7]"] = "Align Center" + '\t' + this.alignCenterMenu;
                 worldMenuCreator["item[8]"] = "-";
-                worldMenuCreator["item[9]"] = "Reset Transforms" + '\t' + "Ctrl R" + '\t' +
-                                              "EWorldEditor.resetTransforms();";
-                worldMenuCreator["item[10]"] = "Reset Selected Rotation" + '\t' + "" + '\t' +
-                                               "EWorldEditor.resetSelectedRotation();";
-                worldMenuCreator["item[11]"] = "Reset Selected Scale" + '\t' + "" + '\t' +
-                                               "EWorldEditor.resetSelectedScale();";
-                worldMenuCreator["item[12]"] = "Transform Selection..." + '\t' + "Ctrl T" + '\t' +
-                                               "ETransformSelection.ToggleVisibility();";
+                worldMenuCreator["item[9]"] = "Reset Transforms" + '\t' + "Ctrl R" + '\t' + "EWorldEditor.resetTransforms();";
+                worldMenuCreator["item[10]"] = "Reset Selected Rotation" + '\t' + "" + '\t' + "EWorldEditor.resetSelectedRotation();";
+                worldMenuCreator["item[11]"] = "Reset Selected Scale" + '\t' + "" + '\t' + "EWorldEditor.resetSelectedScale();";
+                worldMenuCreator["item[12]"] = "Transform Selection..." + '\t' + "Ctrl T" + '\t' + "ETransformSelection.ToggleVisibility();";
                 worldMenuCreator["item[13]"] = "-";
                 //item[13] = "Drop Camera to Selection" + '\t' + "Ctrl Q" + '\t' + "EWorldEditor.dropCameraToSelection();";
                 //item[14] = "Add Selection to Instant Group" + '\t' + "" + '\t' + "EWorldEditor.addSelectionToAddGroup();";
-                worldMenuCreator["item[14]"] = "Drop Selection" + '\t' + "Ctrl D" + '\t' +
-                                               "EWorldEditor.dropSelection();";
+                worldMenuCreator["item[14]"] = "Drop Selection" + '\t' + "Ctrl D" + '\t' + "EWorldEditor.dropSelection();";
                 //item[15] = "-";
                 worldMenuCreator["item[15]"] = "Drop Location" + '\t' + this.dropTypeMenu;
                 worldMenuCreator["item[16]"] = "-";
@@ -3782,26 +3714,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
                 this.worldMenu = worldMenuCreator.Create();
                 }
-            }
+        }
 
         //////////////////////////////////////////////////////////////////////////
         [ConsoleInteraction]
         public void attachMenus()
-            {
+        {
             GuiCanvas Canvas = "Canvas";
 
             this.menuBar.attachToCanvas(Canvas, 0);
-            }
+        }
 
         [ConsoleInteraction]
         public void detachMenus()
-            {
+        {
             this.menuBar.removeFromCanvas();
-            }
+        }
 
         [ConsoleInteraction]
         public void setMenuDefaultState()
-            {
+        {
             if (!this.menuBar.isObject())
                 return;
 
@@ -3812,13 +3744,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 }
 
             this.worldMenu.setupDefaultState();
-            }
+        }
 
         //////////////////////////////////////////////////////////////////////////
 
         [ConsoleInteraction]
         public string findMenu(string name)
-            {
+        {
             if (!this.menuBar.isObject())
                 return "0";
 
@@ -3831,11 +3763,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 }
 
             return "0";
-            }
+        }
 
         [ConsoleInteraction]
         public void handleEscape()
-            {
+        {
             editor Editor = "Editor";
 
             bool result = false;
@@ -3843,14 +3775,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 result = this.currentEditor.handleEscape();
 
             if (!result)
-                {
                 Editor.close("PlayGui");
-                }
-            }
+        }
 
         [ConsoleInteraction]
         public static void CameraTypesDropdownToggle()
-            {
+        {
             GuiContainer CameraTypesDropdown = "CameraTypesDropdown";
             EWorldEditor.EWorldEditorToggleCamera EWorldEditorToggleCamera = "EWorldEditorToggleCamera";
             CameraTypesDropdownDecoy CameraTypesDropdownDecoy = "CameraTypesDropdownDecoy";
@@ -3869,11 +3799,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 CameraTypesDropdownDecoy.setActive(true);
                 EWorldEditorToggleCamera.setStateOn(true);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public static void VisibilityDropdownToggle()
-            {
+        {
             EVisibility EVisibility = "EVisibility";
             GuiBitmapButtonCtrl visibilityToggleBtn = "visibilityToggleBtn";
 
@@ -3887,7 +3817,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 EVisibility.setVisible(true);
                 visibilityToggleBtn.setStateOn(true);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public static void toggleSnappingOptions(string var)
@@ -3937,9 +3867,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 objectSnapDownBtn.setStateOn(false);
                 }
             else if (var == "grid")
-                {
                 EWorldEditor.setGridSnap(!EWorldEditor.getGridSnap());
-                }
             else
                 {
                 // No snapping.
@@ -3953,21 +3881,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 }
 
             EWorldEditor.syncGui();
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<CameraSpeedDropdownCtrlContainer>))]
         public class CameraSpeedDropdownCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiControl CameraSpeedDropdownContainer = "CameraSpeedDropdownContainer";
 
                 GuiTextEditCtrl textEdit = CameraSpeedDropdownContainer.FOT("textEdit");
                 GuiSliderCtrl slider = this.FOT("slider");
 
                 slider.setValue(textEdit.getText());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3978,20 +3906,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(CameraSpeedDropdownCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3999,9 +3925,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4010,12 +3936,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(CameraSpeedDropdownCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4023,9 +3948,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(CameraSpeedDropdownCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4033,12 +3958,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator CameraSpeedDropdownCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (CameraSpeedDropdownCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (CameraSpeedDropdownCtrlContainer));
-                }
+                return (CameraSpeedDropdownCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (CameraSpeedDropdownCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -4046,9 +3969,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(CameraSpeedDropdownCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4056,11 +3979,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator CameraSpeedDropdownCtrlContainer(int simobjectid)
-                {
-                return
-                    (CameraSpeedDropdownCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (CameraSpeedDropdownCtrlContainer));
-                }
+            {
+                return (CameraSpeedDropdownCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (CameraSpeedDropdownCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -4068,33 +3989,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(CameraSpeedDropdownCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator CameraSpeedDropdownCtrlContainer(uint simobjectid)
-                {
-                return
-                    (CameraSpeedDropdownCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (CameraSpeedDropdownCtrlContainer));
-                }
-
-            #endregion
+            {
+                return (CameraSpeedDropdownCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (CameraSpeedDropdownCtrlContainer));
             }
 
+            #endregion
+        }
 
         [TypeConverter(typeof (CameraTypesDropdownDecoy))]
         public class CameraTypesDropdownDecoy : GuiDecoyCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseLeave()
-                {
+            {
                 CameraTypesDropdownToggle();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4105,20 +4023,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(CameraTypesDropdownDecoy ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4126,9 +4042,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4137,12 +4053,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(CameraTypesDropdownDecoy ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4150,9 +4065,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(CameraTypesDropdownDecoy ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4160,10 +4075,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator CameraTypesDropdownDecoy(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (CameraTypesDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (CameraTypesDropdownDecoy));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4171,9 +4086,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(CameraTypesDropdownDecoy ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4181,11 +4096,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator CameraTypesDropdownDecoy(int simobjectid)
-                {
-                return
-                    (CameraTypesDropdownDecoy)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (CameraTypesDropdownDecoy));
-                }
+            {
+                return (CameraTypesDropdownDecoy) Omni.self.getSimObject((uint) simobjectid, typeof (CameraTypesDropdownDecoy));
+            }
 
             /// <summary>
             /// 
@@ -4193,40 +4106,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(CameraTypesDropdownDecoy ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator CameraTypesDropdownDecoy(uint simobjectid)
-                {
+            {
                 return (CameraTypesDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (CameraTypesDropdownDecoy));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (EWAddSimGroupButton))]
         public class EWAddSimGroupButton : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onDefaultClick()
-                {
+            {
                 EWorldEditor EWorldEditor = "EWorldEditor";
 
                 EWorldEditor.addSimGroup(false);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onCtrlClick()
-                {
+            {
                 EWorldEditor EWorldEditor = "EWorldEditor";
 
                 EWorldEditor.addSimGroup(true);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4237,20 +4150,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(EWAddSimGroupButton ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4258,9 +4169,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4269,12 +4180,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(EWAddSimGroupButton ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4282,9 +4192,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(EWAddSimGroupButton ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4292,10 +4202,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator EWAddSimGroupButton(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (EWAddSimGroupButton) Omni.self.getSimObject(simobjectid, typeof (EWAddSimGroupButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4303,9 +4213,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(EWAddSimGroupButton ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4313,9 +4223,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator EWAddSimGroupButton(int simobjectid)
-                {
+            {
                 return (EWAddSimGroupButton) Omni.self.getSimObject((uint) simobjectid, typeof (EWAddSimGroupButton));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4323,43 +4233,42 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(EWAddSimGroupButton ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator EWAddSimGroupButton(uint simobjectid)
-                {
+            {
                 return (EWAddSimGroupButton) Omni.self.getSimObject(simobjectid, typeof (EWAddSimGroupButton));
-                }
-
-            #endregion
             }
 
+            #endregion
+        }
 
         //------------------------------------------------------------------------------
 
         [TypeConverter(typeof (TypeConverterGeneric<EWToolsToolbar>))]
         public class EWToolsToolbar : GuiContainer
-            {
+        {
             public bool isClosed
-                {
+            {
                 get { return this["isClosed"].AsBool(); }
                 set { this["isClosed"] = value.AsString(); }
-                }
+            }
 
             public bool isDynamic
-                {
+            {
                 get { return this["isDynamic"].AsBool(); }
                 set { this["isDynamic"] = value.AsString(); }
-                }
+            }
 
             [ConsoleInteraction]
             public void reset()
-                {
+            {
                 GuiDynamicCtrlArrayControl ToolsToolbarArray = "ToolsToolbarArray";
                 EWToolsToolbarDecoy EWToolsToolbarDecoy = "EWToolsToolbarDecoy";
 
@@ -4369,19 +4278,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 for (uint i = 0; i < count; i++)
                     ((GuiControl) ToolsToolbarArray.getObject(i)).setVisible(true);
 
-                this.setExtent(new Point2F( ((29 + 4)*count + 12), 33));
+                this.setExtent(new Point2F(((29 + 4)*count + 12), 33));
                 this.isClosed = false;
                 this.isDynamic = false;
 
                 EWToolsToolbarDecoy.setVisible(false);
-                EWToolsToolbarDecoy.setExtent(new Point2F( ((29 + 4)*count + 4), 31));
+                EWToolsToolbarDecoy.setExtent(new Point2F(((29 + 4)*count + 4), 31));
 
                 resizeArrow.setBitmap("tools/gui/images/collapse-toolbar");
-                }
+            }
 
             [ConsoleInteraction]
             public void toggleSize(bool useDynamics)
-                {
+            {
                 GuiDynamicCtrlArrayControl ToolsToolbarArray = "ToolsToolbarArray";
                 EWToolsToolbarDecoy EWToolsToolbarDecoy = "EWToolsToolbarDecoy";
 
@@ -4435,7 +4344,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                     }
 
                 resizeArrow.setBitmap(image);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4446,20 +4355,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(EWToolsToolbar ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4467,9 +4374,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4478,12 +4385,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(EWToolsToolbar ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4491,9 +4397,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(EWToolsToolbar ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4501,10 +4407,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator EWToolsToolbar(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (EWToolsToolbar) Omni.self.getSimObject(simobjectid, typeof (EWToolsToolbar));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4512,9 +4418,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(EWToolsToolbar ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4522,9 +4428,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator EWToolsToolbar(int simobjectid)
-                {
+            {
                 return (EWToolsToolbar) Omni.self.getSimObject((uint) simobjectid, typeof (EWToolsToolbar));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4532,40 +4438,40 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(EWToolsToolbar ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator EWToolsToolbar(uint simobjectid)
-                {
+            {
                 return (EWToolsToolbar) Omni.self.getSimObject(simobjectid, typeof (EWToolsToolbar));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<EWToolsToolbarDecoy>))]
         public class EWToolsToolbarDecoy : GuiDecoyCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseEnter()
-                {
+            {
                 EWToolsToolbar EWToolsToolbar = "EWToolsToolbar";
 
                 EWToolsToolbar.toggleSize(true);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onMouseLeave()
-                {
+            {
                 EWToolsToolbar EWToolsToolbar = "EWToolsToolbar";
 
                 EWToolsToolbar.toggleSize(true);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4576,20 +4482,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(EWToolsToolbarDecoy ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4597,9 +4501,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4608,12 +4512,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(EWToolsToolbarDecoy ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4621,9 +4524,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(EWToolsToolbarDecoy ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4631,10 +4534,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator EWToolsToolbarDecoy(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (EWToolsToolbarDecoy) Omni.self.getSimObject(simobjectid, typeof (EWToolsToolbarDecoy));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4642,9 +4545,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(EWToolsToolbarDecoy ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4652,9 +4555,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator EWToolsToolbarDecoy(int simobjectid)
-                {
+            {
                 return (EWToolsToolbarDecoy) Omni.self.getSimObject((uint) simobjectid, typeof (EWToolsToolbarDecoy));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4662,31 +4565,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(EWToolsToolbarDecoy ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator EWToolsToolbarDecoy(uint simobjectid)
-                {
+            {
                 return (EWToolsToolbarDecoy) Omni.self.getSimObject(simobjectid, typeof (EWToolsToolbarDecoy));
-                }
-
-            #endregion
             }
 
+            #endregion
+        }
 
         //------------------------------------------------------------------------------
 
         [TypeConverter(typeof (TypeConverterGeneric<EWorldEditorStatusBarCamera>))]
         public class EWorldEditorStatusBarCamera : GuiPopUpMenuCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 this.add("Standard Camera");
                 this.add("1st Person Camera");
                 this.add("3rd Person Camera");
@@ -4700,11 +4602,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 this.add("Isometric View");
                 this.add("Smooth Camera");
                 this.add("Smooth Rot Camera");
-                }
+            }
 
             [ConsoleInteraction]
             public override void onSelect(string id, string text)
-                {
+            {
                 EditorGui EditorGui = "EditorGui";
 
                 switch (text)
@@ -4774,7 +4676,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                             EditorGui.setDisplayType(sGlobal["$EditTsCtrl::DisplayTypePerspective"]);
                             break;
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -4785,20 +4687,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(EWorldEditorStatusBarCamera ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -4806,9 +4706,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -4817,12 +4717,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(EWorldEditorStatusBarCamera ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -4830,9 +4729,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(EWorldEditorStatusBarCamera ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4840,12 +4739,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator EWorldEditorStatusBarCamera(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (EWorldEditorStatusBarCamera)
-                        Omni.self.getSimObject(simobjectid, typeof (EWorldEditorStatusBarCamera));
-                }
+                return (EWorldEditorStatusBarCamera) Omni.self.getSimObject(simobjectid, typeof (EWorldEditorStatusBarCamera));
+            }
 
             /// <summary>
             /// 
@@ -4853,9 +4750,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(EWorldEditorStatusBarCamera ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -4863,11 +4760,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator EWorldEditorStatusBarCamera(int simobjectid)
-                {
-                return
-                    (EWorldEditorStatusBarCamera)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (EWorldEditorStatusBarCamera));
-                }
+            {
+                return (EWorldEditorStatusBarCamera) Omni.self.getSimObject((uint) simobjectid, typeof (EWorldEditorStatusBarCamera));
+            }
 
             /// <summary>
             /// 
@@ -4875,100 +4770,98 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(EWorldEditorStatusBarCamera ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator EWorldEditorStatusBarCamera(uint simobjectid)
-                {
-                return
-                    (EWorldEditorStatusBarCamera)
-                        Omni.self.getSimObject(simobjectid, typeof (EWorldEditorStatusBarCamera));
-                }
+            {
+                return (EWorldEditorStatusBarCamera) Omni.self.getSimObject(simobjectid, typeof (EWorldEditorStatusBarCamera));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<EditorDropdownSliderContainer>))]
         public class EditorDropdownSliderContainer : GuiMouseEventCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseDown(byte modifier, Point2I mousePoint, byte mouseClickCount)
-                {
+            {
                 GuiCanvas Canvas = "Canvas";
 
                 Canvas.popDialog(this);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onRightMouseDown(byte modifier, Point2I mousePoint, byte mouseClickCount)
-                {
+            {
                 GuiCanvas Canvas = "Canvas";
 
                 Canvas.popDialog(this);
-                }
             }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<EditorGuiStatusBar>))]
         public class EditorGuiStatusBar : GuiContainer
-            {
+        {
             [ConsoleInteraction]
             public void reset()
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarInfo = "EWorldEditorStatusBarInfo";
 
                 //TODO
                 //EWorldEditorStatusBarInfo.clearInfo();
                 this.clearInfo();
-                }
+            }
 
             [ConsoleInteraction]
             public string getInfo()
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarInfo = "EWorldEditorStatusBarInfo";
 
                 return EWorldEditorStatusBarInfo.getValue();
-                }
+            }
 
             [ConsoleInteraction]
             public void setInfo(string text)
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarInfo = "EWorldEditorStatusBarInfo";
 
                 EWorldEditorStatusBarInfo.setText(text);
-                }
+            }
 
             [ConsoleInteraction]
             public void clearInfo()
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarInfo = "EWorldEditorStatusBarInfo";
 
                 EWorldEditorStatusBarInfo.setText("");
-                }
+            }
 
             [ConsoleInteraction]
             public string getSelection()
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarSelection = "EWorldEditorStatusBarSelection";
 
                 return EWorldEditorStatusBarSelection.getValue();
-                }
+            }
 
             [ConsoleInteraction]
             public void setSelection(string text)
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarSelection = "EWorldEditorStatusBarSelection";
 
                 EWorldEditorStatusBarSelection.setText(text);
-                }
+            }
 
             [ConsoleInteraction]
             public override void setSelectionObjectsByCount(string count)
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarSelection = "EWorldEditorStatusBarSelection";
 
                 string text = " objects selected";
@@ -4976,27 +4869,27 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                     text = " object selected";
 
                 EWorldEditorStatusBarSelection.setText(count + text);
-                }
+            }
 
             [ConsoleInteraction]
             public void clearSelection()
-                {
+            {
                 GuiTextCtrl EWorldEditorStatusBarSelection = "EWorldEditorStatusBarSelection";
 
                 EWorldEditorStatusBarSelection.setText("");
-                }
+            }
 
             [ConsoleInteraction]
             public string getCamera()
-                {
+            {
                 EWorldEditorStatusBarCamera EWorldEditorStatusBarCamera = "EWorldEditorStatusBarCamera";
 
                 return EWorldEditorStatusBarCamera.getText();
-                }
+            }
 
             [ConsoleInteraction]
             public void setCamera(string text)
-                {
+            {
                 EWorldEditorStatusBarCamera EWorldEditorStatusBarCamera = "EWorldEditorStatusBarCamera";
 
                 int id = EWorldEditorStatusBarCamera.findText(text);
@@ -5005,7 +4898,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                     if (EWorldEditorStatusBarCamera.getSelected() != id)
                         EWorldEditorStatusBarCamera.setSelected(id, true);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5016,20 +4909,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(EditorGuiStatusBar ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5037,9 +4928,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5048,12 +4939,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(EditorGuiStatusBar ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5061,9 +4951,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(EditorGuiStatusBar ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5071,10 +4961,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator EditorGuiStatusBar(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (EditorGuiStatusBar) Omni.self.getSimObject(simobjectid, typeof (EditorGuiStatusBar));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5082,9 +4972,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(EditorGuiStatusBar ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5092,9 +4982,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator EditorGuiStatusBar(int simobjectid)
-                {
+            {
                 return (EditorGuiStatusBar) Omni.self.getSimObject((uint) simobjectid, typeof (EditorGuiStatusBar));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5102,28 +4992,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(EditorGuiStatusBar ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator EditorGuiStatusBar(uint simobjectid)
-                {
+            {
                 return (EditorGuiStatusBar) Omni.self.getSimObject(simobjectid, typeof (EditorGuiStatusBar));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (EditorMissionCleanup))]
         public class EditorMissionCleanup : ScriptObject
-            {
+        {
             [ConsoleInteraction]
             public override void onRemove(string ID)
-                {
+            {
                 SimSet EditorPluginSet = "EditorPluginSet";
 
                 this["levelName"] = "";
@@ -5132,7 +5022,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                     EditorPlugin plugin = EditorPluginSet.getObject(i);
                     plugin.onExitMission();
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5143,20 +5033,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(EditorMissionCleanup ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5164,9 +5052,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5175,12 +5063,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(EditorMissionCleanup ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5188,9 +5075,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(EditorMissionCleanup ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5198,10 +5085,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator EditorMissionCleanup(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (EditorMissionCleanup) Omni.self.getSimObject(simobjectid, typeof (EditorMissionCleanup));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5209,9 +5096,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(EditorMissionCleanup ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5219,9 +5106,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator EditorMissionCleanup(int simobjectid)
-                {
+            {
                 return (EditorMissionCleanup) Omni.self.getSimObject((uint) simobjectid, typeof (EditorMissionCleanup));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5229,22 +5116,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(EditorMissionCleanup ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator EditorMissionCleanup(uint simobjectid)
-                {
+            {
                 return (EditorMissionCleanup) Omni.self.getSimObject(simobjectid, typeof (EditorMissionCleanup));
-                }
-
-            #endregion
             }
 
+            #endregion
+        }
 
         //------------------------------------------------------------------------------------
         // Each a gui slider bar is pushed on the editor gui, it maps itself with value
@@ -5253,17 +5139,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
         [TypeConverter(typeof (TypeConverterGeneric<PaintBrushPressureSliderCtrlContainer>))]
         public class PaintBrushPressureSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiSliderCtrl slider = this.FOT("slider");
                 GuiControl PaintBrushPressureTextEditContainer = "PaintBrushPressureTextEditContainer";
 
                 GuiTextEditCtrl textEdit = PaintBrushPressureTextEditContainer.FOT("textEdit");
 
                 slider.setValue((textEdit.getValue().AsFloat()/100.0).AsString());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5274,20 +5160,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PaintBrushPressureSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5295,9 +5179,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5306,12 +5190,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PaintBrushPressureSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5319,9 +5202,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PaintBrushPressureSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5329,12 +5212,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PaintBrushPressureSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (PaintBrushPressureSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (PaintBrushPressureSliderCtrlContainer));
-                }
+                return (PaintBrushPressureSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushPressureSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5342,9 +5223,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PaintBrushPressureSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5352,11 +5233,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PaintBrushPressureSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (PaintBrushPressureSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushPressureSliderCtrlContainer));
-                }
+            {
+                return (PaintBrushPressureSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushPressureSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5364,30 +5243,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PaintBrushPressureSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PaintBrushPressureSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (PaintBrushPressureSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (PaintBrushPressureSliderCtrlContainer));
-                }
+            {
+                return (PaintBrushPressureSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushPressureSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<PaintBrushSizeSliderCtrlContainer>))]
         public class PaintBrushSizeSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 TerrainEditor ETerrainEditor = "ETerrainEditor";
                 GuiControl PaintBrushSizeTextEditContainer = "PaintBrushSizeTextEditContainer";
 
@@ -5396,7 +5273,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
                 slider.range = ("1" + ' ' + Util.getWord(ETerrainEditor.maxBrushSize.AsString(), 0)).AsPoint2F();
                 slider.setValue(textEdit.getValue());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5407,20 +5284,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PaintBrushSizeSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5428,9 +5303,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5439,12 +5314,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PaintBrushSizeSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5452,9 +5326,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PaintBrushSizeSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5462,12 +5336,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PaintBrushSizeSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (PaintBrushSizeSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (PaintBrushSizeSliderCtrlContainer));
-                }
+                return (PaintBrushSizeSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSizeSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5475,9 +5347,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PaintBrushSizeSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5485,11 +5357,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PaintBrushSizeSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (PaintBrushSizeSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSizeSliderCtrlContainer));
-                }
+            {
+                return (PaintBrushSizeSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSizeSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5497,37 +5367,35 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PaintBrushSizeSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PaintBrushSizeSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (PaintBrushSizeSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (PaintBrushSizeSliderCtrlContainer));
-                }
+            {
+                return (PaintBrushSizeSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSizeSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<PaintBrushSoftnessSliderCtrlContainer>))]
         public class PaintBrushSoftnessSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiSliderCtrl slider = this.FOT("slider");
                 GuiControl PaintBrushSoftnessTextEditContainer = "PaintBrushSoftnessTextEditContainer";
 
                 GuiTextEditCtrl textEdit = PaintBrushSoftnessTextEditContainer.FOT("textEdit");
 
                 slider.setValue((textEdit.getValue().AsFloat()/100.0).AsString());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5538,20 +5406,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(PaintBrushSoftnessSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5559,9 +5425,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5570,12 +5436,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(PaintBrushSoftnessSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5583,9 +5448,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(PaintBrushSoftnessSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5593,12 +5458,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator PaintBrushSoftnessSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (PaintBrushSoftnessSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (PaintBrushSoftnessSliderCtrlContainer));
-                }
+                return (PaintBrushSoftnessSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSoftnessSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5606,9 +5469,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(PaintBrushSoftnessSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5616,11 +5479,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator PaintBrushSoftnessSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (PaintBrushSoftnessSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSoftnessSliderCtrlContainer));
-                }
+            {
+                return (PaintBrushSoftnessSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (PaintBrushSoftnessSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5628,33 +5489,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(PaintBrushSoftnessSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator PaintBrushSoftnessSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (PaintBrushSoftnessSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (PaintBrushSoftnessSliderCtrlContainer));
-                }
-
-            #endregion
+            {
+                return (PaintBrushSoftnessSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (PaintBrushSoftnessSliderCtrlContainer));
             }
 
+            #endregion
+        }
 
         //------------------------------------------------------------------------------------
 
         [TypeConverter(typeof (TypeConverterGeneric<TerrainBrushPressureSliderCtrlContainer>))]
         public class TerrainBrushPressureSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiControl TerrainBrushPressureTextEditContainer = "TerrainBrushPressureTextEditContainer";
 
                 GuiTextEditCtrl textEdit = TerrainBrushPressureTextEditContainer.FOT("textEdit");
@@ -5663,7 +5521,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 string value = (textEdit.getValue().AsFloat()/100.0).AsString();
 
                 slider.setValue(value);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5674,20 +5532,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(TerrainBrushPressureSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5695,9 +5551,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5706,12 +5562,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(TerrainBrushPressureSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5719,9 +5574,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(TerrainBrushPressureSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5729,12 +5584,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator TerrainBrushPressureSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (TerrainBrushPressureSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainBrushPressureSliderCtrlContainer));
-                }
+                return (TerrainBrushPressureSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainBrushPressureSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5742,9 +5595,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(TerrainBrushPressureSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5752,11 +5605,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator TerrainBrushPressureSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (TerrainBrushPressureSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (TerrainBrushPressureSliderCtrlContainer));
-                }
+            {
+                return (TerrainBrushPressureSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (TerrainBrushPressureSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5764,30 +5615,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(TerrainBrushPressureSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator TerrainBrushPressureSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (TerrainBrushPressureSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainBrushPressureSliderCtrlContainer));
-                }
+            {
+                return (TerrainBrushPressureSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainBrushPressureSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<TerrainBrushSizeSliderCtrlContainer>))]
         public class TerrainBrushSizeSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 TerrainEditor ETerrainEditor = "ETerrainEditor";
                 GuiControl TerrainBrushSizeTextEditContainer = "TerrainBrushSizeTextEditContainer";
 
@@ -5796,7 +5645,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
                 slider.range = ("1" + ' ' + Util.getWord(ETerrainEditor.maxBrushSize.AsString(), 0)).AsPoint2F();
                 slider.setValue(textEdit.getValue());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5807,20 +5656,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(TerrainBrushSizeSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5828,9 +5675,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5839,12 +5686,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(TerrainBrushSizeSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5852,9 +5698,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(TerrainBrushSizeSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5862,12 +5708,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator TerrainBrushSizeSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (TerrainBrushSizeSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSizeSliderCtrlContainer));
-                }
+                return (TerrainBrushSizeSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSizeSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5875,9 +5719,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(TerrainBrushSizeSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5885,11 +5729,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator TerrainBrushSizeSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (TerrainBrushSizeSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (TerrainBrushSizeSliderCtrlContainer));
-                }
+            {
+                return (TerrainBrushSizeSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (TerrainBrushSizeSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -5897,37 +5739,35 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(TerrainBrushSizeSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator TerrainBrushSizeSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (TerrainBrushSizeSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSizeSliderCtrlContainer));
-                }
+            {
+                return (TerrainBrushSizeSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSizeSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<TerrainBrushSoftnessSliderCtrlContainer>))]
         public class TerrainBrushSoftnessSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiControl TerrainBrushSoftnessTextEditContainer = "TerrainBrushSoftnessTextEditContainer";
 
                 GuiTextEditCtrl textEdit = TerrainBrushSoftnessTextEditContainer.FOT("textEdit");
                 GuiSliderCtrl slider = this.FOT("slider");
 
                 slider.setValue((textEdit.getValue().AsFloat()/100.0).AsString());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -5938,20 +5778,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(TerrainBrushSoftnessSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -5959,9 +5797,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -5970,12 +5808,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(TerrainBrushSoftnessSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -5983,9 +5820,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(TerrainBrushSoftnessSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -5993,12 +5830,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator TerrainBrushSoftnessSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (TerrainBrushSoftnessSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSoftnessSliderCtrlContainer));
-                }
+                return (TerrainBrushSoftnessSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSoftnessSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -6006,9 +5841,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(TerrainBrushSoftnessSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6016,11 +5851,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator TerrainBrushSoftnessSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (TerrainBrushSoftnessSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (TerrainBrushSoftnessSliderCtrlContainer));
-                }
+            {
+                return (TerrainBrushSoftnessSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (TerrainBrushSoftnessSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -6028,37 +5861,35 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(TerrainBrushSoftnessSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator TerrainBrushSoftnessSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (TerrainBrushSoftnessSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSoftnessSliderCtrlContainer));
-                }
+            {
+                return (TerrainBrushSoftnessSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainBrushSoftnessSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<TerrainSetHeightSliderCtrlContainer>))]
         public class TerrainSetHeightSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiControl TerrainSetHeightTextEditContainer = "TerrainSetHeightTextEditContainer";
 
                 GuiTextEditCtrl textEdit = TerrainSetHeightTextEditContainer.FOT("textEdit");
                 GuiSliderCtrl slider = this.FOT("slider");
 
                 slider.setValue(textEdit.getValue());
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6069,20 +5900,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(TerrainSetHeightSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6090,9 +5919,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6101,12 +5930,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(TerrainSetHeightSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6114,9 +5942,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(TerrainSetHeightSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6124,12 +5952,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator TerrainSetHeightSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (TerrainSetHeightSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainSetHeightSliderCtrlContainer));
-                }
+                return (TerrainSetHeightSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainSetHeightSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -6137,9 +5963,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(TerrainSetHeightSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6147,11 +5973,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator TerrainSetHeightSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (TerrainSetHeightSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (TerrainSetHeightSliderCtrlContainer));
-                }
+            {
+                return (TerrainSetHeightSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (TerrainSetHeightSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -6159,30 +5983,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(TerrainSetHeightSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator TerrainSetHeightSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (TerrainSetHeightSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (TerrainSetHeightSliderCtrlContainer));
-                }
+            {
+                return (TerrainSetHeightSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (TerrainSetHeightSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TerrainTextureEditorTool))]
         public class TerrainTextureEditorTool : GuiControl
-            {
+        {
             [ConsoleInteraction]
             public void onActivated()
-                {
+            {
                 EditorGui EditorGui = "EditorGui";
                 TerrainEditor ETerrainEditor = "ETerrainEditor";
                 EditorGuiStatusBar EditorGuiStatusBar = "EditorGuiStatusBar";
@@ -6197,11 +6019,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 TextureEditor.setVisible(true);
 
                 EditorGuiStatusBar.setSelection("");
-                }
+            }
 
             [ConsoleInteraction]
             public void onDeactivated()
-                {
+            {
                 EditorGui EditorGui = "EditorGui";
                 TerrainEditor ETerrainEditor = "ETerrainEditor";
 
@@ -6210,7 +6032,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                 TextureEditor.setVisible(false);
 
                 ETerrainEditor.setVisible(false);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6221,20 +6043,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(TerrainTextureEditorTool ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6242,9 +6062,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6253,12 +6073,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(TerrainTextureEditorTool ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6266,9 +6085,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(TerrainTextureEditorTool ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6276,10 +6095,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator TerrainTextureEditorTool(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (TerrainTextureEditorTool) Omni.self.getSimObject(simobjectid, typeof (TerrainTextureEditorTool));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6287,9 +6106,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(TerrainTextureEditorTool ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6297,11 +6116,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator TerrainTextureEditorTool(int simobjectid)
-                {
-                return
-                    (TerrainTextureEditorTool)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (TerrainTextureEditorTool));
-                }
+            {
+                return (TerrainTextureEditorTool) Omni.self.getSimObject((uint) simobjectid, typeof (TerrainTextureEditorTool));
+            }
 
             /// <summary>
             /// 
@@ -6309,28 +6126,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(TerrainTextureEditorTool ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator TerrainTextureEditorTool(uint simobjectid)
-                {
+            {
                 return (TerrainTextureEditorTool) Omni.self.getSimObject(simobjectid, typeof (TerrainTextureEditorTool));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (objectCenterDropdown))]
         public class objectCenterDropdown : GuiContainer
-            {
+        {
             [ConsoleInteraction]
             public void toggle()
-                {
+            {
                 GuiControl EWorldEditorToolbar = "EWorldEditorToolbar";
                 objectCenterDropdownDecoy objectCenterDropdownDecoy = "objectCenterDropdownDecoy";
 
@@ -6350,7 +6167,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                     objectCenterDropdownDecoy.setActive(true);
                     objectCenterDropdownDecoy.setVisible(true);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6361,20 +6178,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(objectCenterDropdown ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6382,9 +6197,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6393,12 +6208,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(objectCenterDropdown ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6406,9 +6220,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(objectCenterDropdown ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6416,10 +6230,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator objectCenterDropdown(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (objectCenterDropdown) Omni.self.getSimObject(simobjectid, typeof (objectCenterDropdown));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6427,9 +6241,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(objectCenterDropdown ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6437,9 +6251,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator objectCenterDropdown(int simobjectid)
-                {
+            {
                 return (objectCenterDropdown) Omni.self.getSimObject((uint) simobjectid, typeof (objectCenterDropdown));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6447,32 +6261,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(objectCenterDropdown ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator objectCenterDropdown(uint simobjectid)
-                {
+            {
                 return (objectCenterDropdown) Omni.self.getSimObject(simobjectid, typeof (objectCenterDropdown));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (objectCenterDropdownDecoy))]
         public class objectCenterDropdownDecoy : GuiDecoyCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseLeave()
-                {
+            {
                 objectCenterDropdown objectCenterDropdown = "objectCenterDropdown";
 
                 objectCenterDropdown.toggle();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6483,20 +6297,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(objectCenterDropdownDecoy ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6504,9 +6316,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6515,12 +6327,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(objectCenterDropdownDecoy ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6528,9 +6339,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(objectCenterDropdownDecoy ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6538,11 +6349,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator objectCenterDropdownDecoy(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (objectCenterDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectCenterDropdownDecoy));
-                }
+                return (objectCenterDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectCenterDropdownDecoy));
+            }
 
             /// <summary>
             /// 
@@ -6550,9 +6360,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(objectCenterDropdownDecoy ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6560,11 +6370,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator objectCenterDropdownDecoy(int simobjectid)
-                {
-                return
-                    (objectCenterDropdownDecoy)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (objectCenterDropdownDecoy));
-                }
+            {
+                return (objectCenterDropdownDecoy) Omni.self.getSimObject((uint) simobjectid, typeof (objectCenterDropdownDecoy));
+            }
 
             /// <summary>
             /// 
@@ -6572,33 +6380,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(objectCenterDropdownDecoy ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator objectCenterDropdownDecoy(uint simobjectid)
-                {
-                return
-                    (objectCenterDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectCenterDropdownDecoy));
-                }
+            {
+                return (objectCenterDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectCenterDropdownDecoy));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (objectSnapDropdownDecoy))]
         public class objectSnapDropdownDecoy : GuiDecoyCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseLeave()
-                {
+            {
                 GuiControl objectSnapDropdown = "objectSnapDropdown";
 
                 objectSnapDropdown.call("toggle");
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6609,20 +6416,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(objectSnapDropdownDecoy ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6630,9 +6435,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6641,12 +6446,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(objectSnapDropdownDecoy ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6654,9 +6458,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(objectSnapDropdownDecoy ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6664,10 +6468,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator objectSnapDropdownDecoy(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (objectSnapDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectSnapDropdownDecoy));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6675,9 +6479,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(objectSnapDropdownDecoy ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6685,11 +6489,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator objectSnapDropdownDecoy(int simobjectid)
-                {
-                return
-                    (objectSnapDropdownDecoy)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (objectSnapDropdownDecoy));
-                }
+            {
+                return (objectSnapDropdownDecoy) Omni.self.getSimObject((uint) simobjectid, typeof (objectSnapDropdownDecoy));
+            }
 
             /// <summary>
             /// 
@@ -6697,28 +6499,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(objectSnapDropdownDecoy ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator objectSnapDropdownDecoy(uint simobjectid)
-                {
+            {
                 return (objectSnapDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectSnapDropdownDecoy));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (objectTransformDropdown))]
         public class objectTransformDropdown : GuiContainer
-            {
+        {
             [ConsoleInteraction]
             public void toggle()
-                {
+            {
                 GuiControl EWorldEditorToolbar = "EWorldEditorToolbar";
                 objectTransformDropdownDecoy objectTransformDropdownDecoy = "objectTransformDropdownDecoy";
 
@@ -6738,7 +6540,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
                     objectTransformDropdownDecoy.setActive(true);
                     objectTransformDropdownDecoy.setVisible(true);
                     }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6749,20 +6551,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(objectTransformDropdown ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6770,9 +6570,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6781,12 +6581,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(objectTransformDropdown ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6794,9 +6593,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(objectTransformDropdown ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6804,10 +6603,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator objectTransformDropdown(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (objectTransformDropdown) Omni.self.getSimObject(simobjectid, typeof (objectTransformDropdown));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6815,9 +6614,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(objectTransformDropdown ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6825,11 +6624,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator objectTransformDropdown(int simobjectid)
-                {
-                return
-                    (objectTransformDropdown)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (objectTransformDropdown));
-                }
+            {
+                return (objectTransformDropdown) Omni.self.getSimObject((uint) simobjectid, typeof (objectTransformDropdown));
+            }
 
             /// <summary>
             /// 
@@ -6837,31 +6634,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(objectTransformDropdown ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator objectTransformDropdown(uint simobjectid)
-                {
+            {
                 return (objectTransformDropdown) Omni.self.getSimObject(simobjectid, typeof (objectTransformDropdown));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (objectTransformDropdownDecoy))]
         public class objectTransformDropdownDecoy : GuiDecoyCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onMouseLeave()
-                {
+            {
                 objectTransformDropdown objectTransformDropdown = "objectTransformDropdown";
                 objectTransformDropdown.toggle();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -6872,20 +6669,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(objectTransformDropdownDecoy ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -6893,9 +6688,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -6904,12 +6699,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(objectTransformDropdownDecoy ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -6917,9 +6711,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(objectTransformDropdownDecoy ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6927,12 +6721,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator objectTransformDropdownDecoy(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (objectTransformDropdownDecoy)
-                        Omni.self.getSimObject(simobjectid, typeof (objectTransformDropdownDecoy));
-                }
+                return (objectTransformDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectTransformDropdownDecoy));
+            }
 
             /// <summary>
             /// 
@@ -6940,9 +6732,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(objectTransformDropdownDecoy ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -6950,11 +6742,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator objectTransformDropdownDecoy(int simobjectid)
-                {
-                return
-                    (objectTransformDropdownDecoy)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (objectTransformDropdownDecoy));
-                }
+            {
+                return (objectTransformDropdownDecoy) Omni.self.getSimObject((uint) simobjectid, typeof (objectTransformDropdownDecoy));
+            }
 
             /// <summary>
             /// 
@@ -6962,48 +6752,46 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(objectTransformDropdownDecoy ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator objectTransformDropdownDecoy(uint simobjectid)
-                {
-                return
-                    (objectTransformDropdownDecoy)
-                        Omni.self.getSimObject(simobjectid, typeof (objectTransformDropdownDecoy));
-                }
+            {
+                return (objectTransformDropdownDecoy) Omni.self.getSimObject(simobjectid, typeof (objectTransformDropdownDecoy));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<softSnapSizeSliderCtrlContainer>))]
         public class softSnapSizeSliderCtrlContainer : EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiControl EWorldEditorToolbar = "EWorldEditorToolbar";
 
                 GuiTextEditCtrl softSnapSizeTextEdit = EWorldEditorToolbar.FOT("softSnapSizeTextEdit");
                 GuiSliderCtrl slider = this.FOT("slider");
 
                 slider.setValue(softSnapSizeTextEdit.getValue());
-                }
+            }
 
             [ConsoleInteraction]
             public void onSliderChanged()
-                {
+            {
                 EWorldEditor EWorldEditor = "EWorldEditor";
 
                 GuiSliderCtrl slider = this.FOT("slider");
 
                 EWorldEditor.setSoftSnapSize(slider.value);
                 EWorldEditor.syncGui();
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -7014,20 +6802,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(softSnapSizeSliderCtrlContainer ts, string simobjectid)
-                {
-                return ReferenceEquals(ts, null)
-                    ? ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -7035,9 +6821,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -7046,12 +6832,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(softSnapSizeSliderCtrlContainer ts, string simobjectid)
-                {
+            {
                 if (ReferenceEquals(ts, null))
                     return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -7059,9 +6844,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(softSnapSizeSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -7069,12 +6854,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator softSnapSizeSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (softSnapSizeSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (softSnapSizeSliderCtrlContainer));
-                }
+                return (softSnapSizeSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (softSnapSizeSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -7082,9 +6865,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(softSnapSizeSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -7092,11 +6875,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator softSnapSizeSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (softSnapSizeSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (softSnapSizeSliderCtrlContainer));
-                }
+            {
+                return (softSnapSizeSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (softSnapSizeSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -7104,23 +6885,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(softSnapSizeSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator softSnapSizeSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (softSnapSizeSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (softSnapSizeSliderCtrlContainer));
-                }
+            {
+                return (softSnapSizeSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (softSnapSizeSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -7131,20 +6910,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(EditorGui ts, string simobjectid)
-            {
-            return ReferenceEquals(ts, null)
-                ? ReferenceEquals(simobjectid, null)
-                : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -7152,9 +6929,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -7163,12 +6940,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(EditorGui ts, string simobjectid)
-            {
+        {
             if (ReferenceEquals(ts, null))
                 return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -7176,9 +6952,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(EditorGui ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -7186,10 +6962,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator EditorGui(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (EditorGui) Omni.self.getSimObject(simobjectid, typeof (EditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -7197,9 +6973,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(EditorGui ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -7207,9 +6983,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator EditorGui(int simobjectid)
-            {
+        {
             return (EditorGui) Omni.self.getSimObject((uint) simobjectid, typeof (EditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -7217,32 +6993,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(EditorGui ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator EditorGui(uint simobjectid)
-            {
+        {
             return (EditorGui) Omni.self.getSimObject(simobjectid, typeof (EditorGui));
-            }
+        }
 
         #endregion
 
         //------------------------------------------------------------------------------------
-        }
     }
+}
 
 namespace WinterLeaf.Demo.Full.Models.User.Extendable
-    {
+{
     public partial class EditTSCtrl
-        {
+    {
         [ConsoleInteraction]
         public void updateGizmoMode(string mode)
-            {
+        {
             GuiContainer EditorGuiToolbar = "EditorGuiToolbar";
             GuiBitmapButtonCtrl NoneModeBtn = EditorGuiToolbar.FOF("NoneModeBtn");
             GuiBitmapButtonCtrl MoveModeBtn = EditorGuiToolbar.FOF("MoveModeBtn");
@@ -7259,23 +7035,23 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
                 RotateModeBtn.performClick();
             else if (mode == "Scale")
                 ScaleModeBtn.performClick();
-            }
         }
     }
+}
 
 namespace WinterLeaf.Demo.Full.Models.User.Extendable
-    {
+{
     public partial class SpawnSphere
-        {
+    {
         [ConsoleInteraction]
         public override void onEditorRender(string editor, string selected, string expanded)
-            {
+        {
             if (selected == "true")
                 {
                 ((SimObject) editor)["consoleFrameColor"] = "255 0 0";
                 ((SimObject) editor)["consoleFillColor"] = "0 160 0 95";
                 ((EditTSCtrl) editor).renderSphere(this.getWorldBoxCenter(), this.radius, 1);
                 }
-            }
         }
     }
+}

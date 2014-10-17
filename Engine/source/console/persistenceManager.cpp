@@ -2521,10 +2521,8 @@ if (!object)
       Con::warnf( "PersistenceManager::getDirtyObject() - Index (%s) out of range.", index );
      return (S32)( 0);
    }
-
    // Fetch Object.
    const PersistenceManager::DirtyObject& dirtyObject = object->getDirtyList()[index];
-
    // Return Id.
   return (S32)( ( dirtyObject.getObject() ) ? dirtyObject.getObject()->getId() : 0);
 };
@@ -2583,14 +2581,11 @@ if (!object)
 	 return;
 {
    const PersistenceManager::DirtyList dirtyList = object->getDirtyList();
-
    for(U32 i = 0; i < dirtyList.size(); i++)
    {
       const PersistenceManager::DirtyObject& dirtyObject = dirtyList[i];
-
       if (dirtyObject.isNull())
          continue;
-
       SimObject *obj = dirtyObject.getObject();
       bool isSet = dynamic_cast<SimSet *>(obj) != 0;
       const char *name = obj->getName();
@@ -2625,7 +2620,6 @@ const char* objName = (const char*)x__objName;
          return;
       }
    }
-
    if (dirtyObject)
       object->removeDirty(dirtyObject);
 }
@@ -2649,7 +2643,6 @@ const char* fieldName = (const char*)x__fieldName;
          return;
       }
    }
-
    if (dirtyObject)
    {
       //if (argv[3][0])
@@ -2678,7 +2671,6 @@ const char* filename = (const char*)x__filename;
          return;
       }
    }
-
    if (dirtyObject)
    {
       //if (argc == 4 && argv[3][0])
@@ -2757,7 +2749,6 @@ const char* fileName = (const char*)x__fileName;
       Con::errorf( "%s(): Cannot save RootGroup", objName );
       return;
    }
-
    if (dirtyObject)
    {
       //if (argc == 4 && argv[3][0])

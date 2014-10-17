@@ -1,23 +1,56 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Helpers;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<MeshRoadEditorToolbar>))]
     public class MeshRoadEditorToolbar : GuiControl
-        {
+    {
         [ConsoleInteraction(true, "MeshRoadEditorToolbar_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiControl (MeshRoadEditorToolbar,EditorGuiGroup)        oc_Newobject14
 
-            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiControl", "MeshRoadEditorToolbar,EditorGuiGroup",
-                typeof (MeshRoadEditorToolbar));
+            ObjectCreator oc_Newobject14 = new ObjectCreator("GuiControl", "MeshRoadEditorToolbar,EditorGuiGroup", typeof (MeshRoadEditorToolbar));
             oc_Newobject14["canSaveDynamicFields"] = "0";
             oc_Newobject14["internalName"] = "MeshRoadEditorToolbar";
             oc_Newobject14["Enabled"] = "1";
@@ -361,9 +394,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
 
             #region GuiMouseEventCtrl (MeshRoadDefaultWidthSliderCtrlContainer, EditorGuiGroup)        oc_Newobject16
 
-            ObjectCreator oc_Newobject16 = new ObjectCreator("GuiMouseEventCtrl",
-                "MeshRoadDefaultWidthSliderCtrlContainer, EditorGuiGroup",
-                typeof (MeshRoadEditorGui.MeshRoadDefaultWidthSliderCtrlContainer));
+            ObjectCreator oc_Newobject16 = new ObjectCreator("GuiMouseEventCtrl", "MeshRoadDefaultWidthSliderCtrlContainer, EditorGuiGroup", typeof (MeshRoadEditorGui.MeshRoadDefaultWidthSliderCtrlContainer));
             oc_Newobject16["horizSizing"] = "right";
             oc_Newobject16["vertSizing"] = "bottom";
             oc_Newobject16["position"] = "0 0";
@@ -382,15 +413,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
             oc_Newobject15["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject15["HorizSizing"] = "right";
             oc_Newobject15["VertSizing"] = "bottom";
-            oc_Newobject15["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(MeshRoadDefaultWidthTextEditContainer.position) + firstWord(MeshRoadEditorToolbar.position) + 10 SPC          (getWord(MeshRoadDefaultWidthTextEditContainer, 1)) + 25");
+            oc_Newobject15["position"] = new Creator.StringNoQuote("firstWord(MeshRoadDefaultWidthTextEditContainer.position) + firstWord(MeshRoadEditorToolbar.position) + 10 SPC          (getWord(MeshRoadDefaultWidthTextEditContainer, 1)) + 25");
             oc_Newobject15["Extent"] = "112 20";
             oc_Newobject15["MinExtent"] = "8 2";
             oc_Newobject15["canSave"] = "1";
             oc_Newobject15["Visible"] = "1";
-            oc_Newobject15["AltCommand"] =
-                "MeshRoadDefaultWidthTextEditContainer-->textEdit.setValue( mFloatLength($ThisControl.getValue(), 2)); MeshRoadEditorGui.DefaultWidth =  $ThisControl.getValue();";
+            oc_Newobject15["AltCommand"] = "MeshRoadDefaultWidthTextEditContainer-->textEdit.setValue( mFloatLength($ThisControl.getValue(), 2)); MeshRoadEditorGui.DefaultWidth =  $ThisControl.getValue();";
             oc_Newobject15["range"] = "0 100";
             oc_Newobject15["ticks"] = "0";
             oc_Newobject15["value"] = "10";
@@ -405,9 +433,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
 
             #region GuiMouseEventCtrl (MeshRoadDefaultDepthSliderCtrlContainer, EditorGuiGroup)        oc_Newobject18
 
-            ObjectCreator oc_Newobject18 = new ObjectCreator("GuiMouseEventCtrl",
-                "MeshRoadDefaultDepthSliderCtrlContainer, EditorGuiGroup",
-                typeof (MeshRoadEditorGui.MeshRoadDefaultDepthSliderCtrlContainer));
+            ObjectCreator oc_Newobject18 = new ObjectCreator("GuiMouseEventCtrl", "MeshRoadDefaultDepthSliderCtrlContainer, EditorGuiGroup", typeof (MeshRoadEditorGui.MeshRoadDefaultDepthSliderCtrlContainer));
             oc_Newobject18["horizSizing"] = "right";
             oc_Newobject18["vertSizing"] = "bottom";
             oc_Newobject18["position"] = "0 0";
@@ -426,15 +452,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
             oc_Newobject17["Profile"] = "ToolsGuiSliderBoxProfile";
             oc_Newobject17["HorizSizing"] = "right";
             oc_Newobject17["VertSizing"] = "bottom";
-            oc_Newobject17["position"] =
-                new ObjectCreator.StringNoQuote(
-                    "firstWord(MeshRoadDefaultDepthTextEditContainer.position) + firstWord(MeshRoadEditorToolbar.position) + 10 SPC          (getWord(MeshRoadDefaultDepthTextEditContainer, 1)) + 25");
+            oc_Newobject17["position"] = new Creator.StringNoQuote("firstWord(MeshRoadDefaultDepthTextEditContainer.position) + firstWord(MeshRoadEditorToolbar.position) + 10 SPC          (getWord(MeshRoadDefaultDepthTextEditContainer, 1)) + 25");
             oc_Newobject17["Extent"] = "112 20";
             oc_Newobject17["MinExtent"] = "8 2";
             oc_Newobject17["canSave"] = "1";
             oc_Newobject17["Visible"] = "1";
-            oc_Newobject17["AltCommand"] =
-                "MeshRoadDefaultDepthTextEditContainer-->textEdit.setValue( mFloatLength($ThisControl.getValue(), 2)); MeshRoadEditorGui.DefaultDepth =  $ThisControl.getValue();";
+            oc_Newobject17["AltCommand"] = "MeshRoadDefaultDepthTextEditContainer-->textEdit.setValue( mFloatLength($ThisControl.getValue(), 2)); MeshRoadEditorGui.DefaultDepth =  $ThisControl.getValue();";
             oc_Newobject17["range"] = "0 100";
             oc_Newobject17["ticks"] = "0";
             oc_Newobject17["value"] = "10";
@@ -446,7 +469,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
             #endregion
 
             oc_Newobject18.Create();
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -457,18 +480,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(MeshRoadEditorToolbar ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -476,9 +499,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -487,12 +510,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(MeshRoadEditorToolbar ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -500,9 +522,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(MeshRoadEditorToolbar ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -510,10 +532,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator MeshRoadEditorToolbar(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (MeshRoadEditorToolbar) Omni.self.getSimObject(simobjectid, typeof (MeshRoadEditorToolbar));
-            }
+        }
 
         /// <summary>
         /// 
@@ -521,9 +543,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(MeshRoadEditorToolbar ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -531,9 +553,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator MeshRoadEditorToolbar(int simobjectid)
-            {
+        {
             return (MeshRoadEditorToolbar) Omni.self.getSimObject((uint) simobjectid, typeof (MeshRoadEditorToolbar));
-            }
+        }
 
         /// <summary>
         /// 
@@ -541,19 +563,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(MeshRoadEditorToolbar ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator MeshRoadEditorToolbar(uint simobjectid)
-            {
+        {
             return (MeshRoadEditorToolbar) Omni.self.getSimObject(simobjectid, typeof (MeshRoadEditorToolbar));
-            }
+        }
 
         #endregion
-        }
     }
+}

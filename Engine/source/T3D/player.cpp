@@ -7473,7 +7473,6 @@ if (!object)
    const PlayerData * db = dynamic_cast<PlayerData*>( object->getDataBlock() );
    if ( db )
    {
-
       for ( S32 i = 0; i < db->actionCount; i++ )
          if ( db->actionList[i].death )
             count++;

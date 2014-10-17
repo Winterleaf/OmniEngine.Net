@@ -254,7 +254,6 @@ if (!object)
 {
       if(val < 0 || val > 9)
       return;
-
    GameBase * control = getControlObj();
    if(control)
       control->setTransform(object->mBookmarks[val]);
@@ -279,7 +278,6 @@ if (!object)
 {
       if(val < 0 || val > 9)
       return;
-
    GameBase * control = getControlObj();
    if(control)
       object->mBookmarks[val] = control->getTransform();

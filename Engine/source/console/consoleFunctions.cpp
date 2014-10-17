@@ -2959,12 +2959,10 @@ const char** argv = &arguments[0];
    S32 i;
    for(i = 1; i < argc; i++)
       len += dStrlen(argv[i]);
-
    char *ret = Con::getReturnBuffer(len + 1);
    ret[0] = 0;
    for(i = 1; i < argc; i++)
       dStrcat(ret, argv[i]);
-
    Con::printf("%s", ret);
    ret[0] = 0;
 }
@@ -3090,12 +3088,10 @@ const char** argv = &arguments[0];
    S32 i;
    for(i = 1; i < argc; i++)
       len += dStrlen(argv[i]);
-
    char *ret = Con::getReturnBuffer(len + 1);
    ret[0] = 0;
    for(i = 1; i < argc; i++)
       dStrcat(ret, argv[i]);
-
    Con::errorf(ConsoleLogEntry::General, "%s", ret);
    ret[0] = 0;
 }
@@ -3256,12 +3252,10 @@ const char** argv = &arguments[0];
    S32 i;
    for(i = 1; i < argc; i++)
       len += dStrlen(argv[i]);
-
    char *ret = Con::getReturnBuffer(len + 1);
    ret[0] = 0;
    for(i = 1; i < argc; i++)
       dStrcat(ret, argv[i]);
-
    Con::warnf(ConsoleLogEntry::General, "%s", ret);
    ret[0] = 0;
 }
@@ -3345,14 +3339,11 @@ extern "C" __declspec(dllexport) S32  __cdecl wle_fn_countBits(S32 v)
 {
 {
    S32 c = 0;
-
       
       c =  ((v & 0xfff) * 0x1001001001001ULL & 0x84210842108421ULL) % 0x1f;
    c += (((v & 0xfff000) >> 12) * 0x1001001001001ULL & 0x84210842108421ULL) % 
       0x1f;
    c += ((v >> 24) * 0x1001001001001ULL & 0x84210842108421ULL) % 0x1f;
-
-
 #ifndef TORQUE_SHIPPING
          {
       S32 c2 = 0;
@@ -3365,9 +3356,7 @@ extern "C" __declspec(dllexport) S32  __cdecl wle_fn_countBits(S32 v)
          Con::errorf("countBits: Uh oh bit count mismatch");
       AssertFatal(c2 == c, "countBits: uh oh, bit count mismatch");
    }
-
 #endif
-
   return (S32)( c);
 };
 }
@@ -3746,7 +3735,6 @@ const char* filename = (const char*)x__filename;
 {
    if( filename && filename[ 0 ] )
    {
-
 #ifndef TORQUE2D_TOOLS_FIXME
       if(Con::expandScriptFilename(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filename))
          filename = scriptFilenameBuffer;
@@ -3754,12 +3742,10 @@ const char* filename = (const char*)x__filename;
       filename = Platform::getPrefsPath( filename );
       if(filename == NULL || *filename == 0)
          return;
-
 #endif
    }
    else
       filename = NULL;
-
    gEvalState.globalVars.exportVariables( pattern, filename, append );
 }
 }
@@ -3771,7 +3757,6 @@ const char* filename = (const char*)x__filename;
 {
    if( filename && filename[ 0 ] )
    {
-
 #ifndef TORQUE2D_TOOLS_FIXME
       if(Con::expandScriptFilename(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filename))
          filename = scriptFilenameBuffer;
@@ -3779,12 +3764,10 @@ const char* filename = (const char*)x__filename;
       filename = Platform::getPrefsPath( filename );
       if(filename == NULL || *filename == 0)
          return;
-
 #endif
    }
    else
       filename = NULL;
-
    gEvalState.globalVars.exportVariablesAsSettings( pattern, filename, append );
 }
 }
@@ -4150,17 +4133,14 @@ const char* address = (const char*)x__address;
       Platform::openWebBrowser( address );
       return;
    }
-
                
    String addr;
    if( Platform::isFile( address ) || Platform::isDirectory( address ) )
    {
-
 #ifdef TORQUE2D_TOOLS_FIXME
       addr = String::ToString( "file://%s", address );
 #else
       addr = String::ToString( "file://%s/%s", Platform::getCurrentDirectory(), address );
-
 #endif
    }
    else
@@ -4904,7 +4884,6 @@ const char* chr = (const char*)x__chr;
 {
    if( start != 0 && start >= dStrlen( str ) )
      return (S32)( -1);
-
    const char* ret = dStrrchr( str, chr[ 0 ] );
    if( !ret )
      return (S32)( -1);

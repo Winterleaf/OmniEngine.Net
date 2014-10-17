@@ -1476,7 +1476,6 @@ if (!object)
    MeshRoad *road = object->getSelectedRoad();
    if ( !road )
      return (S32)( NULL);
-
   return (S32)( road->getId());
 };
 }
@@ -1530,7 +1529,6 @@ sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
 {
    
 		
-
    object->setNodeNormal( normal );
 }
 }
@@ -1542,9 +1540,7 @@ if (!object)
 Point3F pos = Point3F();
 sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
 {
-
 	
-
    object->setNodePosition( pos );
 }
 }

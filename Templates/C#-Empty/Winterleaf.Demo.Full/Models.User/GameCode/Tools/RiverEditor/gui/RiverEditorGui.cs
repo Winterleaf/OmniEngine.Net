@@ -1,9 +1,43 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBehind.PlugIns;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
@@ -11,25 +45,23 @@ using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<RiverEditorGui>))]
     public class RiverEditorGui : GuiRiverEditorCtrl
-        {
-        
+    {
 
         internal River river
-            {
+        {
             get { return this["river"]; }
             set { this["river"] = value; }
-            }
+        }
 
         [ConsoleInteraction(true, "RiverEditorGui_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiRiverEditorCtrl (RiverEditorGui, EditorGuiGroup)        oc_Newobject21
 
-            ObjectCreator oc_Newobject21 = new ObjectCreator("GuiRiverEditorCtrl", "RiverEditorGui, EditorGuiGroup",
-                typeof (RiverEditorGui));
+            ObjectCreator oc_Newobject21 = new ObjectCreator("GuiRiverEditorCtrl", "RiverEditorGui, EditorGuiGroup", typeof (RiverEditorGui));
             oc_Newobject21["canSaveDynamicFields"] = "0";
             oc_Newobject21["Enabled"] = "1";
             oc_Newobject21["isContainer"] = "1";
@@ -71,8 +103,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
 
             #region GuiWindowCollapseCtrl (RiverEditorTreeWindow)        oc_Newobject4
 
-            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiWindowCollapseCtrl", "RiverEditorTreeWindow",
-                typeof (RiverEditorTreeWindow));
+            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiWindowCollapseCtrl", "RiverEditorTreeWindow", typeof (RiverEditorTreeWindow));
             oc_Newobject4["AllowPopWindow"] = "1";
             oc_Newobject4["internalName"] = "";
             oc_Newobject4["canSaveDynamicFields"] = "0";
@@ -81,9 +112,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             oc_Newobject4["Profile"] = "ToolsGuiWindowProfile";
             oc_Newobject4["HorizSizing"] = "windowRelative";
             oc_Newobject4["VertSizing"] = "windowRelative";
-            oc_Newobject4["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($pref::Video::mode, 0) - 209         SPC getWord(EditorGuiToolbar.extent, 1) - 1");
+            oc_Newobject4["Position"] = new Creator.StringNoQuote("getWord($pref::Video::mode, 0) - 209         SPC getWord(EditorGuiToolbar.extent, 1) - 1");
             oc_Newobject4["Extent"] = "210 167";
             oc_Newobject4["MinExtent"] = "210 100";
             oc_Newobject4["canSave"] = "1";
@@ -197,8 +226,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
 
             #region GuiWindowCollapseCtrl (RiverEditorOptionsWindow)        oc_Newobject20
 
-            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiWindowCollapseCtrl", "RiverEditorOptionsWindow",
-                typeof (RiverEditorOptionsWindow));
+            ObjectCreator oc_Newobject20 = new ObjectCreator("GuiWindowCollapseCtrl", "RiverEditorOptionsWindow", typeof (RiverEditorOptionsWindow));
             oc_Newobject20["AllowPopWindow"] = "1";
             oc_Newobject20["internalName"] = "Window";
             oc_Newobject20["canSaveDynamicFields"] = "0";
@@ -207,9 +235,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             oc_Newobject20["Profile"] = "ToolsGuiWindowProfile";
             oc_Newobject20["HorizSizing"] = "windowRelative";
             oc_Newobject20["VertSizing"] = "windowRelative";
-            oc_Newobject20["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($pref::Video::mode, 0) - 209          SPC getWord(EditorGuiToolbar.extent, 1) + getWord(RiverEditorTreeWindow.extent, 1) - 2");
+            oc_Newobject20["Position"] = new Creator.StringNoQuote("getWord($pref::Video::mode, 0) - 209          SPC getWord(EditorGuiToolbar.extent, 1) + getWord(RiverEditorTreeWindow.extent, 1) - 2");
             oc_Newobject20["Extent"] = "210 530";
             oc_Newobject20["MinExtent"] = "210 300";
             oc_Newobject20["canSave"] = "1";
@@ -512,16 +538,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             omni.bGlobal["$River::showSpline"] = true;
             omni.bGlobal["$River::showRiver"] = true;
             omni.bGlobal["$River::showWalls"] = true;
-            }
+        }
 
         [ConsoleInteraction]
         public void onEditorActivated()
-            {
+        {
             EWorldEditor EWorldEditor = "EWorldEditor";
             int count = EWorldEditor.getSelectionSize();
             for (uint i = 0; i < count; i++)
                 {
-                SimObject obj = EWorldEditor.getSelectedObject((int)i);
+                SimObject obj = EWorldEditor.getSelectedObject((int) i);
                 if (obj.getClassName() != "River")
                     EWorldEditor.unselectObject(obj);
                 else
@@ -530,16 +556,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
 
             this.onRiverSelected(this.getSelectedRiver().AsString());
             this.onNodeSelected("-1");
-            }
+        }
 
         [ConsoleInteraction]
         public void onEditorDeactivated()
-            {
-            }
+        {
+        }
 
         [ConsoleInteraction]
         public override string createRiver()
-            {
+        {
             ObjectCreator riverCreator = new ObjectCreator("River");
             riverCreator["rippleDir[0]"] = "0.000000 1.000000";
             riverCreator["rippleDir[1]"] = "0.707000 0.707000";
@@ -574,30 +600,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             River river = riverCreator.Create();
 
             return river.ToString();
-            }
+        }
 
         [ConsoleInteraction]
         public override void paletteSync(string mode)
-            {
-            ((GuiButtonBaseCtrl)
-                ((GuiDynamicCtrlArrayControl) "ToolsPaletteArray").findObjectByInternalName(mode, true)).setStateOn(
-                    true);
-            }
+        {
+            ((GuiButtonBaseCtrl) ((GuiDynamicCtrlArrayControl) "ToolsPaletteArray").findObjectByInternalName(mode, true)).setStateOn(true);
+        }
 
         [ConsoleInteraction]
         public bool onEscapePressed()
-            {
+        {
             if (this.getMode() == "RiverEditorAddNodeMode")
                 {
                 this.prepSelectionMode();
                 return true;
                 }
             return false;
-            }
+        }
 
         [ConsoleInteraction]
         public override void onRiverSelected(string river)
-            {
+        {
             GuiInspector RiverInspector = "RiverInspector";
             GuiTreeViewCtrl RiverTreeView = "RiverTreeView";
 
@@ -614,20 +638,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
                 int treeId = RiverTreeView.findItemByObjectId(river.getID());
                 RiverTreeView.selectItem(treeId);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public override void onNodeSelected(string nodeIdx)
-            {
+        {
             GuiWindowCollapseCtrl RiverEditorOptionsWindow = "RiverEditorOptionsWindow";
-            GuiTextEditCtrl positionTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("position", true);
-            GuiTextEditCtrl rotationTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("rotation", true);
-            GuiTextEditCtrl widthTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("width", true);
-            GuiTextEditCtrl depthTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("depth", true);
+            GuiTextEditCtrl positionTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("position", true);
+            GuiTextEditCtrl rotationTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("rotation", true);
+            GuiTextEditCtrl widthTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("width", true);
+            GuiTextEditCtrl depthTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("depth", true);
 
             if (nodeIdx == "-1")
                 {
@@ -657,71 +677,61 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
                 depthTextEditCtrl.setActive(true);
                 depthTextEditCtrl.setValue(this.getNodeDepth().AsString());
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public override void onNodeModified(string nodeIdx)
-            {
+        {
             GuiWindowCollapseCtrl RiverEditorOptionsWindow = "RiverEditorOptionsWindow";
-            GuiTextEditCtrl positionTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("position", true);
-            GuiTextEditCtrl rotationTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("rotation", true);
-            GuiTextEditCtrl widthTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("width", true);
-            GuiTextEditCtrl depthTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("depth", true);
+            GuiTextEditCtrl positionTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("position", true);
+            GuiTextEditCtrl rotationTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("rotation", true);
+            GuiTextEditCtrl widthTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("width", true);
+            GuiTextEditCtrl depthTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("depth", true);
 
             positionTextEditCtrl.setValue(this.getNodePosition().AsString());
             rotationTextEditCtrl.setValue(this.getNodeNormal().AsString());
             widthTextEditCtrl.setValue(this.getNodeWidth().AsString());
             depthTextEditCtrl.setValue(this.getNodeDepth().AsString());
-            }
+        }
 
         [ConsoleInteraction]
         public void editNodeDetails()
-            {
+        {
             GuiWindowCollapseCtrl RiverEditorOptionsWindow = "RiverEditorOptionsWindow";
-            GuiTextEditCtrl positionTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("position", true);
-            GuiTextEditCtrl rotationTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("rotation", true);
-            GuiTextEditCtrl widthTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("width", true);
-            GuiTextEditCtrl depthTextEditCtrl =
-                (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("depth", true);
+            GuiTextEditCtrl positionTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("position", true);
+            GuiTextEditCtrl rotationTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("rotation", true);
+            GuiTextEditCtrl widthTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("width", true);
+            GuiTextEditCtrl depthTextEditCtrl = (GuiTextEditCtrl) RiverEditorOptionsWindow.findObjectByInternalName("depth", true);
 
             this.setNodePosition(new Point3F(positionTextEditCtrl.getText()));
             this.setNodeNormal(new Point3F(rotationTextEditCtrl.getText()));
             this.setNodeWidth(widthTextEditCtrl.getText().AsFloat());
             this.setNodeDepth(depthTextEditCtrl.getText().AsFloat());
-            }
+        }
 
         [ConsoleInteraction]
         public void prepSelectionMode()
-            {
+        {
             string mode = this.getMode();
 
             if (mode == "RiverEditorAddNodeMode")
                 {
-                if (this.getSelectedRiver()!=0)
+                if (this.getSelectedRiver() != 0)
                     this.deleteNode();
                 }
 
             this.setMode("RiverEditorSelectMode");
-            ((GuiBitmapButtonCtrl)
-                ((GuiDynamicCtrlArrayControl) "ToolsPaletteArray").findObjectByInternalName("RiverEditorSelectMode",
-                    true)).setStateOn(true);
-            }
+            ((GuiBitmapButtonCtrl) ((GuiDynamicCtrlArrayControl) "ToolsPaletteArray").findObjectByInternalName("RiverEditorSelectMode", true)).setStateOn(true);
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorAddModeBtn>))]
         public class ERiverEditorAddModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -732,20 +742,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorAddModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -753,9 +761,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -764,12 +772,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorAddModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -777,9 +784,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorAddModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -787,10 +794,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorAddModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ERiverEditorAddModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorAddModeBtn));
-                }
+            }
 
             /// <summary>
             /// 
@@ -798,9 +805,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorAddModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -808,10 +815,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorAddModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorAddModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorAddModeBtn));
-                }
+            {
+                return (ERiverEditorAddModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorAddModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -819,30 +825,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorAddModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorAddModeBtn(uint simobjectid)
-                {
+            {
                 return (ERiverEditorAddModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorAddModeBtn));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorInsertModeBtn>))]
         public class ERiverEditorInsertModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -853,20 +859,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorInsertModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -874,9 +878,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -885,12 +889,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorInsertModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -898,9 +901,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorInsertModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -908,11 +911,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorInsertModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (ERiverEditorInsertModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorInsertModeBtn));
-                }
+                return (ERiverEditorInsertModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorInsertModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -920,9 +922,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorInsertModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -930,11 +932,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorInsertModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorInsertModeBtn)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorInsertModeBtn));
-                }
+            {
+                return (ERiverEditorInsertModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorInsertModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -942,31 +942,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorInsertModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorInsertModeBtn(uint simobjectid)
-                {
-                return
-                    (ERiverEditorInsertModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorInsertModeBtn));
-                }
+            {
+                return (ERiverEditorInsertModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorInsertModeBtn));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorMoveModeBtn>))]
         public class ERiverEditorMoveModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -977,20 +976,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorMoveModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -998,9 +995,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1009,12 +1006,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorMoveModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1022,9 +1018,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorMoveModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1032,10 +1028,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorMoveModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ERiverEditorMoveModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorMoveModeBtn));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1043,9 +1039,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorMoveModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1053,11 +1049,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorMoveModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorMoveModeBtn)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorMoveModeBtn));
-                }
+            {
+                return (ERiverEditorMoveModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorMoveModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1065,30 +1059,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorMoveModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorMoveModeBtn(uint simobjectid)
-                {
+            {
                 return (ERiverEditorMoveModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorMoveModeBtn));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorRemoveModeBtn>))]
         public class ERiverEditorRemoveModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1099,20 +1093,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorRemoveModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1120,9 +1112,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1131,12 +1123,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorRemoveModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1144,9 +1135,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorRemoveModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1154,11 +1145,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorRemoveModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (ERiverEditorRemoveModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRemoveModeBtn));
-                }
+                return (ERiverEditorRemoveModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRemoveModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1166,9 +1156,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorRemoveModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1176,11 +1166,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorRemoveModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorRemoveModeBtn)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorRemoveModeBtn));
-                }
+            {
+                return (ERiverEditorRemoveModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorRemoveModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1188,31 +1176,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorRemoveModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorRemoveModeBtn(uint simobjectid)
-                {
-                return
-                    (ERiverEditorRemoveModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRemoveModeBtn));
-                }
+            {
+                return (ERiverEditorRemoveModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRemoveModeBtn));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorRotateModeBtn>))]
         public class ERiverEditorRotateModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1223,20 +1210,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorRotateModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1244,9 +1229,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1255,12 +1240,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorRotateModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1268,9 +1252,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorRotateModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1278,11 +1262,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorRotateModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (ERiverEditorRotateModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRotateModeBtn));
-                }
+                return (ERiverEditorRotateModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRotateModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1290,9 +1273,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorRotateModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1300,11 +1283,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorRotateModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorRotateModeBtn)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorRotateModeBtn));
-                }
+            {
+                return (ERiverEditorRotateModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorRotateModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1312,31 +1293,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorRotateModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorRotateModeBtn(uint simobjectid)
-                {
-                return
-                    (ERiverEditorRotateModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRotateModeBtn));
-                }
+            {
+                return (ERiverEditorRotateModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorRotateModeBtn));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorScaleModeBtn>))]
         public class ERiverEditorScaleModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1347,20 +1327,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorScaleModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1368,9 +1346,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1379,12 +1357,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorScaleModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1392,9 +1369,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorScaleModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1402,10 +1379,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorScaleModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (ERiverEditorScaleModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorScaleModeBtn));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1413,9 +1390,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorScaleModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1423,11 +1400,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorScaleModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorScaleModeBtn)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorScaleModeBtn));
-                }
+            {
+                return (ERiverEditorScaleModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorScaleModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1435,30 +1410,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorScaleModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorScaleModeBtn(uint simobjectid)
-                {
+            {
                 return (ERiverEditorScaleModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorScaleModeBtn));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<ERiverEditorSelectModeBtn>))]
         public class ERiverEditorSelectModeBtn : GuiBitmapButtonCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onClick(string SelectedidString)
-                {
+            {
                 ((EditorGui.EditorGuiStatusBar) "EditorGuiStatusBar").setInfo(this["ToolTip"]);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1469,20 +1444,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(ERiverEditorSelectModeBtn ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1490,9 +1463,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1501,12 +1474,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(ERiverEditorSelectModeBtn ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1514,9 +1486,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(ERiverEditorSelectModeBtn ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1524,11 +1496,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorSelectModeBtn(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (ERiverEditorSelectModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorSelectModeBtn));
-                }
+                return (ERiverEditorSelectModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorSelectModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1536,9 +1507,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(ERiverEditorSelectModeBtn ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1546,11 +1517,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator ERiverEditorSelectModeBtn(int simobjectid)
-                {
-                return
-                    (ERiverEditorSelectModeBtn)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorSelectModeBtn));
-                }
+            {
+                return (ERiverEditorSelectModeBtn) Omni.self.getSimObject((uint) simobjectid, typeof (ERiverEditorSelectModeBtn));
+            }
 
             /// <summary>
             /// 
@@ -1558,34 +1527,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(ERiverEditorSelectModeBtn ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator ERiverEditorSelectModeBtn(uint simobjectid)
-                {
-                return
-                    (ERiverEditorSelectModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorSelectModeBtn));
-                }
+            {
+                return (ERiverEditorSelectModeBtn) Omni.self.getSimObject(simobjectid, typeof (ERiverEditorSelectModeBtn));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RiverDefaultDepthSliderCtrlContainer>))]
         public class RiverDefaultDepthSliderCtrlContainer : EditorGui.EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
-                ((GuiSliderCtrl) (this).findObjectByInternalName("slider", true)).setValue(
-                    ((GuiTextEditCtrl)
-                        ((GuiControl) "RiverDefaultDepthTextEditContainer").findObjectByInternalName("textEdit", true))
-                        .getText());
-                }
+            {
+                ((GuiSliderCtrl) (this).findObjectByInternalName("slider", true)).setValue(((GuiTextEditCtrl) ((GuiControl) "RiverDefaultDepthTextEditContainer").findObjectByInternalName("textEdit", true)).getText());
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1596,20 +1561,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RiverDefaultDepthSliderCtrlContainer ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1617,9 +1580,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1628,12 +1591,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RiverDefaultDepthSliderCtrlContainer ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1641,9 +1603,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RiverDefaultDepthSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1651,12 +1613,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RiverDefaultDepthSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (RiverDefaultDepthSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (RiverDefaultDepthSliderCtrlContainer));
-                }
+                return (RiverDefaultDepthSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (RiverDefaultDepthSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -1664,9 +1624,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RiverDefaultDepthSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1674,11 +1634,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RiverDefaultDepthSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (RiverDefaultDepthSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (RiverDefaultDepthSliderCtrlContainer));
-                }
+            {
+                return (RiverDefaultDepthSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (RiverDefaultDepthSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -1686,35 +1644,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RiverDefaultDepthSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RiverDefaultDepthSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (RiverDefaultDepthSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (RiverDefaultDepthSliderCtrlContainer));
-                }
+            {
+                return (RiverDefaultDepthSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (RiverDefaultDepthSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RiverDefaultWidthSliderCtrlContainer>))]
         public class RiverDefaultWidthSliderCtrlContainer : EditorGui.EditorDropdownSliderContainer
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
-                ((GuiSliderCtrl) (this).findObjectByInternalName("slider", true)).setValue(
-                    ((GuiTextEditCtrl)
-                        ((GuiControl) "RiverDefaultWidthTextEditContainer").findObjectByInternalName("textEdit", true))
-                        .getText());
-                }
+            {
+                ((GuiSliderCtrl) (this).findObjectByInternalName("slider", true)).setValue(((GuiTextEditCtrl) ((GuiControl) "RiverDefaultWidthTextEditContainer").findObjectByInternalName("textEdit", true)).getText());
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1725,20 +1678,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RiverDefaultWidthSliderCtrlContainer ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1746,9 +1697,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1757,12 +1708,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RiverDefaultWidthSliderCtrlContainer ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1770,9 +1720,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RiverDefaultWidthSliderCtrlContainer ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1780,12 +1730,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RiverDefaultWidthSliderCtrlContainer(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
-                return
-                    (RiverDefaultWidthSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (RiverDefaultWidthSliderCtrlContainer));
-                }
+                return (RiverDefaultWidthSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (RiverDefaultWidthSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -1793,9 +1741,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RiverDefaultWidthSliderCtrlContainer ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1803,11 +1751,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RiverDefaultWidthSliderCtrlContainer(int simobjectid)
-                {
-                return
-                    (RiverDefaultWidthSliderCtrlContainer)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (RiverDefaultWidthSliderCtrlContainer));
-                }
+            {
+                return (RiverDefaultWidthSliderCtrlContainer) Omni.self.getSimObject((uint) simobjectid, typeof (RiverDefaultWidthSliderCtrlContainer));
+            }
 
             /// <summary>
             /// 
@@ -1815,39 +1761,37 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RiverDefaultWidthSliderCtrlContainer ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RiverDefaultWidthSliderCtrlContainer(uint simobjectid)
-                {
-                return
-                    (RiverDefaultWidthSliderCtrlContainer)
-                        Omni.self.getSimObject(simobjectid, typeof (RiverDefaultWidthSliderCtrlContainer));
-                }
+            {
+                return (RiverDefaultWidthSliderCtrlContainer) Omni.self.getSimObject(simobjectid, typeof (RiverDefaultWidthSliderCtrlContainer));
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RiverEditorOptionsWindow>))]
         public class RiverEditorOptionsWindow : GuiWindowCollapseCtrl
-            {
+        {
             public override void onPopWindow()
-                {
+            {
                 EditorGui.DeactivateAll();
                 ((EditorPlugin) "RiverEditorPlugin").onActivated();
-                }
+            }
 
             public override void onPopWindowClosed()
-                {
+            {
                 EditorGui.DeactivateAll();
                 ((EditorPlugin) "RiverEditorPlugin").onActivated();
                 this.attachTo("RiverEditorTreeWindow");
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1858,20 +1802,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RiverEditorOptionsWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -1879,9 +1821,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1890,12 +1832,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RiverEditorOptionsWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -1903,9 +1844,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RiverEditorOptionsWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1913,10 +1854,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RiverEditorOptionsWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (RiverEditorOptionsWindow) Omni.self.getSimObject(simobjectid, typeof (RiverEditorOptionsWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -1924,9 +1865,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RiverEditorOptionsWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -1934,11 +1875,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RiverEditorOptionsWindow(int simobjectid)
-                {
-                return
-                    (RiverEditorOptionsWindow)
-                        Omni.self.getSimObject((uint) simobjectid, typeof (RiverEditorOptionsWindow));
-                }
+            {
+                return (RiverEditorOptionsWindow) Omni.self.getSimObject((uint) simobjectid, typeof (RiverEditorOptionsWindow));
+            }
 
             /// <summary>
             /// 
@@ -1946,37 +1885,37 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RiverEditorOptionsWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RiverEditorOptionsWindow(uint simobjectid)
-                {
+            {
                 return (RiverEditorOptionsWindow) Omni.self.getSimObject(simobjectid, typeof (RiverEditorOptionsWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RiverEditorTreeWindow>))]
         public class RiverEditorTreeWindow : GuiWindowCollapseCtrl
-            {
+        {
             public override void onPopWindow()
-                {
+            {
                 EditorGui.DeactivateAll();
                 ((EditorPlugin) "RiverEditorPlugin").onActivated();
-                }
+            }
 
             public override void onPopWindowClosed()
-                {
+            {
                 EditorGui.DeactivateAll();
                 ((EditorPlugin) "RiverEditorPlugin").onActivated();
                 this.attachTo("RiverEditorOptionsWindow");
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -1987,20 +1926,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RiverEditorTreeWindow ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2008,9 +1945,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2019,12 +1956,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RiverEditorTreeWindow ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2032,9 +1968,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RiverEditorTreeWindow ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2042,10 +1978,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RiverEditorTreeWindow(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (RiverEditorTreeWindow) Omni.self.getSimObject(simobjectid, typeof (RiverEditorTreeWindow));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2053,9 +1989,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RiverEditorTreeWindow ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2063,10 +1999,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RiverEditorTreeWindow(int simobjectid)
-                {
-                return
-                    (RiverEditorTreeWindow) Omni.self.getSimObject((uint) simobjectid, typeof (RiverEditorTreeWindow));
-                }
+            {
+                return (RiverEditorTreeWindow) Omni.self.getSimObject((uint) simobjectid, typeof (RiverEditorTreeWindow));
+            }
 
             /// <summary>
             /// 
@@ -2074,28 +2009,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RiverEditorTreeWindow ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RiverEditorTreeWindow(uint simobjectid)
-                {
+            {
                 return (RiverEditorTreeWindow) Omni.self.getSimObject(simobjectid, typeof (RiverEditorTreeWindow));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RiverInspector>))]
         public class RiverInspector : GuiInspector
-            {
+        {
             [ConsoleInteraction]
             public void inspect(SimObject obj)
-                {
+            {
                 string name = "";
                 if (obj.isObject())
                     name = obj.getName();
@@ -2104,22 +2039,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
 
                 //RiverInspectorNameEdit.setValue( %name );
                 base.inspect(obj);
-                }
+            }
 
             [ConsoleInteraction]
             public override void onInspectorFieldModified(string objectx, string fieldName, string arrayIndex, string oldValue, string newValue)
-                {
+            {
                 // Same work to do as for the regular WorldEditor Inspector.
-                    ((Inspector)"Inspector").onInspectorFieldModified(objectx, fieldName,arrayIndex, oldValue, newValue);
-                }
+                ((Inspector) "Inspector").onInspectorFieldModified(objectx, fieldName, arrayIndex, oldValue, newValue);
+            }
 
             [ConsoleInteraction]
             public override void onFieldSelected(string fieldName, string fieldTypeStr, string fieldDoc)
-                {
-                ((GuiMLTextCtrl) "RiverFieldInfoControl").setText("<font:ArialBold:14>" + fieldName +
-                                                                    "<font:ArialItalic:14> (" + fieldTypeStr +
-                                                                    ") \n <font:Arial:14>" + fieldDoc);
-                }
+            {
+                ((GuiMLTextCtrl) "RiverFieldInfoControl").setText("<font:ArialBold:14>" + fieldName + "<font:ArialItalic:14> (" + fieldTypeStr + ") \n <font:Arial:14>" + fieldDoc);
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2130,20 +2063,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RiverInspector ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2151,9 +2082,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2162,12 +2093,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RiverInspector ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2175,9 +2105,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RiverInspector ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2185,10 +2115,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RiverInspector(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (RiverInspector) Omni.self.getSimObject(simobjectid, typeof (RiverInspector));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2196,9 +2126,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RiverInspector ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2206,9 +2136,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RiverInspector(int simobjectid)
-                {
+            {
                 return (RiverInspector) Omni.self.getSimObject((uint) simobjectid, typeof (RiverInspector));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2216,44 +2146,42 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RiverInspector ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RiverInspector(uint simobjectid)
-                {
+            {
                 return (RiverInspector) Omni.self.getSimObject(simobjectid, typeof (RiverInspector));
-                }
+            }
 
             #endregion
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<RiverTreeView>))]
         public class RiverTreeView : GuiTreeViewCtrl
-            {
+        {
             [ConsoleInteraction]
             public override void onInspect(int itemOrObjectId)
-                {
-                    ((RiverInspector)"RiverInspector").inspect(itemOrObjectId);
-                }
+            {
+                ((RiverInspector) "RiverInspector").inspect(itemOrObjectId);
+            }
 
             [ConsoleInteraction]
             public override void onSelect(string x, string y)
-                {
+            {
                 GuiRiverEditorCtrl RiverEditorGui = "RiverEditorGui";
                 RiverInspector RiverInspector = "RiverInspector";
 
                 RiverEditorGui["river"] = x;
                 RiverInspector.inspect(x);
                 if (x.AsInt() != RiverEditorGui.getSelectedRiver())
-                    {
                     RiverEditorGui.setSelectedRiver(x);
-                    }
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -2264,20 +2192,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(RiverTreeView ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -2285,9 +2211,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2296,12 +2222,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(RiverTreeView ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -2309,9 +2234,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(RiverTreeView ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2319,10 +2244,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator RiverTreeView(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (RiverTreeView) Omni.self.getSimObject(simobjectid, typeof (RiverTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2330,9 +2255,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(RiverTreeView ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -2340,9 +2265,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator RiverTreeView(int simobjectid)
-                {
+            {
                 return (RiverTreeView) Omni.self.getSimObject((uint) simobjectid, typeof (RiverTreeView));
-                }
+            }
 
             /// <summary>
             /// 
@@ -2350,21 +2275,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(RiverTreeView ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator RiverTreeView(uint simobjectid)
-                {
+            {
                 return (RiverTreeView) Omni.self.getSimObject(simobjectid, typeof (RiverTreeView));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -2375,18 +2300,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(RiverEditorGui ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -2394,9 +2319,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2405,12 +2330,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(RiverEditorGui ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -2418,9 +2342,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(RiverEditorGui ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2428,10 +2352,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator RiverEditorGui(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (RiverEditorGui) Omni.self.getSimObject(simobjectid, typeof (RiverEditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2439,9 +2363,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(RiverEditorGui ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -2449,9 +2373,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator RiverEditorGui(int simobjectid)
-            {
+        {
             return (RiverEditorGui) Omni.self.getSimObject((uint) simobjectid, typeof (RiverEditorGui));
-            }
+        }
 
         /// <summary>
         /// 
@@ -2459,19 +2383,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(RiverEditorGui ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator RiverEditorGui(uint simobjectid)
-            {
+        {
             return (RiverEditorGui) Omni.self.getSimObject(simobjectid, typeof (RiverEditorGui));
-            }
+        }
 
         #endregion
-        }
     }
+}

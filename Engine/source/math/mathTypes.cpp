@@ -1239,7 +1239,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_setRandomSeed(S32 seed)
 {
    if( seed == -1 )
       seed = Platform::getRealMilliseconds();
-
 	MRandomLCG::setGlobalRandSeed( seed );
 }
 }

@@ -566,14 +566,11 @@ const char* name = (const char*)x__name;
 const char* value = (const char*)x__value;
 {
       CreatorTree::Node * grp = object->findNode(group);
-
    if(!grp || !grp->isGroup())
      return (S32)((-1));
-
       for(U32 i = 0; i < grp->mChildren.size(); i++)
             if(!dStricmp(name, grp->mChildren[i]->mName))
         return (S32)((grp->mChildren[i]->mId));
-
       CreatorTree::Node * node = object->createNode(name, 0, true, grp);
    object->build();
   return (S32)((node ? node->getId() : -1));
@@ -589,10 +586,8 @@ const char* name = (const char*)x__name;
 const char* value = (const char*)x__value;
 {
       CreatorTree::Node * grp = object->findNode(group);
-
    if(!grp || !grp->isGroup())
      return (S32)( -1);
-
       CreatorTree::Node * node = object->createNode(name, value, false, grp);
    object->build();
   return (S32)((node ? node->getId() : -1));
@@ -656,7 +651,6 @@ if (!object)
       CreatorTree::Node * node = object->findNode(nodeValue);
    if(node && node->mParent)
      return (S32)((node->mParent->getId()));
-
   return (S32)((-1));
 };
 }

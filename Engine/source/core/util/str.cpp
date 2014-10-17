@@ -1691,10 +1691,8 @@ String String::GetTrailingNumber(const char* str, S32& number)
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpStringMemStats()
 {
 {
-
 #ifdef TORQUE_DEBUG
    Con::printf( "String Data: %i instances, %i bytes", sgStringInstances, sgStringMemBytes );
-
 #endif
 }
 }

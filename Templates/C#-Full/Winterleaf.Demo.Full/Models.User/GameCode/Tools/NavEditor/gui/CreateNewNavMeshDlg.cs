@@ -1,8 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui;
@@ -16,10 +47,11 @@ using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
 {
-    [TypeConverter(typeof(TypeConverterGeneric<CreateNewNavMeshDlg>))]
+    [TypeConverter(typeof (TypeConverterGeneric<CreateNewNavMeshDlg>))]
     public class CreateNewNavMeshDlg : GuiControl
     {
         private static readonly pInvokes omni = new pInvokes();
+
         public static void initialize()
         {
             ObjectCreator oc_Newobject00011;
@@ -34,10 +66,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
             ObjectCreator oc_Newobject00002;
             ObjectCreator oc_Newobject00001;
             if (true)
-            {
-
+                {
                 #region GuiControl (CreateNewNavMeshDlg)        oc_Newobject00011
-                oc_Newobject00011 = new ObjectCreator("GuiControl", "CreateNewNavMeshDlg", typeof(CreateNewNavMeshDlg));
+
+                oc_Newobject00011 = new ObjectCreator("GuiControl", "CreateNewNavMeshDlg", typeof (CreateNewNavMeshDlg));
                 oc_Newobject00011["position"] = "0 0";
                 oc_Newobject00011["extent"] = "1024 768";
                 oc_Newobject00011["minExtent"] = "8 2";
@@ -52,9 +84,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                 oc_Newobject00011["canSave"] = "1";
                 oc_Newobject00011["canSaveDynamicFields"] = "1";
                 if (true)
-                {
-
+                    {
                     #region GuiWindowCtrl ()        oc_Newobject00010
+
                     oc_Newobject00010 = new ObjectCreator("GuiWindowCtrl", "");
                     oc_Newobject00010["text"] = "New NavMesh";
                     oc_Newobject00010["resizeWidth"] = "0";
@@ -86,9 +118,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                     oc_Newobject00010["canSave"] = "1";
                     oc_Newobject00010["canSaveDynamicFields"] = "0";
                     if (true)
-                    {
-
+                        {
                         #region GuiTextCtrl ()        oc_Newobject00001
+
                         oc_Newobject00001 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00001["text"] = "Name:";
                         oc_Newobject00001["maxLength"] = "1024";
@@ -111,11 +143,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00001["isContainer"] = "1";
                         oc_Newobject00001["canSave"] = "1";
                         oc_Newobject00001["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00001"] = oc_Newobject00001;
 
                         #region GuiTextEditCtrl ()        oc_Newobject00002
+
                         oc_Newobject00002 = new ObjectCreator("GuiTextEditCtrl", "");
                         oc_Newobject00002["historySize"] = "0";
                         oc_Newobject00002["tabComplete"] = "0";
@@ -144,11 +178,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00002["internalName"] = "MeshName";
                         oc_Newobject00002["canSave"] = "1";
                         oc_Newobject00002["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00002"] = oc_Newobject00002;
 
                         #region GuiTextCtrl ()        oc_Newobject00003
+
                         oc_Newobject00003 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00003["text"] = "Position:";
                         oc_Newobject00003["maxLength"] = "1024";
@@ -171,11 +207,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00003["isContainer"] = "1";
                         oc_Newobject00003["canSave"] = "1";
                         oc_Newobject00003["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00003"] = oc_Newobject00003;
 
                         #region GuiTextEditCtrl ()        oc_Newobject00004
+
                         oc_Newobject00004 = new ObjectCreator("GuiTextEditCtrl", "");
                         oc_Newobject00004["historySize"] = "0";
                         oc_Newobject00004["tabComplete"] = "0";
@@ -204,11 +242,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00004["internalName"] = "MeshPosition";
                         oc_Newobject00004["canSave"] = "1";
                         oc_Newobject00004["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00004"] = oc_Newobject00004;
 
                         #region GuiTextCtrl ()        oc_Newobject00005
+
                         oc_Newobject00005 = new ObjectCreator("GuiTextCtrl", "");
                         oc_Newobject00005["text"] = "Scale:";
                         oc_Newobject00005["maxLength"] = "1024";
@@ -231,11 +271,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00005["isContainer"] = "1";
                         oc_Newobject00005["canSave"] = "1";
                         oc_Newobject00005["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00005"] = oc_Newobject00005;
 
                         #region GuiTextEditCtrl ()        oc_Newobject00006
+
                         oc_Newobject00006 = new ObjectCreator("GuiTextEditCtrl", "");
                         oc_Newobject00006["historySize"] = "0";
                         oc_Newobject00006["tabComplete"] = "0";
@@ -264,11 +306,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00006["internalName"] = "MeshScale";
                         oc_Newobject00006["canSave"] = "1";
                         oc_Newobject00006["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00006"] = oc_Newobject00006;
 
                         #region GuiCheckBoxCtrl ()        oc_Newobject00007
+
                         oc_Newobject00007 = new ObjectCreator("GuiCheckBoxCtrl", "");
                         oc_Newobject00007["text"] = " Fit NavMesh to mission area?";
                         oc_Newobject00007["groupNum"] = "-1";
@@ -289,11 +333,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00007["internalName"] = "MeshMissionBounds";
                         oc_Newobject00007["canSave"] = "1";
                         oc_Newobject00007["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00007"] = oc_Newobject00007;
 
                         #region GuiButtonCtrl ()        oc_Newobject00008
+
                         oc_Newobject00008 = new ObjectCreator("GuiButtonCtrl", "");
                         oc_Newobject00008["text"] = "Create!";
                         oc_Newobject00008["groupNum"] = "-1";
@@ -313,11 +359,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00008["isContainer"] = "0";
                         oc_Newobject00008["canSave"] = "1";
                         oc_Newobject00008["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00008"] = oc_Newobject00008;
 
                         #region GuiButtonCtrl ()        oc_Newobject00009
+
                         oc_Newobject00009 = new ObjectCreator("GuiButtonCtrl", "");
                         oc_Newobject00009["text"] = "Cancel";
                         oc_Newobject00009["groupNum"] = "-1";
@@ -337,20 +385,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                         oc_Newobject00009["isContainer"] = "0";
                         oc_Newobject00009["canSave"] = "1";
                         oc_Newobject00009["canSaveDynamicFields"] = "0";
+
                         #endregion
 
                         oc_Newobject00010["#Newobject00009"] = oc_Newobject00009;
+                        }
 
-                    }
                     #endregion
 
                     oc_Newobject00011["#Newobject00010"] = oc_Newobject00010;
+                    }
 
-                }
                 #endregion
-                oc_Newobject00011.Create();
 
-            }
+                oc_Newobject00011.Create();
+                }
         }
 
         [ConsoleInteraction]
@@ -369,39 +418,38 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         {
             string box = "0 0 0 0 0 0";
             int count = group.getCount();
-            for(uint i = 0; i < count; i++)
-            {
+            for (uint i = 0; i < count; i++)
+                {
                 // Skip LevelInfos. Need a way to detect other non-SceneObjects.
                 // Also skip GroundPlanes. They're too big.
                 SimObject obj = group.getObject(i);
                 //var cls = obj.getClassName();
-                var cls = obj.GetType().Name;
-                if(cls == "LevelInfo" || cls == "GroundPlane" || cls == "GroundCover")
+                string cls = obj.GetType().Name;
+                if (cls == "LevelInfo" || cls == "GroundPlane" || cls == "GroundCover")
                     continue;
 
                 // Get world box - might have to recurse into nested SimGroups.
                 string wbox = "0 0 0 0 0 0";
-                if(cls == "SimGroup" || cls == "SimSet" || cls == "Path")
-                    wbox = MissionBoundsExtents((SimSet)obj);
-                else if(obj.GetType() == typeof(SceneObject) && ((SceneObject)obj).getType() == omni.iGlobal["$TypeMasks::StaticObjectType"] &&
-                !(((SceneObject)obj).getType() == omni.iGlobal["$TypeMasks::EnvironmentObjectType"]))
-                    wbox = ((SceneObject)obj).getWorldBox().AsString();
+                if (cls == "SimGroup" || cls == "SimSet" || cls == "Path")
+                    wbox = MissionBoundsExtents((SimSet) obj);
+                else if (obj.GetType() == typeof (SceneObject) && ((SceneObject) obj).getType() == omni.iGlobal["$TypeMasks::StaticObjectType"] && !(((SceneObject) obj).getType() == omni.iGlobal["$TypeMasks::EnvironmentObjectType"]))
+                    wbox = ((SceneObject) obj).getWorldBox().AsString();
                 else
                     continue;
 
                 // Update min point.
-                for(int j = 0; j < 3; j++)
-                {
-                    if(omni.Util.getWord(box, j).AsInt() > omni.Util.getWord(wbox, j).AsInt())
+                for (int j = 0; j < 3; j++)
+                    {
+                    if (omni.Util.getWord(box, j).AsInt() > omni.Util.getWord(wbox, j).AsInt())
                         box = omni.Util.setWord(box, j, omni.Util.getWord(wbox, j));
-                }
+                    }
                 // Update max point.
-                for(int j = 3; j < 6; j++)
-                {
-                    if(omni.Util.getWord(box, j).AsInt() < omni.Util.getWord(wbox, j).AsInt())
+                for (int j = 3; j < 6; j++)
+                    {
+                    if (omni.Util.getWord(box, j).AsInt() < omni.Util.getWord(wbox, j).AsInt())
                         box = omni.Util.setWord(box, j, omni.Util.getWord(wbox, j));
+                    }
                 }
-            }
             return box;
         }
 
@@ -411,44 +459,42 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
             GuiTextEditCtrl MeshName = FOT("MeshName");
             GuiCheckBoxCtrl MeshMissionBounds = FOT("MeshMissionBounds");
             string name = MeshName.getText();
-            if(name == "" || Util.nameToID(name) > 0)
-            {
+            if (name == "" || Util.nameToID(name) > 0)
+                {
                 messageBox.MessageBoxOK("Error", "A NavMesh must have a unique name!");
                 return;
-            }
+                }
 
             NavMesh mesh = "0";
 
             SimSet MissionGroup = "MissionGroup";
-            if(MeshMissionBounds.isStateOn())
-            {
-                if(!Util.isObject(MissionGroup))
+            if (MeshMissionBounds.isStateOn())
                 {
-                   messageBox.MessageBoxOK("Error", "You must have a MissionGroup to use the mission bounds function.");
+                if (!Util.isObject(MissionGroup))
+                    {
+                    messageBox.MessageBoxOK("Error", "You must have a MissionGroup to use the mission bounds function.");
                     return;
-                }
+                    }
                 // Get maximum extents of all objects.
                 string box = MissionBoundsExtents(MissionGroup);
                 Point3F pos = Util.getBoxCenter(box.AsBox3F());
-                string scale = (Util.getWord(box, 3).AsInt() - Util.getWord(box, 0).AsInt()) / 2 + 5
-                + " " + (Util.getWord(box, 4).AsInt() - Util.getWord(box, 1).AsInt()) / 2 + 5
-                + " " + (Util.getWord(box, 5).AsInt() - Util.getWord(box, 2).AsInt()) / 2 + 5;
+                string scale = (Util.getWord(box, 3).AsInt() - Util.getWord(box, 0).AsInt())/2 + 5 + " " + (Util.getWord(box, 4).AsInt() - Util.getWord(box, 1).AsInt())/2 + 5 + " " + (Util.getWord(box, 5).AsInt() - Util.getWord(box, 2).AsInt())/2 + 5;
 
-                var oc = new ObjectCreator("NavMesh", name);
+                ObjectCreator oc = new ObjectCreator("NavMesh", name);
                 oc["position"] = pos;
                 oc["scale"] = scale;
                 mesh = oc.Create();
-            }
+                }
             else
-            {
+                {
                 GuiTextEditCtrl MeshPosition = FOT("MeshPosition");
                 GuiTextEditCtrl MeshScale = FOT("MeshScale");
 
-                var oc = new ObjectCreator("NavMesh", name);
+                ObjectCreator oc = new ObjectCreator("NavMesh", name);
                 oc["position"] = MeshPosition.getText();
                 oc["scale"] = MeshScale.getText();
                 mesh = oc.Create();
-            }
+                }
             MissionGroup.add(mesh);
             NavEditorGui NavEditorGui = "NavEditorGui";
             canvas Canvas = "Canvas";
@@ -465,19 +511,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator ==( CreateNewNavMeshDlg ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        public static bool operator ==(CreateNewNavMeshDlg ts, string simobjectid)
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -485,9 +531,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -495,75 +541,74 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static bool operator !=( CreateNewNavMeshDlg ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        public static bool operator !=(CreateNewNavMeshDlg ts, string simobjectid)
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string( CreateNewNavMeshDlg ts)
-            {
-            if (object.ReferenceEquals(ts, null))
+        public static implicit operator string(CreateNewNavMeshDlg ts)
+        {
+            if (ReferenceEquals(ts, null))
                 return "0";
             return ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator  CreateNewNavMeshDlg(string ts)
-            {
+        public static implicit operator CreateNewNavMeshDlg(string ts)
+        {
             uint simobjectid = resolveobject(ts);
-            return ( CreateNewNavMeshDlg) Omni.self.getSimObject(simobjectid, typeof ( CreateNewNavMeshDlg));
-            }
+            return (CreateNewNavMeshDlg) Omni.self.getSimObject(simobjectid, typeof (CreateNewNavMeshDlg));
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int( CreateNewNavMeshDlg ts)
-            {
+        public static implicit operator int(CreateNewNavMeshDlg ts)
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
-        public static implicit operator  CreateNewNavMeshDlg(int simobjectid)
-            {
-            return ( CreateNewNavMeshDlg) Omni.self.getSimObject((uint) simobjectid, typeof ( CreateNewNavMeshDlg));
-            }
+        public static implicit operator CreateNewNavMeshDlg(int simobjectid)
+        {
+            return (CreateNewNavMeshDlg) Omni.self.getSimObject((uint) simobjectid, typeof (CreateNewNavMeshDlg));
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint( CreateNewNavMeshDlg ts)
-            {
+        public static implicit operator uint(CreateNewNavMeshDlg ts)
+        {
             return (uint) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static implicit operator  CreateNewNavMeshDlg(uint simobjectid)
-            {
-            return ( CreateNewNavMeshDlg) Omni.self.getSimObject(simobjectid, typeof ( CreateNewNavMeshDlg));
-            }
+        public static implicit operator CreateNewNavMeshDlg(uint simobjectid)
+        {
+            return (CreateNewNavMeshDlg) Omni.self.getSimObject(simobjectid, typeof (CreateNewNavMeshDlg));
+        }
 
         #endregion
     }

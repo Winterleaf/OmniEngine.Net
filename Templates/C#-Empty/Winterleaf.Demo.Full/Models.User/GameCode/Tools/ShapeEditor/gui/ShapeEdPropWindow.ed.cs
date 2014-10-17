@@ -1,9 +1,43 @@
-﻿using System.ComponentModel;
+﻿// WinterLeaf Entertainment
+// Copyright (c) 2014, WinterLeaf Entertainment LLC
+// 
+// All rights reserved.
+// 
+// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
+// 
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// 
+// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
+// 
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// 
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 
+//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
+//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//     With respect to any Product that the Licensee develop using the Software:
+//     Licensee shall:
+//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
+//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
+//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
+//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
+//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
+//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//     The following restrictions apply to the use of OMNI "Community Edition":
+//     Licensee may not:
+//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
+//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
+//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
+//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
+//         use the Software for any illegal purpose.
+// 
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+using System.ComponentModel;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Base.Utils;
 using WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBehind;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine;
-using WinterLeaf.Engine.Classes;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
@@ -11,26 +45,23 @@ using WinterLeaf.Engine.Classes.View.Creators;
 using WinterLeaf.Engine.Containers;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
-    {
+{
     [TypeConverter(typeof (TypeConverterGeneric<ShapeEdPropWindow>))]
     public class ShapeEdPropWindow : GuiWindowCollapseCtrl
-        {
+    {
         [ConsoleInteraction(true, "ShapeEdPropWindow_initialize")]
         public static void initialize()
-            {
+        {
             #region GuiWindowCollapseCtrl (ShapeEdPropWindow)        oc_Newobject92
 
-            ObjectCreator oc_Newobject92 = new ObjectCreator("GuiWindowCollapseCtrl", "ShapeEdPropWindow",
-                typeof (ShapeEdPropWindow));
+            ObjectCreator oc_Newobject92 = new ObjectCreator("GuiWindowCollapseCtrl", "ShapeEdPropWindow", typeof (ShapeEdPropWindow));
             oc_Newobject92["AllowPopWindow"] = "1";
             oc_Newobject92["canSaveDynamicFields"] = "0";
             oc_Newobject92["isContainer"] = "1";
             oc_Newobject92["Profile"] = "ToolsGuiWindowProfile";
             oc_Newobject92["HorizSizing"] = "windowRelative";
             oc_Newobject92["VertSizing"] = "windowRelative";
-            oc_Newobject92["Position"] =
-                new ObjectCreator.StringNoQuote(
-                    "getWord($pref::Video::mode, 0) - 209 SPC getWord(EditorGuiToolbar.extent, 1) + getWord(ShapeEdSelectWindow.extent, 1) - 2");
+            oc_Newobject92["Position"] = new Creator.StringNoQuote("getWord($pref::Video::mode, 0) - 209 SPC getWord(EditorGuiToolbar.extent, 1) + getWord(ShapeEdSelectWindow.extent, 1) - 2");
             oc_Newobject92["Extent"] = "210 484";
             oc_Newobject92["MinExtent"] = "210 352";
             oc_Newobject92["canSave"] = "1";
@@ -55,8 +86,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTabBookCtrl (ShapeEdSeqNodeTabBook)        oc_Newobject88
 
-            ObjectCreator oc_Newobject88 = new ObjectCreator("GuiTabBookCtrl", "ShapeEdSeqNodeTabBook",
-                typeof (CodeBehind.ShapeEditor.ShapeEdSeqNodeTabBook));
+            ObjectCreator oc_Newobject88 = new ObjectCreator("GuiTabBookCtrl", "ShapeEdSeqNodeTabBook", typeof (CodeBehind.ShapeEditor.ShapeEdSeqNodeTabBook));
             oc_Newobject88["canSaveDynamicFields"] = "0";
             oc_Newobject88["isContainer"] = "1";
             oc_Newobject88["Profile"] = "ToolsGuiTabBookProfile";
@@ -82,8 +112,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTabPageCtrl (ShapeEdSequences)        oc_Newobject38
 
-            ObjectCreator oc_Newobject38 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdSequences",
-                typeof (CodeBehind.ShapeEditor.ShapeEdSequences));
+            ObjectCreator oc_Newobject38 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdSequences", typeof (CodeBehind.ShapeEditor.ShapeEdSequences));
             oc_Newobject38["canSaveDynamicFields"] = "0";
             oc_Newobject38["isContainer"] = "1";
             oc_Newobject38["Profile"] = "ToolsGuiTabPageProfile";
@@ -175,7 +204,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject5["willFirstRespond"] = "1";
             oc_Newobject5["hScrollBar"] = "dynamic";
             oc_Newobject5["vScrollBar"] = "dynamic";
-            oc_Newobject5["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject5["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject5["lockVertScroll"] = "false";
             oc_Newobject5["constantThumbHeight"] = "0";
             oc_Newobject5["childMargin"] = "0 0";
@@ -198,8 +227,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTextListCtrl (ShapeEdSequenceList)        oc_Newobject4
 
-            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiTextListCtrl", "ShapeEdSequenceList",
-                typeof (CodeBehind.ShapeEditor.ShapeEdSequenceList));
+            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiTextListCtrl", "ShapeEdSequenceList", typeof (CodeBehind.ShapeEditor.ShapeEdSequenceList));
             oc_Newobject4["canSaveDynamicFields"] = "0";
             oc_Newobject4["isContainer"] = "1";
             oc_Newobject4["Profile"] = "GuiShapeEdTextListProfile";
@@ -255,7 +283,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject23["VertSizing"] = "bottom";
             oc_Newobject23["position"] = "0 0";
             oc_Newobject23["Extent"] = "202 103";
-            oc_Newobject23["isContainer"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject23["isContainer"] = new Creator.StringNoQuote("true");
 
             #region GuiTextCtrl ()        oc_Newobject7
 
@@ -335,8 +363,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiPopUpMenuCtrl (ShapeEdSeqFromMenu)        oc_Newobject11
 
-            ObjectCreator oc_Newobject11 = new ObjectCreator("GuiPopUpMenuCtrl", "ShapeEdSeqFromMenu",
-                typeof (CodeBehind.ShapeEditor.ShapeEdSeqFromMenu));
+            ObjectCreator oc_Newobject11 = new ObjectCreator("GuiPopUpMenuCtrl", "ShapeEdSeqFromMenu", typeof (CodeBehind.ShapeEditor.ShapeEdSeqFromMenu));
             oc_Newobject11["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject11["HorizSizing"] = "width";
             oc_Newobject11["VertSizing"] = "bottom";
@@ -553,7 +580,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject36["VertSizing"] = "bottom";
             oc_Newobject36["position"] = "0 102";
             oc_Newobject36["Extent"] = "202 106";
-            oc_Newobject36["isContainer"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject36["isContainer"] = new Creator.StringNoQuote("true");
 
             #region GuiTextCtrl ()        oc_Newobject24
 
@@ -683,8 +710,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTextListCtrl (ShapeEdTriggerList)        oc_Newobject28
 
-            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextListCtrl", "ShapeEdTriggerList",
-                typeof (CodeBehind.ShapeEditor.ShapeEdTriggerList));
+            ObjectCreator oc_Newobject28 = new ObjectCreator("GuiTextListCtrl", "ShapeEdTriggerList", typeof (CodeBehind.ShapeEditor.ShapeEdTriggerList));
             oc_Newobject28["canSaveDynamicFields"] = "0";
             oc_Newobject28["Profile"] = "GuiShapeEdTextListProfile";
             oc_Newobject28["HorizSizing"] = "right";
@@ -803,8 +829,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTabPageCtrl (ShapeEdNodes)        oc_Newobject57
 
-            ObjectCreator oc_Newobject57 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdNodes",
-                typeof (CodeBehind.ShapeEditor.ShapeEdNodes));
+            ObjectCreator oc_Newobject57 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdNodes", typeof (CodeBehind.ShapeEditor.ShapeEdNodes));
             oc_Newobject57["canSaveDynamicFields"] = "0";
             oc_Newobject57["isContainer"] = "1";
             oc_Newobject57["Profile"] = "ToolsGuiTabPageProfile";
@@ -842,20 +867,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject57["#Newobject39"] = oc_Newobject39;
 
             #region GuiTextEditCtrl (NodeTreeFilter)        oc_Newobject96
-            ObjectCreator oc_Newobject96 = new ObjectCreator("GuiTextEditCtrl", "NodeTreeFilter", typeof(treeViewFilterCtrls.GuiTreeViewFilterText));
+
+            ObjectCreator oc_Newobject96 = new ObjectCreator("GuiTextEditCtrl", "NodeTreeFilter", typeof (treeViewFilterCtrls.GuiTreeViewFilterText));
             oc_Newobject96["position"] = "2 4";
             oc_Newobject96["extent"] = "175 18";
             oc_Newobject96["profile"] = "GuiTextEditProfile";
             oc_Newobject96["horizSizing"] = "width";
             oc_Newobject96["vertSizing"] = "bottom";
             //oc_Newobject96["class"] = "GuiTreeViewFilterText";
-            oc_Newobject96["treeView"] = new ObjectCreator.StringNoQuote("ShapeEdNodeTreeView");
+            oc_Newobject96["treeView"] = new Creator.StringNoQuote("ShapeEdNodeTreeView");
+
             #endregion
 
             oc_Newobject57["#Newobject96"] = oc_Newobject96;
 
             #region GuiBitmapButtonCtrl ()        oc_Newobject97
-            ObjectCreator oc_Newobject97 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof(treeViewFilterCtrls.GuiTreeViewFilterClearButton));
+
+            ObjectCreator oc_Newobject97 = new ObjectCreator("GuiBitmapButtonCtrl", "", typeof (treeViewFilterCtrls.GuiTreeViewFilterClearButton));
             oc_Newobject97["bitmap"] = "tools/gui/images/clear-icon";
             oc_Newobject97["groupNum"] = "-1";
             oc_Newobject97["buttonType"] = "PushButton";
@@ -873,7 +901,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject97["hovertime"] = "1000";
             oc_Newobject97["canSaveDynamicFields"] = "0";
             //oc_Newobject97["class"] = "GuiTreeViewFilterClearButton";
-            oc_Newobject97["textCtrl"] = new ObjectCreator.StringNoQuote("NodeTreeFilter");
+            oc_Newobject97["textCtrl"] = new Creator.StringNoQuote("NodeTreeFilter");
+
             #endregion
 
             oc_Newobject57["#Newobject97"] = oc_Newobject97;
@@ -902,7 +931,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject41["willFirstRespond"] = "1";
             oc_Newobject41["hScrollBar"] = "dynamic";
             oc_Newobject41["vScrollBar"] = "dynamic";
-            oc_Newobject41["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject41["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject41["lockVertScroll"] = "false";
             oc_Newobject41["constantThumbHeight"] = "0";
             oc_Newobject41["childMargin"] = "0 0";
@@ -910,8 +939,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTreeViewCtrl (ShapeEdNodeTreeView)        oc_Newobject40
 
-            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiTreeViewCtrl", "ShapeEdNodeTreeView",
-                typeof (CodeBehind.ShapeEditor.ShapeEdNodeTreeView));
+            ObjectCreator oc_Newobject40 = new ObjectCreator("GuiTreeViewCtrl", "ShapeEdNodeTreeView", typeof (CodeBehind.ShapeEditor.ShapeEdNodeTreeView));
             oc_Newobject40["canSaveDynamicFields"] = "0";
             oc_Newobject40["isContainer"] = "1";
             oc_Newobject40["Profile"] = "ToolsGuiTreeViewProfile";
@@ -952,7 +980,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject56["VertSizing"] = "top";
             oc_Newobject56["position"] = "0 287";
             oc_Newobject56["Extent"] = "202 131";
-            oc_Newobject56["isContainer"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject56["isContainer"] = new Creator.StringNoQuote("true");
 
             #region GuiTextCtrl ()        oc_Newobject42
 
@@ -1110,8 +1138,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiPopUpMenuCtrl (ShapeEdNodeParentMenu)        oc_Newobject50
 
-            ObjectCreator oc_Newobject50 = new ObjectCreator("GuiPopUpMenuCtrl", "ShapeEdNodeParentMenu",
-                typeof (CodeBehind.ShapeEditor.ShapeEdNodeParentMenu));
+            ObjectCreator oc_Newobject50 = new ObjectCreator("GuiPopUpMenuCtrl", "ShapeEdNodeParentMenu", typeof (CodeBehind.ShapeEditor.ShapeEdNodeParentMenu));
             oc_Newobject50["Profile"] = "ToolsGuiPopUpMenuProfile";
             oc_Newobject50["HorizSizing"] = "width";
             oc_Newobject50["VertSizing"] = "bottom";
@@ -1267,8 +1294,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTabPageCtrl (ShapeEdDetails)        oc_Newobject76
 
-            ObjectCreator oc_Newobject76 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdDetails",
-                typeof (CodeBehind.ShapeEditor.ShapeEdDetails));
+            ObjectCreator oc_Newobject76 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdDetails", typeof (CodeBehind.ShapeEditor.ShapeEdDetails));
             oc_Newobject76["fitBook"] = "0";
             oc_Newobject76["text"] = "Detail";
             oc_Newobject76["maxLength"] = "1024";
@@ -1341,7 +1367,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject61["willFirstRespond"] = "1";
             oc_Newobject61["hScrollBar"] = "dynamic";
             oc_Newobject61["vScrollBar"] = "dynamic";
-            oc_Newobject61["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject61["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject61["lockVertScroll"] = "false";
             oc_Newobject61["constantThumbHeight"] = "0";
             oc_Newobject61["childMargin"] = "0 0";
@@ -1367,8 +1393,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTreeViewCtrl (ShapeEdDetailTree)        oc_Newobject60
 
-            ObjectCreator oc_Newobject60 = new ObjectCreator("GuiTreeViewCtrl", "ShapeEdDetailTree",
-                typeof (CodeBehind.ShapeEditor.ShapeEdDetailTree));
+            ObjectCreator oc_Newobject60 = new ObjectCreator("GuiTreeViewCtrl", "ShapeEdDetailTree", typeof (CodeBehind.ShapeEditor.ShapeEdDetailTree));
             oc_Newobject60["tabSize"] = "16";
             oc_Newobject60["textOffset"] = "2";
             oc_Newobject60["fullRowSelect"] = "0";
@@ -1617,8 +1642,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject73["Visible"] = "1";
             oc_Newobject73["Command"] = "ShapeEditor.doSetBounds();";
             oc_Newobject73["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject73["ToolTip"] =
-                "Recompute the shape bounding box using the geometry in the current detail level";
+            oc_Newobject73["ToolTip"] = "Recompute the shape bounding box using the geometry in the current detail level";
             oc_Newobject73["hovertime"] = "1000";
             oc_Newobject73["isContainer"] = "0";
             oc_Newobject73["canSave"] = "1";
@@ -1642,8 +1666,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiTabPageCtrl (ShapeEdMaterials)        oc_Newobject87
 
-            ObjectCreator oc_Newobject87 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdMaterials",
-                typeof (CodeBehind.ShapeEditor.ShapeEdMaterials));
+            ObjectCreator oc_Newobject87 = new ObjectCreator("GuiTabPageCtrl", "ShapeEdMaterials", typeof (CodeBehind.ShapeEditor.ShapeEdMaterials));
             oc_Newobject87["canSaveDynamicFields"] = "0";
             oc_Newobject87["isContainer"] = "1";
             oc_Newobject87["Profile"] = "ToolsGuiTabPageProfile";
@@ -1735,7 +1758,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject81["willFirstRespond"] = "1";
             oc_Newobject81["hScrollBar"] = "dynamic";
             oc_Newobject81["vScrollBar"] = "dynamic";
-            oc_Newobject81["lockHorizScroll"] = new ObjectCreator.StringNoQuote("false");
+            oc_Newobject81["lockHorizScroll"] = new Creator.StringNoQuote("false");
             oc_Newobject81["lockVertScroll"] = "false";
             oc_Newobject81["constantThumbHeight"] = "0";
             oc_Newobject81["childMargin"] = "0 0";
@@ -1769,8 +1792,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject80["MinExtent"] = "8 11";
             oc_Newobject80["canSave"] = "1";
             oc_Newobject80["Visible"] = "1";
-            oc_Newobject80["Command"] =
-                "ShapeEdMaterials.updateSelectedMaterial(ShapeEdMaterials-->highlightMaterial.getValue());";
+            oc_Newobject80["Command"] = "ShapeEdMaterials.updateSelectedMaterial(ShapeEdMaterials-->highlightMaterial.getValue());";
             oc_Newobject80["tooltipprofile"] = "ToolsGuiToolTipProfile";
             oc_Newobject80["hovertime"] = "1000";
             oc_Newobject80["enumerate"] = "0";
@@ -1799,7 +1821,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             oc_Newobject86["VertSizing"] = "top";
             oc_Newobject86["Position"] = "0 344";
             oc_Newobject86["Extent"] = "202 74";
-            oc_Newobject86["isContainer"] = new ObjectCreator.StringNoQuote("true");
+            oc_Newobject86["isContainer"] = new Creator.StringNoQuote("true");
 
             #region GuiTextCtrl ()        oc_Newobject83
 
@@ -1961,8 +1983,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             #region GuiControl (GenImposterGui,EditorGuiGroup)        oc_Newobject95
 
-            ObjectCreator oc_Newobject95 = new ObjectCreator("GuiControl", "GenImposterGui,EditorGuiGroup",
-                typeof (GenImposterGui));
+            ObjectCreator oc_Newobject95 = new ObjectCreator("GuiControl", "GenImposterGui,EditorGuiGroup", typeof (GenImposterGui));
             oc_Newobject95["isContainer"] = "1";
             oc_Newobject95["Profile"] = "ToolsGuiOverlayProfile";
             oc_Newobject95["HorizSizing"] = "right";
@@ -2028,12 +2049,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             #endregion
 
             oc_Newobject95.Create();
-            }
+        }
 
         // Update the GUI in response to the shape selection changing
         [ConsoleInteraction]
         public void update_onShapeSelectionChanged()
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
@@ -2058,8 +2079,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             // --- SEQUENCES TAB ---
             ShapeEdSequenceList.clear();
-            ShapeEdSequenceList.addRow(-1,
-                "Name" + '\t' + "Cyclic" + '\t' + "Blend" + '\t' + "Frames" + '\t' + "Priority", -1);
+            ShapeEdSequenceList.addRow(-1, "Name" + '\t' + "Cyclic" + '\t' + "Blend" + '\t' + "Frames" + '\t' + "Priority", -1);
             ShapeEdSequenceList.setRowActive(-1, false);
             ShapeEdSequenceList.addRow(0, "<rootpose>" + '\t' + "" + '\t' + "" + '\t' + "" + '\t' + "", -1);
 
@@ -2101,7 +2121,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             // --- MATERIALS TAB ---
             ShapeEdMaterials.call("updateMaterialList");
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Node Editing
@@ -2110,7 +2130,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         // Update the GUI in response to the node selection changing
         [ConsoleInteraction]
         public void update_onNodeSelectionChanged(int id)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdSeqNodeTabBook ShapeEdSeqNodeTabBook = "ShapeEdSeqNodeTabBook";
             CodeBehind.ShapeEditor.ShapeEdNodes ShapeEdNodes = "ShapeEdNodes";
             CodeBehind.ShapeEditor.ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
@@ -2184,12 +2204,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
                 ShapeEdShapeView.selectedNode = -1;
                 }
-            }
+        }
 
         // Update the GUI in response to a node being added
         [ConsoleInteraction]
         public void update_onNodeAdded(string nodeName, int oldTreeIndex)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             CodeBehind.ShapeEditor.ShapeEdMountWindow ShapeEdMountWindow = "ShapeEdMountWindow";
@@ -2237,12 +2257,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             // --- DETAILS TAB ---
             objectNode.add(nodeName);
-            }
+        }
 
         // Update the GUI in response to a node(s) being removed
         [ConsoleInteraction]
         public void update_onNodeRemoved(string nameList, int nameCount)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             CodeBehind.ShapeEditor.ShapeEdMountWindow ShapeEdMountWindow = "ShapeEdMountWindow";
@@ -2291,12 +2311,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 string nodeName = Util.getField(nameList, i);
                 objectNode.clearEntry(objectNode.findText(nodeName));
                 }
-            }
+        }
 
         // Update the GUI in response to a node being renamed
         [ConsoleInteraction]
         public void update_onNodeRenamed(string oldName, string newName)
-            {
+        {
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             CodeBehind.ShapeEditor.ShapeEdMountWindow ShapeEdMountWindow = "ShapeEdMountWindow";
             CodeBehind.ShapeEditor.ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
@@ -2348,12 +2368,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 if (objectNode.getText() == oldName)
                     objectNode.setText(newName);
                 }
-            }
+        }
 
         // Update the GUI in response to a node's parent being changed
         [ConsoleInteraction]
         public void update_onNodeParentChanged(string nodeName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             CodeBehind.ShapeEditor.ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
 
@@ -2371,11 +2391,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             ShapeEdNodeTreeView.addNodeTree(nodeName);
             if (isSelected)
                 ShapeEdNodeTreeView.selectItem(ShapeEdNodeTreeView.findItemByName(nodeName));
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onNodeTransformChanged(string nodeName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdNodeTreeView ShapeEdNodeTreeView = "ShapeEdNodeTreeView";
             CodeBehind.ShapeEditor.ShapeEdNodes ShapeEdNodes = "ShapeEdNodes";
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
@@ -2416,7 +2436,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 nodePosition.setText(Util.getWords(transform, 0, 2));
                 nodeRotation.setText(Util.getWords(transform, 3, 6));
                 }
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Sequence Editing
@@ -2424,18 +2444,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
         [ConsoleInteraction]
         public override void onWake()
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdTriggerList ShapeEdTriggerList = "ShapeEdTriggerList";
 
             ShapeEdTriggerList["triggerId"] = "1";
 
             ShapeEdTriggerList.addRow(-1, "-1" + '\t' + "Frame" + '\t' + "Trigger" + '\t' + "State", -1);
             ShapeEdTriggerList.setRowActive(-1, false);
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onSeqSelectionChanged()
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             CodeBehind.ShapeEditor.ShapeEdThreadWindow ShapeEdThreadWindow = "ShapeEdThreadWindow";
@@ -2513,7 +2533,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 count = ShapeEditor.shape.getTriggerCount(sequenceName);
                 for (int i = 0; i < count; i++)
                     {
-                        string trigger = ShapeEditor.shape.getTrigger(sequenceName, i);
+                    string trigger = ShapeEditor.shape.getTrigger(sequenceName, i);
                     ShapeEdTriggerList.addItem(Util.getWord(trigger, 0).AsInt(), Util.getWord(trigger, 1).AsInt());
                     }
                 }
@@ -2545,12 +2565,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             // Reset current frame
             //ShapeEdAnimWindow.setKeyframe( ShapeEdAnimWindow-->seqIn.getText() );
-            }
+        }
 
         // Update the GUI in response to a sequence being added
         [ConsoleInteraction]
         public void update_onSequenceAdded(string seqName, int oldIndex)
-            {
+        {
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
 
@@ -2572,11 +2592,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 // original position
                 ShapeEdSequenceList.insertItem(seqName, oldIndex);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onSequenceRemoved(string seqName)
-            {
+        {
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
@@ -2592,11 +2612,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
             // --- THREADS WINDOW ---
             ShapeEdShapeView.refreshThreadSequences();
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onSequenceRenamed(string oldName, string newName)
-            {
+        {
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
@@ -2631,11 +2651,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                     ShapeEdShapeView.setThreadSequence(newProxy, 0, ShapeEdShapeView.threadPos, false);
                 }
             ShapeEdShapeView["activeThread"] = active;
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onSequenceCyclicChanged(string seqName, bool cyclic)
-            {
+        {
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             CodeBehind.ShapeEditor.ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
@@ -2652,12 +2672,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             ShapeEdSequenceList.editColumn(seqName, 1, cyclic ? "yes" : "no");
             if (ShapeEdSequenceList.getSelectedName() == seqName)
                 cyclicFlag.setStateOn(cyclic);
-            }
+        }
 
         [ConsoleInteraction]
-        public void update_onSequenceBlendChanged(string seqName, bool blend,
-            string oldBlendSeq, int oldBlendFrame, string blendSeq, int blendFrame)
-            {
+        public void update_onSequenceBlendChanged(string seqName, bool blend, string oldBlendSeq, int oldBlendFrame, string blendSeq, int blendFrame)
+        {
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
@@ -2674,8 +2693,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 {
                 //TODO
                 if (blend /*&& oldBlend*/)
-                    ShapeEditor.shape.setSequenceBlend(proxyName, false, oldBlendSeq,
-                        oldBlendFrame);
+                    ShapeEditor.shape.setSequenceBlend(proxyName, false, oldBlendSeq, oldBlendFrame);
                 ShapeEditor.shape.setSequenceBlend(proxyName, blend, blendSeq, blendFrame);
                 }
             ShapeEdShapeView.updateNodeTransforms();
@@ -2688,11 +2706,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 ShapeEdSequencesblendSeq.setText(blendSeq);
                 ShapeEdSequencesblendFrame.setText(blendFrame.AsString());
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onSequencePriorityChanged(string seqName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
@@ -2704,17 +2722,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             ShapeEdSequenceList.editColumn(seqName, 4, priority.AsString());
             if (ShapeEdSequenceList.getSelectedName() == seqName)
                 ShapeEdSequencespriority.setText(priority.AsString());
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onSequenceGroundSpeedChanged(string seqName)
-            {
+        {
             // nothing to do yet
-            }
+        }
 
         [ConsoleInteraction]
         public void syncPlaybackDetails()
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             ShapeEdAnimWindow ShapeEdAnimWindow = "ShapeEdAnimWindow";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
@@ -2783,7 +2801,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 ShapeEdAnimWindow.setPlaybackLimit("out", 1);
                 ShapeEdAnimWindow.setSequence("");
                 }
-            }
+        }
 
         //------------------------------------------------------------------------------
         // Trigger Editing
@@ -2791,7 +2809,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
 
         [ConsoleInteraction]
         public void onTriggerSelectionChanged()
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdTriggerList ShapeEdTriggerList = "ShapeEdTriggerList";
             CodeBehind.ShapeEditor.ShapeEdSequences ShapeEdSequences = "ShapeEdSequences";
 
@@ -2823,11 +2841,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 triggerNum.setText("");
                 triggerOnOff.setValue("0");
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onTriggerAdded(string seqName, int frame, float state)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             CodeBehind.ShapeEditor.ShapeEdTriggerList ShapeEdTriggerList = "ShapeEdTriggerList";
 
@@ -2835,22 +2853,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             // Add trigger to list if this sequence is selected
             if (ShapeEdSequenceList.getSelectedName() == seqName)
                 ShapeEdTriggerList.addItem(frame, state);
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onTriggerRemoved(string seqName, int frame, float state)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdSequenceList ShapeEdSequenceList = "ShapeEdSequenceList";
             CodeBehind.ShapeEditor.ShapeEdTriggerList ShapeEdTriggerList = "ShapeEdTriggerList";
             // --- SEQUENCES TAB ---
             // Remove trigger from list if this sequence is selected
             if (ShapeEdSequenceList.getSelectedName() == seqName)
                 ShapeEdTriggerList.removeItem(frame, state);
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onDetailRenamed(string oldName, string newName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
             CodeBehind.ShapeEditor.ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
 
@@ -2865,15 +2883,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 ShapeEdDetailTree.editItem(id, newName, size);
 
                 // Sync text if item is selected
-                if (ShapeEdDetailTree.isItemSelected(id) &&
-                    (meshName.getText() != newName))
+                if (ShapeEdDetailTree.isItemSelected(id) && (meshName.getText() != newName))
                     meshName.setText(Util.stripTrailingNumber(newName));
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onDetailSizeChanged(string oldSize, string newSize)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             ShapeEdAdvancedWindow ShapeEdAdvancedWindow = "ShapeEdAdvancedWindow";
             CodeBehind.ShapeEditor.ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
@@ -2898,29 +2915,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             string detName = ShapeEditor.shape.getDetailLevelName(dl);
             ShapeEdDetailTree.editItem(id, detName, newSize);
 
-            for (int sibling = ShapeEdDetailTree.getPrevSibling(id);
-                (sibling > 0) && (ShapeEdDetailTree.getItemValue(sibling).AsInt() < newSize.AsInt());
-                sibling = ShapeEdDetailTree.getPrevSibling(id))
+            for (int sibling = ShapeEdDetailTree.getPrevSibling(id); (sibling > 0) && (ShapeEdDetailTree.getItemValue(sibling).AsInt() < newSize.AsInt()); sibling = ShapeEdDetailTree.getPrevSibling(id))
                 ShapeEdDetailTree.moveItemUp(id);
 
-            for (int sibling = ShapeEdDetailTree.getNextSibling(id);
-                (sibling > 0) && (ShapeEdDetailTree.getItemValue(sibling).AsInt() > newSize.AsInt());
-                sibling = ShapeEdDetailTree.getNextSibling(id))
+            for (int sibling = ShapeEdDetailTree.getNextSibling(id); (sibling > 0) && (ShapeEdDetailTree.getItemValue(sibling).AsInt() > newSize.AsInt()); sibling = ShapeEdDetailTree.getNextSibling(id))
                 ShapeEdDetailTree.moveItemDown(id);
 
             // Update size values for meshes of this detail
-            for (int child = ShapeEdDetailTree.getChild(id);
-                child > 0;
-                child = ShapeEdDetailTree.getNextSibling(child))
+            for (int child = ShapeEdDetailTree.getChild(id); child > 0; child = ShapeEdDetailTree.getNextSibling(child))
                 {
                 string meshName = Util.stripTrailingNumber(ShapeEdDetailTree.getItemText(child));
                 ShapeEdDetailTree.editItem(child, meshName + ' ' + newSize, "");
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onObjectNodeChanged(string objName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             CodeBehind.ShapeEditor.ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
@@ -2941,11 +2952,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 int id = objectNode.findText(nodeName);
                 objectNode.setSelected(id, false);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onObjectRenamed(string oldName, string newName)
-            {
+        {
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
             CodeBehind.ShapeEditor.ShapeEdDetails ShapeEdDetails = "ShapeEdDetails";
@@ -2964,16 +2975,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                     ShapeEdDetailTree.editItem(id, newName + ' ' + size, "");
 
                     // Sync text if item is selected
-                    if (ShapeEdDetailTree.isItemSelected(id) &&
-                        (meshName.getText() != newName))
+                    if (ShapeEdDetailTree.isItemSelected(id) && (meshName.getText() != newName))
                         meshName.setText(newName);
                     }
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onMeshAdded(string meshName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             CodeBehind.ShapeEditor.ShapeEdColWindow ShapeEdColWindow = "ShapeEdColWindow";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
@@ -3000,11 +3010,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             id = ShapeEdDetailTree.addMeshEntry(meshName, false);
             ShapeEdDetailTree.clearSelection();
             ShapeEdDetailTree.selectItem(id);
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onMeshSizeChanged(string meshName, string oldSize, string newSize)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             CodeBehind.ShapeEditor.ShapeEdDetailTree ShapeEdDetailTree = "ShapeEdDetailTree";
 
@@ -3024,11 +3034,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 ShapeEdDetailTree.clearSelection();
                 ShapeEdDetailTree.selectItem(newId);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public void update_onMeshRemoved(string meshName)
-            {
+        {
             CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             CodeBehind.ShapeEditor ShapeEditor = "ShapeEditor";
             CodeBehind.ShapeEditor.ShapeEdColWindow ShapeEdColWindow = "ShapeEdColWindow";
@@ -3071,22 +3081,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 if (ShapeEdDetailTree.getSelectedItem() == -1)
                     ShapeEdDetailTree.selectItem(nextId);
                 }
-            }
+        }
 
         [ConsoleInteraction]
         public override void onPopWindow()
-            {
+        {
             ShapeEditorPlugin ShapeEditorPlugin = "ShapeEditorPlugin";
 
             EditorGui.DeactivateAll();
             ShapeEditorPlugin.onActivated();
             //ShapeEdShapeTreeView.open(MissionGroup);
             //ShapeEdShapeTreeView.buildVisibleTree(true);
-            }
+        }
 
         [ConsoleInteraction]
         public override void onPopWindowClosed()
-            {
+        {
             ShapeEditorPlugin ShapeEditorPlugin = "ShapeEditorPlugin";
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
 
@@ -3095,19 +3105,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             this.attachTo(ShapeEdSelectWindow);
             //ShapeEdShapeTreeView.open(MissionGroup);
             //ShapeEdShapeTreeView.buildVisibleTree(true);
-            }
+        }
 
         [TypeConverter(typeof (TypeConverterGeneric<GenImposterGui>))]
         public class GenImposterGui : GuiControl
-            {
+        {
             [ConsoleInteraction]
             public override void onWake()
-                {
+            {
                 GuiControl Dialog = this.FOT("Dialog");
                 Point2I res = this.getExtent();
                 int resX = Util.getWord(res.AsString(), 0).AsInt();
                 int resY = Util.getWord(res.AsString(), 1).AsInt();
-
 
                 Point2I dialogExtent = Dialog.getExtent();
                 int dialogWidth = Util.getWord(dialogExtent.AsString(), 0).AsInt();
@@ -3117,7 +3126,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
                 int posX = (resX/2) - (dialogWidth/2);
                 int posY = (resY/2) - (dialogHeight/2);
                 Dialog.setPosition(posX, posY);
-                }
+            }
 
             #region ProxyObjects Operator Overrides
 
@@ -3128,20 +3137,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator ==(GenImposterGui ts, string simobjectid)
-                {
-                return object.ReferenceEquals(ts, null)
-                    ? object.ReferenceEquals(simobjectid, null)
-                    : ts.Equals(simobjectid);
-                }
+            {
+                return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
-                {
+            {
                 return base.GetHashCode();
-                }
+            }
 
             /// <summary>
             /// 
@@ -3149,9 +3156,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="obj"></param>
             /// <returns></returns>
             public override bool Equals(object obj)
-                {
+            {
                 return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3160,12 +3167,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static bool operator !=(GenImposterGui ts, string simobjectid)
-                {
-                if (object.ReferenceEquals(ts, null))
-                    return !object.ReferenceEquals(simobjectid, null);
+            {
+                if (ReferenceEquals(ts, null))
+                    return !ReferenceEquals(simobjectid, null);
                 return !ts.Equals(simobjectid);
-                }
-
+            }
 
             /// <summary>
             /// 
@@ -3173,9 +3179,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator string(GenImposterGui ts)
-                {
+            {
                 return ReferenceEquals(ts, null) ? "0" : ts._ID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3183,10 +3189,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator GenImposterGui(string ts)
-                {
+            {
                 uint simobjectid = resolveobject(ts);
                 return (GenImposterGui) Omni.self.getSimObject(simobjectid, typeof (GenImposterGui));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3194,9 +3200,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator int(GenImposterGui ts)
-                {
+            {
                 return (int) ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
@@ -3204,9 +3210,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="simobjectid"></param>
             /// <returns></returns>
             public static implicit operator GenImposterGui(int simobjectid)
-                {
+            {
                 return (GenImposterGui) Omni.self.getSimObject((uint) simobjectid, typeof (GenImposterGui));
-                }
+            }
 
             /// <summary>
             /// 
@@ -3214,21 +3220,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             /// <param name="ts"></param>
             /// <returns></returns>
             public static implicit operator uint(GenImposterGui ts)
-                {
+            {
                 return ts._iID;
-                }
+            }
 
             /// <summary>
             /// 
             /// </summary>
             /// <returns></returns>
             public static implicit operator GenImposterGui(uint simobjectid)
-                {
+            {
                 return (GenImposterGui) Omni.self.getSimObject(simobjectid, typeof (GenImposterGui));
-                }
+            }
 
             #endregion
-            }
+        }
 
         #region ProxyObjects Operator Overrides
 
@@ -3239,18 +3245,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(ShapeEdPropWindow ts, string simobjectid)
-            {
-            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-            }
+        {
+            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-            {
+        {
             return base.GetHashCode();
-            }
+        }
 
         /// <summary>
         /// 
@@ -3258,9 +3264,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-            {
+        {
             return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-            }
+        }
 
         /// <summary>
         /// 
@@ -3269,12 +3275,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(ShapeEdPropWindow ts, string simobjectid)
-            {
-            if (object.ReferenceEquals(ts, null))
-                return !object.ReferenceEquals(simobjectid, null);
+        {
+            if (ReferenceEquals(ts, null))
+                return !ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-            }
-
+        }
 
         /// <summary>
         /// 
@@ -3282,9 +3287,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator string(ShapeEdPropWindow ts)
-            {
+        {
             return ReferenceEquals(ts, null) ? "0" : ts._ID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -3292,10 +3297,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator ShapeEdPropWindow(string ts)
-            {
+        {
             uint simobjectid = resolveobject(ts);
             return (ShapeEdPropWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdPropWindow));
-            }
+        }
 
         /// <summary>
         /// 
@@ -3303,9 +3308,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator int(ShapeEdPropWindow ts)
-            {
+        {
             return (int) ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
@@ -3313,9 +3318,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator ShapeEdPropWindow(int simobjectid)
-            {
+        {
             return (ShapeEdPropWindow) Omni.self.getSimObject((uint) simobjectid, typeof (ShapeEdPropWindow));
-            }
+        }
 
         /// <summary>
         /// 
@@ -3323,19 +3328,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator uint(ShapeEdPropWindow ts)
-            {
+        {
             return ts._iID;
-            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator ShapeEdPropWindow(uint simobjectid)
-            {
+        {
             return (ShapeEdPropWindow) Omni.self.getSimObject(simobjectid, typeof (ShapeEdPropWindow));
-            }
+        }
 
         #endregion
-        }
     }
+}
