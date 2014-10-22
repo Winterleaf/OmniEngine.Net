@@ -568,7 +568,6 @@ if (!object)
       Con::errorf("SimComponent::getComponent - Invalid index %d", idx);
      return (S32)( 0);
    }
-
    SimComponent *c = object->getComponent(idx);
   return (S32)( c ? c->getId() : 0);
 };

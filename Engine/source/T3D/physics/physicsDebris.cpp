@@ -782,7 +782,6 @@ if (!object)
 	 return;
 {
    String errorStr;
-
    object->shape = NULL;
    if( !object->preload( false, errorStr ) )
       Con::errorf( "PhsysicsDebrisData::preload - error: %s", errorStr.c_str() );

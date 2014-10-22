@@ -2067,21 +2067,18 @@ const char* accelerator = (const char*)x__accelerator;
       Con::errorf("Cannot add submenu item %s (id = %s).  First character of a menu item's text cannot be a digit.", submenuItemText, submenuItemId);
       return;
    }
-
    GuiMenuBar::Menu *menu = object->findMenu(menuTarget);
    if(!menu)
    {
       Con::errorf("Cannot find menu %s for addMenuItem.", menuTarget);
       return;
    }
-
    GuiMenuBar::MenuItem *menuitem = object->findMenuItem(menu, menuItem);
    if(!menuitem)
    {
       Con::errorf("Cannot find menuitem %s for addSubmenuItem.", menuItem);
       return;
    }
-
    object->addSubmenuItem(menu, menuitem, submenuItemText, submenuItemId, !accelerator ? "" : accelerator, checkGroup == -1 ? -1 : checkGroup);
 }
 }
@@ -2124,14 +2121,12 @@ const char* menuItem = (const char*)x__menuItem;
       Con::errorf("Cannot find menu %s for clearSubmenuItems.", menuTarget);
       return;
    }
-
    GuiMenuBar::MenuItem *menuitem = object->findMenuItem(menu, menuItem);
    if(!menuitem)
    {
       Con::errorf("Cannot find menuitem %s for clearSubmenuItems.", menuItem);
       return;
    }
-
    object->clearSubmenuItems(menuitem);
 }
 }
@@ -2198,11 +2193,9 @@ const char* menuTarget = (const char*)x__menuTarget;
       Con::errorf("Cannot find menu %s for setMenuBitmapIndex.", menuTarget);
       return;
    }
-
    menu->bitmapIndex = bitmapindex;
    menu->drawBitmapOnly = bitmaponly;
    menu->drawBorder = drawborder;
-
    object->menuBarDirty = true;
 }
 }
@@ -2299,14 +2292,12 @@ const char* menuItem = (const char*)x__menuItem;
       Con::errorf("Cannot find menu %s for setMenuItemSubmenuState.", menuTarget);
       return;
    }
-
    GuiMenuBar::MenuItem *menuitem = object->findMenuItem(menu, menuItem);
    if(!menuitem)
    {
       Con::errorf("Cannot find menuitem %s for setMenuItemSubmenuState.", menuItem);
       return;
    }
-
    menuitem->isSubmenu = isSubmenu;
 }
 }
@@ -2435,21 +2426,18 @@ const char* submenuItemText = (const char*)x__submenuItemText;
       Con::errorf("Cannot find menu %s for setSubmenuItemChecked.", menuTarget);
       return;
    }
-
       GuiMenuBar::MenuItem *menuItem = object->findMenuItem(menu, menuItemTarget);
    if(!menuItem)
    {
       Con::errorf("Cannot find menu item %s for setSubmenuItemChecked.", menuItemTarget);
       return;
    }
-
       GuiMenuBar::MenuItem *submenuItem = object->findSubmenuItem(menu, menuItemTarget, submenuItemText);
    if(!submenuItem)
    {
       Con::errorf("Cannot find submenu item %s for setSubmenuItemChecked.", submenuItemText);
       return;
    }
-
    if(checked && submenuItem->checkGroup != -1)
    {
             for(GuiMenuBar::MenuItem *itemWalk = menuItem->firstSubmenuItem; itemWalk; itemWalk = itemWalk->nextMenuItem)

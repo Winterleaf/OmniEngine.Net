@@ -839,14 +839,12 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_sceneDumpZoneStates(bool u
       Con::errorf( "sceneDumpZoneStates - Only valid on client!" );
       return;
    }
-
    SceneZoneSpaceManager* manager = gClientSceneGraph->getZoneManager();
    if( !manager )
    {
       Con::errorf( "sceneDumpZoneStates - Scene is not using zones!" );
       return;
    }
-
    manager->dumpZoneStates( updateFirst );
 }
 }

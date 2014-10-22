@@ -5841,7 +5841,6 @@ if (!object)
       if( obj != NULL )
         return (S32)( obj->getId());
    }
-
   return (S32)( -1);
 };
 }
@@ -5987,15 +5986,12 @@ const char* objName = (const char*)x__objName;
 {
    SimSet *treeRoot = NULL;
       SimObject* target = Sim::findObject(objName);
-
    
       
    if (target)
       treeRoot = dynamic_cast<SimSet*>(target);
-
    if (! treeRoot)
       Sim::findObject(RootGroupId, treeRoot);
-
    object->inspectObject(treeRoot,okToEdit);
 }
 }
@@ -6102,7 +6098,6 @@ if (!object)
       Con::errorf( "GuiTreeViewCtrl::setItemImages() - invalid item id '%i'", id );
       return;
    }
-
          item->setNormalImage(normalImage);
    item->setExpandedImage(expandedImage);
 }
@@ -6369,7 +6364,6 @@ if (!object)
 	 return;
 {
    object->toggleLockSelection();
-
 }
 }
 //---------------END DNTC AUTO-GENERATED-----------//

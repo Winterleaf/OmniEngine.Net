@@ -2653,7 +2653,6 @@ if (!object)
 {
    Con::printf("--------------- Class ID Listing ----------------");
    Con::printf(" id    |   name");
-
    for(AbstractClassRep *rep = AbstractClassRep::getClassList();
       rep;
       rep = rep->getNextClass())
@@ -2943,7 +2942,6 @@ if (!object)
 {
    if(object->isConnectionToServer())
       return;
-
    object->postNetEvent(new SetMissionCRCEvent(CRC));
 }
 }
@@ -2975,48 +2973,35 @@ if (!object)
 	 return;
 {
         object->setDataBlockSequence(sequence);
-
         SimDataBlockGroup* pGroup = Sim::getDataBlockGroup();
-
         const U32 iCount = pGroup->size();
-
         if (GameConnection::getLocalClientConnection() == object)
     {
                 SimDataBlock* pDataBlock = 0;
-
                 U8 iBuffer[16384];
         BitStream mStream(iBuffer, 16384);
-
                 for (U32 i = 0; i < iCount; i++)
         {
                         pDataBlock = (SimDataBlock*)(*pGroup)[i];
-
                         object->setMaxDataBlockModifiedKey(pDataBlock->getModifiedKey());
-
                         mStream.setPosition(0);
             mStream.clearCompressionPoint();
             pDataBlock->packData(&mStream);
-
                         mStream.setPosition(0);
             mStream.clearCompressionPoint();
             pDataBlock->unpackData(&mStream);
-
                         onDataBlockObjectReceived_callback( StringTable->insert(Con::getIntArg(i)), StringTable->insert(Con::getIntArg(iCount)) );
-
                         pDataBlock->preload(false, NetConnection::getErrorBuffer());
         }
-
                 if (pDataBlock)
         {
                         object->setDataBlockModifiedKey(object->getMaxDataBlockModifiedKey());
-
                         object->sendConnectionMessage(GameConnection::DataBlocksDone, object->getDataBlockSequence());
         }
     } 
     else
     {
                 const S32 iKey = object->getDataBlockModifiedKey();
-
                 U32 i = 0;
         for (; i < iCount; i++)
         {
@@ -3025,22 +3010,16 @@ if (!object)
                 break;
             }
         }
-
                 if (i == iCount)
         {
                         object->sendConnectionMessage(GameConnection::DataBlocksDone, object->getDataBlockSequence());
-
                         return;
         }
-
                 object->setMaxDataBlockModifiedKey(iKey);
-
                 const U32 iMax = getMin(i + DataBlockQueueCount, iCount);
-
                 for (;i < iMax; i++)
         {
                         SimDataBlock* pDataBlock = (SimDataBlock*)(*pGroup)[i];
-
                         object->postNetEvent(new SimDataBlockEvent(pDataBlock, i, iCount, object->getDataBlockSequence()));
         }
     }

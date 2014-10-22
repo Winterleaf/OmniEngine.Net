@@ -1053,7 +1053,6 @@ if (!object)
 		Con::warnf(ConsoleLogEntry::General, "GuiMessageVectorCtrl: double detach");
 		return;
 	}
-
 	object->detach();
 }
 }

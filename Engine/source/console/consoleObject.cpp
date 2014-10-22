@@ -896,7 +896,6 @@ DefineEngineFunction( sizeof, S32, ( const char *objectOrClass ),,
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpNetStats()
 {
 {
-
 #ifdef TORQUE_NET_STATS
    for (AbstractClassRep * rep = AbstractClassRep::getClassList(); rep; rep = rep->getNextClass())
    {
@@ -949,7 +948,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpNetStats()
       }
       rep->resetNetStats();
    }
-
 #endif
 }
 }
@@ -1103,16 +1101,12 @@ const char* objectOrClass = (const char*)x__objectOrClass;
    SimObject *obj = Sim::findObject(objectOrClass);
    if(obj)
       acr = obj->getClassRep();
-
    if(!acr)
       acr = AbstractClassRep::findClassRep(objectOrClass);
-
    if(acr)
      return (S32)( acr->getSizeof());
-
    if(dStricmp("ConsoleObject", objectOrClass) == 0)
     return (S32)( sizeof(ConsoleObject));
-
    Con::warnf("could not find a class rep for that object or class name.");
   return (S32)( 0);
 };

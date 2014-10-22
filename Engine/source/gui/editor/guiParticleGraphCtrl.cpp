@@ -1931,7 +1931,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphHidden(plotID, isHidden);
 }
 }
@@ -1948,7 +1947,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphMax(plotID, Point2F(maxX, maxY));
 }
 }
@@ -1965,7 +1963,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphMaxX(plotID, maxX);
 }
 }
@@ -1982,7 +1979,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphMaxY(plotID, maxX);
 }
 }
@@ -1999,7 +1995,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphMin(plotID, Point2F(minX, minY));
 }
 }
@@ -2016,7 +2011,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphMinX(plotID, minX);
 }
 }
@@ -2033,7 +2027,6 @@ if (!object)
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphMinY(plotID, minX);
 }
 }
@@ -2051,7 +2044,6 @@ const char* graphName = (const char*)x__graphName;
 		Con::errorf("Invalid plotID.");
 		return;
 	}
-
 		object->setGraphName(plotID, graphName);
 }
 }

@@ -3082,9 +3082,7 @@ String matName = String( x__matName);
      return (S32)( false);
    
       terr->addMaterial( matName );
-
    object->setDirty();
-
   return (S32)( true);
 };
 }
@@ -3101,30 +3099,23 @@ const char* terrain = (const char*)x__terrain;
       Con::errorf(ConsoleLogEntry::Script, "TerrainEditor::attach: no mission group found");
       return;
    }
-
    VectorPtr<TerrainBlock*> terrains;
-
          if (dStrcmp (terrain,"")==0)
    {
       for(SimSetIterator itr(missionGroup); *itr; ++itr)
       {
          TerrainBlock* terrBlock = dynamic_cast<TerrainBlock*>(*itr);
-
          if (terrBlock)
             terrains.push_back(terrBlock);
       }
-
                }
    else     {
             TerrainBlock* terrBlock = dynamic_cast<TerrainBlock*>(Sim::findObject(terrain));
-
       if (terrBlock)
          terrains.push_back(terrBlock);
-
       if(terrains.size() == 0)
                   Con::errorf(ConsoleLogEntry::Script, "TerrainEditor::attach: failed to attach to object '%s'", terrain);
    }
-
    if (terrains.size() > 0)
    {
       for (U32 i = 0; i < terrains.size(); i++)
@@ -3132,12 +3123,10 @@ const char* terrain = (const char*)x__terrain;
          if (!terrains[i]->isServerObject())
          {
             terrains[i] = NULL;
-
             Con::errorf(ConsoleLogEntry::Script, "TerrainEditor::attach: cannot attach to client TerrainBlock");
          }
       }
    }
-
    for (U32 i = 0; i < terrains.size(); i++)
    {
       if (terrains[i])
@@ -3188,12 +3177,9 @@ if (!object)
 	return (S32)( 0);
 {
    S32 ret = 0;
-
    TerrainBlock* terrain = object->getActiveTerrain();
-
    if (terrain)
       ret = terrain->getId();
-
 	return ret;
 };
 }
@@ -3292,7 +3278,6 @@ if (!object)
    TerrainBlock *terr = object->getClientTerrain();
    if ( terr )
      return (S32)( terr->getMaterialCount());
-
   return (S32)( 0);
 };
 }
@@ -3502,19 +3487,16 @@ const char* Z = (const char*)x__Z;
       pos.y = dAtof(Y);
       pos.z = dAtof(Z);
    }
-
    else
    {
       Con::errorf("TerrainEditor.getTerrainUnderWorldPoint(): Invalid argument count! Valid arguments are either \"x y z\" or x,y,z\n");
      return (S32)( 0);
    }
-
    TerrainBlock* terrain = tEditor->getTerrainUnderWorldPoint(pos);
    if(terrain != NULL)
    {
      return (S32)( terrain->getId());
    }
-
   return (S32)( 0);
 };
 }
@@ -3561,19 +3543,15 @@ if (!object)
       Con::errorf( "TerrainEditor::removeMaterial - index out of range!" );
       return;
    }
-
    if ( terr->getMaterialCount() == 1 )
    {
       Con::errorf( "TerrainEditor::removeMaterial - cannot remove material, there is only one!" );
       return;
    }
-
    const char *matName = terr->getMaterialName( index );
-
    object->submitMaterialUndo( String::ToString( "Remove TerrainMaterial %s", matName ) );
    
    terr->removeMaterial( index );
-
    object->setDirty();
    object->scheduleMaterialUpdate();
    object->setGridUpdateMinMax();
@@ -3683,7 +3661,6 @@ if (!object)
 		angle = 0.0f;
    if ( angle > object->mSlopeMaxAngle )
       angle = object->mSlopeMaxAngle;
-
 	object->mSlopeMinAngle = angle;
 	return angle;
 };

@@ -780,7 +780,6 @@ const char* type = (const char*)x__type;
 const char* path = (const char*)x__path;
 {
    QuatF rot(transform.getOrientation());
-
    object->pushBack( new CameraSpline::Knot(transform.getPosition(), rot, speed, resolveKnotType(type), resolveKnotPath(path)) );
 }
 }
@@ -796,7 +795,6 @@ const char* type = (const char*)x__type;
 const char* path = (const char*)x__path;
 {
    QuatF rot(transform.getOrientation());
-
    object->pushFront( new CameraSpline::Knot(transform.getPosition(), rot, speed, resolveKnotType(type), resolveKnotPath(path)) );
 }
 }
@@ -812,7 +810,6 @@ if (!object)
       AngAxisF mOrientation;
       mOrientation.set(mat);
       QuatF rot(mOrientation);
-
       object->pushBack( new CameraSpline::Knot(mat.getPosition(), rot, speed, CameraSpline::Knot::NORMAL, CameraSpline::Knot::SPLINE) );
    }
 }

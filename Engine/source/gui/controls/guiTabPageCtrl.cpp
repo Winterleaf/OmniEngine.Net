@@ -300,7 +300,6 @@ if (!object)
    GuiTabBookCtrl* book = dynamic_cast< GuiTabBookCtrl* >( object->getParent() );
    if( !book )
       return;
-
    book->selectPage( object );
 }
 }

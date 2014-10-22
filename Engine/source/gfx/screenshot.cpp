@@ -350,12 +350,10 @@ const char* format = (const char*)x__format;
       Con::errorf( "Screenshot module not initialized by device" );
       return;
    }
-
 	Torque::Path ssPath( file );
    Torque::FS::CreatePath( ssPath );
    Torque::FS::FileSystemRef fs = Torque::FS::GetFileSystem(ssPath);
    Torque::Path newPath = fs->mapTo(ssPath);
-
    gScreenShot->setPending(   newPath.getFullPath(), 
                               dStricmp( format, "JPEG" ) == 0,
                               tileCount, 

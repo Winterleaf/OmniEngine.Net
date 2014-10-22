@@ -997,7 +997,6 @@ const char* className = (const char*)x__className;
             Con::errorf( "GuiInspector::addInspect(): invalid object: %s", className );
       return;
    }
-
    				object->addInspectObject( obj, autoSync );
 }
 }
@@ -1062,7 +1061,6 @@ const char* className = (const char*)x__className;
       object->clearInspectObjects();
       return;
    }
-
    object->inspectObject(target);
 }
 }
@@ -1074,7 +1072,6 @@ if (!object)
 {
    if ( object->getNumInspectObjects() == 0 )
       return;
-
    SimObject *target = object->getInspectObject();
    if ( target )
       object->inspectObject( target );

@@ -1697,7 +1697,6 @@ if (!object)
 	return (S32)( 0);
 {
    NetObject * foo;
-
    if(Sim::findObject(realID, foo))
    {
      return (S32)( object->getGhostIndex(foo));
@@ -1734,9 +1733,7 @@ if (!object)
 	return (S32)( 0);
 {
       if(ghostID < 0 || ghostID > NetConnection::MaxGhostCount)return (S32)( 0);
-
    NetObject *foo = object->resolveGhost(ghostID);
-
    if(foo)
      return (S32)( foo->getId());
    else
@@ -1750,9 +1747,7 @@ if (!object)
 	return (S32)( 0);
 {
       if(ghostID < 0 || ghostID > NetConnection::MaxGhostCount)return (S32)( 0);
-
    NetObject *foo = object->resolveObjectFromGhostIndex(ghostID);
-
    if(foo)
      return (S32)( foo->getId());
    else

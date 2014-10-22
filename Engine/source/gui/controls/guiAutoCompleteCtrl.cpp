@@ -1464,7 +1464,6 @@ const char** argv = &arguments[0];
    ColorI fontColor, fontColorHL, fontColorSEL;
    U32 r, g, b;
    char buf[64];
-
    dStrcpy( buf, argv[3] );
    char* temp = dStrtok( buf, " \0" );
    r = temp ? dAtoi( temp ) : 0;
@@ -1473,7 +1472,6 @@ const char** argv = &arguments[0];
    temp = dStrtok( NULL, " \0" );
    b = temp ? dAtoi( temp ) : 0;
    fontColor.set( r, g, b );
-
    dStrcpy( buf, argv[4] );
    temp = dStrtok( buf, " \0" );
    r = temp ? dAtoi( temp ) : 0;
@@ -1482,7 +1480,6 @@ const char** argv = &arguments[0];
    temp = dStrtok( NULL, " \0" );
    b = temp ? dAtoi( temp ) : 0;
    fontColorHL.set( r, g, b );
-
    dStrcpy( buf, argv[5] );
    temp = dStrtok( buf, " \0" );
    r = temp ? dAtoi( temp ) : 0;
@@ -1491,7 +1488,6 @@ const char** argv = &arguments[0];
    temp = dStrtok( NULL, " \0" );
    b = temp ? dAtoi( temp ) : 0;
    fontColorSEL.set( r, g, b );
-
    object->addScheme( dAtoi( argv[2] ), fontColor, fontColorHL, fontColorSEL );
 }
 }
@@ -1675,40 +1671,33 @@ arguments.push_back(a3);
 const char** argv = &arguments[0];
 {
    AbstractClassRep * classRep = AbstractClassRep::getClassList();
-
       while(classRep)
    {
       if(!dStricmp(classRep->getClassName(), argv[2]))
          break;
       classRep = classRep->getNextClass();
    }
-
       if(!classRep)
    {
       Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", argv[2]);
       return;
    }
-
       U32 i;
    for(i = 0; i < classRep->mFieldList.size(); i++)
       if(!dStricmp(classRep->mFieldList[i].pFieldname, argv[3]))
          break;
-
       if(i == classRep->mFieldList.size())
    {   
       Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", argv[3], argv[2]);
       return;
    }
-
    const AbstractClassRep::Field & field = classRep->mFieldList[i];
    ConsoleBaseType* conType = ConsoleBaseType::getType( field.type );
-
       if( !conType->getEnumTable() )
    {
       Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", argv[3], argv[2]);
       return;
    }
-
       const EngineEnumTable& table = *( conType->getEnumTable() );
    const U32 numValues = table.getNumValues();
    

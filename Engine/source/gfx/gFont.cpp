@@ -1352,11 +1352,9 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpFontCacheStatus()
  
    Con::printf("--------------------------------------------------------------------------");
    Con::printf("   Font Cache Usage Report");
-
    while( theFont != NULL )
    {
       theFont->dumpInfo();
-
       theFont = ResourceManager::get().nextResource();
    }
 }
@@ -1368,15 +1366,12 @@ const char* oldFontName = (const char*)x__oldFontName;
 const char* newFontName = (const char*)x__newFontName;
 {
    String newFontFile = GFont::getFontCacheFilename(newFontName, oldFontSize);
-
       Resource<GFont> font = GFont::create(oldFontName, oldFontSize, Con::getVariable("$GUI::fontCacheDirectory"));
-
       if (font == NULL)
    {
       Con::errorf(" o Couldn't find font : %s", oldFontName);
       return;
    }
-
       FileStream stream;
    stream.open( newFontFile, Torque::FS::File::Write );
    if(stream.getStatus() == Stream::Ok) 
@@ -1399,13 +1394,11 @@ const char* fileName = (const char*)x__fileName;
 
 {
       Resource<GFont> f = GFont::create(faceName, fontSize, Con::getVariable("$GUI::fontCacheDirectory"));
-
    if(f == NULL)
    {
       Con::errorf("exportCachedFont - could not load font '%s %d'", faceName, fontSize);
       return;
    }
-
    f->exportStrip(fileName, padding, kerning);
 }
 }
@@ -1417,13 +1410,11 @@ const char* fileName = (const char*)x__fileName;
 
 {
       Resource<GFont> f = GFont::create(faceName, fontSize, Con::getVariable("$GUI::fontCacheDirectory"));
-
    if(f == NULL)
    {
       Con::errorf("importCachedFont - could not load font '%s %d'", faceName, fontSize);
       return;
    }
-
    f->importStrip(fileName, padding, kerning);
 }
 }
@@ -1436,15 +1427,11 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_populateAllFontCacheRange(
       Con::errorf("populateAllFontCacheRange - range start is after end!");
       return;
    }
-
    Resource<GFont>   theFont = ResourceManager::get().startResourceList( Resource<GFont>::signature() );
-
    Con::printf("Populating font cache with range 0x%x to 0x%x", rangeStart, rangeEnd);
-
    while( theFont != NULL )
    {
       const String   fileName( theFont.getPath() );
-
       if(theFont->hasPlatformFont())
       {
                   Con::printf("   o Populating font '%s'", fileName.c_str());
@@ -1460,7 +1447,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_populateAllFontCacheRange(
       {
          Con::errorf("populateAllFontCacheRange - font '%s' has no platform font. Cannot generate more characters.", fileName.c_str());
       }
-
       theFont = ResourceManager::get().nextResource();
    }
 }
@@ -1470,9 +1456,7 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_populateAllFontCacheString
 const char* string = (const char*)x__string;
 {
    Resource<GFont> theFont = ResourceManager::get().startResourceList( Resource<GFont>::signature() );
-
    Con::printf("Populating font cache with string '%s'", string);
-
    while( theFont != NULL )
    {
       if(theFont->hasPlatformFont())
@@ -1484,7 +1468,6 @@ const char* string = (const char*)x__string;
          const String   fileName( theFont.getPath() );
          Con::errorf("populateAllFontCacheString - font '%s' has no platform font. Cannot generate more characters.", fileName.c_str());
       }
-
       theFont = ResourceManager::get().nextResource();
    }
 }
@@ -1496,25 +1479,21 @@ const char* faceName = (const char*)x__faceName;
 
 {
    Resource<GFont> f = GFont::create(faceName, fontSize, Con::getVariable("$GUI::fontCacheDirectory"));
-
    if(f == NULL)
    {
       Con::errorf("populateFontCacheRange - could not load font '%s %d'", faceName, fontSize);
       return;
    }
-
    if(rangeStart > rangeEnd)
    {
       Con::errorf("populateFontCacheRange - range start is after end");
       return;
    }
-
    if(!f->hasPlatformFont())
    {
       Con::errorf("populateFontCacheRange - font '%s %d' has no platform font Cannot generate more characters.", faceName, fontSize);
       return;
    }
-
       for(U32 i=rangeStart; i<rangeEnd; i++)
    {
       if(f->isValidChar(i))
@@ -1522,7 +1501,6 @@ const char* faceName = (const char*)x__faceName;
       else
          Con::warnf("populateFontCacheRange - skipping invalid char 0x%x",  i);
    }
-
    }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_populateFontCacheString(char * x__faceName, S32 fontSize, char * x__string)
@@ -1532,19 +1510,16 @@ const char* faceName = (const char*)x__faceName;
 const char* string = (const char*)x__string;
 {
    Resource<GFont> f = GFont::create(faceName, fontSize, Con::getVariable("$GUI::fontCacheDirectory"));
-
    if(f == NULL)
    {
       Con::errorf("populateFontCacheString - could not load font '%s %d'", faceName, fontSize);
       return;
    }
-
    if(!f->hasPlatformFont())
    {
       Con::errorf("populateFontCacheString - font '%s %d' has no platform font. Cannot generate more characters.", faceName, fontSize);
       return;
    }
-
       f->getStrWidthPrecise( string );
 }
 }
@@ -1552,17 +1527,13 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_writeFontCache()
 {
 {
    Resource<GFont>   theFont = ResourceManager::get().startResourceList( Resource<GFont>::signature() );
-
    Con::printf("--------------------------------------------------------------------------");
    Con::printf("   Writing font cache to disk");
-
    while( theFont != NULL )
    {
       const String   fileName( theFont.getPath() );
-
       FileStream stream;
       stream.open(fileName, Torque::FS::File::Write);
-
       if(stream.getStatus() == Stream::Ok) 
       {
          Con::printf("      o Writing '%s' to disk...", fileName.c_str());
@@ -1572,7 +1543,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_writeFontCache()
       {
          Con::errorf("      o Could not open '%s' for write", fileName.c_str());
       }
-
       theFont = ResourceManager::get().nextResource();
   }
 }

@@ -1680,7 +1680,6 @@ if (!object)
    River *river = object->getSelectedRiver();
    if ( !river )
      return (S32)( NULL);
-
 	return river->getId();
 };
 }

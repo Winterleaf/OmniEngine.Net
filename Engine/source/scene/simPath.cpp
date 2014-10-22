@@ -588,12 +588,10 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_pathOnMissionLoadDone()
 {
       SimGroup* pMissionGroup = dynamic_cast<SimGroup*>(Sim::findObject("MissionGroup"));
    AssertFatal(pMissionGroup != NULL, "Error, mission done loading and no mission group?");
-
    U32 currStart = 0;
    U32 currEnd   = 1;
    Vector<SimGroup*> groups;
    groups.push_back(pMissionGroup);
-
    while (true) {
       for (U32 i = currStart; i < currEnd; i++) {
          for (SimGroup::iterator itr = groups[i]->begin(); itr != groups[i]->end(); itr++) {
@@ -601,7 +599,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_pathOnMissionLoadDone()
                groups.push_back(static_cast<SimGroup*>(*itr));
          }
       }
-
       if (groups.size() == currEnd) {
          break;
       } else {
@@ -609,7 +606,6 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_pathOnMissionLoadDone()
          currEnd   = groups.size();
       }
    }
-
    for (U32 i = 0; i < groups.size(); i++) {
       SimPath::Path* pPath = dynamic_cast<SimPath::Path*>(groups[i]);
       if (pPath)

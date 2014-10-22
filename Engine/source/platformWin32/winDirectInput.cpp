@@ -1073,14 +1073,11 @@ const char* properties = (const char*)x__properties;
 
 {
       DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
-
    if ( !mgr || !mgr->isEnabled() ) 
      return (int)( -1);
-
       #define GET_XI_STATE(constName) \
    if (!dStricmp(properties, #constName)) \
      return (int)( mgr->getXInputState( controllerID, constName, ( current )));
-
    GET_XI_STATE(XI_THUMBLX);
    GET_XI_STATE(XI_THUMBLY);
    GET_XI_STATE(XI_THUMBRX);
@@ -1102,7 +1099,6 @@ const char* properties = (const char*)x__properties;
    GET_XI_STATE(XI_X);
    GET_XI_STATE(XI_Y);
 #undef GET_XI_STATE
-
   return (int)( -1);
 };
 }

@@ -1503,7 +1503,6 @@ Point2F pos = Point2F();
 sscanf(x__pos,"%f %f",&pos.x,&pos.y);
 {
 		F32 height = 0.0f;
-
 		   
 					
  		
@@ -1525,13 +1524,10 @@ Point3F pos = Point3F();
 sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
 {
 		F32 height = 0.0f;
-
                          
-
 	TerrainBlock * terrain = getTerrainUnderWorldPoint(pos);
 	
 	Point2F nohghtPos(pos.x, pos.y);
-
 	if(terrain)
 	{
 		if(terrain->isServerObject())
@@ -1558,9 +1554,7 @@ sscanf(x__position,"%f %f %f",&position.x,&position.y,&position.z);
    {
      return (S32)( terrain->getId());
    }
-
   return (S32)( 0);
-
 };
 }
 extern "C" __declspec(dllexport) S32  __cdecl wle_fnTerrainBlock_save(char * x__object, char * x__fileName)

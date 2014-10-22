@@ -1874,25 +1874,21 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_StartFoliageReplication()
 {
 {
       SimSet *fxFoliageSet = dynamic_cast<SimSet*>(Sim::findObject("fxFoliageSet"));
-
       if (!fxFoliageSet)
    {
             Con::warnf("fxFoliageReplicator - Cannot locate the 'fxFoliageSet', this is bad!");
             return;
    }
-
       U32 startupCount = 0;
    for (SimSetIterator itr(fxFoliageSet); *itr; ++itr)
    {
             fxFoliageReplicator* Replicator = static_cast<fxFoliageReplicator*>(*itr);
-
             if (Replicator->isClientObject())
       {
          Replicator->StartUp();
          startupCount++;
       }
    }
-
       Con::printf("fxFoliageReplicator - replicated client foliage for %d objects", startupCount);
 }
 }

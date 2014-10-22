@@ -462,15 +462,12 @@ const char** argv = &arguments[0];
 {
       AIConnection *aiConnection = new AIConnection();
    aiConnection->registerObject();
-
       SimGroup *g = Sim::getClientGroup();
    g->addObject( aiConnection );
-
          const char* args[21];
    args[0] = "onConnect";
    for (S32 i = 1; i < argc; i++)
       args[i + 1] = argv[i];
-
          Con::execute(aiConnection, argc + 1, args);
   return (S32)( aiConnection->getId());
 }
@@ -561,7 +558,6 @@ const char* field = (const char*)x__field;
 
 {
    Move move = object->getMove();
-
          if (!dStricmp(field,"x"))
             move.x = mClampF(value,-1,1);
       else
@@ -579,7 +575,6 @@ const char* field = (const char*)x__field;
       else
       if (!dStricmp(field,"roll"))
             move.roll = moveClamp(value);
-
       object->setMove(&move);
 }
 }

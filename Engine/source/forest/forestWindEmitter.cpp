@@ -687,7 +687,6 @@ if (!object)
 	SceneObject *obj = dynamic_cast<SceneObject*>( Sim::findObject( objectID ) );
 	if ( !obj )
 		Con::warnf( "ForestWindEmitter::attachToObject - failed to find object with ID: %d", objectID );
-
 	object->attachToObject( obj );
 }
 }

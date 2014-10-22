@@ -1805,40 +1805,33 @@ const char* className = (const char*)x__className;
 const char* enumName = (const char*)x__enumName;
 {
    AbstractClassRep * classRep = AbstractClassRep::getClassList();
-
       while(classRep)
    {
             if(!dStricmp(classRep->getClassName(), className))
          break;
       classRep = classRep->getNextClass();
    }
-
       if(!classRep)
    {
             Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", className);
       return;
    }
-
       U32 i;
    for(i = 0; i < classRep->mFieldList.size(); i++)
             if(!dStricmp(classRep->mFieldList[i].pFieldname, enumName))
          break;
-
       if(i == classRep->mFieldList.size())
    {   
             Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", enumName, className);
       return;
    }
-
    const AbstractClassRep::Field & field = classRep->mFieldList[i];
    ConsoleBaseType* conType = ConsoleBaseType::getType( field.type );
-
       if( !conType->getEnumTable() )
    {
             Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", enumName, className);
       return;
    }
-
       const EngineEnumTable& table = *( conType->getEnumTable() );
    const U32 numValues = table.getNumValues();
    
@@ -1853,7 +1846,6 @@ if (!object)
 	 return;
 {
 	      object->setFirstSelected( scriptCallback );
-
 }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_setNoneSelected(char * x__object)

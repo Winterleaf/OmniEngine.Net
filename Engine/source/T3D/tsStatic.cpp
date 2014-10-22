@@ -1312,24 +1312,18 @@ Material* newMat; Sim::findObject(x__newMat, newMat );
       Con::errorf("TSShape::changeMaterial failed: New material does not exist!");
       return;
    }
-
       S32 matIndex = object->getShape()->materialList->getMaterialNameList().find_next(String(mapTo));
    if (matIndex < 0)
    {
       Con::errorf("TSShape::changeMaterial failed: Invalid mapTo name '%s'", mapTo);
       return;
    }
-
       if( oldMat )
       oldMat->mMapTo = String("unmapped_mat");
-
    newMat->mMapTo = mapTo;
-
       MATMGR->mapMaterial( mapTo, newMat->getName() );
-
          delete object->getShape()->materialList->mMatInstList[matIndex];
    object->getShape()->materialList->mMatInstList[matIndex] = newMat->createMatInstance();
-
       const GFXVertexFormat *flags = getGFXVertexFormat<GFXVertexPNTTB>();
    FeatureSet features = MATMGR->getDefaultFeatures();
    object->getShape()->materialList->getMaterialInst(matIndex)->init( features, flags );
@@ -1362,10 +1356,8 @@ if (!object)
 	{
 				if ((TSStatic*)obj->getClientObject())
 			obj = (TSStatic*)obj->getClientObject();
-
 		return obj->getShapeInstance()->getTargetCount();
 	}
-
 	return -1;
 };
 }

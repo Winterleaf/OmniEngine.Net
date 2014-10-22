@@ -4286,7 +4286,6 @@ if (!object)
       Con::errorf(ConsoleLogEntry::General, "WorldEditor::getSelectedObject: invalid object index");
      return (S32)((-1));
    }
-
   return (S32)((object->getSelectObject(index)));
 };
 }
@@ -4430,7 +4429,6 @@ SceneObject* objB; Sim::findObject(x__objB, objB );
             
 	if (!objA || !objB)
 		return;
-
    MatrixF xfm = objB->getTransform();   
    MatrixF mat = objA->getWorldTransform();
    xfm.mul( mat );
@@ -4443,7 +4441,6 @@ SceneObject* objB; Sim::findObject(x__objB, objB );
    
    xfm.setPosition( pos );
    
-
    objA->mountObject( objB, -1, xfm );
 }
 }

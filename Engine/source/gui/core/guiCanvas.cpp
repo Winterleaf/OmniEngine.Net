@@ -3033,13 +3033,11 @@ const char* ctrlName = (const char*)x__ctrlName;
 
 {
    GuiControl *gui;
-
       if (!	Sim::findObject(ctrlName, gui))
    {
             Con::printf("pushDialog(): Invalid control: %s", ctrlName);
       return;
    }
-
                   
          
       object->pushDialogControl(gui, layer, center);
@@ -3094,9 +3092,7 @@ if (!object)
    
    if (Journal::IsRecording() || Journal::IsPlaying())   
       return;
-
       GFXVideoMode vm = object->getPlatformWindow()->getVideoMode();
-
       
       
    bool changed = false;
@@ -3105,7 +3101,6 @@ if (!object)
                   for(S32 i=0; i<object->getPlatformWindow()->getGFXDevice()->getVideoModeList()->size(); i++)
       {
          const GFXVideoMode &newVm = (*(object->getPlatformWindow()->getGFXDevice()->getVideoModeList()))[i];
-
          if(newVm.resolution.y == height)
          {
             width = newVm.resolution.x;
@@ -3119,7 +3114,6 @@ if (!object)
                   for(S32 i=0; i<object->getPlatformWindow()->getGFXDevice()->getVideoModeList()->size(); i++)
       {
          const GFXVideoMode &newVm = (*(object->getPlatformWindow()->getGFXDevice()->getVideoModeList()))[i];
-
          if(newVm.resolution.x == width)
          {
             height = newVm.resolution.y;
@@ -3128,43 +3122,33 @@ if (!object)
          }
       }
    }
-
    if (width == 0 || height == 0)
    {
                   width  = vm.resolution.x;
       height = vm.resolution.y;
-
       changed = true;
    }
-
    if (changed)
    {
             Con::errorf("GuiCanvas::setVideoMode(): Error - Invalid resolution of (%d, %d) - attempting (%d, %d)", width, height, width, height);
    }
-
    vm.resolution  = Point2I(width, height);
       vm.fullScreen  = fullscreen;
-
    if (Platform::getWebDeployment())
       vm.fullScreen  = false;
-
             if (bitDepth > 0)
    {
             vm.bitDepth = refreshRate;
    }
-
       if (refreshRate > 0)
    {
             vm.refreshRate = refreshRate;
    }
-
       if (antialiasLevel > 0)
    {
             vm.antialiasLevel = antialiasLevel;
    }
-
    object->getPlatformWindow()->setVideoMode(vm);
-
       Con::setVariable( "$pref::Video::mode", vm.toString() );
 }
 }
@@ -3304,10 +3288,8 @@ if (!object)
 {
 	if (!object->getPlatformWindow())
      return (S32)( 0);
-
       const Vector<GFXVideoMode>* const modeList = 
       object->getPlatformWindow()->getGFXDevice()->getVideoModeList();
-
      return (S32)( modeList->size());
 };
 }
@@ -3502,7 +3484,6 @@ GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl );
 		Con::errorf("GuiCanvas::setContent - Invalid control specified')");
 		return;
 	}
-
       object->setContentControl(ctrl);
 }
 }
@@ -3571,17 +3552,13 @@ if (!object)
 {
 	if (Platform::getWebDeployment())
       return;
-
    if (!object->getPlatformWindow())
       return;
-
    if (Journal::IsRecording() || Journal::IsPlaying())   
       return;
-
       GFXVideoMode origMode = object->getPlatformWindow()->getVideoMode();
    
       GFXDevice *device = object->getPlatformWindow()->getGFXDevice();
-
       GFXVideoMode newMode = origMode;
    newMode.fullScreen = !origMode.fullScreen;
    
@@ -3592,22 +3569,17 @@ if (!object)
       for(S32 i=0; i<device->getVideoModeList()->size(); i++)
       {
          const GFXVideoMode &newVm = (*(device->getVideoModeList()))[i];
-
          if(newMode.resolution.x > newVm.resolution.x)
             continue;
-
          if(newMode.resolution.y > newVm.resolution.y)
             continue;
-
          if(newMode.bitDepth != newVm.bitDepth)
             continue;
-
                   newMode = newVm;
          newMode.fullScreen = true;
          break;
       }
    }
-
       object->getPlatformWindow()->setVideoMode(newMode);
 }
 }

@@ -332,27 +332,22 @@ if (!object)
    GameConnection* localClient = GameConnection::getLocalClientConnection();
    if( !localClient )
       return;
-
    
    if( !object->preload( true, NetConnection::getErrorBuffer() ) )
    {
       Con::errorf( NetConnection::getErrorBuffer() );
       return;
    }
-
    U8 buffer[ 16384 ];
    BitStream stream( buffer, 16384 );
-
    object->packData( &stream );
    stream.setPosition(0);
    object->unpackData( &stream );
-
    if( !object->preload( false, NetConnection::getErrorBuffer() ) )
    {
       Con::errorf( NetConnection::getErrorBuffer() );
       return;
    }
-
       object->inspectPostApply();
 }
 }

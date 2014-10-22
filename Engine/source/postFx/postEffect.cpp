@@ -1771,30 +1771,22 @@ extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpRandomNormalMap()
 {
 {
    GFXTexHandle tex;
-
    tex.set( 64, 64, GFXFormatR8G8B8A8, &GFXDefaultPersistentProfile, "" );
-
    GFXLockedRect *rect = tex.lock();
    U8 *f = rect->bits;
-
    for ( U32 i = 0; i < 64*64; i++, f += 4 )
    {               
       VectorF vec;
-
       vec.x = mRandF( -1.0f, 1.0f );
       vec.y = mRandF( -1.0f, 1.0f );
       vec.z = mRandF( -1.0f, 1.0f );
-
       vec.normalizeSafe();
-
       f[0] = U8_MAX * ( ( 1.0f + vec.x ) * 0.5f );
       f[1] = U8_MAX * ( ( 1.0f + vec.y ) * 0.5f );
       f[2] = U8_MAX * ( ( 1.0f + vec.z ) * 0.5f );
       f[3] = U8_MAX;
    }
-
    tex.unlock();
-
    String path = Torque::FS::MakeUniquePath( "", "randNormTex", "png" );
    tex->dumpToDisk( "png", path );   
 }

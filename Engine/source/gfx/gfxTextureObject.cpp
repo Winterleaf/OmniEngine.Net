@@ -319,10 +319,8 @@ bool GFXTextureObject::dumpToDisk( const String &bmType, const String &path )
 extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpTextureObjects()
 {
 {
-
 #ifdef TORQUE_DEBUG
    GFXTextureObject::dumpActiveTOs();
-
 #endif
 }
 }

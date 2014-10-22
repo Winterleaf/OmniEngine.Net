@@ -501,7 +501,6 @@ const char* variable = (const char*)x__variable;
 	   Con::errorf( "GuiGraphCtrl::removeAutoPlot - 'plotId' out of range: %i", plotId );
 	   return;
    }
-
    object->addAutoPlot( plotId, variable, updateFrequency );
 }
 }
@@ -539,7 +538,6 @@ if (!object)
 	   Con::errorf( "GuiGraphCtrl::getDatum - Data point index out of range: %i", index );
 	  return (F32)( -1.f);
    }
-
   return (F32)( object->getDatum( plotId, index ));
 };
 }
@@ -554,7 +552,6 @@ if (!object)
 	   Con::errorf( "GuiGraphCtrl::removeAutoPlot - 'plotId' out of range: %i", plotId );
 	   return;
    }
-
    object->removeAutoPlot( plotId );
 }
 }
@@ -571,7 +568,6 @@ GuiGraphType graphType = (GuiGraphType)x__graphType;
 	   Con::errorf( "GuiGraphCtrl::setGraphType - 'plotId' out of range: %i", plotId );
 		return;
 	}
-
 	object->setGraphType( plotId, graphType );
 }
 }

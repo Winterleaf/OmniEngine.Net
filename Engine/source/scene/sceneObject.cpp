@@ -1952,12 +1952,10 @@ if (!object)
 	return (U32)( 0);
 const char* countername = (const char*)x__countername;
 {
-
 #ifdef ENABLE_SIMOBJECT_TICK_EVENTS
 	return object->counterGetInterval(countername);
 #else
 	return 0;
-
 #endif
 };
 }
@@ -2002,10 +2000,8 @@ if (!object)
 	 return;
 const char* countername = (const char*)x__countername;
 {
-
 #ifdef ENABLE_SIMOBJECT_TICK_EVENTS
 	object->counterReset(countername);
-
 #endif
 }
 }
@@ -2015,10 +2011,8 @@ SceneObject* object; Sim::findObject(x__object, object );
 if (!object)
 	 return;
 {
-
 #ifdef ENABLE_SIMOBJECT_TICK_EVENTS
 	   object->countersClear();
-
 #endif
 	}
 }
@@ -2030,10 +2024,8 @@ if (!object)
 const char* countername = (const char*)x__countername;
 
 {
-
 #ifdef ENABLE_SIMOBJECT_TICK_EVENTS
 	object->counterSuspend(countername,suspend);
-
 #endif
 }
 }

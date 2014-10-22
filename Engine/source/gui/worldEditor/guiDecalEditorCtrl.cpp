@@ -1349,7 +1349,6 @@ sscanf(x__tan,"%f %f %f",&tan.x,&tan.y,&tan.z);
 		DecalInstance *decalInstance = gDecalManager->mDecalInstanceVec[id];
 	if( decalInstance == NULL )
 		return;
-
 			
 					 		  
    decalInstance->mPosition = pos;
@@ -1358,9 +1357,7 @@ sscanf(x__tan,"%f %f %f",&tan.x,&tan.y,&tan.z);
 	
 	if ( decalInstance == object->mSELDecal )
 		object->setGizmoFocus( decalInstance );
-
 	object->forceRedraw( decalInstance );
-
 	gDecalManager->notifyDecalModified( decalInstance );
 }
 }
@@ -1478,7 +1475,6 @@ if (!object)
 		DecalInstance *decalInstance = gDecalManager->mDecalInstanceVec[id];
 	if( decalInstance == NULL )
 		return;
-
 	object->selectDecal( decalInstance );
 }
 }

@@ -475,11 +475,9 @@ const char** argv = &arguments[0];
    {
       if(argv[2][0] != '0')
         return (S32)( 0);
-
       refObject = Sim::getRootGroup();
    }
    SimConsoleEvent *evt = new SimConsoleEvent(argc - 3, argv + 3, false);
-
    S32 ret = Sim::postEvent(refObject, evt, Sim::getCurrentTime() + timeDelta);
               return (S32)( ret);
 }
@@ -634,7 +632,6 @@ const char* modelName = (const char*)x__modelName;
                
                         
    SimObject* spawnObject = Sim::spawnObject(spawnClass, spawnDataBlock, spawnName, spawnProperties, spawnScript,modelName);
-
    if (spawnObject)
      return (S32)( spawnObject->getId());
    else
