@@ -164,7 +164,7 @@ void VolumetricFog::initPersistFields()
 
 	addField("shapeName", TypeShapeFilename, Offset(mShapeName, VolumetricFog),
 		"Path and filename of the model file (.DTS, .DAE) to use for this Volume.");
-	addField("FogColor", TypeColorI, Offset(mFogColor, VolumetricFog),"Fog color RGBA (Alpha is ignored)");
+	addField("FogColor", TypeColorI, Offset(mFogColor, VolumetricFog), "Fog color RGBA (Alpha is ignored)");
 	addField("FogDensity", TypeF32, Offset(mFogDensity, VolumetricFog), "Overal fog density value (0 disables the fog).");
 	addField("IgnoreWater", TypeBool, Offset(mIgnoreWater, VolumetricFog), "Set to true if volumetric fog should continue while submerged.");
 	addField("MinSize", TypeF32, Offset(mMinDisplaySize, VolumetricFog), "Min size (in pixels) for fog to be rendered.");
@@ -192,7 +192,7 @@ void VolumetricFog::initPersistFields()
 void VolumetricFog::inspectPostApply()
 {
 	Parent::inspectPostApply();
-	
+
 	mSpeed.set(mSpeed1.x, mSpeed1.y, mSpeed2.x, mSpeed2.y);
 
 	setMaskBits(VolumetricFogMask | FogColorMask | FogDensityMask | FogModulationMask);
@@ -227,7 +227,7 @@ bool VolumetricFog::onAdd()
 		InitTexture();
 		return setupRenderer();
 	}
-	
+
 	VFRTM->IncFogObjects();
 
 	return true;
@@ -236,7 +236,7 @@ bool VolumetricFog::onAdd()
 void VolumetricFog::onRemove()
 {
 	removeFromScene();
-	
+
 	VFRTM->DecFogObjects();
 
 	Parent::onRemove();
@@ -408,6 +408,9 @@ bool VolumetricFog::LoadShape()
 // UpdateBuffers called whenever detaillevel changes (LOD)
 //-----------------------------------------------------------------------------
 
+
+const dsize_t structureSize = sizeof(GFXVertexPNTT);
+
 bool VolumetricFog::UpdateBuffers(U32 dl)
 {
 	if (mVB.isNull() || mIsVBDirty || dl != mCurDetailLevel)
@@ -421,20 +424,34 @@ bool VolumetricFog::UpdateBuffers(U32 dl)
 		mVB.unlock();
 		return false;
 	}
-	dMemcpy(vertPtr, det_size[dl].verts, sizeof (GFXVertexPNTT)* det_size[dl].num_verts);
+
+	dsize_t structureCount = det_size[dl].num_verts;
+	dsize_t totalSize = structureSize * structureCount;
+
+	//For some reason I've got an issue here, I am assuming
+	//that I'm not reserving enough memory for the array.
+	//but for the life of me I can't figure out what I'm doing wrong.
+	//If you figure out what is wrong, please email me at vgee@winterleafentertainment.com
+	dMemcpy(vertPtr, det_size[dl].verts, totalSize);
+
 	mVB.unlock();
 
 	if (mIsPBDirty || mPB.isNull() || dl != mCurDetailLevel)
 	{
 		mPB.set(GFX, det_size[dl].indices->size(), det_size[dl].piArray->size(), GFXBufferTypeDynamic);
+
 		U16 *ibIndices = NULL;
 		GFXPrimitive *piInput = NULL;
 		mPB.lock(&ibIndices, &piInput);
-		dCopyArray(ibIndices, det_size[dl].indices->address(), det_size[dl].indices->size());
-		dMemcpy(piInput, det_size[dl].piArray->address(), det_size[dl].piArray->size() * sizeof(GFXPrimitive));
+
+		dCopyArray(ibIndices, det_size[dl].indices->address(), (dsize_t)det_size[dl].indices->size());
+
+		dMemcpy(piInput, det_size[dl].piArray->address(), (dsize_t)(det_size[dl].piArray->size() * sizeof(GFXPrimitive)));
+
 		mPB.unlock();
 		mIsPBDirty = false;
 	}
+
 	mCurDetailLevel = dl;
 	return true;
 }
@@ -449,7 +466,7 @@ U32 VolumetricFog::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
 	if (stream->writeFlag(mask & FogModulationMask))
 	{
 		stream->write(mStrength);
-		mathWrite(*stream,mSpeed);
+		mathWrite(*stream, mSpeed);
 	}
 	if (stream->writeFlag(mask & VolumetricFogMask))
 	{
@@ -553,7 +570,7 @@ bool VolumetricFog::setupRenderer()
 		Con::errorf("VolumetricFog::setupRenderer - could not find PrepassTarget");
 		return false;
 	}
-	
+
 	Vector<GFXShaderMacro> macros;
 	if (mPrepassTarget)
 		mPrepassTarget->getShaderMacros(&macros);
@@ -584,7 +601,7 @@ bool VolumetricFog::setupRenderer()
 		Con::errorf("VolumetricFog::setupRenderer - could not find VolumetricFogPrePassShader");
 		return false;
 	}
-	
+
 	// Create ShaderConstBuffer and Handles
 
 	mPPShaderConsts = mPrePassShader->allocConstBuffer();
@@ -686,7 +703,7 @@ bool VolumetricFog::setupRenderer()
 	descF.setCullMode(GFXCullCCW);
 	descF.setBlend(true);
 	descF.setZReadWrite(true, false);
-	
+
 	mStateblock_preD = GFX->createStateBlock(desc_preD);
 	mStateblock_preF = GFX->createStateBlock(desc_preF);
 	mStateblockD = GFX->createStateBlock(descD);
@@ -706,6 +723,7 @@ void VolumetricFog::prepRenderImage(SceneRenderState *state)
 {
 	if (!state->isDiffusePass() || !mShapeLoaded || mFogDensity <= 0.0f)
 		return;
+	UpdateBuffers(0);
 
 	PROFILE_SCOPE(VolumetricFog_prepRenderImage);
 
@@ -749,7 +767,7 @@ void VolumetricFog::prepRenderImage(SceneRenderState *state)
 	mViewPoint.y = (0.5f - (mAsin(mEyeVec.z) / M_PI_F)) * mTexTiles;
 
 	bool isInside = ColBox.isContained(camPos);
-	if ( isInside && !mCamInFog)
+	if (isInside && !mCamInFog)
 	{
 		mCamInFog = true;
 		onEnterFog_callback(control->getId());
@@ -796,7 +814,7 @@ void VolumetricFog::render(ObjectRenderInst *ri, SceneRenderState *state, BaseMa
 	MatrixF xform(GFX->getProjectionMatrix());
 	xform *= GFX->getViewMatrix();
 	xform *= GFX->getWorldMatrix();
-		
+
 	mPPShaderConsts->setSafe(mPPModelViewProjSC, xform);
 
 	GFXTextureObject *mDepthBuffer = mDepthBufferTarget ? mDepthBufferTarget->getTexture(0) : NULL;
@@ -809,7 +827,7 @@ void VolumetricFog::render(ObjectRenderInst *ri, SceneRenderState *state, BaseMa
 	z_buf->attachTexture(GFXTextureTarget::Color0, mDepthBuffer);
 
 	GFX->setActiveRenderTarget(z_buf);
-	GFX->clear(GFXClearStencil | GFXClearTarget , ColorI(0,0,0,0), 1.0f, 0);
+	GFX->clear(GFXClearStencil | GFXClearTarget, ColorI(0, 0, 0, 0), 1.0f, 0);
 
 	GFX->drawPrimitive(0);
 	z_buf->resolve();
@@ -840,6 +858,11 @@ void VolumetricFog::render(ObjectRenderInst *ri, SceneRenderState *state, BaseMa
 	mShaderConsts->setSafe(mFogDensitySC, mFogDensity);
 	mShaderConsts->setSafe(mPreBias, viewDist);
 	mShaderConsts->setSafe(mAccumTime, (F32)Sim::getCurrentTime() / 1000.0f);
+	mShaderConsts->setSafe(mModStrengthSC, mStrength);
+	mShaderConsts->setSafe(mModSpeedSC, mSpeed);
+	mShaderConsts->setSafe(mViewPointSC, mViewPoint);
+	mShaderConsts->setSafe(mTexScaleSC, mTexScale * mFOV);
+	mShaderConsts->setSafe(mTexTilesSC, mTexTiles);
 
 	GFXTextureObject *prepasstex = mPrepassTarget ? mPrepassTarget->getTexture(0) : NULL;
 
@@ -851,15 +874,10 @@ void VolumetricFog::render(ObjectRenderInst *ri, SceneRenderState *state, BaseMa
 	{
 		GFX->setTexture(3, mTexture);
 		mShaderConsts->setSafe(mIsTexturedSC, 1.0f);
-		
+
 	}
 	else
 		mShaderConsts->setSafe(mIsTexturedSC, 0.0f);
-	mShaderConsts->setSafe(mModStrengthSC, mStrength);
-	mShaderConsts->setSafe(mModSpeedSC, mSpeed);
-	mShaderConsts->setSafe(mViewPointSC, mViewPoint);
-	mShaderConsts->setSafe(mTexScaleSC, mTexScale * mFOV);
-	mShaderConsts->setSafe(mTexTilesSC, mTexTiles);
 
 	if (mCamInFog)
 		GFX->setStateBlock(mStateblockD);
@@ -900,7 +918,7 @@ void VolumetricFog::InitTexture()
 
 void VolumetricFog::setFogColor(ColorF color)
 {
-	mFogColor.set(255 * color.red,255 * color.green,255 * color.blue);
+	mFogColor.set(255 * color.red, 255 * color.green, 255 * color.blue);
 	setMaskBits(FogColorMask);
 }
 
@@ -918,7 +936,7 @@ void VolumetricFog::setFogDensity(F32 density)
 	setMaskBits(FogDensityMask);
 }
 
-void VolumetricFog::setFogModulation(F32 strength,Point2F speed1,Point2F speed2)
+void VolumetricFog::setFogModulation(F32 strength, Point2F speed1, Point2F speed2)
 {
 	mStrength = strength;
 	mSpeed1 = speed1;
@@ -1017,55 +1035,55 @@ DefineEngineMethod(VolumetricFog, SetFogModulation, void, (F32 new_strenght, Poi
 
 extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogColor(char * x__object, char * x__new_color)
 {
-VolumetricFog* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-ColorI new_color = ColorI();
-{
-int r,g,b,a;
-sscanf(x__new_color,"%d %d %d %d ",&r,&g,&b,&a);
-new_color.red =(unsigned short)r;
-new_color.green=(unsigned short)g;
-new_color.blue=(unsigned short)b;
-new_color.alpha=(unsigned short)a;
-}
+	VolumetricFog* object; Sim::findObject(x__object, object);
+	if (!object)
+		return;
+	ColorI new_color = ColorI();
+	{
+		int r, g, b, a;
+		sscanf(x__new_color, "%d %d %d %d ", &r, &g, &b, &a);
+		new_color.red = (unsigned short)r;
+		new_color.green = (unsigned short)g;
+		new_color.blue = (unsigned short)b;
+		new_color.alpha = (unsigned short)a;
+	}
 {
 	object->setFogColor(new_color);
 }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogColorF(char * x__object, char * x__new_color)
 {
-VolumetricFog* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-ColorF new_color = ColorF();
-sscanf(x__new_color,"%f %f %f %f",&new_color.red,&new_color.green,&new_color.blue,&new_color.alpha);
-{
-	object->setFogColor(new_color);
-}
+	VolumetricFog* object; Sim::findObject(x__object, object);
+	if (!object)
+		return;
+	ColorF new_color = ColorF();
+	sscanf(x__new_color, "%f %f %f %f", &new_color.red, &new_color.green, &new_color.blue, &new_color.alpha);
+	{
+		object->setFogColor(new_color);
+	}
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogDensity(char * x__object, F32 new_density)
 {
-VolumetricFog* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->setFogDensity(new_density);
-}
+	VolumetricFog* object; Sim::findObject(x__object, object);
+	if (!object)
+		return;
+	{
+		object->setFogDensity(new_density);
+	}
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogModulation(char * x__object, F32 new_strenght, char * x__new_speed1, char * x__new_speed2)
 {
-VolumetricFog* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
+	VolumetricFog* object; Sim::findObject(x__object, object);
+	if (!object)
+		return;
 
-Point2F new_speed1 = Point2F();
-sscanf(x__new_speed1,"%f %f",&new_speed1.x,&new_speed1.y);
-Point2F new_speed2 = Point2F();
-sscanf(x__new_speed2,"%f %f",&new_speed2.x,&new_speed2.y);
-{
-	object->setFogModulation(new_strenght, new_speed1, new_speed2);
-}
+	Point2F new_speed1 = Point2F();
+	sscanf(x__new_speed1, "%f %f", &new_speed1.x, &new_speed1.y);
+	Point2F new_speed2 = Point2F();
+	sscanf(x__new_speed2, "%f %f", &new_speed2.x, &new_speed2.y);
+	{
+		object->setFogModulation(new_strenght, new_speed1, new_speed2);
+	}
 }
 //---------------END DNTC AUTO-GENERATED-----------//
 

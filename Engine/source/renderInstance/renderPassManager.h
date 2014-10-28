@@ -67,12 +67,20 @@ public:
 
 
 #if _MSC_VER < 1800
-   RenderInstType( const RenderInstType &type = Invalid ) 
-      :  mName( type.mName )
-   {
-   }
+	RenderInstType( const RenderInstType &type = Invalid ) 
+		:  mName( type.mName )
+	{
+	}
 #else
-	RenderInstType() {}
+	RenderInstType(const RenderInstType &type)
+	{
+		mName = type.mName;
+	}
+	RenderInstType()
+	{
+		const RenderInstType &type = Invalid;
+		mName = type.mName;
+	}
 #endif
 
    RenderInstType( const String &name ) 
