@@ -221,7 +221,7 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// ), saveDataFile( [path] ) )
         /// </summary>
         [MemberFunctionConsoleInteraction(true)]
-        public void saveDataFile(string path = "")
+        public void saveDataFile(string path = null)
         {
             m_ts.fn_Forest_saveDataFile(_ID, path);
         }

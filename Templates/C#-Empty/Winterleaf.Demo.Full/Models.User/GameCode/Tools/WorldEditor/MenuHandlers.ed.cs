@@ -322,7 +322,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 // Find all of the terrain files
                 omni.Util.initContainerTypeSearch(omni.uGlobal["$TypeMasks::TerrainObjectType"], false);
 
-                SimObject terrainObject;
+                TerrainBlock terrainObject;
                 while ((terrainObject = omni.Util.containerSearchNext(false)) != 0)
                     {
                     if (!omni.Util.isWriteableFileName(terrainObject["terrainFile"]))
@@ -438,7 +438,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                     string nterrainObject = omni.Util.containerSearchNext(false);
                     if (nterrainObject == "")
                         break;
-                    SimObject terrainObject = nterrainObject; //omni.Util.containerSearchNext(false);
+                    TerrainBlock terrainObject = nterrainObject; //omni.Util.containerSearchNext(false);
                     //if (terrainObject == null)
                     //    break;
 
@@ -473,7 +473,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                             }
                         }
 
-                    if (!terrainObject.save(newTerrainFile, false, ""))
+                    if (!terrainObject.save(newTerrainFile))
                         {
                         omni.Util._error("Failed to save '" + newTerrainFile + "'");
                         copyTerrainsFailed = true;
@@ -495,7 +495,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                     omni.Util.initContainerTypeSearch(omni.uGlobal["$TypeMasks::TerrainObjectType"], false);
                     for (int i = 0;; i++)
                         {
-                        SimObject terrainObject = omni.Util.containerSearchNext(false);
+                        TerrainBlock terrainObject = omni.Util.containerSearchNext(false);
                         if (terrainObject == null)
                             break;
 

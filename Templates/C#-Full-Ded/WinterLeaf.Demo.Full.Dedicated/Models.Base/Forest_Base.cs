@@ -201,7 +201,7 @@ pInvokes.m_ts.fn_Forest_regenCells(_ID);
 /// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
-public  void saveDataFile(string path = ""){
+public  void saveDataFile(string path = null){
 
 pInvokes.m_ts.fn_Forest_saveDataFile(_ID, path);
 }
