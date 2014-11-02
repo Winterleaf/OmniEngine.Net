@@ -29,11 +29,7 @@
 // size_t is needed to overload new
 // size_t tends to be OS and compiler specific and may need to 
 // be if/def'ed in the future
-#ifdef _M_X64
-typedef unsigned __int64 dsize_t;      
-#else
-typedef unsigned int  dsize_t;
-#endif
+typedef unsigned int  dsize_t;      
 
 
 /** Platform dependent file date-time structure.  The defination of this structure

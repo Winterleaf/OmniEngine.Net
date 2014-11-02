@@ -421,7 +421,7 @@ DefineEngineMethod(TCPObject, send, void, (const char *data),,
    object->send( (const U8*)data, dStrlen(data) );
 }
 
-DefineEngineMethod(TCPObject, listen, void, (int port),, 
+DefineEngineMethod(TCPObject, listen, void, (U32 port),, 
    "@brief Start listening on the specified port for connections.\n\n"
 
    "This method starts a listener which looks for incoming TCP connections to a port.  "
@@ -535,102 +535,3 @@ void processConnectedNotifyEvent( NetSocket sock, U32 state )
          break;
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnTCPObject_connect(char * x__object, char * x__address)
-{
-TCPObject* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* address = (const char*)x__address;
-{
-   object->connect(address);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnTCPObject_disconnect(char * x__object)
-{
-TCPObject* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->disconnect();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnTCPObject_listen(char * x__object, int port)
-{
-TCPObject* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->listen(U32(port));
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnTCPObject_send(char * x__object, char * x__data)
-{
-TCPObject* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* data = (const char*)x__data;
-{
-   object->send( (const U8*)data, dStrlen(data) );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

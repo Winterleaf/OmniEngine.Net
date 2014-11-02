@@ -55,11 +55,13 @@ void ShaderConstHandles::init( GFXShader *shader, CustomMaterial* mat /*=NULL*/ 
    mSpecularColorSC = shader->getShaderConstHandle(ShaderGenVars::specularColor);
    mSpecularPowerSC = shader->getShaderConstHandle(ShaderGenVars::specularPower);
    mSpecularStrengthSC = shader->getShaderConstHandle(ShaderGenVars::specularStrength);
+   //Sahara   
    mAccuScaleSC = shader->getShaderConstHandle("$accuScale");
    mAccuDirectionSC = shader->getShaderConstHandle("$accuDirection");
    mAccuStrengthSC = shader->getShaderConstHandle("$accuStrength");
    mAccuCoverageSC = shader->getShaderConstHandle("$accuCoverage");
    mAccuSpecularSC = shader->getShaderConstHandle("$accuSpecular");
+   //Sahara   
    mParallaxInfoSC = shader->getShaderConstHandle("$parallaxInfo");
    mFogDataSC = shader->getShaderConstHandle(ShaderGenVars::fogData);
    mFogColorSC = shader->getShaderConstHandle(ShaderGenVars::fogColor);
@@ -425,7 +427,7 @@ void ProcessedShaderMaterial::_determineFeatures(  U32 stageNum,
       if( mStages[stageNum].getTex( MFT_SpecularMap )->mHasTransparency )
          fd.features.addFeature( MFT_GlossMap );
    }
-
+   //Sahara
    if ( mMaterial->mAccuMapFilename[stageNum] != String::EmptyString) {
       fd.features.addFeature( MFT_AccuMap );
    }
@@ -450,7 +452,7 @@ void ProcessedShaderMaterial::_determineFeatures(  U32 stageNum,
       // now remove some features that are not compatible with this
       fd.features.removeFeature( MFT_UseInstancing );
    }
-
+   //Sahara
    // Without a base texture use the diffuse color
    // feature to ensure some sort of output.
    if (!fd.features[MFT_DiffuseMap])
@@ -1111,7 +1113,7 @@ void ProcessedShaderMaterial::_setShaderConstants(SceneRenderState * state, cons
          0.0f, 0.0f ); // TODO: Wrap mode flags?
       shaderConsts->setSafe(handles->mBumpAtlasTileSC, atlasTileParams);
    }
-
+   //Sahara
    if( handles->mAccuScaleSC->isValid() )
       shaderConsts->set( handles->mAccuScaleSC, mMaterial->mAccuScale[stageNum] );
    if( handles->mAccuDirectionSC->isValid() )
@@ -1122,6 +1124,7 @@ void ProcessedShaderMaterial::_setShaderConstants(SceneRenderState * state, cons
       shaderConsts->set( handles->mAccuCoverageSC, mMaterial->mAccuCoverage[stageNum] );
    if( handles->mAccuSpecularSC->isValid() )
       shaderConsts->set( handles->mAccuSpecularSC, mMaterial->mAccuSpecular[stageNum] );
+   //Sahara	  
 }
 
 bool ProcessedShaderMaterial::_hasCubemap(U32 pass)

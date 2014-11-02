@@ -394,7 +394,6 @@ SAMPLE_FUNC( const char* );
 //	Console Functions.
 //--------------------------------------------------------------------------------
 
-//ConsoleFunction( beginSampling, void, 2, 3, "(location, [backend]) -"
 DefineConsoleFunction( beginSampling, void, (const char * location, const char * backend), ("CSV"), "(location, [backend]) -"
 				"@brief Takes a string informing the backend where to store "
 				"sample data and optionally a name of the specific logging "
@@ -405,15 +404,10 @@ DefineConsoleFunction( beginSampling, void, (const char * location, const char *
 				"@endtsexample\n\n"
 				"@ingroup Rendering")
 {
-   //const char* location = argv[ 1 ];
-   //const char* backend = "CSV";
-   //if( argc > 2 )
-   //   backend = argv[ 2 ];
 
    beginSampling( location, backend );
 }
 
-//ConsoleFunction( stopSampling, void, 1, 1, "()"
 DefineConsoleFunction( stopSampling, void, (), , "()"
 				"@brief Stops the rendering sampler\n\n"
 				"@ingroup Rendering\n")
@@ -421,101 +415,11 @@ DefineConsoleFunction( stopSampling, void, (), , "()"
    stopSampling();
 }
 
-//ConsoleFunction( enableSamples, void, 2, 3, "(pattern, [state]) -"
 DefineConsoleFunction( enableSamples, void, (const char * pattern, bool state), (true), "(pattern, [state]) -"
 				"@brief Enable sampling for all keys that match the given name "
 				"pattern. Slashes are treated as separators.\n\n"
 				"@ingroup Rendering")
 {
-   //const char* pattern = argv[ 1 ];
-   //bool state = true;
-   //if( argc > 2 )
-   //   state = dAtob( argv[ 2 ] );
 
    Sampler::enableKeys( pattern, state );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_beginSampling(char * x__location, char * x__backend)
-{
-const char* location = (const char*)x__location;
-const char* backend = (const char*)x__backend;
-{
-            
-   beginSampling( location, backend );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_enableSamples(char * x__pattern, bool state)
-{
-const char* pattern = (const char*)x__pattern;
-
-{
-            
-   Sampler::enableKeys( pattern, state );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_stopSampling()
-{
-{
-   stopSampling();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

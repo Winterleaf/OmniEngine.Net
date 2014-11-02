@@ -23,19 +23,8 @@
 #ifndef _LEAPMOTIONFRAMESTORE_H_
 #define _LEAPMOTIONFRAMESTORE_H_
 
-#if defined (TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
 #include "platformWin32/platformWin32.h"
-#endif
-#if defined (TORQUE_OS_LINUX) || defined (TORQUE_OS_OPENBSD)
-#include "platformX86UNIX/platformX86UNIX.h"
-#endif
-#if defined (TORQUE_OS_MAC)
-#include "platformMac/platformMacCarb.h"
-#endif
-
-//Dushan - we need this
-#include "platform/types.h"
-#include <Leap.h>
+#include "Leap.h"
 
 class SimGroup;
 

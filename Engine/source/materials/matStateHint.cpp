@@ -28,7 +28,7 @@
 
 const MatStateHint MatStateHint::Default( "Default" );
 
-void MatStateHint::init( ProcessedMaterial *mat )
+void MatStateHint::init( const ProcessedMaterial *mat )
 {
    PROFILE_SCOPE( MatStateHint_init );
 

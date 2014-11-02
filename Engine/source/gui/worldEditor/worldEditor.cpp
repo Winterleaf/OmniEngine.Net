@@ -408,7 +408,6 @@ void WorldEditor::WorldEditorUndoAction::undo()
    mWorldEditor->mSelected->invalidateCentroid();
 
    // Let the script get a chance at it.
-   //Con::executef( mWorldEditor, "onWorldEditorUndo" );
    mWorldEditor->onWorldEditorUndo_callback();
 }
 
@@ -471,7 +470,7 @@ bool WorldEditor::pasteSelection( bool dropSel )
    SimGroup *missionGroup = NULL;   
    if( isMethod( "getNewObjectGroup" ) )
    {
-      const char* targetGroupName = this->getNewObjectGroup_callback();//     Con::executef( this, "getNewObjectGroup" );
+      const char* targetGroupName = this->getNewObjectGroup_callback();
       if( targetGroupName && targetGroupName[ 0 ] && !Sim::findObject( targetGroupName, missionGroup ) )
          Con::errorf( "WorldEditor::pasteSelection() - no SimGroup called '%s'", targetGroupName );
    }
@@ -503,7 +502,6 @@ bool WorldEditor::pasteSelection( bool dropSel )
       {         
          mSelected->addObject( obj );
 		 this->onSelect_callback(obj->getIdString());
-         //Con::executef( this, "onSelect", obj->getIdString() );
       }
    }
 
@@ -524,7 +522,6 @@ bool WorldEditor::pasteSelection( bool dropSel )
       SimObject *obj = NULL;
       if(mRedirectID)
          obj = Sim::findObject(mRedirectID);
-      //Con::executef(obj ? obj : this, "onClick", buf);
 	  if (obj)
 		  obj->onClick_callback(buf);
 	  else
@@ -567,7 +564,6 @@ void WorldEditor::makeActiveSelectionSet( WorldEditorSelection* selection )
          if( !newSelection || !newSelection->objInSet( *iter ) )
          {
 		    this->onUnSelect_callback(( *iter )->getIdString());
-            //Con::executef( this, "onUnselect", ( *iter )->getIdString() );
             markAsSelected( *iter, false );
          }
             
@@ -584,7 +580,6 @@ void WorldEditor::makeActiveSelectionSet( WorldEditorSelection* selection )
          if( !oldSelection || !oldSelection->objInSet( *iter ) )
          {
             markAsSelected( *iter, true );
-            //Con::executef( this, "onSelect", ( *iter )->getIdString() );
 			this->onSelect_callback(( *iter )->getIdString());
          }
             
@@ -596,9 +591,6 @@ void WorldEditor::makeActiveSelectionSet( WorldEditorSelection* selection )
    mSelected = newSelection;
    
    this->onSelectionSetChanged_callback();
-
-   //if( isMethod( "onSelectionSetChanged" ) )
-   //   Con::executef( this, "onSelectionSetChanged" );
 }
 
 //------------------------------------------------------------------------------
@@ -2008,7 +2000,6 @@ void WorldEditor::on3DMouseDown(const Gui3DMouseEvent & event)
          clearSelection();
 
       if(mDragSelected->size() > 0)
-         //Con::executef(this, "onStartSelection");
 			onStartSelection_callback();
 
       mDragSelect = true;
@@ -2059,13 +2050,11 @@ void WorldEditor::on3DMouseUp( const Gui3DMouseEvent &event )
             mSelected->addObject( ( *mDragSelected )[i] );                       
                   
 		 this->onMultiSelect_callback( mDragSelected->getIdString(), addToSelection ? "1" : "0" );
-		 //Con::executef( this, "onMultiSelect", mDragSelected->getIdString(), addToSelection ? "1" : "0" );
          mDragSelected->clear();
 
          SimObject *obj = NULL;
          if ( mRedirectID )
             obj = Sim::findObject( mRedirectID );
-         //Con::executef( obj ? obj : this, "onClick", ( *mSelected )[ 0 ]->getIdString() );
 		 if (obj)
 			 obj->onClick_callback(( *mSelected )[ 0 ]->getIdString() );
 		 else
@@ -2073,20 +2062,17 @@ void WorldEditor::on3DMouseUp( const Gui3DMouseEvent &event )
       }
 
       if(mDragSelected->size() > 0)
-         //Con::executef(this, "onEndSelection");
 			onEndSelection_callback();
 
       if ( mDragSelected->size() == 1 )
       {         
          mSelected->addObject( ( *mDragSelected )[0] );    
 		 this->onSelect_callback(( *mDragSelected )[ 0 ]->getIdString() );
-         //Con::executef( this, "onSelect", ( *mDragSelected )[ 0 ]->getIdString() );
          mDragSelected->clear();
          
          SimObject *obj = NULL;
          if ( mRedirectID )
             obj = Sim::findObject( mRedirectID );
-         //Con::executef( obj ? obj : this, "onClick", ( *mSelected )[ 0 ]->getIdString() );
 		 if (obj)
 			 obj->onClick_callback(( *mSelected )[ 0 ]->getIdString());
 		 else
@@ -2108,14 +2094,12 @@ void WorldEditor::on3DMouseUp( const Gui3DMouseEvent &event )
                mSelected->removeObject( mPossibleHitObject );
                mSelected->storeCurrentCentroid();
 			   this->onUnSelect_callback(mPossibleHitObject->getIdString());
-               //Con::executef( this, "onUnSelect", mPossibleHitObject->getIdString() );
             }
             else
             {
                mSelected->addObject( mPossibleHitObject );
                mSelected->storeCurrentCentroid();
 			   this->onSelect_callback(mPossibleHitObject->getIdString() );
-               //Con::executef( this, "onSelect", mPossibleHitObject->getIdString() );
             }
          }
          else
@@ -2130,13 +2114,11 @@ void WorldEditor::on3DMouseUp( const Gui3DMouseEvent &event )
                // we go along.
                for( S32 i = mSelected->size() - 1; i >= 0; -- i )
 				  this->onUnSelect_callback(( *mSelected )[ i ]->getIdString());
-                  //Con::executef( this, "onUnSelect", ( *mSelected )[ i ]->getIdString() );
                
                mSelected->clear();
                mSelected->addObject( mPossibleHitObject );
                mSelected->storeCurrentCentroid();
 			   this->onSelect_callback( mPossibleHitObject->getIdString() );
-               //Con::executef( this, "onSelect", mPossibleHitObject->getIdString() );
             }
          }
       }
@@ -2165,7 +2147,6 @@ void WorldEditor::on3DMouseUp( const Gui3DMouseEvent &event )
          SimObject *obj = NULL;
          if ( mRedirectID )
             obj = Sim::findObject( mRedirectID );
-         //Con::executef( obj ? obj : this, "onClick", buf );
 		 if (obj)
 			 obj->onClick_callback(buf);
 		 else
@@ -2178,7 +2159,6 @@ void WorldEditor::on3DMouseUp( const Gui3DMouseEvent &event )
    if ( bool(mSelected) && mSelected->hasCentroidChanged() )
    {
       this->onSelectionCentroidChanged_callback();
-      //Con::executef( this, "onSelectionCentroidChanged");
    }
 
    if ( mMouseDragged && bool(mSelected) && mSelected->size() )
@@ -2381,8 +2361,6 @@ void WorldEditor::updateGuiInfo()
       obj = Sim::findObject( mRedirectID );
 
    char buf[] = "";
-   //Con::executef( obj ? obj : this, "onGuiUpdate", buf );
-
    if(obj != nullptr)
    { obj->onGuiUpdate_callback(buf); }
    else
@@ -2850,9 +2828,8 @@ void WorldEditor::clearIgnoreList()
 void WorldEditor::setObjectsUseBoxCenter(bool state)
 {
    mObjectsUseBoxCenter = state;
-   if( getActiveSelectionSet())// && isMethod( "onSelectionCentroidChanged" ) )
+   if( getActiveSelectionSet())
 	  this->onSelectionCentroidChanged_callback();
-      //Con::executef( this, "onSelectionCentroidChanged" );
 }
 
 void WorldEditor::clearSelection()
@@ -2866,9 +2843,7 @@ void WorldEditor::clearSelection()
    // we go along.
    for( S32 i = mSelected->size() - 1; i >= 0; -- i )
 	  this->onUnSelect_callback(( *mSelected )[ i ]->getIdString());
-      //Con::executef( this, "onUnSelect", ( *mSelected )[ i ]->getIdString() );
    this->onClearSelection_callback();
-   //Con::executef(this, "onClearSelection");
    mSelected->clear();
 }
 
@@ -2884,7 +2859,6 @@ void WorldEditor::selectObject( SimObject *obj )
    {
       mSelected->addObject( obj );	
 	  this->onSelect_callback(obj->getIdString() );
-      //Con::executef( this, "onSelect", obj->getIdString() );
    }
 }
 
@@ -2905,7 +2879,6 @@ void WorldEditor::unselectObject( SimObject *obj )
    {
       mSelected->removeObject( obj );	
 	  this->onUnSelect_callback(obj->getIdString());
-      //Con::executef( this, "onUnSelect", obj->getIdString() );
    }
 }
 
@@ -2983,7 +2956,6 @@ void WorldEditor::dropCurrentSelection( bool skipUndo )
 
    if ( mSelected->hasCentroidChanged() )
 	  this->onSelectionCentroidChanged_callback();
-      //Con::executef( this, "onSelectionCentroidChanged" );
 }
 
 void WorldEditor::redirectConsole( S32 objID )
@@ -3210,7 +3182,6 @@ void WorldEditor::transformSelection(bool position, Point3F& p, bool relativePos
    if(mSelected->hasCentroidChanged())
    {
       this->onSelectionCentroidChanged_callback();
-      //Con::executef( this, "onSelectionCentroidChanged");
    }
 
    SimObject * obj = 0;
@@ -3256,19 +3227,16 @@ ConsoleMethod( WorldEditor, ignoreObjClass, void, 3, 0, "(string class_name, ...
 	object->ignoreObjClass(argc, argv);
 }
 
-//ConsoleMethod( WorldEditor, clearIgnoreList, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, clearIgnoreList, void, (), , "")
 {
 	object->clearIgnoreList();
 }
 
-//ConsoleMethod( WorldEditor, clearSelection, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, clearSelection, void, (), , "")
 {
 	object->clearSelection();
 }
 
-//ConsoleMethod( WorldEditor, getActiveSelection, S32, 2, 2, "() - Return the currently active WorldEditorSelection object." )
 DefineConsoleMethod( WorldEditor, getActiveSelection, S32, (), , "() - Return the currently active WorldEditorSelection object." )
 {
    if( !object->getActiveSelectionSet() )
@@ -3277,37 +3245,22 @@ DefineConsoleMethod( WorldEditor, getActiveSelection, S32, (), , "() - Return th
    return object->getActiveSelectionSet()->getId();
 }
 
-//ConsoleMethod( WorldEditor, setActiveSelection, void, 3, 3, "( id set ) - Set the currently active WorldEditorSelection object." )
 DefineConsoleMethod( WorldEditor, setActiveSelection, void, ( WorldEditorSelection* selection), , "( id set ) - Set the currently active WorldEditorSelection object." )
 {
-   //WorldEditorSelection* selection;
-   ////if( !Sim::findObject( argv[ 2 ], selection ) )
-   //if( !Sim::findObject( objName, selection ) )
-   //{
-   //   //Con::errorf( "WorldEditor::setActiveSelectionSet - no selection set '%s'", argv[ 2 ] );
-   //   Con::errorf( "WorldEditor::setActiveSelectionSet - no selection set '%s'", objName );
-   //   return;
-   //}
-   //
 	if (selection)
    object->makeActiveSelectionSet( selection );
 }
 
-//ConsoleMethod( WorldEditor, selectObject, void, 3, 3, "(SimObject obj)")
 DefineConsoleMethod( WorldEditor, selectObject, void, (const char * objName), , "(SimObject obj)")
 {
-	//object->selectObject(argv[2]);
 	object->selectObject(objName);
 }
 
-//ConsoleMethod( WorldEditor, unselectObject, void, 3, 3, "(SimObject obj)")
 DefineConsoleMethod( WorldEditor, unselectObject, void, (const char * objName), , "(SimObject obj)")
 {
-	//object->unselectObject(argv[2]);
 	object->unselectObject(objName);
 }
 
-//ConsoleMethod( WorldEditor, invalidateSelectionCentroid, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, invalidateSelectionCentroid, void, (), , "")
 {
    WorldEditor::Selection* sel = object->getActiveSelectionSet();
@@ -3315,16 +3268,13 @@ DefineConsoleMethod( WorldEditor, invalidateSelectionCentroid, void, (), , "")
 	   sel->invalidateCentroid();
 }
 
-//ConsoleMethod( WorldEditor, getSelectionSize, S32, 2, 2, "() - Return the number of objects currently selected in the editor.")
 DefineConsoleMethod( WorldEditor, getSelectionSize, S32, (), , "() - Return the number of objects currently selected in the editor.")
 {
 	return object->getSelectionSize();
 }
 
-//ConsoleMethod( WorldEditor, getSelectedObject, S32, 3, 3, "(int index)")
 DefineConsoleMethod( WorldEditor, getSelectedObject, S32, (S32 index), , "(int index)")
 {
-   // S32 index = dAtoi(argv[2]);
    if(index < 0 || index >= object->getSelectionSize())
    {
       Con::errorf(ConsoleLogEntry::General, "WorldEditor::getSelectedObject: invalid object index");
@@ -3334,34 +3284,23 @@ DefineConsoleMethod( WorldEditor, getSelectedObject, S32, (S32 index), , "(int i
    return(object->getSelectObject(index));
 }
 
-//ConsoleMethod( WorldEditor, getSelectionRadius, F32, 2, 2, "")
 DefineConsoleMethod( WorldEditor, getSelectionRadius, F32, (), , "")
 {
 	return object->getSelectionRadius();
 }
 
-//ConsoleMethod( WorldEditor, getSelectionCentroid, const char *, 2, 2, "")
 DefineConsoleMethod( WorldEditor, getSelectionCentroid, const char *, (), , "")
 {
 	return object->getSelectionCentroidText();
 }
 
-//ConsoleMethod( WorldEditor, getSelectionExtent, const char *, 2, 2, "")
 DefineConsoleMethod( WorldEditor, getSelectionExtent, Point3F, (), , "")
 {
-   //Point3F bounds = 
-		return object->getSelectionExtent();
-   //char * ret = Con::getReturnBuffer(100);
-   //dSprintf(ret, 100, "%g %g %g", bounds.x, bounds.y, bounds.z);
-   //return ret;	
+   return object->getSelectionExtent();
 }
 
-//ConsoleMethod( WorldEditor, dropSelection, void, 2, 3, "( bool skipUndo = false )")
 DefineConsoleMethod( WorldEditor, dropSelection, void, ( bool skipUndo ), (false), "( bool skipUndo = false )")
 {
-   //bool skipUndo = false;
-   //if ( argc > 2 )
-   //   skipUndo = dAtob( argv[2] );
 
 	object->dropCurrentSelection( skipUndo );
 }
@@ -3376,19 +3315,16 @@ void WorldEditor::copyCurrentSelection()
 	copySelection(mSelected);	
 }
 
-//ConsoleMethod( WorldEditor, cutSelection, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, cutSelection, void, (),, "")
 {
    object->cutCurrentSelection();
 }
 
-//ConsoleMethod( WorldEditor, copySelection, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, copySelection, void, (),, "")
 {
    object->copyCurrentSelection();
 }
 
-//ConsoleMethod( WorldEditor, pasteSelection, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, pasteSelection, void, (),, "")
 {
    object->pasteSelection();
@@ -3399,79 +3335,57 @@ bool WorldEditor::canPasteSelection()
 	return mCopyBuffer.empty() != true;
 }
 
-//ConsoleMethod( WorldEditor, canPasteSelection, bool, 2, 2, "")
 DefineConsoleMethod( WorldEditor, canPasteSelection, bool, (),, "")
 {
 	return object->canPasteSelection();
 }
 
-//ConsoleMethod( WorldEditor, hideObject, void, 4, 4, "(Object obj, bool hide)")
 DefineConsoleMethod( WorldEditor, hideObject, void, (SceneObject *obj, bool hide), , "(Object obj, bool hide)")
 {
-   //SceneObject *obj;
-   ////if ( !Sim::findObject( argv[2], obj ) )
-   //if ( !Sim::findObject( objName, obj ) )
-   //   return;
 
-   //object->hideObject(obj, dAtob(argv[3]));
 	if (obj)
    object->hideObject(obj, hide);
 }
 
-//ConsoleMethod( WorldEditor, hideSelection, void, 3, 3, "(bool hide)")
 DefineConsoleMethod( WorldEditor, hideSelection, void, (bool hide), , "(bool hide)")
 {
-   //object->hideSelection(dAtob(argv[2]));
    object->hideSelection(hide);
 }
 
-//ConsoleMethod( WorldEditor, lockSelection, void, 3, 3, "(bool lock)")
 DefineConsoleMethod( WorldEditor, lockSelection, void, (bool lock), , "(bool lock)")
 {
-   //object->lockSelection(dAtob(argv[2]));
    object->lockSelection(lock);
 }
 
-//ConsoleMethod( WorldEditor, alignByBounds, void, 3, 3, "(int boundsAxis)"
 DefineConsoleMethod( WorldEditor, alignByBounds, void, (S32 boundsAxis), , "(int boundsAxis)"
               "Align all selected objects against the given bounds axis.")
 {
-	//if(!object->alignByBounds(dAtoi(argv[2])))
 	if(!object->alignByBounds(boundsAxis))
-		//Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByBounds: invalid bounds axis '%s'", argv[2]));
 		Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByBounds: invalid bounds axis '%s'", boundsAxis));
 }
 
-//ConsoleMethod( WorldEditor, alignByAxis, void, 3, 3, "(int axis)"
 DefineConsoleMethod( WorldEditor, alignByAxis, void, (S32 boundsAxis), , "(int axis)"
               "Align all selected objects along the given axis.")
 {
-	//if(!object->alignByAxis(dAtoi(argv[2])))
 	if(!object->alignByAxis(boundsAxis))
-		//Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByAxis: invalid axis '%s'", argv[2]));
 		Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByAxis: invalid axis '%s'", boundsAxis));
 }
 
-//ConsoleMethod( WorldEditor, resetSelectedRotation, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, resetSelectedRotation, void, (),, "")
 {
 	object->resetSelectedRotation();
 }
 
-//ConsoleMethod( WorldEditor, resetSelectedScale, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, resetSelectedScale, void, (),, "")
 {
 	object->resetSelectedScale();
 }
 
-//ConsoleMethod( WorldEditor, redirectConsole, void, 3, 3, "( int objID )")
 DefineConsoleMethod( WorldEditor, redirectConsole, void, (S32 objID), , "( int objID )")
 {
-   //object->redirectConsole(dAtoi(argv[2]));
    object->redirectConsole(objID);
 }
 
-//ConsoleMethod( WorldEditor, addUndoState, void, 2, 2, "")
 DefineConsoleMethod( WorldEditor, addUndoState, void, (),, "")
 {
 	object->addUndoState();
@@ -3479,33 +3393,27 @@ DefineConsoleMethod( WorldEditor, addUndoState, void, (),, "")
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( WorldEditor, getSoftSnap, bool, 2, 2, "getSoftSnap()\n"
 DefineConsoleMethod( WorldEditor, getSoftSnap, bool, (),, "getSoftSnap()\n"
               "Is soft snapping always on?")
 {
 	return object->mSoftSnap;
 }
 
-//ConsoleMethod( WorldEditor, setSoftSnap, void, 3, 3, "setSoftSnap(bool)\n"
 DefineConsoleMethod( WorldEditor, setSoftSnap, void, (bool enable), , "setSoftSnap(bool)\n"
               "Allow soft snapping all of the time.")
 {
-	//object->mSoftSnap = dAtob(argv[2]);
 	object->mSoftSnap = enable;
 }
 
-//ConsoleMethod( WorldEditor, getSoftSnapSize, F32, 2, 2, "getSoftSnapSize()\n"
 DefineConsoleMethod( WorldEditor, getSoftSnapSize, F32, (),, "getSoftSnapSize()\n"
               "Get the absolute size to trigger a soft snap.")
 {
 	return object->mSoftSnapSize;
 }
 
-//ConsoleMethod( WorldEditor, setSoftSnapSize, void, 3, 3, "setSoftSnapSize(F32)\n"
 DefineConsoleMethod( WorldEditor, setSoftSnapSize, void, (F32 size), , "setSoftSnapSize(F32)\n"
               "Set the absolute size to trigger a soft snap.")
 {
-	//object->mSoftSnapSize = dAtof(argv[2]);
 	object->mSoftSnapSize = size;
 }
 
@@ -3521,50 +3429,39 @@ DefineEngineMethod( WorldEditor, setSoftSnapAlignment, void, ( WorldEditor::Alig
    object->mSoftSnapAlignment = type;
 }
 
-//ConsoleMethod( WorldEditor, softSnapSizeByBounds, void, 3, 3, "softSnapSizeByBounds(bool)\n"
 DefineConsoleMethod( WorldEditor, softSnapSizeByBounds, void, (bool enable), , "softSnapSizeByBounds(bool)\n"
               "Use selection bounds size as soft snap bounds.")
 {
-	//object->mSoftSnapSizeByBounds = dAtob(argv[2]);
 	object->mSoftSnapSizeByBounds = enable;
 }
 
-//ConsoleMethod( WorldEditor, getSoftSnapBackfaceTolerance, F32, 2, 2, "getSoftSnapBackfaceTolerance()\n"
 DefineConsoleMethod( WorldEditor, getSoftSnapBackfaceTolerance, F32, (), , "getSoftSnapBackfaceTolerance()\n"
               "The fraction of the soft snap radius that backfaces may be included.")
 {
 	return object->mSoftSnapBackfaceTolerance;
 }
 
-//ConsoleMethod( WorldEditor, setSoftSnapBackfaceTolerance, void, 3, 3, "setSoftSnapBackfaceTolerance(F32 with range of 0..1)\n"
 DefineConsoleMethod( WorldEditor, setSoftSnapBackfaceTolerance, void, (F32 range), , "setSoftSnapBackfaceTolerance(F32 with range of 0..1)\n"
               "The fraction of the soft snap radius that backfaces may be included.")
 {
-	//object->mSoftSnapBackfaceTolerance = dAtof(argv[2]);
 	object->mSoftSnapBackfaceTolerance = range;
 }
 
-//ConsoleMethod( WorldEditor, softSnapRender, void, 3, 3, "softSnapRender(bool)\n"
 DefineConsoleMethod( WorldEditor, softSnapRender, void, (bool enable), , "softSnapRender(bool)\n"
               "Render the soft snapping bounds.")
 {
-	//object->mSoftSnapRender = dAtob(argv[2]);
 	object->mSoftSnapRender = enable;
 }
 
-//ConsoleMethod( WorldEditor, softSnapRenderTriangle, void, 3, 3, "softSnapRenderTriangle(bool)\n"
 DefineConsoleMethod( WorldEditor, softSnapRenderTriangle, void, (bool enable), , "softSnapRenderTriangle(bool)\n"
               "Render the soft snapped triangle.")
 {
-	//object->mSoftSnapRenderTriangle = dAtob(argv[2]);
 	object->mSoftSnapRenderTriangle = enable;
 }
 
-//ConsoleMethod( WorldEditor, softSnapDebugRender, void, 3, 3, "softSnapDebugRender(bool)\n"
 DefineConsoleMethod( WorldEditor, softSnapDebugRender, void, (bool enable), , "softSnapDebugRender(bool)\n"
               "Toggle soft snapping debug rendering.")
 {
-	//object->mSoftSnapDebugRender = dAtob(argv[2]);
 	object->mSoftSnapDebugRender = enable;
 }
 
@@ -3580,7 +3477,6 @@ DefineEngineMethod( WorldEditor, setTerrainSnapAlignment, void, ( WorldEditor::A
    object->mTerrainSnapAlignment = alignment;
 }
 
-//ConsoleMethod( WorldEditor, transformSelection, void, 13, 13, "transformSelection(...)\n"
 DefineConsoleMethod( WorldEditor, transformSelection, void, 
                    ( bool position,
                      Point3F point,
@@ -3595,25 +3491,6 @@ DefineConsoleMethod( WorldEditor, transformSelection, void,
                      bool sLocal ), , "transformSelection(...)\n"
               "Transform selection by given parameters.")
 {
-   //bool position = dAtob(argv[2]);
-   //Point3F p(0.0f, 0.0f, 0.0f);
-   //dSscanf(argv[3], "%g %g %g", &p.x, &p.y, &p.z);
-   //dSscanf(point, "%g %g %g", &p.x, &p.y, &p.z);
-   //bool relativePos = dAtob(argv[4]);
-
-   //bool rotate = dAtob(argv[5]);
-   //EulerF r(0.0f, 0.0f, 0.0f);
-   //dSscanf(argv[6], "%g %g %g", &r.x, &r.y, &r.z);
-   //dSscanf(rotation, "%g %g %g", &r.x, &r.y, &r.z);
-   //bool relativeRot = dAtob(argv[7]);
-   //bool rotLocal = dAtob(argv[8]);
-
-   //S32 scaleType = dAtoi(argv[9]);
-   //Point3F s(1.0f, 1.0f, 1.0f);
-   //dSscanf(argv[10], "%g %g %g", &s.x, &s.y, &s.z);
-   //dSscanf(scale, "%g %g %g", &s.x, &s.y, &s.z);
-   //bool sRelative = dAtob(argv[11]);
-   //bool sLocal = dAtob(argv[12]);
 
    object->transformSelection(position, point, relativePos, rotate, rotation, relativeRot, rotLocal, scaleType, scale, sRelative, sLocal);
 }
@@ -3688,11 +3565,9 @@ void WorldEditor::colladaExportSelection( const String &path )
 #endif
 }
 
-//ConsoleMethod( WorldEditor, colladaExportSelection, void, 3, 3, 
 DefineConsoleMethod( WorldEditor, colladaExportSelection, void, (const char * path), , 
               "( String path ) - Export the combined geometry of all selected objects to the specified path in collada format." )
 {  
-   //object->colladaExportSelection( argv[2] );
    object->colladaExportSelection( path );
 }
 
@@ -3844,32 +3719,18 @@ void WorldEditor::explodeSelectedPrefab()
    setDirty();
 }
 
-//ConsoleMethod( WorldEditor, makeSelectionPrefab, void, 3, 3, "( string filename ) - Save selected objects to a .prefab file and replace them in the level with a Prefab object." )
 DefineConsoleMethod( WorldEditor, makeSelectionPrefab, void, ( const char * filename ), , "( string filename ) - Save selected objects to a .prefab file and replace them in the level with a Prefab object." )
 {
-   //object->makeSelectionPrefab( argv[2] );
    object->makeSelectionPrefab( filename );
 }
 
-//ConsoleMethod( WorldEditor, explodeSelectedPrefab, void, 2, 2, "() - Replace selected Prefab objects with a SimGroup containing all children objects defined in the .prefab." )
 DefineConsoleMethod( WorldEditor, explodeSelectedPrefab, void, (),, "() - Replace selected Prefab objects with a SimGroup containing all children objects defined in the .prefab." )
 {
    object->explodeSelectedPrefab();
 }
 
-//ConsoleMethod( WorldEditor, mountRelative, void, 4, 4, "( Object A, Object B )" )
 DefineConsoleMethod( WorldEditor, mountRelative, void, ( SceneObject *objA, SceneObject *objB ), , "( Object A, Object B )" )
 {
-   //SceneObject *objA;
-   ////if ( !Sim::findObject( argv[2], objA ) )
-   //if ( !Sim::findObject( A, objA ) )
-   //   return;
-
-   //SceneObject *objB;
-   ////if ( !Sim::findObject( argv[3], objB ) )
-   //if ( !Sim::findObject( B, objB ) )
-   //   return;
-
 	if (!objA || !objB)
 		return;
 
@@ -4099,888 +3960,3 @@ DefineEngineMethod( WorldEditor, createConvexShapeFrom, ConvexShape*, ( SceneObj
 
    return shape;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_addUndoState(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->addUndoState();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_alignByAxis(char * x__object, S32 boundsAxis)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		if(!object->alignByAxis(boundsAxis))
-				Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByAxis: invalid axis '%s'", boundsAxis));
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_alignByBounds(char * x__object, S32 boundsAxis)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		if(!object->alignByBounds(boundsAxis))
-				Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByBounds: invalid bounds axis '%s'", boundsAxis));
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_canPasteSelection(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-	{wle_returnObject =object->canPasteSelection();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_clearIgnoreList(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->clearIgnoreList();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_clearSelection(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->clearSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_colladaExportSelection(char * x__object, char * x__path)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* path = (const char*)x__path;
-{  
-      object->colladaExportSelection( path );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_copySelection(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->copyCurrentSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_cutSelection(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->cutCurrentSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_dropSelection(char * x__object, bool skipUndo)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-         
-	object->dropCurrentSelection( skipUndo );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_explodeSelectedPrefab(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->explodeSelectedPrefab();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getActiveSelection(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if( !object->getActiveSelectionSet() )
-     return (S32)( 0);
-      
-  return (S32)( object->getActiveSelectionSet()->getId());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getSelectedObject(char * x__object, S32 index)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-      if(index < 0 || index >= object->getSelectionSize())
-   {
-      Con::errorf(ConsoleLogEntry::General, "WorldEditor::getSelectedObject: invalid object index");
-     return (S32)((-1));
-   }
-  return (S32)((object->getSelectObject(index)));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_getSelectionCentroid(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-	{wle_returnObject =object->getSelectionCentroidText();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_getSelectionExtent(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-   		{wle_returnObject =object->getSelectionExtent();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-         }
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_WorldEditor_getSelectionRadius(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-	return object->getSelectionRadius();
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getSelectionSize(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	return object->getSelectionSize();
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getSoftSnap(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-	{wle_returnObject =object->mSoftSnap;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_WorldEditor_getSoftSnapBackfaceTolerance(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-	return object->mSoftSnapBackfaceTolerance;
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_WorldEditor_getSoftSnapSize(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-	return object->mSoftSnapSize;
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_hideObject(char * x__object, char * x__obj, bool hide)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SceneObject* obj; Sim::findObject(x__obj, obj ); 
-{
-            
-   	if (obj)
-   object->hideObject(obj, hide);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_hideSelection(char * x__object, bool hide)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->hideSelection(hide);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_invalidateSelectionCentroid(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   WorldEditor::Selection* sel = object->getActiveSelectionSet();
-   if(sel)
-	   sel->invalidateCentroid();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_lockSelection(char * x__object, bool lock)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->lockSelection(lock);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_makeSelectionPrefab(char * x__object, char * x__filename)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* filename = (const char*)x__filename;
-{
-      object->makeSelectionPrefab( filename );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_mountRelative(char * x__object, char * x__objA, char * x__objB)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SceneObject* objA; Sim::findObject(x__objA, objA ); 
-SceneObject* objB; Sim::findObject(x__objB, objB ); 
-{
-            
-            
-	if (!objA || !objB)
-		return;
-   MatrixF xfm = objB->getTransform();   
-   MatrixF mat = objA->getWorldTransform();
-   xfm.mul( mat );
-   
-   Point3F pos = objB->getPosition();
-   MatrixF temp = objA->getTransform();
-   temp.scale( objA->getScale() );
-   temp.inverse();
-   temp.mulP( pos );
-   
-   xfm.setPosition( pos );
-   
-   objA->mountObject( objB, -1, xfm );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_pasteSelection(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->pasteSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_redirectConsole(char * x__object, S32 objID)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->redirectConsole(objID);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_resetSelectedRotation(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->resetSelectedRotation();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_resetSelectedScale(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->resetSelectedScale();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_selectObject(char * x__object, char * x__objName)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* objName = (const char*)x__objName;
-{
-		object->selectObject(objName);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setActiveSelection(char * x__object, char * x__selection)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-WorldEditorSelection* selection; Sim::findObject(x__selection, selection ); 
-{
-                           	if (selection)
-   object->makeActiveSelectionSet( selection );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setSoftSnap(char * x__object, bool enable)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnap = enable;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setSoftSnapBackfaceTolerance(char * x__object, F32 range)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnapBackfaceTolerance = range;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setSoftSnapSize(char * x__object, F32 size)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnapSize = size;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapDebugRender(char * x__object, bool enable)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnapDebugRender = enable;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapRender(char * x__object, bool enable)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnapRender = enable;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapRenderTriangle(char * x__object, bool enable)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnapRenderTriangle = enable;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapSizeByBounds(char * x__object, bool enable)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->mSoftSnapSizeByBounds = enable;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_transformSelection(char * x__object, bool position, char * x__point, bool relativePos, bool rotate, char * x__rotation, bool relativeRot, bool rotLocal, S32 scaleType, char * x__scale, bool sRelative, bool sLocal)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-Point3F point = Point3F();
-sscanf(x__point,"%f %f %f",&point.x,&point.y,&point.z);
-
-Point3F rotation = Point3F();
-sscanf(x__rotation,"%f %f %f",&rotation.x,&rotation.y,&rotation.z);
-
-
-Point3F scale = Point3F();
-sscanf(x__scale,"%f %f %f",&scale.x,&scale.y,&scale.z);
-
-{
-               
-                  
-                  
-   object->transformSelection(position, point, relativePos, rotate, rotation, relativeRot, rotLocal, scaleType, scale, sRelative, sLocal);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_unselectObject(char * x__object, char * x__objName)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* objName = (const char*)x__objName;
-{
-		object->unselectObject(objName);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_createConvexShapeFrom(char * x__object, char * x__polyObject,  char* retval)
-{
-dSprintf(retval,1024,"");
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SceneObject* polyObject; Sim::findObject(x__polyObject, polyObject ); 
-ConvexShape* wle_returnObject;
-{
-   if( !polyObject )
-   {
-      Con::errorf( "WorldEditor::createConvexShapeFrom - Invalid object" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   IScenePolyhedralObject* iPoly = dynamic_cast< IScenePolyhedralObject* >( polyObject );
-   if( !iPoly )
-   {
-      Con::errorf( "WorldEditor::createConvexShapeFrom - Not a polyhedral object!" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   
-   AnyPolyhedron polyhedron = iPoly->ToAnyPolyhedron();
-   const U32 numPlanes = polyhedron.getNumPlanes();
-   if( !numPlanes )
-   {
-      Con::errorf( "WorldEditor::createConvexShapeFrom - Object returned no valid polyhedron" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   
-   ConvexShape* shape = new ConvexShape();
-   
-   for( U32 i = 0; i < numPlanes; ++ i )
-   {
-      const PlaneF& plane = polyhedron.getPlanes()[ i ];
-            
-      Point3F normal = plane.getNormal();
-      normal.neg();
-                  
-      MatrixF orientation( true );
-      MathUtils::getMatrixFromUpVector( normal, &orientation );
-      const QuatF quat( orientation );
-      
-      const Point3F position = plane.getPosition();
-      
-      char buffer[ 1024 ];
-      dSprintf( buffer, sizeof( buffer ), "%g %g %g %g %g %g %g",
-         quat.x, quat.y, quat.z, quat.w,
-         position.x, position.y, position.z
-      );
-      
-      static StringTableEntry sSurface = StringTable->insert( "surface" );
-      shape->setDataField( sSurface, NULL, buffer );
-   }
-   
-   shape->setTransform( polyObject->getTransform() );
-   shape->setScale( polyObject->getScale() );
-   
-   if( !shape->registerObject() )
-   {
-      Con::errorf( "WorldEditor::createConvexShapeFrom - Could not register ConvexShape!" );
-      delete shape;
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   {wle_returnObject =shape;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_createPolyhedralObject(char * x__object, char * x__className, char * x__geometryProvider,  char* retval)
-{
-dSprintf(retval,1024,"");
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* className = (const char*)x__className;
-SceneObject* geometryProvider; Sim::findObject(x__geometryProvider, geometryProvider ); 
-SceneObject* wle_returnObject;
-{
-   if( !geometryProvider )
-   {
-      Con::errorf( "WorldEditor::createPolyhedralObject - Invalid geometry provider!" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   if( !className || !className[ 0 ] )
-   {
-      Con::errorf( "WorldEditor::createPolyhedralObject - Invalid class name" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   AbstractClassRep* classRep = AbstractClassRep::findClassRep( className );
-   if( !classRep )
-   {
-      Con::errorf( "WorldEditor::createPolyhedralObject - No such class: %s", className );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-      
-   MatrixF savedTransform = geometryProvider->getTransform();
-   Point3F savedScale = geometryProvider->getScale();
-   geometryProvider->setTransform( MatrixF::Identity );
-   geometryProvider->setScale( Point3F( 1.f, 1.f, 1.f ) );
-      
-   OptimizedPolyList polyList;
-   if( !geometryProvider->buildPolyList( PLC_Export, &polyList, geometryProvider->getObjBox(), geometryProvider->getObjBox().getBoundingSphere() ) )
-   {
-      Con::errorf( "WorldEditor::createPolyhedralObject - Failed to extract geometry!" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   
-   geometryProvider->setTransform( savedTransform );
-   geometryProvider->setScale( savedScale );
-   
-   SceneObject* object = dynamic_cast< SceneObject* >( classRep->create() );
-   if( !Object )
-   {
-      Con::errorf( "WorldEditor::createPolyhedralObject - Could not create SceneObject with class '%s'", className );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   
-   Polyhedron polyhedron = polyList.toPolyhedron();
-   
-   const U32 numPoints = polyhedron.getNumPoints();
-   const Point3F* points = polyhedron.getPoints();
-   for( U32 i = 0; i < numPoints; ++ i )
-   {
-      static StringTableEntry sPoint = StringTable->insert( "point" );
-      object->setDataField( sPoint, NULL, EngineMarshallData( points[ i ] ) );
-   }
-   
-   const U32 numPlanes = polyhedron.getNumPlanes();
-   const PlaneF* planes = polyhedron.getPlanes();
-   for( U32 i = 0; i < numPlanes; ++ i )
-   {
-      static StringTableEntry sPlane = StringTable->insert( "plane" );
-      const PlaneF& plane = planes[ i ];
-      char buffer[ 1024 ];
-      dSprintf( buffer, sizeof( buffer ), "%g %g %g %g", plane.x, plane.y, plane.z, plane.d );
-      object->setDataField( sPlane, NULL, buffer );
-   }
-   
-   const U32 numEdges = polyhedron.getNumEdges();
-   const Polyhedron::Edge* edges = polyhedron.getEdges();
-   for( U32 i = 0; i < numEdges; ++ i )
-   {
-      static StringTableEntry sEdge = StringTable->insert( "edge" );
-      const Polyhedron::Edge& edge = edges[ i ];
-      char buffer[ 1024 ];
-      dSprintf( buffer, sizeof( buffer ), "%i %i %i %i ",
-         edge.face[ 0 ], edge.face[ 1 ],
-         edge.vertex[ 0 ], edge.vertex[ 1 ]
-      );
-      object->setDataField( sEdge, NULL, buffer );
-   }
-   
-   object->setTransform( savedTransform );
-   object->setScale( savedScale );
-   
-   if( !object->registerObject() )
-   {
-      Con::errorf( "WorldEditor::createPolyhedralObject - Failed to register object!" );
-      delete object;
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   {wle_returnObject =object;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnWorldEditor_getSoftSnapAlignment(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-WorldEditor::AlignmentType wle_returnObject;
-{
-   {wle_returnObject =object->mSoftSnapAlignment;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnWorldEditor_getTerrainSnapAlignment(char * x__object)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-WorldEditor::AlignmentType wle_returnObject;
-{
-   {wle_returnObject =object->mTerrainSnapAlignment;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_ignoreObjClass(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* a2 = (const char*)x__a2;
-const char* a3 = (const char*)x__a3;
-const char* a4 = (const char*)x__a4;
-const char* a5 = (const char*)x__a5;
-const char* a6 = (const char*)x__a6;
-const char* a7 = (const char*)x__a7;
-const char* a8 = (const char*)x__a8;
-const char* a9 = (const char*)x__a9;
-const char* a10 = (const char*)x__a10;
-const char* a11 = (const char*)x__a11;
-const char* a12 = (const char*)x__a12;
-const char* a13 = (const char*)x__a13;
-const char* a14 = (const char*)x__a14;
-const char* a15 = (const char*)x__a15;
-const char* a16 = (const char*)x__a16;
-const char* a17 = (const char*)x__a17;
-const char* a18 = (const char*)x__a18;
-const char* a19 = (const char*)x__a19;
-{
-S32 argc = 20;
-if ( dStrlen(a19) == 0 )
-if ( dStrlen(a18) == 0 )
-if ( dStrlen(a17) == 0 )
-if ( dStrlen(a16) == 0 )
-if ( dStrlen(a15) == 0 )
-if ( dStrlen(a14) == 0 )
-if ( dStrlen(a13) == 0 )
-if ( dStrlen(a12) == 0 )
-if ( dStrlen(a11) == 0 )
-if ( dStrlen(a10) == 0 )
-if ( dStrlen(a9) == 0 )
-if ( dStrlen(a8) == 0 )
-if ( dStrlen(a7) == 0 )
-if ( dStrlen(a6) == 0 )
-if ( dStrlen(a5) == 0 )
-if ( dStrlen(a4) == 0 )
-if ( dStrlen(a3) == 0 )
-argc=3;
-else
-argc=4;
-else
-argc=5;
-else
-argc=6;
-else
-argc=7;
-else
-argc=8;
-else
-argc=9;
-else
-argc=10;
-else
-argc=11;
-else
-argc=12;
-else
-argc=13;
-else
-argc=14;
-else
-argc=15;
-else
-argc=16;
-else
-argc=17;
-else
-argc=18;
-else
-argc=19;
-else
-argc=20;
-std::vector<const char*> arguments;
-arguments.push_back("");
-arguments.push_back("");
-arguments.push_back(a2);
-if ( argc >3 )
-arguments.push_back(a3);
-if ( argc >4 )
-arguments.push_back(a4);
-if ( argc >5 )
-arguments.push_back(a5);
-if ( argc >6 )
-arguments.push_back(a6);
-if ( argc >7 )
-arguments.push_back(a7);
-if ( argc >8 )
-arguments.push_back(a8);
-if ( argc >9 )
-arguments.push_back(a9);
-if ( argc >10 )
-arguments.push_back(a10);
-if ( argc >11 )
-arguments.push_back(a11);
-if ( argc >12 )
-arguments.push_back(a12);
-if ( argc >13 )
-arguments.push_back(a13);
-if ( argc >14 )
-arguments.push_back(a14);
-if ( argc >15 )
-arguments.push_back(a15);
-if ( argc >16 )
-arguments.push_back(a16);
-if ( argc >17 )
-arguments.push_back(a17);
-if ( argc >18 )
-arguments.push_back(a18);
-if ( argc >19 )
-arguments.push_back(a19);
-const char** argv = &arguments[0];
-{
-	object->ignoreObjClass(argc, argv);
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_setSoftSnapAlignment(char * x__object, S32 x__type)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-WorldEditor::AlignmentType type = (WorldEditor::AlignmentType)x__type;
-{
-   object->mSoftSnapAlignment = type;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_setTerrainSnapAlignment(char * x__object, S32 x__alignment)
-{
-WorldEditor* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-WorldEditor::AlignmentType alignment = (WorldEditor::AlignmentType)x__alignment;
-{
-   object->mTerrainSnapAlignment = alignment;
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

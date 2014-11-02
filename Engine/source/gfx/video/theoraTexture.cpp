@@ -60,7 +60,7 @@
 GFX_ImplementTextureProfile(  GFXTheoraTextureProfile,
                               GFXTextureProfile::DiffuseMap,
                               GFXTextureProfile::NoMipmap | GFXTextureProfile::Dynamic,
-                              GFXTextureProfile::None );
+                              GFXTextureProfile::NONE );
 
 
 //-----------------------------------------------------------------------------
@@ -108,6 +108,7 @@ TheoraTexture::FrameReadItem::FrameReadItem( AsyncBufferedInputStream< TheoraTex
 void TheoraTexture::FrameReadItem::execute()
 {
    // Read Theora frame data.
+   
    OggTheoraFrame* frame;
    if( mFrameStream->getSourceStream()->read( &frame, 1 ) != 1 )
       return;

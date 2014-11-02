@@ -92,14 +92,12 @@ const char* getCompileTimeString()
 
 ConsoleFunctionGroupBegin( CompileInformation, "Functions to get version information about the current executable." );
 
-//ConsoleFunction( getVersionNumber, S32, 1, 1, "Get the version of the engine build, as a string.\n\n"
 DefineConsoleFunction( getVersionNumber, S32, (), , "Get the version of the engine build, as a string.\n\n" 
 				"@ingroup Debugging")
 {
    return getVersionNumber();
 }
 
-//ConsoleFunction( getAppVersionNumber, S32, 1, 1, "Get the version of the application build, as a string.\n\n"
 DefineConsoleFunction( getAppVersionNumber, S32, (), , "Get the version of the application build, as a string.\n\n" 
             "@ingroup Debugging")
 {
@@ -107,35 +105,30 @@ DefineConsoleFunction( getAppVersionNumber, S32, (), , "Get the version of the a
 }
 
 
-//ConsoleFunction( getVersionString, const char*, 1, 1, "Get the version of the engine build, as a human readable string.\n\n"
 DefineConsoleFunction( getVersionString, const char*, (), , "Get the version of the engine build, as a human readable string.\n\n" 
 				"@ingroup Debugging")
 {
    return getVersionString();
 }
 
-//ConsoleFunction( getAppVersionString, const char*, 1, 1, "Get the version of the aplication, as a human readable string.\n\n"
 DefineConsoleFunction( getAppVersionString, const char*, (), , "Get the version of the aplication build, as a human readable string.\n\n" 
             "@ingroup Debugging")
 {
    return getAppVersionString();
 }
 
-//ConsoleFunction( getEngineName, const char*, 1, 1, "Get the name of the engine product that this is running from, as a string.\n\n"
 DefineConsoleFunction( getEngineName, const char*, (), , "Get the name of the engine product that this is running from, as a string.\n\n" 
 				"@ingroup Debugging")
 {
    return getEngineProductString();
 }
 
-//ConsoleFunction( getCompileTimeString, const char*, 1, 1, "Get the time of compilation.\n\n"
 DefineConsoleFunction( getCompileTimeString, const char*, (), , "Get the time of compilation.\n\n" 
 				"@ingroup Debugging")
 {
    return getCompileTimeString();
 }
 
-//ConsoleFunction( getBuildString, const char*, 1, 1, "Get the type of build, \"Debug\" or \"Release\".\n\n"
 DefineConsoleFunction( getBuildString, const char*, (), , "Get the type of build, \"Debug\" or \"Release\".\n\n"
 				"@ingroup Debugging")
 {
@@ -148,7 +141,6 @@ DefineConsoleFunction( getBuildString, const char*, (), , "Get the type of build
 
 ConsoleFunctionGroupEnd( CompileInformation );
 
-//ConsoleFunction(isDemo, bool, 1, 1, "")
 DefineConsoleFunction( isDemo, bool, (), , "")
 {
 #ifdef TORQUE_DEMO
@@ -158,7 +150,6 @@ DefineConsoleFunction( isDemo, bool, (), , "")
 #endif
 }
 
-//ConsoleFunction(isWebDemo, bool, 1, 1, "")
 DefineConsoleFunction( isWebDemo, bool, (), , "")
 {
 #ifdef TORQUE_DEMO
@@ -167,176 +158,3 @@ DefineConsoleFunction( isWebDemo, bool, (), , "")
    return false;
 #endif
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getAppVersionNumber()
-{
-{
-  return (S32)( getAppVersionNumber());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getAppVersionString(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-   {wle_returnObject =getAppVersionString();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getBuildString(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-#ifdef TORQUE_DEBUG
-   {wle_returnObject ="Debug";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-#else
-   {wle_returnObject ="Release";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getCompileTimeString(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-   {wle_returnObject =getCompileTimeString();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getEngineName(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-   {wle_returnObject =getEngineProductString();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getVersionNumber()
-{
-{
-  return (S32)( getVersionNumber());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getVersionString(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-   {wle_returnObject =getVersionString();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isDemo()
-{
-bool wle_returnObject;
-{
-#ifdef TORQUE_DEMO
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-#else
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-#endif
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isWebDemo()
-{
-bool wle_returnObject;
-{
-#ifdef TORQUE_DEMO
-   {wle_returnObject =Platform::getWebDeployment();
-return (S32)(wle_returnObject);}
-#else
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-#endif
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

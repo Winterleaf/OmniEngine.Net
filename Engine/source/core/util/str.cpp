@@ -480,7 +480,6 @@ static U32 sgStringInstances;
 
 
 #endif
-//ConsoleFunction( dumpStringMemStats, void, 1, 1, "()"
 DefineConsoleFunction( dumpStringMemStats, void, (), , "()"
 				"@brief Dumps information about String memory usage\n\n"
 				"@ingroup Debugging\n"
@@ -1629,72 +1628,3 @@ String String::GetTrailingNumber(const char* str, S32& number)
 
    return base.substr(0, p - base.c_str());
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpStringMemStats()
-{
-{
-#ifdef TORQUE_DEBUG
-   Con::printf( "String Data: %i instances, %i bytes", sgStringInstances, sgStringMemBytes );
-#endif
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

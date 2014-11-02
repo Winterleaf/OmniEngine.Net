@@ -30,7 +30,7 @@
 #include "windowManager/platformWindow.h"
 #include "windowManager/platformWindowMgr.h"
 
-#if defined (TORQUE_OS_WIN32) || defined (TORQUE_OS_WIN64)
+#ifdef TORQUE_OS_WIN
 #include "windowManager/win32/win32Window.h"
 #include "windowManager/win32/winDispatch.h"
 extern void createFontInit(void);
@@ -38,7 +38,7 @@ extern void createFontShutdown(void);
 #endif
 
 #if defined( TORQUE_MINIDUMP ) && defined( TORQUE_RELEASE )
-   extern INT CreateMiniDump(LPEXCEPTION_POINTERS ExceptionInfo);
+   extern S32 CreateMiniDump(LPEXCEPTION_POINTERS ExceptionInfo);
 #endif
 
 static HashTable<StringTableEntry,StringTableEntry> gSecureScript;
@@ -48,7 +48,7 @@ static HashTable<StringTableEntry,StringTableEntry> gSecureScript;
 // ObjC hooks for shared library support
 // See:  macMain.mm
 
-void torque_mac_engineinit(int argc, const char **argv);
+void torque_mac_engineinit(S32 argc, const char **argv);
 void  torque_mac_enginetick();
 void torque_mac_engineshutdown();
 
@@ -65,7 +65,7 @@ extern "C" {
 	}
 
    // initialize Torque 3D including argument handling
-	int torque_engineinit(S32 argc, const char **argv)
+	S32 torque_engineinit(S32 argc, const char **argv)
 	{
 
 #if defined( TORQUE_MINIDUMP ) && defined( TORQUE_RELEASE )
@@ -106,7 +106,7 @@ extern "C" {
 	}
 
    // tick Torque 3D's main loop
-	int torque_enginetick()
+	S32 torque_enginetick()
 	{
 
 #if defined( TORQUE_MINIDUMP ) && defined( TORQUE_RELEASE )
@@ -140,7 +140,7 @@ extern "C" {
 	}
 
    // shutdown the engine
-	int torque_engineshutdown()
+	S32 torque_engineshutdown()
 	{
 
 #if defined( TORQUE_MINIDUMP ) && defined( TORQUE_RELEASE )
@@ -182,7 +182,7 @@ extern "C" {
 
 	}
 
-	int torque_getconsolebool(const char* name)
+	S32 torque_getconsolebool(const char* name)
 	{
 		return Con::getBoolVariable(name);
 	}
@@ -304,7 +304,7 @@ extern "C" {
 		Namespace::Entry* entry = GetEntry(nameSpace, name);
 
 		if (!entry)
-			return "";
+			return false;
 
 		return entry->cb.mBoolCallbackFunc(NULL, argc, argv);      
 	}
@@ -416,7 +416,7 @@ extern "C" {
 			PlatformWindowManager::get()->getFirstWindow()->setSize(Point2I(width,height));
 	}
 
-#if defined (TORQUE_OS_WIN32) || defined (TORQUE_OS_WIN64)
+#ifdef TORQUE_OS_WIN
    // retrieve the hwnd of our render window
    void* torque_gethwnd()
    {
@@ -448,24 +448,16 @@ extern "C" {
 // By default, it is marked as secure by the web plugins and then can be called from
 // Javascript on the web page to ensure that function calls across the language
 // boundry are working with arguments and return values
-//ConsoleFunction(testJavaScriptBridge, const char *, 4, 4, "testBridge(arg1, arg2, arg3)")
 DefineConsoleFunction( testJavaScriptBridge, const char *, (const char* arg1, const char* arg2, const char* arg3), , "testBridge(arg1, arg2, arg3)")
 {
 	S32 failed = 0;
-	//if(argc != 4)
-	//	failed = 1;
-	//else
-	{
-		//if (dStrcmp(argv[1],"one"))
 		if (dStrcmp(arg1,"one"))
 			failed = 2;
-		//if (dStrcmp(argv[2],"two"))
 		if (dStrcmp(arg2,"two"))
 			failed = 2;
-		//if (dStrcmp(argv[3],"three"))
 		if (dStrcmp(arg3,"three"))
 			failed = 2;
-	}
+	
 
 	//attempt to call from TorqueScript -> JavaScript
 	const char* jret = Con::evaluate("JS::bridgeCallback(\"one\",\"two\",\"three\");");
@@ -473,9 +465,10 @@ DefineConsoleFunction( testJavaScriptBridge, const char *, (const char* arg1, co
 	if (dStrcmp(jret,"42"))
 		failed = 3;
 
-	char *ret = Con::getReturnBuffer(256);
+	static const U32 bufSize = 256;
+	char *ret = Con::getReturnBuffer(bufSize);
 
-	dSprintf(ret, 256, "%i", failed);
+	dSprintf(ret, bufSize, "%i", failed);
 
 	return ret;
 }
@@ -483,90 +476,4 @@ DefineConsoleFunction( testJavaScriptBridge, const char *, (const char* arg1, co
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_testJavaScriptBridge(char * x__arg1, char * x__arg2, char * x__arg3,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* arg1 = (const char*)x__arg1;
-const char* arg2 = (const char*)x__arg2;
-const char* arg3 = (const char*)x__arg3;
-const char * wle_returnObject;
-{
-	S32 failed = 0;
-				{
-				if (dStrcmp(arg1,"one"))
-			failed = 2;
-				if (dStrcmp(arg2,"two"))
-			failed = 2;
-				if (dStrcmp(arg3,"three"))
-			failed = 2;
-	}
-		const char* jret = Con::evaluate("JS::bridgeCallback(\"one\",\"two\",\"three\");");
-	if (dStrcmp(jret,"42"))
-		failed = 3;
-	char *ret = Con::getReturnBuffer(256);
-	dSprintf(ret, 256, "%i", failed);
-	{wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

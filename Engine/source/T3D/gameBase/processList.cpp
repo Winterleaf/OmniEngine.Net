@@ -305,10 +305,8 @@ bool ProcessList::advanceTime(SimTime timeDelta)
    // some drivers change the FPU control state, which will break our control object simulation
    // (leading to packet mismatch errors due to small FP differences).  So set it to the known 
    // state before advancing.
-#if !defined (TORQUE_CPU_X86_64)
    U32 mathState = Platform::getMathControlState();
    Platform::setMathControlStateKnown();
-#endif
 
    if (mDirty) 
       orderList();
@@ -332,9 +330,7 @@ bool ProcessList::advanceTime(SimTime timeDelta)
       mPostTick.trigger( tickDelta );
 
    // restore math control state in case others are relying on it being a certain value
-#if !defined (TORQUE_CPU_X86_64)
-   Platform::setMathControlState( mathState );
-#endif
+   Platform::setMathControlState(mathState);
 
    PROFILE_END();
    return tickPass;

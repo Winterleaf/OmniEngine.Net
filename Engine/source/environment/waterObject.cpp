@@ -91,6 +91,7 @@ void WaterMatParams::clear()
    mSpecularParamsSC = NULL;
    mDepthGradMaxSC = NULL;
    mReflectivitySC = NULL;
+   mDepthGradSamplerSC = NULL;
 }
 
 void WaterMatParams::init( BaseMatInstance* matInst )
@@ -132,6 +133,7 @@ void WaterMatParams::init( BaseMatInstance* matInst )
    mSpecularParamsSC = matInst->getMaterialParameterHandle( "$specularParams" );   
    mDepthGradMaxSC = matInst->getMaterialParameterHandle( "$depthGradMax" );
    mReflectivitySC = matInst->getMaterialParameterHandle( "$reflectivity" );
+   mDepthGradSamplerSC = matInst->getMaterialParameterHandle( "$depthGradMap" );
 }
 
 
@@ -732,6 +734,11 @@ void WaterObject::renderObject( ObjectRenderInst *ri, SceneRenderState *state, B
 
    bool doQuery = ( !mPlaneReflector.mQueryPending && query && mReflectorDesc.useOcclusionQuery );
 
+   // We need to call this for avoid a DX9 or Nvidia bug.
+   // At some resollutions read from render target,
+   // break current occlusion query.
+   REFLECTMGR->getRefractTex();
+
    if ( doQuery )
       query->begin();
 
@@ -747,22 +754,20 @@ void WaterObject::renderObject( ObjectRenderInst *ri, SceneRenderState *state, B
 
 void WaterObject::setCustomTextures( S32 matIdx, U32 pass, const WaterMatParams &paramHandles )
 {
-   // TODO: Retrieve sampler numbers from parameter handles, see r22631.
-   
    // Always use the ripple texture.
-   GFX->setTexture( 0, mRippleTex );
+   GFX->setTexture( paramHandles.mRippleSamplerSC->getSamplerRegister(pass), mRippleTex );
 
    // Only above-water in advanced-lighting uses the foam texture.
    if ( matIdx == WaterMat )
    {
-      GFX->setTexture( 5, mFoamTex );
-      GFX->setTexture( 6, mDepthGradientTex );
+      GFX->setTexture( paramHandles.mFoamSamplerSC->getSamplerRegister(pass), mFoamTex );
+      GFX->setTexture( paramHandles.mDepthGradSamplerSC->getSamplerRegister(pass), mDepthGradientTex );
    }
 
    if ( ( matIdx == WaterMat || matIdx == BasicWaterMat ) && mCubemap )   
-      GFX->setCubeTexture( 4, mCubemap->mCubemap );
-   else
-      GFX->setCubeTexture( 4, NULL );
+      GFX->setCubeTexture( paramHandles.mCubemapSamplerSC->getSamplerRegister(pass), mCubemap->mCubemap );
+   else if(paramHandles.mCubemapSamplerSC->getSamplerRegister(pass) != -1 )
+      GFX->setCubeTexture( paramHandles.mCubemapSamplerSC->getSamplerRegister(pass), NULL );
 }
 
 void WaterObject::drawUnderwaterFilter( SceneRenderState *state )
@@ -1046,9 +1051,9 @@ void WaterObject::getUnderwaterEffect()
    if (!mUnderwaterPostFx.isValid())
 
    {
-		PostEffect *effect;
-		if ( Sim::findObject( "UnderwaterFogPostFx", effect ) )   
-			mUnderwaterPostFx = effect;
+   PostEffect *effect;
+   if ( Sim::findObject( "UnderwaterFogPostFx", effect ) )   
+      mUnderwaterPostFx = effect;
    }
 	 if (!mTurbulenceFx.isValid())
    {
@@ -1069,11 +1074,6 @@ void WaterObject::getUnderwaterEffect()
 		if ( Sim::findObject( "LightRayPostFX", effect ) )   
 			mLightRayPostEffectPostFx = effect;
    }
-
-   
-
-   
-
 	//WLE - Vince, since we added a second underwater posteffect, having this function just return one was
 	//worthless, so instead I have this function load both of them up if it can
 	//And then I use the var in applying them.
@@ -1162,13 +1162,7 @@ void WaterObject::updateUnderwaterEffect( SceneRenderState *state )
 
 	if (mCausticsPFX)
 	   mCausticsPFX->disable();
-	
-	
-   //if (mLightRayPostEffectPostFx)
-	  // mLightRayPostEffectPostFx->enable();
    }
-
-  
 }
 
 bool WaterObject::initMaterial( S32 idx )

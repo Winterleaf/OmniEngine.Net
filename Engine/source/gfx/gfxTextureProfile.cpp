@@ -34,15 +34,15 @@
 GFX_ImplementTextureProfile(GFXDefaultRenderTargetProfile, 
                             GFXTextureProfile::DiffuseMap, 
                             GFXTextureProfile::PreserveSize | GFXTextureProfile::NoMipmap | GFXTextureProfile::RenderTarget, 
-                            GFXTextureProfile::None);
+                            GFXTextureProfile::NONE);
 GFX_ImplementTextureProfile(GFXDefaultStaticDiffuseProfile, 
                             GFXTextureProfile::DiffuseMap, 
                             GFXTextureProfile::Static, 
-                            GFXTextureProfile::None);
+                            GFXTextureProfile::NONE);
 GFX_ImplementTextureProfile(GFXDefaultStaticNormalMapProfile, 
                             GFXTextureProfile::NormalMap, 
                             GFXTextureProfile::Static, 
-                            GFXTextureProfile::None);
+                            GFXTextureProfile::NONE);
 GFX_ImplementTextureProfile(GFXDefaultStaticDXT5nmProfile, 
                             GFXTextureProfile::NormalMap, 
                             GFXTextureProfile::Static, 
@@ -50,15 +50,15 @@ GFX_ImplementTextureProfile(GFXDefaultStaticDXT5nmProfile,
 GFX_ImplementTextureProfile(GFXDefaultPersistentProfile,
                             GFXTextureProfile::DiffuseMap, 
                             GFXTextureProfile::PreserveSize | GFXTextureProfile::Static | GFXTextureProfile::KeepBitmap, 
-                            GFXTextureProfile::None);
+                            GFXTextureProfile::NONE);
 GFX_ImplementTextureProfile(GFXSystemMemProfile, 
                             GFXTextureProfile::DiffuseMap, 
                             GFXTextureProfile::PreserveSize | GFXTextureProfile::NoMipmap | GFXTextureProfile::SystemMemory,
-                            GFXTextureProfile::None);
+                            GFXTextureProfile::NONE);
 GFX_ImplementTextureProfile(GFXDefaultZTargetProfile,
                             GFXTextureProfile::DiffuseMap, 
                             GFXTextureProfile::PreserveSize | GFXTextureProfile::NoMipmap | GFXTextureProfile::ZTarget | GFXTextureProfile::NoDiscard, 
-                            GFXTextureProfile::None);
+                            GFXTextureProfile::NONE);
 
 //-----------------------------------------------------------------------------
 
@@ -165,87 +165,4 @@ DefineEngineFunction( getTextureProfileStats, String, (),,
 
    return result.end();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getTextureProfileStats(char* retval)
-{
-dSprintf(retval,1024,"");
-String wle_returnObject;
-{
-   StringBuilder result;
-   GFXTextureProfile *profile = GFXTextureProfile::getHead();
-   while ( profile )
-   {
-      const GFXTextureProfileStats &stats = profile->getStats();
-      F32 mb = ( stats.activeBytes / 1024.0f ) / 1024.0f;
-      result.format( "%s %d %0.2f\n",
-         profile->getName().c_str(),
-         stats.activeCount,
-         mb );
-      profile = profile->getNext();
-   }
-   {wle_returnObject =result.end();
-dSprintf(retval,16384,"%s",wle_returnObject.c_str());
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

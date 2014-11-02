@@ -45,33 +45,6 @@ ConsoleDocClass( GuiGradientSwatchCtrl,
    "@internal"
 );
 
-//IMPLEMENT_CALLBACK( GuiGradientSwatchCtrl, onMouseDown, void, (),(),
-//   "@brief Called whenever the left mouse button has entered the down state while in this control.\n\n"
-//   "@tsexample\n"
-//   "// The left mouse button is down on the control, causing the callback to occur.\n"
-//   "GuiGradientSwatchCtrl::onMouseDown(%this)\n"
-//   "	{\n"
-//   "		// Code to run when the callback occurs\n"
-//   "	}\n"
-//   "@endtsexample\n\n"
-//   "@see GuiControl\n"
-//   "@see GuiSwatchButtonCtrl\n\n"
-//   "@internal"
-//);
-
-//IMPLEMENT_CALLBACK( GuiGradientSwatchCtrl, onDoubleClick, void, (),(),
-//   "@brief Called whenever the left mouse button performs a double click while in this control.\n\n"
-//   "@tsexample\n"
-//   "// The left mouse button has performed a double click on the control, causing the callback to occur.\n"
-//   "GuiGradientSwatchCtrl::onDoubleClick(%this)\n"
-//   "	{\n"
-//   "		// Code to run when the callback occurs\n"
-//   "	}\n"
-//   "@endtsexample\n\n"
-//   "@see GuiControl\n"
-//   "@see GuiSwatchButtonCtrl\n\n"
-//   "@internal"
-//);
 
 
 GuiGradientSwatchCtrl::GuiGradientSwatchCtrl()
@@ -79,7 +52,7 @@ GuiGradientSwatchCtrl::GuiGradientSwatchCtrl()
 	setPosition(0, 0);
 	setExtent(14, 14);
 	mMouseDownPosition = Point2I(0, 0);
-	mSwatchColor = ColorF( 1, 1, 1, 1 );
+	mSwatchColor = ColorI( 1, 1, 1, 1 );
 	mColorFunction = StringTable->insert("getColorF");
 	setDataField( StringTable->insert("Profile"), NULL, "GuiInspectorSwatchButtonProfile" );
 }
@@ -89,8 +62,9 @@ bool GuiGradientSwatchCtrl::onWake()
 	if ( !Parent::onWake() )
       return false;
 	
-	char* altCommand = Con::getReturnBuffer(512);
-	dSprintf( altCommand, 512, "%s(%i.color, \"%i.setColor\");", mColorFunction, getId(), getId() );
+	static const U32 bufSize = 512;
+	char* altCommand = Con::getReturnBuffer(bufSize);
+	dSprintf( altCommand, bufSize, "%s(%i.color, \"%i.setColor\");", mColorFunction, getId(), getId() );
 	setField( "altCommand", altCommand );
 
 	return true;
@@ -687,7 +661,6 @@ void GuiGradientCtrl::sortColorRange()
 		dQsort( mAlphaRange.address(), mAlphaRange.size(), sizeof(ColorRange), _numIncreasing);
 }
 
-//ConsoleMethod(GuiGradientCtrl, getColorCount, S32, 2, 2, "Get color count")
 DefineConsoleMethod(GuiGradientCtrl, getColorCount, S32, (), , "Get color count")
 {
 	if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
@@ -698,23 +671,13 @@ DefineConsoleMethod(GuiGradientCtrl, getColorCount, S32, (), , "Get color count"
 	return 0;
 }
 
-//ConsoleMethod(GuiGradientCtrl, getColor, const char*, 3, 3, "Get color value")
 DefineConsoleMethod(GuiGradientCtrl, getColor, ColorF, (S32 idx), , "Get color value")
 {
-	//S32 idx = dAtoi(argv[2]);
 
 	if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
 	{
 		if ( idx >= 0 && idx < object->mColorRange.size() )
 		{
-			//char* rColor = Con::getReturnBuffer(256);
-			//rColor[0] = 0;
-
-			//dSprintf(rColor, 256, "%f %f %f %f",
-			//	object->mColorRange[idx].swatch->getColor().red,
-			//	object->mColorRange[idx].swatch->getColor().green,
-			//	object->mColorRange[idx].swatch->getColor().blue,
-			//	object->mColorRange[idx].swatch->getColor().alpha);
 
 			return object->mColorRange[idx].swatch->getColor();
 		}
@@ -723,14 +686,6 @@ DefineConsoleMethod(GuiGradientCtrl, getColor, ColorF, (S32 idx), , "Get color v
 	{
 		if ( idx >= 0 && idx < object->mAlphaRange.size() )
 		{
-			//char* rColor = Con::getReturnBuffer(256);
-			//rColor[0] = 0;
-
-			//dSprintf(rColor, 256, "%f %f %f %f",
-			//	object->mAlphaRange[idx].swatch->getColor().red,
-			//	object->mAlphaRange[idx].swatch->getColor().green,
-			//	object->mAlphaRange[idx].swatch->getColor().blue,
-			//	object->mAlphaRange[idx].swatch->getColor().alpha);
 
 			return object->mAlphaRange[idx].swatch->getColor();
 		}
@@ -738,117 +693,3 @@ DefineConsoleMethod(GuiGradientCtrl, getColor, ColorF, (S32 idx), , "Get color v
 
 	return ColorF::ONE;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiGradientCtrl_getColor(char * x__object, S32 idx,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiGradientCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-ColorF wle_returnObject;
-{
-	
-	if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
-	{
-		if ( idx >= 0 && idx < object->mColorRange.size() )
-		{
-						
-															
-			{wle_returnObject =object->mColorRange[idx].swatch->getColor();
-dSprintf(retval,1024,"%f %f %f %f ",wle_returnObject.red,wle_returnObject.green,wle_returnObject.blue,wle_returnObject.alpha);
-return;
-}
-		}
-	}
-	else if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
-	{
-		if ( idx >= 0 && idx < object->mAlphaRange.size() )
-		{
-						
-															
-			{wle_returnObject =object->mAlphaRange[idx].swatch->getColor();
-dSprintf(retval,1024,"%f %f %f %f ",wle_returnObject.red,wle_returnObject.green,wle_returnObject.blue,wle_returnObject.alpha);
-return;
-}
-		}
-	}
-	{wle_returnObject =ColorF::ONE;
-dSprintf(retval,1024,"%f %f %f %f ",wle_returnObject.red,wle_returnObject.green,wle_returnObject.blue,wle_returnObject.alpha);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiGradientCtrl_getColorCount(char * x__object)
-{
-GuiGradientCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
-		return object->mColorRange.size();
-	else if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
-		return object->mColorRange.size();
-	
-	return 0;
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

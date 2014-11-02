@@ -331,46 +331,38 @@ extern void unlockDispatcherMutex()
 
 using namespace Dispatcher;
 
-//ConsoleFunction(isQueueRegistered, bool, 2, 2, "(string queueName)"
 DefineConsoleFunction( isQueueRegistered, bool, (const char * queueName), , "(string queueName)"
 				"@brief Determines if a dispatcher queue exists\n\n"
 				"@param queueName String containing the name of queue\n"
 				"@ingroup Messaging")
 {
-   //return Dispatcher::isQueueRegistered(argv[1]);
    return Dispatcher::isQueueRegistered(queueName);
 }
 
-//ConsoleFunction(registerMessageQueue, void, 2, 2, "(string queueName)"
 DefineConsoleFunction( registerMessageQueue, void, (const char *queueName), , "(string queueName)"
 				"@brief Registeres a dispatcher queue\n\n"
 				"@param queueName String containing the name of queue\n"
 				"@ingroup Messaging")
 {
-   //return Dispatcher::registerMessageQueue(argv[1]);
    return Dispatcher::registerMessageQueue(queueName);
 }
 
-//ConsoleFunction(unregisterMessageQueue, void, 2, 2, "(string queueName)"
 DefineConsoleFunction( unregisterMessageQueue, void, (const char *queueName), , "(string queueName)"
 				"@brief Unregisters a dispatcher queue\n\n"
 				"@param queueName String containing the name of queue\n"
 				"@ingroup Messaging")
 {
-   //return Dispatcher::unregisterMessageQueue(argv[1]);
    return Dispatcher::unregisterMessageQueue(queueName);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction(registerMessageListener, bool, 3, 3, "(string queueName, string listener)"
 DefineConsoleFunction( registerMessageListener, bool, (const char *queueName, const char *listenerName), , "(string queueName, string listener)"
 				"@brief Registers an event message\n\n"
 				"@param queueName String containing the name of queue to attach listener to\n"
 				"@param listener Name of event messenger\n"
 				"@ingroup Messaging")
 {
-   //Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(argv[2]));
    Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(listenerName));
    if(listener == NULL)
    {
@@ -378,18 +370,15 @@ DefineConsoleFunction( registerMessageListener, bool, (const char *queueName, co
       return false;
    }
 
-   //return Dispatcher::registerMessageListener(argv[1], listener);
    return Dispatcher::registerMessageListener(queueName, listener);
 }
 
-//ConsoleFunction(unregisterMessageListener, void, 3, 3, "(string queueName, string listener)"
 DefineConsoleFunction( unregisterMessageListener, void, (const char *queueName, const char *listenerName), , "(string queueName, string listener)"
 				"@brief Unregisters an event message\n\n"
 				"@param queueName String containing the name of queue\n"
 				"@param listener Name of event messenger\n"
 				"@ingroup Messaging")
 {
-   //Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(argv[2]));
    Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(listenerName));
    if(listener == NULL)
    {
@@ -397,13 +386,11 @@ DefineConsoleFunction( unregisterMessageListener, void, (const char *queueName, 
       return;
    }
 
-   //Dispatcher::unregisterMessageListener(argv[1], listener);
    Dispatcher::unregisterMessageListener(queueName, listener);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction(dispatchMessage, bool, 3, 4, "(string queueName, string message, string data)"
 DefineConsoleFunction( dispatchMessage, bool, (const char *queueName, const char *message, const char *data), (""), "(string queueName, string message, string data)"
 				"@brief Dispatch a message to a queue\n\n"
 				"@param queueName Queue to dispatch the message to\n"
@@ -413,11 +400,9 @@ DefineConsoleFunction( dispatchMessage, bool, (const char *queueName, const char
 				"@see dispatchMessageObject\n"
 				"@ingroup Messaging")
 {
-   //return Dispatcher::dispatchMessage(argv[1], argv[2], argc > 3 ? argv[3] : "" );
    return Dispatcher::dispatchMessage(queueName, message, data);
 }
 
-// ConsoleFunction(dispatchMessageObject, bool, 3, 3, "(string queueName, string message)"
 DefineConsoleFunction( dispatchMessageObject, bool, (const char *queueName, const char *message), ("", ""), "(string queueName, string message)"
 				"@brief Dispatch a message object to a queue\n\n"
 				"@param queueName Queue to dispatch the message to\n"
@@ -426,7 +411,6 @@ DefineConsoleFunction( dispatchMessageObject, bool, (const char *queueName, cons
 				"@see dispatchMessage\n"
 				"@ingroup Messaging")
 {
-   //Message *msg = dynamic_cast<Message *>(Sim::findObject(argv[2]));
    Message *msg = dynamic_cast<Message *>(Sim::findObject(message));
    if(msg == NULL)
    {
@@ -434,149 +418,5 @@ DefineConsoleFunction( dispatchMessageObject, bool, (const char *queueName, cons
       return false;
    }
 
-   //return Dispatcher::dispatchMessageObject(argv[1], msg);
    return Dispatcher::dispatchMessageObject(queueName, msg);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_dispatchMessage(char * x__queueName, char * x__message, char * x__data)
-{
-const char* queueName = (const char*)x__queueName;
-const char* message = (const char*)x__message;
-const char* data = (const char*)x__data;
-bool wle_returnObject;
-{
-      {wle_returnObject =Dispatcher::dispatchMessage(queueName, message, data);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_dispatchMessageObject(char * x__queueName, char * x__message)
-{
-const char* queueName = (const char*)x__queueName;
-const char* message = (const char*)x__message;
-bool wle_returnObject;
-{
-      Message *msg = dynamic_cast<Message *>(Sim::findObject(message));
-   if(msg == NULL)
-   {
-      Con::errorf("dispatchMessageObject - Unable to find message object");
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-      {wle_returnObject =Dispatcher::dispatchMessageObject(queueName, msg);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isQueueRegistered(char * x__queueName)
-{
-const char* queueName = (const char*)x__queueName;
-bool wle_returnObject;
-{
-      {wle_returnObject =Dispatcher::isQueueRegistered(queueName);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_registerMessageListener(char * x__queueName, char * x__listenerName)
-{
-const char* queueName = (const char*)x__queueName;
-const char* listenerName = (const char*)x__listenerName;
-bool wle_returnObject;
-{
-      Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(listenerName));
-   if(listener == NULL)
-   {
-      Con::errorf("registerMessageListener - Unable to find listener object, not an IMessageListener ?!");
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-      {wle_returnObject =Dispatcher::registerMessageListener(queueName, listener);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_registerMessageQueue(char * x__queueName)
-{
-const char* queueName = (const char*)x__queueName;
-{
-      return Dispatcher::registerMessageQueue(queueName);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_unregisterMessageListener(char * x__queueName, char * x__listenerName)
-{
-const char* queueName = (const char*)x__queueName;
-const char* listenerName = (const char*)x__listenerName;
-{
-      Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(listenerName));
-   if(listener == NULL)
-   {
-      Con::errorf("unregisterMessageListener - Unable to find listener object, not an IMessageListener ?!");
-      return;
-   }
-      Dispatcher::unregisterMessageListener(queueName, listener);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_unregisterMessageQueue(char * x__queueName)
-{
-const char* queueName = (const char*)x__queueName;
-{
-      return Dispatcher::unregisterMessageQueue(queueName);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

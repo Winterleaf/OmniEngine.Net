@@ -326,7 +326,6 @@ void LangTable::setCurrentLanguage(S32 langid)
 
 
 
-//ConsoleMethod(LangTable, addLanguage, S32, 3, 4, 
 DefineConsoleMethod(LangTable, addLanguage, S32, (String filename, String languageName), ("", ""), 
 			  "(string filename, [string languageName])"
 			  "@brief Adds a language to the table\n\n"
@@ -337,13 +336,10 @@ DefineConsoleMethod(LangTable, addLanguage, S32, (String filename, String langua
 {
 	UTF8 scriptFilenameBuffer[1024];
 	
-	//Con::expandScriptFilename((char*)scriptFilenameBuffer, sizeof(scriptFilenameBuffer), argv[2]);
 	Con::expandScriptFilename((char*)scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filename);
-	//return object->addLanguage(scriptFilenameBuffer, argc == 4 ? (const UTF8*)argv[3] : NULL);
 	return object->addLanguage(scriptFilenameBuffer, (const UTF8*)languageName);
 }
 
-//ConsoleMethod(LangTable, getString, const char *, 3, 3, 
 DefineConsoleMethod(LangTable, getString, const char *, (U32 id), , 
 			  "(string filename)"
 			  "@brief Grabs a string from the specified table\n\n"
@@ -352,7 +348,6 @@ DefineConsoleMethod(LangTable, getString, const char *, (U32 id), ,
 			  "@param filename Name of the language table to access\n\n"
 			  "@return Text from the specified language table, \"\" if ID was invalid and default table is not set")
 {
-	//const char * str =	(const char*)object->getString(dAtoi(argv[2]));
 	const char * str =	(const char*)object->getString(id);
 	if(str != NULL)
 	{
@@ -364,26 +359,21 @@ DefineConsoleMethod(LangTable, getString, const char *, (U32 id), ,
 	return "";
 }
 
-//ConsoleMethod(LangTable, setDefaultLanguage, void, 3, 3, "(int language)"
 DefineConsoleMethod(LangTable, setDefaultLanguage, void, (S32 langId), , "(int language)"
 			  "@brief Sets the default language table\n\n"
 			  "@param language ID of the table\n")
 {
-	//object->setDefaultLanguage(dAtoi(argv[2]));
 	object->setDefaultLanguage(langId);
 }
 
-//ConsoleMethod(LangTable, setCurrentLanguage, void, 3, 3, 
 DefineConsoleMethod(LangTable, setCurrentLanguage, void, (S32 langId), , 
 			  "(int language)"
 			  "@brief Sets the current language table for grabbing text\n\n"
 			  "@param language ID of the table\n")
 {
-	//object->setCurrentLanguage(dAtoi(argv[2]));
 	object->setCurrentLanguage(langId);
 }
 
-//ConsoleMethod(LangTable, getCurrentLanguage, S32, 2, 2, "()"
 DefineConsoleMethod(LangTable, getCurrentLanguage, S32, (), , "()"
 			  "@brief Get the ID of the current language table\n\n"
 			  "@return Numerical ID of the current language table")
@@ -391,13 +381,11 @@ DefineConsoleMethod(LangTable, getCurrentLanguage, S32, (), , "()"
 	return object->getCurrentLanguage();
 }
 
-//ConsoleMethod(LangTable, getLangName, const char *, 3, 3, "(int language)"
 DefineConsoleMethod(LangTable, getLangName, const char *, (S32 langId), , "(int language)"
 			  "@brief Return the readable name of the language table\n\n"
 			  "@param language Numerical ID of the language table to access\n\n"
 			  "@return String containing the name of the table, NULL if ID was invalid or name was never specified")
 {
-	//const char * str = (const char*)object->getLangName(dAtoi(argv[2]));
 	const char * str = (const char*)object->getLangName(langId);
 	if(str != NULL)
 	{
@@ -409,7 +397,6 @@ DefineConsoleMethod(LangTable, getLangName, const char *, (S32 langId), , "(int 
 	return "";
 }
 
-//ConsoleMethod(LangTable, getNumLang, S32, 2, 2, "()"
 DefineConsoleMethod(LangTable, getNumLang, S32, (), , "()"
 			  "@brief Used to find out how many languages are in the table\n\n"
 			  "@return Size of the vector containing the languages, numerical")
@@ -493,172 +480,3 @@ const LangTable *getModLangTable(const UTF8 *mod)
 	}
 	return NULL;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_LangTable_addLanguage(char * x__object, char * x__filename, char * x__languageName)
-{
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-String filename = String( x__filename);
-String languageName = String( x__languageName);
-{
-	UTF8 scriptFilenameBuffer[1024];
-	
-		Con::expandScriptFilename((char*)scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filename);
-		return object->addLanguage(scriptFilenameBuffer, (const UTF8*)languageName);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_LangTable_getCurrentLanguage(char * x__object)
-{
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	return object->getCurrentLanguage();
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_LangTable_getLangName(char * x__object, S32 langId,  char* retval)
-{
-dSprintf(retval,16384,"");
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-		const char * str = (const char*)object->getLangName(langId);
-	if(str != NULL)
-	{
-		char * ret = Con::getReturnBuffer(dStrlen(str) + 1);
-		dStrcpy(ret, str);
-		{wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-	}
-	
-	{wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_LangTable_getNumLang(char * x__object)
-{
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	return object->getNumLang();
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_LangTable_getString(char * x__object, U32 id,  char* retval)
-{
-dSprintf(retval,16384,"");
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-		const char * str =	(const char*)object->getString(id);
-	if(str != NULL)
-	{
-		char * ret = Con::getReturnBuffer(dStrlen(str) + 1);
-		dStrcpy(ret, str);
-		{wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-	}
-	
-	{wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_LangTable_setCurrentLanguage(char * x__object, S32 langId)
-{
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->setCurrentLanguage(langId);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_LangTable_setDefaultLanguage(char * x__object, S32 langId)
-{
-LangTable* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-		object->setDefaultLanguage(langId);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

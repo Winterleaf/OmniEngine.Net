@@ -329,6 +329,7 @@ void DeferredBumpFeatHLSL::processPix( Vector<ShaderComponent*> &componentList,
       output = meta;
       return;
    }
+   //Sahara
    else if (fd.features[MFT_AccuMap]) 
    {
       Var *bumpSample = (Var *)LangElement::find( "bumpSample" );
@@ -380,6 +381,7 @@ void DeferredBumpFeatHLSL::processPix( Vector<ShaderComponent*> &componentList,
          return;
       }
    }
+   //Sahara   
    else if (   fd.materialFeatures[MFT_NormalsOut] || 
                fd.features[MFT_ForwardShading] || 
                !fd.features[MFT_RTLighting] )
@@ -447,7 +449,7 @@ void DeferredBumpFeatHLSL::setTexData( Material::StageData &stageDat,
       Parent::setTexData( stageDat, fd, passData, texIndex );
       return;
    }
-
+   //Sahara
    if (  !fd.features[MFT_PrePassConditioner] && fd.features[MFT_AccuMap] )
    {
       passData.mTexType[ texIndex ] = Material::Bump;
@@ -458,7 +460,9 @@ void DeferredBumpFeatHLSL::setTexData( Material::StageData &stageDat,
          passData.mTexType[ texIndex ] = Material::DetailBump;
          passData.mTexSlot[ texIndex++ ].texObject = stageDat.getTex( MFT_DetailNormalMap );
       }
-   } else if (  !fd.features[MFT_Parallax] && !fd.features[MFT_SpecularMap] &&
+   }
+      //Sahara
+    else if (  !fd.features[MFT_Parallax] && !fd.features[MFT_SpecularMap] &&
          ( fd.features[MFT_PrePassConditioner] ||
            fd.features[MFT_PixSpecular] ) )
    {
@@ -538,7 +542,7 @@ void DeferredPixelSpecularHLSL::processPix(  Vector<ShaderComponent*> &component
 
    AssertFatal( lightInfoSamp && d_specular && d_NL_Att,
       "DeferredPixelSpecularHLSL::processPix - Something hosed the deferred features!" );
-
+   //Sahara
    if (fd.features[ MFT_AccuMap ]) {
       // change specularity where the accu texture is applied
       Var *accuPlc = (Var*) LangElement::find( "plc" );
@@ -547,9 +551,8 @@ void DeferredPixelSpecularHLSL::processPix(  Vector<ShaderComponent*> &component
          //d_specular = clamp(lerp( d_specular, accuSpecular * d_specular, plc.a), 0, 1)
          meta->addStatement( new GenOp( "   @ = clamp( lerp( @, @ * @, @.a), 0, 1);\r\n", d_specular, d_specular, accuSpecular, d_specular, accuPlc ) );
    }
-
+   //Sahara
    // (a^m)^n = a^(m*n)
-   //meta->addStatement( new GenOp( "   @ = pow( abs( @ ), ceil(@ / AL_ConstantSpecularPower)) * @;\r\n", 
    meta->addStatement( new GenOp( "   @ = pow( abs(@), max((@ / AL_ConstantSpecularPower),1.0f)) * @;\r\n", 
       specDecl, d_specular, specPow, specStrength ) );
 

@@ -61,7 +61,7 @@ void Dispatch(DispatchType,HWND hWnd,UINT message,WPARAM wparam,WPARAM lparam);
 /// @param hWnd The HWND to filter by, this cannot be combined with a msg range filter currently
 /// @param msgBegin The beginning msg value to filter from
 /// @param msgEnd The ending msg value to filter to
-void RemoveMessages(HWND hWnd,UINT msgBegin,WPARAM msgEnd );
+void RemoveMessages(HWND hWnd,UINT msgBegin,UINT msgEnd );
 
 /// Dispatch the next event in the delayed dispatch queue.
 /// This function should be called outside of any journaled calls.

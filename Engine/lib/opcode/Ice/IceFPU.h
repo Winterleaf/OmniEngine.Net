@@ -45,9 +45,7 @@
 	//! Fast square root for floating-point values.
 	inline_ float FastSqrt(float square)
 	{
-#if defined (_M_AMD64)
-	 return( sqrtf( square ) );
-#elif defined( PLATFORM_WINDOWS )
+#if defined( PLATFORM_WINDOWS ) && !defined ( _WIN64 )
 			float retval;
 
 			__asm {
@@ -190,24 +188,7 @@
 		return x*x < epsilon;
 	}
 
-#if defined ( _M_AMD64 )
-inline float FCMax2(float a, float b) { return a>b ? a : b; }
-inline float FCMin2(float a, float b) { return a>b ? b : a; }
-inline float FCMax3(float a, float b, float c)
-{
-    if (a >= b)
-		return( FCMax2( a, c ) );
-	
-	return( FCMax2( b, c ) );
-}
-inline float FCMin3(float a, float b, float c)
-{
-    if (a >= b)
-		return( FCMin2( b, c ) );
-	
-	return( FCMin2( a, c ) );
-}
-#elif defined ( PLATFORM_WINDOWS )
+#if defined( PLATFORM_WINDOWS ) && !defined ( _WIN64 )
 	#define FCOMI_ST0	_asm	_emit	0xdb	_asm	_emit	0xf0
 	#define FCOMIP_ST0	_asm	_emit	0xdf	_asm	_emit	0xf0
 	#define FCMOVB_ST0	_asm	_emit	0xda	_asm	_emit	0xc0

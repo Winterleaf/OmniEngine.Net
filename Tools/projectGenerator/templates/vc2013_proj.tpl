@@ -57,7 +57,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">{$projectOffset}../../{$gameFolder}/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">{$projectOffset}../Link/VC2012.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">false</LinkIncremental>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">{$projOutName}_OPTIMIZEDDEBUG</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Optimized Debug|Win32'">{$projOutName}_DEBUG</TargetName>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">{$projectOffset}../../{$gameFolder}/</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">{$projectOffset}../Link/VC2012.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>

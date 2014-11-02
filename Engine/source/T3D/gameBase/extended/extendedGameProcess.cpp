@@ -207,9 +207,6 @@ void ExtendedClientProcessList::onTickObject( ProcessObject *obj )
    }
    else if ( obj->isTicking() )
       obj->processTick( 0 );
-
-  
-
 }
 
 void ExtendedClientProcessList::advanceObjects()
@@ -356,8 +353,6 @@ void ExtendedServerProcessList::onTickObject( ProcessObject *pobj )
    }
    else if ( pobj->isTicking() )
       pobj->processTick( 0 );
-
-
 }
 
 void ExtendedServerProcessList::advanceObjects()

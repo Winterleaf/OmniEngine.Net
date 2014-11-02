@@ -113,7 +113,6 @@ MODULE_END;
 // BRKCLR file line - sent when a breakpoint cannot be moved to a breakable line on the client.
 //
 
-//ConsoleFunction( dbgSetParameters, void, 3, 4, "(int port, string password, bool waitForClient)"
 DefineConsoleFunction( dbgSetParameters, void, (S32 port, const char * password, bool waitForClient ), (false), "( int port, string password, bool waitForClient )"
                 "Open a debug server port on the specified port, requiring the specified password, "
 				"and optionally waiting for the debug client to connect.\n"
@@ -122,11 +121,9 @@ DefineConsoleFunction( dbgSetParameters, void, (S32 port, const char * password,
    if (TelDebugger)
    {
       TelDebugger->setDebugParameters(port, password, waitForClient );
-	   //TelDebugger->setDebugParameters(dAtoi(argv[1]), argv[2], argc > 3 ? dAtob(argv[3]) : false );
    }
 }
 
-// ConsoleFunction( dbgIsConnected, bool, 1, 1, "()"
 DefineConsoleFunction( dbgIsConnected, bool, (), , "()"
                 "Returns true if a script debugging client is connected else return false.\n"
 				"@internal Primarily used for Torsion and other debugging tools")
@@ -134,7 +131,6 @@ DefineConsoleFunction( dbgIsConnected, bool, (), , "()"
    return TelDebugger && TelDebugger->isConnected();
 }
 
-// ConsoleFunction( dbgDisconnect, void, 1, 1, "()"
 DefineConsoleFunction( dbgDisconnect, void, (), , "()"
                 "Forcibly disconnects any attached script debugging client.\n"
 				"@internal Primarily used for Torsion and other debugging tools")
@@ -926,90 +922,3 @@ void TelnetDebugger::clearCodeBlockPointers(CodeBlock *code)
       walk = &cur->next;
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dbgDisconnect()
-{
-{
-   if (TelDebugger)
-	   TelDebugger->disconnect();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_dbgIsConnected()
-{
-bool wle_returnObject;
-{
-   {wle_returnObject =TelDebugger && TelDebugger->isConnected();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dbgSetParameters(S32 port, char * x__password, bool waitForClient)
-{
-const char* password = (const char*)x__password;
-
-{
-   if (TelDebugger)
-   {
-      TelDebugger->setDebugParameters(port, password, waitForClient );
-	      }
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

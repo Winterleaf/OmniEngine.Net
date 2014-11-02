@@ -71,15 +71,12 @@ DbgFileView::DbgFileView()
    mSize.set(1, 0);
 }
 
-//ConsoleMethod(DbgFileView, setCurrentLine, void, 4, 4, "(int line, bool selected)"
 DefineConsoleMethod(DbgFileView, setCurrentLine, void, (S32 line, bool selected), , "(int line, bool selected)"
               "Set the current highlighted line.")
 {
-   //object->setCurrentLine(dAtoi(argv[2]), dAtob(argv[3]));
    object->setCurrentLine(line, selected);
 }
 
-//ConsoleMethod(DbgFileView, getCurrentLine, const char *, 2, 2, "()"
 DefineConsoleMethod(DbgFileView, getCurrentLine, const char *, (), , "()"
               "Get the currently executing file and line, if any.\n\n"
               "@returns A string containing the file, a tab, and then the line number."
@@ -92,52 +89,41 @@ DefineConsoleMethod(DbgFileView, getCurrentLine, const char *, (), , "()"
 	return ret;
 }
 
-//ConsoleMethod(DbgFileView, open, bool, 3, 3, "(string filename)"
 DefineConsoleMethod(DbgFileView, open, bool, (const char * filename), , "(string filename)"
               "Open a file for viewing.\n\n"
               "@note This loads the file from the local system.")
 {
-   //return object->openFile(argv[2]);
    return object->openFile(filename);
 }
 
-//ConsoleMethod(DbgFileView, clearBreakPositions, void, 2, 2, "()"
 DefineConsoleMethod(DbgFileView, clearBreakPositions, void, (), , "()"
               "Clear all break points in the current file.")
 {
    object->clearBreakPositions();
 }
 
-//ConsoleMethod(DbgFileView, setBreakPosition, void, 3, 3, "(int line)"
 DefineConsoleMethod(DbgFileView, setBreakPosition, void, (U32 line), , "(int line)"
               "Set a breakpoint at the specified line.")
 {
-   //object->setBreakPosition(dAtoi(argv[2]));
    object->setBreakPosition(line);
 }
 
-//ConsoleMethod(DbgFileView, setBreak, void, 3, 3, "(int line)"
 DefineConsoleMethod(DbgFileView, setBreak, void, (U32 line), , "(int line)"
               "Set a breakpoint at the specified line.")
 {
-   //object->setBreakPointStatus(dAtoi(argv[2]), true);
    object->setBreakPointStatus(line, true);
 }
 
-//ConsoleMethod(DbgFileView, removeBreak, void, 3, 3, "(int line)"
 DefineConsoleMethod(DbgFileView, removeBreak, void, (U32 line), , "(int line)"
               "Remove a breakpoint from the specified line.")
 {
-   //object->setBreakPointStatus(dAtoi(argv[2]), false);
    object->setBreakPointStatus(line, false);
 }
 
-//ConsoleMethod(DbgFileView, findString, bool, 3, 3, "(string findThis)"
 DefineConsoleMethod(DbgFileView, findString, bool, (const char * findThis), , "(string findThis)"
               "Find the specified string in the currently viewed file and "
               "scroll it into view.")
 {
-   //return object->findString(argv[2]);
    return object->findString(findThis);
 }
 
@@ -725,154 +711,3 @@ void DbgFileView::onRenderCell(Point2I offset, Point2I cell, bool selected, bool
    GFX->getDrawUtil()->setBitmapModulation(mFileView[cell.y].breakOnLine ? mProfile->mFontColorHL : mProfile->mFontColor);
    GFX->getDrawUtil()->drawText(mFont, cellOffset, mFileView[cell.y].text);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DbgFileView_clearBreakPositions(char * x__object)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearBreakPositions();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_DbgFileView_findString(char * x__object, char * x__findThis)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* findThis = (const char*)x__findThis;
-bool wle_returnObject;
-{
-      {wle_returnObject =object->findString(findThis);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DbgFileView_getCurrentLine(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-	S32 lineNum;
-   const char *file = object->getCurrentLine(lineNum);
-   char* ret = Con::getReturnBuffer(256);
-	dSprintf(ret, sizeof(ret), "%s\t%d", file, lineNum);
-	{wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_DbgFileView_open(char * x__object, char * x__filename)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* filename = (const char*)x__filename;
-bool wle_returnObject;
-{
-      {wle_returnObject =object->openFile(filename);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DbgFileView_removeBreak(char * x__object, U32 line)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->setBreakPointStatus(line, false);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DbgFileView_setBreak(char * x__object, U32 line)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->setBreakPointStatus(line, true);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DbgFileView_setBreakPosition(char * x__object, U32 line)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->setBreakPosition(line);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DbgFileView_setCurrentLine(char * x__object, S32 line, bool selected)
-{
-DbgFileView* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-      object->setCurrentLine(line, selected);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

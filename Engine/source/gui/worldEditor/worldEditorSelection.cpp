@@ -642,10 +642,11 @@ ConsoleMethod( WorldEditorSelection, containsGlobalBounds, bool, 2, 2, "() - Tru
 
 ConsoleMethod( WorldEditorSelection, getCentroid, const char*, 2, 2, "() - Return the median of all object positions in the selection." )
 {
-   char* buffer = Con::getReturnBuffer( 256 );
+   static const U32 bufSize = 256;
+   char* buffer = Con::getReturnBuffer( bufSize );
    const Point3F& centroid = object->getCentroid();
    
-   dSprintf( buffer, 256, "%g %g %g", centroid.x, centroid.y, centroid.z );
+   dSprintf( buffer, bufSize, "%g %g %g", centroid.x, centroid.y, centroid.z );
    return buffer;
 }
 
@@ -653,10 +654,11 @@ ConsoleMethod( WorldEditorSelection, getCentroid, const char*, 2, 2, "() - Retur
 
 ConsoleMethod( WorldEditorSelection, getBoxCentroid, const char*, 2, 2, "() - Return the center of the bounding box around the selection." )
 {
-   char* buffer = Con::getReturnBuffer( 256 );
+   static const U32 bufSize = 256;
+   char* buffer = Con::getReturnBuffer( bufSize );
    const Point3F& boxCentroid = object->getBoxCentroid();
    
-   dSprintf( buffer, 256, "%g %g %g", boxCentroid.x, boxCentroid.y, boxCentroid.z );
+   dSprintf( buffer, bufSize, "%g %g %g", boxCentroid.x, boxCentroid.y, boxCentroid.z );
    return buffer;
 }
 
@@ -706,210 +708,3 @@ ConsoleMethod( WorldEditorSelection, subtract, void, 3, 3, "( SimSet ) - Remove 
    for( U32 i = 0; i < numObjects; ++ i )
       object->removeObject( selection->at( i ) );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnWorldEditorSelection_containsGlobalBounds(char * x__object)
-{
-WorldEditorSelection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-{
-   {wle_returnObject =object->containsGlobalBounds();
-return (S32)(wle_returnObject);}
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditorSelection_getBoxCentroid(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-WorldEditorSelection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-{
-   char* buffer = Con::getReturnBuffer( 256 );
-   const Point3F& boxCentroid = object->getBoxCentroid();
-   
-   dSprintf( buffer, 256, "%g %g %g", boxCentroid.x, boxCentroid.y, boxCentroid.z );
-   {wle_returnObject =buffer;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditorSelection_getCentroid(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-WorldEditorSelection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-{
-   char* buffer = Con::getReturnBuffer( 256 );
-   const Point3F& centroid = object->getCentroid();
-   
-   dSprintf( buffer, 256, "%g %g %g", centroid.x, centroid.y, centroid.z );
-   {wle_returnObject =buffer;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditorSelection_offset(char * x__object, char * x__a2, char * x__a3)
-{
-WorldEditorSelection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* a2 = (const char*)x__a2;
-const char* a3 = (const char*)x__a3;
-{
-S32 argc = 4;
-if ( dStrlen(a3) == 0 )
-argc=3;
-else
-argc=4;
-std::vector<const char*> arguments;
-arguments.push_back("");
-arguments.push_back("");
-arguments.push_back(a2);
-if ( argc >3 )
-arguments.push_back(a3);
-const char** argv = &arguments[0];
-{
-   F32 x, y, z;
-   dSscanf( argv[ 3 ], "%g %g %g", &x, &y, &z );
-   
-   F32 gridSnap = 0.f;
-   if( argc > 3 )
-      gridSnap = dAtof( argv[ 3 ] );
-      
-   object->offset( Point3F( x, y, z ), gridSnap );
-   WorldEditor::updateClientTransforms( object );
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditorSelection_subtract(char * x__object, char * x__a2)
-{
-WorldEditorSelection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* a2 = (const char*)x__a2;
-{
-S32 argc = 3;
-argc=3;
-std::vector<const char*> arguments;
-arguments.push_back("");
-arguments.push_back("");
-arguments.push_back(a2);
-const char** argv = &arguments[0];
-{
-   SimSet* selection;
-   if( !Sim::findObject( argv[ 2 ], selection ) )
-   {
-      Con::errorf( "WorldEditorSelection::subtract - no SimSet '%s'", argv[ 2 ] );
-      return;
-   }
-   
-   const U32 numObjects = selection->size();
-   for( U32 i = 0; i < numObjects; ++ i )
-      object->removeObject( selection->at( i ) );
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditorSelection_union(char * x__object, char * x__a2)
-{
-WorldEditorSelection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* a2 = (const char*)x__a2;
-{
-S32 argc = 3;
-argc=3;
-std::vector<const char*> arguments;
-arguments.push_back("");
-arguments.push_back("");
-arguments.push_back(a2);
-const char** argv = &arguments[0];
-{
-   SimSet* selection;
-   if( !Sim::findObject( argv[ 2 ], selection ) )
-   {
-      Con::errorf( "WorldEditorSelection::union - no SimSet '%s'", argv[ 2 ] );
-      return;
-   }
-   
-   const U32 numObjects = selection->size();
-   for( U32 i = 0; i < numObjects; ++ i )
-      object->addObject( selection->at( i ) );
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

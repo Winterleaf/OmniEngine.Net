@@ -726,7 +726,7 @@ void ForestBrushTool::_collectElements()
    }
 }
 
-bool ForestBrushTool::getGroundAt( const Point3F &worldPt, float *zValueOut, VectorF *normalOut )
+bool ForestBrushTool::getGroundAt( const Point3F &worldPt, F32 *zValueOut, VectorF *normalOut )
 {
    const U32 mask = TerrainObjectType | StaticShapeObjectType;
 
@@ -757,78 +757,7 @@ bool ForestBrushTool::getGroundAt( const Point3F &worldPt, float *zValueOut, Vec
    return true;
 }
 
-//ConsoleMethod( ForestBrushTool, collectElements, void, 2, 2, "" )
 DefineConsoleMethod( ForestBrushTool, collectElements, void, (), , "" )
 {
    object->collectElements();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestBrushTool_collectElements(char * x__object)
-{
-ForestBrushTool* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->collectElements();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

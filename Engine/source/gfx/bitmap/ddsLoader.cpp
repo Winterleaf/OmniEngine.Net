@@ -166,7 +166,7 @@ U32 DDSFile::getSurfaceSize( U32 height, U32 width, U32 mipLevel ) const
    if(mFlags.test(CompressedData))
    {
       // From the directX docs:
-      // max(1, width � 4) x max(1, height � 4) x 8(DXT1) or 16(DXT2-5)
+      // max(1, width ÷ 4) x max(1, height ÷ 4) x 8(DXT1) or 16(DXT2-5)
 
       U32 sizeMultiple = 0;
 
@@ -212,7 +212,7 @@ U32 DDSFile::getSizeInBytes( GFXFormat format, U32 height, U32 width, U32 mipLev
       "DDSFile::getSizeInBytes - Must be a DXT format!" );
 
    // From the directX docs:
-   // max(1, width � 4) x max(1, height � 4) x 8(DXT1) or 16(DXT2-5)
+   // max(1, width ÷ 4) x max(1, height ÷ 4) x 8(DXT1) or 16(DXT2-5)
 
    U32 sizeMultiple = 0;
    if ( format == GFXFormatDXT1 )
@@ -883,7 +883,7 @@ DDSFile *DDSFile::createDDSFileFromGBitmap( const GBitmap *gbmp )
    ret->mSurfaces.push_back( new SurfaceData() );
 
    // Load the mips
-   for( int i = 0; i < ret->mMipMapCount; i++ )
+   for( S32 i = 0; i < ret->mMipMapCount; i++ )
    {
       const U32 mipSz = ret->getSurfaceSize(i);
       ret->mSurfaces.last()->mMips.push_back( new U8[mipSz] );
@@ -898,7 +898,7 @@ DDSFile *DDSFile::createDDSFileFromGBitmap( const GBitmap *gbmp )
          // Assumption:
          AssertFatal( gbmp->getBytesPerPixel() + 1 == ret->mBytesPerPixel, "Assumption failed, not 24->32 bit straight convert." );
 
-         for( int pxl = 0; pxl < gbmp->getWidth(i) * gbmp->getHeight(i); pxl++ )
+         for( S32 pxl = 0; pxl < gbmp->getWidth(i) * gbmp->getHeight(i); pxl++ )
          {
             U8 *dst = &mipMem[pxl * ret->mBytesPerPixel];
             const U8 *src = &gbmp->getBits(i)[pxl * gbmp->getBytesPerPixel()];
@@ -920,70 +920,3 @@ DefineEngineFunction( getActiveDDSFiles, S32, (),,
 {
    return DDSFile::smActiveCopies;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getActiveDDSFiles()
-{
-{
-  return (S32)( DDSFile::smActiveCopies);
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

@@ -560,8 +560,7 @@ bool RE::DoMatch(const StringPiece& text,
                                        // (as for kVecSize)
   int space[21];   // use stack allocation for small vecsize (common case)
   int* vec = vecsize <= 21 ? space : new int[vecsize];
-  assert( (vecsize <= INT_MAX) && "Huge data." );
-  const bool retval = DoMatchImpl(text, anchor, consumed, args, n, vec, (int)vecsize);
+  bool retval = DoMatchImpl(text, anchor, consumed, args, n, vec, vecsize);
   if (vec != space) delete [] vec;
   return retval;
 }

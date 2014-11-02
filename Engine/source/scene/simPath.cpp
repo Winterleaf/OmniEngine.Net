@@ -404,9 +404,9 @@ void Marker::initPersistFields()
 {
    addGroup( "Misc" );
    addField("seqNum",   TypeS32, Offset(mSeqNum,   Marker), "Marker position in sequence of markers on this path.\n");
-   addField("type", TYPEID< KnotType >(), Offset(mKnotType, Marker), "Type of this marker/knot. A \"normal\" knot will have a smooth camera translation/rotation effect.\n\"Position Only\"�will do the same for translations, leaving rotation un-touched.\nLastly, a \"Kink\" means the rotation will take effect immediately for an abrupt rotation change.\n");
+   addField("type", TYPEID< KnotType >(), Offset(mKnotType, Marker), "Type of this marker/knot. A \"normal\" knot will have a smooth camera translation/rotation effect.\n\"Position Only\"will do the same for translations, leaving rotation un-touched.\nLastly, a \"Kink\" means the rotation will take effect immediately for an abrupt rotation change.\n");
    addField("msToNext", TypeS32, Offset(mMSToNext, Marker), "Milliseconds to next marker in sequence.\n");
-   addField("smoothingType", TYPEID< SmoothingType >(), Offset(mSmoothingType, Marker), "Path smoothing at this marker/knot. \"Linear\"�means no smoothing, while \"Spline\" means to smooth.\n");
+   addField("smoothingType", TYPEID< SmoothingType >(), Offset(mSmoothingType, Marker), "Path smoothing at this marker/knot. \"Linear\"means no smoothing, while \"Spline\" means to smooth.\n");
    endGroup("Misc");
 
    Parent::initPersistFields();
@@ -524,94 +524,3 @@ void Marker::unpackUpdate(NetConnection* con, BitStream* stream)
 
    setTransform(otow);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_pathOnMissionLoadDone()
-{
-{
-      SimGroup* pMissionGroup = dynamic_cast<SimGroup*>(Sim::findObject("MissionGroup"));
-   AssertFatal(pMissionGroup != NULL, "Error, mission done loading and no mission group?");
-   U32 currStart = 0;
-   U32 currEnd   = 1;
-   Vector<SimGroup*> groups;
-   groups.push_back(pMissionGroup);
-   while (true) {
-      for (U32 i = currStart; i < currEnd; i++) {
-         for (SimGroup::iterator itr = groups[i]->begin(); itr != groups[i]->end(); itr++) {
-            if (dynamic_cast<SimGroup*>(*itr) != NULL)
-               groups.push_back(static_cast<SimGroup*>(*itr));
-         }
-      }
-      if (groups.size() == currEnd) {
-         break;
-      } else {
-         currStart = currEnd;
-         currEnd   = groups.size();
-      }
-   }
-   for (U32 i = 0; i < groups.size(); i++) {
-      SimPath::Path* pPath = dynamic_cast<SimPath::Path*>(groups[i]);
-      if (pPath)
-         pPath->updatePath();
-   }
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

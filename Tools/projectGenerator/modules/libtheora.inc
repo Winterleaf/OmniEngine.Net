@@ -27,7 +27,7 @@ addLibSrcDir( 'libtheora/include/theora' );
 addLibSrcDir( 'libtheora/lib' );
 addLibSrcDir( 'libtheora/lib/dec' );
 
-switch( Generator::$platform )
+switch( T3D_Generator::$platform )
 {
    case "win32":
       addLibSrcDir( 'libtheora/lib/dec/x86_vc' );
@@ -46,16 +46,6 @@ addLibSrcDir( 'libtheora/lib/enc/x86_32_vs' );
 addLibSrcFile( 'libtheora/lib/enc/x86_64/dsp_mmx.c' );
 addLibSrcFile( 'libtheora/lib/enc/x86_64/fdct_mmx.c' );
 addLibSrcFile( 'libtheora/lib/enc/x86_64/recon_mmx.c' );
-
-//switch( Generator::$platform )
-//{
-//   case "win32":
-//      addLibSrcDir( 'libtheora/lib/enc/x86_32_vs' );
-//      break;
-//   default:
-//      addLibSrcDir( 'libtheora/lib/enc/x86_32' );
-//      break;
-//}
 
 addLibIncludePath( 'libtheora/include' );
 addLibIncludePath( 'libogg/include' );

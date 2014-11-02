@@ -796,11 +796,11 @@ bool GBitmap::combine( const GBitmap *bitmapA, const GBitmap *bitmapB, const GFX
    const U8 *aBits = bitmapA->getBits();
    const U8 *bBits = bitmapB->getBits();
 
-   for( int y = 0; y < getHeight(); y++ )
+   for( S32 y = 0; y < getHeight(); y++ )
    {
-      for( int x = 0; x < getWidth(); x++ )
+      for( S32 x = 0; x < getWidth(); x++ )
       {
-         for( int _byte = 0; _byte < mBytesPerPixel; _byte++ )
+         for( S32 _byte = 0; _byte < mBytesPerPixel; _byte++ )
          {
             U8 pxA = 0;
             U8 pxB = 0;
@@ -1183,82 +1183,3 @@ DefineEngineFunction( getBitmapInfo, String, ( const char *filename ),,
                                           image->getHeight(),
                                           image->getBytesPerPixel() );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getBitmapInfo(char * x__filename,  char* retval)
-{
-dSprintf(retval,1024,"");
-const char* filename = (const char*)x__filename;
-String wle_returnObject;
-{
-   Resource<GBitmap> image = GBitmap::load( filename );
-   if ( !image )
-      {wle_returnObject =String::EmptyString;
-dSprintf(retval,16384,"%s",wle_returnObject.c_str());
-return;
-}
-   {wle_returnObject =String::ToString( "%d\t%d\t%d", image->getWidth(),                                           image->getHeight(),                                          image->getBytesPerPixel() );
-dSprintf(retval,16384,"%s",wle_returnObject.c_str());
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

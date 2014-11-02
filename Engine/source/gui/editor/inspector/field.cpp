@@ -39,11 +39,6 @@ ConsoleDocClass( GuiInspectorField,
    "Editor use only.\n\n"
    "@internal"
 );
-//
-//IMPLEMENT_CALLBACK( GuiInspectorField, onInspectorFieldModified, void
-//    , ( const char* object, const char* fieldName, const char* arrayIndex, const char* oldValue, const char* newValue )
-//    , ( object, fieldName, arrayIndex, oldValue, newValue ), "" );
-
 
 //-----------------------------------------------------------------------------
 
@@ -387,10 +382,9 @@ void GuiInspectorField::setInspectorField( AbstractClassRep::Field *field, Strin
       mCaption = getFieldName(); 
    else
       mCaption = caption;
-    
-	//VGee, this can actually be hit from the scripts w/ the ConsoleVarDlg screen.
-	if ( mField != NULL )
-   _setFieldDocs( mField->pFieldDocs );
+
+   if ( mField != NULL )
+      _setFieldDocs( mField->pFieldDocs );
 }
 
 //-----------------------------------------------------------------------------
@@ -625,7 +619,6 @@ void GuiInspectorField::_setFieldDocs( StringTableEntry docs )
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, getInspector, S32, 2, 2, "() - Return the GuiInspector to which this field belongs." )
 DefineConsoleMethod( GuiInspectorField, getInspector, S32, (), , "() - Return the GuiInspector to which this field belongs." )
 {
    return object->getInspector()->getId();
@@ -633,7 +626,6 @@ DefineConsoleMethod( GuiInspectorField, getInspector, S32, (), , "() - Return th
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, getInspectedFieldName, const char*, 2, 2, "() - Return the name of the field edited by this inspector field." )
 DefineConsoleMethod( GuiInspectorField, getInspectedFieldName, const char*, (), , "() - Return the name of the field edited by this inspector field." )
 {
    return object->getFieldName();
@@ -641,7 +633,6 @@ DefineConsoleMethod( GuiInspectorField, getInspectedFieldName, const char*, (), 
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, getInspectedFieldType, const char*, 2, 2, "() - Return the type of the field edited by this inspector field." )
 DefineConsoleMethod( GuiInspectorField, getInspectedFieldType, const char*, (), , "() - Return the type of the field edited by this inspector field." )
 {
    return object->getFieldType();
@@ -649,29 +640,20 @@ DefineConsoleMethod( GuiInspectorField, getInspectedFieldType, const char*, (), 
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, apply, void, 3, 4, "( string newValue, bool callbacks=true ) - Set the field's value. Suppress callbacks for undo if callbacks=false." )
 DefineConsoleMethod( GuiInspectorField, apply, void, ( const char * newValue, bool callbacks ), ("", true), "( string newValue, bool callbacks=true ) - Set the field's value. Suppress callbacks for undo if callbacks=false." )
 {
-   //bool callbacks = true;
-   //if( argc > 3 )
-   //   callbacks = dAtob( argv[ 3 ] );
-      
-   //object->setData( argv[ 2 ], callbacks );
    object->setData( newValue, callbacks );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, applyWithoutUndo, void, 3, 3, "() - Set field value without recording undo (same as 'apply( value, false )')." )
 DefineConsoleMethod( GuiInspectorField, applyWithoutUndo, void, (const char * data), , "() - Set field value without recording undo (same as 'apply( value, false )')." )
 {
-   //object->setData( argv[ 2 ], false );
    object->setData( data, false );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, getData, const char*, 2, 2, "() - Return the value currently displayed on the field." )
 DefineConsoleMethod( GuiInspectorField, getData, const char*, (), , "() - Return the value currently displayed on the field." )
 {
    return object->getData();
@@ -679,157 +661,7 @@ DefineConsoleMethod( GuiInspectorField, getData, const char*, (), , "() - Return
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiInspectorField, reset, void, 2, 2, "() - Reset to default value." )
 DefineConsoleMethod( GuiInspectorField, reset, void, (), , "() - Reset to default value." )
 {
    object->resetData();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_apply(char * x__object, char * x__newValue, bool callbacks)
-{
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* newValue = (const char*)x__newValue;
-
-{
-               
-      object->setData( newValue, callbacks );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_applyWithoutUndo(char * x__object, char * x__data)
-{
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* data = (const char*)x__data;
-{
-      object->setData( data, false );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_getData(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getData();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_getInspectedFieldName(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getFieldName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_getInspectedFieldType(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getFieldType();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiInspectorField_getInspector(char * x__object)
-{
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)( object->getInspector()->getId());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_reset(char * x__object)
-{
-GuiInspectorField* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->resetData();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

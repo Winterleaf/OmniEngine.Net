@@ -21,12 +21,6 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-//beginCSProjectConfig( 'OMNI-FPS' );
-
-    //addGameFullSrcDir( 'Winterleaf.Game');
-
-//endCSProjectConfig();
-
 beginModule( 'OMNI-FPS' );
 
     includeLib( 'OMNI-FPS');

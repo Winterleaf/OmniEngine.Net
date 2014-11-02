@@ -86,11 +86,8 @@ namespace Sim
 
 ConsoleFunctionGroupBegin ( SimFunctions, "Functions relating to Sim.");
 
-//ConsoleFunction(nameToID, S32, 2, 2, "nameToID(object)")
 DefineConsoleFunction( nameToID, S32, (const char * objectName), ,"nameToID(object)")
 {
-   //TORQUE_UNUSED(argc);
-   //SimObject *obj = Sim::findObject(argv[1]);
    SimObject *obj = Sim::findObject(objectName);
    if(obj)
       return obj->getId();
@@ -98,15 +95,11 @@ DefineConsoleFunction( nameToID, S32, (const char * objectName), ,"nameToID(obje
       return -1;
 }
 
-//ConsoleFunction(isObject, bool, 2, 2, "isObject(object)")
 DefineConsoleFunction( isObject, bool, (const char * objectName), ,"isObject(object)")
 {
-   //TORQUE_UNUSED(argc);
-   //if (!dStrcmp(argv[1], "0") || !dStrcmp(argv[1], ""))
    if (!dStrcmp(objectName, "0") || !dStrcmp(objectName, ""))
       return false;
    else
-      //return (Sim::findObject(argv[1]) != NULL);
       return (Sim::findObject(objectName) != NULL);
 }
 
@@ -140,7 +133,6 @@ ConsoleDocFragment _spawnObject1(
    "bool spawnObject(class [, dataBlock, name, properties, script]);"
 );
 
-//ConsoleFunction(spawnObject, S32, 3, 6, "spawnObject(class [, dataBlock, name, properties, script])"
 DefineConsoleFunction( spawnObject, S32, (   const char * spawnClass
                                          ,   const char * spawnDataBlock
                                          ,   const char * spawnName
@@ -150,20 +142,6 @@ DefineConsoleFunction( spawnObject, S32, (   const char * spawnClass
                                          ),("","","","","") ,"spawnObject(class [, dataBlock, name, properties, script,modelName])"
 				"@hide")
 {
-   //String spawnClass(argv[1]);
-   //String spawnDataBlock;
-   //String spawnName;
-   //String spawnProperties;
-   //String spawnScript;
-
-   //if (argc >= 3)
-   //   spawnDataBlock = argv[2];
-   //if (argc >= 4)
-   //   spawnName = argv[3];
-   //if (argc >= 5)
-   //   spawnProperties = argv[4];
-   //if (argc >= 6)
-   //   spawnScript = argv[5];
 
    SimObject* spawnObject = Sim::spawnObject(spawnClass, spawnDataBlock, spawnName, spawnProperties, spawnScript,modelName);
 
@@ -173,54 +151,39 @@ DefineConsoleFunction( spawnObject, S32, (   const char * spawnClass
       return -1;
 }
 
-//ConsoleFunction(cancel,void,2,2,"cancel(eventId)")
 DefineConsoleFunction( cancel, void, (S32 eventId), ,"cancel(eventId)")
 {
-   //Sim::cancelEvent(dAtoi(argv[1]));
    Sim::cancelEvent(eventId);
 }
 
-//ConsoleFunction(cancelAll,void,2,2,"cancelAll(objectId): cancel pending events on the specified object.  Events will be automatically cancelled if object is deleted.")
 DefineConsoleFunction( cancelAll, void, (const char * objectId), ,"cancelAll(objectId): cancel pending events on the specified object.  Events will be automatically cancelled if object is deleted.")
 {
-   //Sim::cancelPendingEvents(Sim::findObject(argv[1]));
    Sim::cancelPendingEvents(Sim::findObject(objectId));
 }
 
-//ConsoleFunction(isEventPending, bool, 2, 2, "isEventPending(%scheduleId);")
 DefineConsoleFunction( isEventPending, bool, (S32 scheduleId), ,"isEventPending(%scheduleId);")
 {
-   //return Sim::isEventPending(dAtoi(argv[1]));
    return Sim::isEventPending(scheduleId);
 }
 
-//ConsoleFunction(getEventTimeLeft, S32, 2, 2, "getEventTimeLeft(scheduleId) Get the time left in ms until this event will trigger.")
 DefineConsoleFunction( getEventTimeLeft, S32, (S32 scheduleId), ,"getEventTimeLeft(scheduleId) Get the time left in ms until this event will trigger.")
 {
-   //return Sim::getEventTimeLeft(dAtoi(argv[1]));
    return Sim::getEventTimeLeft(scheduleId);
 }
 
-//ConsoleFunction(getScheduleDuration, S32, 2, 2, "getScheduleDuration(%scheduleId);")
 DefineConsoleFunction( getScheduleDuration, S32, (S32 scheduleId), ,"getScheduleDuration(%scheduleId);" )
 {
-   //TORQUE_UNUSED(argc);   
-   //S32 ret = Sim::getScheduleDuration(dAtoi(argv[1]));
    S32 ret = Sim::getScheduleDuration(scheduleId);
    return ret;
 }
 
-//ConsoleFunction(getTimeSinceStart, S32, 2, 2, "getTimeSinceStart(%scheduleId);")
 DefineConsoleFunction( getTimeSinceStart, S32, (S32 scheduleId), ,"getTimeSinceStart(%scheduleId);" )
 {
-   //TORQUE_UNUSED(argc);   
-   //S32 ret = Sim::getTimeSinceStart(dAtoi(argv[1]));
    S32 ret = Sim::getTimeSinceStart(scheduleId);
    return ret;
 }
 
 ConsoleFunction(schedule, S32, 4, 0, "schedule(time, refobject|0, command, <arg1...argN>)")
-//DefineConsoleFunction( schedule, S32, (const char * scheduleId), ,"schedule(time, refobject|0, command, <arg1...argN>)" )
 {
    U32 timeDelta = U32(dAtof(argv[1]));
    SimObject *refObject = Sim::findObject(argv[2]);
@@ -241,7 +204,6 @@ ConsoleFunction(schedule, S32, 4, 0, "schedule(time, refobject|0, command, <arg1
    return ret;
 }
 
-//ConsoleFunction(getUniqueName, const char*, 2, 2, 
 DefineConsoleFunction( getUniqueName, const char*, (const char * baseName), ,
 	"( String baseName )\n"
 	"@brief Returns a unique unused SimObject name based on a given base name.\n\n"
@@ -250,7 +212,6 @@ DefineConsoleFunction( getUniqueName, const char*, (const char * baseName), ,
 	"@ingroup Editors\n"
 	"@internal")
 {
-   //String outName = Sim::getUniqueName( argv[1] );
    String outName = Sim::getUniqueName( baseName );
    
    if ( outName.isEmpty() )
@@ -262,7 +223,6 @@ DefineConsoleFunction( getUniqueName, const char*, (const char * baseName), ,
    return buffer;
 }
 
-//ConsoleFunction(getUniqueInternalName, const char*, 4, 4,
 DefineConsoleFunction( getUniqueInternalName, const char*, (const char * baseName, const char * setString, bool searchChildren), ,
    "( String baseName, SimSet set, bool searchChildren )\n"
    "@brief Returns a unique unused internal name within the SimSet/Group based on a given base name.\n\n"
@@ -271,14 +231,12 @@ DefineConsoleFunction( getUniqueInternalName, const char*, (const char * baseNam
    "@internal")
 {
    SimSet *set;
-   //if ( !Sim::findObject( argv[2], set ) )
    if ( !Sim::findObject( setString, set ) )
    {
       Con::errorf( "getUniqueInternalName() - invalid parameter for SimSet." );
       return NULL;
    }
 
-   //String outName = Sim::getUniqueInternalName( argv[1], set, dAtob(argv[3]) );
    String outName = Sim::getUniqueInternalName( baseName, set, searchChildren );
 
    if ( outName.isEmpty() )
@@ -290,353 +248,13 @@ DefineConsoleFunction( getUniqueInternalName, const char*, (const char * baseNam
    return buffer;
 }
 
-//ConsoleFunction( isValidObjectName, bool, 2, 2, "( string name )"
 DefineConsoleFunction( isValidObjectName, bool, (const char * name), , "( string name )"
 				"@brief Return true if the given name makes for a valid object name.\n\n"
 				"@param name Name of object\n"
 				"@return True if name is allowed, false if denied (usually because it starts with a number, _, or invalid character"
 				"@ingroup Console")
 {
-   //const char* name = argv[ 1 ];
    return Sim::isValidObjectName( name );
 }
 
 ConsoleFunctionGroupEnd( SimFunctions );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn__schedule(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
-{
-const char* a1 = (const char*)x__a1;
-const char* a2 = (const char*)x__a2;
-const char* a3 = (const char*)x__a3;
-const char* a4 = (const char*)x__a4;
-const char* a5 = (const char*)x__a5;
-const char* a6 = (const char*)x__a6;
-const char* a7 = (const char*)x__a7;
-const char* a8 = (const char*)x__a8;
-const char* a9 = (const char*)x__a9;
-const char* a10 = (const char*)x__a10;
-const char* a11 = (const char*)x__a11;
-const char* a12 = (const char*)x__a12;
-const char* a13 = (const char*)x__a13;
-const char* a14 = (const char*)x__a14;
-const char* a15 = (const char*)x__a15;
-const char* a16 = (const char*)x__a16;
-const char* a17 = (const char*)x__a17;
-const char* a18 = (const char*)x__a18;
-const char* a19 = (const char*)x__a19;
-{
-S32 argc = 20;
-if (dStrlen(a19)==0)
-if (dStrlen(a18)==0)
-if (dStrlen(a17)==0)
-if (dStrlen(a16)==0)
-if (dStrlen(a15)==0)
-if (dStrlen(a14)==0)
-if (dStrlen(a13)==0)
-if (dStrlen(a12)==0)
-if (dStrlen(a11)==0)
-if (dStrlen(a10)==0)
-if (dStrlen(a9)==0)
-if (dStrlen(a8)==0)
-if (dStrlen(a7)==0)
-if (dStrlen(a6)==0)
-if (dStrlen(a5)==0)
-argc=5;
-else
-argc=6;
-else
-argc=7;
-else
-argc=8;
-else
-argc=9;
-else
-argc=10;
-else
-argc=11;
-else
-argc=12;
-else
-argc=13;
-else
-argc=14;
-else
-argc=15;
-else
-argc=16;
-else
-argc=17;
-else
-argc=18;
-else
-argc=19;
-else
-argc=20;
-std::vector<const char*> arguments;
-arguments.push_back("");
-arguments.push_back(a1);
-arguments.push_back(a2);
-arguments.push_back(a3);
-if (argc>=5)
-arguments.push_back(a4);
-if (argc>=6)
-arguments.push_back(a5);
-if (argc>=7)
-arguments.push_back(a6);
-if (argc>=8)
-arguments.push_back(a7);
-if (argc>=9)
-arguments.push_back(a8);
-if (argc>=10)
-arguments.push_back(a9);
-if (argc>=11)
-arguments.push_back(a10);
-if (argc>=12)
-arguments.push_back(a11);
-if (argc>=13)
-arguments.push_back(a12);
-if (argc>=14)
-arguments.push_back(a13);
-if (argc>=15)
-arguments.push_back(a14);
-if (argc>=16)
-arguments.push_back(a15);
-if (argc>=17)
-arguments.push_back(a16);
-if (argc>=18)
-arguments.push_back(a17);
-if (argc>=19)
-arguments.push_back(a18);
-if (argc>=20)
-arguments.push_back(a19);
-const char** argv = &arguments[0];
-{
-   U32 timeDelta = U32(dAtof(argv[1]));
-   SimObject *refObject = Sim::findObject(argv[2]);
-   if(!refObject)
-   {
-      if(argv[2][0] != '0')
-        return (S32)( 0);
-      refObject = Sim::getRootGroup();
-   }
-   SimConsoleEvent *evt = new SimConsoleEvent(argc - 3, argv + 3, false);
-   S32 ret = Sim::postEvent(refObject, evt, Sim::getCurrentTime() + timeDelta);
-              return (S32)( ret);
-}
-}
-;
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_cancel(S32 eventId)
-{
-{
-      Sim::cancelEvent(eventId);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_cancelAll(char * x__objectId)
-{
-const char* objectId = (const char*)x__objectId;
-{
-      Sim::cancelPendingEvents(Sim::findObject(objectId));
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getEventTimeLeft(S32 scheduleId)
-{
-{
-     return (S32)( Sim::getEventTimeLeft(scheduleId));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getScheduleDuration(S32 scheduleId)
-{
-{
-         S32 ret = Sim::getScheduleDuration(scheduleId);
-  return (S32)( ret);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getTimeSinceStart(S32 scheduleId)
-{
-{
-         S32 ret = Sim::getTimeSinceStart(scheduleId);
-  return (S32)( ret);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getUniqueInternalName(char * x__baseName, char * x__setString, bool searchChildren,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* baseName = (const char*)x__baseName;
-const char* setString = (const char*)x__setString;
-
-const char* wle_returnObject;
-{
-   SimSet *set;
-      if ( !Sim::findObject( setString, set ) )
-   {
-      Con::errorf( "getUniqueInternalName() - invalid parameter for SimSet." );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   }
-      String outName = Sim::getUniqueInternalName( baseName, set, searchChildren );
-   if ( outName.isEmpty() )
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   char *buffer = Con::getReturnBuffer( outName.size() );
-   dStrcpy( buffer, outName );
-   {wle_returnObject =buffer;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getUniqueName(char * x__baseName,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* baseName = (const char*)x__baseName;
-const char* wle_returnObject;
-{
-      String outName = Sim::getUniqueName( baseName );
-   
-   if ( outName.isEmpty() )
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   char *buffer = Con::getReturnBuffer( outName.size() );
-   dStrcpy( buffer, outName );
-   {wle_returnObject =buffer;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isEventPending(S32 scheduleId)
-{
-bool wle_returnObject;
-{
-      {wle_returnObject =Sim::isEventPending(scheduleId);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isObject(char * x__objectName)
-{
-const char* objectName = (const char*)x__objectName;
-bool wle_returnObject;
-{
-         if (!dStrcmp(objectName, "0") || !dStrcmp(objectName, ""))
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   else
-            {wle_returnObject =(Sim::findObject(objectName) != NULL);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isValidObjectName(char * x__name)
-{
-const char* name = (const char*)x__name;
-bool wle_returnObject;
-{
-      {wle_returnObject =Sim::isValidObjectName( name );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_nameToID(char * x__objectName)
-{
-const char* objectName = (const char*)x__objectName;
-{
-         SimObject *obj = Sim::findObject(objectName);
-   if(obj)
-     return (S32)( obj->getId());
-   else
-     return (S32)( -1);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_spawnObject(char * x__spawnClass, char * x__spawnDataBlock, char * x__spawnName, char * x__spawnProperties, char * x__spawnScript, char * x__modelName)
-{
-const char* spawnClass = (const char*)x__spawnClass;
-const char* spawnDataBlock = (const char*)x__spawnDataBlock;
-const char* spawnName = (const char*)x__spawnName;
-const char* spawnProperties = (const char*)x__spawnProperties;
-const char* spawnScript = (const char*)x__spawnScript;
-const char* modelName = (const char*)x__modelName;
-{
-               
-                        
-   SimObject* spawnObject = Sim::spawnObject(spawnClass, spawnDataBlock, spawnName, spawnProperties, spawnScript,modelName);
-   if (spawnObject)
-     return (S32)( spawnObject->getId());
-   else
-     return (S32)( -1);
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

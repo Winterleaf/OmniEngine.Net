@@ -48,11 +48,13 @@ public:
    GFXShaderConstHandle* mSpecularPowerSC;
    GFXShaderConstHandle* mSpecularStrengthSC;
    GFXShaderConstHandle* mParallaxInfoSC;
+   //Sahara   
    GFXShaderConstHandle* mAccuScaleSC;
    GFXShaderConstHandle* mAccuDirectionSC;
    GFXShaderConstHandle* mAccuStrengthSC;
    GFXShaderConstHandle* mAccuCoverageSC;
    GFXShaderConstHandle* mAccuSpecularSC;
+   //Sahara   
    GFXShaderConstHandle* mFogDataSC;
    GFXShaderConstHandle* mFogColorSC;   
    GFXShaderConstHandle* mDetailScaleSC;

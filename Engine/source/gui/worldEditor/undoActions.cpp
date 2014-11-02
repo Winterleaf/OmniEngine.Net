@@ -61,12 +61,8 @@ void MECreateUndoAction::addObject( SimObject *object )
    mObjects.last().id = object->getId();
 }
 
-//ConsoleMethod( MECreateUndoAction, addObject, void, 3, 3, "( SimObject obj )")
 DefineConsoleMethod( MECreateUndoAction, addObject, void, (SimObject *obj), , "( SimObject obj )")
 {
-   //SimObject *obj = NULL;
-   //if ( Sim::findObject( argv[2], obj ) && obj )
-   //if ( Sim::findObject( objName, obj ) && obj )
 	if (obj)
    	object->addObject( obj );
 }
@@ -173,13 +169,8 @@ void MEDeleteUndoAction::deleteObject( const Vector<SimObject*> &objectList )
       deleteObject( objectList[i] );
 }
 
-//ConsoleMethod( MEDeleteUndoAction, deleteObject, void, 3, 3, "( SimObject obj )")
 DefineConsoleMethod( MEDeleteUndoAction, deleteObject, void, (SimObject *obj ), , "( SimObject obj )")
 {
-   //SimObject *obj = NULL;
-   ////if ( Sim::findObject( argv[2], obj ) && obj )
-   //if ( Sim::findObject( objName, obj ) && obj )
-
 	if (obj)
    	object->deleteObject( obj );
 }
@@ -284,87 +275,3 @@ void InspectorFieldUndoAction::undo()
    // since an undo action must become a redo action and vice-versa
    mData = data;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_MECreateUndoAction_addObject(char * x__object, char * x__obj)
-{
-MECreateUndoAction* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SimObject* obj; Sim::findObject(x__obj, obj ); 
-{
-         	if (obj)
-   	object->addObject( obj );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_MEDeleteUndoAction_deleteObject(char * x__object, char * x__obj)
-{
-MEDeleteUndoAction* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SimObject* obj; Sim::findObject(x__obj, obj ); 
-{
-         
-	if (obj)
-   	object->deleteObject( obj );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

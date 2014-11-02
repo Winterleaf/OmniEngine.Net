@@ -175,7 +175,7 @@ bool ConsoleLogger::detach()
    mStream.close();
 
    // Remove this object from the list of active loggers
-   for( int i = 0; i < mActiveLoggers.size(); i++ ) 
+   for( S32 i = 0; i < mActiveLoggers.size(); i++ ) 
    {
       if( mActiveLoggers[i] == this ) 
       {
@@ -225,7 +225,6 @@ void ConsoleLogger::log( const char *consoleLine )
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( ConsoleLogger, attach, bool, 2, 2, "() Attaches the logger to the console and begins writing to file"
 DefineConsoleMethod( ConsoleLogger, attach, bool, (), , "() Attaches the logger to the console and begins writing to file"
 			  "@tsexample\n"
 			  "// Create the logger\n"
@@ -248,7 +247,6 @@ DefineConsoleMethod( ConsoleLogger, attach, bool, (), , "() Attaches the logger 
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( ConsoleLogger, detach, bool, 2, 2, "() Detaches the logger from the console and stops writing to file"
 DefineConsoleMethod( ConsoleLogger, detach, bool, (), , "() Detaches the logger from the console and stops writing to file"
 			  "@tsexample\n"
 			  "// Create the logger\n"
@@ -268,88 +266,3 @@ DefineConsoleMethod( ConsoleLogger, detach, bool, (), , "() Detaches the logger 
    ConsoleLogger *logger = static_cast<ConsoleLogger *>( object );
    return logger->detach();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ConsoleLogger_attach(char * x__object)
-{
-ConsoleLogger* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   ConsoleLogger *logger = static_cast<ConsoleLogger *>( object );
-   {wle_returnObject =logger->attach();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ConsoleLogger_detach(char * x__object)
-{
-ConsoleLogger* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   ConsoleLogger *logger = static_cast<ConsoleLogger *>( object );
-   {wle_returnObject =logger->detach();
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

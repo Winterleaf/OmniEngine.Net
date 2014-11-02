@@ -161,9 +161,7 @@ void SceneManager::renderScene( ScenePassType passType, U32 objectMask )
    {
       // Store the camera state so if we lock, this will become the
       // locked state.
-
-      if( passType == SPT_Diffuse )
-         smLockedDiffuseCamera = cameraState;
+      smLockedDiffuseCamera = cameraState;
    }
    
    // Create the render state.
@@ -612,6 +610,7 @@ bool SceneManager::addObjectToScene( SceneObject* object )
 
 void SceneManager::removeObjectFromScene( SceneObject* obj )
 {
+   AssertFatal( obj, "SceneManager::removeObjectFromScene - Object is not declared" );
    AssertFatal( obj->getSceneManager() == this, "SceneManager::removeObjectFromScene - Object not part of SceneManager" );
 
    // Notify the object.
@@ -620,7 +619,8 @@ void SceneManager::removeObjectFromScene( SceneObject* obj )
 
    // Remove the object from the container.
 
-   getContainer()->removeObject( obj );
+   if( getContainer() )
+      getContainer()->removeObject( obj );
 
    // Remove the object from the zoning system.
 
@@ -772,125 +772,3 @@ DefineConsoleFunction( sceneGetZoneOwner, SceneObject*, ( U32 zoneId ), ( 1 ),
 
    return manager->getZoneOwner( zoneId );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_sceneDumpZoneStates(bool updateFirst)
-{
-{
-   if( !gClientSceneGraph )
-   {
-      Con::errorf( "sceneDumpZoneStates - Only valid on client!" );
-      return;
-   }
-   SceneZoneSpaceManager* manager = gClientSceneGraph->getZoneManager();
-   if( !manager )
-   {
-      Con::errorf( "sceneDumpZoneStates - Scene is not using zones!" );
-      return;
-   }
-   manager->dumpZoneStates( updateFirst );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_sceneGetZoneOwner(U32 zoneId,  char* retval)
-{
-dSprintf(retval,1024,"");
-SceneObject* wle_returnObject;
-{
-   if( !gClientSceneGraph )
-   {
-      Con::errorf( "sceneGetZoneOwner - Only valid on client!" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   SceneZoneSpaceManager* manager = gClientSceneGraph->getZoneManager();
-   if( !manager )
-   {
-      Con::errorf( "sceneGetZoneOwner - Scene is not using zones!" );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   if( !manager->isValidZoneId( zoneId ) )
-   {
-      Con::errorf( "sceneGetZoneOwner - Invalid zone ID: %i", zoneId );
-      {wle_returnObject =NULL;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-   }
-   {wle_returnObject =manager->getZoneOwner( zoneId );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

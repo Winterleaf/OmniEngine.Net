@@ -233,7 +233,9 @@ class ThreadPool
 
       typedef ThreadSafeRef< WorkItem > WorkItemPtr;
       struct GlobalThreadPool;
+#ifdef SocketThread	  
 	  struct NetworkThreadPool;
+#endif	  
       
    protected:
    

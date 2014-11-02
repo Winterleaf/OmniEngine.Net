@@ -135,7 +135,7 @@ GFX_ImplementTextureProfile(  PostFxTargetProfile,
                               GFXTextureProfile::PreserveSize |
                               GFXTextureProfile::RenderTarget |
                               GFXTextureProfile::Pooled,
-                              GFXTextureProfile::None );
+                              GFXTextureProfile::NONE );
 
 IMPLEMENT_CONOBJECT(PostEffect);
 
@@ -143,7 +143,7 @@ IMPLEMENT_CONOBJECT(PostEffect);
 GFX_ImplementTextureProfile( PostFxTextureProfile,
                             GFXTextureProfile::DiffuseMap,
                             GFXTextureProfile::Static | GFXTextureProfile::PreserveSize | GFXTextureProfile::NoMipmap,
-                            GFXTextureProfile::None );
+                            GFXTextureProfile::NONE );
 
 
 void PostEffect::EffectConst::set( const String &newVal )
@@ -375,7 +375,7 @@ bool PostEffect::onAdd()
    scriptPath.setExtension( String::EmptyString );
 
    // Find additional textures
-   for( int i = 0; i < NumTextures; i++ )
+   for( S32 i = 0; i < NumTextures; i++ )
    {
       String texFilename = mTexFilename[i];
 
@@ -1708,219 +1708,3 @@ DefineEngineFunction( dumpRandomNormalMap, void, (),,
    String path = Torque::FS::MakeUniquePath( "", "randNormTex", "png" );
    tex->dumpToDisk( "png", path );   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpRandomNormalMap()
-{
-{
-   GFXTexHandle tex;
-   tex.set( 64, 64, GFXFormatR8G8B8A8, &GFXDefaultPersistentProfile, "" );
-   GFXLockedRect *rect = tex.lock();
-   U8 *f = rect->bits;
-   for ( U32 i = 0; i < 64*64; i++, f += 4 )
-   {               
-      VectorF vec;
-      vec.x = mRandF( -1.0f, 1.0f );
-      vec.y = mRandF( -1.0f, 1.0f );
-      vec.z = mRandF( -1.0f, 1.0f );
-      vec.normalizeSafe();
-      f[0] = U8_MAX * ( ( 1.0f + vec.x ) * 0.5f );
-      f[1] = U8_MAX * ( ( 1.0f + vec.y ) * 0.5f );
-      f[2] = U8_MAX * ( ( 1.0f + vec.z ) * 0.5f );
-      f[3] = U8_MAX;
-   }
-   tex.unlock();
-   String path = Torque::FS::MakeUniquePath( "", "randNormTex", "png" );
-   tex->dumpToDisk( "png", path );   
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_clearShaderMacros(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearShaderMacros();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_disable(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->disable();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_dumpShaderDisassembly(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-String wle_returnObject;
-{
-   String fileName;
-   object->dumpShaderDisassembly( fileName );
-   {wle_returnObject =fileName;   
-dSprintf(retval,16384,"%s",wle_returnObject.c_str());
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_enable(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->enable();
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnPostEffect_getAspectRatio(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getAspectRatio());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPostEffect_isEnabled(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->isEnabled();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_reload(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   return object->reload();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_removeShaderMacro(char * x__object, char * x__key)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* key = (const char*)x__key;
-{
-   object->removeShaderMacro( key );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_setShaderConst(char * x__object, char * x__name, char * x__value)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-const char* value = (const char*)x__value;
-{
-   object->setShaderConst( name, value );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_setShaderMacro(char * x__object, char * x__key, char * x__value)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* key = (const char*)x__key;
-const char* value = (const char*)x__value;
-{   
-   object->setShaderMacro( key, value );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPostEffect_setTexture(char * x__object, S32 index, char * x__filePath)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* filePath = (const char*)x__filePath;
-{   
-	if ( index > -1 && index < PostEffect::NumTextures )
-		object->setTexture( index, filePath );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPostEffect_toggle(char * x__object)
-{
-PostEffect* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if ( object->isEnabled() )
-      object->disable();
-   else
-      object->enable();
-   {wle_returnObject =object->isEnabled();
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

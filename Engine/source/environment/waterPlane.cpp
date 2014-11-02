@@ -163,7 +163,7 @@ void WaterPlane::unpackUpdate(NetConnection* con, BitStream* stream)
 
    if( stream->readFlag() ) // UpdateMask
    {
-      float posZ;
+      F32 posZ;
       stream->read( &posZ );
       Point3F newPos = getPosition();
       newPos.z = posZ;
@@ -814,48 +814,6 @@ F32 WaterPlane::distanceTo( const Point3F& point ) const
       return 0.f;
    else
       return ( point.z - getPosition().z );
-}
-
-bool WaterPlane::buildPolyList( PolyListContext context, AbstractPolyList* polyList, const Box3F& box, const SphereF& )
-{
-   if(context == PLC_Navigation)
-   {
-      polyList->setObject( this );
-      polyList->setTransform( &MatrixF::Identity, Point3F( 1.0f, 1.0f, 1.0f ) );
-
-      F32 z = getPosition().z;
-      Point3F
-         p0(box.minExtents.x, box.maxExtents.y, z),
-         p1(box.maxExtents.x, box.maxExtents.y, z),
-         p2(box.maxExtents.x, box.minExtents.y, z),
-         p3(box.minExtents.x, box.minExtents.y, z);
-
-      // Add vertices to poly list.
-      U32 v0 = polyList->addPoint(p0);
-      polyList->addPoint(p1);
-      polyList->addPoint(p2);
-      polyList->addPoint(p3);
-
-      // Add plane between first three vertices.
-      polyList->begin(0, 0);
-      polyList->vertex(v0);
-      polyList->vertex(v0+1);
-      polyList->vertex(v0+2);
-      polyList->plane(v0, v0+1, v0+2);
-      polyList->end();
-
-      // Add plane between last three vertices.
-      polyList->begin(0, 1);
-      polyList->vertex(v0+2);
-      polyList->vertex(v0+3);
-      polyList->vertex(v0);
-      polyList->plane(v0+2, v0+3, v0);
-      polyList->end();
-
-      return true;
-   }
-
-   return false;
 }
 
 void WaterPlane::inspectPostApply()

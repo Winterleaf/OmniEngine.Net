@@ -617,122 +617,17 @@ void GuiColorPickerCtrl::setScriptValue(const char *value)
    setValue(newValue);
 }
 
-//ConsoleMethod(GuiColorPickerCtrl, getSelectorPos, const char*, 2, 2, "Gets the current position of the selector")
 DefineConsoleMethod(GuiColorPickerCtrl, getSelectorPos, Point2I, (), , "Gets the current position of the selector")
 {
-//   char *temp = Con::getReturnBuffer(256);
-//   Point2I pos;
-//   pos = object->getSelectorPos();
-//   dSprintf(temp,256,"%d %d",pos.x, pos.y); 
    return object->getSelectorPos();
 }
 
-//ConsoleMethod(GuiColorPickerCtrl, setSelectorPos, void, 3, 3, "Sets the current position of the selector")
 DefineConsoleMethod(GuiColorPickerCtrl, setSelectorPos, void, (Point2I newPos), , "Sets the current position of the selector")
 {
-//   Point2I newPos;
-   //dSscanf(argv[2], "%d %d", &newPos.x, &newPos.y);
-//   dSscanf(pos, "%d %d", &newPos.x, &newPos.y);
    object->setSelectorPos(newPos);
 }
 
-//ConsoleMethod(GuiColorPickerCtrl, updateColor, void, 2, 2, "Forces update of pick color")
 DefineConsoleMethod(GuiColorPickerCtrl, updateColor, void, (), , "Forces update of pick color")
 {
 	object->updateColor();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiColorPickerCtrl_getSelectorPos(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiColorPickerCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point2I wle_returnObject;
-{
-   {wle_returnObject =object->getSelectorPos();
-dSprintf(retval,1024,"%i %i ",wle_returnObject.x,wle_returnObject.y);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiColorPickerCtrl_setSelectorPos(char * x__object, char * x__newPos)
-{
-GuiColorPickerCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point2I newPos = Point2I();
-sscanf(x__newPos,"%i %i",&newPos.x,&newPos.y);
-{
-      object->setSelectorPos(newPos);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiColorPickerCtrl_updateColor(char * x__object)
-{
-GuiColorPickerCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->updateColor();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

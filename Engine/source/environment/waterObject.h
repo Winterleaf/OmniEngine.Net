@@ -97,6 +97,7 @@ struct WaterMatParams
    MaterialParameterHandle* mSpecularParamsSC;   
    MaterialParameterHandle* mDepthGradMaxSC;
    MaterialParameterHandle* mReflectivitySC;
+   MaterialParameterHandle* mDepthGradSamplerSC;
 
    void clear();
    void init(BaseMatInstance* matInst);
@@ -299,7 +300,6 @@ protected:
    SimObjectPtr<PostEffect> mUnderwaterPostFx;
    SimObjectPtr<PostEffect> mTurbulenceFx;
    SimObjectPtr<PostEffect> mCausticsPFX;
-   /*SimObjectPtr<PostEffect> mUnderwaterPostFx4;*/
    SimObjectPtr<PostEffect> mLightRayPostEffectPostFx;
 
    /// A global for enabling wireframe rendering

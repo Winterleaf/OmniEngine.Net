@@ -29,7 +29,6 @@
 #include "gfx/gfxTextureManager.h"
 #include "core/stream/fileStream.h"
 #include "core/stream/bitStream.h"
-#include "console/engineAPI.h"
 #include "scene/sceneRenderState.h"
 #include "renderInstance/renderPassManager.h"
 #include "gfx/primBuilder.h"
@@ -490,85 +489,3 @@ void CloudLayer::_initBuffers()
 
    mPB.unlock();   
 }
-
-void CloudLayer::ChangeCoverage(F32 newCoverage)  
-{  
-   mCoverage = newCoverage;  
-   setMaskBits( CloudLayerMask );  
-}  
-      
-DefineEngineMethod(CloudLayer, ChangeCoverage, void, ( F32 newCoverage ),,  
-   "Change coverage of the cloudlayer.")  
-{  
-   object->ChangeCoverage(newCoverage);  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnCloudLayer_ChangeCoverage(char * x__object, F32 newCoverage)
-{
-CloudLayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{  
-   object->ChangeCoverage(newCoverage);  
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

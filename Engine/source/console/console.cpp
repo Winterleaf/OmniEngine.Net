@@ -248,7 +248,7 @@ static bool active = false;
 static bool newLogFile;
 static const char *logFileName;
 
-static const int MaxCompletionBufferSize = 4096;
+static const S32 MaxCompletionBufferSize = 4096;
 static char completionBuffer[MaxCompletionBufferSize];
 static char tabBuffer[MaxCompletionBufferSize] = {0};
 static SimObjectPtr<SimObject> tabObject;
@@ -274,7 +274,6 @@ bool useTimestamp = false;
 
 ConsoleFunctionGroupBegin( Clipboard, "Miscellaneous functions to control the clipboard and clear the console.");
 
-//ConsoleFunction( cls, void, 1, 1, "()"
 DefineConsoleFunction( cls, void, (), , "()"
 				"@brief Clears the console output.\n\n"
 				"@ingroup Console")
@@ -285,7 +284,6 @@ DefineConsoleFunction( cls, void, (), , "()"
    consoleLog.setSize(0);
 };
 
-//ConsoleFunction( getClipboard, const char*, 1, 1, "()"
 DefineConsoleFunction( getClipboard, const char*, (), , "()"
 				"@brief Get text from the clipboard.\n\n"
 				"@internal")
@@ -293,7 +291,6 @@ DefineConsoleFunction( getClipboard, const char*, (), , "()"
 	return Platform::getClipboard();
 };
 
-//ConsoleFunction( setClipboard, bool, 2, 2, "(string text)"
 DefineConsoleFunction( setClipboard, bool, (const char* text), , "(string text)"
                "@brief Set the system clipboard.\n\n"
 			   "@internal")
@@ -1158,7 +1155,7 @@ const char *executeScript(SimObject *object, S32 argc, const char *argv[], bool 
 
       if(ent == NULL)
       {
-	     //warnf(ConsoleLogEntry::Script, "%s: undefined for object '%s' - id %d", funcName, object->getName(), object->getId());
+         //warnf(ConsoleLogEntry::Script, "%s: undefined for object '%s' - id %d", funcName, object->getName(), object->getId());
 
          // Clean up arg buffers, if any.
          STR.clearFunctionOffset();
@@ -1448,8 +1445,9 @@ const char *getFormattedData(S32 type, const char *data, const EnumTable *tbl, B
       Con::setData(type, variable, 0, 1, &data, tbl, flag);
       const char* formattedVal = Con::getData(type, variable, 0, tbl, flag);
 
-      char* returnBuffer = Con::getReturnBuffer(2048);
-      dSprintf(returnBuffer, 2048, "%s\0", formattedVal );
+      static const U32 bufSize = 2048;
+      char* returnBuffer = Con::getReturnBuffer(bufSize);
+      dSprintf(returnBuffer, bufSize, "%s\0", formattedVal );
 
       cbt->deleteNativeVariable(variable);
 
@@ -1590,107 +1588,3 @@ DefineEngineFunction( logWarning, void, ( const char* message ),,
 {
    Con::warnf( "%s", message );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getClipboard(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-	{wle_returnObject =Platform::getClipboard();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_log(char * x__message)
-{
-const char* message = (const char*)x__message;
-{
-   Con::printf( "%s", message );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_logError(char * x__message)
-{
-const char* message = (const char*)x__message;
-{
-   Con::errorf( "%s", message );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_logWarning(char * x__message)
-{
-const char* message = (const char*)x__message;
-{
-   Con::warnf( "%s", message );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setClipboard(char * x__text)
-{
-const char* text = (const char*)x__text;
-bool wle_returnObject;
-{
-	{wle_returnObject =Platform::setClipboard(text);
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

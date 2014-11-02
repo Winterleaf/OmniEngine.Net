@@ -223,7 +223,7 @@ void Namespace::printNamespaceEntries(Namespace * g, bool dumpScript, bool dumpE
    // Iterate through the methods of the namespace...
    for(Entry *ewalk = g->mEntryList; ewalk; ewalk = ewalk->mNext)
    {
-      int eType = ewalk->mType;
+      S32 eType = ewalk->mType;
       const char * funcName = ewalk->mFunctionName;
 
       if( ( eType == Entry::ConsoleFunctionType ) && !dumpScript )
@@ -497,7 +497,7 @@ void Namespace::dumpClasses( bool dumpScript, bool dumpEngine )
                nextKeyword = dStrchr( field, '\\' );
 
             // Grab the length of the doc string.
-            S64 docLen = dStrlen( field );
+            S32 docLen = dStrlen( field );
             if( nextKeyword )
                docLen = nextKeyword - field;
 
@@ -538,78 +538,3 @@ void Namespace::dumpFunctions( bool dumpScript, bool dumpEngine )
 
    printClassFooter();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpConsoleClasses(bool dumpScript, bool dumpEngine)
-{
-
-{
-   Namespace::dumpClasses( dumpScript, dumpEngine );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpConsoleFunctions(bool dumpScript, bool dumpEngine)
-{
-
-{
-   Namespace::dumpFunctions( dumpScript, dumpEngine );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

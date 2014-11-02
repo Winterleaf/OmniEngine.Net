@@ -26,7 +26,7 @@
 
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
-extern S32 HashPointer(StringTableEntry e);
+extern U32 HashPointer(StringTableEntry e);
 
 SimNameDictionary::SimNameDictionary()
 {
@@ -101,7 +101,6 @@ void SimNameDictionary::insert(SimObject* obj)
       hashTableSize = newHashTableSize;
    }
 #else
-   //root[std::string(obj->objectName)] = obj;
    root[StringTable->insert(obj->objectName)] = obj;
 #endif
    Mutex::unlockMutex(mutex);
@@ -132,12 +131,9 @@ SimObject* SimNameDictionary::find(StringTableEntry name)
    return NULL;
 #else
   Mutex::lockMutex(mutex);
-  //I know this is bad logic since it will insert a key w/ that value if it doesn't have one.
-  //SimObject* f = root[std::string(name)];	
   SimObject* f = root[StringTable->insert(name)];
   Mutex::unlockMutex(mutex);
   return f;
-
 #endif
 }
 
@@ -163,17 +159,9 @@ void SimNameDictionary::remove(SimObject* obj)
       walk = &((*walk)->nextNameObject);
    }
 #else
-   /*if (root[std::string(obj->objectName)])
-	   root[std::string(obj->objectName)]=NULL;*/
-
    const char* name = StringTable->insert(obj->objectName);
-   //Con::printf("-------------------->before # Of Elements %i",root.size());
    if (root[name])
 	   root.erase(name);
-   //Con::printf("-------------------->after # Of Elements %i",root.size());
-	   //root[name]=NULL;
-   
-
 #endif
    Mutex::unlockMutex(mutex);
 }	
@@ -243,11 +231,7 @@ void SimManagerNameDictionary::insert(SimObject* obj)
       hashTableSize = newHashTableSize;
    }
 #else
-
-    //root[std::string(obj->objectName)] = obj;
    root[StringTable->insert(obj->objectName)] = obj;
-
-
 #endif
    Mutex::unlockMutex(mutex);
 }
@@ -274,12 +258,9 @@ SimObject* SimManagerNameDictionary::find(StringTableEntry name)
 
    return NULL;
 #else
-  //I know this is bad logic since it will insert a key w/ that value if it doesn't have one.
-  //SimObject* f = root[std::string(name)];	
-
    SimObject* f = root[StringTable->insert(name)];	
-  Mutex::unlockMutex(mutex);
-  return f;
+   Mutex::unlockMutex(mutex);
+   return f;
 #endif
 }
 
@@ -307,17 +288,10 @@ void SimManagerNameDictionary::remove(SimObject* obj)
    }
 #else
 
-
-    //if (root[std::string(obj->objectName)])
-	   //root[std::string(obj->objectName)]=NULL;
-
 	const char* name = StringTable->insert(obj->objectName);
 	if (root[name])
 		root.erase(name);
-		//root[name] = NULL;
-
 #endif
-
    Mutex::unlockMutex(mutex);
 }	
 
@@ -388,10 +362,7 @@ void SimIdDictionary::remove(SimObject* obj)
    if(*walk)
       *walk = obj->nextIdObject;
 #else
-   //Con::printf("-------------------->before # Of Elements %i",root.size());
    root.erase(obj->getId());
-   //Con::printf("-------------------->after # Of Elements %i",root.size());
-   //root[obj->getId()] = 0;
 #endif
    Mutex::unlockMutex(mutex);
 }

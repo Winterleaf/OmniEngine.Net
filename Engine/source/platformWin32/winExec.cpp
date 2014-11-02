@@ -137,7 +137,6 @@ void ExecuteThread::run(void *arg /* = 0 */)
 // Console Functions
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction(shellExecute, bool, 2, 4, "(string executable, string args, string directory)"
 DefineConsoleFunction( shellExecute, bool, (const char * executable, const char * args, const char * directory), ("", ""), "(string executable, string args, string directory)"
 				"@brief Launches an outside executable or batch file\n\n"
 				"@param executable Name of the executable or batch file\n"
@@ -145,7 +144,6 @@ DefineConsoleFunction( shellExecute, bool, (const char * executable, const char 
 				"@param directory Optional string containing path to output or shell\n"
 				"@ingroup Platform")
 {
-   //ExecuteThread *et = new ExecuteThread(argv[1], argc > 2 ? argv[2] : NULL, argc > 3 ? argv[3] : NULL);
    ExecuteThread *et = new ExecuteThread( executable, args, directory );
    if(! et->isAlive())
    {
@@ -213,82 +211,4 @@ void Platform::openFile(const char* path )
 
    ::ShellExecute( NULL,TEXT("open"),p, NULL, NULL, SW_SHOWNORMAL);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_shellExecute(char * x__executable, char * x__args, char * x__directory)
-{
-const char* executable = (const char*)x__executable;
-const char* args = (const char*)x__args;
-const char* directory = (const char*)x__directory;
-bool wle_returnObject;
-{
-      ExecuteThread *et = new ExecuteThread( executable, args, directory );
-   if(! et->isAlive())
-   {
-      delete et;
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

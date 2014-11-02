@@ -372,16 +372,8 @@ ConsoleDocFragment _GuiPopUpMenuCtrlExAdd(
 	"void add(string name, S32 idNum, S32 scheme=0);"
 );
 
-//ConsoleMethod( GuiPopUpMenuCtrlEx, add, void, 3, 5, "(string name, int idNum, int scheme=0)")
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, add, void, (const char * name, S32 idNum, U32 scheme), ("", -1, 0), "(string name, int idNum, int scheme=0)")
 {
-	//if ( argc == 4 )
-	//	object->addEntry(argv[2],dAtoi(argv[3]));
- //  if ( argc == 5 )
- //     object->addEntry(argv[2],dAtoi(argv[3]),dAtoi(argv[4]));
- //  else
- //     object->addEntry(argv[2]);
-
    object->addEntry(name, idNum, scheme);
 }
 
@@ -541,15 +533,9 @@ ConsoleDocFragment _GuiPopUpMenuCtrlExsetSelected(
 	"setSelected(int id, bool scriptCallback=true);"
 );
 
-//ConsoleMethod( GuiPopUpMenuCtrlEx, setSelected, void, 3, 4, "(int id, [scriptCallback=true])"
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, setSelected, void, (S32 id, bool scriptCallback), (true), "(int id, [scriptCallback=true])"
 			  "@hide")
 {
-   //if( argc > 3 )
-   //   object->setSelected( dAtoi( argv[2] ), dAtob( argv[3] ) );
-   //else
-   //   object->setSelected( dAtoi( argv[2] ) );
-
    object->setSelected( id, scriptCallback );
 }
 
@@ -561,15 +547,9 @@ ConsoleDocFragment _GuiPopUpMenuCtrlExsetFirstSelected(
 );
 
 
-//ConsoleMethod( GuiPopUpMenuCtrlEx, setFirstSelected, void, 2, 3, "([scriptCallback=true])"
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, setFirstSelected, void, (bool scriptCallback), (true), "([scriptCallback=true])"
 			  "@hide")
 {
-   //if( argc > 2 )
-   //   object->setFirstSelected( dAtob( argv[2] ) );
-   //else
-   //   object->setFirstSelected();
-
    object->setFirstSelected( scriptCallback );
 }
 
@@ -589,23 +569,17 @@ DefineEngineMethod( GuiPopUpMenuCtrlEx, getTextById, const char*, (S32 id),,
 }
 
 
-//ConsoleMethod( GuiPopUpMenuCtrlEx, getColorById, const char*, 3, 3,  
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, getColorById,  ColorI, (S32 id), ,  
 			  "@brief Get color of an entry's box\n\n"
 			  "@param id ID number of entry to query\n\n"
 			  "@return ColorI in the format of \"Red Green Blue Alpha\", each of with is a value between 0 - 255")
 {
    ColorI color;
-   //object->getColoredBox(color, dAtoi(argv[2]));
    object->getColoredBox(color, id);
 	return color;
 
-   /*char *strBuffer = Con::getReturnBuffer(512);
-   dSprintf(strBuffer, 512, "%d %d %d %d", color.red, color.green, color.blue, color.alpha);
-   return strBuffer;*/
 }
 
-//ConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, 4, 4,
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, ( const char * className, const char * enumName ), ,
 			  "@brief This fills the popup with a classrep's field enumeration type info.\n\n"
               "More of a helper function than anything.   If console access to the field list is added, "
@@ -618,7 +592,6 @@ DefineConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, ( const char * cl
    // walk the class list to get our class
    while(classRep)
    {
-      //if(!dStricmp(classRep->getClassName(), argv[2]))
       if(!dStricmp(classRep->getClassName(), className))
          break;
       classRep = classRep->getNextClass();
@@ -627,7 +600,6 @@ DefineConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, ( const char * cl
    // get it?
    if(!classRep)
    {
-      //Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", argv[2]);
       Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", className);
       return;
    }
@@ -635,14 +607,12 @@ DefineConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, ( const char * cl
    // walk the fields to check for this one (findField checks StringTableEntry ptrs...)
    U32 i;
    for(i = 0; i < classRep->mFieldList.size(); i++)
-      //if(!dStricmp(classRep->mFieldList[i].pFieldname, argv[3]))
       if(!dStricmp(classRep->mFieldList[i].pFieldname, enumName))
          break;
 
    // found it?   
    if(i == classRep->mFieldList.size())
    {   
-      //Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", argv[3], argv[2]);
       Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", enumName, className);
       return;
    }
@@ -653,7 +623,6 @@ DefineConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, ( const char * cl
    // check the type
    if( !conType->getEnumTable() )
    {
-      //Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", argv[3], argv[2]);
       Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", enumName, className);
       return;
    }
@@ -667,18 +636,15 @@ DefineConsoleMethod( GuiPopUpMenuCtrlEx, setEnumContent, void, ( const char * cl
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod( GuiPopUpMenuCtrlEx, findText, S32, 3, 3, "(string text)"
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, findText, S32, (const char * text), , "(string text)"
               "Returns the id of the first entry containing the specified text or -1 if not found."
 			  "@param text String value used for the query\n\n"
 			  "@return Numerical ID of entry containing the text.")
 {
-   //return( object->findText( argv[2] ) );
    return( object->findText( text ) );
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod( GuiPopUpMenuCtrlEx, size, S32, 2, 2, 
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, size, S32, (), , 
 			  "@brief Get the size of the menu\n\n"
 			  "@return Number of entries in the menu\n")
@@ -687,12 +653,10 @@ DefineConsoleMethod( GuiPopUpMenuCtrlEx, size, S32, (), ,
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod( GuiPopUpMenuCtrlEx, replaceText, void, 3, 3, 
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, replaceText, void, (S32 boolVal), , 
 			  "@brief Flag that causes each new text addition to replace the current entry\n\n"
 			  "@param True to turn on replacing, false to disable it")
 {
-   //object->replaceText(dAtoi(argv[2]));
    object->replaceText(boolVal);
 }
 
@@ -781,10 +745,8 @@ void GuiPopUpMenuCtrlEx::clearEntry( S32 entry )
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod( GuiPopUpMenuCtrlEx, clearEntry, void, 3, 3, "(S32 entry)")
 DefineConsoleMethod( GuiPopUpMenuCtrlEx, clearEntry, void, (S32 entry), , "(S32 entry)")
 {
-   //object->clearEntry(dAtoi(argv[2]));  
    object->clearEntry(entry);
 }
 
@@ -1205,8 +1167,8 @@ void GuiPopUpMenuCtrlEx::onRender(Point2I offset, const RectI &updateRect)
          {
             // We're making use of a bitmap border, so take into account the
             // right cap of the border.
-            RectI* mBitmapBounds = mProfile->mBitmapArrayRects.address();
-            localStart.x = getWidth() - mBitmapBounds[2].extent.x - txt_w;
+            RectI* bitmapBounds = mProfile->mBitmapArrayRects.address();
+            localStart.x = getWidth() - bitmapBounds[2].extent.x - txt_w;
          } 
          else
          {
@@ -1218,8 +1180,8 @@ void GuiPopUpMenuCtrlEx::onRender(Point2I offset, const RectI &updateRect)
          {
             // We're making use of a bitmap border, so take into account the
             // right cap of the border.
-            RectI* mBitmapBounds = mProfile->mBitmapArrayRects.address();
-            localStart.x = (getWidth() - mBitmapBounds[2].extent.x - txt_w) / 2;
+            RectI* bitmapBounds = mProfile->mBitmapArrayRects.address();
+            localStart.x = (getWidth() - bitmapBounds[2].extent.x - txt_w) / 2;
 
          } else
          {
@@ -1237,8 +1199,8 @@ void GuiPopUpMenuCtrlEx::onRender(Point2I offset, const RectI &updateRect)
             {
                // We're making use of a bitmap border, so take into account the
                // right cap of the border.
-               RectI* mBitmapBounds = mProfile->mBitmapArrayRects.address();
-               localStart.x = getWidth() - mBitmapBounds[2].extent.x - txt_w;
+               RectI* bitmapBounds = mProfile->mBitmapArrayRects.address();
+               localStart.x = getWidth() - bitmapBounds[2].extent.x - txt_w;
             } 
             else
             {
@@ -1289,8 +1251,8 @@ void GuiPopUpMenuCtrlEx::onRender(Point2I offset, const RectI &updateRect)
          {
             // We're making use of a bitmap border, so take into account the
             // right cap of the border.
-            RectI* mBitmapBounds = mProfile->mBitmapArrayRects.address();
-            Point2I textpos = localToGlobalCoord( Point2I( getWidth() - txt_w - mBitmapBounds[2].extent.x, localStart.y ) );
+            RectI* bitmapBounds = mProfile->mBitmapArrayRects.address();
+            Point2I textpos = localToGlobalCoord( Point2I( getWidth() - txt_w - bitmapBounds[2].extent.x, localStart.y ) );
             GFX->getDrawUtil()->drawText( mProfile->mFont, textpos, buff, mProfile->mFontColors );
 
          } else
@@ -1768,347 +1730,3 @@ void GuiPopUpMenuCtrlEx::replaceText(S32 boolVal)
 {
    mReplaceText = boolVal;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_add(char * x__object, char * x__name, S32 idNum, U32 scheme)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-
-{
-		    
-   object->addEntry(name, idNum, scheme);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_clearEntry(char * x__object, S32 entry)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->clearEntry(entry);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiPopUpMenuCtrlEx_findText(char * x__object, char * x__text)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-const char* text = (const char*)x__text;
-{
-     return (S32)(( object->findText( text ) ));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_getColorById(char * x__object, S32 id,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-ColorI wle_returnObject;
-{
-   ColorI color;
-      object->getColoredBox(color, id);
-	{wle_returnObject =color;
-dSprintf(retval,1024,"%d %d %d %d ",(int)wle_returnObject.red,(int)wle_returnObject.green,(int)wle_returnObject.blue,(int)wle_returnObject.alpha);
-return;
-}
-   
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_replaceText(char * x__object, S32 boolVal)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->replaceText(boolVal);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_setEnumContent(char * x__object, char * x__className, char * x__enumName)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* className = (const char*)x__className;
-const char* enumName = (const char*)x__enumName;
-{
-   AbstractClassRep * classRep = AbstractClassRep::getClassList();
-      while(classRep)
-   {
-            if(!dStricmp(classRep->getClassName(), className))
-         break;
-      classRep = classRep->getNextClass();
-   }
-      if(!classRep)
-   {
-            Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", className);
-      return;
-   }
-      U32 i;
-   for(i = 0; i < classRep->mFieldList.size(); i++)
-            if(!dStricmp(classRep->mFieldList[i].pFieldname, enumName))
-         break;
-      if(i == classRep->mFieldList.size())
-   {   
-            Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", enumName, className);
-      return;
-   }
-   const AbstractClassRep::Field & field = classRep->mFieldList[i];
-   ConsoleBaseType* conType = ConsoleBaseType::getType( field.type );
-      if( !conType->getEnumTable() )
-   {
-            Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", enumName, className);
-      return;
-   }
-      const EngineEnumTable& table = *( conType->getEnumTable() );
-   const U32 numValues = table.getNumValues();
-   
-   for(i = 0; i < numValues; i++)
-      object->addEntry( table[i].getName(), table[i] );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_setFirstSelected(char * x__object, bool scriptCallback)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-            
-   object->setFirstSelected( scriptCallback );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrlEx_setSelected(char * x__object, S32 id, bool scriptCallback)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-            
-   object->setSelected( id, scriptCallback );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiPopUpMenuCtrlEx_size(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)(( object->getNumEntries() )); 
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_addCategory(char * x__object, char * x__text)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* text = (const char*)x__text;
-{
-	object->addEntry(text, -1, 0);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_addScheme(char * x__object, S32 id, char * x__fontColor, char * x__fontColorHL, char * x__fontColorSEL)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-ColorI fontColor = ColorI();
-{
-int r,g,b,a;
-sscanf(x__fontColor,"%d %d %d %d ",&r,&g,&b,&a);
-fontColor.red =(unsigned short)r;
-fontColor.green=(unsigned short)g;
-fontColor.blue=(unsigned short)b;
-fontColor.alpha=(unsigned short)a;
-}
-ColorI fontColorHL = ColorI();
-{
-int r,g,b,a;
-sscanf(x__fontColorHL,"%d %d %d %d ",&r,&g,&b,&a);
-fontColorHL.red =(unsigned short)r;
-fontColorHL.green=(unsigned short)g;
-fontColorHL.blue=(unsigned short)b;
-fontColorHL.alpha=(unsigned short)a;
-}
-ColorI fontColorSEL = ColorI();
-{
-int r,g,b,a;
-sscanf(x__fontColorSEL,"%d %d %d %d ",&r,&g,&b,&a);
-fontColorSEL.red =(unsigned short)r;
-fontColorSEL.green=(unsigned short)g;
-fontColorSEL.blue=(unsigned short)b;
-fontColorSEL.alpha=(unsigned short)a;
-}
-{
-	
-   object->addScheme( id, fontColor, fontColorHL, fontColorSEL );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_clear(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->clear();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_forceClose(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->closePopUp();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_forceOnAction(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->onAction();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiPopUpMenuCtrlEx_getSelected(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	return object->getSelected();
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_getText(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-	{wle_returnObject =object->getText();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_getTextById(char * x__object, S32 id,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-	{wle_returnObject =(object->getTextById(id));
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_setNoneSelected(char * x__object, S32 param)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->setNoneSelected();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_setText(char * x__object, char * x__text)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* text = (const char*)x__text;
-{
-	object->setText(text);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_sort(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->sort();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiPopUpMenuCtrlEx_sortID(char * x__object)
-{
-GuiPopUpMenuCtrlEx* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->sortID();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

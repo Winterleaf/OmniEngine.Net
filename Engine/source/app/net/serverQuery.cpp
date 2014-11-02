@@ -427,7 +427,6 @@ void queryLanServers(U32 port, U8 flags, const char* gameType, const char* missi
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction( queryAllServers, void, 12, 12, "queryAllServers(...);" )
 DefineConsoleFunction( queryAllServers
                      , void, ( U32 lanPort
                              , U32 flags
@@ -442,23 +441,6 @@ DefineConsoleFunction( queryAllServers
                              , U32 filterFlags )
                      , , "queryAllServers(...);" )
 {
-   //TORQUE_UNUSED(argc);
-
-   //U32 lanPort = dAtoi(argv[1]);
-   //U8 flags = dAtoi(argv[2]);
-
-   //// It's not a good idea to hold onto args, recursive calls to
-   //// console exec will trash them.
-   //char* gameType = dStrdup(argv[3]);
-   //char* missionType = dStrdup(argv[4]);
-
-   //U8 minPlayers = dAtoi(argv[5]);
-   //U8 maxPlayers = dAtoi(argv[6]);
-   //U8 maxBots = dAtoi(argv[7]);
-   //U32 regionMask = dAtoi(argv[8]);
-   //U32 maxPing = dAtoi(argv[9]);
-   //U16 minCPU = dAtoi(argv[10]);
-   //U8 filterFlags = dAtoi(argv[11]);
    U32 buddyList = 0;
 
    clearServerList();
@@ -468,8 +450,6 @@ DefineConsoleFunction( queryAllServers
 
    queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
 	   regionMask, maxPing, minCPU, filterFlags);
-   //dFree(gameType);
- //  dFree(missionType);
 
 }
 
@@ -486,32 +466,13 @@ DefineConsoleFunction( queryLanServers
                              , U32 minCPU
                              , U32 filterFlags )
                      , , "queryLanServers(...);" )
-//ConsoleFunction( queryLanServers, void, 12, 12, "queryLanServers(...);" )
+
 {
-   //TORQUE_UNUSED(argc);
-
-   //U32 lanPort = dAtoi(argv[1]);
-   //U8 flags = dAtoi(argv[2]);
-
-   //// It's not a good idea to hold onto args, recursive calls to
-   //// console exec will trash them.
-   //char* gameType = dStrdup(argv[3]);
-   //char* missionType = dStrdup(argv[4]);
-
-   //U8 minPlayers = dAtoi(argv[5]);
-   //U8 maxPlayers = dAtoi(argv[6]);
-   //U8 maxBots = dAtoi(argv[7]);
-   //U32 regionMask = dAtoi(argv[8]);
-   //U32 maxPing = dAtoi(argv[9]);
-   //U16 minCPU = dAtoi(argv[10]);
-   //U8 filterFlags = dAtoi(argv[11]);
 
    clearServerList();
    queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
 	   regionMask, maxPing, minCPU, filterFlags);
 
-   //dFree(gameType);
-   //dFree(missionType);
 }
 
 //-----------------------------------------------------------------------------
@@ -594,7 +555,6 @@ void queryMasterServer(U8 flags, const char* gameType, const char* missionType,
       processMasterServerQuery( gPingSession );
 }
 
-//ConsoleFunction( queryMasterServer, void, 11, 11, "queryMasterServer(...);" )
 DefineConsoleFunction( queryMasterServer
                      , void, ( U32 lanPort
                              , U32 flags
@@ -609,46 +569,23 @@ DefineConsoleFunction( queryMasterServer
                              , U32 filterFlags )
                      , , "queryMasterServer(...);" )
 {
-   //TORQUE_UNUSED(argc);
-
-   //U8 flags = dAtoi(argv[1]);
-
-   //// It's not a good idea to hold onto args, recursive calls to
-   //// console exec will trash them.
-   //char* gameType = dStrdup(argv[2]);
-   //char* missionType = dStrdup(argv[3]);
-
-   //U8 minPlayers = dAtoi(argv[4]);
-   //U8 maxPlayers = dAtoi(argv[5]);
-   //U8 maxBots = dAtoi(argv[6]);
-   //U32 regionMask = dAtoi(argv[7]);
-   //U32 maxPing = dAtoi(argv[8]);
-   //U16 minCPU = dAtoi(argv[9]);
-   //U8 filterFlags = dAtoi(argv[10]);
    U32 buddyList = 0;
 
    clearServerList();
    queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
       maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
 
-   //dFree(gameType);
-   //dFree(missionType);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction( querySingleServer, void, 3, 3, "querySingleServer(address, flags);" )
 DefineConsoleFunction( querySingleServer
                      , void, ( const char* addrText, U8 flags )
                      ,(0) , "querySingleServer(...);" )
 {
-   //TORQUE_UNUSED(argc);
 
    NetAddress addr;
-   //char* addrText;
 
-   //addrText = dStrdup(argv[1]);
-   //U8 flags = dAtoi(argv[2]);
 
    Net::stringToAddress( addrText, &addr );
    querySingleServer(&addr,flags);
@@ -731,10 +668,8 @@ void cancelServerQuery()
    }
 }
 
-//ConsoleFunction( cancelServerQuery, void, 1, 1, "cancelServerQuery()" )
 DefineConsoleFunction( cancelServerQuery, void, (), , "cancelServerQuery(...);" )
 {
-   //TORQUE_UNUSED(argc); TORQUE_UNUSED(argv);
    cancelServerQuery();
 }
 
@@ -761,47 +696,35 @@ void stopServerQuery()
    }
 }
 
-//ConsoleFunction( stopServerQuery, void, 1, 1, "stopServerQuery()" )
 DefineConsoleFunction( stopServerQuery, void, (), , "stopServerQuery(...);" )
 {
-   //TORQUE_UNUSED(argc); TORQUE_UNUSED(argv);
    stopServerQuery();
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction(startHeartbeat, void, 1, 1, "startHeartbeat()")
 DefineConsoleFunction( startHeartbeat, void, (), , "startHeartbeat(...);" )
 {
-  // TORQUE_UNUSED(argc); TORQUE_UNUSED(argv);
-
    if (validateAuthenticatedServer()) {
       gHeartbeatSeq++;
       processHeartbeat(gHeartbeatSeq);  // thump-thump...
    }
 }
 
-//ConsoleFunction(stopHeartbeat, void, 1, 1, "stopHeartbeat();")
 DefineConsoleFunction( stopHeartbeat, void, (), , "stopHeartbeat(...);" )
 {
-   //TORQUE_UNUSED(argc); TORQUE_UNUSED(argv);
    gHeartbeatSeq++;
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction( getServerCount, int, 1, 1, "getServerCount();" )
 DefineConsoleFunction( getServerCount, int, (), , "getServerCount(...);" )
 {
-   //TORQUE_UNUSED(argv); TORQUE_UNUSED(argc);
    return gServerList.size();
 }
 
-//ConsoleFunction( setServerInfo, bool, 2, 2, "setServerInfo(index);" )
 DefineConsoleFunction( setServerInfo, bool, (U32 index), , "setServerInfo(...);" )
 {
-   //TORQUE_UNUSED(argc);
-   //U32 index = dAtoi(argv[1]);
    if (index < gServerList.size()) {
       ServerInfo& info = gServerList[index];
 
@@ -2201,202 +2124,3 @@ void DemoNetInterface::handleInfoPacket( const NetAddress* address, U8 packetTyp
 
 
 ConsoleFunctionGroupEnd( ServerQuery );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_cancelServerQuery()
-{
-{
-      cancelServerQuery();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getServerCount()
-{
-{
-     return (int)( gServerList.size());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryAllServers(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
-{
-
-const char* gameType = (const char*)x__gameType;
-const char* missionType = (const char*)x__missionType;
-
-
-
-
-{
-   
-      
-            
-                        U32 buddyList = 0;
-   clearServerList();
-   queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
-      maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
-   queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
-	   regionMask, maxPing, minCPU, filterFlags);
-    
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryLanServers(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
-{
-
-const char* gameType = (const char*)x__gameType;
-const char* missionType = (const char*)x__missionType;
-
-
-
-
-{
-   
-      
-            
-                     
-   clearServerList();
-   queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
-	   regionMask, maxPing, minCPU, filterFlags);
-      }
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryMasterServer(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
-{
-
-const char* gameType = (const char*)x__gameType;
-const char* missionType = (const char*)x__missionType;
-
-
-
-
-{
-   
-   
-            
-                        U32 buddyList = 0;
-   clearServerList();
-   queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
-      maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
-      }
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_querySingleServer(char * x__addrText, U8 flags)
-{
-const char* addrText = (const char*)x__addrText;
-
-{
-   
-   NetAddress addr;
-   
-      
-   Net::stringToAddress( addrText, &addr );
-   querySingleServer(&addr,flags);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setServerInfo(U32 index)
-{
-bool wle_returnObject;
-{
-         if (index < gServerList.size()) {
-      ServerInfo& info = gServerList[index];
-      char addrString[256];
-      Net::addressToString( &info.address, addrString );
-      Con::setIntVariable("ServerInfo::Status",info.status);
-      Con::setVariable("ServerInfo::Address",addrString);
-      Con::setVariable("ServerInfo::Name",info.name);
-      Con::setVariable("ServerInfo::GameType",info.gameType);
-      Con::setVariable("ServerInfo::MissionName",info.missionName);
-      Con::setVariable("ServerInfo::MissionType",info.missionType);
-      Con::setVariable("ServerInfo::State",info.statusString);
-      Con::setVariable("ServerInfo::Info",info.infoString);
-      Con::setIntVariable("ServerInfo::PlayerCount",info.numPlayers);
-      Con::setIntVariable("ServerInfo::MaxPlayers",info.maxPlayers);
-      Con::setIntVariable("ServerInfo::BotCount",info.numBots);
-      Con::setIntVariable("ServerInfo::Version",info.version);
-      Con::setIntVariable("ServerInfo::Ping",info.ping);
-      Con::setIntVariable("ServerInfo::CPUSpeed",info.cpuSpeed);
-      Con::setBoolVariable("ServerInfo::Favorite",info.isFavorite);
-      Con::setBoolVariable("ServerInfo::Dedicated",info.isDedicated());
-      Con::setBoolVariable("ServerInfo::Password",info.isPassworded());
-      {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_startHeartbeat()
-{
-{
-  
-   if (validateAuthenticatedServer()) {
-      gHeartbeatSeq++;
-      processHeartbeat(gHeartbeatSeq);     }
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_stopHeartbeat()
-{
-{
-      gHeartbeatSeq++;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_stopServerQuery()
-{
-{
-      stopServerQuery();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

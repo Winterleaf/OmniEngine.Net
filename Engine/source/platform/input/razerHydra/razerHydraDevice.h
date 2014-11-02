@@ -33,11 +33,7 @@
 
 #define HYDRA_ACTIVE_CHECK_FREQ 1000
 
-#if defined (TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
 #define FN_HYDRA __cdecl
-#else
-#define FN_HYDRA
-#endif
 
 // Library function typedefs
 typedef int (FN_HYDRA* FN_SixenseInit)();

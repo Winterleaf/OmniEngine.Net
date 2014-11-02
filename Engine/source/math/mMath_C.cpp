@@ -470,10 +470,6 @@ static void m_matF_inverse_C(F32 *m)
    // using Cramers Rule find the Inverse
    // Minv = (1/det(M)) * adjoint(M)
    F32 det = m_matF_determinant( m );
-
-   //Not sure how this is happening, but hopefully if I set it real small it won't be noticable.
-   if (det == 0)																		 //Winterleaf Entertainment L.L.C. 2013 Copyright
-	   det=0.001f;																	 //Winterleaf Entertainment L.L.C. 2013 Copyright
    AssertFatal( det != 0.0f, "MatrixF::inverse: non-singular matrix, no inverse.");
 
    F32 invDet = 1.0f/det;
@@ -518,9 +514,6 @@ static void m_matF_invert_to_C(const F32 *m, F32 *d)
    // using Cramers Rule find the Inverse
    // Minv = (1/det(M)) * adjoint(M)
    F32 det = m_matF_determinant( m );
-   //Not sure how this is happening, but hopefully if I set it real small it won't be noticable.
-   if (det==0.0000000f)
-	   det = 0.001f;
    AssertFatal( det != 0.0f, "MatrixF::inverse: non-singular matrix, no inverse.");
 
    F32 invDet = 1.0f/det;
@@ -809,16 +802,16 @@ static void m_matF_x_box3F_C(const F32 *m, F32* min, F32* max)
    const F32 * row = &m[0];
    for (U32 i = 0; i < 3; i++)
    {
-      for (int j = 0; j < 3; j++)
-      {
-            F32 a = (row[j] * originalMin[j]);
-            F32 b = (row[j] * originalMax[j]);
-            if (a < b) { 
-                  *min += a;  *max += b; 
-            } else {
-                  *min += b;  *max += a;
-            }
-      } 
+      #define  Do_One_Row(j)   {                         \
+         F32    a = (row[j] * originalMin[j]);           \
+         F32    b = (row[j] * originalMax[j]);           \
+         if (a < b) { *min += a;  *max += b; }           \
+         else       { *min += b;  *max += a; }     }
+
+      // Simpler addressing (avoiding things like [ecx+edi*4]) might be worthwhile (LH):
+      Do_One_Row(0);
+      Do_One_Row(1);
+      Do_One_Row(2);
       row += 4;
       min++;
       max++;

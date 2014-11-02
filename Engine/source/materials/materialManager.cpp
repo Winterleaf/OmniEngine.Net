@@ -451,7 +451,6 @@ bool MaterialManager::_handleGFXEvent( GFXDevice::GFXDeviceEventType event_ )
    return true;
 }
 
-//ConsoleFunction( reInitMaterials, void, 1, 1, 
 DefineConsoleFunction( reInitMaterials, void, (),,
    "@brief Flushes all procedural shaders and re-initializes all active material instances.\n\n" 
    "@ingroup Materials")
@@ -459,7 +458,6 @@ DefineConsoleFunction( reInitMaterials, void, (),,
    MATMGR->flushAndReInitInstances();
 }
 
-//ConsoleFunction( addMaterialMapping, void, 3, 3, "(string texName, string matName)\n"
 DefineConsoleFunction( addMaterialMapping, void, (const char * texName, const char * matName), , "(string texName, string matName)\n"
    "@brief Maps the given texture to the given material.\n\n"
    "Generates a console warning before overwriting.\n\n"
@@ -468,22 +466,18 @@ DefineConsoleFunction( addMaterialMapping, void, (const char * texName, const ch
    "block or interior surface using the associated texture.\n\n"
    "@ingroup Materials")
 {
-   //MATMGR->mapMaterial(argv[1],argv[2]);
    MATMGR->mapMaterial(texName, matName);
 }
 
-//ConsoleFunction( getMaterialMapping, const char*, 2, 2, "(string texName)\n"
 DefineConsoleFunction( getMaterialMapping, const char*, (const char * texName), , "(string texName)\n"
    "@brief Returns the name of the material mapped to this texture.\n\n"
    "If no materials are found, an empty string is returned.\n\n"
    "@param texName Name of the texture\n\n"
    "@ingroup Materials")
 {
-   //return MATMGR->getMapEntry(argv[1]).c_str();
    return MATMGR->getMapEntry(texName).c_str();
 }
 
-//ConsoleFunction( dumpMaterialInstances, void, 1, 1, 
 DefineConsoleFunction( dumpMaterialInstances, void, (), ,
    "@brief Dumps a formatted list of currently allocated material instances to the console.\n\n"
    "@ingroup Materials")
@@ -491,119 +485,8 @@ DefineConsoleFunction( dumpMaterialInstances, void, (), ,
    MATMGR->dumpMaterialInstances();
 }
 
-//ConsoleFunction( getMapEntry, const char *, 2, 2, 
 DefineConsoleFunction( getMapEntry, const char*, (const char * texName), ,
    "@hide")
 {
-	//return MATMGR->getMapEntry( String(argv[1]) );
 	return MATMGR->getMapEntry( String(texName) );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_addMaterialMapping(char * x__texName, char * x__matName)
-{
-const char* texName = (const char*)x__texName;
-const char* matName = (const char*)x__matName;
-{
-      MATMGR->mapMaterial(texName, matName);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpMaterialInstances()
-{
-{
-   MATMGR->dumpMaterialInstances();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getMapEntry(char * x__texName,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* texName = (const char*)x__texName;
-const char* wle_returnObject;
-{
-		{wle_returnObject =MATMGR->getMapEntry( String(texName) );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getMaterialMapping(char * x__texName,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* texName = (const char*)x__texName;
-const char* wle_returnObject;
-{
-      {wle_returnObject =MATMGR->getMapEntry(texName).c_str();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_reInitMaterials()
-{
-{
-   MATMGR->flushAndReInitInstances();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

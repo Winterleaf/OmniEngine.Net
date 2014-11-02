@@ -23,7 +23,6 @@
 #ifndef INCLUDED_TYPES_VISUALC_H
 #define INCLUDED_TYPES_VISUALC_H
 
-#include <stdarg.h> // for va_list 
 
 // For more information on VisualC++ predefined macros
 // http://support.microsoft.com/default.aspx?scid=kb;EN-US;q65472
@@ -59,16 +58,17 @@ typedef unsigned _int64 U64;
 #elif defined( _XBOX_VER )
 #  define TORQUE_OS_STRING "Xbox"
 #  define TORQUE_OS_XBOX
-#  include "platform/types.win32.h"
-#elif defined (_M_X64)
-#  define TORQUE_OS_STRING "Win64"
-#  define TORQUE_OS_WIN64
-#  define TORQUE_CPU_X86_64
-#  include "platform/types.win32.h"
-#elif defined(_M_IX86)
+#  include "platform/types.win.h"
+#elif defined( _WIN32 ) && !defined ( _WIN64 )
 #  define TORQUE_OS_STRING "Win32"
+#  define TORQUE_OS_WIN
 #  define TORQUE_OS_WIN32
-#  include "platform/types.win32.h"
+#  include "platform/types.win.h"
+#elif defined( _WIN64 )
+#  define TORQUE_OS_STRING "Win64"
+#  define TORQUE_OS_WIN
+#  define TORQUE_OS_WIN64
+#  include "platform/types.win.h"
 #else 
 #  error "VC: Unsupported Operating System"
 #endif
@@ -76,24 +76,20 @@ typedef unsigned _int64 U64;
 
 //--------------------------------------
 // Identify the CPU
-#if defined(_M_X64)
-#  define TORQUE_CPU_STRING "x86_64"
-#  define TORQUE_64
+#if defined( _M_X64 )
+#  define TORQUE_CPU_STRING "x64"
+#  define TORQUE_CPU_X64
 #  define TORQUE_LITTLE_ENDIAN
-#elif defined(_M_IX86)
+#elif defined( _M_IX86 )
 #  define TORQUE_CPU_STRING "x86"
 #  define TORQUE_CPU_X86
 #  define TORQUE_LITTLE_ENDIAN
 #  define TORQUE_SUPPORTS_NASM
 #  define TORQUE_SUPPORTS_VC_INLINE_X86_ASM
-#elif defined(TORQUE_OS_XENON)
+#elif defined( TORQUE_OS_XENON )
 #  define TORQUE_CPU_STRING "ppc"
 #  define TORQUE_CPU_PPC
 #  define TORQUE_BIG_ENDIAN
-#elif defined(_M_X64)
-#  define TORQUE_CPU_STRING "x86_64"
-#  define TORQUE_64
-#  define TORQUE_LITTLE_ENDIAN
 #else
 #  error "VC: Unsupported Target CPU"
 #endif

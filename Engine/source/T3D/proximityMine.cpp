@@ -136,10 +136,11 @@ bool ProximityMineData::preload( bool server, String& errorStr )
    if ( !server )
    {
       // Resolve sounds
-      if( !sfxResolve( &armingSound, errorStr ) )
-         Con::errorf( ConsoleLogEntry::General, "ProximityMineData::preload: Invalid packet: %s", errorStr.c_str() );
-      if( !sfxResolve( &triggerSound, errorStr ) )
-         Con::errorf( ConsoleLogEntry::General, "ProximityMineData::preload: Invalid packet: %s", errorStr.c_str() );
+      String sfxErrorStr;
+      if( !sfxResolve( &armingSound, sfxErrorStr ) )
+         Con::errorf( ConsoleLogEntry::General, "ProximityMineData::preload: Invalid packet: %s", sfxErrorStr.c_str() );
+      if( !sfxResolve( &triggerSound, sfxErrorStr ) )
+         Con::errorf( ConsoleLogEntry::General, "ProximityMineData::preload: Invalid packet: %s", sfxErrorStr.c_str() );
    }
 
    if ( mShape )
@@ -450,7 +451,7 @@ void ProximityMine::processTick( const Move* move )
             SimpleQueryList sql;
             getContainer()->findObjects( triggerBox, sTriggerCollisionMask,
                SimpleQueryList::insertionCallback, &sql );
-            for ( int i = 0; i < sql.mList.size(); i++ )
+            for ( S32 i = 0; i < sql.mList.size(); i++ )
             {
                // Detect movement in the trigger area
                if ( ( sql.mList[i] == mOwner && !mDataBlock->triggerOnOwner ) ||
@@ -678,73 +679,3 @@ DefineEngineMethod( ProximityMine, explode, void, (),,
 {
    object->explode();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnProximityMine_explode(char * x__object)
-{
-ProximityMine* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->explode();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

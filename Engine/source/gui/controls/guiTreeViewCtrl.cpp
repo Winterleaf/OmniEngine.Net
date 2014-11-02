@@ -87,7 +87,6 @@ IMPLEMENT_CALLBACK( GuiTreeViewCtrl, isValidDragTarget, bool, ( S32 id, const ch
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onDefineIcons, void, (), (), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onAddGroupSelected, void, ( SimGroup* group ), ( group ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onAddSelection, void, ( S32 itemOrObjectId, bool isLastSelection ), ( itemOrObjectId, isLastSelection ), "" );
-//IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onSelect, void, ( S32 itemOrObjectId ), ( itemOrObjectId ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onInspect, void, ( S32 itemOrObjectId ), ( itemOrObjectId ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onRemoveSelection, void, ( S32 itemOrObjectId ), ( itemOrObjectId ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onUnselect, void, ( S32 itemOrObjectId ), ( itemOrObjectId ), "" );
@@ -96,7 +95,6 @@ IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onObjectDeleteCompleted, void, (), (), "" )
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onKeyDown, void, ( S32 modifier, S32 keyCode ), ( modifier, keyCode ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onMouseUp, void, ( S32 hitItemId, S32 mouseClickCount ), ( hitItemId, mouseClickCount ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onMouseDragged, void, (), (), "" );
-//IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onRightMouseDown, void, ( S32 itemId, const Point2I& mousePos, SimObject* object ), ( itemId, mousePos, object ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onRightMouseUp, void, ( S32 itemId, const Point2I& mousePos, SimObject* object ), ( itemId, mousePos, object ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onBeginReparenting, void, (), (), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onEndReparenting, void, (), (), "" );
@@ -107,7 +105,6 @@ IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onAddMultipleSelectionEnd, void, (), (), ""
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, canRenameObject, bool, ( SimObject* object ), ( object ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, handleRenameObject, bool, ( const char* newName, SimObject* object ), ( newName, object ), "" );
 IMPLEMENT_CALLBACK( GuiTreeViewCtrl, onClearSelection, void, (), (), "" );
-//IMPLEMENT_CALLBACK( GuiTreeViewCtrl, getSelectedObjectList, StringTableEntry, (), (), "" );
 
 
 static S32 QSORT_CALLBACK itemCompareCaseSensitive( const void *a, const void *b )
@@ -3587,13 +3584,13 @@ void GuiTreeViewCtrl::onMiddleMouseDown(const GuiEvent & event)
          if (mSelectedItems[i]->isInspectorData()) {
             Con::printf("%d",mSelectedItems[i]->getObject()->getId());
          } else
-            Con::printf("wtf %p", mSelectedItems[i]);
+            Con::printf("wtf %d", mSelectedItems[i]);
       }
       Con::printf("contents of mSelected");
       for (S32 j = 0; j < mSelected.size(); j++) {
          Con::printf("%d", mSelected[j]);
       }
-      S32 mCurrentDragCell = mMouseOverCell.y;
+      mCurrentDragCell = mMouseOverCell.y;
       S32 midpCell = (mCurrentDragCell) * mItemHeight + (mItemHeight/2);
       S32 currentY = pt.y;
       S32 yDiff = currentY-midpCell;
@@ -3658,7 +3655,7 @@ void GuiTreeViewCtrl::onMouseDown(const GuiEvent & event)
                break;
             }
          }
-         S32 mCurrentDragCell = mMouseOverCell.y;
+         mCurrentDragCell = mMouseOverCell.y;
          if (mVisibleItems[firstSelectedIndex] != firstItem )
          {
             /*
@@ -4868,31 +4865,23 @@ DefineEngineMethod( GuiTreeViewCtrl, addSelection, void, ( S32 id, bool isLastSe
    object->addSelection( id, isLastSelection, isLastSelection );
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, addChildSelectionByValue, void, 4, 4, "addChildSelectionByValue(TreeItemId parent, value)")
 DefineConsoleMethod(GuiTreeViewCtrl, addChildSelectionByValue, void, (S32 id, const char * tableEntry), , "addChildSelectionByValue(TreeItemId parent, value)")
 {
-   //S32 id = dAtoi(argv[2]);
    GuiTreeViewCtrl::Item* parentItem = object->getItem(id);
-   //GuiTreeViewCtrl::Item* child = parentItem->findChildByValue(argv[3]);
    GuiTreeViewCtrl::Item* child = parentItem->findChildByValue(tableEntry);
    object->addSelection(child->getID());
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, removeSelection, void, 3, 3, "(deselects an item)")
 DefineConsoleMethod(GuiTreeViewCtrl, removeSelection, void, (S32 id), , "(deselects an item)")
 {
-   //S32 id = dAtoi(argv[2]);
    object->removeSelection(id);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, removeChildSelectionByValue, void, 4, 4, "removeChildSelectionByValue(TreeItemId parent, value)")
 DefineConsoleMethod(GuiTreeViewCtrl, removeChildSelectionByValue, void, (S32 id, const char * tableEntry), , "removeChildSelectionByValue(TreeItemId parent, value)")
 {
-   //S32 id = dAtoi(argv[2]);
    GuiTreeViewCtrl::Item* parentItem = object->getItem(id);
    if(parentItem)
    {
-      //GuiTreeViewCtrl::Item* child = parentItem->findChildByValue(argv[3]);
       GuiTreeViewCtrl::Item* child = parentItem->findChildByValue(tableEntry);
 	  if(child)
 	  {
@@ -4901,63 +4890,38 @@ DefineConsoleMethod(GuiTreeViewCtrl, removeChildSelectionByValue, void, (S32 id,
    }
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, selectItem, bool, 3, 4, "(TreeItemId item, bool select=true)")
 DefineConsoleMethod(GuiTreeViewCtrl, selectItem, bool, (S32 id, bool select), (true), "(TreeItemId item, bool select=true)")
 {
-   //S32 id = dAtoi(argv[2]);
-   //bool select = true;
-   //if(argc == 4)
-   //   select = dAtob(argv[3]);
 
    return object->setItemSelected(id, select);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, expandItem, bool, 3, 4, "(TreeItemId item, bool expand=true)")
 DefineConsoleMethod(GuiTreeViewCtrl, expandItem, bool, (S32 id, bool expand), (true), "(TreeItemId item, bool expand=true)")
 {
-   //S32 id = dAtoi(argv[2]);
-   //bool expand = true;
-   //if(argc == 4)
-   //   expand = dAtob(argv[3]);
    return(object->setItemExpanded(id, expand));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, markItem, bool, 3, 4, "(TreeItemId item, bool mark=true)")
 DefineConsoleMethod(GuiTreeViewCtrl, markItem, bool, (S32 id, bool mark), (true), "(TreeItemId item, bool mark=true)")
 {
-   //S32 id = dAtoi(argv[2]);
-   //bool mark = true;
-   //if(argc == 4)
-   //   mark = dAtob(argv[3]);
    return object->markItem(id, mark);
 }
 
 // Make the given item visible.
-//ConsoleMethod(GuiTreeViewCtrl, scrollVisible, void, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, scrollVisible, void, (S32 itemId), , "(TreeItemId item)")
 {
-   //object->scrollVisible(dAtoi(argv[2]));
    object->scrollVisible(itemId);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, buildIconTable, bool, 3,3, "(builds an icon table)")
 DefineConsoleMethod(GuiTreeViewCtrl, buildIconTable, bool, (const char * icons), , "(builds an icon table)")
 {   
-   //const char * icons = argv[2];
    return object->buildIconTable(icons);
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, open, void, 3, 4, "(SimSet obj, bool okToEdit=true) Set the root of the tree view to the specified object, or to the root set.")
 DefineConsoleMethod( GuiTreeViewCtrl, open, void, (const char * objName, bool okToEdit), (true), "(SimSet obj, bool okToEdit=true) Set the root of the tree view to the specified object, or to the root set.")
 {
    SimSet *treeRoot = NULL;
-   //SimObject* target = Sim::findObject(argv[2]);
    SimObject* target = Sim::findObject(objName);
 
-   //bool okToEdit = true;
-
-   //if (argc == 4)
-   //   okToEdit = dAtob(argv[3]);
 
    if (target)
       treeRoot = dynamic_cast<SimSet*>(target);
@@ -4968,10 +4932,8 @@ DefineConsoleMethod( GuiTreeViewCtrl, open, void, (const char * objName, bool ok
    object->inspectObject(treeRoot,okToEdit);
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, setItemTooltip, void, 4, 4, "( int id, string text ) - Set the tooltip to show for the given item." )
 DefineConsoleMethod( GuiTreeViewCtrl, setItemTooltip, void, ( S32 id, const char * text ), , "( int id, string text ) - Set the tooltip to show for the given item." )
 {
-   //int id = dAtoi( argv[ 2 ] );
    
    GuiTreeViewCtrl::Item* item = object->getItem( id );
    if( !item )
@@ -4980,14 +4942,11 @@ DefineConsoleMethod( GuiTreeViewCtrl, setItemTooltip, void, ( S32 id, const char
       return;
    }
    
-   //item->mTooltip = argv[ 3 ];
    item->mTooltip = text;
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, setItemImages, void, 5, 5, "( int id, int normalImage, int expandedImage ) - Sets the normal and expanded images to show for the given item." )
 DefineConsoleMethod( GuiTreeViewCtrl, setItemImages, void, ( S32 id, S8 normalImage, S8 expandedImage ), , "( int id, int normalImage, int expandedImage ) - Sets the normal and expanded images to show for the given item." )
 {
-   //int id = dAtoi( argv[ 2 ] );
 
    GuiTreeViewCtrl::Item* item = object->getItem( id );
    if( !item )
@@ -4996,16 +4955,12 @@ DefineConsoleMethod( GuiTreeViewCtrl, setItemImages, void, ( S32 id, S8 normalIm
       return;
    }
 
-   //item->setNormalImage((S8)dAtoi(argv[3]));
-   //item->setExpandedImage((S8)dAtoi(argv[4]));
    item->setNormalImage(normalImage);
    item->setExpandedImage(expandedImage);
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, isParentItem, bool, 3, 3, "( int id ) - Returns true if the given item contains child items." )
 DefineConsoleMethod( GuiTreeViewCtrl, isParentItem, bool, ( S32 id ), , "( int id ) - Returns true if the given item contains child items." )
 {
-   //int id = dAtoi( argv[ 2 ] );
    if( !id && object->getItemCount() )
       return true;
    
@@ -5019,115 +4974,81 @@ DefineConsoleMethod( GuiTreeViewCtrl, isParentItem, bool, ( S32 id ), , "( int i
    return item->isParent();
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getItemText, const char *, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, getItemText, const char *, (S32 index), , "(TreeItemId item)")
 {
-   //return(object->getItemText(dAtoi(argv[2])));
    return object->getItemText(index);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getItemValue, const char *, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, getItemValue, const char *, (S32 itemId), , "(TreeItemId item)")
 {
-   //return(object->getItemValue(dAtoi(argv[2])));
    return object->getItemValue(itemId);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, editItem, bool, 5, 5, "(TreeItemId item, string newText, string newValue)")
 DefineConsoleMethod(GuiTreeViewCtrl, editItem, bool, (S32 item, const char * newText, const char * newValue), , "(TreeItemId item, string newText, string newValue)")
 {
-   //return(object->editItem(dAtoi(argv[2]), argv[3], argv[4]));
    return(object->editItem(item, newText, newValue));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, removeItem, bool, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, removeItem, bool, (S32 itemId), , "(TreeItemId item)")
 {
-   //return(object->removeItem(dAtoi(argv[2])));
    return(object->removeItem(itemId));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, removeAllChildren, void, 3, 3, "removeAllChildren(TreeItemId parent)")
 DefineConsoleMethod(GuiTreeViewCtrl, removeAllChildren, void, (S32 itemId), , "removeAllChildren(TreeItemId parent)")
 {
-   //object->removeAllChildren(dAtoi(argv[2]));
    object->removeAllChildren(itemId);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, clear, void, 2, 2, "() - empty tree")
 DefineConsoleMethod(GuiTreeViewCtrl, clear, void, (), , "() - empty tree")
 {
    object->removeItem(0);
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getFirstRootItem, S32, 2, 2, "Get id for root item.")
 DefineConsoleMethod(GuiTreeViewCtrl, getFirstRootItem, S32, (), , "Get id for root item.")
 {
    return(object->getFirstRootItem());
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getChild, S32, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, getChild, S32, (S32 itemId), , "(TreeItemId item)")
 {
-   //return(object->getChildItem(dAtoi(argv[2])));
    return(object->getChildItem(itemId));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, buildVisibleTree, void, 2, 3, "Build the visible tree")
 DefineConsoleMethod(GuiTreeViewCtrl, buildVisibleTree, void, (bool forceFullUpdate), (false), "Build the visible tree")
 {
-   //bool forceFullUpdate = false;
-   //if( argc > 2 )
-   //   forceFullUpdate = dAtob( argv[ 2 ] );
       
    object->buildVisibleTree( forceFullUpdate );
 }
 
 //FIXME: [rene 11/09/09 - This clashes with GuiControl.getParent(); bad thing; should be getParentItem]
-//ConsoleMethod(GuiTreeViewCtrl, getParent, S32, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, getParentItem, S32, (S32 itemId), , "(TreeItemId item)")
 {
-   //return(object->getParentItem(dAtoi(argv[2])));
    return(object->getParentItem(itemId));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getNextSibling, S32, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, getNextSibling, S32, (S32 itemId), , "(TreeItemId item)")
 {
-   //return(object->getNextSiblingItem(dAtoi(argv[2])));
    return(object->getNextSiblingItem(itemId));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getPrevSibling, S32, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, getPrevSibling, S32, (S32 itemId), , "(TreeItemId item)")
 {
-   //return(object->getPrevSiblingItem(dAtoi(argv[2])));
    return(object->getPrevSiblingItem(itemId));
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getItemCount, S32, 2, 2, "")
 DefineConsoleMethod(GuiTreeViewCtrl, getItemCount, S32, (), , "")
 {
    return(object->getItemCount());
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getSelectedItem, S32, 2, 3, "( int index=0 ) - Return the selected item at the given index.")
 DefineConsoleMethod(GuiTreeViewCtrl, getSelectedItem, S32, ( S32 index ), (0), "( int index=0 ) - Return the selected item at the given index.")
 {
-   //S32 index = 0;
-   //if( argc > 2 )
-   //   index = dAtoi( argv[ 2 ] );
       
    return ( object->getSelectedItem( index ) );
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getSelectedObject, S32, 2, 3, "( int index=0 ) - Return the currently selected SimObject at the given index in inspector mode or -1")
 DefineConsoleMethod(GuiTreeViewCtrl, getSelectedObject, S32, ( S32 index ), (0), "( int index=0 ) - Return the currently selected SimObject at the given index in inspector mode or -1")
 {
-   //S32 index = 0;
-   //if( argc > 2 )
-   //   index = dAtoi( argv[ 2 ] );
-
    GuiTreeViewCtrl::Item *item = object->getItem( object->getSelectedItem( index ) );
    if( item != NULL && item->isInspectorData() )
    {
@@ -5171,7 +5092,7 @@ const char* GuiTreeViewCtrl::getSelectedObjectList()
 
    return buff;
 }
-//ConsoleMethod(GuiTreeViewCtrl, getSelectedObjectList, const char*, 2, 2, 
+
 DefineConsoleMethod(GuiTreeViewCtrl, getSelectedObjectList, const char*, (), , 
               "Returns a space sperated list of all selected object ids.")
 {
@@ -5206,14 +5127,11 @@ DefineConsoleMethod(GuiTreeViewCtrl, getSelectedObjectList, const char*, (), ,
    return buff;
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, moveItemUp, void, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, moveItemUp, void, (S32 index), , "(TreeItemId item)")
 {
-   //object->moveItemUp( dAtoi( argv[2] ) );
    object->moveItemUp( index );
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getSelectedItemsCount, S32, 2, 2, "")
 DefineConsoleMethod(GuiTreeViewCtrl, getSelectedItemsCount, S32, (), , "")
 {
    return ( object->getSelectedItemsCount() );
@@ -5221,33 +5139,24 @@ DefineConsoleMethod(GuiTreeViewCtrl, getSelectedItemsCount, S32, (), , "")
 
 
 
-//ConsoleMethod(GuiTreeViewCtrl, moveItemDown, void, 3, 3, "(TreeItemId item)")
 DefineConsoleMethod(GuiTreeViewCtrl, moveItemDown, void, (S32 index), , "(TreeItemId item)")
 {
-   //object->moveItemDown( dAtoi( argv[2] ) );
    object->moveItemDown( index );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod(GuiTreeViewCtrl, getTextToRoot, const char*,4,4,"(TreeItemId item,Delimiter=none) gets the text from the current node to the root, concatenating at each branch upward, with a specified delimiter optionally")
 DefineConsoleMethod(GuiTreeViewCtrl, getTextToRoot, const char*, (S32 itemId, const char * delimiter), ,
    "(TreeItemId item,Delimiter=none) gets the text from the current node to the root, concatenating at each branch upward, with a specified delimiter optionally")
 {
-   //if ( argc < 4 )
    if ( delimiter == "" )
    {
       Con::warnf("GuiTreeViewCtrl::getTextToRoot - Invalid number of arguments!");
       return ("");
    }
-   //S32 itemId = dAtoi( argv[2] );
-   //StringTableEntry delimiter = argv[3];
-
-   //return object->getTextToRoot( itemId, delimiter );
    return object->getTextToRoot( itemId, delimiter );
 }
 
-//ConsoleMethod(GuiTreeViewCtrl, getSelectedItemList,const char*, 2,2,"returns a space seperated list of mulitple item ids")
 DefineConsoleMethod(GuiTreeViewCtrl, getSelectedItemList,const char*, (), ,"returns a space seperated list of mulitple item ids")
 {
 	char* buff = Con::getReturnBuffer(1024);
@@ -5293,10 +5202,8 @@ S32 GuiTreeViewCtrl::findItemByObjectId(S32 iObjId)
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod(GuiTreeViewCtrl, findItemByObjectId, S32, 3, 3, "(find item by object id and returns the mId)")
 DefineConsoleMethod(GuiTreeViewCtrl, findItemByObjectId, S32, ( S32 itemId ), , "(find item by object id and returns the mId)")
 {
-   //return(object->findItemByObjectId(dAtoi(argv[2])));
    return(object->findItemByObjectId(itemId));
 }
 
@@ -5340,34 +5247,17 @@ bool GuiTreeViewCtrl::scrollVisibleByObjectId(S32 objID)
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod(GuiTreeViewCtrl, scrollVisibleByObjectId, S32, 3, 3, "(show item by object id. returns true if sucessful.)")
 DefineConsoleMethod(GuiTreeViewCtrl, scrollVisibleByObjectId, S32, ( S32 itemId ), , "(show item by object id. returns true if sucessful.)")
 {
-   //return(object->scrollVisibleByObjectId(dAtoi(argv[2])));
    return(object->scrollVisibleByObjectId(itemId));
 }
 
 //------------------------------------------------------------------------------
 
 //FIXME: this clashes with SimSet.sort()
-//ConsoleMethod( GuiTreeViewCtrl, sort, void, 2, 6, "( int parent, bool traverseHierarchy=false, bool parentsFirst=false, bool caseSensitive=true ) - Sorts all items of the given parent (or root).  With 'hierarchy', traverses hierarchy." )
 DefineConsoleMethod( GuiTreeViewCtrl, sort, void, ( S32 parent, bool traverseHierarchy, bool parentsFirst, bool caseSensitive ), ( 0, false, false, true ), 
    "( int parent, bool traverseHierarchy=false, bool parentsFirst=false, bool caseSensitive=true ) - Sorts all items of the given parent (or root).  With 'hierarchy', traverses hierarchy." )
 {
-   //S32 parent = 0;
-   //if( argc >= 3 )
-   //   parent = dAtoi( argv[ 2 ] );
-
-   //bool traverseHierarchy = false;
-   //bool parentsFirst = false;
-   //bool caseSensitive = true;
-   
-   //if( argc >= 4 )
-   //   traverseHierarchy = dAtob( argv[ 3 ] );
-   //if( argc >= 5 )
-   //   parentsFirst = dAtob( argv[ 4 ] );
-   //if( argc >= 6 )
-   //   caseSensitive = dAtob( argv[ 5 ] );
       
    if( !parent )
       object->sortTree( caseSensitive, traverseHierarchy, parentsFirst );
@@ -5454,22 +5344,18 @@ void GuiTreeViewCtrl::showItemRenameCtrl( Item* item )
    }
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, cancelRename, void, 2, 2, "For internal use." )
 DefineConsoleMethod( GuiTreeViewCtrl, cancelRename, void, (), , "For internal use." )
 {
    object->cancelRename();
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, onRenameValidate, void, 2, 2, "For internal use." )
 DefineConsoleMethod( GuiTreeViewCtrl, onRenameValidate, void, (), , "For internal use." )
 {
    object->onRenameValidate();
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, showItemRenameCtrl, void, 3, 3, "( TreeItemId id ) - Show the rename text field for the given item (only one at a time)." )
 DefineConsoleMethod( GuiTreeViewCtrl, showItemRenameCtrl, void, ( S32 id ), , "( TreeItemId id ) - Show the rename text field for the given item (only one at a time)." )
 {
-   //S32 id = dAtoi( argv[ 2 ] );
    GuiTreeViewCtrl::Item* item = object->getItem( id );
    if( !item )
    {
@@ -5480,12 +5366,8 @@ DefineConsoleMethod( GuiTreeViewCtrl, showItemRenameCtrl, void, ( S32 id ), , "(
    object->showItemRenameCtrl( item );
 }
 
-//ConsoleMethod( GuiTreeViewCtrl, setDebug, void, 2, 3, "( bool value=true ) - Enable/disable debug output." )
 DefineConsoleMethod( GuiTreeViewCtrl, setDebug, void, ( bool value ), (true), "( bool value=true ) - Enable/disable debug output." )
 {
-   //bool value = true;
-   //if( argc > 2 )
-   //   value = dAtob( argv[ 2 ] );
       
    object->setDebug( value );
 }
@@ -5538,833 +5420,3 @@ DefineEngineMethod( GuiTreeViewCtrl, clearFilterText, void, (),,
 {
    object->clearFilterText();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_addChildSelectionByValue(char * x__object, S32 id, char * x__tableEntry)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* tableEntry = (const char*)x__tableEntry;
-{
-      GuiTreeViewCtrl::Item* parentItem = object->getItem(id);
-      GuiTreeViewCtrl::Item* child = parentItem->findChildByValue(tableEntry);
-   object->addSelection(child->getID());
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_buildIconTable(char * x__object, char * x__icons)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* icons = (const char*)x__icons;
-bool wle_returnObject;
-{   
-      {wle_returnObject =object->buildIconTable(icons);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_buildVisibleTree(char * x__object, bool forceFullUpdate)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-               
-   object->buildVisibleTree( forceFullUpdate );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_cancelRename(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->cancelRename();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_clear(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->removeItem(0);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_editItem(char * x__object, S32 item, char * x__newText, char * x__newValue)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-const char* newText = (const char*)x__newText;
-const char* newValue = (const char*)x__newValue;
-bool wle_returnObject;
-{
-      {wle_returnObject =(object->editItem(item, newText, newValue));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_expandItem(char * x__object, S32 id, bool expand)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-               {wle_returnObject =(object->setItemExpanded(id, expand));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_findItemByObjectId(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-     return (S32)((object->findItemByObjectId(itemId)));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getChild(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-     return (S32)((object->getChildItem(itemId)));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getFirstRootItem(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)((object->getFirstRootItem()));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getItemCount(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)((object->getItemCount()));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_getItemText(char * x__object, S32 index,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-      {wle_returnObject =object->getItemText(index);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_getItemValue(char * x__object, S32 itemId,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-      {wle_returnObject =object->getItemValue(itemId);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getNextSibling(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-     return (S32)((object->getNextSiblingItem(itemId)));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getParentItem(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-     return (S32)((object->getParentItem(itemId)));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getPrevSibling(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-     return (S32)((object->getPrevSiblingItem(itemId)));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getSelectedItem(char * x__object, S32 index)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-               
-  return (S32)( ( object->getSelectedItem( index ) ));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_getSelectedItemList(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-	char* buff = Con::getReturnBuffer(1024);
-	dSprintf(buff,1024,"");
-   const Vector< S32 >& selected = object->getSelected();
-	for(int i = 0; i < selected.size(); i++)
-	{
-		S32 id  = selected[i];
-				U32	len = dStrlen(buff);
-				char* buffPart = buff+len;
-				S32 size	=	1024-len-1;
-				if(size < 1)
-		{
-			Con::errorf("GuiTreeViewCtrl::getSelectedItemList - Not enough room to return our object list");
-			{wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-		}
-		dSprintf(buffPart,size,"%d ", id);
-	}
-	{wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getSelectedItemsCount(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)( ( object->getSelectedItemsCount() ));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_getSelectedObject(char * x__object, S32 index)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-         
-   GuiTreeViewCtrl::Item *item = object->getItem( object->getSelectedItem( index ) );
-   if( item != NULL && item->isInspectorData() )
-   {
-      SimObject *obj = item->getObject();
-      if( obj != NULL )
-        return (S32)( obj->getId());
-   }
-  return (S32)( -1);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_getSelectedObjectList(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   char* buff = Con::getReturnBuffer(1024);
-   dSprintf(buff,1024,"");
-   const Vector< GuiTreeViewCtrl::Item* > selectedItems = object->getSelectedItems();
-   for(int i = 0; i < selectedItems.size(); i++)
-   {
-      GuiTreeViewCtrl::Item *item = selectedItems[i];
-      if ( item->isInspectorData() && item->getObject() )
-      {      
-         S32 id  = item->getObject()->getId();
-                  U32	len = dStrlen(buff);
-                  char* buffPart = buff+len;
-                  S32 size	=	1024-len-1;
-                  if(size < 1)
-         {
-            Con::errorf("GuiTreeViewCtrl::getSelectedItemList - Not enough room to return our object list");
-            {wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-         }
-         dSprintf(buffPart,size,"%d ", id);
-      }
-   }
-   {wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_getTextToRoot(char * x__object, S32 itemId, char * x__delimiter,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* delimiter = (const char*)x__delimiter;
-const char* wle_returnObject;
-{
-      if ( delimiter == "" )
-   {
-      Con::warnf("GuiTreeViewCtrl::getTextToRoot - Invalid number of arguments!");
-      {wle_returnObject =("");
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   }
-      
-      {wle_returnObject =object->getTextToRoot( itemId, delimiter );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_isParentItem(char * x__object, S32 id)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-      if( !id && object->getItemCount() )
-      {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   
-   GuiTreeViewCtrl::Item* item = object->getItem( id );
-   if( !item )
-   {
-      Con::errorf( "GuiTreeViewCtrl::isParentItem - invalid item id '%i'", id );
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-   
-   {wle_returnObject =item->isParent();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_markItem(char * x__object, S32 id, bool mark)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-               {wle_returnObject =object->markItem(id, mark);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_moveItemDown(char * x__object, S32 index)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->moveItemDown( index );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_moveItemUp(char * x__object, S32 index)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->moveItemUp( index );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_onRenameValidate(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->onRenameValidate();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_open(char * x__object, char * x__objName, bool okToEdit)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* objName = (const char*)x__objName;
-
-{
-   SimSet *treeRoot = NULL;
-      SimObject* target = Sim::findObject(objName);
-   
-      
-   if (target)
-      treeRoot = dynamic_cast<SimSet*>(target);
-   if (! treeRoot)
-      Sim::findObject(RootGroupId, treeRoot);
-   object->inspectObject(treeRoot,okToEdit);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_removeAllChildren(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->removeAllChildren(itemId);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_removeChildSelectionByValue(char * x__object, S32 id, char * x__tableEntry)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* tableEntry = (const char*)x__tableEntry;
-{
-      GuiTreeViewCtrl::Item* parentItem = object->getItem(id);
-   if(parentItem)
-   {
-            GuiTreeViewCtrl::Item* child = parentItem->findChildByValue(tableEntry);
-	  if(child)
-	  {
-         object->removeSelection(child->getID());
-	  }
-   }
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_removeItem(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-      {wle_returnObject =(object->removeItem(itemId));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_removeSelection(char * x__object, S32 id)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->removeSelection(id);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_scrollVisible(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->scrollVisible(itemId);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_scrollVisibleByObjectId(char * x__object, S32 itemId)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-     return (S32)((object->scrollVisibleByObjectId(itemId)));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiTreeViewCtrl_selectItem(char * x__object, S32 id, bool select)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-            
-   {wle_returnObject =object->setItemSelected(id, select);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_setDebug(char * x__object, bool value)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-               
-   object->setDebug( value );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_setItemImages(char * x__object, S32 id, S8 normalImage, S8 expandedImage)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-   
-   GuiTreeViewCtrl::Item* item = object->getItem( id );
-   if( !item )
-   {
-      Con::errorf( "GuiTreeViewCtrl::setItemImages() - invalid item id '%i'", id );
-      return;
-   }
-         item->setNormalImage(normalImage);
-   item->setExpandedImage(expandedImage);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_setItemTooltip(char * x__object, S32 id, char * x__text)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* text = (const char*)x__text;
-{
-      
-   GuiTreeViewCtrl::Item* item = object->getItem( id );
-   if( !item )
-   {
-      Con::errorf( "GuiTreeViewCtrl::setTooltip() - invalid item id '%i'", id );
-      return;
-   }
-   
-      item->mTooltip = text;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_showItemRenameCtrl(char * x__object, S32 id)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      GuiTreeViewCtrl::Item* item = object->getItem( id );
-   if( !item )
-   {
-      Con::errorf( "GuiTreeViewCtrl::showItemRenameCtrl - invalid item id '%i'", id );
-      return;
-   }
-   
-   object->showItemRenameCtrl( item );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTreeViewCtrl_sort(char * x__object, S32 parent, bool traverseHierarchy, bool parentsFirst, bool caseSensitive)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-
-{
-         
-            
-                        
-   if( !parent )
-      object->sortTree( caseSensitive, traverseHierarchy, parentsFirst );
-   else
-   {
-      GuiTreeViewCtrl::Item* item = object->getItem( parent );
-      if( !item )
-      {
-         Con::errorf( "GuiTreeViewCtrl::sort - no item '%i' in tree", parent );
-         return;
-      }
-      
-      item->sort( caseSensitive, traverseHierarchy, parentsFirst );
-   }
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_addSelection(char * x__object, S32 id, bool isLastSelection)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-   object->addSelection( id, isLastSelection, isLastSelection );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_clearFilterText(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearFilterText();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_clearSelection(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_deleteSelection(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->deleteSelection();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTreeViewCtrl_findChildItemByName(char * x__object, S32 parentId, char * x__childName)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-
-const char* childName = (const char*)x__childName;
-{
-   if( parentId == 0 )
-   {
-      if( !object->getRootItem() )
-        return (S32)( 0);
-         
-      GuiTreeViewCtrl::Item* root = object->getRootItem();
-      while( root )
-      {
-         if( dStricmp( root->getText(), childName ) == 0 )
-           return (S32)( root->getID());
-            
-         root = root->mNext;
-      }
-      
-     return (S32)( 0);
-   }
-   else
-   {
-      GuiTreeViewCtrl::Item* item = object->getItem( parentId );
-      
-      if( !item )
-      {
-         Con::errorf( "GuiTreeViewCtrl.findChildItemByName - invalid parent ID '%i'", parentId );
-        return (S32)( 0);
-      }
-      
-      GuiTreeViewCtrl::Item* child = item->findChildByName( childName );
-      if( !child )
-        return (S32)( 0);
-      
-     return (S32)( child->mId);
-   }
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTreeViewCtrl_findItemByName(char * x__object, char * x__text)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-const char* text = (const char*)x__text;
-{
-  return (S32)( object->findItemByName( text ));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTreeViewCtrl_findItemByValue(char * x__object, char * x__value)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-const char* value = (const char*)x__value;
-{
-  return (S32)( object->findItemByValue( value ));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_getFilterText(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getFilterText();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_hideSelection(char * x__object, bool state)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->hideSelection( state );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTreeViewCtrl_insertItem(char * x__object, S32 parentId, char * x__text, char * x__value, char * x__icon, S32 normalImage, S32 expandedImage)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-
-const char* text = (const char*)x__text;
-const char* value = (const char*)x__value;
-const char* icon = (const char*)x__icon;
-
-{
-  return (S32)( object->insertItem( parentId, text, value, icon, normalImage, expandedImage ));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTreeViewCtrl_insertObject(char * x__object, S32 parentId, char * x__obj, bool OKToEdit)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-
-SimObject* obj; Sim::findObject(x__obj, obj ); 
-{
-	return object->insertObject(parentId, obj, OKToEdit);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTreeViewCtrl_isItemSelected(char * x__object, S32 id)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   const Vector< GuiTreeViewCtrl::Item* >& selectedItems = object->getSelectedItems();
-	for( S32 i = 0; i < selectedItems.size(); ++ i )
-      if( selectedItems[ i ]->mId == id )
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-         
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_lockSelection(char * x__object, bool lock)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->lockSelection( lock );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_setFilterText(char * x__object, char * x__pattern)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* pattern = (const char*)x__pattern;
-{
-   object->setFilterText( pattern );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_toggleHideSelection(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->toggleHideSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTreeViewCtrl_toggleLockSelection(char * x__object)
-{
-GuiTreeViewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->toggleLockSelection();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

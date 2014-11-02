@@ -58,7 +58,6 @@ const UTF8 *getCoreString(S32 id)
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction(getCoreLangTable, S32, 1, 1, "()"
 DefineConsoleFunction( getCoreLangTable, S32, (), , "()"
 				"@brief Gets the primary LangTable used by the game\n\n"
 				"@return ID of the core LangTable\n"
@@ -70,7 +69,6 @@ DefineConsoleFunction( getCoreLangTable, S32, (), , "()"
       return 0;
 }
 
-//ConsoleFunction(setCoreLangTable, void, 2, 2, "(string LangTable)"
 DefineConsoleFunction( setCoreLangTable, void, (const char * lgTable), , "(string LangTable)"
 				"@brief Sets the primary LangTable used by the game\n\n"
 				"@param LangTable ID of the core LangTable\n"
@@ -78,99 +76,13 @@ DefineConsoleFunction( setCoreLangTable, void, (const char * lgTable), , "(strin
 {
 	LangTable * lt;
    
-   //if(Sim::findObject(argv[1], lt))
    if(Sim::findObject(lgTable, lt))
    { gCoreLangTable = lt; }
    else
    {       
-      //Con::errorf("setCoreLangTable - Unable to find LanTable '%s'", argv[1]);
       Con::errorf("setCoreLangTable - Unable to find LanTable '%s'", lgTable); 
    }
 
 }
 
 //-----------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getCoreLangTable()
-{
-{
-	if(gCoreLangTable)
-		return gCoreLangTable->getId();
-   else
-     return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_setCoreLangTable(char * x__lgTable)
-{
-const char* lgTable = (const char*)x__lgTable;
-{
-	LangTable * lt;
-   
-      if(Sim::findObject(lgTable, lt))
-   { gCoreLangTable = lt; }
-   else
-   {       
-            Con::errorf("setCoreLangTable - Unable to find LanTable '%s'", lgTable); 
-   }
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

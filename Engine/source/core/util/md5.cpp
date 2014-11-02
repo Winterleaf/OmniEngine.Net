@@ -137,7 +137,7 @@ void MD5Final( unsigned char digest[16], MD5Context* ctx)
 	/* Two lots of padding:  Pad the first block to 64 bytes */
 	memset(p, 0, count);
 	byteReverse(ctx->in, 16);
-	MD5Transform(ctx->buf, (int *)ctx->in);
+	MD5Transform(ctx->buf, (int *) ctx->in);
 
 	/* Now fill the next block with 56 bytes */
 	memset(ctx->in, 0, 56);
@@ -154,7 +154,7 @@ void MD5Final( unsigned char digest[16], MD5Context* ctx)
     MD5Transform(ctx->buf, (int *) ctx->in);
     byteReverse((unsigned char *) ctx->buf, 4);
     memcpy(digest, ctx->buf, 16);
-    memset(ctx, 0, sizeof(ctx));        /* In case it's sensitive */
+    memset(ctx, 0, sizeof(MD5Context));        /* In case it's sensitive */
 }
 
 

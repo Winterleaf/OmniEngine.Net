@@ -49,7 +49,7 @@ public:
    /// Initialize the state hint from a ProcessMaterial.  This
    /// assumes that the ProcessedMaterial has properly initialized
    /// its passes to describe the material uniquely.
-   void init( ProcessedMaterial *mat );
+   void init( const ProcessedMaterial *mat );
 
    /// Clears the hint.
    void clear() { mState.clear(); }

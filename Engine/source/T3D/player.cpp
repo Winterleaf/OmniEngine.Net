@@ -429,9 +429,9 @@ bool PlayerData::preload(bool server, String &errorStr)
    {
       for( U32 i = 0; i < MaxSounds; ++ i )
       {
-         String errorStr;
-         if( !sfxResolve( &sound[ i ], errorStr ) )
-            Con::errorf( "PlayerData::preload: %s", errorStr.c_str() );
+         String sfxErrorStr;
+         if( !sfxResolve( &sound[ i ], sfxErrorStr ) )
+            Con::errorf( "PlayerData::preload: %s", sfxErrorStr.c_str() );
       }
    }
 
@@ -469,7 +469,7 @@ bool PlayerData::preload(bool server, String &errorStr)
       // Extract ground transform velocity from animations
       // Get the named ones first so they can be indexed directly.
       ActionAnimation *dp = &actionList[0];
-      for (int i = 0; i < NumTableActionAnims; i++,dp++)
+      for (S32 i = 0; i < NumTableActionAnims; i++,dp++)
       {
          ActionAnimationDef *sp = &ActionAnimationList[i];
          dp->name          = sp->name;
@@ -494,7 +494,7 @@ bool PlayerData::preload(bool server, String &errorStr)
          if (dStricmp(sp->name, "jet") != 0)
             AssertWarn(dp->sequence != -1, avar("PlayerData::preload - Unable to find named animation sequence '%s'!", sp->name));
       }
-      for (int b = 0; b < mShape->sequences.size(); b++)
+      for (S32 b = 0; b < mShape->sequences.size(); b++)
       {
          if (!isTableSequence(b))
          {
@@ -511,7 +511,7 @@ bool PlayerData::preload(bool server, String &errorStr)
       // Resolve lookAction index
       dp = &actionList[0];
       String lookName("look");
-      for (int c = 0; c < actionCount; c++,dp++)
+      for (S32 c = 0; c < actionCount; c++,dp++)
          if( dStricmp( dp->name, lookName ) == 0 )
             lookAction = c;
 
@@ -559,7 +559,7 @@ bool PlayerData::preload(bool server, String &errorStr)
       if (!Sim::findObject(dustID, dustEmitter))
          Con::errorf(ConsoleLogEntry::General, "PlayerData::preload - Invalid packet, bad datablockId(dustEmitter): 0x%x", dustID);
 
-   for (int i=0; i<NUM_SPLASH_EMITTERS; i++)
+   for (S32 i=0; i<NUM_SPLASH_EMITTERS; i++)
       if( !splashEmitterList[i] && splashEmitterIDList[i] != 0 )
          if( Sim::findObject( splashEmitterIDList[i], splashEmitterList[i] ) == false)
             Con::errorf(ConsoleLogEntry::General, "PlayerData::onAdd - Invalid packet, bad datablockId(particle emitter): 0x%x", splashEmitterIDList[i]);
@@ -588,7 +588,10 @@ bool PlayerData::preload(bool server, String &errorStr)
             Torque::FS::FileNodeRef    fileRef = Torque::FS::GetFileNode(mShapeFP[i].getPath());
 
             if (!fileRef)
+            {
+               errorStr = String::ToString("PlayerData: Mounted image %d loading failed, shape \"%s\" is not found.",i,mShapeFP[i].getPath().getFullPath().c_str());
                return false;
+            }
 
             if(server)
                mCRCFP[i] = fileRef->getChecksum();
@@ -649,7 +652,7 @@ bool PlayerData::isTableSequence(S32 seq)
 {
    // The sequences from the table must already have
    // been loaded for this to work.
-   for (int i = 0; i < NumTableActionAnims; i++)
+   for (S32 i = 0; i < NumTableActionAnims; i++)
       if (actionList[i].sequence == seq)
          return true;
    return false;
@@ -1946,7 +1949,7 @@ void Player::reSkin()
       Vector<String> skins;
       String(mSkinNameHandle.getString()).split( ";", skins );
 
-      for ( int i = 0; i < skins.size(); i++ )
+      for ( S32 i = 0; i < skins.size(); i++ )
       {
          String oldSkin( mAppliedSkinName.c_str() );
          String newSkin( skins[i] );
@@ -1963,7 +1966,7 @@ void Player::reSkin()
 
          // Apply skin to both 3rd person and 1st person shape instances
          mShapeInstance->reSkin( newSkin, oldSkin );
-         for ( int j = 0; j < ShapeBase::MaxMountedImages; j++ )
+         for ( S32 j = 0; j < ShapeBase::MaxMountedImages; j++ )
          {
             if (mShapeFPInstance[j])
                mShapeFPInstance[j]->reSkin( newSkin, oldSkin );
@@ -5824,7 +5827,7 @@ bool Player::castRay(const Point3F &start, const Point3F &end, RayInfo* info)
    F32 const *si = &start.x;
    F32 const *ei = &end.x;
 
-   for (int i = 0; i < 3; i++) {
+   for (S32 i = 0; i < 3; i++) {
       if (*si < *ei) {
          if (*si > *bmax || *ei < *bmin)
             return false;
@@ -6533,8 +6536,9 @@ DefineEngineMethod( Player, getDamageLocation, const char*, ( Point3F pos ),,
 
    object->getDamageLocation(pos, buffer1, buffer2);
 
-   char *buff = Con::getReturnBuffer(128);
-   dSprintf(buff, 128, "%s %s", buffer1, buffer2);
+   static const U32 bufSize = 128;
+   char *buff = Con::getReturnBuffer(bufSize);
+   dSprintf(buff, bufSize, "%s %s", buffer1, buffer2);
    return buff;
 }
 
@@ -7280,281 +7284,3 @@ void Player::readAttachedPacketData(GameConnection *connection, BitStream *strea
       setControlObject(0);
 }
 //Walkable Shapes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowAllPoses(char * x__object)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowAllPoses();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowCrouching(char * x__object, bool state)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowCrouching(state);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowJetJumping(char * x__object, bool state)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowJetJumping(state);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowJumping(char * x__object, bool state)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowJumping(state);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowProne(char * x__object, bool state)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowProne(state);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowSprinting(char * x__object, bool state)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowSprinting(state);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowSwimming(char * x__object, bool state)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->allowSwimming(state);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_checkDismountPoint(char * x__object, char * x__oldPos, char * x__pos)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-Point3F oldPos = Point3F();
-sscanf(x__oldPos,"%f %f %f",&oldPos.x,&oldPos.y,&oldPos.z);
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-bool wle_returnObject;
-{
-   MatrixF oldPosMat(true);
-   oldPosMat.setColumn(3, oldPos);
-   MatrixF posMat(true);
-   posMat.setColumn(3, pos);
-   {wle_returnObject =object->checkDismountPosition(oldPosMat, posMat);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_clearControlObject(char * x__object)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setControlObject(0);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_getControlObject(char * x__object)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   ShapeBase* controlObject = object->getControlObject();
-  return (S32)( controlObject ? controlObject->getId(): 0);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_getDamageLocation(char * x__object, char * x__pos,  char* retval)
-{
-dSprintf(retval,16384,"");
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-const char* wle_returnObject;
-{
-   const char *buffer1;
-   const char *buffer2;
-   object->getDamageLocation(pos, buffer1, buffer2);
-   char *buff = Con::getReturnBuffer(128);
-   dSprintf(buff, 128, "%s %s", buffer1, buffer2);
-   {wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_getNumDeathAnimations(char * x__object)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   S32 count = 0;
-   const PlayerData * db = dynamic_cast<PlayerData*>( object->getDataBlock() );
-   if ( db )
-   {
-      for ( S32 i = 0; i < db->actionCount; i++ )
-         if ( db->actionList[i].death )
-            count++;
-   }
-  return (S32)( count);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_getPose(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getPoseName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_getState(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getStateName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_setActionThread(char * x__object, char * x__name, bool hold, bool fsp)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* name = (const char*)x__name;
-
-bool wle_returnObject;
-{
-   {wle_returnObject =object->setActionThread( name, hold, true, fsp);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_setArmThread(char * x__object, char * x__name)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* name = (const char*)x__name;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->setArmThread( name );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_setControlObject(char * x__object, char * x__obj)
-{
-Player* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-ShapeBase* obj; Sim::findObject(x__obj, obj ); 
-bool wle_returnObject;
-{
-   if (obj) {
-      object->setControlObject(obj);
-      {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   else
-      object->setControlObject(0);
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

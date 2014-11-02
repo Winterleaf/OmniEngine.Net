@@ -225,7 +225,6 @@ protected:
 public:
 
    DECLARE_CONOBJECT( DBRetargetUndoAction );
-
    static void initPersistFields();
    
    DBRetargetUndoAction( const UTF8* actionName = "Retarget Decal Datablock" );

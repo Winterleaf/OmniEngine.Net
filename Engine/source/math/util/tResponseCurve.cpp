@@ -64,111 +64,17 @@ void SimResponseCurve::clear()
    mCurve.clear();
 }
 
-//ConsoleMethod( SimResponseCurve, addPoint, void, 4, 4, "addPoint( F32 value, F32 time )" )
 DefineConsoleMethod( SimResponseCurve, addPoint, void, ( F32 value, F32 time ), , "addPoint( F32 value, F32 time )" )
 {
-   //object->addPoint( dAtof(argv[2]), dAtof(argv[3]) );
    object->addPoint( value, time );
 }
 
-//ConsoleMethod( SimResponseCurve, getValue, F32, 3, 3, "getValue( F32 time )" )
 DefineConsoleMethod( SimResponseCurve, getValue, F32, ( F32 time ), , "getValue( F32 time )" )
 {
-   //return object->getValue( dAtof(argv[2]) );
    return object->getValue( time );
 }
 
-//ConsoleMethod( SimResponseCurve, clear, void, 2, 2, "clear()" )
 DefineConsoleMethod( SimResponseCurve, clear, void, (), , "clear()" )
 {
    object->clear();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimResponseCurve_addPoint(char * x__object, F32 value, F32 time)
-{
-SimResponseCurve* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-      object->addPoint( value, time );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimResponseCurve_clear(char * x__object)
-{
-SimResponseCurve* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clear();
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_SimResponseCurve_getValue(char * x__object, F32 time)
-{
-SimResponseCurve* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-     return (F32)( object->getValue( time ));
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

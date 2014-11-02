@@ -88,47 +88,34 @@ void GuiTerrPreviewCtrl::initPersistFields()
 }
 
 
-//ConsoleMethod( GuiTerrPreviewCtrl, reset, void, 2, 2, "Reset the view of the terrain.")
 DefineConsoleMethod( GuiTerrPreviewCtrl, reset, void, (), , "Reset the view of the terrain.")
 {
    object->reset();
 }
 
-//ConsoleMethod( GuiTerrPreviewCtrl, setRoot, void, 2, 2, "Add the origin to the root and reset the origin.")
 DefineConsoleMethod( GuiTerrPreviewCtrl, setRoot, void, (), , "Add the origin to the root and reset the origin.")
 {
    object->setRoot();
 }
 
-//ConsoleMethod( GuiTerrPreviewCtrl, getRoot, const char *, 2, 2, "Return a Point2F representing the position of the root.")
 DefineConsoleMethod( GuiTerrPreviewCtrl, getRoot, Point2F, (), , "Return a Point2F representing the position of the root.")
 {
    return object->getRoot();
 
-   /*static char rootbuf[32];
-   dSprintf(rootbuf,sizeof(rootbuf),"%g %g", p.x, -p.y);
-   return rootbuf;*/
 }
 
-//ConsoleMethod( GuiTerrPreviewCtrl, setOrigin, void, 4, 4, "(float x, float y)"
 DefineConsoleMethod( GuiTerrPreviewCtrl, setOrigin, void, (Point2F pos), , "(float x, float y)"
               "Set the origin of the view.")
 {
-   //object->setOrigin( Point2F( dAtof(argv[2]), -dAtof(argv[3]) ) );
    object->setOrigin( pos );
 }
 
-//ConsoleMethod( GuiTerrPreviewCtrl, getOrigin, const char*, 2, 2, "Return a Point2F containing the position of the origin.")
 DefineConsoleMethod( GuiTerrPreviewCtrl, getOrigin, Point2F, (), , "Return a Point2F containing the position of the origin.")
 {
    return object->getOrigin();
 
-   /*static char originbuf[32];
-   dSprintf(originbuf,sizeof(originbuf),"%g %g", p.x, -p.y);
-   return originbuf;*/
 }
 
-//ConsoleMethod( GuiTerrPreviewCtrl, getValue, const char*, 2, 2, "Returns a 4-tuple containing: root_x root_y origin_x origin_y")
 DefineConsoleMethod( GuiTerrPreviewCtrl, getValue, const char*, (), , "Returns a 4-tuple containing: root_x root_y origin_x origin_y")
 {
    Point2F r = object->getRoot();
@@ -139,12 +126,10 @@ DefineConsoleMethod( GuiTerrPreviewCtrl, getValue, const char*, (), , "Returns a
    return valuebuf;
 }
 
-//ConsoleMethod( GuiTerrPreviewCtrl, setValue, void, 3, 3, "Accepts a 4-tuple in the same form as getValue returns.\n\n"
 DefineConsoleMethod( GuiTerrPreviewCtrl, setValue, void, (const char * tuple), , "Accepts a 4-tuple in the same form as getValue returns.\n\n"
               "@see GuiTerrPreviewCtrl::getValue()")
 {
    Point2F r,o;
-   //dSscanf(argv[2],"%g %g %g %g", &r.x, &r.y, &o.x, &o.y);
    dSscanf(tuple, "%g %g %g %g", &r.x, &r.y, &o.x, &o.y);
    r.y = -r.y;
    o.y = -o.y;
@@ -373,159 +358,4 @@ void GuiTerrPreviewCtrl::onRender(Point2I offset, const RectI &updateRect)
 
    renderChildControls(offset, updateRect);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_getOrigin(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point2F wle_returnObject;
-{
-   {wle_returnObject =object->getOrigin();
-dSprintf(retval,1024,"%f %f ",wle_returnObject.x,wle_returnObject.y);
-return;
-}
-   
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_getRoot(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point2F wle_returnObject;
-{
-   {wle_returnObject =object->getRoot();
-dSprintf(retval,1024,"%f %f ",wle_returnObject.x,wle_returnObject.y);
-return;
-}
-   
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_getValue(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   Point2F r = object->getRoot();
-   Point2F o = object->getOrigin();
-   static char valuebuf[64];
-   dSprintf(valuebuf,sizeof(valuebuf),"%g %g %g %g", r.x, -r.y, o.x, -o.y);
-   {wle_returnObject =valuebuf;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_reset(char * x__object)
-{
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->reset();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_setOrigin(char * x__object, char * x__pos)
-{
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point2F pos = Point2F();
-sscanf(x__pos,"%f %f",&pos.x,&pos.y);
-{
-      object->setOrigin( pos );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_setRoot(char * x__object)
-{
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setRoot();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_setValue(char * x__object, char * x__tuple)
-{
-GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* tuple = (const char*)x__tuple;
-{
-   Point2F r,o;
-      dSscanf(tuple, "%g %g %g %g", &r.x, &r.y, &o.x, &o.y);
-   r.y = -r.y;
-   o.y = -o.y;
-   object->reset();
-   object->setRoot(r);
-   object->setOrigin(o);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

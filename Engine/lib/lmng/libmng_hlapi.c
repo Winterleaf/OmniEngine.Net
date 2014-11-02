@@ -198,7 +198,6 @@
 /* *                                                                        * */
 /* ************************************************************************** */
 
-#include <assert.h>
 #include "libmng.h"
 #include "libmng_data.h"
 #include "libmng_error.h"
@@ -577,11 +576,10 @@ MNG_LOCAL mng_retcode make_pushbuffer (mng_datap       pData,
     MNG_COPY (pTemp->pData, pPushdata, iLength);
   }
 
-  assert( (iLength <= UINT_MAX) && "Huge data." );
-  pTemp->iLength    = (unsigned int)iLength;
+  pTemp->iLength    = iLength;
   pTemp->bOwned     = bTakeownership;
-  pTemp->pDatanext  = (mng_uint8p)pTemp->pData;
-  pTemp->iRemaining = (unsigned int)iLength;
+  pTemp->pDatanext  = pTemp->pData;
+  pTemp->iRemaining = iLength;
 
   *pPush            = pTemp;           /* return it */
 

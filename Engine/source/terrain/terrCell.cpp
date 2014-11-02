@@ -436,10 +436,6 @@ void TerrCell::_updateVertexBuffer()
 
    TerrVertex *vert = mVertexBuffer.lock();
 
-   //Point2I gridPt;
-   //Point2F point;
-   //F32 height;
-   //Point3F normal;   
    
    const TerrainFile *file = mTerrain->getFile();
 
@@ -452,8 +448,6 @@ void TerrCell::_updateVertexBuffer()
          // We clamp here to keep the geometry from reading across
          // one side of the height map to the other causing walls
          // around the edges of the terrain.
-         //gridPt.x = mClamp( mPoint.x + x * stepSize, 0, blockSize - 1 );
-         //gridPt.y = mClamp( mPoint.y + y * stepSize, 0, blockSize - 1 );
 		 gridPt.x = mPoint.x + x * stepSize;
 
          // Corrected calc the position for height.
@@ -465,18 +459,11 @@ void TerrCell::_updateVertexBuffer()
          file->getHeight( &height, p );
 
          // Setup this point.
-         /*point.x = (F32)gridPt.x * squareSize;
-         point.y = (F32)gridPt.y * squareSize;
-         height = fixedToFloat( file->getHeight( gridPt.x, gridPt.y ) );
-         vert->point.x = point.x;
-         vert->point.y = point.y;*/
 		 vert->point.x = (F32)gridPt.x * squareSize;
 		 vert->point.y = (F32)gridPt.y * squareSize;
          vert->point.z = height;
 
          // Get the normal.
-         //mTerrain->getSmoothNormal( point, &normal, true, false );
-         //vert->normal = normal;
 		 const Point2F pn(
             (F32)p.x * squareSize,
             (F32)p.y * squareSize
@@ -484,14 +471,12 @@ void TerrCell::_updateVertexBuffer()
 		 mTerrain->getSmoothNormal( pn, &vert->normal, true, false );
 
          // Get the tangent z.
-         //vert->tangentZ = fixedToFloat( file->getHeight( gridPt.x + 1, gridPt.y ) ) - height;
 		 const Point2I  p1( p.x + 1, p.y );
 		 F32 height1;
          file->getHeight( &height1, p1 );
          vert->tangentZ = height1 - height;
 
          // Test the empty state for this vert.
-         //if ( file->isEmptyAt( gridPt.x, gridPt.y ) )
 		 if ( file->isEmptyAt( p.x, p.y ) )
          {
             mHasEmpty = true;
@@ -608,7 +593,6 @@ void TerrCell::_updateVertexBuffer()
       ++vert;      
    }
 #endif
-   //AssertFatal( vbcounter == smVBSize, "bad" );
    mVertexBuffer.unlock();
 }
 
@@ -861,8 +845,6 @@ void TerrCell::_updateMaterials()
    // in which case stepSize is always one.
    const U32 stepSize = mSize / smMinCellSize;
    mMaterials = 0;
-   //U8 index;
-   //U32 x, y;
 
    const TerrainFile *file = mTerrain->getFile();
 
@@ -883,7 +865,6 @@ void TerrCell::_updateMaterials()
          if ( index == U8_MAX || index > 63 )
             continue;
 
-         //mMaterials |= (U64)(1ui64<<index);
 		 mMaterials |= (U64)(1<<index);
       }
    }

@@ -203,7 +203,7 @@ class GuiScrollCtrl : public GuiContainer
       void autoScroll(Region reg);
 
       void scrollDeltaAnimate(S32 x, S32 y);
-      virtual void scrollTo(S32 x, S32 y);
+      void scrollTo(S32 x, S32 y);
       void scrollToObject(GuiControl *targetControl);
       void scrollDelta(S32 x, S32 y);
       void scrollRectVisible(RectI rect);
@@ -214,7 +214,7 @@ class GuiScrollCtrl : public GuiContainer
       bool isRectCompletelyVisible(const RectI& rect);
       bool isPointVisible( const Point2I& point );
 
-      virtual void computeSizes();
+      void computeSizes();
 
       // you can change the bitmap array dynamically.
       void loadBitmapArray();

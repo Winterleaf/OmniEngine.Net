@@ -22,7 +22,7 @@
 
 #include "platform/platform.h"
 
-#if defined(TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
+#if defined(TORQUE_OS_WIN)
 #include<Windows.h> // for SetThreadAffinityMask
 #endif
 
@@ -462,7 +462,7 @@ void Profiler::hashPop(ProfilerRootData *expected)
       if(!mEnabled && mNextEnable)
          startHighResolutionTimer(mCurrentProfilerData->mStartTime);
 
-#if defined(TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
+#if defined(TORQUE_OS_WIN)
       // The high performance counters under win32 are unreliable when running on multiple
       // processors. When the profiler is enabled, we restrict Torque to a single processor.
       if(mNextEnable != mEnabled)
@@ -476,13 +476,8 @@ void Profiler::hashPop(ProfilerRootData *expected)
          else
          {
             Con::warnf("Warning: the Torque profiler thread may now run on any cpu.");
-#if defined(TORQUE_CPU_X86_64)
             DWORD_PTR procMask;
             DWORD_PTR sysMask;
-#else
-            DWORD procMask;
-            DWORD sysMask;
-#endif
             GetProcessAffinityMask( GetCurrentProcess(), &procMask, &sysMask);
             SetThreadAffinityMask( GetCurrentThread(), procMask);
          }
@@ -763,102 +758,3 @@ DefineEngineFunction( profilerReset, void, (),,
 }
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_profilerDump()
-{
-{
-   if(gProfiler)
-      gProfiler->dumpToConsole();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_profilerDumpToFile(char * x__fileName)
-{
-const char* fileName = (const char*)x__fileName;
-{
-   if(gProfiler)
-      gProfiler->dumpToFile(fileName);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_profilerEnable(bool enable)
-{
-{
-   if(gProfiler)
-      gProfiler->enable(enable);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_profilerMarkerEnable(char * x__markerName, bool enable)
-{
-const char* markerName = (const char*)x__markerName;
-
-{
-   if( gProfiler )
-      gProfiler->enableMarker( markerName, enable );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_profilerReset()
-{
-{
-   if(gProfiler)
-      gProfiler->reset();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

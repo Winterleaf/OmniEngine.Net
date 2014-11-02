@@ -41,7 +41,7 @@
 #include "lighting/lightQuery.h"
 
 
-const U32 csmStaticCollisionMask =  TerrainObjectType;
+const U32 csmStaticCollisionMask = TerrainObjectType | StaticShapeObjectType | StaticObjectType;
 
 const U32 csmDynamicCollisionMask = StaticShapeObjectType;
 
@@ -122,7 +122,7 @@ bool DebrisData::onAdd()
    if(!Parent::onAdd())
       return false;
 
-   for( int i=0; i<DDC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<DDC_NUM_EMITTERS; i++ )
    {
       if( !emitterList[i] && emitterIDList[i] != 0 )
       {
@@ -303,7 +303,7 @@ void DebrisData::packData(BitStream* stream)
    stream->writeString( textureName );
    stream->writeString( shapeName );
 
-   for( int i=0; i<DDC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<DDC_NUM_EMITTERS; i++ )
    {
       if( stream->writeFlag( emitterList[i] != NULL ) )
       {
@@ -346,7 +346,7 @@ void DebrisData::unpackData(BitStream* stream)
    textureName = stream->readSTString();
    shapeName   = stream->readSTString();
 
-   for( int i=0; i<DDC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<DDC_NUM_EMITTERS; i++ )
    {
       if( stream->readFlag() )
       {
@@ -511,8 +511,14 @@ bool Debris::onAdd()
       return false;
    }
 
+   if( !mDataBlock )
+   {
+      Con::errorf("Debris::onAdd - Fail - No datablock");
+      return false;
+   }
+
    // create emitters
-   for( int i=0; i<DebrisData::DDC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<DebrisData::DDC_NUM_EMITTERS; i++ )
    {
       if( mDataBlock->emitterList[i] != NULL )
       {
@@ -631,7 +637,7 @@ bool Debris::onAdd()
 
 void Debris::onRemove()
 {
-   for( int i=0; i<DebrisData::DDC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<DebrisData::DDC_NUM_EMITTERS; i++ )
    {
       if( mEmitterList[i] )
       {
@@ -653,8 +659,11 @@ void Debris::onRemove()
       }
    }
 
-   getSceneManager()->removeObjectFromScene(this);
-   getContainer()->removeObject(this);
+   if( getSceneManager() )
+      getSceneManager()->removeObjectFromScene(this);
+
+   if( getContainer() )
+      getContainer()->removeObject(this);
 
    Parent::onRemove();
 }
@@ -848,7 +857,7 @@ void Debris::updateEmitters( Point3F &pos, Point3F &vel, U32 ms )
 
    Point3F lastPos = mLastPos;
 
-   for( int i=0; i<DebrisData::DDC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<DebrisData::DDC_NUM_EMITTERS; i++ )
    {
       if( mEmitterList[i] )
       {
@@ -939,82 +948,3 @@ void Debris::setSize( F32 size )
 {
    mSize = size;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnDebris_init(char * x__object, char * x__inputPosition, char * x__inputVelocity)
-{
-Debris* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* inputPosition = (const char*)x__inputPosition;
-const char* inputVelocity = (const char*)x__inputVelocity;
-bool wle_returnObject;
-{
-   Point3F pos;
-   dSscanf( inputPosition, "%f %f %f", &pos.x, &pos.y, &pos.z );
-   Point3F vel;
-   dSscanf( inputVelocity, "%f %f %f", &vel.x, &vel.y, &vel.z );
-   object->init( pos, vel );
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

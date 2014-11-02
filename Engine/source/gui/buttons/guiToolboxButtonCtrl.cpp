@@ -92,24 +92,18 @@ void GuiToolboxButtonCtrl::onSleep()
 
 //-------------------------------------
 
-//ConsoleMethod( GuiToolboxButtonCtrl, setNormalBitmap, void, 3, 3, "( filepath name ) sets the bitmap that shows when the button is active")
 DefineConsoleMethod( GuiToolboxButtonCtrl, setNormalBitmap, void, ( const char * name ), , "( filepath name ) sets the bitmap that shows when the button is active")
 {
-   //object->setNormalBitmap(argv[2]);
    object->setNormalBitmap(name);
 }
 
-//ConsoleMethod( GuiToolboxButtonCtrl, setLoweredBitmap, void, 3, 3, "( filepath name ) sets the bitmap that shows when the button is disabled")
 DefineConsoleMethod( GuiToolboxButtonCtrl, setLoweredBitmap, void, ( const char * name ), , "( filepath name ) sets the bitmap that shows when the button is disabled")
 {
-   //object->setLoweredBitmap(argv[2]);
    object->setLoweredBitmap(name);
 }
 
-//ConsoleMethod( GuiToolboxButtonCtrl, setHoverBitmap, void, 3, 3, "( filepath name ) sets the bitmap that shows when the button is disabled")
 DefineConsoleMethod( GuiToolboxButtonCtrl, setHoverBitmap, void, ( const char * name ), , "( filepath name ) sets the bitmap that shows when the button is disabled")
 {
-   //object->setHoverBitmap(argv[2]);
    object->setHoverBitmap(name);
 }
 
@@ -178,8 +172,7 @@ void GuiToolboxButtonCtrl::setHoverBitmap( StringTableEntry bitmapName )
 //-------------------------------------
 void GuiToolboxButtonCtrl::onRender(Point2I offset, const RectI& updateRect)
 {
-   
-	// Only render the state rect (hover/down) if we're active
+   // Only render the state rect (hover/down) if we're active
    if (mActive)
    {
       RectI r(offset, getExtent());
@@ -233,94 +226,3 @@ void GuiToolboxButtonCtrl::renderButton(GFXTexHandle &texture, Point2I &offset, 
       renderChildControls( offset, updateRect);
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiToolboxButtonCtrl_setHoverBitmap(char * x__object, char * x__name)
-{
-GuiToolboxButtonCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-      object->setHoverBitmap(name);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiToolboxButtonCtrl_setLoweredBitmap(char * x__object, char * x__name)
-{
-GuiToolboxButtonCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-      object->setLoweredBitmap(name);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiToolboxButtonCtrl_setNormalBitmap(char * x__object, char * x__name)
-{
-GuiToolboxButtonCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-      object->setNormalBitmap(name);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

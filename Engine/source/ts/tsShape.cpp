@@ -1159,47 +1159,45 @@ void TSShape::assembleShape()
    }
 
    // read in the meshes (sans skins)...straightforward read one at a time
+   ptr32 = tsalloc.allocShape32(numMeshes + numSkins*numDetails); // leave room for skins on old shapes
+   S32 curObject = 0; // for tracking skipped meshes
+   for (i=0; i<numMeshes; i++)
    {
-      // leave room for skins on old shapes
-      S32* ptr32 = tsalloc.allocShape32( numMeshes + numSkins * numDetails );
-      S32 curObject = 0; // for tracking skipped meshes
-      for ( i = 0; i < numMeshes; i++ )
+      bool skip = checkSkip(i,curObject,skipDL); // skip this mesh?
+      S32 meshType = tsalloc.get32();
+      if (meshType == TSMesh::DecalMeshType)
+         // decal mesh deprecated
+         skip = true;
+      TSMesh * mesh = TSMesh::assembleMesh(meshType,skip);
+      if (ptr32)
       {
-         bool skip = checkSkip( i, curObject, skipDL ); // skip this mesh?
-         const S32 meshType = tsalloc.get32();
-         if ( meshType == TSMesh::DecalMeshType ) {
-            // decal mesh deprecated
-            skip = true;
-         }
-         TSMesh* mesh = TSMesh::assembleMesh( meshType, skip );
-         if ( ptr32 ) {
-            meshes.push_back( skip ? NULL : mesh );
-         }
+         ptr32[i] = skip ?  0 : (S32)mesh;
+         meshes.push_back(skip ?  0 : mesh);
+      }
 
-         // fill in location of verts, tverts, and normals for detail levels
-         if ( mesh && (meshType != TSMesh::DecalMeshType) )
+      // fill in location of verts, tverts, and normals for detail levels
+      if (mesh && meshType!=TSMesh::DecalMeshType)
+      {
+         TSMesh::smVertsList[i]  = mesh->verts.address();
+         TSMesh::smTVertsList[i] = mesh->tverts.address();
+         if (smReadVersion >= 26)
          {
-            TSMesh::smVertsList[ i ]  = mesh->verts.address();
-            TSMesh::smTVertsList[ i ] = mesh->tverts.address();
-            if ( smReadVersion >= 26 )
-            {
-               TSMesh::smTVerts2List[ i ] = mesh->tverts2.address();
-               TSMesh::smColorsList[ i ]  = mesh->colors.address();
-            }
-            TSMesh::smNormsList[ i ] = mesh->norms.address();
-            TSMesh::smEncodedNormsList[ i ] = mesh->encodedNorms.address();
-            TSMesh::smDataCopied[ i ] = !skip; // as long as we didn't skip this mesh, the data should be in shape now
-            if ( meshType == TSMesh::SkinMeshType )
-            {
-               TSSkinMesh* skin = ( TSSkinMesh* )mesh;
-               TSMesh::smVertsList[ i ] = skin->batchData.initialVerts.address();
-               TSMesh::smNormsList[ i ] = skin->batchData.initialNorms.address();
-               TSSkinMesh::smInitTransformList[ i ] = skin->batchData.initialTransforms.address();
-               TSSkinMesh::smVertexIndexList[ i ] = skin->vertexIndex.address();
-               TSSkinMesh::smBoneIndexList[ i ] = skin->boneIndex.address();
-               TSSkinMesh::smWeightList[ i ] = skin->weight.address();
-               TSSkinMesh::smNodeIndexList[ i ] = skin->batchData.nodeIndex.address();
-            }
+            TSMesh::smTVerts2List[i] = mesh->tverts2.address();
+            TSMesh::smColorsList[i] = mesh->colors.address();
+         }
+         TSMesh::smNormsList[i]  = mesh->norms.address();
+         TSMesh::smEncodedNormsList[i] = mesh->encodedNorms.address();
+         TSMesh::smDataCopied[i] = !skip; // as long as we didn't skip this mesh, the data should be in shape now
+         if (meshType==TSMesh::SkinMeshType)
+         {
+            TSSkinMesh * skin = (TSSkinMesh*)mesh;
+            TSMesh::smVertsList[i]  = skin->batchData.initialVerts.address();
+            TSMesh::smNormsList[i]  = skin->batchData.initialNorms.address();
+            TSSkinMesh::smInitTransformList[i] = skin->batchData.initialTransforms.address();
+            TSSkinMesh::smVertexIndexList[i] = skin->vertexIndex.address();
+            TSSkinMesh::smBoneIndexList[i] = skin->boneIndex.address();
+            TSSkinMesh::smWeightList[i] = skin->weight.address();
+            TSSkinMesh::smNodeIndexList[i] = skin->batchData.nodeIndex.address();
          }
       }
    }
@@ -1229,7 +1227,7 @@ void TSShape::assembleShape()
    if (smReadVersion<23)
    {
       // get detail information about skins...
-      S32 * detailFirstSkin = tsalloc.getPointer32(numDetails);
+      S32 * detFirstSkin = tsalloc.getPointer32(numDetails);
       S32 * detailNumSkins = tsalloc.getPointer32(numDetails);
 
       tsalloc.checkGuard();
@@ -1261,7 +1259,7 @@ void TSShape::assembleShape()
       ptr32 = tsalloc.allocShape32(numSkins);
       for (i=0; i<numSkins; i++)
       {
-         bool skip = i<detailFirstSkin[skipDL];
+         bool skip = i<detFirstSkin[skipDL];
          TSSkinMesh * skin = (TSSkinMesh*)TSMesh::assembleMesh(TSMesh::SkinMeshType,skip);
          if (meshes.address())
          {
@@ -1290,7 +1288,7 @@ void TSShape::assembleShape()
       tsalloc.checkGuard();
 
       // we now have skins in mesh list...add skin objects to object list and patch things up
-      fixupOldSkins(numMeshes,numSkins,numDetails,detailFirstSkin,detailNumSkins);
+      fixupOldSkins(numMeshes,numSkins,numDetails,detFirstSkin,detailNumSkins);
    }
 
    // allocate storage space for some arrays (filled in during Shape::init)...

@@ -50,7 +50,6 @@ supporting internal functions that are not used by other modules. */
 #define PSSTART start_pattern  /* Field containing processed string start */
 #define PSEND   end_pattern    /* Field containing processed string end */
 
-#include <assert.h>
 #include "pcre_internal.h"
 
 

@@ -456,7 +456,7 @@ void ProcessedMaterial::_setStageData()
          if(!mStages[i].getTex( MFT_SpecularMap ))
             mMaterial->logError("Failed to load specular map %s for stage %i", _getTexturePath(mMaterial->mSpecularMapFilename[i]).c_str(), i);
       }
-
+   //Sahara
 	  // AccuMap
       if( mMaterial->mAccuMapFilename[i].isNotEmpty() )
       {
@@ -464,7 +464,7 @@ void ProcessedMaterial::_setStageData()
          if(!mStages[i].getTex( MFT_AccuMap ))
             mMaterial->logError("Failed to load accu map %s for stage %i", _getTexturePath(mMaterial->mAccuMapFilename[i]).c_str(), i);
       }
-
+   //Sahara
       // EnironmentMap
       if( mMaterial->mEnvMapFilename[i].isNotEmpty() )
       {

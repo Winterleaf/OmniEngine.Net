@@ -47,7 +47,7 @@ void FPSTracker::reset()
 
 void FPSTracker::update()
 {
-   const float alpha  = 0.07f;
+   const F32 alpha  = 0.07f;
    F32 realSeconds    = (F32)Platform::getRealMilliseconds()/1000.0f;
    F32 virtualSeconds = (F32)Platform::getVirtualMilliseconds()/1000.0f;
 
@@ -88,77 +88,9 @@ void FPSTracker::update()
    }
 }
 
-//ConsoleFunction( resetFPSTracker, void, 1, 1, "()"
 DefineConsoleFunction( resetFPSTracker, void, (), , "()"
    "@brief Reset FPS stats (fps::)\n\n"
    "@ingroup Game")
 {
    gFPS.reset();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_resetFPSTracker()
-{
-{
-   gFPS.reset();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

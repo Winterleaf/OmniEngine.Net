@@ -106,18 +106,31 @@ ConsoleDocClass( Explosion,
    "   lightEndBrightness = 0.0;\n"
    "   lightNormalOffset = 2.0;\n"
    "};\n\n"
-   "function createExplosion()\n"
+   "function ServerPlayExplosion(%position, %datablock)\n"
    "{\n"
-   "   // Create a new explosion - it will explode automatically\n"
-   "   %pos = \"0 0 100\";\n"
-   "   %obj = new Explosion()\n"
+   "   // Play the given explosion on every client.\n"
+   "   // The explosion will be transmitted as an event, not attached to any object.\n"
+   "   for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)\n"
    "   {\n"
-   "      position = %pos;\n"
-   "      dataBlock = GrenadeLauncherExplosion;\n"
-   "   };\n"
+   "      %client = ClientGroup.getObject(%idx);\n"
+   "      commandToClient(%client, 'PlayExplosion', %position, %datablock.getId());\n"
+   "   }\n"
+   "}\n\n"
+   "function clientCmdPlayExplosion(%position, %effectDataBlock)\n"
+   "{\n"
+   "   // Play an explosion sent by the server. Make sure this function is defined\n"
+   "   // on the client.\n"
+   "   if (isObject(%effectDataBlock))\n"
+   "   {\n"
+   "      new Explosion()\n"
+   "      {\n"
+   "         position = %position;\n"
+   "         dataBlock = %effectDataBlock;\n"
+   "      };\n"
+   "   }\n"
    "}\n\n"
    "// schedule an explosion\n"
-   "schedule(1000, 0, createExplosion);\n"
+   "schedule(1000, 0, ServerPlayExplosion, \"0 0 0\", GrenadeLauncherExplosion);\n"
    "@endtsexample"
 );
 
@@ -135,7 +148,6 @@ MRandomLCG sgRandom(0xdeadbeef);
 //sounds flaky because it will be 100 percent if your saying not to take
 //any thing in consideration for coverage.  So I'm removing these defaults they are just bad.
 
-//DefineEngineFunction(calcExplosionCoverage, F32, (Point3F pos, S32 id, U32 covMask),(Point3F(0.0f,0.0f,0.0f), NULL, NULL),
 DefineEngineFunction(calcExplosionCoverage, F32, (Point3F pos, S32 id, U32 covMask),,
    "@brief Calculates how much an explosion effects a specific object.\n\n"
    "Use this to determine how much damage to apply to objects based on their "
@@ -746,9 +758,9 @@ bool ExplosionData::preload(bool server, String &errorStr)
       
    if( !server )
    {
-      String errorStr;
-      if( !sfxResolve( &soundProfile, errorStr ) )
-         Con::errorf(ConsoleLogEntry::General, "Error, unable to load sound profile for explosion datablock: %s", errorStr.c_str());
+      String sfxErrorStr;
+      if( !sfxResolve( &soundProfile, sfxErrorStr ) )
+         Con::errorf(ConsoleLogEntry::General, "Error, unable to load sound profile for explosion datablock: %s", sfxErrorStr.c_str());
       if (!particleEmitter && particleEmitterId != 0)
          if (Sim::findObject(particleEmitterId, particleEmitter) == false)
             Con::errorf(ConsoleLogEntry::General, "Error, unable to load particle emitter for explosion datablock");
@@ -781,6 +793,7 @@ bool ExplosionData::preload(bool server, String &errorStr)
 //--------------------------------------
 //
 Explosion::Explosion()
+   : mDataBlock( NULL )
 {
    mTypeMask |= ExplosionObjectType | LightObjectType;
 
@@ -840,6 +853,12 @@ bool Explosion::onAdd()
    GameConnection *conn = GameConnection::getConnectionToServer();
    if ( !conn || !Parent::onAdd() )
       return false;
+
+   if( !mDataBlock )
+   {
+      Con::errorf("Explosion::onAdd - Fail - No datablok");
+      return false;
+   }
 
    mDelayMS = mDataBlock->delayMS + sgRandom.randI( -mDataBlock->delayVariance, mDataBlock->delayVariance );
    mEndingMS = mDataBlock->lifetimeMS + sgRandom.randI( -mDataBlock->lifetimeVariance, mDataBlock->lifetimeVariance );
@@ -939,7 +958,7 @@ bool Explosion::onAdd()
 
 void Explosion::onRemove()
 {
-   for( int i=0; i<ExplosionData::EC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<ExplosionData::EC_NUM_EMITTERS; i++ )
    {
       if( mEmitterList[i] )
       {
@@ -1124,7 +1143,7 @@ void Explosion::updateEmitters( F32 dt )
 {
    Point3F pos = getPosition();
 
-   for( int i=0; i<ExplosionData::EC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<ExplosionData::EC_NUM_EMITTERS; i++ )
    {
       if( mEmitterList[i] )
       {
@@ -1144,7 +1163,7 @@ void Explosion::launchDebris( Point3F &axis )
       return;
 
    bool hasDebris = false;
-   for( int j=0; j<ExplosionData::EC_NUM_DEBRIS_TYPES; j++ )
+   for( S32 j=0; j<ExplosionData::EC_NUM_DEBRIS_TYPES; j++ )
    {
       if( mDataBlock->debrisList[j] )
       {
@@ -1170,7 +1189,7 @@ void Explosion::launchDebris( Point3F &axis )
 
    U32 numDebris = mDataBlock->debrisNum + sgRandom.randI( -mDataBlock->debrisNumVariance, mDataBlock->debrisNumVariance );
 
-   for( int i=0; i<numDebris; i++ )
+   for( S32 i=0; i<numDebris; i++ )
    {
 
       Point3F launchDir = MathUtils::randomDir( axis, mDataBlock->debrisThetaMin, mDataBlock->debrisThetaMax,
@@ -1259,7 +1278,7 @@ bool Explosion::explode()
          Point3F::Zero, U32(mDataBlock->particleDensity * mFade));
    }
 
-   for( int i=0; i<ExplosionData::EC_NUM_EMITTERS; i++ )
+   for( S32 i=0; i<ExplosionData::EC_NUM_EMITTERS; i++ )
    {
       if( mDataBlock->emitterList[i] != NULL )
       {
@@ -1276,102 +1295,4 @@ bool Explosion::explode()
 
    return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_calcExplosionCoverage(char * x__pos, S32 id, U32 covMask)
-{
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-
-{
-   Point3F center;
-   SceneObject* sceneObject = NULL;
-   if (Sim::findObject(id, sceneObject) == false) {
-      Con::warnf(ConsoleLogEntry::General, "calcExplosionCoverage: couldn't find object: %d", id);
-     return (F32)( 1.0f);
-   }
-   if (sceneObject->isClientObject() || sceneObject->getContainer() == NULL) {
-      Con::warnf(ConsoleLogEntry::General, "calcExplosionCoverage: object is on the client, or not in the container system");
-     return (F32)( 1.0f);
-   }
-   sceneObject->getObjBox().getCenter(&center);
-   center.convolve(sceneObject->getScale());
-   sceneObject->getTransform().mulP(center);
-   RayInfo rayInfo;
-   sceneObject->disableCollision();
-   if (sceneObject->getContainer()->castRay(pos, center, covMask, &rayInfo) == true) {
-            if (sceneObject->getContainer()->castRay(pos, pos + Point3F(0.0f, 0.0f, 1.0f), covMask, &rayInfo) == false)
-      {
-         if (sceneObject->getContainer()->castRay(pos + Point3F(0.0f, 0.0f, 1.0f), center, covMask, &rayInfo) == false)
-         {
-            sceneObject->enableCollision();
-           return (F32)( 1.0f);
-         }
-      }
-      sceneObject->enableCollision();
-     return (F32)( 0.0f);
-   } else {
-      sceneObject->enableCollision();
-     return (F32)( 1.0f);
-   }
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

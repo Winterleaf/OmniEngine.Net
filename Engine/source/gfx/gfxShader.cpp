@@ -45,16 +45,29 @@ GFXShader::~GFXShader()
    Torque::FS::RemoveChangeNotification( mPixelFile, this, &GFXShader::_onFileChanged );
 }
 
+#ifndef TORQUE_OPENGL
 bool GFXShader::init(   const Torque::Path &vertFile, 
                         const Torque::Path &pixFile, 
                         F32 pixVersion, 
                         const Vector<GFXShaderMacro> &macros )
+{
+   Vector<String> samplerNames;
+   return init( vertFile, pixFile, pixVersion, macros, samplerNames );
+}
+#endif
+
+bool GFXShader::init(   const Torque::Path &vertFile, 
+                        const Torque::Path &pixFile, 
+                        F32 pixVersion, 
+                        const Vector<GFXShaderMacro> &macros,
+                        const Vector<String> &samplerNames)
 {
    // Store the inputs for use in reloading.
    mVertexFile = vertFile;
    mPixelFile = pixFile;
    mPixVersion = pixVersion;
    mMacros = macros;
+   mSamplerNamesOrdered = samplerNames;
 
    // Before we compile the shader make sure the
    // conditioner features have been updated.
@@ -172,79 +185,3 @@ DefineEngineFunction( removeGlobalShaderMacro, void, ( const char *name ),,
 {
    GFXShader::removeGlobalMacro( name );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_addGlobalShaderMacro(char * x__name, char * x__value)
-{
-const char* name = (const char*)x__name;
-const char* value = (const char*)x__value;
-{
-   GFXShader::addGlobalMacro( name, value );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_removeGlobalShaderMacro(char * x__name)
-{
-const char* name = (const char*)x__name;
-{
-   GFXShader::removeGlobalMacro( name );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

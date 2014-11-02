@@ -236,15 +236,13 @@ void StandardMainLoop::init()
       Memory::flagCurrentAllocs( Memory::FLAG_Global );
    #endif
 
-#if !defined (TORQUE_CPU_X86_64)
-    Platform::setMathControlStateKnown();
-#endif
-
-    // Asserts should be created FIRST
-    PlatformAssert::create();
-
-    ManagedSingleton< ThreadManager >::createSingleton();
-    FrameAllocator::init(TORQUE_FRAME_SIZE);      // See comments in torqueConfig.h
+   Platform::setMathControlStateKnown();
+   
+   // Asserts should be created FIRST
+   PlatformAssert::create();
+   
+   ManagedSingleton< ThreadManager >::createSingleton();
+   FrameAllocator::init(TORQUE_FRAME_SIZE);      // See comments in torqueConfig.h
 
    // Yell if we can't initialize the network.
    if(!Net::init())
@@ -274,24 +272,24 @@ void StandardMainLoop::init()
    // Set our working directory.
    Platform::setCurrentDirectory( Platform::getMainDotCsDir() );
 
-    Processor::init();
-    Math::init();
-    Platform::init();    // platform specific initialization
-    RedBook::init();
-    Platform::initConsole();
-
-    ThreadPool::GlobalThreadPool::createSingleton();
+   Processor::init();
+   Math::init();
+   Platform::init();    // platform specific initialization
+   RedBook::init();
+   Platform::initConsole();
+   
+   ThreadPool::GlobalThreadPool::createSingleton();
 #ifdef SocketThread
     ThreadPool::NetworkThreadPool::createSingleton();
     ThreadPool::NETWORKTHREADPOOL().setQueueUpdateInterval(1);
 
 #endif
 
-    // Initialize modules.
-
-    ModuleManager::initializeSystem();
-
-    // Initialise ITickable.
+   // Initialize modules.
+   
+   ModuleManager::initializeSystem();
+         
+   // Initialise ITickable.
 #ifdef TORQUE_TGB_ONLY
    ITickable::init( 4 );
 #endif
@@ -641,7 +639,7 @@ bool StandardMainLoop::handleCommandLine( S32 argc, const char **argv )
 #endif
 
     BuildCacheCRC();
-    return true;
+   return true;
 }
 
 bool StandardMainLoop::doMainLoop()

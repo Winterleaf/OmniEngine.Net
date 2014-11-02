@@ -214,21 +214,16 @@ bool RedBook::setVolume(F32 volume)
 
 ConsoleFunctionGroupBegin( Redbook, "Control functions for Redbook audio (ie, CD audio).");
 
-//ConsoleFunction(redbookOpen, bool, 1, 2, "(string device=NULL)"
 DefineConsoleFunction( redbookOpen, bool, (const char * device), (""), "(string device=NULL)"
 				"@brief Deprecated\n\n"
 				"@internal")
 {
-   //if(argc == 1)
-   //   return(RedBook::open(RedBook::getDeviceName(0)));
    if(dStrcmp(device,"")==0)
       return(RedBook::open(RedBook::getDeviceName(0)));
    else
       return(RedBook::open(device));
-      //return(RedBook::open(argv[1]));
 }
 
-//ConsoleFunction(redbookClose, bool, 1, 1, "Close the current Redbook device."
 DefineConsoleFunction( redbookClose, bool, (), , "Close the current Redbook device."
 				"@brief Deprecated\n\n"
 				"@internal")
@@ -236,16 +231,13 @@ DefineConsoleFunction( redbookClose, bool, (), , "Close the current Redbook devi
    return(RedBook::close());
 }
 
-//ConsoleFunction( redbookPlay, bool, 2, 2, "(int track) Play the selected track."
 DefineConsoleFunction( redbookPlay, bool, (S32 track), , "(int track) Play the selected track."
 				"@brief Deprecated\n\n"
 				"@internal")
 {
-   //return(RedBook::play(dAtoi(argv[1])));
    return(RedBook::play(track));
 }
 
-//ConsoleFunction( redbookStop, bool, 1, 1, "Stop playing."
 DefineConsoleFunction( redbookStop, bool, (), , "Stop playing."
 				"@brief Deprecated\n\n"
 				"@internal")
@@ -253,7 +245,6 @@ DefineConsoleFunction( redbookStop, bool, (), , "Stop playing."
    return(RedBook::stop());
 }
 
-//ConsoleFunction(redbookGetTrackCount, S32, 1, 1, "Return the number of tracks."
 DefineConsoleFunction( redbookGetTrackCount, S32, (), , "Return the number of tracks."
 				"@brief Deprecated\n\n"
 				"@internal")
@@ -264,7 +255,6 @@ DefineConsoleFunction( redbookGetTrackCount, S32, (), , "Return the number of tr
    return(trackCount);
 }
 
-//ConsoleFunction(redbookGetVolume, F32, 1, 1, "Get the volume."
 DefineConsoleFunction( redbookGetVolume, F32, (), , "Get the volume."
 				"@brief Deprecated\n\n"
 				"@internal")
@@ -276,16 +266,13 @@ DefineConsoleFunction( redbookGetVolume, F32, (), , "Get the volume."
       return(vol);
 }
 
-//ConsoleFunction(redbookSetVolume, bool, 2, 2, "(float volume) Set playback volume."
 DefineConsoleFunction( redbookSetVolume, bool, (F32 volume), , "(float volume) Set playback volume."
 				"@brief Deprecated\n\n"
 				"@internal")
 {
-   //return(RedBook::setVolume(dAtof(argv[1])));
    return(RedBook::setVolume(volume));
 }
 
-//ConsoleFunction( redbookGetDeviceCount, S32, 1, 1, "get the number of redbook devices."
 DefineConsoleFunction( redbookGetDeviceCount, S32, (), , "get the number of redbook devices."
 				"@brief Deprecated\n\n"
 				"@internal")
@@ -293,16 +280,13 @@ DefineConsoleFunction( redbookGetDeviceCount, S32, (), , "get the number of redb
    return(RedBook::getDeviceCount());
 }
 
-//ConsoleFunction( redbookGetDeviceName, const char *, 2, 2, "(int index) Get name of specified Redbook device."
 DefineConsoleFunction( redbookGetDeviceName, const char *, (S32 index), , "(int index) Get name of specified Redbook device."
 				"@brief Deprecated\n\n"
 				"@internal")
 {
-   //return(RedBook::getDeviceName(dAtoi(argv[1])));
    return(RedBook::getDeviceName(index));
 }
 
-//ConsoleFunction( redbookGetLastError, const char*, 1, 1, "Get a string explaining the last redbook error."
 DefineConsoleFunction( redbookGetLastError, const char *, (), , "Get a string explaining the last redbook error."
 				"@brief Deprecated\n\n"
 				"@internal")
@@ -311,160 +295,3 @@ DefineConsoleFunction( redbookGetLastError, const char *, (), , "Get a string ex
 }
 
 ConsoleFunctionGroupEnd( Redbook );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookClose()
-{
-bool wle_returnObject;
-{
-   {wle_returnObject =(RedBook::close());
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookGetDeviceCount()
-{
-{
-  return (S32)((RedBook::getDeviceCount()));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_redbookGetDeviceName(S32 index,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char * wle_returnObject;
-{
-      {wle_returnObject =(RedBook::getDeviceName(index));
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_redbookGetLastError(char* retval)
-{
-dSprintf(retval,16384,"");
-const char * wle_returnObject;
-{
-   {wle_returnObject =(RedBook::getLastError());
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookGetTrackCount()
-{
-{
-   U32 trackCount;
-   if(!RedBook::getTrackCount(&trackCount))
-     return (S32)((0));
-  return (S32)((trackCount));
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_redbookGetVolume()
-{
-{
-   F32 vol;
-   if(!RedBook::getVolume(&vol))
-     return (F32)((0.f));
-   else
-     return (F32)((vol));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookOpen(char * x__device)
-{
-const char* device = (const char*)x__device;
-bool wle_returnObject;
-{
-         if(dStrcmp(device,"")==0)
-      {wle_returnObject =(RedBook::open(RedBook::getDeviceName(0)));
-return (S32)(wle_returnObject);}
-   else
-      {wle_returnObject =(RedBook::open(device));
-return (S32)(wle_returnObject);}
-      }
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookPlay(S32 track)
-{
-bool wle_returnObject;
-{
-      {wle_returnObject =(RedBook::play(track));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookSetVolume(F32 volume)
-{
-bool wle_returnObject;
-{
-      {wle_returnObject =(RedBook::setVolume(volume));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookStop()
-{
-bool wle_returnObject;
-{
-   {wle_returnObject =(RedBook::stop());
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

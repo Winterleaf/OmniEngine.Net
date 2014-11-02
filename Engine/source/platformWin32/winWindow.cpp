@@ -312,18 +312,10 @@ S32 main(S32 argc, const char **argv)
 
 //--------------------------------------
 
-#include "unit/test.h"
 #include "app/mainLoop.h"
 
 S32 PASCAL WinMain( HINSTANCE hInstance, HINSTANCE, LPSTR lpszCmdLine, S32)
 {
-#if 0
-   // Run a unit test.
-   StandardMainLoop::initCore();
-   UnitTesting::TestRun tr;
-   tr.test("Platform", true);
-#else
-
    Vector<char *> argv( __FILE__, __LINE__ );
 
    char moduleName[256];
@@ -351,7 +343,7 @@ S32 PASCAL WinMain( HINSTANCE hInstance, HINSTANCE, LPSTR lpszCmdLine, S32)
       // Add the word to the argument list.
       if (*word) 
       {
-         int len = ptr - word;
+         S32 len = ptr - word;
          char *arg = (char *) dMalloc(len + 1);
          dStrncpy(arg, word, len);
          arg[len] = 0;
@@ -367,16 +359,15 @@ S32 PASCAL WinMain( HINSTANCE hInstance, HINSTANCE, LPSTR lpszCmdLine, S32)
       dFree(argv[j]);
 
    return retVal;
-#endif
 }
 
 #else //TORQUE_SHARED
 
 extern "C"
 {
-	int torque_engineinit(S32 argc, const char **argv);
-	int torque_enginetick();
-	int torque_engineshutdown();
+	bool torque_engineinit(S32 argc, const char **argv);
+	S32  torque_enginetick();
+	bool torque_engineshutdown();
 };
 
 S32 TorqueMain(S32 argc, const char **argv)
@@ -507,7 +498,7 @@ bool Platform::openWebBrowser( const char* webAddress )
          return( false );
       }
 
-      if ( RegQueryValueEx( regKey, dT(""), NULL, NULL, (unsigned char *)sWebKey, &size ) != ERROR_SUCCESS ) 
+      if ( RegQueryValueEx( regKey, dT(""), NULL, NULL, (U8 *)sWebKey, &size ) != ERROR_SUCCESS ) 
       {
          Con::errorf( ConsoleLogEntry::General, "Platform::openWebBrowser - Failed to query the open command registry key!!!" );
          return( false );
@@ -619,10 +610,8 @@ bool Platform::setLoginPassword( const char* password )
 //       as commentary on Koreans as a nationality. Thank you for your
 //       attention.
 //--------------------------------------
-//ConsoleFunction( isKoreanBuild, bool, 1, 1, "isKoreanBuild()" )
 DefineConsoleFunction( isKoreanBuild, bool, ( ), , "isKoreanBuild()")
 {
-   //argc; argv;
    HKEY regKey;
    bool result = false;
    if ( RegOpenKeyEx( HKEY_LOCAL_MACHINE, TorqueRegKey, 0, KEY_QUERY_VALUE, &regKey ) == ERROR_SUCCESS )
@@ -637,82 +626,3 @@ DefineConsoleFunction( isKoreanBuild, bool, ( ), , "isKoreanBuild()")
 
    return( result );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isKoreanBuild()
-{
-bool wle_returnObject;
-{
-      HKEY regKey;
-   bool result = false;
-   if ( RegOpenKeyEx( HKEY_LOCAL_MACHINE, TorqueRegKey, 0, KEY_QUERY_VALUE, &regKey ) == ERROR_SUCCESS )
-   {
-      DWORD val;
-      DWORD size = sizeof( val );
-      if ( RegQueryValueEx( regKey, dT("Korean"), NULL, NULL, (U8*) &val, &size ) == ERROR_SUCCESS )
-         result = ( val > 0 );
-      RegCloseKey( regKey );
-   }
-   {wle_returnObject =( result );
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

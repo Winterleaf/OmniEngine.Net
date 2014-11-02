@@ -367,7 +367,7 @@ static U32 validateTreeRecurse(TreeNode *tree)
    if(tree == NIL)
       return 1;
    // check my left tree
-   int lcount, rcount, nc = 0;
+   S32 lcount, rcount, nc = 0;
 
    if(tree->color == Red)
    {

@@ -722,10 +722,10 @@ LOCAL(void)
 alloc_fs_workspace (j_decompress_ptr cinfo)
 {
   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  jpeg_size_t arraysize;
+  size_t arraysize;
   int i;
 
-  arraysize = (jpeg_size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
+  arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
   for (i = 0; i < cinfo->out_color_components; i++) {
     cquantize->fserrors[i] = (FSERRPTR)
       (*cinfo->mem->alloc_large)((j_common_ptr) cinfo, JPOOL_IMAGE, arraysize);
@@ -741,7 +741,7 @@ METHODDEF(void)
 start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
 {
   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
-  jpeg_size_t arraysize;
+  size_t arraysize;
   int i;
 
   /* Install my colormap. */
@@ -779,7 +779,7 @@ start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
     if (cquantize->fserrors[0] == NULL)
       alloc_fs_workspace(cinfo);
     /* Initialize the propagated errors to zero. */
-    arraysize = (jpeg_size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
+    arraysize = (size_t) ((cinfo->output_width + 2) * SIZEOF(FSERROR));
     for (i = 0; i < cinfo->out_color_components; i++)
       jzero_far((void FAR *) cquantize->fserrors[i], arraysize);
     break;

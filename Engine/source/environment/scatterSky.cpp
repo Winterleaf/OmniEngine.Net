@@ -945,7 +945,6 @@ void ScatterSky::_render( ObjectRenderInst *ri, SceneRenderState *state, BaseMat
 
    Point3F camPos2 = state->getCameraPosition();
    MatrixF xfm(true);
-   //xfm.setPosition(camPos2);//-Point3F( 0, 0, 200000.0f));
    xfm.setPosition(camPos2 - Point3F( 0, 0, mZOffset)); // Added
    GFX->multWorld(xfm);
    MatrixF xform(proj);//GFX->getProjectionMatrix());
@@ -1066,7 +1065,7 @@ void ScatterSky::_renderMoon( ObjectRenderInst *ri, SceneRenderState *state, Bas
    const MatrixF &camView = state->getCameraTransform();
 
    // Finalize points
-   for(int i = 0; i < 4; i++)
+   for(S32 i = 0; i < 4; i++)
    {
       // align with camera
       camView.mulV(points[i]);
@@ -1123,13 +1122,13 @@ void ScatterSky::_generateSkyPoints()
    F32 deltaSegAngle = ( 2.0f * M_PI_F / (F32)segments );
 
    // Generate the group of rings for the sphere.
-   for( int ring = 0; ring < 2; ring++ )
+   for( S32 ring = 0; ring < 2; ring++ )
    {
       F32 r0 = mSin( ring * deltaRingAngle );
       F32 y0 = mCos( ring * deltaRingAngle );
 
       // Generate the group of segments for the current ring.
-      for( int seg = 0; seg < segments + 1 ; seg++ )
+      for( S32 seg = 0; seg < segments + 1 ; seg++ )
       {
          F32 x0 = r0 * sinf( seg * deltaSegAngle );
          F32 z0 = r0 * cosf( seg * deltaSegAngle );
@@ -1434,73 +1433,3 @@ DefineEngineMethod( ScatterSky, applyChanges, void, (),,
 {
    object->inspectPostApply();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnScatterSky_applyChanges(char * x__object)
-{
-ScatterSky* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->inspectPostApply();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

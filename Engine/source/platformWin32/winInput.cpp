@@ -156,21 +156,16 @@ void Input::init()
 }
 
 //------------------------------------------------------------------------------
-//ConsoleFunction( isJoystickDetected, bool, 1, 1, "isJoystickDetected()" )
 DefineConsoleFunction( isJoystickDetected, bool, (), , "isJoystickDetected()")
 {
-   // argc; argv;
    return( DInputDevice::joystickDetected() );
 }
 
 //------------------------------------------------------------------------------
-//ConsoleFunction( getJoystickAxes, const char*, 2, 2, "getJoystickAxes( instance )" )
 DefineConsoleFunction( getJoystickAxes, const char*, (U32 deviceID), , "getJoystickAxes( instance )")
 {
-   // argc;
    DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
    if ( mgr )
-      //return( mgr->getJoystickAxesString( dAtoi( argv[1] ) ) );
       return( mgr->getJoystickAxesString( deviceID ) );
 
    return( "" );
@@ -509,11 +504,8 @@ void Input::log( const char* format, ... )
    va_end( argptr );
 }
 
-//ConsoleFunction( inputLog, void, 2, 2, "inputLog( string )" )
 DefineConsoleFunction( inputLog, void, (const char * log), , "inputLog( string )")
 {
-   //argc;
-   //Input::log( "%s\n", argv[1] );
    Input::log( "%s\n", log );
 }
 #endif // LOG_INPUT
@@ -872,93 +864,4 @@ bool Platform::setClipboard(const char *text)
 
 	return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getJoystickAxes(U32 deviceID,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-      DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
-   if ( mgr )
-            {wle_returnObject =( mgr->getJoystickAxesString( deviceID ) );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   {wle_returnObject =( "" );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isJoystickDetected()
-{
-bool wle_returnObject;
-{
-      {wle_returnObject =( DInputDevice::joystickDetected() );
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

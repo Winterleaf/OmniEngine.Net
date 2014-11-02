@@ -51,7 +51,7 @@ static void processNode(GuiTreeViewCtrl* tree, domNode* node, S32 parentID, Scen
    S32 nodeID = tree->insertItem(parentID, _GetNameOrId(node), "node", "", 0, 0);
 
    // Update mesh and poly counts
-   for (int i = 0; i < node->getContents().getCount(); i++)
+   for (S32 i = 0; i < node->getContents().getCount(); i++)
    {
       domGeometry* geom = 0;
       const char* elemName = "";
@@ -126,7 +126,6 @@ static void processNode(GuiTreeViewCtrl* tree, domNode* node, S32 parentID, Scen
    }
 }
 
-//ConsoleFunction( enumColladaForImport, bool, 3, 3,
 DefineConsoleFunction( enumColladaForImport, bool, (const char * shapePath, const char * ctrl), , 
    "(string shapePath, GuiTreeViewCtrl ctrl) Collect scene information from "
    "a COLLADA file and store it in a GuiTreeView control. This function is "
@@ -139,17 +138,14 @@ DefineConsoleFunction( enumColladaForImport, bool, (const char * shapePath, cons
    "@internal")
 {
    GuiTreeViewCtrl* tree;
-   //if (!Sim::findObject(argv[2], tree))
    if (!Sim::findObject(ctrl, tree))
    {
-      //Con::errorf("enumColladaScene::Could not find GuiTreeViewCtrl '%s'", argv[2]);
       Con::errorf("enumColladaScene::Could not find GuiTreeViewCtrl '%s'", ctrl);
       return false;
    }
 
    // Check if a cached DTS is available => no need to import the collada file
    // if we can load the DTS instead
-   //Torque::Path path(argv[1]);
    Torque::Path path(shapePath);
    if (ColladaShapeLoader::canLoadCachedDTS(path))
       return false;
@@ -183,13 +179,13 @@ DefineConsoleFunction( enumColladaForImport, bool, (const char * shapePath, cons
    SceneStats stats;
 
    // Query DOM for shape summary details
-   for (int i = 0; i < root->getLibrary_visual_scenes_array().getCount(); i++)
+   for (S32 i = 0; i < root->getLibrary_visual_scenes_array().getCount(); i++)
    {
       const domLibrary_visual_scenes* libScenes = root->getLibrary_visual_scenes_array()[i];
-      for (int j = 0; j < libScenes->getVisual_scene_array().getCount(); j++)
+      for (S32 j = 0; j < libScenes->getVisual_scene_array().getCount(); j++)
       {
          const domVisual_scene* visualScene = libScenes->getVisual_scene_array()[j];
-         for (int k = 0; k < visualScene->getNode_array().getCount(); k++)
+         for (S32 k = 0; k < visualScene->getNode_array().getCount(); k++)
             processNode(tree, visualScene->getNode_array()[k], nodesID, stats);
       }
    }
@@ -266,173 +262,3 @@ DefineConsoleFunction( enumColladaForImport, bool, (const char * shapePath, cons
 
    return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_enumColladaForImport(char * x__shapePath, char * x__ctrl)
-{
-const char* shapePath = (const char*)x__shapePath;
-const char* ctrl = (const char*)x__ctrl;
-bool wle_returnObject;
-{
-   GuiTreeViewCtrl* tree;
-      if (!Sim::findObject(ctrl, tree))
-   {
-            Con::errorf("enumColladaScene::Could not find GuiTreeViewCtrl '%s'", ctrl);
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-            Torque::Path path(shapePath);
-   if (ColladaShapeLoader::canLoadCachedDTS(path))
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-         String mountPoint;
-   Torque::Path daePath;
-   bool isSketchup = ColladaShapeLoader::checkAndMountSketchup(path, mountPoint, daePath);
-      domCOLLADA* root = ColladaShapeLoader::getDomCOLLADA(daePath);
-   if (!root)
-   {
-      TSShapeLoader::updateProgress(TSShapeLoader::Load_Complete, "Load complete");
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-   if (isSketchup)
-   {
-            Torque::FS::Unmount(mountPoint);
-   }
-      tree->removeItem(0);
-   S32 nodesID = tree->insertItem(0, "Shape", "", "", 0, 0);
-   S32 matsID = tree->insertItem(0, "Materials", "", "", 0, 0);
-   S32 animsID = tree->insertItem(0, "Animations", "", "", 0, 0);
-   SceneStats stats;
-      for (int i = 0; i < root->getLibrary_visual_scenes_array().getCount(); i++)
-   {
-      const domLibrary_visual_scenes* libScenes = root->getLibrary_visual_scenes_array()[i];
-      for (int j = 0; j < libScenes->getVisual_scene_array().getCount(); j++)
-      {
-         const domVisual_scene* visualScene = libScenes->getVisual_scene_array()[j];
-         for (int k = 0; k < visualScene->getNode_array().getCount(); k++)
-            processNode(tree, visualScene->getNode_array()[k], nodesID, stats);
-      }
-   }
-      for (S32 i = 0; i < root->getLibrary_materials_array().getCount(); i++)
-   {
-      const domLibrary_materials* libraryMats = root->getLibrary_materials_array()[i];
-      const size_t mc = libraryMats->getMaterial_array().getCount();
-      AssertFatal( mc <= S32_MAX, "Huge data." );
-      stats.numMaterials += (S32)mc;
-      for (S32 j = 0; j < libraryMats->getMaterial_array().getCount(); j++)
-      {
-         domMaterial* mat = libraryMats->getMaterial_array()[j];
-         tree->insertItem(matsID, _GetNameOrId(mat), _GetNameOrId(mat), "", 0, 0);
-      }
-   }
-      for (S32 i = 0; i < root->getLibrary_animation_clips_array().getCount(); i++)
-   {
-      const domLibrary_animation_clips* libraryClips = root->getLibrary_animation_clips_array()[i];
-      const size_t ac = libraryClips->getAnimation_clip_array().getCount();
-      AssertFatal( ac <= S32_MAX, "Huge data." );
-      stats.numClips += (S32)ac;
-      for (S32 j = 0; j < libraryClips->getAnimation_clip_array().getCount(); j++)
-      {
-         domAnimation_clip* clip = libraryClips->getAnimation_clip_array()[j];
-         tree->insertItem(animsID, _GetNameOrId(clip), "animation", "", 0, 0);
-      }
-   }
-   if (stats.numClips == 0)
-   {
-            for (S32 i = 0; i < root->getLibrary_animations_array().getCount(); i++)
-      {
-         const domLibrary_animations* libraryAnims = root->getLibrary_animations_array()[i];
-         if (libraryAnims->getAnimation_array().getCount())
-         {
-            stats.numClips = 1;
-            tree->insertItem(animsID, "ambient", "animation", "", 0, 0);
-            break;
-         }
-      }
-   }
-      F32 unit = 1.0f;
-   domUpAxisType upAxis = UPAXISTYPE_Z_UP;
-   if (root->getAsset()) {
-      if (root->getAsset()->getUnit())
-         unit = root->getAsset()->getUnit()->getMeter();
-      if (root->getAsset()->getUp_axis())
-         upAxis = root->getAsset()->getUp_axis()->getValue();
-   }
-   TSShapeLoader::updateProgress(TSShapeLoader::Load_Complete, "Load complete");
-      tree->setDataField(StringTable->insert("_nodeCount"), 0, avar("%d", stats.numNodes));
-   tree->setDataField(StringTable->insert("_meshCount"), 0, avar("%d", stats.numMeshes));
-   tree->setDataField(StringTable->insert("_polygonCount"), 0, avar("%d", stats.numPolygons));
-   tree->setDataField(StringTable->insert("_materialCount"), 0, avar("%d", stats.numMaterials));
-   tree->setDataField(StringTable->insert("_lightCount"), 0, avar("%d", stats.numLights));
-   tree->setDataField(StringTable->insert("_animCount"), 0, avar("%d", stats.numClips));
-   tree->setDataField(StringTable->insert("_unit"), 0, avar("%g", unit));
-   if (upAxis == UPAXISTYPE_X_UP)
-      tree->setDataField(StringTable->insert("_upAxis"), 0, "X_AXIS");
-   else if (upAxis == UPAXISTYPE_Y_UP)
-      tree->setDataField(StringTable->insert("_upAxis"), 0, "Y_AXIS");
-   else
-      tree->setDataField(StringTable->insert("_upAxis"), 0, "Z_AXIS");
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

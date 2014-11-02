@@ -207,13 +207,11 @@ void PathManager::clearPaths()
 #endif
 }
 
-//ConsoleFunction(clearServerPaths, void, 1, 1, "")
 DefineConsoleFunction( clearServerPaths, void, ( ), , "")
 {
    gServerPathManager->clearPaths();
 }
 
-//ConsoleFunction(clearClientPaths, void, 1, 1, "")
 DefineConsoleFunction( clearClientPaths, void, ( ), , "")
 {
    gClientPathManager->clearPaths();
@@ -433,74 +431,4 @@ bool PathManager::readState(BitStream* stream)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_clearClientPaths()
-{
-{
-   gClientPathManager->clearPaths();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_clearServerPaths()
-{
-{
-   gServerPathManager->clearPaths();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

@@ -94,14 +94,14 @@ DeclareFeatureType( MFT_OverlayMap );
 DeclareFeatureType( MFT_DetailMap );
 DeclareFeatureType( MFT_DiffuseColor );
 DeclareFeatureType( MFT_DetailNormalMap );
-
+   //Sahara
 DeclareFeatureType( MFT_AccuMap );
 DeclareFeatureType( MFT_AccuScale );
 DeclareFeatureType( MFT_AccuDirection );
 DeclareFeatureType( MFT_AccuStrength );
 DeclareFeatureType( MFT_AccuCoverage );
 DeclareFeatureType( MFT_AccuSpecular );
-
+   //Sahara
 /// This feature enables vertex coloring for the diffuse channel.
 DeclareFeatureType( MFT_DiffuseVertColor );
 

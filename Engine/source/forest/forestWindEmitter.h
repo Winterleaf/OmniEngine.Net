@@ -69,8 +69,6 @@ protected:
 
    bool mIsDirty;
 
-   U32 mStartTime;
-
 public:
 
    ForestWind( ForestWindEmitter *emitter );
@@ -90,8 +88,6 @@ public:
 
    const VectorF& getDirection() const { return mDirection; }
    VectorF getTarget() const { return VectorF( mCurrentTarget.x, mCurrentTarget.y, 0 ); }
-
-   void resetWind( S32 randomSeed );
 };
 
 

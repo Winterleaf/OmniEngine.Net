@@ -152,7 +152,7 @@ static bool sReadBMP(Stream &stream, GBitmap *bitmap)
    if(bytesPerPixel == 3 && bi.biBitCount != 8) // do BGR swap
    {
       U8 *ptr = bitmap->getAddress(0,0);
-      for(int i = 0; i < width * height; i++)
+      for(S32 i = 0; i < width * height; i++)
       {
          U8 tmp = ptr[0];
          ptr[0] = ptr[2];
@@ -202,7 +202,7 @@ static bool sWriteBMP(GBitmap *bitmap, Stream &stream, U32 compressionLevel)
    bi.biClrUsed         = 0;
    bi.biClrImportant    = 0;
 
-   bf.bfType   = makeFourCCTag( 'B', 'M', 0, 0 );     //Type of file 'BM'
+   bf.bfType   = makeFourCCTag('B','M',0,0);     //Type of file 'BM'
    bf.bfOffBits= sizeof(BITMAPINFOHEADER)
                + sizeof(BITMAPFILEHEADER)
                + (sizeof(RGBQUAD)*bi.biClrUsed);

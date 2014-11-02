@@ -318,112 +318,17 @@ void StaticShape::unpackUpdate(NetConnection *connection, BitStream *bstream)
 // This appears to be legacy T2 stuff
 // Marked internal, as this is flagged to be deleted
 // [8/1/2010 mperry]
-//ConsoleMethod( StaticShape, setPoweredState, void, 3, 3, "(bool isPowered)"
 DefineConsoleMethod( StaticShape, setPoweredState, void, (bool isPowered), , "(bool isPowered)"
 			  "@internal")
 {
    if(!object->isServerObject())
       return;
-   //object->setPowered(dAtob(argv[2]));
    object->setPowered(isPowered);
 }
 
-//ConsoleMethod( StaticShape, getPoweredState, bool, 2, 2, "@internal")
 DefineConsoleMethod( StaticShape, getPoweredState, bool, (), , "@internal")
 {
    if(!object->isServerObject())
       return(false);
    return(object->isPowered());
 }
-
-////ConsoleMethod( StaticShape, updatePhysics, void, 2, 2, "")
-//DefineConsoleMethod( StaticShape, updatePhysics, void, (), , "")
-//{
-//	object->updatePhysics();
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_StaticShape_getPoweredState(char * x__object)
-{
-StaticShape* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if(!object->isServerObject())
-      {wle_returnObject =(false);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =(object->isPowered());
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_StaticShape_setPoweredState(char * x__object, bool isPowered)
-{
-StaticShape* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if(!object->isServerObject())
-      return;
-      object->setPowered(isPowered);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

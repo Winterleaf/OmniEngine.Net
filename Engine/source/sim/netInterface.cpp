@@ -535,7 +535,7 @@ void NetInterface::checkTimeouts()
 #define F3(x, y, z) (x ^ y ^ z)
 #define F4(x, y, z) (y ^ (x | ~z))
 
-inline U32 rotlFixed(U32 x, unsigned int y)
+inline U32 rotlFixed(U32 x, U32 y)
 {
    return (x >> y) | (x << (32 - y));
 }
@@ -644,7 +644,6 @@ void NetInterface::computeNetMD5(const NetAddress *address, U32 connectSequence,
 
 ConsoleFunctionGroupBegin(NetInterface, "Global control functions for the netInterfaces.");
 
-//ConsoleFunction(allowConnections,void,2,2,"allowConnections(bool allow);"
 DefineConsoleFunction( allowConnections, void, ( bool allow ), , "allowConnections(bool allow)"
    "@brief Sets whether or not the global NetInterface allows connections from remote hosts.\n\n"
 
@@ -652,76 +651,8 @@ DefineConsoleFunction( allowConnections, void, ( bool allow ), , "allowConnectio
 
    "@ingroup Networking\n")
 {
-   //TORQUE_UNUSED(argc);
-   //GNet->setAllowsConnections(dAtob(argv[1]));
    GNet->setAllowsConnections(allow);
 }
 
 ConsoleFunctionGroupEnd(NetInterface);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_allowConnections(bool allow)
-{
-{
-         GNet->setAllowsConnections(allow);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

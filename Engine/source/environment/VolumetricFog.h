@@ -168,7 +168,7 @@ protected:
 	bool LoadShape();
 	bool setupRenderer();
 	void InitTexture();
-	bool UpdateBuffers(U32 dl);
+	bool UpdateBuffers(U32 dl,bool force=true);
 
 public:
 	// Public methods

@@ -2180,189 +2180,43 @@ void GuiConvexEditorCtrl::splitSelectedFace()
    updateGizmoPos();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, hollowSelection, void, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, hollowSelection, void, (), , "" )
 {
    object->hollowSelection();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, recenterSelection, void, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, recenterSelection, void, (), , "" )
 {
    object->recenterSelection();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, hasSelection, S32, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, hasSelection, S32, (), , "" )
 {
    return object->hasSelection();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, handleDelete, void, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, handleDelete, void, (), , "" )
 {
    object->handleDelete();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, handleDeselect, void, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, handleDeselect, void, (), , "" )
 {
    object->handleDeselect();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, dropSelectionAtScreenCenter, void, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, dropSelectionAtScreenCenter, void, (), , "" )
 {
    object->dropSelectionAtScreenCenter();
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, selectConvex, void, 3, 3, "( ConvexShape )" )
 DefineConsoleMethod( GuiConvexEditorCtrl, selectConvex, void, (ConvexShape *convex), , "( ConvexShape )" )
 {
-   //ConvexShape *convex;
-   //if ( Sim::findObject( argv[2], convex ) )
-//   if ( Sim::findObject( shapName, convex ) )
 if (convex)
       object->setSelection( convex, -1 );
 }
 
-//ConsoleMethod( GuiConvexEditorCtrl, splitSelectedFace, void, 2, 2, "" )
 DefineConsoleMethod( GuiConvexEditorCtrl, splitSelectedFace, void, (), , "" )
 {
    object->splitSelectedFace();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_dropSelectionAtScreenCenter(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->dropSelectionAtScreenCenter();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_handleDelete(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->handleDelete();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_handleDeselect(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->handleDeselect();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiConvexEditorCtrl_hasSelection(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)( object->hasSelection());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_hollowSelection(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->hollowSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_recenterSelection(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->recenterSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_selectConvex(char * x__object, char * x__convex)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-ConvexShape* convex; Sim::findObject(x__convex, convex ); 
-{
-      if (convex)
-      object->setSelection( convex, -1 );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiConvexEditorCtrl_splitSelectedFace(char * x__object)
-{
-GuiConvexEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->splitSelectedFace();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

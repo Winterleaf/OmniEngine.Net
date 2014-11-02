@@ -21,6 +21,29 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+///////////////////////////// VS9 /////////////////////////////
+
+$c = BuildTarget::add(	'VS9',							   // Name
+                        'buildFiles/VisualStudio 2008',	   // Solution output directory
+                        'projects/',	                   // Project output directory (relative to solution)
+                        '../../source/',				   // Base directory         
+                        'vc2k8_proj.tpl',				   // App Project Template
+                        'vc2k8_shared.tpl',				   // Shared App Project Template
+                        'vc2k8_lib_proj.tpl',			   // Lib Project Template
+                        'vc2k8_dll_proj.tpl',			   // Shared Lib Project Template
+                        'vc2k8_activex_proj.tpl',		   // ActiveX Control	
+                        '.vcproj' );				       // File ext to write the project to
+                  
+// Solution template and extension
+$c->setSolutionInfo( 'vc2k8_sln.tpl', 'vc2k8_proj_user.tpl', '.sln' );
+
+$c->setFileExtensions( 'c', 'cc', 'h', 'cpp', 'inl', 'asm', 'rc', 'm', 'mm', 'cs' );
+
+$c->setPlatforms( "win", "win32" );
+
+$c->setDotNetInfo('vc2k8_csproj.tpl');
+
+$c->setDontCompilePatterns( "#/platformPOSIX.*#", "#/platformMac.*#", "#\.mac\.#", "#/mac/#", "#\.mm$#", "#\.m$#" );
 ///////////////////////////// VS2010 /////////////////////////////
 
 $c = BuildTarget::add(	'VS2010',							   // Name
@@ -143,7 +166,7 @@ $c->setDontCompilePatterns( "*\.h*", "*win32*", "*\.win\.*", "/D3D.*/", "#/gl/#"
 
 ///////////////////////////// Build /////////////////////////////
 
-// 'buildManifest_'.$name.'_'.Generator::$platform.'.txt',
+// 'buildManifest_'.$name.'_'.T3D_Generator::$platform.'.txt',
 
 $c = BuildTarget::add( 'build',						// Name         
                   'buildFiles',         			// Solution output directory

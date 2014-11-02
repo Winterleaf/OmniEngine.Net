@@ -196,7 +196,7 @@ class GameBase : public SceneObject
    GameConnection* mControllingClient;
 
 public:
-	
+
    static bool gShowBoundingBox;    ///< Should we render bounding boxes?
   
 protected:
@@ -217,7 +217,7 @@ protected:
 public:
 
    GameBase();
-   virtual ~GameBase();
+   ~GameBase();
 
    enum GameBaseMasks {      
       DataBlockMask     = Parent::NextFreeMask << 0,

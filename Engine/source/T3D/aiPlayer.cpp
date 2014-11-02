@@ -28,6 +28,8 @@
 #include "T3D/gameBase/moveManager.h"
 #include "console/engineAPI.h"
 
+static U32 sAIPlayerLoSMask = TerrainObjectType | StaticShapeObjectType | StaticObjectType;
+
 #include "terrain/terrdata.h"
 
 #include "player.h"
@@ -529,34 +531,28 @@ bool AIPlayer::getAIMove(Move *movePtr)
    // Test for target location in sight if it's an object. The LOS is
    // run from the eye position to the center of the object's bounding,
    // which is not very accurate.
-   if (mAimObject) {
-      MatrixF eyeMat;
-      getEyeTransform(&eyeMat);
-      eyeMat.getColumn(3,&location);
-      Point3F targetLoc = mAimObject->getBoxCenter();
-
-      // This ray ignores non-static shapes. Cast Ray returns true
-      // if it hit something.
-      RayInfo dummy;
-      if (getContainer()->castRay( location, targetLoc,
-            StaticShapeObjectType | StaticObjectType |
-            TerrainObjectType, &dummy)) {
-         if (mTargetInLOS) {
-            onTargetExitLOS_callback(this);
-            mTargetInLOS = false;
-         }
-      }
-      else
-         if (!mTargetInLOS) {
-            onTargetEnterLOS_callback(this);
+   if (mAimObject)
+   {
+      if (checkInLos(mAimObject.getPointer()))
+      {
+         if (!mTargetInLOS)
+         {
+            throwCallback("onTargetEnterLOS");
             mTargetInLOS = true;
          }
+      }
+      else if (mTargetInLOS)
+      {
+            onTargetEnterLOS_callback(this);
+         mTargetInLOS = false;
+      }
    }
 
    // Replicate the trigger state into the move so that
    // triggers can be controlled from scripts.
-   for( int i = 0; i < MaxTriggerKeys; i++ )
+   for( S32 i = 0; i < MaxTriggerKeys; i++ )
       movePtr->trigger[i] = getImageTriggerState(i);
+
 
 #ifdef TORQUE_WALKABOUT_ENABLED
    if(mJump == Now)
@@ -1305,22 +1301,15 @@ ConsoleDocFragment _setAimObject(
    "void setAimObject(GameBase targetObject, Point3F offset);"
 );
 
-//ConsoleMethod( AIPlayer, setAimObject, void, 3, 4, "( GameBase obj, [Point3F offset] )"
 DefineConsoleMethod( AIPlayer, setAimObject, void, ( const char * objName, Point3F offset ), (Point3F::Zero), "( GameBase obj, [Point3F offset] )"
               "Sets the bot's target object. Optionally set an offset from target location."
 			  "@hide")
 {
-   //Point3F off( 0.0f, 0.0f, 0.0f );
 
    // Find the target
    GameBase *targetObject;
-   //if( Sim::findObject( argv[2], targetObject ) )
    if( Sim::findObject( objName, targetObject ) )
    {
-      //if (argc == 4)
-      //   dSscanf( argv[3], "%g %g %g", &off.x, &off.y, &off.z );
-      //if (offset != "")
-         //dSscanf( offset, "%g %g %g", &off.x, &off.y, &off.z );
 
       object->setAimObject( targetObject, offset );
    }
@@ -1340,438 +1329,111 @@ DefineEngineMethod( AIPlayer, getAimObject, S32, (),,
    return obj? obj->getId(): -1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_AIPlayer_setAimObject(char * x__object, char * x__objName, char * x__offset)
+bool AIPlayer::checkInLos(GameBase* target, bool _useMuzzle, bool _checkEnabled)
 {
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* objName = (const char*)x__objName;
-Point3F offset = Point3F();
-sscanf(x__offset,"%f %f %f",&offset.x,&offset.y,&offset.z);
-{
-   
-      GameBase *targetObject;
-      if( Sim::findObject( objName, targetObject ) )
+   if (!isServerObject()) return false;
+   if (!target)
    {
-                           
-      object->setAimObject( targetObject, offset );
+      target = mAimObject.getPointer();
+      if (!target)
+         return false;
    }
-   else
-      object->setAimObject( 0, offset );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_AISearchSimSet(char * x__object, F32 fOV, F32 farDist, char * x__ObjToSearch, char * x__result)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-SimSet* ObjToSearch; Sim::findObject(x__ObjToSearch, ObjToSearch ); 
-SimSet* result; Sim::findObject(x__result, result ); 
-{
-	object->AISearch(fOV,farDist,ObjToSearch,result);
-	}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_clearAim(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearAim();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_findCover(char * x__object, char * x__from, F32 radius)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-Point3F from = Point3F();
-sscanf(x__from,"%f %f %f",&from.x,&from.y,&from.z);
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   if(object->findCover(from, radius))
+   if (_checkEnabled)
    {
-      CoverPoint* cover = object->getCover();
-     return (S32)( cover ? cover->getId() : -1);
+       if (target->getTypeMask() & ShapeBaseObjectType)
+       {
+           ShapeBase *shapeBaseCheck = static_cast<ShapeBase *>(target);
+           if (shapeBaseCheck)
+               if (shapeBaseCheck->getDamageState() != Enabled) return false;
+       }
+       else
+           return false;
    }
+
+   RayInfo ri;
+
+   disableCollision();
+
+   S32 mountCount = target->getMountedObjectCount();
+   for (S32 i = 0; i < mountCount; i++)
+   {
+      target->getMountedObject(i)->disableCollision();
+   }
+
+   Point3F checkPoint ;
+   if (_useMuzzle)
+      getMuzzlePointAI(0, &checkPoint );
    else
    {
-     return (S32)( -1);
+      MatrixF eyeMat;
+      getEyeTransform(&eyeMat);
+      eyeMat.getColumn(3, &checkPoint );
    }
-#else
-	return -1;
-#endif
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_findNavMesh(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   NavMesh *mesh = object->getNavMesh();
-  return (S32)( mesh ? mesh->getId() : -1);
-#else
-	return -1;
-#endif
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_followNavPath(char * x__object, U32 obj)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   NavPath *path;
-   if(Sim::findObject(obj, path))
-      object->followNavPath(path);
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_followObject(char * x__object, U32 obj, F32 radius)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
 
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   SceneObject *follow;
-   if(Sim::findObject(obj, follow))
-      object->followObject(follow, radius);
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getAimLocation(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-	{wle_returnObject =object->getAimLocation();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_getAimObject(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	GameBase* obj = object->getAimObject();
-  return (S32)( obj? obj->getId(): -1);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getMoveDestination(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-	{wle_returnObject =object->getMoveDestination();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnAIPlayer_getMoveSpeed(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getMoveSpeed());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_getNavMesh(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   NavMesh *m = object->getNavMesh();
-  return (S32)( m ? m->getId() : 0);
-#else
-  return (S32)( 0);
-#endif
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getNavSize(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   switch(object->getNavSize())
+   bool hit = !gServerContainer.castRay(checkPoint, target->getBoxCenter(), sAIPlayerLoSMask, &ri);
+   enableCollision();
+
+   for (S32 i = 0; i < mountCount; i++)
    {
-   case AIPlayer::Small:
-      {wle_returnObject ="Small";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   case AIPlayer::Regular:
-      {wle_returnObject ="Regular";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   case AIPlayer::Large:
-      {wle_returnObject ="Large";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
+      target->getMountedObject(i)->enableCollision();
    }
-   {wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
+   return hit;
 }
-#else
-	{wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getPathDestination(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-	{wle_returnObject =object->getPathDestination();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-#else
-	{wle_returnObject =Point3F::Zero;
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_repath(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   object->repath();
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setAimLocation(char * x__object, char * x__target)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F target = Point3F();
-sscanf(x__target,"%f %f %f",&target.x,&target.y,&target.z);
-{
-	object->setAimLocation(target);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setMoveDestination(char * x__object, char * x__goal, bool slowDown)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F goal = Point3F();
-sscanf(x__goal,"%f %f %f",&goal.x,&goal.y,&goal.z);
-{
-   object->setMoveDestination( goal, slowDown);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setMoveSpeed(char * x__object, F32 speed)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->setMoveSpeed(speed);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setNavSize(char * x__object, char * x__size)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* size = (const char*)x__size;
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   if(!dStrcmp(size, "Small"))
-      object->setNavSize(AIPlayer::Small);
-   else if(!dStrcmp(size, "Regular"))
-      object->setNavSize(AIPlayer::Regular);
-   else if(!dStrcmp(size, "Large"))
-      object->setNavSize(AIPlayer::Large);
-   else
-      Con::errorf("AIPlayer::setNavSize: no such size '%s'.", size);
-#endif
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_setPathDestination(char * x__object, char * x__goal)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-Point3F goal = Point3F();
-sscanf(x__goal,"%f %f %f",&goal.x,&goal.y,&goal.z);
-bool wle_returnObject;
-{
-#ifdef TORQUE_WALKABOUT_ENABLED
-   {wle_returnObject =object->setPathDestination(goal);
-return (S32)(wle_returnObject);}
-#else
-	{wle_returnObject =false;
-return (S32)(wle_returnObject);}
-#endif
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_stop(char * x__object)
-{
-AIPlayer* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->stopMove();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 
+DefineEngineMethod(AIPlayer, checkInLos, bool, (ShapeBase* obj,  bool useMuzzle, bool checkEnabled),(NULL, false, false),
+   "@brief Check whether an object is in line of sight.\n"
+   "@obj Object to check. (If blank, it will check the current target).\n"
+   "@useMuzzle Use muzzle position. Otherwise use eye position. (defaults to false).\n"
+   "@checkEnabled check whether the object can take damage and if so is still alive.(Defaults to false)\n")
+{
+   return object->checkInLos(obj, useMuzzle, checkEnabled);
+}
+
+bool AIPlayer::checkInFoV(GameBase* target, F32 camFov, bool _checkEnabled)
+{
+   if (!isServerObject()) return false;
+   if (!target)
+   {
+      target = mAimObject.getPointer();
+      if (!target)
+         return false;
+   }
+   if (_checkEnabled)
+   {
+       if (target->getTypeMask() & ShapeBaseObjectType)
+       {
+           ShapeBase *shapeBaseCheck = static_cast<ShapeBase *>(target);
+           if (shapeBaseCheck)
+               if (shapeBaseCheck->getDamageState() != Enabled) return false;
+       }
+       else
+           return false;
+   }
+
+   MatrixF cam = getTransform();
+   Point3F camPos;
+   VectorF camDir;
+
+   cam.getColumn(3, &camPos);
+   cam.getColumn(1, &camDir);
+
+   camFov = mDegToRad(camFov) / 2;
+
+   Point3F shapePos = target->getBoxCenter();
+   VectorF shapeDir = shapePos - camPos;
+   // Test to see if it's within our viewcone, this test doesn't
+   // actually match the viewport very well, should consider
+   // projection and box test.
+   shapeDir.normalize();
+   F32 dot = mDot(shapeDir, camDir);
+   return (dot > camFov);
+}
+
+DefineEngineMethod(AIPlayer, checkInFoV, bool, (ShapeBase* obj, F32 fov, bool checkEnabled), (NULL, 45.0f, false),
+   "@brief Check whether an object is within a specified veiw cone.\n"
+   "@obj Object to check. (If blank, it will check the current target).\n"
+   "@fov view angle in degrees.(Defaults to 45)\n"
+   "@checkEnabled check whether the object can take damage and if so is still alive.(Defaults to false)\n")
+{
+   return object->checkInFoV(obj, fov, checkEnabled);
+}

@@ -140,7 +140,6 @@ static void processNodeLights(AppNode* appNode, const MatrixF& offset, SimGroup*
 }
 
 // Load lights from a collada file and add to the scene.
-//ConsoleFunction( loadColladaLights, bool, 2, 4,
 DefineConsoleFunction( loadColladaLights, bool, (const char * filename, const char * parentGroup, const char * baseObject), ("", ""), 
    "(string filename, SimGroup parentGroup=MissionGroup, SimObject baseObject=-1)"
    "Load all light instances from a COLLADA (.dae) file and add to the scene.\n"
@@ -164,20 +163,16 @@ DefineConsoleFunction( loadColladaLights, bool, (const char * filename, const ch
    "@ingroup Editors\n"
    "@internal")
 {
-   //Torque::Path path(argv[1]);
    Torque::Path path(filename);
 
    // Optional group to add the lights to. Create if it does not exist, and use
    // the MissionGroup if not specified.
    SimGroup* missionGroup = dynamic_cast<SimGroup*>(Sim::findObject("MissionGroup"));
    SimGroup* group = 0;
-   //if ((argc > 2) && (argv[2][0])) {
    if ( parentGroup != "" ) {
-      //if (!Sim::findObject(argv[2], group)) {
       if (!Sim::findObject(parentGroup, group)) {
          // Create the group if it could not be found
          group = new SimGroup;
-         //if (group->registerObject(argv[2])) {
          if (group->registerObject(parentGroup)) {
             if (missionGroup)
                missionGroup->addObject(group);
@@ -193,10 +188,8 @@ DefineConsoleFunction( loadColladaLights, bool, (const char * filename, const ch
 
    // Optional object to provide the base transform
    MatrixF offset(true);
-   //if (argc > 3) {
    if (baseObject != "") {
       SceneObject *obj;
-      //if (Sim::findObject(argv[3], obj))
       if (Sim::findObject(baseObject, obj))
          offset = obj->getTransform();
    }
@@ -223,11 +216,11 @@ DefineConsoleFunction( loadColladaLights, bool, (const char * filename, const ch
 
    // First grab all of the top-level nodes
    Vector<ColladaAppNode*> sceneNodes;
-   for (int iSceneLib = 0; iSceneLib < root->getLibrary_visual_scenes_array().getCount(); iSceneLib++) {
+   for (S32 iSceneLib = 0; iSceneLib < root->getLibrary_visual_scenes_array().getCount(); iSceneLib++) {
       const domLibrary_visual_scenes* libScenes = root->getLibrary_visual_scenes_array()[iSceneLib];
-      for (int iScene = 0; iScene < libScenes->getVisual_scene_array().getCount(); iScene++) {
+      for (S32 iScene = 0; iScene < libScenes->getVisual_scene_array().getCount(); iScene++) {
          const domVisual_scene* visualScene = libScenes->getVisual_scene_array()[iScene];
-         for (int iNode = 0; iNode < visualScene->getNode_array().getCount(); iNode++)
+         for (S32 iNode = 0; iNode < visualScene->getNode_array().getCount(); iNode++)
             sceneNodes.push_back(new ColladaAppNode(visualScene->getNode_array()[iNode]));
       }
    }
@@ -242,129 +235,3 @@ DefineConsoleFunction( loadColladaLights, bool, (const char * filename, const ch
 
    return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_loadColladaLights(char * x__filename, char * x__parentGroup, char * x__baseObject)
-{
-const char* filename = (const char*)x__filename;
-const char* parentGroup = (const char*)x__parentGroup;
-const char* baseObject = (const char*)x__baseObject;
-bool wle_returnObject;
-{
-      Torque::Path path(filename);
-         SimGroup* missionGroup = dynamic_cast<SimGroup*>(Sim::findObject("MissionGroup"));
-   SimGroup* group = 0;
-      if ( parentGroup != "" ) {
-            if (!Sim::findObject(parentGroup, group)) {
-                  group = new SimGroup;
-                  if (group->registerObject(parentGroup)) {
-            if (missionGroup)
-               missionGroup->addObject(group);
-         }
-         else {
-            delete group;
-            group = 0;
-         }
-      }
-   }
-   if (!group)
-      group = missionGroup;
-      MatrixF offset(true);
-      if (baseObject != "") {
-      SceneObject *obj;
-            if (Sim::findObject(baseObject, obj))
-         offset = obj->getTransform();
-   }
-      domCOLLADA* root = ColladaShapeLoader::getDomCOLLADA(path);
-   if (!root) {
-      TSShapeLoader::updateProgress(TSShapeLoader::Load_Complete, "Load complete");
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   }
-      F32 unit = 1.0f;
-   domUpAxisType upAxis = UPAXISTYPE_Z_UP;
-   if (root->getAsset()) {
-      if (root->getAsset()->getUnit())
-         unit = root->getAsset()->getUnit()->getMeter();
-      if (root->getAsset()->getUp_axis())
-         upAxis = root->getAsset()->getUp_axis()->getValue();
-   }
-   ColladaUtils::getOptions().unit = unit;
-   ColladaUtils::getOptions().upAxis = upAxis;
-      Vector<ColladaAppNode*> sceneNodes;
-   for (int iSceneLib = 0; iSceneLib < root->getLibrary_visual_scenes_array().getCount(); iSceneLib++) {
-      const domLibrary_visual_scenes* libScenes = root->getLibrary_visual_scenes_array()[iSceneLib];
-      for (int iScene = 0; iScene < libScenes->getVisual_scene_array().getCount(); iScene++) {
-         const domVisual_scene* visualScene = libScenes->getVisual_scene_array()[iScene];
-         for (int iNode = 0; iNode < visualScene->getNode_array().getCount(); iNode++)
-            sceneNodes.push_back(new ColladaAppNode(visualScene->getNode_array()[iNode]));
-      }
-   }
-      for (S32 iNode = 0; iNode < sceneNodes.size(); iNode++) {
-      processNodeLights(sceneNodes[iNode], offset, group);
-      delete sceneNodes[iNode];
-   }
-   TSShapeLoader::updateProgress(TSShapeLoader::Load_Complete, "Load complete");
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

@@ -53,13 +53,7 @@ void GFXCardProfiler::loadProfileScript(const char* aScriptName)
 
    Con::printf("      - Loaded card profile %s", scriptName.c_str());
 
-	//VGEE 12/5/2013 once again, not sure what is going on and why 
-	//the need to bounce through the console.
-	//Changed it to just call straight through.
-	//Con::executef("eval", script);
 	Con::evaluate(script, false, NULL);
-
-   
    delete[] script;
 }
 
@@ -192,38 +186,38 @@ ConsoleDoc(
    "@ingroup GFX\n"
 );
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, getVersion, String, (),, 
+DefineEngineStaticMethod( GFXCardProfilerAPI, getVersion, String, (),, 
    "Returns the driver version string." )
 {
 	return GFX->getCardProfiler()->getVersionString();
 }
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, getCard, String, (),,
+DefineEngineStaticMethod( GFXCardProfilerAPI, getCard, String, (),,
    "Returns the card name." )
 {
 	return GFX->getCardProfiler()->getCardString();
 }
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, getVendor, String, (),,
+DefineEngineStaticMethod( GFXCardProfilerAPI, getVendor, String, (),,
    "Returns the card vendor name." )
 {
    // TODO: Fix all of this vendor crap, it's not consistent
 	return GFX->getCardProfiler()->getChipString();
 }
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, getRenderer, String, (),,
+DefineEngineStaticMethod( GFXCardProfilerAPI, getRenderer, String, (),,
    "Returns the renderer name.  For example D3D9 or OpenGL." )
 {
 	return GFX->getCardProfiler()->getRendererString();
 }
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, getVideoMemoryMB, S32, (),,
+DefineEngineStaticMethod( GFXCardProfilerAPI, getVideoMemoryMB, S32, (),,
    "Returns the amount of video memory in megabytes." )
 {
    return GFX->getCardProfiler()->getVideoMemoryInMB();
 }
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, setCapability, void, ( const char *name, S32 value ),,
+DefineEngineStaticMethod( GFXCardProfilerAPI, setCapability, void, ( const char *name, S32 value ),,
    "Used to set the value for a specific card capability.\n"
    "@param name The name of the capability being set.\n"
    "@param value The value to set for that capability." )
@@ -231,7 +225,7 @@ DefineConsoleStaticMethod( GFXCardProfilerAPI, setCapability, void, ( const char
 	GFX->getCardProfiler()->setCapability( name, (U32)value );
 }
 
-DefineConsoleStaticMethod( GFXCardProfilerAPI, queryProfile, S32, ( const char *name, S32 defaultValue ),,
+DefineEngineStaticMethod( GFXCardProfilerAPI, queryProfile, S32, ( const char *name, S32 defaultValue ),,
    "Used to query the value of a specific card capability.\n"
    "@param name The name of the capability being queried.\n"
    "@param defaultValue The value to return if the capability is not defined." )

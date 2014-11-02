@@ -10,28 +10,7 @@
 // REPAIR. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS 
 // AGREEMENT. NO USE OF THE SOFTWARE IS AUTHORIZED HEREUNDER EXCEPT UNDER
 // THIS DISCLAIMER.
-// 
-// The use of the WinterLeaf Entertainment LLC Advanced UI System
-// is governed by this license agreement (“Agreement”).
-// 
-// R E S T R I C T I O N S
-// 
-// (a) Licensee may not: (i) create any derivative works, including but not
-// limited to translations, localizations or technology add-ons of the Advanced UI System;
-// (ii) reverse engineer , or otherwise attempt to derive the algorithms
-// for Advanced UI System (iii) redistribute, encumber , sell, rent, lease, sublicense, or otherwise
-// transfer rights to Advanced UI System; or (iv) remove or alter any trademark, logo, copyright
-// or other proprietary notices, legends, symbols or labels in Advanced UI System; or (iiv) use
-// the Software to develop or distribute any software that competes with the Software
-// without WinterLeaf Entertainment’s prior written consent; or (iiiv) use the Software for
-// any illegal purpose.
-// (b) Licensee may not distribute the Advanced UI System in any manner.
-// 
-// 
-// Please visit http://www.winterleafentertainment.com for more information about the project and latest updates.
-// 
-// Last updated: 09/16/2013
-//------------------------------------------------------------------------------------------------------------------
+
 
 #include "util/ReadXML.h"
 
@@ -123,80 +102,8 @@ void ReadXML::readLayer(SimXMLDocument *document)
    }
 }
 
-//ConsoleMethod(ReadXML, readFile, bool, 2, 2, "readXMLObj.readFile();")
+
 DefineConsoleMethod(ReadXML, readFile, bool, (), , "readXMLObj.readFile();")
 {   
    return object->readFile();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ReadXML_readFile(char * x__object)
-{
-ReadXML* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{   
-   {wle_returnObject =object->readFile();
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

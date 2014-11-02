@@ -28,6 +28,8 @@
 #include "gui/core/guiDefaultControlRender.h"
 #include "gfx/gfxDrawUtil.h"
 
+#include "OMNI\OMNI.h"
+
 
 IMPLEMENT_CONOBJECT( GuiTabBookCtrl );
 
@@ -278,6 +280,8 @@ bool GuiTabBookCtrl::onWake()
    if( mHasTexture )
    {
       mBitmapBounds = mProfile->mBitmapArrayRects.address();
+	  if (!Winterleaf_EngineCallback::mWLE_EngineCallBack)
+		mTabHeight = mBitmapBounds[TabSelected].extent.y;
       //mTabHeight = 24;//mBitmapBounds[TabSelected].extent.y;
    }
 
@@ -1045,92 +1049,3 @@ DefineEngineMethod( GuiTabBookCtrl, getSelectedPage, S32, (),,
 {
    return object->getSelectedPageNum();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTabBookCtrl_addPage(char * x__object, char * x__title)
-{
-GuiTabBookCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* title = (const char*)x__title;
-{
-   object->addNewPage( title );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTabBookCtrl_getSelectedPage(char * x__object)
-{
-GuiTabBookCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)( object->getSelectedPageNum());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTabBookCtrl_selectPage(char * x__object, S32 index)
-{
-GuiTabBookCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->selectPage( index );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

@@ -117,7 +117,7 @@ ConsoleDocClass( DecalManager,
 
 namespace {
 
-int QSORT_CALLBACK cmpDecalInstance(const void* p1, const void* p2)
+S32 QSORT_CALLBACK cmpDecalInstance(const void* p1, const void* p2)
 {
    const DecalInstance** pd1 = (const DecalInstance**)p1;
    const DecalInstance** pd2 = (const DecalInstance**)p2;
@@ -125,7 +125,7 @@ int QSORT_CALLBACK cmpDecalInstance(const void* p1, const void* p2)
    return int(((char *)(*pd1)->mDataBlock) - ((char *)(*pd2)->mDataBlock));
 }
 
-int QSORT_CALLBACK cmpPointsXY( const void *p1, const void *p2 )
+S32 QSORT_CALLBACK cmpPointsXY( const void *p1, const void *p2 )
 {
    const Point3F *pnt1 = (const Point3F*)p1;
    const Point3F *pnt2 = (const Point3F*)p2;
@@ -142,7 +142,7 @@ int QSORT_CALLBACK cmpPointsXY( const void *p1, const void *p2 )
       return 0;
 }
 
-int QSORT_CALLBACK cmpQuadPointTheta( const void *p1, const void *p2 )
+S32 QSORT_CALLBACK cmpQuadPointTheta( const void *p1, const void *p2 )
 {
    const Point4F *pnt1 = (const Point4F*)p1;
    const Point4F *pnt2 = (const Point4F*)p2;
@@ -157,7 +157,7 @@ int QSORT_CALLBACK cmpQuadPointTheta( const void *p1, const void *p2 )
 
 static Point3F gSortPoint;
 
-int QSORT_CALLBACK cmpDecalDistance( const void *p1, const void *p2 )
+S32 QSORT_CALLBACK cmpDecalDistance( const void *p1, const void *p2 )
 {
    const DecalInstance** pd1 = (const DecalInstance**)p1;
    const DecalInstance** pd2 = (const DecalInstance**)p2;
@@ -168,7 +168,7 @@ int QSORT_CALLBACK cmpDecalDistance( const void *p1, const void *p2 )
    return mSign( dist1 - dist2 );
 }
 
-int QSORT_CALLBACK cmpDecalRenderOrder( const void *p1, const void *p2 )
+S32 QSORT_CALLBACK cmpDecalRenderOrder( const void *p1, const void *p2 )
 {   
    const DecalInstance** pd1 = (const DecalInstance**)p1;
    const DecalInstance** pd2 = (const DecalInstance**)p2;
@@ -179,14 +179,14 @@ int QSORT_CALLBACK cmpDecalRenderOrder( const void *p1, const void *p2 )
       return 1;
    else
    {
-      int priority = (*pd1)->getRenderPriority() - (*pd2)->getRenderPriority();
+      S32 priority = (*pd1)->getRenderPriority() - (*pd2)->getRenderPriority();
 
       if ( priority != 0 )
          return priority;
 
       if ( (*pd2)->mFlags & SaveDecal )
       {
-         int id = ( (*pd1)->mDataBlock->getMaterial()->getId() - (*pd2)->mDataBlock->getMaterial()->getId() );      
+         S32 id = ( (*pd1)->mDataBlock->getMaterial()->getId() - (*pd2)->mDataBlock->getMaterial()->getId() );      
          if ( id != 0 )
             return id;
 
@@ -1714,144 +1714,3 @@ DefineEngineFunction( decalManagerRemoveDecal, bool, ( S32 decalID ),,
    gDecalManager->removeDecal(inst);
    return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_decalManagerAddDecal(char * x__position, char * x__normal, F32 rot, F32 scale, char * x__decalData, bool isImmortal)
-{
-Point3F position = Point3F();
-sscanf(x__position,"%f %f %f",&position.x,&position.y,&position.z);
-Point3F normal = Point3F();
-sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
-
-DecalData* decalData; Sim::findObject(x__decalData, decalData ); 
-{
-   if( !decalData )
-   {
-      Con::errorf( "decalManagerAddDecal - Invalid Decal DataBlock" );
-     return (S32)( -1);
-   }
-   U8 flags = 0;
-   if( isImmortal )
-      flags |= PermanentDecal;
-   DecalInstance* inst = gDecalManager->addDecal( position, normal, rot, decalData, scale, -1, flags );
-   if( !inst )
-   {
-      Con::errorf( "decalManagerAddDecal - Unable to create decal instance." );
-     return (S32)( -1);
-   }
-      inst->mId = gDecalManager->mDecalInstanceVec.size();
-   gDecalManager->mDecalInstanceVec.push_back( inst );
-  return (S32)( inst->mId);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_decalManagerClear()
-{
-{
-   gDecalManager->clearData();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_decalManagerDirty()
-{
-bool wle_returnObject;
-{
-   {wle_returnObject =gDecalManager->isDirty();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_decalManagerLoad(char * x__fileName)
-{
-const char* fileName = (const char*)x__fileName;
-bool wle_returnObject;
-{
-   {wle_returnObject =gDecalManager->loadDecals( fileName );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_decalManagerRemoveDecal(S32 decalID)
-{
-bool wle_returnObject;
-{
-   DecalInstance *inst = gDecalManager->getDecal( decalID );
-   if( !inst )
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   gDecalManager->removeDecal(inst);
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_decalManagerSave(char * x__decalSaveFile)
-{
-String decalSaveFile = String( x__decalSaveFile);
-{
-   
-   if( decalSaveFile.isEmpty() )
-   {
-      String fileName = String::ToString( "%s.decals", Con::getVariable( "$Client::MissionFile" ) );
-      char fullName[ 4096 ];
-      Platform::makeFullPathName( fileName, fullName, sizeof( fullName ) );
-      decalSaveFile = String( fullName );
-   }
-   
-   gDecalManager->saveDecals( decalSaveFile );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

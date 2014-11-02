@@ -572,7 +572,6 @@ void PopupMenu::showPopup(GuiCanvas *owner, S32 x /* = -1 */, S32 y /* = -1 */)
    if(opt > 0)
       handleSelect(opt, NULL);
    winState.renderThreadBlocked = false;
-
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -744,3 +743,4 @@ S32 PopupMenu::getPosOnMenuBar()
 
    return pos;
 }
+

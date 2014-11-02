@@ -89,8 +89,7 @@ ForestWind::ForestWind(  ForestWindEmitter *emitter )
       mTargetYawAngle( 0 ),
       mParent( emitter ),
       mIsDirty( false ),
-      mRandom( Platform::getRealMilliseconds() + 1 ),
-	  mStartTime(0)
+      mRandom( Platform::getRealMilliseconds() + 1 )
 {
 }
 
@@ -104,7 +103,6 @@ void ForestWind::processTick()
 
    const F32 deltaTime = 0.032f;
    const U32 simTime = Sim::getCurrentTime();
-   mRandom.setSeed(simTime-mStartTime);
    
    Point2F finalVec( 0, 0 );
    Point2F windDir( mParent->mWindDirection.x, mParent->mWindDirection.y );
@@ -598,107 +596,3 @@ DefineEngineMethod( ForestWindEmitter, attachToObject, void, ( U32 objectID ),,
 
 	object->attachToObject( obj );
 }
-
-void ForestWind::resetWind( S32 randomSeed )
-{
-   U32 simTime = Sim::getCurrentTime();
-   mLastGustTime = simTime;
-   mLastYawTime = simTime;
-   mCurrentTarget.set( 0, 0 );
-   mCurrentInterp = 0;
-   mTargetYawAngle = 0;
-   mIsDirty = true;
-
-   mStartTime = Sim::getCurrentTime();
-}
-
-DefineEngineMethod( ForestWindEmitter, resetWind, void, ( S32 randomSeed ),,
-   "@brief Mounts the wind emitter to another scene object\n\n"
-   "@param ")
-{
-   if(object->getWind())
-      object->getWind()->resetWind(randomSeed);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnForestWindEmitter_attachToObject(char * x__object, U32 objectID)
-{
-ForestWindEmitter* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	SceneObject *obj = dynamic_cast<SceneObject*>( Sim::findObject( objectID ) );
-	if ( !obj )
-		Con::warnf( "ForestWindEmitter::attachToObject - failed to find object with ID: %d", objectID );
-	object->attachToObject( obj );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnForestWindEmitter_resetWind(char * x__object, S32 randomSeed)
-{
-ForestWindEmitter* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if(object->getWind())
-      object->getWind()->resetWind(randomSeed);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

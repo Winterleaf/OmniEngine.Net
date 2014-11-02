@@ -47,16 +47,11 @@ struct my_hash {
 	  inline size_t operator()(const char* val) const
 	  {
 		return (long)val;
-	    /*unsigned long h = 0;
-	    for (; *val; ++val)
-	      h = 5 * h + *val;
-	    return size_t(h);*/
 	  }
 	};
 	 
 	struct eqstr {
 	  inline bool operator()(const char *s1, const char *s2) const {
-		//return (s1=s2);		  
 	    return dStrcmp(s1, s2) == 0;
 	  }
 	};

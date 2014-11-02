@@ -137,7 +137,6 @@ public:
    void process(NetConnection *ps)
    {
       onGhostAlwaysObjectReceived_callback();
-      //Con::executef("onGhostAlwaysObjectReceived");
 
       ps->setGhostAlwaysObject(object, ghostIndex);
       object = NULL;
@@ -756,7 +755,7 @@ void NetConnection::objectLocalClearAlways(NetObject *obj)
 
 bool NetConnection::validateGhostArray()
 {
-   AssertFatal(mGhostZeroUpdateIndex > 0 && mGhostZeroUpdateIndex <= mGhostFreeIndex, "Invalid update index range."); 
+   AssertFatal(mGhostZeroUpdateIndex >= 0 && mGhostZeroUpdateIndex <= mGhostFreeIndex, "Invalid update index range.");
    AssertFatal(mGhostFreeIndex <= MaxGhostCount, "Invalid free index range.");
    U32 i;
    for(i = 0; i < mGhostZeroUpdateIndex; i ++)
@@ -872,7 +871,6 @@ void NetConnection::handleConnectionMessage(U32 message, U32 sequence, U32 ghost
          if(sequence != mGhostingSequence)
             return;
 		 this->onGhostAlwaysObjectsReceived_callback();
-         //Con::executef(this, "onGhostAlwaysObjectsReceived");
          Con::printf("Ghost Always objects received.");
          //based on - http://www.garagegames.com/community/forums/viewthread/76743
          NetConnection::smGhostAlwaysDone.trigger();
@@ -903,7 +901,6 @@ void NetConnection::handleConnectionMessage(U32 message, U32 sequence, U32 ghost
          break;
       case GhostAlwaysStarting:
 		 onGhostAlwaysStarted_callback(ghostCount);
-         //Con::executef("onGhostAlwaysStarted", Con::getIntArg(ghostCount));
          break;
       case SendNextDownloadRequest:
          sendNextFileDownloadRequest();
@@ -964,7 +961,6 @@ void NetConnection::activateGhosting()
         // Get a pointer to the local client.
         NetConnection* pClient = NetConnection::getConnectionToServer();
 
-        //Con::executef("onGhostAlwaysStarted", Con::getIntArg(mGhostZeroUpdateIndex));
 		onGhostAlwaysStarted_callback(mGhostZeroUpdateIndex);
 
         // Set up a buffer for the object send.
@@ -1014,7 +1010,6 @@ void NetConnection::activateGhosting()
             }
 
             // Execute the appropriate console callback.
-            //Con::executef("onGhostAlwaysObjectReceived");
 			onGhostAlwaysObjectReceived_callback();
 
             // Set the ghost always object for the client.
@@ -1309,73 +1304,3 @@ void NetConnection::ghostReadStartBlock(BitStream *stream)
    // MARKF - TODO - looks like we could have memory leaks here
    // if there are errors.
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnNetConnection_getGhostsActive(char * x__object)
-{
-NetConnection* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	return object->getGhostsActive();
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

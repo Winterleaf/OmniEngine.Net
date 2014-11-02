@@ -25,19 +25,11 @@
 
 #include "platform/input/IInputDevice.h"
 #include "platform/input/event.h"
-#if defined (TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
 #include "platformWin32/platformWin32.h"
-#endif
-#if defined (TORQUE_OS_LINUX) || defined (TORQUE_OS_OPENBSD)
-#include "platformX86UNIX/platformX86UNIX.h"
-#endif
-#if defined (TORQUE_OS_MAC)
-#include "platformMac/platformMacCarb.h"
-#endif
 #include "core/util/tSingleton.h"
 #include "math/mQuat.h"
 #include "platform/input/leapMotion/leapMotionConstants.h"
-#include <Leap.h>
+#include "Leap.h"
 
 #define DEFAULT_MOTION_UNIT 0
 

@@ -156,8 +156,6 @@ private:
    /// Hash a string of given length into a U32.
    static U32 hashStringn(const char* in_pString, S32 len);
 
-   U32 GetTableSize();
-
    /// Represents a zero length string.
    StringTableEntry EmptyString() const { return _EmptyString; }
 };

@@ -238,7 +238,6 @@ void PhysicsDebrisData::unpackData(BitStream* stream)
    shapeName   = stream->readSTString();
 }
 
-//ConsoleMethod( PhysicsDebrisData, preload, void, 2, 2, 
 DefineConsoleMethod( PhysicsDebrisData, preload, void, (), , 
    "@brief Loads some information to have readily available at simulation time.\n\n"
    "Forces generation of shaders, materials, and other data used by the %PhysicsDebris object. "
@@ -313,7 +312,8 @@ PhysicsDebris* PhysicsDebris::create(  PhysicsDebrisData *datablock,
 }
 
 PhysicsDebris::PhysicsDebris()
-   :  mLifetime( 0.0f ),
+   :  mDataBlock( NULL ),
+      mLifetime( 0.0f ),
       mShapeInstance( NULL ),
       mWorld( NULL ),
       mInitialLinVel( Point3F::Zero )
@@ -343,6 +343,12 @@ bool PhysicsDebris::onAdd()
 
    if ( !Parent::onAdd() )  
       return false;  
+
+   if( !mDataBlock )
+   {
+      Con::errorf("PhysicsDebris::onAdd - Fail - No datablock");
+      return false;
+   }
 
    // If it has a fixed lifetime then calculate it.
    if ( mDataBlock->lifetime > 0.0f )
@@ -716,76 +722,3 @@ void PhysicsDebris::_onPhysicsReset( PhysicsResetEvent reset )
       safeDeleteObject();
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_PhysicsDebrisData_preload(char * x__object)
-{
-PhysicsDebrisData* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   String errorStr;
-   object->shape = NULL;
-   if( !object->preload( false, errorStr ) )
-      Con::errorf( "PhsysicsDebrisData::preload - error: %s", errorStr.c_str() );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

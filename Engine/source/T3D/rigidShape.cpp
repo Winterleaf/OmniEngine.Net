@@ -196,7 +196,7 @@ namespace {
 
    // Physics and collision constants
    static F32 sRestTol = 0.5;             // % of gravity energy to be at rest
-   static int sRestCount = 10;            // Consecutive ticks before comming to rest
+   static S32 sRestCount = 10;            // Consecutive ticks before comming to rest
 
    const U32 sCollisionMoveMask = ( TerrainObjectType     | PlayerObjectType  | 
                                     StaticShapeObjectType | VehicleObjectType |
@@ -302,6 +302,7 @@ bool RigidShapeData::preload(bool server, String &errorStr)
    if (!collisionDetails.size() || collisionDetails[0] == -1)
    {
       Con::errorf("RigidShapeData::preload failed: Rigid shapes must define a collision-1 detail");
+      errorStr = String::ToString("RigidShapeData: Couldn't load shape \"%s\"",shapeName);
       return false;
    }
 
@@ -1140,6 +1141,7 @@ void RigidShape::updatePos(F32 dt)
 
 void RigidShape::updateForces(F32 /*dt*/)
 {
+   if (mDisableMove) return;
    Point3F gravForce(0, 0, sRigidShapeGravity * mRigid.mass * mGravityMod);
 
    MatrixF currTransform;
@@ -1652,7 +1654,7 @@ void RigidShape::_renderMassAndContacts( ObjectRenderInst *ri, SceneRenderState 
    GFX->getDrawUtil()->drawCube( desc, Point3F(0.1f,0.1f,0.1f), mDataBlock->massCenter, ColorI(255, 255, 255), &mRenderObjToWorld );
 
    // Collision points...
-   for (int i = 0; i < mCollisionList.getCount(); i++)
+   for (S32 i = 0; i < mCollisionList.getCount(); i++)
    {
       const Collision& collision = mCollisionList[i];
       GFX->getDrawUtil()->drawCube( desc, Point3F(0.05f,0.05f,0.05f), collision.point, ColorI(0, 0, 255) );
@@ -1660,7 +1662,7 @@ void RigidShape::_renderMassAndContacts( ObjectRenderInst *ri, SceneRenderState 
 
    // Render the normals as one big batch... 
    PrimBuild::begin(GFXLineList, mCollisionList.getCount() * 2);
-   for (int i = 0; i < mCollisionList.getCount(); i++)
+   for (S32 i = 0; i < mCollisionList.getCount(); i++)
    {
 
       const Collision& collision = mCollisionList[i];
@@ -1731,94 +1733,3 @@ DefineEngineMethod( RigidShape, forceClientTransform, void, (),,
       object->forceClientTransform();
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnRigidShape_forceClientTransform(char * x__object)
-{
-RigidShape* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if(object->isServerObject())
-   {
-      object->forceClientTransform();
-   }
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnRigidShape_freezeSim(char * x__object, bool isFrozen)
-{
-RigidShape* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->freezeSim(isFrozen);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnRigidShape_reset(char * x__object)
-{
-RigidShape* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->reset();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

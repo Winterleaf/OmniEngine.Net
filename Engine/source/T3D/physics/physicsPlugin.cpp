@@ -124,7 +124,6 @@ void PhysicsPlugin::_debugDraw( SceneManager *graph, const SceneRenderState *sta
       world->onDebugDraw( state );
 }
 
-//ConsoleFunction( physicsPluginPresent, bool, 1, 1, "physicsPluginPresent()\n"
 DefineConsoleFunction( physicsPluginPresent, bool, (), , "physicsPluginPresent()"
    "@brief Returns true if a physics plugin exists and is initialized.\n\n"
    "@ingroup Physics" )
@@ -132,59 +131,45 @@ DefineConsoleFunction( physicsPluginPresent, bool, (), , "physicsPluginPresent()
    return PHYSICSMGR != NULL;
 }
 
-//ConsoleFunction( physicsInit, bool, 1, 2, "physicsInit( [string library] )" )
 DefineConsoleFunction( physicsInit, bool, (const char * library), (""), "physicsInit( [string library] )")
 {
-   //const char *library = "default";
-   //if ( argc > 1 )
-      //library = argv[1];
 
    return PhysicsPlugin::activate( library );
 }
 
-//ConsoleFunction( physicsDestroy, void, 1, 1, "physicsDestroy()" )
 DefineConsoleFunction( physicsDestroy, void, (), , "physicsDestroy()")
 {
    if ( PHYSICSMGR )
       PHYSICSMGR->destroyPlugin();
 }
 
-//ConsoleFunction( physicsInitWorld, bool, 2, 2, "physicsInitWorld( String worldName )" )
 DefineConsoleFunction( physicsInitWorld, bool, (const char * worldName), , "physicsInitWorld( String worldName )")
 {
-    //bool res = PHYSICSMGR && PHYSICSMGR->createWorld( String( argv[1] ) );
     bool res = PHYSICSMGR && PHYSICSMGR->createWorld( String( worldName ) );
    return res;
 }
 
-//ConsoleFunction( physicsDestroyWorld, void, 2, 2, "physicsDestroyWorld( String worldName )" )
 DefineConsoleFunction( physicsDestroyWorld, void, (const char * worldName), , "physicsDestroyWorld( String worldName )")
 {
    if ( PHYSICSMGR )
-      //PHYSICSMGR->destroyWorld( String( argv[1] ) );
       { PHYSICSMGR->destroyWorld( String( worldName ) ); }
 }
 
 
 // Control/query of the stop/started state
 // of the currently running simulation.
-// ConsoleFunction( physicsStartSimulation, void, 2, 2, "physicsStartSimulation( String worldName )" )
 DefineConsoleFunction( physicsStartSimulation, void, (const char * worldName), , "physicsStartSimulation( String worldName )")
 {
    if ( PHYSICSMGR )
-      //PHYSICSMGR->enableSimulation( String( argv[1] ), true );
       PHYSICSMGR->enableSimulation( String( worldName ), true );
 }
 
-//ConsoleFunction( physicsStopSimulation, void, 2, 2, "physicsStopSimulation( String worldName )" )
 DefineConsoleFunction( physicsStopSimulation, void, (const char * worldName), , "physicsStopSimulation( String worldName )")
 {
    if ( PHYSICSMGR )
-      //PHYSICSMGR->enableSimulation( String( argv[1] ), false );
       PHYSICSMGR->enableSimulation( String( worldName ), false );
 }
 
-//ConsoleFunction( physicsSimulationEnabled, bool, 1, 1, "physicsSimulationEnabled()" )
 DefineConsoleFunction( physicsSimulationEnabled, bool, (), , "physicsStopSimulation( String worldName )")
 {
    return PHYSICSMGR && PHYSICSMGR->isSimulationEnabled();
@@ -193,16 +178,13 @@ DefineConsoleFunction( physicsSimulationEnabled, bool, (), , "physicsStopSimulat
 // Used for slowing down time on the
 // physics simulation, and for pausing/restarting
 // the simulation.
-//ConsoleFunction( physicsSetTimeScale, void, 2, 2, "physicsSetTimeScale( F32 scale )" )
 DefineConsoleFunction( physicsSetTimeScale, void, (F32 scale), , "physicsSetTimeScale( F32 scale )")
 {
    if ( PHYSICSMGR )
-      //PHYSICSMGR->setTimeScale( dAtof( argv[1] ) );
       PHYSICSMGR->setTimeScale( scale );
 }
 
 // Get the currently set time scale.
-//ConsoleFunction( physicsGetTimeScale, F32, 1, 1, "physicsGetTimeScale()" )
 DefineConsoleFunction( physicsGetTimeScale, F32, (), , "physicsGetTimeScale()")
 {
    return PHYSICSMGR && PHYSICSMGR->getTimeScale();
@@ -212,7 +194,6 @@ DefineConsoleFunction( physicsGetTimeScale, F32, (), , "physicsGetTimeScale()")
 // physics simulation that they should store
 // their current state for later restoration,
 // such as when the editor is closed.
-//ConsoleFunction( physicsStoreState, void, 1, 1, "physicsStoreState()" )
 DefineConsoleFunction( physicsStoreState, void, (), , "physicsStoreState()")
 {
    PhysicsPlugin::getPhysicsResetSignal().trigger( PhysicsResetEvent_Store );
@@ -221,178 +202,14 @@ DefineConsoleFunction( physicsStoreState, void, (), , "physicsStoreState()")
 // Used to send a signal to objects in the
 // physics simulation that they should restore
 // their saved state, such as when the editor is opened.
-//ConsoleFunction( physicsRestoreState, void, 1, 1, "physicsRestoreState()" )
 DefineConsoleFunction( physicsRestoreState, void, (), , "physicsRestoreState()")
 {
    if ( PHYSICSMGR )
       PHYSICSMGR->reset();
 }
 
-//ConsoleFunction( physicsDebugDraw, void, 2, 2, "physicsDebugDraw( bool enable )" )
 DefineConsoleFunction( physicsDebugDraw, void, (bool enable), , "physicsDebugDraw( bool enable )")
 {
    if ( PHYSICSMGR )
-      //PHYSICSMGR->enableDebugDraw( dAtoi( argv[1] ) );
       PHYSICSMGR->enableDebugDraw( enable );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsDebugDraw(bool enable)
-{
-{
-   if ( PHYSICSMGR )
-            PHYSICSMGR->enableDebugDraw( enable );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsDestroy()
-{
-{
-   if ( PHYSICSMGR )
-      PHYSICSMGR->destroyPlugin();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsDestroyWorld(char * x__worldName)
-{
-const char* worldName = (const char*)x__worldName;
-{
-   if ( PHYSICSMGR )
-            { PHYSICSMGR->destroyWorld( String( worldName ) ); }
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_physicsGetTimeScale()
-{
-{
-  return (F32)( PHYSICSMGR && PHYSICSMGR->getTimeScale());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsInit(char * x__library)
-{
-const char* library = (const char*)x__library;
-bool wle_returnObject;
-{
-            
-   {wle_returnObject =PhysicsPlugin::activate( library );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsInitWorld(char * x__worldName)
-{
-const char* worldName = (const char*)x__worldName;
-bool wle_returnObject;
-{
-        bool res = PHYSICSMGR && PHYSICSMGR->createWorld( String( worldName ) );
-   {wle_returnObject =res;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsPluginPresent()
-{
-bool wle_returnObject;
-{
-   {wle_returnObject =PHYSICSMGR != NULL;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsRestoreState()
-{
-{
-   if ( PHYSICSMGR )
-      PHYSICSMGR->reset();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsSetTimeScale(F32 scale)
-{
-{
-   if ( PHYSICSMGR )
-            PHYSICSMGR->setTimeScale( scale );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsSimulationEnabled()
-{
-bool wle_returnObject;
-{
-   {wle_returnObject =PHYSICSMGR && PHYSICSMGR->isSimulationEnabled();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsStartSimulation(char * x__worldName)
-{
-const char* worldName = (const char*)x__worldName;
-{
-   if ( PHYSICSMGR )
-            PHYSICSMGR->enableSimulation( String( worldName ), true );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsStopSimulation(char * x__worldName)
-{
-const char* worldName = (const char*)x__worldName;
-{
-   if ( PHYSICSMGR )
-            PHYSICSMGR->enableSimulation( String( worldName ), false );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsStoreState()
-{
-{
-   PhysicsPlugin::getPhysicsResetSignal().trigger( PhysicsResetEvent_Store );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

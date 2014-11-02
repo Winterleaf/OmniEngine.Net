@@ -66,7 +66,7 @@ String Platform::localTimeToString( const LocalTime &lt )
    
    TCHAR buffer[1024] = {0};
 
-   int result = 0;
+   S32 result = 0;
 
    String outStr;
 
@@ -109,11 +109,7 @@ String Platform::localTimeToString( const LocalTime &lt )
 U32 Platform::getTime()
 {
    time_t long_time;
-#if defined _M_X64
-   _time64( &long_time );
-#else
    time( &long_time );
-#endif
    return long_time;
 }
 

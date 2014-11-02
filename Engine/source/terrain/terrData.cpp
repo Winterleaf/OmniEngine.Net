@@ -142,7 +142,6 @@ ConsoleDocFragment _getTerrainUnderWorldPoint2(
    "bool getTerrainUnderWorldPoint( F32 x, F32 y, F32 z);"
 );
 
-//ConsoleFunction(getTerrainUnderWorldPoint, S32, 2, 4, "(Point3F x/y/z) Gets the terrain block that is located under the given world point.\n"
 DefineConsoleFunction( getTerrainUnderWorldPoint, S32, (Point3F position), , 
                                                       "(Point3F x/y/z) Gets the terrain block that is located under the given world point.\n"
                                                       "@param x/y/z The world coordinates (floating point values) you wish to query at. " 
@@ -150,27 +149,6 @@ DefineConsoleFunction( getTerrainUnderWorldPoint, S32, (Point3F position), ,
                                                       "@return Returns the ID of the requested terrain block (0 if not found).\n\n"
 													  "@hide")
 {
-   //Point3F pos;
-   ////if(argc == 2)
-   //if(pointOrX != "" && y == "" && z == "")
-   //   //dSscanf(argv[1], "%f %f %f", &pos.x, &pos.y, &pos.z);
-   //{ dSscanf(pointOrX, "%f %f %f", &pos.x, &pos.y, &pos.z); }
-   ////else if(argc == 4)
-   //else if(pointOrX != "" && y != "" && z != "")
-   //{
-   //   //pos.x = dAtof(argv[1]);
-   //   //pos.y = dAtof(argv[2]);
-   //   //pos.z = dAtof(argv[3]);
-
-   //   pos.x = dAtof(pointOrX);
-   //   pos.y = dAtof(y);
-   //   pos.z = dAtof(z);
-   //}
-   //else
-   //{
-   //   Con::errorf("getTerrainUnderWorldPoint(Point3F): Invalid argument count! Valid arguments are either \"x y z\" or x,y,z\n");
-   //   return 0;
-   //}
 
    TerrainBlock* terrain = getTerrainUnderWorldPoint(position);
    if(terrain != NULL)
@@ -490,10 +468,6 @@ bool TerrainBlock::getHeight( const Point2F &pos, F32 *height ) const
    if ( sq->flags & TerrainSquare::Empty )
       return false;
 
-   //F32 zBottomLeft = fixedToFloat( mFile->getHeight( x, y ) );
-   //F32 zBottomRight = fixedToFloat( mFile->getHeight( x + 1, y ) );
-   //F32 zTopLeft = fixedToFloat( mFile->getHeight( x, y + 1 ) );
-   //F32 zTopRight = fixedToFloat( mFile->getHeight( x + 1, y + 1 ) );
    F32  zBottomLeft, zBottomRight, zTopLeft, zTopRight;
    mFile->getHeight4(
       &zBottomLeft, &zBottomRight, &zTopLeft, &zTopRight,
@@ -549,10 +523,6 @@ bool TerrainBlock::getNormal( const Point2F &pos, Point3F *normal, bool normaliz
    if ( skipEmpty && sq->flags & TerrainSquare::Empty )
       return false;
 
-   /*F32 zBottomLeft = fixedToFloat( mFile->getHeight( x, y ) );
-   F32 zBottomRight = fixedToFloat( mFile->getHeight( x + 1, y ) );
-   F32 zTopLeft = fixedToFloat( mFile->getHeight( x, y + 1 ) );
-   F32 zTopRight = fixedToFloat( mFile->getHeight( x + 1, y + 1 ) );*/
 
    F32  zBottomLeft, zBottomRight, zTopLeft, zTopRight;
    mFile->getHeight4(
@@ -613,10 +583,6 @@ bool TerrainBlock::getSmoothNormal( const Point2F &pos,
    if ( skipEmpty && sq->flags & TerrainSquare::Empty )
       return false;
 
-   /*F32 h1 = fixedToFloat( mFile->getHeight( x + 1, y ) );
-   F32 h2 = fixedToFloat( mFile->getHeight( x, y + 1 ) );
-   F32 h3 = fixedToFloat( mFile->getHeight( x - 1, y ) );
-   F32 h4 = fixedToFloat( mFile->getHeight( x, y - 1 ) );*/
    F32  h1, h2, h3, h4;
    mFile->getHeight4(
       &h1, &h2, &h3, &h4,
@@ -658,10 +624,6 @@ bool TerrainBlock::getNormalAndHeight( const Point2F &pos, Point3F *normal, F32 
    if ( sq->flags & TerrainSquare::Empty )
       return false;
 
-   /*F32 zBottomLeft  = fixedToFloat( mFile->getHeight(x, y) );
-   F32 zBottomRight = fixedToFloat( mFile->getHeight(x + 1, y) );
-   F32 zTopLeft     = fixedToFloat( mFile->getHeight(x, y + 1) );
-   F32 zTopRight    = fixedToFloat( mFile->getHeight(x + 1, y + 1) );*/
    F32  zBottomLeft, zBottomRight, zTopLeft, zTopRight;
    mFile->getHeight4(
       &zBottomLeft, &zBottomRight, &zTopLeft, &zTopRight,
@@ -738,10 +700,6 @@ bool TerrainBlock::getNormalHeightMaterial(  const Point2F &pos,
    if ( sq->flags & TerrainSquare::Empty )
       return false;
 
-   /*F32 zBottomLeft  = fixedToFloat( mFile->getHeight(x, y) );
-   F32 zBottomRight = fixedToFloat( mFile->getHeight(x + 1, y) );
-   F32 zTopLeft     = fixedToFloat( mFile->getHeight(x, y + 1) );
-   F32 zTopRight    = fixedToFloat( mFile->getHeight(x + 1, y + 1) );*/
    F32  zBottomLeft, zBottomRight, zTopLeft, zTopRight;
    mFile->getHeight4(
       &zBottomLeft, &zBottomRight, &zTopLeft, &zTopRight,
@@ -1335,28 +1293,13 @@ ConsoleDocFragment _getTerrainHeight2(
    "bool getTerrainHeight( F32 x, F32 y);"
 );
 
-//ConsoleFunction(getTerrainHeight, F32, 2, 3, "(Point2 pos) - gets the terrain height at the specified position."
 DefineConsoleFunction( getTerrainHeight, F32, (Point2F pos), , "(Point2 pos) - gets the terrain height at the specified position."
 				"@param pos The world space point, minus the z (height) value\n Can be formatted as either (\"x y\") or (x,y)\n"
 				"@return Returns the terrain height at the given point as an F32 value.\n"
 				"@hide")
 {
-	//Point2F pos;
 	F32 height = 0.0f;
 
-	//if(argc == 2)
-	//	dSscanf(argv[1],"%f %f",&pos.x,&pos.y);
-   /*if(pointOrX != "" && y == "")
-		dSscanf(pointOrX,"%f %f",&pos.x,&pos.y);*/
-	//else if(argc == 3)
-	//else if(pointOrX != "" && y != "")
-	//{
-	//	//pos.x = dAtof(argv[1]);
-	//	//pos.y = dAtof(argv[2]);
-
- //     pos.x = dAtof(pointOrX);
-	//	pos.y = dAtof(y);
-	//}
 
 	TerrainBlock * terrain = getTerrainUnderWorldPoint(Point3F(pos.x, pos.y, 5000.0f));
 	if(terrain)
@@ -1388,7 +1331,6 @@ ConsoleDocFragment _getTerrainHeightBelowPosition2(
    "bool getTerrainHeightBelowPosition( F32 x, F32 y);"
 );
 
-//ConsoleFunction(getTerrainHeightBelowPosition, F32, 2, 4, "(Point3F pos) - gets the terrain height at the specified position."
 DefineConsoleFunction( getTerrainHeightBelowPosition, F32, (Point3F pos), , 
             "(Point3F pos) - gets the terrain height at the specified position."
 				"@param pos The world space point. Can be formatted as either (\"x y z\") or (x,y,z)\n"
@@ -1396,30 +1338,8 @@ DefineConsoleFunction( getTerrainHeightBelowPosition, F32, (Point3F pos), ,
 				"@return Returns the terrain height at the given point as an F32 value.\n"
 				"@hide")
 {
-	//Point3F pos;
 	F32 height = 0.0f;
 
-   //if(argc == 2)
-   //   dSscanf(argv[1], "%f %f %f", &pos.x, &pos.y, &pos.z);
-   //else if(argc == 4)
-   //{
-   //   pos.x = dAtof(argv[1]);
-   //   pos.y = dAtof(argv[2]);
-   //   pos.z = dAtof(argv[3]);
-   //}
- /*  if(pointOrX != "" && y == "" && z == "")
-      dSscanf(pointOrX, "%f %f %f", &pos.x, &pos.y, &pos.z);
-   else if(pointOrX != "" && y != "" && z != "")
-   {
-      pos.x = dAtof(pointOrX);
-      pos.y = dAtof(y);
-      pos.z = dAtof(z);
-   }
-   else
-   {
-      Con::errorf("getTerrainHeightBelowPosition(Point3F): Invalid argument count! Valid arguments are either \"x y z\" or x,y,z\n");
-      return 0;
-   }*/
 
 	TerrainBlock * terrain = getTerrainUnderWorldPoint(pos);
 	
@@ -1438,141 +1358,3 @@ DefineConsoleFunction( getTerrainHeightBelowPosition, F32, (Point3F pos), ,
 	
 	return height;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getTerrainHeight(char * x__pos)
-{
-Point2F pos = Point2F();
-sscanf(x__pos,"%f %f",&pos.x,&pos.y);
-{
-		F32 height = 0.0f;
-		   
-					
- 		
-	TerrainBlock * terrain = getTerrainUnderWorldPoint(Point3F(pos.x, pos.y, 5000.0f));
-	if(terrain)
-		if(terrain->isServerObject())
-		{
-			Point3F offset;
-			terrain->getTransform().getColumn(3, &offset);
-			pos -= Point2F(offset.x, offset.y);
-			terrain->getHeight(pos, &height);
-		}
-		return height;
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getTerrainHeightBelowPosition(char * x__pos)
-{
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-{
-		F32 height = 0.0f;
-                         
-	TerrainBlock * terrain = getTerrainUnderWorldPoint(pos);
-	
-	Point2F nohghtPos(pos.x, pos.y);
-	if(terrain)
-	{
-		if(terrain->isServerObject())
-		{
-			Point3F offset;
-			terrain->getTransform().getColumn(3, &offset);
-			nohghtPos -= Point2F(offset.x, offset.y);
-			terrain->getHeight(nohghtPos, &height);
-		}
-	}
-	
-	return height;
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getTerrainUnderWorldPoint(char * x__position)
-{
-Point3F position = Point3F();
-sscanf(x__position,"%f %f %f",&position.x,&position.y,&position.z);
-{
-                                 
-                           
-   TerrainBlock* terrain = getTerrainUnderWorldPoint(position);
-   if(terrain != NULL)
-   {
-     return (S32)( terrain->getId());
-   }
-  return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnTerrainBlock_save(char * x__object, char * x__fileName)
-{
-TerrainBlock* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* fileName = (const char*)x__fileName;
-bool wle_returnObject;
-{
-	char filename[256];
-	dStrcpy(filename,fileName);
-   char *ext = dStrrchr(filename, '.');
-   if (!ext || dStricmp(ext, ".ter") != 0)
-      dStrcat(filename, ".ter");
-   {wle_returnObject =static_cast<TerrainBlock*>(object)->save(filename);
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

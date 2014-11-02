@@ -161,25 +161,6 @@ StringTableEntry _StringTable::insertn(const char* src, S32 len, const bool  cas
    val[len] = 0;
    return insert(val, caseSens);
 }
-#include "console/engineAPI.h"
-DefineEngineFunction( dumpStringTableSize, void, (),,"")
-{
-	Con::printf("### Object Count: %i",StringTable->GetTableSize());
-}
-
-U32 _StringTable::GetTableSize()
-{
-	Node *walk;
-	U32 ListSize=0;
-	 for(int i = 0; i < numBuckets; i++) 
-	 {
-      walk = buckets[i];
-	  if (walk)
-		ListSize +=dStrlen(walk->val);
-	 }
-  return ListSize;
-}
-
 
 //--------------------------------------
 StringTableEntry _StringTable::lookup(const char* val, const bool  caseSens)
@@ -214,8 +195,11 @@ StringTableEntry _StringTable::lookupn(const char* val, S32 len, const bool  cas
 }
 
 //--------------------------------------
-void _StringTable::resize(const U32 newSize)
+void _StringTable::resize(const U32 _newSize)
 {
+   /// avoid a possible 0 division
+   const U32 newSize = _newSize ? _newSize : 1;
+
    Node *head = NULL, *walk, *temp;
    U32 i;
    // reverse individual bucket lists
@@ -249,70 +233,4 @@ void _StringTable::resize(const U32 newSize)
       buckets[key % newSize] = temp;
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpStringTableSize()
-{
-{
-	Con::printf("### Object Count: %i",StringTable->GetTableSize());
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

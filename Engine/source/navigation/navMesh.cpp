@@ -401,6 +401,7 @@ void NavMesh::buildNextTile()
          nm->removeTile(nm->getTileRefAt(tile.x, tile.y, 0), 0, 0);
          // Add new data (navmesh owns and deletes the data).
          dtStatus status = nm->addTile(data, dataSize, DT_TILE_FREE_DATA, 0, 0);
+
          if(dtStatusFailed(status))
          {
             dtFree(data);
@@ -857,7 +858,7 @@ bool NavMesh::load()
 
       unsigned char* data = (unsigned char*)dtAlloc(tileHeader.dataSize, DT_ALLOC_PERM);
       if(!data) break;
-      dMemset(data, 0, tileHeader.dataSize);
+      memset(data, 0, tileHeader.dataSize);
       fread(data, tileHeader.dataSize, 1, fp);
 
       nm->addTile(data, tileHeader.dataSize, DT_TILE_FREE_DATA, tileHeader.tileRef, 0);

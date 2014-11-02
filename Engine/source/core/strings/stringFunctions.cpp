@@ -27,7 +27,7 @@
 #include "platform/platform.h"
 
 
-#if defined(TORQUE_OS_WIN32) || defined(TORQUE_OS_WIN64) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
+#if defined(TORQUE_OS_WIN) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
 // This standard function is not defined when compiling with VC7...
 #define vsnprintf	_vsnprintf
 #endif
@@ -97,10 +97,10 @@ nat_toupper( nat_char a )
 
 
 
-static int
+static S32
 compare_right(const nat_char* a, const nat_char* b)
 {
-   int bias = 0;
+   S32 bias = 0;
 
    /* The longest run of digits wins.  That aside, the greatest
    value wins, but we can't know that it will until we've scanned
@@ -149,11 +149,11 @@ compare_left(const nat_char* a, const nat_char* b)
 }
 
 
-static int strnatcmp0(const nat_char* a, const nat_char* b, int fold_case)
+static S32 strnatcmp0(const nat_char* a, const nat_char* b, S32 fold_case)
 {
-   int ai, bi;
+   S32 ai, bi;
    nat_char ca, cb;
-   int fractional, result;
+   S32 fractional, result;
 
    ai = bi = 0;
    while (1) {
@@ -200,13 +200,13 @@ static int strnatcmp0(const nat_char* a, const nat_char* b, int fold_case)
 }
 
 
-int dStrnatcmp(const nat_char* a, const nat_char* b) {
+S32 dStrnatcmp(const nat_char* a, const nat_char* b) {
    return strnatcmp0(a, b, 0);
 }
 
 
 /* Compare, recognizing numeric string and ignoring case. */
-int dStrnatcasecmp(const nat_char* a, const nat_char* b) {
+S32 dStrnatcasecmp(const nat_char* a, const nat_char* b) {
    return strnatcmp0(a, b, 1);
 }
 
@@ -328,12 +328,12 @@ char* dStrcpyl(char *dst, dsize_t dstSize, ...)
 }
 
 
-int dStrcmp( const UTF16 *str1, const UTF16 *str2)
+S32 dStrcmp( const UTF16 *str1, const UTF16 *str2)
 {
-#if defined(TORQUE_OS_WIN32) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON) || defined(TORQUE_OS_WIN64)
+#if defined(TORQUE_OS_WIN) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
    return wcscmp( reinterpret_cast<const wchar_t *>( str1 ), reinterpret_cast<const wchar_t *>( str2 ) );
 #else
-   int ret;
+   S32 ret;
    const UTF16 *a, *b;
    a = str1;
    b = str2;
@@ -347,7 +347,7 @@ int dStrcmp( const UTF16 *str1, const UTF16 *str2)
 
 char* dStrupr(char *str)
 {
-#if defined(TORQUE_OS_WIN32) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON) || defined(TORQUE_OS_WIN64)
+#if defined(TORQUE_OS_WIN) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
    return _strupr(str);
 #else
    if (str == NULL)
@@ -365,7 +365,7 @@ char* dStrupr(char *str)
 
 char* dStrlwr(char *str)
 {
-#if defined(TORQUE_OS_WIN32) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON) || defined(TORQUE_OS_WIN64)
+#if defined(TORQUE_OS_WIN) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
    return _strlwr(str);
 #else
    if (str == NULL)
@@ -391,9 +391,9 @@ void dPrintf(const char *format, ...)
    vprintf(format, args);
 }
 
-S32 dVprintf(const char *format, va_list arglist)
+S32 dVprintf(const char *format, void *arglist)
 {
-   return vprintf(format, arglist);
+   return vprintf(format, (char*)arglist);
 }
 
 S32 dSprintf(char *buffer, dsize_t bufferSize, const char *format, ...)
@@ -409,9 +409,9 @@ S32 dSprintf(char *buffer, dsize_t bufferSize, const char *format, ...)
 }
 
 
-S32 dVsprintf(char *buffer, dsize_t bufferSize, const char *format, va_list arglist)
+S32 dVsprintf(char *buffer, dsize_t bufferSize, const char *format, void * arglist)
 {
-   S32 len = vsnprintf(buffer, bufferSize, format, arglist);
+   S32 len = vsnprintf(buffer, bufferSize, format, (char*)arglist);
    
    AssertWarn( len < bufferSize, "Buffer too small in call to dVsprintf!" );
 
@@ -421,7 +421,7 @@ S32 dVsprintf(char *buffer, dsize_t bufferSize, const char *format, va_list argl
 
 S32 dSscanf(const char *buffer, const char *format, ...)
 {
-#if defined(TORQUE_OS_WIN32) || defined (TORQUE_OS_WIN64) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
+#if defined(TORQUE_OS_WIN) || defined(TORQUE_OS_XBOX) || defined(TORQUE_OS_XENON)
    va_list args;
    va_start(args, format);
 
@@ -519,7 +519,7 @@ char* dStristr( char* str1, const char* str2 )
    const dsize_t str2len = strlen( str2 );
    while( *str1 )
    {
-      if( strnicmp( str1, str2, str2len ) == 0 )
+      if( strncasecmp( str1, str2, str2len ) == 0 )
          return str1;
 
       ++ str1;
@@ -531,4 +531,33 @@ char* dStristr( char* str1, const char* str2 )
 const char* dStristr( const char* str1, const char* str2 )
 {
    return dStristr( const_cast< char* >( str1 ), str2 );
+}
+
+int dStrrev(char* str)
+{
+   int l=dStrlen(str)-1; //get the string length
+   for(int x=0;x < l;x++,l--)
+   {
+      str[x]^=str[l];  //triple XOR Trick
+      str[l]^=str[x];  //for not using a temp
+      str[x]^=str[l];
+   }
+   return l;
+}
+
+int dItoa(int n, char s[])
+{
+   int i, sign;
+
+   if ((sign = n) < 0)  /* record sign */
+      n = -n;          /* make n positive */
+   i = 0;
+   do {       /* generate digits in reverse order */
+      s[i++] = n % 10 + '0';   /* get next digit */
+   } while ((n /= 10) > 0);     /* delete it */
+   if (sign < 0)
+      s[i++] = '-';
+   s[i] = '\0';
+   dStrrev(s);
+   return dStrlen(s);
 }

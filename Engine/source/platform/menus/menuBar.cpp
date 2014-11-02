@@ -107,14 +107,11 @@ bool MenuBar::reOrder(SimObject *obj, SimObject *target /*= 0*/)
 // Console Methods
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod(MenuBar, attachToCanvas, void, 4, 4, "(GuiCanvas, pos)")
 DefineConsoleMethod(MenuBar, attachToCanvas, void, (const char *canvas, S32 pos), , "(GuiCanvas, pos)")
 {
-   //object->attachToCanvas(dynamic_cast<GuiCanvas*>(Sim::findObject(argv[2])), dAtoi(argv[3]));
    object->attachToCanvas(dynamic_cast<GuiCanvas*>(Sim::findObject(canvas)), pos);
 }
 
-//ConsoleMethod(MenuBar, removeFromCanvas, void, 2, 2, "()")
 DefineConsoleMethod(MenuBar, removeFromCanvas, void, (), , "()")
 {
    object->removeFromCanvas();
@@ -122,106 +119,9 @@ DefineConsoleMethod(MenuBar, removeFromCanvas, void, (), , "()")
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod(MenuBar, insert, void, 4, 4,"(object, pos) insert object at position")
 DefineConsoleMethod(MenuBar, insert, void, (SimObject* pObject, S32 pos), ,"(object, pos) insert object at position")
 {
-   //SimObject* pObject = Sim::findObject(argv[2]);
-//   SimObject* pObject = Sim::findObject(objName);
 
    if(pObject)
-      //object->insertObject(pObject, dAtoi(argv[3]));
       object->insertObject(pObject, pos);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_MenuBar_attachToCanvas(char * x__object, char * x__canvas, S32 pos)
-{
-MenuBar* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* canvas = (const char*)x__canvas;
-
-{
-      object->attachToCanvas(dynamic_cast<GuiCanvas*>(Sim::findObject(canvas)), pos);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_MenuBar_insert(char * x__object, char * x__pObject, S32 pos)
-{
-MenuBar* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SimObject* pObject; Sim::findObject(x__pObject, pObject ); 
-{
-   
-   if(pObject)
-            object->insertObject(pObject, pos);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_MenuBar_removeFromCanvas(char * x__object)
-{
-MenuBar* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->removeFromCanvas();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

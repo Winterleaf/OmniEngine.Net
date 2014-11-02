@@ -189,8 +189,6 @@ class GuiInspectorField : public GuiControl
 
       DECLARE_CONOBJECT( GuiInspectorField );
       DECLARE_CATEGORY( "Gui Editor" );
-
-      //DECLARE_CALLBACK( void, onInspectorFieldModified, ( const char* object, const char* fieldName, const char* arrayIndex, const char* oldValue, const char* newValue ) );
 };
 
 #endif // _GUI_INSPECTOR_FIELD_H_

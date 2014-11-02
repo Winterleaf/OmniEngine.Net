@@ -76,7 +76,7 @@ static void _keyboardEvent(Win32Window* window,UINT message, WPARAM wParam, WPAR
 	// Translate the OS virtual key code to a Torque KEY_XXXX.   
 	S32 nVirtkey = TranslateOSKeyCode( wParam );
 
-	S64 keyCode;
+	S32 keyCode;
 	if ( wParam == VK_PROCESSKEY && sgDoubleByteEnabled )
 		keyCode = MapVirtualKey( scanCode, 1 );   // This is the REAL virtual key...
 	else
@@ -176,7 +176,7 @@ static bool _dispatch(HWND hWnd,UINT message,WPARAM wParam,WPARAM lParam)
 	static S32 mouseNCState = -1; // -1 denotes unchanged, 
 	// 0  denotes changed but was hidden
 	// 1  denotes changed but was visible
-    Win32Window* window = hWnd ? ( Win32Window* )GetWindowLongPtr( hWnd, GWLP_USERDATA ) : 0;
+	Win32Window* window = hWnd?(Win32Window*)GetWindowLongPtr(hWnd, GWLP_USERDATA): 0;
 	const WindowId devId = window ? window->getWindowId() : 0;
 
 	// State tracking for focus/lose focus cursor management
@@ -283,7 +283,7 @@ static bool _dispatch(HWND hWnd,UINT message,WPARAM wParam,WPARAM lParam)
 	case WM_LBUTTONDOWN:
 	case WM_MBUTTONDOWN:
 	case WM_RBUTTONDOWN: {
-		int index = (message - WM_LBUTTONDOWN) / 3;
+		S32 index = (message - WM_LBUTTONDOWN) / 3;
 		button[index] = true;
 
 		// Capture the mouse on button down to allow dragging outside
@@ -299,7 +299,7 @@ static bool _dispatch(HWND hWnd,UINT message,WPARAM wParam,WPARAM lParam)
 	case WM_LBUTTONUP:
 	case WM_MBUTTONUP:
 	case WM_RBUTTONUP: {
-		int index = (message - WM_LBUTTONUP) / 3;
+		S32 index = (message - WM_LBUTTONUP) / 3;
 		button[index] = false;
 
 		// Release mouse capture from button down.
@@ -560,7 +560,7 @@ private:
 static WinMessageQueue _MessageQueue;
 
 
-void RemoveMessages(HWND hWnd,UINT msgBegin,WPARAM msgEnd )
+void RemoveMessages(HWND hWnd,UINT msgBegin,UINT msgEnd )
 {
 	_MessageQueue.remove( hWnd, msgBegin, msgEnd );
 }

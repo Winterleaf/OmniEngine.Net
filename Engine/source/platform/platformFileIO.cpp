@@ -38,7 +38,6 @@ StringTableEntry Platform::getTemporaryDirectory()
    return path;
 }
 
-//ConsoleFunction(getTemporaryDirectory, const char *, 1, 1, "()"
 DefineConsoleFunction( getTemporaryDirectory, const char *, (), ,
 				"@brief Returns the OS temporary directory, \"C:/Users/Mich/AppData/Local/Temp\" for example\n\n"
 				"@note This can be useful to adhering to OS standards and practices, "
@@ -67,7 +66,6 @@ StringTableEntry Platform::getTemporaryFileName()
    return StringTable->insert(buf);
 }
 
-//ConsoleFunction(getTemporaryFileName, const char *, 1, 1, "()"
 DefineConsoleFunction( getTemporaryFileName, const char *, (), ,
 				"@brief Creates a name and extension for a potential temporary file\n\n"
 				"This does not create the actual file. It simply creates a random name "
@@ -143,7 +141,7 @@ inline void catPath(char *dst, const char *src, U32 len)
 
 // converts the posix root path "/" to "c:/" for win32
 // FIXME: this is not ideal. the c: drive is not guaranteed to exist.
-#if defined(TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
+#if defined(TORQUE_OS_WIN)
 static inline void _resolveLeadingSlash(char* buf, U32 size)
 {
    if(buf[0] != '/')
@@ -230,7 +228,7 @@ char * Platform::makeFullPathName(const char *path, char *buffer, U32 size, cons
    if(Platform::isFullPath(bspath))
    {
       // Already a full path
-      #if defined(TORQUE_OS_WIN32) || defined( TORQUE_OS_WIN64 )
+      #if defined(TORQUE_OS_WIN)
          _resolveLeadingSlash(bspath, sizeof(bspath));
       #endif
       dStrncpy(buffer, bspath, size);
@@ -523,127 +521,12 @@ StringTableEntry Platform::getPrefsPath(const char *file /* = NULL */)
 
 //-----------------------------------------------------------------------------
 
-//ConsoleFunction(getUserDataDirectory, const char*, 1, 1, "getUserDataDirectory()")
 DefineConsoleFunction( getUserDataDirectory, const char *, (), , "getUserDataDirectory()")
 {
    return Platform::getUserDataDirectory();
 }
 
-//ConsoleFunction(getUserHomeDirectory, const char*, 1, 1, "getUserHomeDirectory()")
 DefineConsoleFunction( getUserHomeDirectory, const char *, (), , "getUserHomeDirectory()")
 {
    return Platform::getUserHomeDirectory();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getTemporaryDirectory(char* retval)
-{
-dSprintf(retval,16384,"");
-const char * wle_returnObject;
-{
-   {wle_returnObject =Platform::getTemporaryDirectory();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getTemporaryFileName(char* retval)
-{
-dSprintf(retval,16384,"");
-const char * wle_returnObject;
-{
-   {wle_returnObject =Platform::getTemporaryFileName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getUserDataDirectory(char* retval)
-{
-dSprintf(retval,16384,"");
-const char * wle_returnObject;
-{
-   {wle_returnObject =Platform::getUserDataDirectory();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getUserHomeDirectory(char* retval)
-{
-dSprintf(retval,16384,"");
-const char * wle_returnObject;
-{
-   {wle_returnObject =Platform::getUserHomeDirectory();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

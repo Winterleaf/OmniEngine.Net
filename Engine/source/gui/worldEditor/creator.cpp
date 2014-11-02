@@ -219,10 +219,8 @@ void CreatorTree::sort()
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod( CreatorTree, addGroup, S32, 4, 4, "(string group, string name, string value)")
 DefineConsoleMethod( CreatorTree, addGroup, S32, (S32 group, const char * name, const char * value), , "(string group, string name, string value)")
 {
-   //CreatorTree::Node * grp = object->findNode(dAtoi(argv[2]));
    CreatorTree::Node * grp = object->findNode(group);
 
    if(!grp || !grp->isGroup())
@@ -230,33 +228,27 @@ DefineConsoleMethod( CreatorTree, addGroup, S32, (S32 group, const char * name, 
 
    // return same named group if found...
    for(U32 i = 0; i < grp->mChildren.size(); i++)
-      //if(!dStricmp(argv[3], grp->mChildren[i]->mName))
       if(!dStricmp(name, grp->mChildren[i]->mName))
          return(grp->mChildren[i]->mId);
 
-   // CreatorTree::Node * node = object->createNode(argv[3], 0, true, grp);
    CreatorTree::Node * node = object->createNode(name, 0, true, grp);
    object->build();
    return(node ? node->getId() : -1);
 }
 
-//ConsoleMethod( CreatorTree, addItem, S32, 5, 5, "(Node group, string name, string value)")
 DefineConsoleMethod( CreatorTree, addItem, S32, (S32 group, const char * name, const char * value), , "(Node group, string name, string value)")
 {
-   //CreatorTree::Node * grp = object->findNode(dAtoi(argv[2]));
    CreatorTree::Node * grp = object->findNode(group);
 
    if(!grp || !grp->isGroup())
       return -1;
 
-   //CreatorTree::Node * node = object->createNode(argv[3], argv[4], false, grp);
    CreatorTree::Node * node = object->createNode(name, value, false, grp);
    object->build();
    return(node ? node->getId() : -1);
 }
 
 //------------------------------------------------------------------------------
-//ConsoleMethod( CreatorTree, fileNameMatch, bool, 5, 5, "(string world, string type, string filename)")
 DefineConsoleMethod( CreatorTree, fileNameMatch, bool, (const char * world, const char * type, const char * filename), , "(string world, string type, string filename)")
 {
    // argv[2] - world short
@@ -266,63 +258,49 @@ DefineConsoleMethod( CreatorTree, fileNameMatch, bool, (const char * world, cons
    // interior filenames
    // 0     - world short ('b', 'x', ...)
    // 1->   - type short ('towr', 'bunk', ...)
-   //U32 typeLen = dStrlen(argv[3]);
    U32 typeLen = dStrlen(type);
-   //if(dStrlen(argv[4]) < (typeLen + 1))
    if(dStrlen(filename) < (typeLen + 1))
       return(false);
 
    // world
-   //if(dToupper(argv[4][0]) != dToupper(argv[2][0]))
    if(dToupper(filename[0]) != dToupper(world[0]))
       return(false);
 
-   //return(!dStrnicmp(argv[4]+1, argv[3], typeLen));
    return(!dStrnicmp(filename+1, type, typeLen));
 }
 
-//ConsoleMethod( CreatorTree, getSelected, S32, 2, 2, "Return a handle to the currently selected item.")
 DefineConsoleMethod( CreatorTree, getSelected, S32, (), , "Return a handle to the currently selected item.")
 {
    return(object->getSelected());
 }
 
-//ConsoleMethod( CreatorTree, isGroup, bool, 3, 3, "(Group g)")
 DefineConsoleMethod( CreatorTree, isGroup, bool, (const char * group), , "(Group g)")
 {
-   //CreatorTree::Node * node = object->findNode(dAtoi(argv[2]));
    CreatorTree::Node * node = object->findNode(dAtoi(group));
    if(node && node->isGroup())
       return(true);
    return(false);
 }
 
-//ConsoleMethod( CreatorTree, getName, const char*, 3, 3, "(Node item)")
 DefineConsoleMethod( CreatorTree, getName, const char*, (const char * item), , "(Node item)")
 {
-   //CreatorTree::Node * node = object->findNode(dAtoi(argv[2]));
    CreatorTree::Node * node = object->findNode(dAtoi(item));
    return(node ? node->mName : 0);
 }
 
-//ConsoleMethod( CreatorTree, getValue, const char*, 3, 3, "(Node n)")
 DefineConsoleMethod( CreatorTree, getValue, const char*, (S32 nodeValue), , "(Node n)")
 {
-   //CreatorTree::Node * node = object->findNode(dAtoi(argv[2]));
    CreatorTree::Node * node = object->findNode(nodeValue);
    return(node ? node->mValue : 0);
 }
 
-//ConsoleMethod( CreatorTree, clear, void, 2, 2, "Clear the tree.")
 DefineConsoleMethod( CreatorTree, clear, void, (), , "Clear the tree.")
 {
    object->clear();
 }
 
-//ConsoleMethod( CreatorTree, getParent, S32, 3, 3, "(Node n)")
 DefineConsoleMethod( CreatorTree, getParent, S32, (S32 nodeValue), , "(Node n)")
 {
-   //CreatorTree::Node * node = object->findNode(dAtoi(argv[2]));
    CreatorTree::Node * node = object->findNode(nodeValue);
    if(node && node->mParent)
       return(node->mParent->getId());
@@ -497,204 +475,3 @@ void CreatorTree::onRenderCell(Point2I offset, Point2I cell, bool, bool)
                 Point2I( offset.x + mTxtOffset + mTabSize * ( node->mTab + 1 ), offset.y ),
                 node->mName);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_CreatorTree_addGroup(char * x__object, S32 group, char * x__name, char * x__value)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-
-const char* name = (const char*)x__name;
-const char* value = (const char*)x__value;
-{
-      CreatorTree::Node * grp = object->findNode(group);
-   if(!grp || !grp->isGroup())
-     return (S32)((-1));
-      for(U32 i = 0; i < grp->mChildren.size(); i++)
-            if(!dStricmp(name, grp->mChildren[i]->mName))
-        return (S32)((grp->mChildren[i]->mId));
-      CreatorTree::Node * node = object->createNode(name, 0, true, grp);
-   object->build();
-  return (S32)((node ? node->getId() : -1));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_CreatorTree_addItem(char * x__object, S32 group, char * x__name, char * x__value)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-
-const char* name = (const char*)x__name;
-const char* value = (const char*)x__value;
-{
-      CreatorTree::Node * grp = object->findNode(group);
-   if(!grp || !grp->isGroup())
-     return (S32)( -1);
-      CreatorTree::Node * node = object->createNode(name, value, false, grp);
-   object->build();
-  return (S32)((node ? node->getId() : -1));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_CreatorTree_clear(char * x__object)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clear();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_CreatorTree_fileNameMatch(char * x__object, char * x__world, char * x__type, char * x__filename)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* world = (const char*)x__world;
-const char* type = (const char*)x__type;
-const char* filename = (const char*)x__filename;
-bool wle_returnObject;
-{
-         
-               U32 typeLen = dStrlen(type);
-      if(dStrlen(filename) < (typeLen + 1))
-      {wle_returnObject =(false);
-return (S32)(wle_returnObject);}
-         if(dToupper(filename[0]) != dToupper(world[0]))
-      {wle_returnObject =(false);
-return (S32)(wle_returnObject);}
-      {wle_returnObject =(!dStrnicmp(filename+1, type, typeLen));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_CreatorTree_getName(char * x__object, char * x__item,  char* retval)
-{
-dSprintf(retval,16384,"");
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* item = (const char*)x__item;
-const char* wle_returnObject;
-{
-      CreatorTree::Node * node = object->findNode(dAtoi(item));
-   {wle_returnObject =(node ? node->mName : 0);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_CreatorTree_getParent(char * x__object, S32 nodeValue)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-      CreatorTree::Node * node = object->findNode(nodeValue);
-   if(node && node->mParent)
-     return (S32)((node->mParent->getId()));
-  return (S32)((-1));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_CreatorTree_getSelected(char * x__object)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)((object->getSelected()));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_CreatorTree_getValue(char * x__object, S32 nodeValue,  char* retval)
-{
-dSprintf(retval,16384,"");
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-      CreatorTree::Node * node = object->findNode(nodeValue);
-   {wle_returnObject =(node ? node->mValue : 0);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_CreatorTree_isGroup(char * x__object, char * x__group)
-{
-CreatorTree* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* group = (const char*)x__group;
-bool wle_returnObject;
-{
-      CreatorTree::Node * node = object->findNode(dAtoi(group));
-   if(node && node->isGroup())
-      {wle_returnObject =(true);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =(false);
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

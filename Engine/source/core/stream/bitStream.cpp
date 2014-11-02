@@ -342,7 +342,6 @@ void BitStream::writeInt(S32 val, S32 bitCount)
    writeBits(bitCount, &val);
 }
 
-
 S32 BitStream::readuInt(S32 bitCount)
 {
    U32 ret = 0;
@@ -362,14 +361,6 @@ void BitStream::writeuInt(U32 val, S32 bitCount)
    val = convertHostToLEndian(val);
    writeBits(bitCount, &val);
 }
-
-
-
-
-
-
-
-
 void BitStream::writeFloat(F32 f, S32 bitCount)
 {
    writeInt((S32)(f * ((1 << bitCount) - 1)), bitCount);

@@ -287,6 +287,7 @@ class Frustum : public PolyhedronImpl< FrustumData >
             ( mFarDist == frustum.mFarDist ) &&
             ( mProjectionOffset.x == frustum.mProjectionOffset.x ) &&
             ( mProjectionOffset.y == frustum.mProjectionOffset.y ) );
+
       }
       bool operator!=( const Frustum& frustum ) const { return !( *this == frustum ); }
 

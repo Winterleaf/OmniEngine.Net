@@ -348,7 +348,7 @@ bool SimXMLDocument::pushFirstChildElement(const char* rName)
    TiXmlElement* pElement;
    if(!m_paNode.empty())
    {
-      const int iLastElement = m_paNode.size() - 1;
+      const S32 iLastElement = m_paNode.size() - 1;
       TiXmlElement* pNode = m_paNode[iLastElement];
       if(!pNode)
       {
@@ -412,7 +412,7 @@ bool SimXMLDocument::pushChildElement(S32 index)
    TiXmlElement* pElement;
    if(!m_paNode.empty())
    {
-      const int iLastElement = m_paNode.size() - 1;
+      const S32 iLastElement = m_paNode.size() - 1;
       TiXmlElement* pNode = m_paNode[iLastElement];
       if(!pNode)
       {
@@ -472,7 +472,7 @@ bool SimXMLDocument::nextSiblingElement(const char* rName)
    {
       return false;
    }
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement*& pElement = m_paNode[iLastElement];
    if(!pElement)
    {
@@ -506,7 +506,7 @@ const char* SimXMLDocument::elementValue()
    {
       return StringTable->insert("");
    }
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iLastElement];
    if(!pNode)
    {
@@ -547,7 +547,7 @@ const char* SimXMLDocument::attribute(const char* rAttribute)
    {
       return StringTable->insert("");
    }
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iLastElement];
    if(!pNode)
    {
@@ -571,25 +571,21 @@ DefineEngineMethod( SimXMLDocument, attribute, const char*, ( const char* attrib
 }
 
 // These two methods don't make a lot of sense the way TS works.  Leaving them in for backwards-compatibility.
-//ConsoleMethod( SimXMLDocument, attributeF32, F32, 3, 3, "(string attributeName)"
 DefineConsoleMethod( SimXMLDocument, attributeF32, F32, (const char * attributeName), , "(string attributeName)"
    "@brief Get float attribute from the current Element on the stack.\n\n"
    "@param attributeName Name of attribute to retrieve.\n"
    "@return The value of the given attribute in the form of a float.\n"
    "@deprecated Use attribute().")
 {
-   //return dAtof( object->attribute( argv[2] ) );
    return dAtof( object->attribute( attributeName ) );
 }
 
-//ConsoleMethod(SimXMLDocument, attributeS32, S32, 3, 3, "(string attributeName)"
 DefineConsoleMethod(SimXMLDocument, attributeS32, S32, (const char * attributeName), , "(string attributeName)"
    "@brief Get int attribute from the current Element on the stack.\n\n"
    "@param attributeName Name of attribute to retrieve.\n"
    "@return The value of the given attribute in the form of an integer.\n"
    "@deprecated Use attribute().")
 {
-   //return dAtoi( object->attribute( argv[2] ) );
    return dAtoi( object->attribute( attributeName ) );
 }
 
@@ -602,7 +598,7 @@ bool SimXMLDocument::attributeExists(const char* rAttribute)
    {
       return false;
    }
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iLastElement];
    if(!pNode)
    {
@@ -635,7 +631,7 @@ const char* SimXMLDocument::firstAttribute()
    {
       return StringTable->insert("");
    }
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iLastElement];
    if(!pNode)
    {
@@ -672,7 +668,7 @@ const char* SimXMLDocument::lastAttribute()
    {
       return StringTable->insert("");
    }
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iLastElement];
    if(!pNode)
    {
@@ -771,7 +767,7 @@ void SimXMLDocument::setAttribute(const char* rAttribute, const char* rVal)
       return;
    }
 
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pElement = m_paNode[iLastElement];
    if(!pElement)
    {
@@ -803,7 +799,7 @@ void SimXMLDocument::setObjectAttributes(const char* objectID)
    if( pObject == NULL )
       return;
 
-   const int iLastElement = m_paNode.size() - 1;
+   const S32 iLastElement = m_paNode.size() - 1;
    TiXmlElement* pElement = m_paNode[iLastElement];
    if(!pElement)
       return;
@@ -930,7 +926,7 @@ void SimXMLDocument::pushNewElement(const char* rName)
    }
    else
    {
-      const int iFinalElement = m_paNode.size() - 1;
+      const S32 iFinalElement = m_paNode.size() - 1;
       TiXmlElement* pNode = m_paNode[iFinalElement];
       if(!pNode)
       {
@@ -980,7 +976,7 @@ void SimXMLDocument::addNewElement(const char* rName)
       return;
    }
 
-   const int iParentElement = m_paNode.size() - 2;
+   const S32 iParentElement = m_paNode.size() - 2;
    if(iParentElement < 0)
    {
       pStackTop = dynamic_cast<TiXmlElement*>
@@ -1007,7 +1003,7 @@ void SimXMLDocument::addNewElement(const char* rName)
       }
 
       // Overwrite top stack position.
-      const int iFinalElement = m_paNode.size() - 1;
+      const S32 iFinalElement = m_paNode.size() - 1;
       m_paNode[iFinalElement] = pStackTop;
       //pNode = pStackTop;
    }
@@ -1096,7 +1092,7 @@ const char* SimXMLDocument::readComment( S32 index )
    // Push the first element found under the current element of the given name
    if(!m_paNode.empty())
    {
-      const int iLastElement = m_paNode.size() - 1;
+      const S32 iLastElement = m_paNode.size() - 1;
       TiXmlElement* pNode = m_paNode[iLastElement];
       if(!pNode)
       {
@@ -1164,7 +1160,7 @@ void SimXMLDocument::addText(const char* text)
    if(m_paNode.empty())
       return;
 
-   const int iFinalElement = m_paNode.size() - 1;
+   const S32 iFinalElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iFinalElement];
    if(!pNode)
       return;
@@ -1209,7 +1205,7 @@ const char* SimXMLDocument::getText()
    if(m_paNode.empty())
       return "";
 
-   const int iFinalElement = m_paNode.size() - 1;
+   const S32 iFinalElement = m_paNode.size() - 1;
    TiXmlNode* pNode = m_paNode[iFinalElement];
    if(!pNode)
       return "";
@@ -1269,7 +1265,7 @@ void SimXMLDocument::removeText()
    if(m_paNode.empty())
       return;
 
-   const int iFinalElement = m_paNode.size() - 1;
+   const S32 iFinalElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iFinalElement];
    if(!pNode)
       return;
@@ -1305,7 +1301,7 @@ void SimXMLDocument::addData(const char* text)
    if(m_paNode.empty())
       return;
 
-   const int iFinalElement = m_paNode.size() - 1;
+   const S32 iFinalElement = m_paNode.size() - 1;
    TiXmlElement* pNode = m_paNode[iFinalElement];
    if(!pNode)
       return;
@@ -1351,7 +1347,7 @@ const char* SimXMLDocument::getData()
    if(m_paNode.empty())
       return "";
 
-   const int iFinalElement = m_paNode.size() - 1;
+   const S32 iFinalElement = m_paNode.size() - 1;
    TiXmlNode* pNode = m_paNode[iFinalElement];
    if(!pNode)
       return "";
@@ -1408,467 +1404,3 @@ DefineEngineMethod( SimXMLDocument, getData, const char*, (),,
 }
 
 ////EOF/////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_SimXMLDocument_attributeF32(char * x__object, char * x__attributeName)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-const char* attributeName = (const char*)x__attributeName;
-{
-     return (F32)( dAtof( object->attribute( attributeName ) ));
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_SimXMLDocument_attributeS32(char * x__object, char * x__attributeName)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-const char* attributeName = (const char*)x__attributeName;
-{
-     return (S32)( dAtoi( object->attribute( attributeName ) ));
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_addComment(char * x__object, char * x__comment)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* comment = (const char*)x__comment;
-{
-   object->addComment( comment );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_addData(char * x__object, char * x__text)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* text = (const char*)x__text;
-{
-   object->addData( text );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_addHeader(char * x__object)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->addHeader();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_addNewElement(char * x__object, char * x__name)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-   object->addNewElement( name );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_addText(char * x__object, char * x__text)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* text = (const char*)x__text;
-{
-   object->addText( text );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_attribute(char * x__object, char * x__attributeName,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* attributeName = (const char*)x__attributeName;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->attribute( attributeName );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimXMLDocument_attributeExists(char * x__object, char * x__attributeName)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* attributeName = (const char*)x__attributeName;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->attributeExists( attributeName );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_clear(char * x__object)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clear();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_clearError(char * x__object)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearError();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_elementValue(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->elementValue();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_firstAttribute(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->firstAttribute();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_getData(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   const char* text = object->getData();
-   if( !text )
-      {wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   {wle_returnObject =text;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_getErrorDesc(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getErrorDesc();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_getText(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   const char* text = object->getText();
-   if( !text )
-      {wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   {wle_returnObject =text;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_lastAttribute(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->lastAttribute();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimXMLDocument_loadFile(char * x__object, char * x__fileName)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* fileName = (const char*)x__fileName;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->loadFile( fileName );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_nextAttribute(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->nextAttribute();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimXMLDocument_nextSiblingElement(char * x__object, char * x__name)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* name = (const char*)x__name;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->nextSiblingElement( name );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_parse(char * x__object, char * x__xmlString)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* xmlString = (const char*)x__xmlString;
-{
-   object->parse( xmlString );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_popElement(char * x__object)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->popElement();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_prevAttribute(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->prevAttribute();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimXMLDocument_pushChildElement(char * x__object, S32 index)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->pushChildElement( index );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimXMLDocument_pushFirstChildElement(char * x__object, char * x__name)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* name = (const char*)x__name;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->pushFirstChildElement( name );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_pushNewElement(char * x__object, char * x__name)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-   object->pushNewElement( name );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_readComment(char * x__object, S32 index,  char* retval)
-{
-dSprintf(retval,16384,"");
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->readComment( index );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_removeText(char * x__object)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->removeText();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_reset(char * x__object)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->reset();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimXMLDocument_saveFile(char * x__object, char * x__fileName)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* fileName = (const char*)x__fileName;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->saveFile( fileName );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_setAttribute(char * x__object, char * x__attributeName, char * x__value)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* attributeName = (const char*)x__attributeName;
-const char* value = (const char*)x__value;
-{
-   object->setAttribute( attributeName, value );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnSimXMLDocument_setObjectAttributes(char * x__object, char * x__objectID)
-{
-SimXMLDocument* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* objectID = (const char*)x__objectID;
-{
-   object->setObjectAttributes( objectID );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

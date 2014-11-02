@@ -426,13 +426,11 @@ static ConsoleDocFragment _lbplayAnimation2(
    "void playAnimation(LightAnimData anim);"
 );
 
-//ConsoleMethod( LightBase, playAnimation, void, 2, 3, "( [LightAnimData anim] )\t"
 DefineConsoleMethod( LightBase, playAnimation, void, (const char * anim), (""), "( [LightAnimData anim] )\t"
    "Plays a light animation on the light.  If no LightAnimData is passed the "
    "existing one is played."
    "@hide")
 {
-    //if ( argc == 2 )
     if ( anim == "" )
     {
         object->playAnimation();
@@ -440,10 +438,8 @@ DefineConsoleMethod( LightBase, playAnimation, void, (const char * anim), (""), 
     }
 
     LightAnimData *animData;
-    //if ( !Sim::findObject( argv[2], animData ) )
     if ( !Sim::findObject( anim, animData ) )
     {
-        //Con::errorf( "LightBase::playAnimation() - Invalid LightAnimData '%s'.", argv[2] );
         Con::errorf( "LightBase::playAnimation() - Invalid LightAnimData '%s'.", anim );
         return;
     }
@@ -474,7 +470,6 @@ void LightBase::playAnimation( LightAnimData *animData )
     }
 }
 
-//ConsoleMethod( LightBase, pauseAnimation, void, 2, 2, "Stops the light animation." )
 DefineConsoleMethod( LightBase, pauseAnimation, void, (), , "Stops the light animation." )
 {
     object->pauseAnimation();
@@ -488,103 +483,3 @@ void LightBase::pauseAnimation( void )
         setMaskBits( UpdateMask );
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_LightBase_pauseAnimation(char * x__object)
-{
-LightBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-    object->pauseAnimation();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_LightBase_playAnimation(char * x__object, char * x__anim)
-{
-LightBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* anim = (const char*)x__anim;
-{
-        if ( anim == "" )
-    {
-        object->playAnimation();
-        return;
-    }
-    LightAnimData *animData;
-        if ( !Sim::findObject( anim, animData ) )
-    {
-                Con::errorf( "LightBase::playAnimation() - Invalid LightAnimData '%s'.", anim );
-        return;
-    }
-        object->playAnimation( animData );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnLightBase_setLightEnabled(char * x__object, bool state)
-{
-LightBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-  object->setLightEnabled( state );
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

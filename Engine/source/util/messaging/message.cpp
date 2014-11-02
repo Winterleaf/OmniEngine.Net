@@ -155,7 +155,6 @@ const char *Message::getType()
 // Console Methods
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod(Message, getType, const char *, 2, 2, "() Get message type (script class name or C++ class name if no script defined class)")
 DefineConsoleMethod(Message, getType, const char *, (), , "() Get message type (script class name or C++ class name if no script defined class)")
 {
    return object->getType();
@@ -163,109 +162,12 @@ DefineConsoleMethod(Message, getType, const char *, (), , "() Get message type (
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod(Message, addReference, void, 2, 2, "() Increment the reference count for this message")
 DefineConsoleMethod(Message, addReference, void, (), , "() Increment the reference count for this message")
 {
    object->addReference();
 }
 
-//ConsoleMethod(Message, freeReference, void, 2, 2, "() Decrement the reference count for this message")
 DefineConsoleMethod(Message, freeReference, void, (), , "() Decrement the reference count for this message")
 {
    object->freeReference();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_Message_addReference(char * x__object)
-{
-Message* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->addReference();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_Message_freeReference(char * x__object)
-{
-Message* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->freeReference();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_Message_getType(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-Message* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-   {wle_returnObject =object->getType();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

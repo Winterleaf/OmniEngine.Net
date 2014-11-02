@@ -244,21 +244,7 @@ inline void TerrainFile::clamp( U32* x,  U32* y ) const
    *x %= mSize;
    *y %= mSize;
 #else
-   // new clamp
-//   const auto  error = [] ( char c, U32 v ) {
-//      static const char* s = "TerrainFile Coord '%c == %d' out of range. Fix it in the algorithm.";
-//#if 1
-//      // only first error
-//      static bool  first = true;
-//      if ( first ) {
-//         Con::errorf( s,  c, v );
-//         first = false;
-//      }
-//#else
-//      // all errors
-//      Con::errorf( s,  c, v );
-//#endif
-//   };
+
 
    if (*x >= mSize) {
       error( 'x', *x );
@@ -274,8 +260,6 @@ inline void TerrainFile::clamp( U32* x,  U32* y ) const
 
 inline TerrainSquare* TerrainFile::findSquare( U32 level, U32 x, U32 y ) const
 {
-   //x %= mSize;
-   //y %= mSize;
    clamp( &x, &y );
    x >>= level;
    y >>= level;
@@ -285,9 +269,6 @@ inline TerrainSquare* TerrainFile::findSquare( U32 level, U32 x, U32 y ) const
 
 inline void TerrainFile::setHeight( U32 x, U32 y, U16 height )
 {
-   /*x %= mSize;
-   y %= mSize;
-   mHeightMap[ x + ( y * mSize ) ] = height;*/
 	clamp( &x, &y );
    setHeight( x + y * mSize,  height );
 }
@@ -299,16 +280,12 @@ inline void TerrainFile::setHeight( U32 i, U16 height )
 
 inline const U16* TerrainFile::getHeightAddress( U32 x, U32 y ) const
 {
-   //x %= mSize;
-   //y %= mSize;
 	clamp( &x, &y );
    return &mHeightMap[ x + ( y * mSize ) ];
 }
 
 inline U16 TerrainFile::getHeight( U32 x, U32 y ) const
 {
-   //x %= mSize;
-   //y %= mSize;
 	clamp( &x, &y );
    return mHeightMap[ x + ( y * mSize ) ];
 }
@@ -338,16 +315,12 @@ inline void TerrainFile::getHeight4(
 
 inline U8 TerrainFile::getLayerIndex( U32 x, U32 y ) const
 {
-   //x %= mSize;
-   //y %= mSize;
 	clamp( &x, &y );
    return mLayerMap[ x + ( y * mSize ) ];
 }
 
 inline void TerrainFile::setLayerIndex( U32 x, U32 y, U8 index )
 {
-   //x %= mSize;
-   //y %= mSize;
 	clamp( &x, &y );
    mLayerMap[ x + ( y * mSize ) ] = index;
 }
@@ -362,8 +335,6 @@ inline BaseMatInstance* TerrainFile::getMaterialMapping( U32 index ) const
 
 inline StringTableEntry TerrainFile::getMaterialName( U32 x, U32 y) const
 {
-   //x %= mSize;
-   //y %= mSize;
 	clamp( &x, &y );
    const U8 &index = mLayerMap[ x + ( y * mSize ) ];
 
@@ -374,17 +345,6 @@ inline StringTableEntry TerrainFile::getMaterialName( U32 x, U32 y) const
 }
 
 
-/// Conversion from 11.5 fixed point to floating point.
-//inline F32 fixedToFloat( U16 val )
-//{
-//   return F32(val) * 0.03125f;
-//}
-//
-///// Conversion from floating point to 11.5 fixed point.
-//inline U16 floatToFixed( F32 val )
-//{
-//   return U16(val * 32.0 + 0.5f);
-//}
 
 inline bool TerrainFile::isPointInTerrain( U32 x, U32 y ) const
 {

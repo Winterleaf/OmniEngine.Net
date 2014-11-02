@@ -115,7 +115,6 @@ static U32 sgServerQueryIndex = 0;
 //SERVER FUNCTIONS ONLY
 ConsoleFunctionGroupBegin( Containers, "Spatial query functions. <b>Server side only!</b>");
 
-//ConsoleFunction(containerFindFirst, const char*, 6, 6, "(int mask, Point3F point, float x, float y, float z)"
 DefineConsoleFunction( containerFindFirst, const char*, (U32 typeMask, Point3F origin, Point3F size), , "(int mask, Point3F point, float x, float y, float z)"
    "@brief Find objects matching the bitmask type within a box centered at point, with extents x, y, z.\n\n"
    "@returns The first object found, or an empty string if nothing was found.  Thereafter, you can get more "
@@ -124,17 +123,6 @@ DefineConsoleFunction( containerFindFirst, const char*, (U32 typeMask, Point3F o
    "@ingroup Game")
 {
    //find out what we're looking for
-//   U32 typeMask = U32(dAtoi(argv[1]));
-
-   //find the center of the container volume
-   //Point3F origin(0.0f, 0.0f, 0.0f);
-   //dSscanf(argv[2], "%g %g %g", &origin.x, &origin.y, &origin.z);
-
-   //find the box dimensions
-   //Point3F size(0.0f, 0.0f, 0.0f);
-   //size.x = mFabs(dAtof(argv[3]));
-   //size.y = mFabs(dAtof(argv[4]));
-   //size.z = mFabs(dAtof(argv[5]));
 
    //build the container volume
    Box3F queryBox;
@@ -149,16 +137,16 @@ DefineConsoleFunction( containerFindFirst, const char*, (U32 typeMask, Point3F o
 
    //return the first element
    sgServerQueryIndex = 0;
-   char *buff = Con::getReturnBuffer(100);
+   static const U32 bufSize = 100;
+   char *buff = Con::getReturnBuffer(bufSize);
    if (sgServerQueryList.mList.size())
-      dSprintf(buff, 100, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
+      dSprintf(buff, bufSize, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
    else
       buff[0] = '\0';
 
    return buff;
 }
 
-//ConsoleFunction( containerFindNext, const char*, 1, 1, "()"
 DefineConsoleFunction( containerFindNext, const char*, (), , "()"
    "@brief Get more results from a previous call to containerFindFirst().\n\n"
    "@note You must call containerFindFirst() to begin the search.\n"
@@ -167,9 +155,10 @@ DefineConsoleFunction( containerFindNext, const char*, (), , "()"
 	"@ingroup Game")
 {
    //return the next element
-   char *buff = Con::getReturnBuffer(100);
+   static const U32 bufSize = 100;
+   char *buff = Con::getReturnBuffer(bufSize);
    if (sgServerQueryIndex < sgServerQueryList.mList.size())
-      dSprintf(buff, 100, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
+      dSprintf(buff, bufSize, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
    else
       buff[0] = '\0';
 
@@ -536,154 +525,3 @@ static void RegisterGameFunctions()
       "Bounce ease for curve movement.\n"
 	   "@ingroup Game");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_containerFindFirst(U32 typeMask, char * x__origin, char * x__size,  char* retval)
-{
-dSprintf(retval,16384,"");
-Point3F origin = Point3F();
-sscanf(x__origin,"%f %f %f",&origin.x,&origin.y,&origin.z);
-Point3F size = Point3F();
-sscanf(x__size,"%f %f %f",&size.x,&size.y,&size.z);
-const char* wle_returnObject;
-{
-   
-         
-               
-      Box3F queryBox;
-   queryBox.minExtents = origin;
-   queryBox.maxExtents = origin;
-   queryBox.minExtents -= size;
-   queryBox.maxExtents += size;
-      sgServerQueryList.mList.clear();
-   gServerContainer.findObjects(queryBox, typeMask, SimpleQueryList::insertionCallback, &sgServerQueryList);
-      sgServerQueryIndex = 0;
-   char *buff = Con::getReturnBuffer(100);
-   if (sgServerQueryList.mList.size())
-      dSprintf(buff, 100, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
-   else
-      buff[0] = '\0';
-   {wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_containerFindNext(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-      char *buff = Con::getReturnBuffer(100);
-   if (sgServerQueryIndex < sgServerQueryList.mList.size())
-      dSprintf(buff, 100, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
-   else
-      buff[0] = '\0';
-   {wle_returnObject =buff;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_getFrustumOffset(char* retval)
-{
-dSprintf(retval,1024,"");
-Point4F wle_returnObject;
-{
-   {wle_returnObject =CameraAndFOV::sFrustumOffset;
-dSprintf(retval,1024,"%g %g %g %g ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z,wle_returnObject.w);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_setDefaultFov(F32 defaultFOV)
-{
-{
-   CameraAndFOV::sDefaultFov = mClampF(defaultFOV, MinCameraFov, MaxCameraFov);
-   if(CameraAndFOV::sCameraFov == CameraAndFOV::sTargetFov)
-      CameraAndFOV::sTargetFov = CameraAndFOV::sDefaultFov;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_setFov(F32 FOV)
-{
-{
-   CameraAndFOV::sTargetFov = mClampF(FOV, MinCameraFov, MaxCameraFov);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_setFrustumOffset(char * x__offset)
-{
-Point4F offset = Point4F();
-sscanf(x__offset,"%g %g %g %g",&offset.x,&offset.y,&offset.z,&offset.w);
-{
-   CameraAndFOV::sFrustumOffset = offset;
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_setZoomSpeed(S32 speed)
-{
-{
-   CameraAndFOV::sZoomSpeed = mClamp(speed, 0, CameraAndFOV::MaxZoomSpeed);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

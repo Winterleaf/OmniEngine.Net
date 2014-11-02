@@ -33,7 +33,6 @@
 /// Disable TMM for this file.
 #include "platform/tmm_off.h"
 
-//#include "platform/types.win32.h"
 
 /// @file
 /// This file contains the framework for defining class types for interfacing

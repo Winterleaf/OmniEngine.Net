@@ -192,13 +192,13 @@ void GuiBitmapCtrl::onRender(Point2I offset, const RectI &updateRect)
  			GFXTextureObject* texture = mTextureObject;
 			RectI srcRegion;
 			RectI dstRegion;
-			float xdone = ((float)getExtent().x/(float)texture->mBitmapSize.x)+1;
-			float ydone = ((float)getExtent().y/(float)texture->mBitmapSize.y)+1;
+			F32 xdone = ((F32)getExtent().x/(F32)texture->mBitmapSize.x)+1;
+			F32 ydone = ((F32)getExtent().y/(F32)texture->mBitmapSize.y)+1;
 
-			int xshift = mStartPoint.x%texture->mBitmapSize.x;
-			int yshift = mStartPoint.y%texture->mBitmapSize.y;
-			for(int y = 0; y < ydone; ++y)
-				for(int x = 0; x < xdone; ++x)
+			S32 xshift = mStartPoint.x%texture->mBitmapSize.x;
+			S32 yshift = mStartPoint.y%texture->mBitmapSize.y;
+			for(S32 y = 0; y < ydone; ++y)
+				for(S32 x = 0; x < xdone; ++x)
 				{
 		 			srcRegion.set(0,0,texture->mBitmapSize.x,texture->mBitmapSize.y);
   					dstRegion.set( ((texture->mBitmapSize.x*x)+offset.x)-xshift,
@@ -271,98 +271,11 @@ static ConsoleDocFragment _sGuiBitmapCtrlSetBitmap2(
 
 
 //"Set the bitmap displayed in the control. Note that it is limited in size, to 256x256."
-//ConsoleMethod( GuiBitmapCtrl, setBitmap, void, 3, 4,
 DefineConsoleMethod( GuiBitmapCtrl, setBitmap, void, ( const char * fileRoot, bool resize), ( false),
    "( String filename | String filename, bool resize ) Assign an image to the control.\n\n"
    "@hide" )
 {
    char filename[1024];
-   //Con::expandScriptFilename(filename, sizeof(filename), argv[2]);
    Con::expandScriptFilename(filename, sizeof(filename), fileRoot);
-   //object->setBitmap(filename, argc > 3 ? dAtob( argv[3] ) : false );
    object->setBitmap(filename, resize );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiBitmapCtrl_setBitmap(char * x__object, char * x__fileRoot, bool resize)
-{
-GuiBitmapCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* fileRoot = (const char*)x__fileRoot;
-
-{
-   char filename[1024];
-      Con::expandScriptFilename(filename, sizeof(filename), fileRoot);
-      object->setBitmap(filename, resize );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiBitmapCtrl_setValue(char * x__object, S32 x, S32 y)
-{
-GuiBitmapCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-   object->setValue(x, y);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

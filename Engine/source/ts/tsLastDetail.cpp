@@ -543,79 +543,9 @@ void TSLastDetail::updateImposterImages( bool forceUpdate )
       GFX->endScene();
 }
 
-//ConsoleFunction(tsUpdateImposterImages, void, 1, 2, "tsUpdateImposterImages( bool forceupdate )")
 DefineConsoleFunction( tsUpdateImposterImages, void, (bool forceUpdate), (false), "tsUpdateImposterImages( bool forceupdate )")
 {
-   //if ( argc > 1 )
-   //   TSLastDetail::updateImposterImages( dAtob( argv[1] ) );
-   //else
-   //   TSLastDetail::updateImposterImages();
    TSLastDetail::updateImposterImages(forceUpdate);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_tsUpdateImposterImages(bool forceUpdate)
-{
-{
-               TSLastDetail::updateImposterImages(forceUpdate);
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

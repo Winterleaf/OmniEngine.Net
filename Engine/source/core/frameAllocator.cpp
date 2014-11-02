@@ -32,7 +32,6 @@ U32   FrameAllocator::smHighWaterMark = 0;
 U32   FrameAllocator::smMaxFrameAllocation = 0;
 #endif
 
-//ConsoleFunction(getMaxFrameAllocation, S32, 1,1, "getMaxFrameAllocation();")
 DefineConsoleFunction( getMaxFrameAllocation, S32, (), , "getMaxFrameAllocation();" )
 {
 #ifdef TORQUE_DEBUG
@@ -41,75 +40,3 @@ DefineConsoleFunction( getMaxFrameAllocation, S32, (), , "getMaxFrameAllocation(
 	return 0;
 #endif
 }
-//#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getMaxFrameAllocation()
-{
-{
-#ifdef TORQUE_DEBUG
-  return (S32)( FrameAllocator::getMaxFrameAllocation());
-#else
-	return 0;
-#endif
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

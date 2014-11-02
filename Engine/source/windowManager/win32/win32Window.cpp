@@ -85,12 +85,9 @@ mFullscreen(false)
 	mVideoMode.bitDepth = 32;
 	mVideoMode.fullScreen = false;
 	mVideoMode.refreshRate = 60;
-	mVideoMode.resolution.set(1024,768);
+	mVideoMode.resolution.set(800,600);
 
 	_registerWindowClass();
-	
-
-
 }
 
 Win32Window::~Win32Window()
@@ -156,7 +153,9 @@ void Win32Window::setVideoMode( const GFXVideoMode &mode )
 	{
 		SetWindowLong( getHWND(), GWL_STYLE, WS_POPUP);
 		SetWindowPos( getHWND(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
-		ShowWindow(getHWND(), SW_SHOWNORMAL);
+		
+      if(mDisplayWindow)
+         ShowWindow(getHWND(), SW_SHOWNORMAL);
 
       // Clear the menu bar from the window for full screen
       HMENU menu = GetMenu(getHWND());
@@ -219,7 +218,9 @@ void Win32Window::setVideoMode( const GFXVideoMode &mode )
 		   // We have to force Win32 to update the window frame and make the window
 		   // visible and no longer topmost - this code might be possible to simplify.
 		   SetWindowPos( getHWND(), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
-		   ShowWindow( getHWND(), SW_SHOWNORMAL);
+
+         if(mDisplayWindow)
+            ShowWindow( getHWND(), SW_SHOWNORMAL);
       }
 
       mFullscreen = false;
@@ -660,11 +661,7 @@ void Win32Window::_unregisterWindowClass()
 LRESULT PASCAL Win32Window::WindowProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
 	// CodeReview [tom, 4/30/2007] The two casts here seem somewhat silly and redundant ?
-#if defined(TORQUE_CPU_X86_64)
-    Win32Window* window = ( Win32Window* )( ( PlatformWindow* )GetWindowLongPtr( hWnd, GWLP_USERDATA ) );
-#else
-    Win32Window* window = ( Win32Window* )( ( PlatformWindow* )GetWindowLong( hWnd, GWL_USERDATA ) );
-#endif
+	Win32Window* window = (Win32Window*)((PlatformWindow*)GetWindowLongPtr(hWnd, GWLP_USERDATA));
 	const WindowId devId = window ? window->getWindowId() : 0;
 
    if (window && window->getOffscreenRender())
@@ -715,12 +712,8 @@ LRESULT PASCAL Win32Window::WindowProc( HWND hWnd, UINT message, WPARAM wParam, 
 	case WM_CREATE:
 		// CodeReview [tom, 4/30/2007] Why don't we just cast this to a LONG 
 		//            instead of having a ton of essentially pointless casts ?
-#if defined(TORQUE_CPU_X86_64)
-        SetWindowLongPtr( hWnd, GWLP_USERDATA,
-#else
-        SetWindowLong( hWnd, GWL_USERDATA,
-#endif
-			(LONG)((PlatformWindow*)((CREATESTRUCT*)lParam)->lpCreateParams));
+		SetWindowLongPtr(hWnd, GWLP_USERDATA,
+			(LONG_PTR)((PlatformWindow*)((CREATESTRUCT*)lParam)->lpCreateParams));
 		break;
 
 	case WM_SETFOCUS:
@@ -1080,7 +1073,7 @@ bool Win32Window::translateMessage(MSG &msg)
 	if(mAccelHandle == NULL || mWindowHandle == NULL || !mEnableAccelerators)
 		return false;
 
-	int ret = TranslateAccelerator(mWindowHandle, mAccelHandle, &msg);
+	S32 ret = TranslateAccelerator(mWindowHandle, mAccelHandle, &msg);
 	return ret != 0;
 }
 

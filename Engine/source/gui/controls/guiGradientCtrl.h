@@ -39,8 +39,6 @@ private:
 	RectI mOrigBounds;
 public:
 	DECLARE_CONOBJECT(GuiGradientSwatchCtrl);
-	//DECLARE_CALLBACK( void, onMouseDown, ());
-	//DECLARE_CALLBACK( void, onDoubleClick, ());
 	GuiGradientSwatchCtrl();
 	void onMouseDown(const GuiEvent &);
 	void onRightMouseDown(const GuiEvent &);

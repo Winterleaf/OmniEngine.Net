@@ -23,14 +23,18 @@
 #include "platform/platformNet.h"
 #include "core/strings/stringFunctions.h"
 
-#if defined (TORQUE_OS_WIN32) || defined (TORQUE_OS_WIN64)
+#if defined (TORQUE_OS_WIN)
 #define TORQUE_USE_WINSOCK
 #include <errno.h>
 #include <winsock.h>
+
+#ifndef EINPROGRESS
 #define EINPROGRESS             WSAEINPROGRESS
+#endif // EINPROGRESS
+
 #define ioctl ioctlsocket
 
-typedef int socklen_t;
+typedef S32 socklen_t;
 
 #elif defined ( TORQUE_OS_MAC )
 
@@ -84,7 +88,7 @@ typedef in_addr IN_ADDR;
 #define TORQUE_USE_WINSOCK
 #define EINPROGRESS WSAEINPROGRESS
 #define ioctl ioctlsocket
-typedef int socklen_t;
+typedef S32 socklen_t;
 
 DWORD _getLastErrorAndClear()
 {
@@ -99,7 +103,7 @@ DWORD _getLastErrorAndClear()
 #endif
 
 #if defined(TORQUE_USE_WINSOCK)
-static const char* strerror_wsa( int code )
+static const char* strerror_wsa( S32 code )
 {
    switch( code )
    {
@@ -137,7 +141,7 @@ static const char* strerror_wsa( int code )
 static Net::Error getLastError();
 static S32 defaultPort = 28000;
 static S32 netPort = 0;
-static intptr_t udpSocket = InvalidSocket;
+static S32 udpSocket = InvalidSocket;
 
 ConnectionNotifyEvent   Net::smConnectionNotify;
 ConnectionAcceptedEvent Net::smConnectionAccept;
@@ -441,7 +445,7 @@ void Net::closeConnectTo(NetSocket sock)
       return;
 
    // if this socket is in the list of polled sockets, remove it
-   for (int i = 0; i < gPolledSockets.size(); ++i)
+   for (S32 i = 0; i < gPolledSockets.size(); ++i)
    {
       if (gPolledSockets[i]->fd == sock)
       {
@@ -454,7 +458,7 @@ void Net::closeConnectTo(NetSocket sock)
    closeSocket(sock);
 }
 
-Net::Error Net::sendtoSocket(NetSocket socket, const U8 *buffer, int  bufferSize)
+Net::Error Net::sendtoSocket(NetSocket socket, const U8 *buffer, S32  bufferSize)
 {
    if(Journal::IsPlaying())
    {
@@ -498,8 +502,8 @@ bool Net::openPort(S32 port, bool doBind)
         error = bind(udpSocket, port);
 	  }
 
-        if(error == NoError)
-            error = setBufferSize(udpSocket, 32768 * 8);
+      if(error == NoError)
+         error = setBufferSize(udpSocket, 32768);
 
       if(error == NoError && !useVDP)
          error = setBroadcast(udpSocket, true);
@@ -634,26 +638,26 @@ Net::Error Net::sendto(const NetAddress *address, const U8 *buffer, S32  bufferS
     Mutex::unlockMutex(mutex);
     return result;
 #else
-    if(address->type == NetAddress::IPAddress)
-    {
-        sockaddr_in ipAddr;
-        netToIPSocketAddress(address, &ipAddr);
-        if(::sendto(udpSocket, (const char*)buffer, bufferSize, 0,
-                    (sockaddr *) &ipAddr, sizeof(sockaddr_in)) == SOCKET_ERROR)
-            return getLastError();
-        else
-            return NoError;
-    }
-    else
-    {
-        SOCKADDR_IN ipAddr;
-        netToIPSocketAddress(address, &ipAddr);
-        if(::sendto(udpSocket, (const char*)buffer, bufferSize, 0,
-                    (PSOCKADDR) &ipAddr, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
-            return getLastError();
-        else
-            return NoError;
-    }
+   if(address->type == NetAddress::IPAddress)
+   {
+      sockaddr_in ipAddr;
+      netToIPSocketAddress(address, &ipAddr);
+      if(::sendto(udpSocket, (const char*)buffer, bufferSize, 0,
+         (sockaddr *) &ipAddr, sizeof(sockaddr_in)) == SOCKET_ERROR)
+         return getLastError();
+      else
+         return NoError;
+   }
+   else
+   {
+      SOCKADDR_IN ipAddr;
+      netToIPSocketAddress(address, &ipAddr);
+      if(::sendto(udpSocket, (const char*)buffer, bufferSize, 0,
+         (PSOCKADDR) &ipAddr, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
+         return getLastError();
+      else
+         return NoError;
+   }
 #endif
 }
 
@@ -712,7 +716,7 @@ void Net::process()
    sockaddr_in ipAddr;
    NetSocket incoming = InvalidSocket;
    char out_h_addr[1024];
-   int out_h_length = 0;
+   S32 out_h_length = 0;
    RawData readBuff;
 
    for (S32 i = 0; i < gPolledSockets.size();
@@ -822,7 +826,7 @@ void Net::process()
             if(::connect(currentSock->fd, (struct sockaddr *)&ipAddr,
                sizeof(ipAddr)) == -1)
             {
-               int errorCode;
+               S32 errorCode;
 #if defined(TORQUE_USE_WINSOCK)
                errorCode = WSAGetLastError();
                if( errorCode == WSAEINPROGRESS || errorCode == WSAEWOULDBLOCK )

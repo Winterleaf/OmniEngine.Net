@@ -50,15 +50,12 @@ static const char *packetTypeNames[] =
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
-//ConsoleFunction(DNetSetLogging, void, 2, 2, "(bool enabled)"
 DefineConsoleFunction( DNetSetLogging, void, (bool enabled), , "(bool enabled)"
    "@brief Enables logging of the connection protocols\n\n"
    "When enabled a lot of network debugging information is sent to the console.\n"
    "@param enabled True to enable, false to disable\n"
    "@ingroup Networking")
 {
-   //TORQUE_UNUSED(argc);
-   //gLogToConsole = dAtob(argv[1]);
    gLogToConsole = enabled;
 }
 
@@ -297,70 +294,3 @@ bool ConnectionProtocol::readDemoStartBlock(BitStream *stream)
    stream->read(&mConnectionEstablished);
    return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_DNetSetLogging(bool enabled)
-{
-{
-         gLogToConsole = enabled;
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

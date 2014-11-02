@@ -60,7 +60,6 @@ public:
    DECLARE_CALLBACK( void, onFieldRemoved, ( const char* object, const char* fieldName ) );
    DECLARE_CALLBACK( void, onFieldRenameAlreadyDefined, ( const char* object, const char* oldFieldName, const char* newFieldName ) );
    DECLARE_CALLBACK( void, onFieldRenamed, ( const char* object, const char* oldFieldName, const char* newFieldName ) );
-   //DECLARE_CALLBACK( void, onInspectorFieldModified, ( const char* object, const char* fieldName, const char* oldValue, const char* newValue ) );
    DECLARE_CALLBACK( void, onInspectorFieldModified, ( const char* object, const char* fieldName, const char* arrayIndex, const char* oldValue, const char* newValue ) );
    /// @}
 

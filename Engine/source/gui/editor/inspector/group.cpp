@@ -454,8 +454,7 @@ bool GuiInspectorGroup::inspectGroup()
                if ( fieldGui == NULL )               
                   fieldGui = new GuiInspectorField();
                
-               fieldGui->init( mParent, this );          
-
+               fieldGui->init( mParent, this );               
                StringTableEntry caption = StringTable->insert( String::ToString("   [%i]",nI) );
                fieldGui->setInspectorField( field, caption, intToStr );
                
@@ -491,8 +490,7 @@ bool GuiInspectorGroup::inspectGroup()
             if ( fieldGui == NULL )
                fieldGui = new GuiInspectorField();
             
-            fieldGui->init( mParent, this );     
-
+            fieldGui->init( mParent, this );            
             fieldGui->setInspectorField( field );
                      
             if( fieldGui->registerObject() )

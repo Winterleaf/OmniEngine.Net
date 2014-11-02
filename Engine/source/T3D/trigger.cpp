@@ -188,7 +188,7 @@ bool Trigger::castRay(const Point3F &start, const Point3F &end, RayInfo* info)
    F32 const *si = &start.x;
    F32 const *ei = &end.x;
 
-   for (int i = 0; i < 3; i++)
+   for (S32 i = 0; i < 3; i++)
    {
       if (*si < *ei)
       {
@@ -259,8 +259,9 @@ ConsoleGetType( TypeTriggerPolyhedron )
    AssertFatal(currVec == 3, "Internal error: Bad trigger polyhedron");
 
    // Build output string.
-   char* retBuf = Con::getReturnBuffer(1024);
-   dSprintf(retBuf, 1023, "%7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f",
+   static const U32 bufSize = 1024;
+   char* retBuf = Con::getReturnBuffer(bufSize);
+   dSprintf(retBuf, bufSize, "%7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f %7.7f",
             origin.x, origin.y, origin.z,
             vecs[0].x, vecs[0].y, vecs[0].z,
             vecs[2].x, vecs[2].y, vecs[2].z,
@@ -840,85 +841,3 @@ DefineEngineMethod( Trigger, getObject, S32, ( S32 index ),,
    else
       return object->getObject(U32(index))->getId();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnTrigger_getNumObjects(char * x__object)
-{
-Trigger* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)( object->getNumTriggeringObjects());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnTrigger_getObject(char * x__object, S32 index)
-{
-Trigger* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if (index >= object->getNumTriggeringObjects() || index < 0)
-     return (S32)( -1);
-   else
-     return (S32)( object->getObject(U32(index))->getId());
-};
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

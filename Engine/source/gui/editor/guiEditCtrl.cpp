@@ -2503,7 +2503,6 @@ void GuiEditCtrl::startMouseGuideDrag( guideAxis axis, U32 guideIndex, bool lock
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, getContentControl, S32, 2, 2, "() - Return the toplevel control edited inside the GUI editor." )
 DefineConsoleMethod( GuiEditCtrl, getContentControl, S32, (), , "() - Return the toplevel control edited inside the GUI editor." )
 {
    GuiControl* ctrl = object->getContentControl();
@@ -2515,51 +2514,36 @@ DefineConsoleMethod( GuiEditCtrl, getContentControl, S32, (), , "() - Return the
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, setContentControl, void, 3, 3, "( GuiControl ctrl ) - Set the toplevel control to edit in the GUI editor." )
 DefineConsoleMethod( GuiEditCtrl, setContentControl, void, (GuiControl *ctrl ), , "( GuiControl ctrl ) - Set the toplevel control to edit in the GUI editor." )
 {
-   //GuiControl *ctrl;
-   ////if(!Sim::findObject(argv[2], ctrl))
-   //if(!Sim::findObject(ctrlName, ctrl))
-   //   return;
 	if (ctrl)
 		object->setContentControl(ctrl);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, addNewCtrl, void, 3, 3, "(GuiControl ctrl)")
 DefineConsoleMethod( GuiEditCtrl, addNewCtrl, void, (GuiControl *ctrl), , "(GuiControl ctrl)")
 {
-   //GuiControl *ctrl;
-   //if(!Sim::findObject(argv[2], ctrl))
-   //if(!Sim::findObject(ctrlName, ctrl))
-      //return;
 	if (ctrl)
 		object->addNewControl(ctrl);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, addSelection, void, 3, 3, "selects a control.")
 DefineConsoleMethod( GuiEditCtrl, addSelection, void, (S32 id), , "selects a control.")
 {
-   //S32 id = dAtoi(argv[2]);
    object->addSelection(id);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, removeSelection, void, 3, 3, "deselects a control.")
 DefineConsoleMethod( GuiEditCtrl, removeSelection, void, (S32 id), , "deselects a control.")
 {
-   //S32 id = dAtoi(argv[2]);
    object->removeSelection(id);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, clearSelection, void, 2, 2, "Clear selected controls list.")
 DefineConsoleMethod( GuiEditCtrl, clearSelection, void, (), , "Clear selected controls list.")
 {
    object->clearSelection();
@@ -2567,39 +2551,22 @@ DefineConsoleMethod( GuiEditCtrl, clearSelection, void, (), , "Clear selected co
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, select, void, 3, 3, "(GuiControl ctrl)")
 DefineConsoleMethod( GuiEditCtrl, select, void, (GuiControl *ctrl), , "(GuiControl ctrl)")
 {
-   //GuiControl *ctrl;
-
-   ////if(!Sim::findObject(argv[2], ctrl))
-   //if(!Sim::findObject(ctrlName, ctrl))
-   //   return;
 	if (ctrl)
    object->setSelection(ctrl, false);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, setCurrentAddSet, void, 3, 3, "(GuiControl ctrl)")
 DefineConsoleMethod( GuiEditCtrl, setCurrentAddSet, void, (GuiControl *addSet), , "(GuiControl ctrl)")
 {
-   //GuiControl *addSet;
-
-   ////if (!Sim::findObject(argv[2], addSet))
-   //if (!Sim::findObject(ctrlName, addSet))
-   //{
-   //   //Con::printf("%s(): Invalid control: %s", argv[0], argv[2]);
-   //   Con::printf("setCurrentAddSet(): Invalid control: %s", ctrlName);
-   //   return;
-   //}
 	if (addSet)
    object->setCurrentAddSet(addSet);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, getCurrentAddSet, S32, 2, 2, "Returns the set to which new controls will be added")
 DefineConsoleMethod( GuiEditCtrl, getCurrentAddSet, S32, (), , "Returns the set to which new controls will be added")
 {
    const GuiControl* add = object->getCurrentAddSet();
@@ -2608,7 +2575,6 @@ DefineConsoleMethod( GuiEditCtrl, getCurrentAddSet, S32, (), , "Returns the set 
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, toggle, void, 2, 2, "Toggle activation.")
 DefineConsoleMethod( GuiEditCtrl, toggle, void, (), , "Toggle activation.")
 {
    object->setEditMode( !object->isActive() );
@@ -2616,16 +2582,13 @@ DefineConsoleMethod( GuiEditCtrl, toggle, void, (), , "Toggle activation.")
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, justify, void, 3, 3, "(int mode)" )
 DefineConsoleMethod( GuiEditCtrl, justify, void, (U32 mode), , "(int mode)" )
 {
-   //object->justifySelection((GuiEditCtrl::Justification)dAtoi(argv[2]));
    object->justifySelection( (GuiEditCtrl::Justification)mode );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, bringToFront, void, 2, 2, "")
 DefineConsoleMethod( GuiEditCtrl, bringToFront, void, (), , "")
 {
    object->bringToFront();
@@ -2633,7 +2596,6 @@ DefineConsoleMethod( GuiEditCtrl, bringToFront, void, (), , "")
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, pushToBack, void, 2, 2, "")
 DefineConsoleMethod( GuiEditCtrl, pushToBack, void, (), , "")
 {
    object->pushToBack();
@@ -2641,7 +2603,6 @@ DefineConsoleMethod( GuiEditCtrl, pushToBack, void, (), , "")
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, deleteSelection, void, 2, 2, "() - Delete the selected controls.")
 DefineConsoleMethod( GuiEditCtrl, deleteSelection, void, (), , "() - Delete the selected controls.")
 {
    object->deleteSelection();
@@ -2649,40 +2610,29 @@ DefineConsoleMethod( GuiEditCtrl, deleteSelection, void, (), , "() - Delete the 
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, moveSelection, void, 4, 4, "(int dx, int dy) - Move all controls in the selection by (dx,dy) pixels.")
 DefineConsoleMethod( GuiEditCtrl, moveSelection, void, (Point2I pos), , "Move all controls in the selection by (dx,dy) pixels.")
 {
-   //object->moveAndSnapSelection(Point2I(dAtoi(argv[2]), dAtoi(argv[3])));
    object->moveAndSnapSelection(Point2I(pos));
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, saveSelection, void, 2, 3, "( string fileName=null ) - Save selection to file or clipboard.")
 DefineConsoleMethod( GuiEditCtrl, saveSelection, void, (const char * filename), (NULL), "( string fileName=null ) - Save selection to file or clipboard.")
 {
-   //const char* filename = NULL;
-   //if( argc > 2 )
-   //   filename = argv[ 2 ];
       
    object->saveSelection( filename );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, loadSelection, void, 2, 3, "( string fileName=null ) - Load selection from file or clipboard.")
 DefineConsoleMethod( GuiEditCtrl, loadSelection, void, (const char * filename), (NULL), "( string fileName=null ) - Load selection from file or clipboard.")
 {
-   //const char* filename = NULL;
-   //if( argc > 2 )
-   //   filename = argv[ 2 ];
 
    object->loadSelection( filename );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, selectAll, void, 2, 2, "()")
 DefineConsoleMethod( GuiEditCtrl, selectAll, void, (), , "()")
 {
    object->selectAll();
@@ -2698,7 +2648,6 @@ DefineEngineMethod( GuiEditCtrl, getSelection, SimSet*, (),,
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, getNumSelected, S32, 2, 2, "() - Return the number of controls currently selected." )
 DefineConsoleMethod( GuiEditCtrl, getNumSelected, S32, (), , "() - Return the number of controls currently selected." )
 {
    return object->getNumSelected();
@@ -2706,7 +2655,6 @@ DefineConsoleMethod( GuiEditCtrl, getNumSelected, S32, (), , "() - Return the nu
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, getSelectionGlobalBounds, const char*, 2, 2, "() - Returns global bounds of current selection as vector 'x y width height'." )
 DefineConsoleMethod( GuiEditCtrl, getSelectionGlobalBounds, const char*, (), , "() - Returns global bounds of current selection as vector 'x y width height'." )
 {
    RectI bounds = object->getSelectionGlobalBounds();
@@ -2720,24 +2668,16 @@ DefineConsoleMethod( GuiEditCtrl, getSelectionGlobalBounds, const char*, (), , "
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, selectParents, void, 2, 3, "( bool addToSelection=false ) - Select parents of currently selected controls." )
 DefineConsoleMethod( GuiEditCtrl, selectParents, void, ( bool addToSelection ), (false), "( bool addToSelection=false ) - Select parents of currently selected controls." )
 {
-   //bool addToSelection = false;
-   //if( argc > 2 )
-   //   addToSelection = dAtob( argv[ 2 ] );
       
    object->selectParents( addToSelection );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, selectChildren, void, 2, 3, "( bool addToSelection=false ) - Select children of currently selected controls." )
 DefineConsoleMethod( GuiEditCtrl, selectChildren, void, ( bool addToSelection ), (false), "( bool addToSelection=false ) - Select children of currently selected controls." )
 {
-   //bool addToSelection = false;
-   //if( argc > 2 )
-   //   addToSelection = dAtob( argv[ 2 ] );
       
    object->selectChildren( addToSelection );
 }
@@ -2752,38 +2692,28 @@ DefineEngineMethod( GuiEditCtrl, getTrash, SimGroup*, (),,
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod(GuiEditCtrl, setSnapToGrid, void, 3, 3, "GuiEditCtrl.setSnapToGrid(gridsize)")
 DefineConsoleMethod(GuiEditCtrl, setSnapToGrid, void, (U32 gridsize), , "GuiEditCtrl.setSnapToGrid(gridsize)")
 {
-   //U32 gridsize = dAtoi(argv[2]);
    object->setSnapToGrid(gridsize);
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, readGuides, void, 3, 4, "( GuiControl ctrl [, int axis ] ) - Read the guides from the given control." )
 DefineConsoleMethod( GuiEditCtrl, readGuides, void, ( GuiControl* ctrl, S32 axis ), (-1), "( GuiControl ctrl [, int axis ] ) - Read the guides from the given control." )
 {
    // Find the control.
    
-   //GuiControl* ctrl;
-   //if( !Sim::findObject( argv[ 2 ], ctrl ) )
    if( !ctrl  )
    {
-      //Con::errorf( "GuiEditCtrl::readGuides - no control '%s'", argv[ 2 ] );
-//      Con::errorf( "GuiEditCtrl::readGuides - no control '%s'", ctrlName );
       return;
    }
    
    // Read the guides.
    
-   //if( argc > 3 )
    if( axis != -1 )
    {
-      //S32 axis = dAtoi( argv[ 3 ] );
       if( axis < 0 || axis > 1 )
       {
-         //Con::errorf( "GuiEditCtrl::readGuides - invalid axis '%s'", argv[ 3 ] );
          Con::errorf( "GuiEditCtrl::readGuides - invalid axis '%s'", axis );
          return;
       }
@@ -2799,29 +2729,21 @@ DefineConsoleMethod( GuiEditCtrl, readGuides, void, ( GuiControl* ctrl, S32 axis
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, writeGuides, void, 3, 4, "( GuiControl ctrl [, int axis ] ) - Write the guides to the given control." )
 DefineConsoleMethod( GuiEditCtrl, writeGuides, void, ( GuiControl* ctrl, S32 axis ), ( -1), "( GuiControl ctrl [, int axis ] ) - Write the guides to the given control." )
 {
    // Find the control.
    
-//   GuiControl* ctrl;
-   //if( !Sim::findObject( argv[ 2 ], ctrl ) )
    if( ! ctrl ) 
    {
-      //Con::errorf( "GuiEditCtrl::writeGuides - no control '%i'", argv[ 2 ] );
-      //Con::errorf( "GuiEditCtrl::writeGuides - no control '%i'", ctrlName );
       return;
    }
    
    // Write the guides.
    
-   //if( argc > 3 )
    if( axis != -1 )
    {
-      //S32 axis = dAtoi( argv[ 3 ] );
       if( axis < 0 || axis > 1 )
       {
-         //Con::errorf( "GuiEditCtrl::writeGuides - invalid axis '%s'", argv[ 3 ] );
          Con::errorf( "GuiEditCtrl::writeGuides - invalid axis '%s'", axis );
          return;
       }
@@ -2837,13 +2759,10 @@ DefineConsoleMethod( GuiEditCtrl, writeGuides, void, ( GuiControl* ctrl, S32 axi
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, clearGuides, void, 2, 3, "( [ int axis ] ) - Clear all currently set guide lines." )
 DefineConsoleMethod( GuiEditCtrl, clearGuides, void, ( S32 axis ), (-1), "( [ int axis ] ) - Clear all currently set guide lines." )
 {
-   //if( argc > 2 )
    if( axis != -1 )
    {
-      //S32 axis = dAtoi( argv[ 2 ] );
       if( axis < 0 || axis > 1 )
       {
          Con::errorf( "GuiEditCtrl::clearGuides - invalid axis '%i'", axis );
@@ -2861,23 +2780,14 @@ DefineConsoleMethod( GuiEditCtrl, clearGuides, void, ( S32 axis ), (-1), "( [ in
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, fitIntoParents, void, 2, 4, "( bool width=true, bool height=true ) - Fit selected controls into their parents." )
 DefineConsoleMethod( GuiEditCtrl, fitIntoParents, void, (bool width, bool height), (true, true), "( bool width=true, bool height=true ) - Fit selected controls into their parents." )
 {
-   //bool width = true;
-   //bool height = true;
-   //
-   //if( argc > 2 )
-   //   width = dAtob( argv[ 2 ] );
-   //if( argc > 3 )
-   //   height = dAtob( argv[ 3 ] );
       
    object->fitIntoParents( width, height );
 }
 
 //-----------------------------------------------------------------------------
 
-//ConsoleMethod( GuiEditCtrl, getMouseMode, const char*, 2, 2, "() - Return the current mouse mode." )
 DefineConsoleMethod( GuiEditCtrl, getMouseMode, const char*, (), , "() - Return the current mouse mode." )
 {
    switch( object->getMouseMode() )
@@ -3047,502 +2957,3 @@ ConsoleDocClass( GuiEditorRuler,
    "Editor use only.\n\n"
    "@internal"
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_addNewCtrl(char * x__object, char * x__ctrl)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
-{
-               	if (ctrl)
-		object->addNewControl(ctrl);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_addSelection(char * x__object, S32 id)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->addSelection(id);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_bringToFront(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->bringToFront();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_clearGuides(char * x__object, S32 axis)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      if( axis != -1 )
-   {
-            if( axis < 0 || axis > 1 )
-      {
-         Con::errorf( "GuiEditCtrl::clearGuides - invalid axis '%i'", axis );
-         return;
-      }
-      
-      object->clearGuides( ( GuiEditCtrl::guideAxis ) axis );
-   }
-   else
-   {
-      object->clearGuides( GuiEditCtrl::GuideHorizontal );
-      object->clearGuides( GuiEditCtrl::GuideVertical );
-   }
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_clearSelection(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->clearSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_deleteSelection(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->deleteSelection();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_fitIntoParents(char * x__object, bool width, bool height)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-                           
-   object->fitIntoParents( width, height );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiEditCtrl_getContentControl(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   GuiControl* ctrl = object->getContentControl();
-   if( ctrl )
-     return (S32)( ctrl->getId());
-   else
-     return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiEditCtrl_getCurrentAddSet(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   const GuiControl* add = object->getCurrentAddSet();
-  return (S32)( add ? add->getId() : 0);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_getMouseMode(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   switch( object->getMouseMode() )
-   {
-      case GuiEditCtrl::Selecting:
-         {wle_returnObject ="Selecting";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-      
-      case GuiEditCtrl::DragSelecting:
-         {wle_returnObject ="DragSelecting";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-      case GuiEditCtrl::MovingSelection:
-         {wle_returnObject ="MovingSelection";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-      
-      case GuiEditCtrl::SizingSelection:
-         {wle_returnObject ="SizingSelection";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-            
-      case GuiEditCtrl::DragGuide:
-         {wle_returnObject ="DragGuide";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-         
-      case GuiEditCtrl::DragClone:
-         {wle_returnObject ="DragClone";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-         
-      default:
-         {wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   }
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiEditCtrl_getNumSelected(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-  return (S32)( object->getNumSelected());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_getSelectionGlobalBounds(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   RectI bounds = object->getSelectionGlobalBounds();
-   String str = String::ToString( "%i %i %i %i", bounds.point.x, bounds.point.y, bounds.extent.x, bounds.extent.y );
-   
-   char* buffer = Con::getReturnBuffer( str.length() );
-   dStrcpy( buffer, str.c_str() );
-   
-   {wle_returnObject =buffer;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_justify(char * x__object, U32 mode)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->justifySelection( (GuiEditCtrl::Justification)mode );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_loadSelection(char * x__object, char * x__filename)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* filename = (const char*)x__filename;
-{
-         
-   object->loadSelection( filename );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_moveSelection(char * x__object, char * x__pos)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point2I pos = Point2I();
-sscanf(x__pos,"%i %i",&pos.x,&pos.y);
-{
-      object->moveAndSnapSelection(Point2I(pos));
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_pushToBack(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->pushToBack();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_readGuides(char * x__object, char * x__ctrl, S32 axis)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
-{
-      
-         if( !ctrl  )
-   {
-            return;
-   }
-   
-      
-      if( axis != -1 )
-   {
-            if( axis < 0 || axis > 1 )
-      {
-                  Con::errorf( "GuiEditCtrl::readGuides - invalid axis '%s'", axis );
-         return;
-      }
-      
-      object->readGuides( ( GuiEditCtrl::guideAxis ) axis, ctrl );
-   }
-   else
-   {
-      object->readGuides( GuiEditCtrl::GuideHorizontal, ctrl );
-      object->readGuides( GuiEditCtrl::GuideVertical, ctrl );
-   }
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_removeSelection(char * x__object, S32 id)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->removeSelection(id);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_saveSelection(char * x__object, char * x__filename)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* filename = (const char*)x__filename;
-{
-               
-   object->saveSelection( filename );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_select(char * x__object, char * x__ctrl)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
-{
-   
-         	if (ctrl)
-   object->setSelection(ctrl, false);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_selectAll(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->selectAll();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_selectChildren(char * x__object, bool addToSelection)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-               
-   object->selectChildren( addToSelection );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_selectParents(char * x__object, bool addToSelection)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-               
-   object->selectParents( addToSelection );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_setContentControl(char * x__object, char * x__ctrl)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
-{
-            	if (ctrl)
-		object->setContentControl(ctrl);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_setCurrentAddSet(char * x__object, char * x__addSet)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-GuiControl* addSet; Sim::findObject(x__addSet, addSet ); 
-{
-   
-                     	if (addSet)
-   object->setCurrentAddSet(addSet);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_setSnapToGrid(char * x__object, U32 gridsize)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->setSnapToGrid(gridsize);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_toggle(char * x__object)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setEditMode( !object->isActive() );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_writeGuides(char * x__object, char * x__ctrl, S32 axis)
-{
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
-{
-      
-      if( ! ctrl ) 
-   {
-                  return;
-   }
-   
-      
-      if( axis != -1 )
-   {
-            if( axis < 0 || axis > 1 )
-      {
-                  Con::errorf( "GuiEditCtrl::writeGuides - invalid axis '%s'", axis );
-         return;
-      }
-      
-      object->writeGuides( ( GuiEditCtrl::guideAxis ) axis, ctrl );
-   }
-   else
-   {
-      object->writeGuides( GuiEditCtrl::GuideHorizontal, ctrl );
-      object->writeGuides( GuiEditCtrl::GuideVertical, ctrl );
-   }
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiEditCtrl_getSelection(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SimSet* wle_returnObject;
-{
-   {wle_returnObject =object->getSelectedSet();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiEditCtrl_getTrash(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiEditCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-SimGroup* wle_returnObject;
-{
-   {wle_returnObject =object->getTrash();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,1024,"%i",wle_returnObject->getId());
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

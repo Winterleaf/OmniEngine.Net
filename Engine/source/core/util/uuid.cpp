@@ -306,7 +306,7 @@ static void get_pseudo_node_identifier(uuid_node_t *node)
 
     get_random_info(seed);
     seed[0] |= 0x80;
-    memcpy(node, seed, sizeof(*node));
+    memcpy(node, seed, sizeof(uuid_node_t));
 }
 
 /* system dependent call to get the current system time.

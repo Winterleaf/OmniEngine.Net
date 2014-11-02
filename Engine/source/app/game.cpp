@@ -58,26 +58,22 @@ bool gEditingMission = false;
 
 ConsoleFunctionGroupBegin( InputManagement, "Functions that let you deal with input from scripts" );
 
-//ConsoleFunction( deactivateDirectInput, void, 1, 1,
 DefineConsoleFunction( deactivateDirectInput, void, (), ,
          "()"
             "@brief Disables DirectInput.\n\n"
             "Also deactivates any connected joysticks.\n\n"
 			"@ingroup Input" )
 {
-   //TORQUE_UNUSED(argc); TORQUE_UNUSED(argv);
    if ( Input::isActive() )
       Input::deactivate();
 }
 
-//ConsoleFunction( activateDirectInput, void, 1, 1,
 DefineConsoleFunction( activateDirectInput, void, (), ,
             "()"
             "@brief Activates DirectInput.\n\n"
             "Also activates any connected joysticks."
 			"@ingroup Input")
 {
-   //TORQUE_UNUSED(argc); TORQUE_UNUSED(argv);
    if ( !Input::isActive() )
       Input::activate();
 }
@@ -86,12 +82,8 @@ ConsoleFunctionGroupEnd( InputManagement );
 //--------------------------------------------------------------------------
 
 static const U32 MaxPlayerNameLength = 16;
-//ConsoleFunction( strToPlayerName, const char*, 2, 2, "strToPlayerName( string )" )
 DefineConsoleFunction( strToPlayerName, const char*, (const char* ptr ), , "strToPlayerName(string);" )
 {
-   //TORQUE_UNUSED(argc);
-
-   //const char* ptr = argv[1];
 
 	// Strip leading spaces and underscores:
    while ( *ptr == ' ' || *ptr == '_' )
@@ -146,7 +138,6 @@ DefineConsoleFunction( strToPlayerName, const char*, (const char* ptr ), , "strT
 
 ConsoleFunctionGroupBegin( Platform , "General platform functions.");
 
-//ConsoleFunction( lockMouse, void, 2, 2, "(bool isLocked)"
 DefineConsoleFunction( lockMouse, void, (bool isLocked ), , "(bool isLocked)" 
             "@brief Lock or unlock the mouse to the window.\n\n"
             "When true, prevents the mouse from leaving the bounds of the game window.\n\n"
@@ -156,7 +147,6 @@ DefineConsoleFunction( lockMouse, void, (bool isLocked ), , "(bool isLocked)"
 }
 
 
-//ConsoleFunction( setNetPort, bool, 2, 3, "(int port, bool bind=true)"
 DefineConsoleFunction( setNetPort, bool, (int port, bool bind), (true), "(int port, bool bind=true)" 
    "@brief Set the network port for the game to use.\n\n"
 
@@ -169,14 +159,9 @@ DefineConsoleFunction( setNetPort, bool, (int port, bool bind), (true), "(int po
    "If you don't have firewall tunneling tech you can set this to false to avoid the prompt.\n\n"
    "@ingroup Networking")
 {
-   //bool bind = true;
-   //if (argc == 3)
-   //   bind = dAtob(argv[2]);
-   //return Net::openPort(dAtoi(argv[1]), bind);
    return Net::openPort((S32)port, bind);
 }
 
-//ConsoleFunction( closeNetPort, void, 1, 1, "()"
 DefineConsoleFunction( closeNetPort, void, (), , "()" 
    "@brief Closes the current network port\n\n"
    "@ingroup Networking")
@@ -184,7 +169,6 @@ DefineConsoleFunction( closeNetPort, void, (), , "()"
    Net::closePort();
 }
 
-//ConsoleFunction( saveJournal, void, 2, 2, "(string filename)"
 DefineConsoleFunction( saveJournal, void, (const char * filename), , "(string filename)" 
                 "Save the journal to the specified file.\n\n"
 				"@ingroup Platform")
@@ -192,7 +176,6 @@ DefineConsoleFunction( saveJournal, void, (const char * filename), , "(string fi
    Journal::Record(filename);
 }
 
-//ConsoleFunction( playJournal, void, 2, 3, "(string filename)"
 DefineConsoleFunction( playJournal, void, (const char * filename), , "(string filename)" 
                 "@brief Begin playback of a journal from a specified field.\n\n"
 				"@param filename Name and path of file journal file\n"
@@ -203,7 +186,6 @@ DefineConsoleFunction( playJournal, void, (const char * filename), , "(string fi
    Journal::Play(filename);
 }
 
-//ConsoleFunction( getSimTime, S32, 1, 1, "()"
 DefineConsoleFunction( getSimTime, S32, (), , "()" 
 				"Return the current sim time in milliseconds.\n\n"
                 "@brief Sim time is time since the game started.\n\n"
@@ -212,7 +194,6 @@ DefineConsoleFunction( getSimTime, S32, (), , "()"
    return Sim::getCurrentTime();
 }
 
-//ConsoleFunction( getRealTime, S32, 1, 1, "()"
 DefineConsoleFunction( getRealTime, S32, (), , "()" 
 				"@brief Return the current real time in milliseconds.\n\n"
                 "Real time is platform defined; typically time since the computer booted.\n\n"
@@ -269,183 +250,4 @@ bool serverProcess(U32 timeDelta)
 #endif
    return ret;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_activateDirectInput()
-{
-{
-      if ( !Input::isActive() )
-      Input::activate();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_closeNetPort()
-{
-{
-   Net::closePort();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_deactivateDirectInput()
-{
-{
-      if ( Input::isActive() )
-      Input::deactivate();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getRealTime()
-{
-{
-  return (S32)( Platform::getRealMilliseconds());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getSimTime()
-{
-{
-  return (S32)( Sim::getCurrentTime());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_lockMouse(bool isLocked)
-{
-{
-   Platform::setWindowLocked(isLocked);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_playJournal(char * x__filename)
-{
-const char* filename = (const char*)x__filename;
-{
-         Journal::Play(filename);
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_saveJournal(char * x__filename)
-{
-const char* filename = (const char*)x__filename;
-{
-   Journal::Record(filename);
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setNetPort(int port, bool bind)
-{
-
-bool wle_returnObject;
-{
-               {wle_returnObject =Net::openPort((S32)port, bind);
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_strToPlayerName(char * x__ptr,  char* retval)
-{
-dSprintf(retval,16384,"");
-const char* ptr = (const char*)x__ptr;
-const char* wle_returnObject;
-{
-   
-   
-	   while ( *ptr == ' ' || *ptr == '_' )
-      ptr++;
-   U32 len = dStrlen( ptr );
-   if ( len )
-   {
-      char* ret = Con::getReturnBuffer( MaxPlayerNameLength + 1 );
-      char* rptr = ret;
-      ret[MaxPlayerNameLength - 1] = '\0';
-      ret[MaxPlayerNameLength] = '\0';
-      bool space = false;
-      U8 ch;
-      while ( *ptr && dStrlen( ret ) < MaxPlayerNameLength )
-      {
-         ch = (U8) *ptr;
-                  if ( ch < 32 || ch == ',' || ch == '.' || ch == '\'' || ch == '`' )
-         {
-            ptr++;
-            continue;
-         }
-                  if ( ch == ' ' || ch == '_' )
-         {
-            if ( space )
-            {
-               ptr++;
-               continue;
-            }
-            else
-               space = true;
-         }
-         else
-            space = false;
-         *rptr++ = *ptr;
-         ptr++;
-      }
-      *rptr = '\0';
-				{wle_returnObject =GuiMLTextCtrl::stripControlChars(ret);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   }
-	{wle_returnObject =( "" );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
 

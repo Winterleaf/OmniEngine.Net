@@ -1400,128 +1400,77 @@ void GuiRiverEditorCtrl::_renderSelectedRiver( ObjectRenderInst *ri, SceneRender
    }
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, deleteNode, void, 2, 2, "deleteNode()" )
 DefineConsoleMethod( GuiRiverEditorCtrl, deleteNode, void, (), , "deleteNode()" )
 {
    object->deleteSelectedNode();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, getMode, const char*, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, getMode, const char*, (), , "" )
 {
    return object->getMode();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, setMode, void, 3, 3, "setMode( String mode )" )
 DefineConsoleMethod( GuiRiverEditorCtrl, setMode, void, ( const char * mode ), , "setMode( String mode )" )
 {
-   //String newMode = ( argv[2] );
    String newMode = ( mode );
    object->setMode( newMode );
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, getNodeWidth, F32, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, getNodeWidth, F32, (), , "" )
 {
    return object->getNodeWidth();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, setNodeWidth, void, 3, 3, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, setNodeWidth, void, ( F32 width ), , "" )
 {
-   //object->setNodeWidth( dAtof(argv[2]) );
    object->setNodeWidth( width );
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, getNodeDepth, F32, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, getNodeDepth, F32, (), , "" )
 {
    return object->getNodeDepth();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, setNodeDepth, void, 3, 3, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, setNodeDepth, void, ( F32 depth ), , "" )
 {
-   //object->setNodeDepth( dAtof(argv[2]) );
    object->setNodeDepth( depth );
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, getNodePosition, const char*, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, getNodePosition, Point3F, (), , "" )
 {
-	//char* returnBuffer = Con::getReturnBuffer(256);
-
-	//dSprintf(returnBuffer, 256, "%f %f %f",
-     // object->getNodePosition().x, object->getNodePosition().y, object->getNodePosition().z);
 
 	return  object->getNodePosition();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, setNodePosition, void, 3, 3, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, setNodePosition, void, (Point3F pos), , "" )
 {
-	//Point3F pos;
-
-	//S32 count = dSscanf( argv[2], "%f %f %f", 
-	//S32 count = dSscanf( position, "%f %f %f", 
-//		&pos.x, &pos.y, &pos.z);
-	
-//	if ( (count != 3) )
-   //{
-		//Con::printf("Failed to parse node information \"px py pz\" from '%s'", argv[3]);
-//		Con::printf("Failed to parse node information \"px py pz\" from '%s'", position);
-      //return;
-   //}
-
    object->setNodePosition( pos );
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, getNodeNormal, const char*, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, getNodeNormal, Point3F, (), , "" )
 {
-  /* char* returnBuffer = Con::getReturnBuffer(256);
-
-	dSprintf(returnBuffer, 256, "%f %f %f",
-      object->getNodeNormal().x, object->getNodeNormal().y, object->getNodeNormal().z);*/
 
 	return object->getNodeNormal();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, setNodeNormal, void, 3, 3, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, setNodeNormal, void, (Point3F normal), , "" )
 {
- //  VectorF normal;
-
-	////S32 count = dSscanf( argv[2], "%f %f %f", 
-	//S32 count = dSscanf( position, "%f %f %f", 
-	//	&normal.x, &normal.y, &normal.z);
-	//
-	//if ( (count != 3) )
- //  {
-	//	//Con::printf("Failed to parse node information \"px py pz\" from '%s'", argv[3]);
-	//	Con::printf("Failed to parse node information \"px py pz\" from '%s'", position);
- //     return;
- //  }
 
    object->setNodeNormal( normal );
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, setSelectedRiver, void, 2, 3, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, setSelectedRiver, void, (const char * objName), (""), "" )
 {
-   //if ( argc == 2 )
    if (dStrcmp( objName,"" )==0)
       object->setSelectedRiver(NULL);
    else
    {
       River *river = NULL;
-      //if ( Sim::findObject( argv[2], river ) )
       if ( Sim::findObject( objName, river ) )
          object->setSelectedRiver(river);
    }
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, getSelectedRiver, const char*, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, getSelectedRiver, S32, (), , "" )
 {
    River *river = object->getSelectedRiver();
@@ -1531,241 +1480,9 @@ DefineConsoleMethod( GuiRiverEditorCtrl, getSelectedRiver, S32, (), , "" )
 	return river->getId();
 }
 
-//ConsoleMethod( GuiRiverEditorCtrl, regenerate, void, 2, 2, "" )
 DefineConsoleMethod( GuiRiverEditorCtrl, regenerate, void, (), , "" )
 {
    River *river = object->getSelectedRiver();
    if ( river )
       river->regenerate();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_deleteNode(char * x__object)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->deleteSelectedNode();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_getMode(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getMode();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_GuiRiverEditorCtrl_getNodeDepth(char * x__object)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getNodeDepth());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_getNodeNormal(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-  
-	{wle_returnObject =object->getNodeNormal();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_getNodePosition(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-	
-	     
-	{wle_returnObject = object->getNodePosition();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fn_GuiRiverEditorCtrl_getNodeWidth(char * x__object)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getNodeWidth());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiRiverEditorCtrl_getSelectedRiver(char * x__object)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   River *river = object->getSelectedRiver();
-   if ( !river )
-     return (S32)( NULL);
-	return river->getId();
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_regenerate(char * x__object)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   River *river = object->getSelectedRiver();
-   if ( river )
-      river->regenerate();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_setMode(char * x__object, char * x__mode)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* mode = (const char*)x__mode;
-{
-      String newMode = ( mode );
-   object->setMode( newMode );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_setNodeDepth(char * x__object, F32 depth)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->setNodeDepth( depth );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_setNodeNormal(char * x__object, char * x__normal)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F normal = Point3F();
-sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
-{
- 
-					 		  
-   object->setNodeNormal( normal );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_setNodePosition(char * x__object, char * x__pos)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-{
-	
-			
-   		         
-   object->setNodePosition( pos );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_setNodeWidth(char * x__object, F32 width)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-      object->setNodeWidth( width );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiRiverEditorCtrl_setSelectedRiver(char * x__object, char * x__objName)
-{
-GuiRiverEditorCtrl* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* objName = (const char*)x__objName;
-{
-      if (dStrcmp( objName,"" )==0)
-      object->setSelectedRiver(NULL);
-   else
-   {
-      River *river = NULL;
-            if ( Sim::findObject( objName, river ) )
-         object->setSelectedRiver(river);
-   }
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

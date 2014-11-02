@@ -76,11 +76,12 @@ typedef double             F64;     ///< Compiler independent 64-bit float
 // size_t is needed to overload new
 // size_t tends to be OS and compiler specific and may need to
 // be if/def'ed in the future
-#ifdef _M_X64
-typedef unsigned __int64 dsize_t;
+
+#ifdef _WIN64
+typedef unsigned long long  dsize_t;
 #else
-typedef unsigned int dsize_t;
-#endif
+typedef unsigned int  dsize_t;
+#endif // _WIN64
 
 typedef const char* StringTableEntry;
 

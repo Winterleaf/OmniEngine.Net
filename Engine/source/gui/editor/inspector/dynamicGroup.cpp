@@ -99,6 +99,9 @@ static S32 QSORT_CALLBACK compareEntries(const void* a,const void* b)
 //-----------------------------------------------------------------------------
 bool GuiInspectorDynamicGroup::inspectGroup()
 {
+   if( !mParent )
+      return false;
+
    // clear the first responder if it's set
    mStack->clearFirstResponder();
 
@@ -174,7 +177,6 @@ void GuiInspectorDynamicGroup::updateAllFields()
    inspectGroup();
 }
 
-//ConsoleMethod(GuiInspectorDynamicGroup, inspectGroup, bool, 2, 2, "Refreshes the dynamic fields in the inspector.")
 DefineConsoleMethod(GuiInspectorDynamicGroup, inspectGroup, bool, (), , "Refreshes the dynamic fields in the inspector.")
 {
    return object->inspectGroup();
@@ -250,102 +252,11 @@ void GuiInspectorDynamicGroup::addDynamicField()
    instantExpand();
 }
 
-//ConsoleMethod( GuiInspectorDynamicGroup, addDynamicField, void, 2, 2, "obj.addDynamicField();" )
 DefineConsoleMethod( GuiInspectorDynamicGroup, addDynamicField, void, (), , "obj.addDynamicField();" )
 {
    object->addDynamicField();
 }
 
-//ConsoleMethod( GuiInspectorDynamicGroup, removeDynamicField, void, 3, 3, "" )
 DefineConsoleMethod( GuiInspectorDynamicGroup, removeDynamicField, void, (), , "" )
 {
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorDynamicGroup_addDynamicField(char * x__object)
-{
-GuiInspectorDynamicGroup* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->addDynamicField();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiInspectorDynamicGroup_inspectGroup(char * x__object)
-{
-GuiInspectorDynamicGroup* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->inspectGroup();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorDynamicGroup_removeDynamicField(char * x__object)
-{
-GuiInspectorDynamicGroup* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

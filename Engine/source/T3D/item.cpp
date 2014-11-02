@@ -893,7 +893,7 @@ void Item::updatePos(const U32 /*mask*/, const F32 dt)
             // Pick the most resistant surface
             F32 bd = 0;
             const Collision* collision = 0;
-            for (int c = 0; c < collisionList.getCount(); c++) {
+            for (S32 c = 0; c < collisionList.getCount(); c++) {
                const Collision &cp = collisionList[c];
                F32 dot = -mDot(mVelocity,cp.normal);
                if (dot > bd) {
@@ -1204,7 +1204,7 @@ DefineEngineMethod( Item, isRotating, bool, (),,
    return object->isRotating();
 }
 
-DefineEngineMethod( Item, setCollisionTimeout, bool, (int ignoreColObj),, 
+DefineEngineMethod( Item, setCollisionTimeout, bool, (S32 ignoreColObj),, 
    "@brief Temporarily disable collisions against a specific ShapeBase object.\n\n"
 
    "This is useful to prevent a player from immediately picking up an Item they have "
@@ -1241,9 +1241,10 @@ DefineEngineMethod( Item, getLastStickyPos, const char*, (),,
    "@note Server side only.\n"
    )
 {
-   char* ret = Con::getReturnBuffer(256);
+   static const U32 bufSize = 256;
+   char* ret = Con::getReturnBuffer(bufSize);
    if (object->isServerObject())
-      dSprintf(ret, 255, "%g %g %g",
+      dSprintf(ret, bufSize, "%g %g %g",
                object->mStickyCollisionPos.x,
                object->mStickyCollisionPos.y,
                object->mStickyCollisionPos.z);
@@ -1263,9 +1264,10 @@ DefineEngineMethod( Item, getLastStickyNormal, const char *, (),,
    "@note Server side only.\n"
    )
 {
-   char* ret = Con::getReturnBuffer(256);
+   static const U32 bufSize = 256;
+   char* ret = Con::getReturnBuffer(bufSize);
    if (object->isServerObject())
-      dSprintf(ret, 255, "%g %g %g",
+      dSprintf(ret, bufSize, "%g %g %g",
                object->mStickyCollisionNormal.x,
                object->mStickyCollisionNormal.y,
                object->mStickyCollisionNormal.z);
@@ -1384,162 +1386,3 @@ void Item::advanceTime(F32 dt)
    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnItem_getLastStickyNormal(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-Item* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-   char* ret = Con::getReturnBuffer(256);
-   if (object->isServerObject())
-      dSprintf(ret, 255, "%g %g %g",
-               object->mStickyCollisionNormal.x,
-               object->mStickyCollisionNormal.y,
-               object->mStickyCollisionNormal.z);
-   else
-      dStrcpy(ret, "0 0 0");
-   {wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnItem_getLastStickyPos(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-Item* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   char* ret = Con::getReturnBuffer(256);
-   if (object->isServerObject())
-      dSprintf(ret, 255, "%g %g %g",
-               object->mStickyCollisionPos.x,
-               object->mStickyCollisionPos.y,
-               object->mStickyCollisionPos.z);
-   else
-      dStrcpy(ret, "0 0 0");
-   {wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_isAtRest(char * x__object)
-{
-Item* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->isAtRest();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_isRotating(char * x__object)
-{
-Item* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->isRotating();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_isStatic(char * x__object)
-{
-Item* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->isStatic();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_setCollisionTimeout(char * x__object, int ignoreColObj)
-{
-Item* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   ShapeBase* source = NULL;
-   if (Sim::findObject(ignoreColObj,source)) {
-      object->setCollisionTimeout(source);
-      {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

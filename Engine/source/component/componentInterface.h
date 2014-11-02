@@ -144,7 +144,7 @@ public:
    /// Copy constructor
    ComponentProperty( const T &copy )
    {
-      this->ComponentProperty:ComponentProperty();
+      ComponentProperty();
 
       // CodeReview [patw, 2, 13, 2007] So, the reasoning here is that I want to
       // use the functionality that a specialized template implements in the set

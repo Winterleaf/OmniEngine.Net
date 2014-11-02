@@ -27,6 +27,9 @@
 
 #include "console/consoleXMLExport.h"
 
+
+#if 0
+
 namespace Con {
 
    XMLExport::XMLExport()
@@ -250,38 +253,38 @@ namespace Con {
 
       mXML->popElement(); // Namespaces
 
-      //mXML->pushNewElement("EnumTables");
-	  //
-      //// write out the used EnumTables
-      //for (int i = 0; i < enumTables.size(); i++)
-      //{
-      //   mXML->pushNewElement("EnumTable");
-	  //
-      //   const EnumTable* table = enumTables[i];
-	  //
-      //   mXML->setAttribute("name", table->name);
-      //   mXML->setAttribute("firstFlag", avar("%i", table->firstFlag));
-      //   mXML->setAttribute("mask", avar("%i", table->mask));
-	  //
-      //   mXML->pushNewElement("Enums");
-	  //
-      //   for (int j = 0; j < table->size; j++)
-      //   {
-      //      mXML->pushNewElement("Enum");
-	  //
-      //      mXML->setAttribute("name", table->table[j].label);
-      //      mXML->setAttribute("index", avar("%i", table->table[j].index));
-	  //
-      //      mXML->popElement(); // Enum
-	  //
-      //   }
-	  //
-      //   mXML->popElement(); //Enums
-	  //
-      //   mXML->popElement(); // EnumTable
-      //}
-	  //
-      //mXML->popElement(); // EnumTables
+      mXML->pushNewElement("EnumTables");
+
+      // write out the used EnumTables
+      for (S32 i = 0; i < enumTables.size(); i++)
+      {
+         mXML->pushNewElement("EnumTable");
+
+         const EnumTable* table = enumTables[i];
+
+         mXML->setAttribute("name", table->name);
+         mXML->setAttribute("firstFlag", avar("%i", table->firstFlag));
+         mXML->setAttribute("mask", avar("%i", table->mask));
+
+         mXML->pushNewElement("Enums");
+
+         for (S32 j = 0; j < table->size; j++)
+         {
+            mXML->pushNewElement("Enum");
+
+            mXML->setAttribute("name", table->table[j].label);
+            mXML->setAttribute("index", avar("%i", table->table[j].index));
+
+            mXML->popElement(); // Enum
+
+         }
+
+         mXML->popElement(); //Enums
+
+         mXML->popElement(); // EnumTable
+      }
+
+      mXML->popElement(); // EnumTables
       
    }
 
@@ -311,7 +314,6 @@ namespace Con {
 }; // namespace Con
 
 
-//ConsoleFunction(consoleExportXML, const char*, 1, 1, "Exports console definition XML representation")
 DefineConsoleFunction( consoleExportXML, const char*, (), ,"Exports console definition XML representation" )
 {
    Con::XMLExport xmlExport;
@@ -322,81 +324,4 @@ DefineConsoleFunction( consoleExportXML, const char*, (), ,"Exports console defi
    return ret;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_consoleExportXML(char* retval)
-{
-dSprintf(retval,16384,"");
-const char* wle_returnObject;
-{
-   Con::XMLExport xmlExport;
-   String xml;
-   xmlExport.exportXML(xml);
-   char* ret = Con::getReturnBuffer(xml.length() + 1);
-   dStrcpy(ret, xml.c_str());
-   {wle_returnObject =ret;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-
+#endif

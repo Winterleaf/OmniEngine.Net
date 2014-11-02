@@ -25,7 +25,7 @@
 #include "gfx/primBuilder.h"
 #include "gfx/D3D9/gfxD3D9CardProfiler.h"
 #include "gfx/D3D9/gfxD3D9EnumTranslate.h"
-#if defined (TORQUE_OS_WIN32) || defined (TORQUE_OS_WIN64)
+#ifdef TORQUE_OS_WIN
 #include "platformWin32/videoInfo/wmiVideoInfo.h"
 #endif
 
@@ -47,12 +47,7 @@ void GFXD3D9CardProfiler::init()
 
    // Grab the caps so we can get our adapter ordinal and look up our name.
    D3DCAPS9 caps;
-   HRESULT hr = mD3DDevice->GetDeviceCaps(&caps);
-   
-   if(FAILED(hr))
-   {
-      AssertFatal(false, "GFXD3D9CardProfiler::init - failed to get device caps!");
-   }
+   D3D9Assert(mD3DDevice->GetDeviceCaps(&caps), "GFXD3D9CardProfiler::init - failed to get device caps!");
 
 #ifdef TORQUE_OS_XENON
    mCardDescription = "Xbox360 GPU";

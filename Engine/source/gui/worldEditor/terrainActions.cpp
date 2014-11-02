@@ -797,13 +797,8 @@ void TerrainSmoothAction::smooth( TerrainBlock *terrain, F32 factor, U32 steps )
    redo();
 }
 
-//ConsoleMethod( TerrainSmoothAction, smooth, void, 5, 5, "( TerrainBlock obj, F32 factor, U32 steps )")
 DefineConsoleMethod( TerrainSmoothAction, smooth, void, ( TerrainBlock *terrain, F32 factor, U32 steps ), , "( TerrainBlock obj, F32 factor, U32 steps )")
 {
-   //TerrainBlock *terrain = NULL;
-   //if ( Sim::findObject( argv[2], terrain ) && terrain )
-   //if ( Sim::findObject( objName, terrain ) && terrain )
-   	//object->smooth( terrain, dAtof( argv[3] ), mClamp( dAtoi( argv[4] ), 1, 13 ) );
 	if (terrain)
    	object->smooth( terrain, factor, mClamp( steps, 1, 13 ) );
 }
@@ -1139,85 +1134,3 @@ void TerrainSolderEdgesAction::setAvgHeight(
       terrain->getFile()->setHeight( i, h );
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainSmoothAction_smooth(char * x__object, char * x__terrain, F32 factor, U32 steps)
-{
-TerrainSmoothAction* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-TerrainBlock* terrain; Sim::findObject(x__terrain, terrain ); 
-
-{
-            		if (terrain)
-   	object->smooth( terrain, factor, mClamp( steps, 1, 13 ) );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainSolderEdgesAction_solder(char * x__object)
-{
-TerrainSolderEdgesAction* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->solder();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

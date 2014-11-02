@@ -115,11 +115,12 @@ IMPLEMENT_CALLBACK( ShapeBaseData, onTrigger, void, ( ShapeBase* obj, S32 index,
    "@param index Index of the trigger that changed\n"
    "@param state New state of the trigger\n" );
 
-IMPLEMENT_CALLBACK( ShapeBaseData, onEndSequence, void, ( ShapeBase* obj, S32 slot ), ( obj, slot ),
+IMPLEMENT_CALLBACK(ShapeBaseData, onEndSequence, void, (ShapeBase* obj, S32 slot, const char* name), (obj, slot, name),
    "@brief Called when a thread playing a non-cyclic sequence reaches the end of the "
    "sequence.\n\n"
    "@param obj The ShapeBase object\n"
-   "@param slot Thread slot that finished playing\n" );
+   "@param slot Thread slot that finished playing\n"
+   "@param name Thread name that finished playing\n");
 
 IMPLEMENT_CALLBACK( ShapeBaseData, onForceUncloak, void, ( ShapeBase* obj, const char* reason ), ( obj, reason ),
    "@brief Called when the object is forced to uncloak.\n\n"
@@ -307,7 +308,10 @@ bool ShapeBaseData::preload(bool server, String &errorStr)
          Torque::FS::FileNodeRef    fileRef = Torque::FS::GetFileNode(mShape.getPath());
 
          if (!fileRef)
+         {
+            errorStr = String::ToString("ShapeBaseData: Couldn't load shape \"%s\"",shapeName);
             return false;
+         }
 
          if(server)
             mCRC = fileRef->getChecksum();
@@ -899,17 +903,9 @@ ShapeBase::ShapeBase()
    mCloakLevel( 0.0f ),
    mDamageFlash( 0.0f ),
    mWhiteOut( 0.0f ),
-   mInvincibleEffect( 0.0f ),
-   mInvincibleDelta( 0.0f ),
-   mInvincibleCount( 0.0f ),
-   mInvincibleSpeed( 0.0f ),
-   mInvincibleTime( 0.0f ),
-   mInvincibleFade( 0.1f ),
-   mInvincibleOn( false ),
    mIsControlled( false ),
    mConvexList( new Convex ),
    mCameraFov( 90.0f ),
-   mShieldNormal( 0.0f, 0.0f, 1.0f ),
    mFadeOut( true ),
    mFading( false ),
    mFadeVal( 1.0f ),
@@ -940,7 +936,6 @@ ShapeBase::ShapeBase()
    for (i = 0; i < MaxScriptThreads; i++) {
       mScriptThread[i].sequence = -1;
       mScriptThread[i].thread = 0;
-      mScriptThread[i].sound = 0;
       mScriptThread[i].state = Thread::Stop;
       mScriptThread[i].atEnd = false;
 	   mScriptThread[i].timescale = 1.f;
@@ -1307,7 +1302,7 @@ void ShapeBase::processTick(const Move* move)
       {
          mMoveMotion = true;
       }
-      for (int i = 0; i < MaxMountedImages; i++)
+      for (S32 i = 0; i < MaxMountedImages; i++)
       {
          setImageMotionState(i, mMoveMotion);
       }
@@ -1330,7 +1325,7 @@ void ShapeBase::processTick(const Move* move)
    // Advance images
    if (isServerObject())
    {
-      for (int i = 0; i < MaxMountedImages; i++)
+      for (S32 i = 0; i < MaxMountedImages; i++)
       {
          if (mMountedImageList[i].dataBlock)
             updateImageState(i, TickSec);
@@ -1372,7 +1367,7 @@ void ShapeBase::advanceTime(F32 dt)
    // advanced at framerate.
    advanceThreads(dt);
    updateAudioPos();
-   for (int i = 0; i < MaxMountedImages; i++)
+   for (S32 i = 0; i < MaxMountedImages; i++)
       if (mMountedImageList[i].dataBlock)
       {
          updateImageState(i, dt);
@@ -1407,9 +1402,6 @@ void ShapeBase::advanceTime(F32 dt)
             mCloakLevel = 0.0;
       }
    }
-   if(mInvincibleOn)
-      updateInvincibleEffect(dt);
-
    if(mFading)
    {
       mFadeElapsedTime += dt;
@@ -2019,119 +2011,6 @@ void ShapeBase::getCameraTransform(F32* pos,MatrixF* mat)
    mat->mul( gCamFXMgr.getTrans() );
 }
 
-// void ShapeBase::getCameraTransform(F32* pos,MatrixF* mat)
-// {
-//    // Returns camera to world space transform
-//    // Handles first person / third person camera position
-
-//    if (isServerObject() && mShapeInstance)
-//       mShapeInstance->animateNodeSubtrees(true);
-
-//    if (*pos != 0) {
-//       F32 min,max;
-//       Point3F offset;
-//       MatrixF eye,rot;
-//       getCameraParameters(&min,&max,&offset,&rot);
-//       getRenderEyeTransform(&eye);
-//       mat->mul(eye,rot);
-
-//       // Use the eye transform to orient the camera
-//       VectorF vp,vec;
-//       vp.x = vp.z = 0;
-//       vp.y = -(max - min) * *pos;
-//       eye.mulV(vp,&vec);
-
-//       // Use the camera node's pos.
-//       Point3F osp,sp;
-//       if (mDataBlock->cameraNode != -1) {
-//          mShapeInstance->mNodeTransforms[mDataBlock->cameraNode].getColumn(3,&osp);
-//          getRenderTransform().mulP(osp,&sp);
-//       }
-//       else
-//          getRenderTransform().getColumn(3,&sp);
-
-//       // Make sure we don't extend the camera into anything solid
-//       Point3F ep = sp + vec;
-//       ep += offset;
-//       disableCollision();
-//       if (isMounted())
-//          getObjectMount()->disableCollision();
-//       RayInfo collision;
-//       if (mContainer->castRay(sp,ep,(0xFFFFFFFF & ~(WaterObjectType|ForceFieldObjectType|GameBaseObjectType|DefaultObjectType)),&collision)) {
-//          *pos = collision.t *= 0.9;
-//          if (*pos == 0)
-//             eye.getColumn(3,&ep);
-//          else
-//             ep = sp + vec * *pos;
-//       }
-//       mat->setColumn(3,ep);
-//       if (isMounted())
-//          getObjectMount()->enableCollision();
-//       enableCollision();
-//    }
-//    else
-//    {
-//       getRenderEyeTransform(mat);
-//    }
-// }
-
-
-// void ShapeBase::getRenderCameraTransform(F32* pos,MatrixF* mat)
-// {
-//    // Returns camera to world space transform
-//    // Handles first person / third person camera position
-
-//    if (isServerObject() && mShapeInstance)
-//       mShapeInstance->animateNodeSubtrees(true);
-
-//    if (*pos != 0) {
-//       F32 min,max;
-//       Point3F offset;
-//       MatrixF eye,rot;
-//       getCameraParameters(&min,&max,&offset,&rot);
-//       getRenderEyeTransform(&eye);
-//       mat->mul(eye,rot);
-
-//       // Use the eye transform to orient the camera
-//       VectorF vp,vec;
-//       vp.x = vp.z = 0;
-//       vp.y = -(max - min) * *pos;
-//       eye.mulV(vp,&vec);
-
-//       // Use the camera node's pos.
-//       Point3F osp,sp;
-//       if (mDataBlock->cameraNode != -1) {
-//          mShapeInstance->mNodeTransforms[mDataBlock->cameraNode].getColumn(3,&osp);
-//          getRenderTransform().mulP(osp,&sp);
-//       }
-//       else
-//          getRenderTransform().getColumn(3,&sp);
-
-//       // Make sure we don't extend the camera into anything solid
-//       Point3F ep = sp + vec;
-//       ep += offset;
-//       disableCollision();
-//       if (isMounted())
-//          getObjectMount()->disableCollision();
-//       RayInfo collision;
-//       if (mContainer->castRay(sp,ep,(0xFFFFFFFF & ~(WaterObjectType|ForceFieldObjectType|GameBaseObjectType|DefaultObjectType)),&collision)) {
-//          *pos = collision.t *= 0.9;
-//          if (*pos == 0)
-//             eye.getColumn(3,&ep);
-//          else
-//             ep = sp + vec * *pos;
-//       }
-//       mat->setColumn(3,ep);
-//       if (isMounted())
-//          getObjectMount()->enableCollision();
-//       enableCollision();
-//    }
-//    else
-//    {
-//       getRenderEyeTransform(mat);
-//    }
-// }
-
 void ShapeBase::getCameraParameters(F32 *min,F32* max,Point3F* off,MatrixF* rot)
 {
    *min = mDataBlock->cameraMinDist;
@@ -2185,52 +2064,6 @@ bool ShapeBase::useObjsEyePoint() const
    return mDataBlock->useEyePoint;
 }
 
-
-//----------------------------------------------------------------------------
-F32 ShapeBase::getInvincibleEffect() const
-{
-   return mInvincibleEffect;
-}
-
-void ShapeBase::setupInvincibleEffect(F32 time, F32 speed)
-{
-   if(isClientObject())
-   {
-      mInvincibleCount = mInvincibleTime = time;
-      mInvincibleSpeed = mInvincibleDelta = speed;
-      mInvincibleEffect = 0.0f;
-      mInvincibleOn = true;
-      mInvincibleFade = 1.0f;
-   }
-   else
-   {
-      mInvincibleTime  = time;
-      mInvincibleSpeed = speed;
-      setMaskBits(InvincibleMask);
-   }
-}
-
-void ShapeBase::updateInvincibleEffect(F32 dt)
-{
-   if(mInvincibleCount > 0.0f )
-   {
-      if(mInvincibleEffect >= ((0.3 * mInvincibleFade) + 0.05f) && mInvincibleDelta > 0.0f)
-         mInvincibleDelta = -mInvincibleSpeed;
-      else if(mInvincibleEffect <= 0.05f && mInvincibleDelta < 0.0f)
-      {
-         mInvincibleDelta = mInvincibleSpeed;
-         mInvincibleFade = mInvincibleCount / mInvincibleTime;
-      }
-      mInvincibleEffect += mInvincibleDelta;
-      mInvincibleCount -= dt;
-   }
-   else
-   {
-      mInvincibleEffect = 0.0f;
-      mInvincibleOn = false;
-   }
-}
-
 //----------------------------------------------------------------------------
 void ShapeBase::setVelocity(const VectorF&)
 {
@@ -2272,7 +2105,7 @@ void ShapeBase::stopAudio(U32 slot)
 void ShapeBase::updateServerAudio()
 {
    // Timeout non-looping sounds
-   for (int i = 0; i < MaxSoundThreads; i++) {
+   for (S32 i = 0; i < MaxSoundThreads; i++) {
       Sound& st = mSoundThread[i];
       if (st.play && st.timeout && st.timeout < Sim::getCurrentTime()) {
          clearMaskBits(SoundMaskN << i);
@@ -2312,7 +2145,7 @@ void ShapeBase::updateAudioState(Sound& st)
 
 void ShapeBase::updateAudioPos()
 {
-   for (int i = 0; i < MaxSoundThreads; i++)
+   for (S32 i = 0; i < MaxSoundThreads; i++)
    {
       SFXSource* source = mSoundThread[i].sound;
       if ( source )
@@ -2354,14 +2187,13 @@ bool ShapeBase::setThreadSequence(U32 slot, S32 seq, bool reset)
       if (reset) {
          st.state = Thread::Play;
          st.atEnd = false;
-		 st.timescale = 1.f;
-		 st.position = 0.f;
+         st.timescale = 1.f;
+         st.position = 0.f;
       }
       if (mShapeInstance) {
          if (!st.thread)
             st.thread = mShapeInstance->addThread();
-         mShapeInstance->setSequence(st.thread,seq,0);
-         stopThreadSound(st);
+         mShapeInstance->setSequence(st.thread,seq,st.position);
          updateThread(st);
       }
       return true;
@@ -2376,19 +2208,12 @@ void ShapeBase::updateThread(Thread& st)
 		case Thread::Stop:
 			{
 				mShapeInstance->setTimeScale( st.thread, 1.f );
-				mShapeInstance->setPos( st.thread, ( st.timescale > 0.f ) ? 0.0f : 1.0f );
+				mShapeInstance->setPos( st.thread, ( st.timescale > 0.f ) ? 1.0f : 0.0f );
 			} // Drop through to pause state
 
 		case Thread::Pause:
 			{
-				if ( st.position != -1.f )
-				{
-					mShapeInstance->setTimeScale( st.thread, 1.f );
-					mShapeInstance->setPos( st.thread, st.position );
-				}
-
 				mShapeInstance->setTimeScale( st.thread, 0.f );
-				stopThreadSound( st );
 			} break;
 
 		case Thread::Play:
@@ -2398,7 +2223,6 @@ void ShapeBase::updateThread(Thread& st)
 					mShapeInstance->setTimeScale(st.thread,1);
 					mShapeInstance->setPos( st.thread, ( st.timescale > 0.f ) ? 1.0f : 0.0f );
 					mShapeInstance->setTimeScale(st.thread,0);
-					stopThreadSound(st);
                st.state = Thread::Stop;
 				}
 				else
@@ -2410,16 +2234,11 @@ void ShapeBase::updateThread(Thread& st)
 					}
 
 					mShapeInstance->setTimeScale(st.thread, st.timescale );
-					if (!st.sound)
-					{
-						startSequenceSound(st);
-					}
 				}
 			} break;
 
       case Thread::Destroy:
          {
-				stopThreadSound(st);
             st.atEnd = true;
             st.sequence = -1;
             if(st.thread)
@@ -2527,19 +2346,6 @@ bool ShapeBase::setThreadTimeScale( U32 slot, F32 timeScale )
 	return false;
 }
 
-void ShapeBase::stopThreadSound(Thread& thread)
-{
-   if (thread.sound) {
-   }
-}
-
-void ShapeBase::startSequenceSound(Thread& thread)
-{
-   if (!isGhost() || !thread.thread)
-      return;
-   stopThreadSound(thread);
-}
-
 void ShapeBase::advanceThreads(F32 dt)
 {
    for (U32 i = 0; i < MaxScriptThreads; i++) {
@@ -2551,7 +2357,7 @@ void ShapeBase::advanceThreads(F32 dt)
             st.atEnd = true;
             updateThread(st);
             if (!isGhost()) {
-               mDataBlock->onEndSequence_callback( this, i );
+               mDataBlock->onEndSequence_callback(this, i, this->getThreadSequenceName(i));
             }
          }
 
@@ -2560,6 +2366,7 @@ void ShapeBase::advanceThreads(F32 dt)
          if(st.thread)
          {
             mShapeInstance->advanceTime(dt,st.thread);
+            st.position = mShapeInstance->getPos(st.thread);
          }
       }
    }
@@ -3154,8 +2961,7 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
    }
 
    if(!stream->writeFlag(mask & (NameMask | DamageMask | SoundMask | MeshHiddenMask |
-         ThreadMask | ImageMask | CloakMask | InvincibleMask |
-         ShieldMask | SkinMask)))
+         ThreadMask | ImageMask | CloakMask | SkinMask)))
       return retMask;
 
    if (stream->writeFlag(mask & DamageMask)) {
@@ -3165,7 +2971,7 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
    }
 
    if (stream->writeFlag(mask & ThreadMask)) {
-      for (int i = 0; i < MaxScriptThreads; i++) {
+      for (S32 i = 0; i < MaxScriptThreads; i++) {
          Thread& st = mScriptThread[i];
          if (stream->writeFlag( (st.sequence != -1 || st.state == Thread::Destroy) && (mask & (ThreadMaskN << i)) ) ) {
             stream->writeInt(st.sequence,ThreadSequenceBits);
@@ -3178,7 +2984,7 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
    }
 
    if (stream->writeFlag(mask & SoundMask)) {
-      for (int i = 0; i < MaxSoundThreads; i++) {
+      for (S32 i = 0; i < MaxSoundThreads; i++) {
          Sound& st = mSoundThread[i];
          if (stream->writeFlag(mask & (SoundMaskN << i)))
             if (stream->writeFlag(st.play))
@@ -3188,7 +2994,7 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
    }
 
    if (stream->writeFlag(mask & ImageMask)) {
-      for (int i = 0; i < MaxMountedImages; i++)
+      for (S32 i = 0; i < MaxMountedImages; i++)
          if (stream->writeFlag(mask & (ImageMaskN << i))) {
             MountedImage& image = mMountedImageList[i];
             if (stream->writeFlag(image.dataBlock))
@@ -3210,9 +3016,9 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
             stream->writeFlag(image.triggerDown);
             stream->writeFlag(image.altTriggerDown);
 
-            for (U32 ui=0; ui<ShapeBaseImageData::MaxGenericTriggers; ++ui)
+            for (U32 j=0; j<ShapeBaseImageData::MaxGenericTriggers; ++j)
             {
-               stream->writeFlag(image.genericTrigger[ui]);
+               stream->writeFlag(image.genericTrigger[j]);
             }
 
             stream->writeInt(image.fireCount,3);            
@@ -3225,7 +3031,7 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
    }
 
    // Group some of the uncommon stuff together.
-   if (stream->writeFlag(mask & (NameMask | ShieldMask | CloakMask | InvincibleMask | SkinMask | MeshHiddenMask ))) {
+   if (stream->writeFlag(mask & (NameMask | CloakMask | SkinMask | MeshHiddenMask ))) {
          
       if (stream->writeFlag(mask & CloakMask))
       {
@@ -3245,14 +3051,6 @@ U32 ShapeBase::packUpdate(NetConnection *con, U32 mask, BitStream *stream)
       }
       if (stream->writeFlag(mask & NameMask)) {
          con->packNetStringHandleU(stream, mShapeNameHandle);
-      }
-      if (stream->writeFlag(mask & ShieldMask)) {
-         stream->writeNormalVector(mShieldNormal, ShieldNormalBits);
-         stream->writeFloat( getEnergyValue(), EnergyLevelBits );
-      }
-      if (stream->writeFlag(mask & InvincibleMask)) {
-         stream->write(mInvincibleTime);
-         stream->write(mInvincibleSpeed);
       }
 
       if ( stream->writeFlag( mask & MeshHiddenMask ) )
@@ -3289,9 +3087,9 @@ void ShapeBase::unpackUpdate(NetConnection *con, BitStream *stream)
          if (stream->readFlag()) {
             Thread& st = mScriptThread[i];
             U32 seq = stream->readInt(ThreadSequenceBits);
-            st.state = stream->readInt(2);
-			stream->read( &st.timescale );
-			stream->read( &st.position );
+            st.state = Thread::State(stream->readInt(2));
+            stream->read( &st.timescale );
+            stream->read( &st.position );
             st.atEnd = stream->readFlag();
             if (st.sequence != seq && st.state != Thread::Destroy)
                setThreadSequence(i,seq,false);
@@ -3323,7 +3121,7 @@ void ShapeBase::unpackUpdate(NetConnection *con, BitStream *stream)
 
    // Mounted Images
    if (stream->readFlag()) {
-      for (int i = 0; i < MaxMountedImages; i++) {
+      for (S32 i = 0; i < MaxMountedImages; i++) {
          if (stream->readFlag()) {
             MountedImage& image = mMountedImageList[i];
             ShapeBaseImageData* imageData = 0;
@@ -3355,14 +3153,14 @@ void ShapeBase::unpackUpdate(NetConnection *con, BitStream *stream)
             image.triggerDown = stream->readFlag();
             image.altTriggerDown = stream->readFlag();
 
-            for (U32 ui=0; ui<ShapeBaseImageData::MaxGenericTriggers; ++ui)
+            for (U32 j=0; j<ShapeBaseImageData::MaxGenericTriggers; ++j)
             {
-               image.genericTrigger[ui] = stream->readFlag();
+               image.genericTrigger[j] = stream->readFlag();
             }
 
-            int count = stream->readInt(3);
-            int altCount = stream->readInt(3);
-            int reloadCount = stream->readInt(3);
+            S32 count = stream->readInt(3);
+            S32 altCount = stream->readInt(3);
+            S32 reloadCount = stream->readInt(3);
 
             bool datablockChange = image.dataBlock != imageData;
             if (datablockChange || (image.skinNameHandle != skinDesiredNameHandle))
@@ -3494,25 +3292,6 @@ void ShapeBase::unpackUpdate(NetConnection *con, BitStream *stream)
       }
       if (stream->readFlag())  { // NameMask
          mShapeNameHandle = con->unpackNetStringHandleU(stream);
-      }
-      if(stream->readFlag())     // ShieldMask
-      {
-         // Cloaking, Shield, and invul masking
-         Point3F shieldNormal;
-         stream->readNormalVector(&shieldNormal, ShieldNormalBits);
-         
-         // CodeReview [bjg 4/6/07] This is our energy level - why aren't we storing it? Was in a
-         // local variable called energyPercent.
-         stream->readFloat(EnergyLevelBits);
-      }
-
-      if (stream->readFlag()) 
-      {
-         // InvincibleMask
-         F32 time, speed;
-         stream->read(&time);
-         stream->read(&speed);
-         setupInvincibleEffect(time, speed);
       }
       
       if ( stream->readFlag() ) // MeshHiddenMask
@@ -3794,7 +3573,7 @@ void ShapeBase::reSkin()
       Vector<String> skins;
       String(mSkinNameHandle.getString()).split( ";", skins );
 
-      for (int i = 0; i < skins.size(); i++)
+      for (S32 i = 0; i < skins.size(); i++)
       {
          String oldSkin( mAppliedSkinName.c_str() );
          String newSkin( skins[i] );
@@ -4482,7 +4261,7 @@ DefineEngineMethod( ShapeBase, getEyeTransform, TransformF, (),,
    return mat;
 }
 
-DefineEngineMethod( ShapeBase, getLookAtPoint, const char*, ( F32 distance, U32 typeMask ), ( 2000, 0xFFFFFFFF ),
+DefineEngineMethod( ShapeBase, getLookAtPoint, const char*, ( F32 distance, S32 typeMask ), ( 2000, 0xFFFFFFFF ),
    "@brief Get the world position this object is looking at.\n\n"
 
    "Casts a ray from the eye and returns information about what the ray hits.\n"
@@ -4878,18 +4657,6 @@ DefineEngineMethod( ShapeBase, setCameraFov, void, ( F32 fov ),,
       object->setCameraFov( fov );
 }
 
-DefineEngineMethod( ShapeBase, setInvincibleMode, void, ( F32 time, F32 speed ),,
-   "@brief Setup the invincible effect.\n\n"
-
-   "This effect is used for HUD feedback to the user that they are invincible.\n"
-   "@note Currently not implemented\n"
-
-   "@param time duration in seconds for the invincible effect\n"
-   "@param speed speed at which the invincible effect progresses\n" )
-{
-   object->setupInvincibleEffect( time, speed );
-}
-
 DefineEngineMethod( ShapeBase, startFade, void, ( S32 time, S32 delay, bool fadeOut ),,
    "@brief Fade the object in or out without removing it from the scene.\n\n"
 
@@ -5231,1436 +4998,3 @@ DefineEngineMethod( ShapeBase, getModelFile, const char *, (),,
 	const char *fieldName = StringTable->insert( String("shapeFile") );
    return datablock->getDataField( fieldName, NULL );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_applyDamage(char * x__object, F32 amount)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->applyDamage( amount );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_applyImpulse(char * x__object, char * x__pos, char * x__vec)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-Point3F vec = Point3F();
-sscanf(x__vec,"%f %f %f",&vec.x,&vec.y,&vec.z);
-bool wle_returnObject;
-{
-   object->applyImpulse( pos, vec );
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_applyRepair(char * x__object, F32 amount)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->applyRepair( amount );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_blowUp(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->blowUp();
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_canCloak(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_changeMaterial(char * x__object, char * x__mapTo, char * x__oldMat, char * x__newMat)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* mapTo = (const char*)x__mapTo;
-Material* oldMat; Sim::findObject(x__oldMat, oldMat ); 
-Material* newMat; Sim::findObject(x__newMat, newMat ); 
-{
-      if( !newMat )
-   {
-      Con::errorf("ShapeBase::changeMaterial failed: New material does not exist!");
-      return;
-   }
-      ShapeBase *serverObj = object;
-   ShapeBase *clientObj = dynamic_cast< ShapeBase* > ( object->getClientObject() );
-      S32 matIndex = serverObj->getShape()->materialList->getMaterialNameList().find_next(String(mapTo));
-   if (matIndex < 0)
-   {
-      Con::errorf("ShapeBase::changeMaterial failed: Invalid mapTo name '%s'", mapTo);
-      return;
-   }
-      if( oldMat )
-      oldMat->mMapTo = String("unmapped_mat");
-   newMat->mMapTo = mapTo;
-      MATMGR->mapMaterial( mapTo, newMat->getName() );
-            delete serverObj->getShape()->materialList->mMatInstList[matIndex];
-   serverObj->getShape()->materialList->mMatInstList[matIndex] = newMat->createMatInstance();
-   if (clientObj)
-   {
-      delete clientObj->getShape()->materialList->mMatInstList[matIndex];
-      clientObj->getShape()->materialList->mMatInstList[matIndex] = newMat->createMatInstance();
-   }
-      const GFXVertexFormat *flags = getGFXVertexFormat<GFXVertexPNTTB>();
-   FeatureSet features = MATMGR->getDefaultFeatures();
-   serverObj->getShape()->materialList->getMaterialInst(matIndex)->init( features, flags );
-   if (clientObj)
-      clientObj->getShapeInstance()->mMaterialList->getMaterialInst(matIndex)->init( features, flags );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_destroyThread(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (object->destroyThread(slot))
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_dumpMeshVisibility(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->dumpMeshVisibility();
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getAIRepairPoint(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-   {wle_returnObject =object->getAIRepairPoint();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getCameraFov(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-   if (object->isServerObject())
-     return (F32)( object->getCameraFov());
-  return (F32)( 0.0);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getControllingClient(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if (GameConnection* con = object->getControllingClient())
-     return (S32)( con->getId());
-  return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getControllingObject(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if (ShapeBase* con = object->getControllingObject())
-     return (S32)( con->getId());
-  return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getDamageFlash(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getDamageFlash());
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getDamageLevel(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getDamageLevel());
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getDamagePercent(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getDamageValue());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getDamageState(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getDamageStateName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getDefaultCameraFov(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-   if (object->isServerObject())
-     return (F32)( object->getDefaultCameraFov());
-  return (F32)( 0.0);
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getEnergyLevel(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getEnergyLevel());
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getEnergyPercent(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getEnergyValue());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getEyePoint(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-   MatrixF mat;
-   object->getEyeTransform(&mat);
-   {wle_returnObject =mat.getPosition();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getEyeTransform(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-TransformF wle_returnObject;
-{
-   MatrixF mat;
-   object->getEyeTransform(&mat);
-   {wle_returnObject =mat;
-dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getEyeVector(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-VectorF wle_returnObject;
-{
-   MatrixF mat;
-   object->getEyeTransform(&mat);
-   {wle_returnObject =mat.getForwardVector();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageAltTrigger(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageAltTriggerState(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageAmmo(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageAmmoState(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageGenericTrigger(char * x__object, S32 slot, S32 trigger)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages && trigger >= 0 && trigger < ShapeBaseImageData::MaxGenericTriggers)
-      {wle_returnObject =object->getImageGenericTriggerState(slot, trigger);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageLoaded(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageLoadedState(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getImageScriptAnimPrefix(char * x__object, S32 slot,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageScriptAnimPrefix(slot).getString();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   {wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageSkinTag(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-     return (S32)( object->getImageSkinTag(slot).getIndex());
-  return (S32)( -1);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getImageState(char * x__object, S32 slot,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageState(slot);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-   {wle_returnObject ="Error";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageTarget(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageTargetState(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getImageTrigger(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->getImageTriggerState(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getLookAtPoint(char * x__object, F32 distance, U32 typeMask,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* wle_returnObject;
-{
-   MatrixF mat;
-   object->getEyeTransform( &mat );
-   
-      
-   VectorF eyeVector;
-   mat.getColumn( 1, &eyeVector );
-   
-      
-   VectorF eyePos;
-   mat.getColumn( 3, &eyePos );
-   
-      
-   eyeVector *= distance;
-   
-      
-   VectorF start = eyePos;
-   VectorF end = eyePos + eyeVector;
-   
-   RayInfo ri;
-   if( !gServerContainer.castRay( start, end, typeMask, &ri ) || !ri.object )
-      {wle_returnObject ="";    
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-         
-   enum { BUFFER_SIZE = 256 };
-   char* buffer = Con::getReturnBuffer( BUFFER_SIZE );
-   if( ri.material )
-      dSprintf( buffer, BUFFER_SIZE, "%u %f %f %f %u",
-         ri.object->getId(),
-         ri.point.x,
-         ri.point.y,
-         ri.point.z,
-         ri.material->getMaterial()->getId() );
-   else
-      dSprintf( buffer, BUFFER_SIZE, "%u %f %f %f",
-         ri.object->getId(),
-         ri.point.x,
-         ri.point.y,
-         ri.point.z );
-   {wle_returnObject =buffer;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getMaxDamage(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{    
-  return (F32)( object->getMaxDamage());    
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getModelFile(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char * wle_returnObject;
-{
-	GameBaseData * datablock = object->getDataBlock();
-	if( !datablock )
-		{wle_returnObject =String::EmptyString;
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-	const char *fieldName = StringTable->insert( String("shapeFile") );
-   {wle_returnObject =datablock->getDataField( fieldName, NULL );
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getMountedImage(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      if (ShapeBaseImageData* data = object->getMountedImage(slot))
-        return (S32)( data->getId());
-  return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getMountSlot(char * x__object, char * x__image)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-ShapeBaseImageData* image; Sim::findObject(x__image, image ); 
-{
-  return (S32)( image ? object->getMountSlot(image) : -1);
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getMuzzlePoint(char * x__object, S32 slot,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F wle_returnObject;
-{
-   Point3F pos(0, 0, 0);
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      object->getMuzzlePoint(slot, &pos);
-   {wle_returnObject =pos;
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getMuzzleVector(char * x__object, S32 slot,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-VectorF wle_returnObject;
-{
-   VectorF vec(0, 1, 0);
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      object->getMuzzleVector(slot, &vec);
-   {wle_returnObject =vec;
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getPendingImage(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      if (ShapeBaseImageData* data = object->getPendingImage(slot))
-        return (S32)( data->getId());
-  return (S32)( 0);
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getRechargeRate(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getRechargeRate());
-};
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getRepairRate(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getRepairRate());
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getShapeName(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getShapeName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getSkinName(char * x__object,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-   {wle_returnObject =object->getSkinName();
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getSlotTransform(char * x__object, S32 slot,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-TransformF wle_returnObject;
-{
-   MatrixF xf(true);
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      object->getMountTransform( slot, MatrixF::Identity, &xf );
-   {wle_returnObject =xf;
-dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_getTargetCount(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-{
-	ShapeBase *obj = dynamic_cast< ShapeBase* > ( object );
-	if(obj)
-	{
-				if ((ShapeBase*)obj->getClientObject())
-			obj = (ShapeBase*)obj->getClientObject();
-		return obj->getShapeInstance()->getTargetCount();
-	}
-	return -1;
-};
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getTargetName(char * x__object, S32 index,  char* retval)
-{
-dSprintf(retval,16384,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* wle_returnObject;
-{
-	ShapeBase *obj = dynamic_cast< ShapeBase* > ( object );
-	if(obj)
-	{
-				if ((ShapeBase*)obj->getClientObject())
-			obj = (ShapeBase*)obj->getClientObject();
-		{wle_returnObject =obj->getShapeInstance()->getTargetName(index);
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-	}
-	{wle_returnObject ="";
-if (!wle_returnObject) 
-return;
-dSprintf(retval,16384,"%s",wle_returnObject);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_getVelocity(char * x__object,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-VectorF wle_returnObject;
-{
-   {wle_returnObject =object->getVelocity();
-dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
-return;
-}
-}
-}
-extern "C" __declspec(dllexport) F32  __cdecl wle_fnShapeBase_getWhiteOut(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (F32)( 0);
-{
-  return (F32)( object->getWhiteOut());
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_hasImageState(char * x__object, S32 slot, char * x__state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-const char* state = (const char*)x__state;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->hasImageState(slot, state);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isCloaked(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->getCloakedState();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isDestroyed(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->isDestroyed();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isDisabled(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->getDamageState() != ShapeBase::Enabled;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isEnabled(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->getDamageState() == ShapeBase::Enabled;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isHidden(char * x__object)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->isHidden();
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isImageFiring(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->isImageFiring(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_isImageMounted(char * x__object, char * x__image)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-ShapeBaseImageData* image; Sim::findObject(x__image, image ); 
-bool wle_returnObject;
-{
-   {wle_returnObject =(image && object->isImageMounted(image));
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_mountImage(char * x__object, char * x__image, S32 slot, bool loaded, char * x__skinTag)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-ShapeBaseImageData* image; Sim::findObject(x__image, image ); 
-
-const char* skinTag = (const char*)x__skinTag;
-bool wle_returnObject;
-{
-   if (image && slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      NetStringHandle team;
-      if (skinTag[0] == StringTagPrefixByte)
-         team = NetStringHandle(U32(dAtoi(skinTag+1)));
-      {wle_returnObject =object->mountImage( image, slot, loaded, team );
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_pauseThread(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (object->pauseThread(slot))
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_playAudio(char * x__object, S32 slot, char * x__track)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-SFXTrack* track; Sim::findObject(x__track, track ); 
-bool wle_returnObject;
-{
-   if (track && slot >= 0 && slot < ShapeBase::MaxSoundThreads) {
-      object->playAudio(slot,track);
-      {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_playThread(char * x__object, S32 slot, char * x__name)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-const char* name = (const char*)x__name;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (!dStrEqual(name, "")) {
-         if (object->getShape()) {
-            S32 seq = object->getShape()->findSequence(name);
-            if (seq != -1 && object->setThreadSequence(slot,seq))
-               {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-         }
-      }
-      else
-         if (object->playThread(slot))
-            {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setAllMeshesHidden(char * x__object, bool hide)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setAllMeshesHidden( hide );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setCameraFov(char * x__object, F32 fov)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if (object->isServerObject())
-      object->setCameraFov( fov );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setCloaked(char * x__object, bool cloak)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if (object->isServerObject())
-      object->setCloakedState( cloak );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setDamageFlash(char * x__object, F32 level)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if (object->isServerObject())
-      object->setDamageFlash( level );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setDamageLevel(char * x__object, F32 level)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setDamageLevel( level );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setDamageState(char * x__object, char * x__state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-const char* state = (const char*)x__state;
-bool wle_returnObject;
-{
-   {wle_returnObject =object->setDamageState( state );
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setDamageVector(char * x__object, char * x__vec)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F vec = Point3F();
-sscanf(x__vec,"%f %f %f",&vec.x,&vec.y,&vec.z);
-{
-   vec.normalize();
-   object->setDamageDir( vec );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setEnergyLevel(char * x__object, F32 level)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setEnergyLevel( level );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setHidden(char * x__object, bool show)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setHidden( show );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setImageAltTrigger(char * x__object, S32 slot, bool state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      object->setImageAltTriggerState(slot,state);
-      {wle_returnObject =object->getImageAltTriggerState(slot);
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setImageAmmo(char * x__object, S32 slot, bool state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      object->setImageAmmoState(slot,state);
-      {wle_returnObject =state;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setImageGenericTrigger(char * x__object, S32 slot, S32 trigger, bool state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	return (S32)( 0);
-
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages && trigger >= 0 && trigger < ShapeBaseImageData::MaxGenericTriggers) {
-      object->setImageGenericTriggerState(slot,trigger,state);
-     return (S32)( object->getImageGenericTriggerState(slot,trigger));
-   }
-  return (S32)( -1);
-};
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setImageLoaded(char * x__object, S32 slot, bool state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      object->setImageLoadedState(slot, state);
-      {wle_returnObject =state;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setImageScriptAnimPrefix(char * x__object, S32 slot, char * x__prefix)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-const char* prefix = (const char*)x__prefix;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      NetStringHandle prefixHandle;
-      if (prefix[0] == StringTagPrefixByte)
-         prefixHandle = NetStringHandle(U32(dAtoi(prefix+1)));
-      object->setImageScriptAnimPrefix(slot, prefixHandle);
-   }
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setImageTarget(char * x__object, S32 slot, bool state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      object->setImageTargetState(slot,state);
-      {wle_returnObject =state;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setImageTrigger(char * x__object, S32 slot, bool state)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages) {
-      object->setImageTriggerState(slot,state);
-      {wle_returnObject =object->getImageTriggerState(slot);
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setInvincibleMode(char * x__object, F32 time, F32 speed)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-   object->setupInvincibleEffect( time, speed );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setMeshHidden(char * x__object, char * x__name, bool hide)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-
-{
-   object->setMeshHidden( name, hide );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setRechargeRate(char * x__object, F32 rate)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   object->setRechargeRate( rate );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setRepairRate(char * x__object, F32 rate)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if(rate < 0)
-      rate = 0;
-   object->setRepairRate( rate );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setShapeName(char * x__object, char * x__name)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-   object->setShapeName( name );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setSkinName(char * x__object, char * x__name)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-const char* name = (const char*)x__name;
-{
-   object->setSkinName( name );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setThreadDir(char * x__object, S32 slot, bool fwd)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (object->setThreadDir(slot,fwd))
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setThreadPosition(char * x__object, S32 slot, F32 pos)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (object->setThreadPosition(slot,pos))
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setThreadTimeScale(char * x__object, S32 slot, F32 scale)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (object->setThreadTimeScale(slot,scale))
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_setVelocity(char * x__object, char * x__vel)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-Point3F vel = Point3F();
-sscanf(x__vel,"%f %f %f",&vel.x,&vel.y,&vel.z);
-bool wle_returnObject;
-{
-   object->setVelocity( vel );
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_setWhiteOut(char * x__object, F32 level)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-   if (object->isServerObject())
-      object->setWhiteOut( level );
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBase_startFade(char * x__object, S32 time, S32 delay, bool fadeOut)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-
-{
-   object->startFade( (F32)time / (F32)1000.0, delay / 1000.0, fadeOut );
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_stopAudio(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxSoundThreads) {
-      object->stopAudio(slot);
-      {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_stopThread(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxScriptThreads) {
-      if (object->stopThread(slot))
-         {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-   }
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBase_unmountImage(char * x__object, S32 slot)
-{
-ShapeBase* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-bool wle_returnObject;
-{
-   if (slot >= 0 && slot < ShapeBase::MaxMountedImages)
-      {wle_returnObject =object->unmountImage(slot);
-return (S32)(wle_returnObject);}
-   {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) S32  __cdecl wle_fnShapeBaseData_checkDeployPos(char * x__object, char * x__txfm)
-{
-ShapeBaseData* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return 0;
-TransformF txfm = TransformF();
-sscanf( x__txfm,"%f %f %f %f %f %f %f", &txfm.mPosition.x, &txfm.mPosition.y, &txfm.mPosition.z, &txfm.mOrientation.axis.x, &txfm.mOrientation.axis.y, &txfm.mOrientation.axis.z, &txfm.mOrientation.angle);
-bool wle_returnObject;
-{
-   if (bool(object->mShape) == false)
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   MatrixF mat = txfm.getMatrix();
-   Box3F objBox = object->mShape->bounds;
-   Point3F boxCenter = (objBox.minExtents + objBox.maxExtents) * 0.5f;
-   objBox.minExtents = boxCenter + (objBox.minExtents - boxCenter) * 0.9f;
-   objBox.maxExtents = boxCenter + (objBox.maxExtents - boxCenter) * 0.9f;
-   Box3F wBox = objBox;
-   mat.mul(wBox);
-   EarlyOutPolyList polyList;
-   polyList.mNormal.set(0,0,0);
-   polyList.mPlaneList.clear();
-   polyList.mPlaneList.setSize(6);
-   polyList.mPlaneList[0].set(objBox.minExtents,VectorF(-1,0,0));
-   polyList.mPlaneList[1].set(objBox.maxExtents,VectorF(0,1,0));
-   polyList.mPlaneList[2].set(objBox.maxExtents,VectorF(1,0,0));
-   polyList.mPlaneList[3].set(objBox.minExtents,VectorF(0,-1,0));
-   polyList.mPlaneList[4].set(objBox.minExtents,VectorF(0,0,-1));
-   polyList.mPlaneList[5].set(objBox.maxExtents,VectorF(0,0,1));
-   for (U32 i = 0; i < 6; i++)
-   {
-      PlaneF temp;
-      mTransformPlane(mat, Point3F(1, 1, 1), polyList.mPlaneList[i], &temp);
-      polyList.mPlaneList[i] = temp;
-   }
-   if (gServerContainer.buildPolyList(PLC_Collision, wBox, StaticShapeObjectType, &polyList))
-      {wle_returnObject =false;
-return (S32)(wle_returnObject);}
-   {wle_returnObject =true;
-return (S32)(wle_returnObject);}
-}
-}
-extern "C" __declspec(dllexport) void  __cdecl wle_fnShapeBaseData_getDeployTransform(char * x__object, char * x__pos, char * x__normal,  char* retval)
-{
-dSprintf(retval,1024,"");
-ShapeBaseData* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-Point3F pos = Point3F();
-sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
-Point3F normal = Point3F();
-sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
-TransformF wle_returnObject;
-{
-   normal.normalize();
-   VectorF xAxis;
-   if( mFabs(normal.z) > mFabs(normal.x) && mFabs(normal.z) > mFabs(normal.y))
-      mCross( VectorF( 0, 1, 0 ), normal, &xAxis );
-   else
-      mCross( VectorF( 0, 0, 1 ), normal, &xAxis );
-   VectorF yAxis;
-   mCross( normal, xAxis, &yAxis );
-   MatrixF testMat(true);
-   testMat.setColumn( 0, xAxis );
-   testMat.setColumn( 1, yAxis );
-   testMat.setColumn( 2, normal );
-   testMat.setPosition( pos );
-   {wle_returnObject =testMat;
-dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
-return;
-}
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-

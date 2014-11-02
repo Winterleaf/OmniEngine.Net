@@ -401,10 +401,10 @@ void SkyBox::_initRender()
    }
 
    GFXVertexPNTT *vertPtr = mVB.lock();
-   if(!vertPtr)
+   if (!vertPtr)
    {
-	   delete[] tmpVerts;
-	   return;
+      delete[] tmpVerts;
+      return;
    }
 
    dMemcpy( vertPtr, tmpVerts, sizeof ( GFXVertexPNTT ) * vertCount );
@@ -638,78 +638,7 @@ BaseMatInstance* SkyBox::_getMaterialInstance()
    return mMatInstance;
 }
 
-//ConsoleMethod( SkyBox, postApply, void, 2, 2, "")
 DefineConsoleMethod( SkyBox, postApply, void, (), , "")
 {
 	object->inspectPostApply();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------DNTC AUTO-GENERATED---------------//
-#include <vector>
-
-#include <string>
-
-#include "core/strings/stringFunctions.h"
-
-//---------------DO NOT MODIFY CODE BELOW----------//
-
-extern "C" __declspec(dllexport) void  __cdecl wle_fn_SkyBox_postApply(char * x__object)
-{
-SkyBox* object; Sim::findObject(x__object, object ); 
-if (!object)
-	 return;
-{
-	object->inspectPostApply();
-}
-}
-//---------------END DNTC AUTO-GENERATED-----------//
-
