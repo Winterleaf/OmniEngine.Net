@@ -362,7 +362,7 @@ void Forest::saveDataFile( const char *path )
 }
 
 //ConsoleMethod( Forest, saveDataFile, bool, 2, 3, "saveDataFile( [path] )" )
-DefineConsoleMethod( Forest, saveDataFile, void, (const char * path), (""), "saveDataFile( [path] )" )
+DefineConsoleMethod( Forest, saveDataFile, void, (const char * path), (NULL), "saveDataFile( [path] )" )
 {   
    object->saveDataFile( path );
    //return true;
