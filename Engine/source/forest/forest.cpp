@@ -361,21 +361,26 @@ void Forest::saveDataFile( const char *path )
       mData->write( mDataFileName );
 }
 
-DefineConsoleMethod( Forest, saveDataFile, void, (const char * path), (""), "saveDataFile( [path] )" )
+//ConsoleMethod( Forest, saveDataFile, bool, 2, 3, "saveDataFile( [path] )" )
+DefineConsoleMethod( Forest, saveDataFile, void, (const char * path), (NULL), "saveDataFile( [path] )" )
 {   
    object->saveDataFile( path );
+   //return true;
 }
 
+//ConsoleMethod(Forest, isDirty, bool, 2, 2, "()")
 DefineConsoleMethod(Forest, isDirty, bool, (), , "()")
 {
    return object->getData() && object->getData()->isDirty();
 }
 
+//ConsoleMethod(Forest, regenCells, void, 2, 2, "()")
 DefineConsoleMethod(Forest, regenCells, void, (), , "()")
 {
    object->getData()->regenCells();
 }
 
+//ConsoleMethod(Forest, clear, void, 2, 2, "()" )
 DefineConsoleMethod(Forest, clear, void, (), , "()" )
 {
    object->clear();
@@ -488,7 +493,7 @@ if (!object)
 const char* path = (const char*)x__path;
 {   
    object->saveDataFile( path );
-}
+   }
 }
 extern "C" __declspec(dllexport) void  __cdecl wle_fnForest_addItem(char * x__object, char * x__data, char * x__position, F32 rotation, F32 scale)
 {
