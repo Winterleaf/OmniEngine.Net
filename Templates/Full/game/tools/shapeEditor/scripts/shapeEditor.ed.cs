@@ -366,7 +366,7 @@ function ShapeEdSelectWindow::navigate( %this, %address )
    %this-->shapeLibrary.clear();
    ShapeEdSelectMenu.clear();
 
-   %filePatterns = getFormatExtensions();
+   %filePatterns = "*.dts" TAB "*.dae" TAB "*.kmz";
    %fullPath = findFirstFileMultiExpr( %filePatterns );
 
    while ( %fullPath !$= "" )
@@ -1132,7 +1132,7 @@ function ShapeEdNodes::onDeleteNode( %this )
 function ShapeEdNodeTreeView::getChildIndexByName( %this, %name )
 {
    %id = %this.findItemByName( %name );
-   %parentId = %this.getParent( %id );
+   %parentId = %this.getParentItem( %id );
    %childId = %this.getChild( %parentId );
    if ( %childId <= 0 )
       return 0;   // bad!
@@ -1632,7 +1632,7 @@ function ShapeEdSequences::onAddSequence( %this, %name )
    if ( %from $= "" )
    {
       // No sequence selected => open dialog to browse for one
-      getLoadFormatFilename( %this @ ".onAddSequenceFromBrowse", ShapeEdFromMenu.lastPath );
+      getLoadFilename( "DSQ Files|*.dsq|COLLADA Files|*.dae|Google Earth Files|*.kmz", %this @ ".onAddSequenceFromBrowse", ShapeEdFromMenu.lastPath );
       return;
    }
    else
@@ -1740,7 +1740,7 @@ function ShapeEdSeqFromMenu::onSelect( %this, %id, %text )
       %this.setText( %seqFrom );
 
       // Allow the user to browse for an external source of animation data
-      getLoadFormatFilename( %this @ ".onBrowseSelect", %this.lastPath );
+      getLoadFilename( "DSQ Files|*.dsq|COLLADA Files|*.dae|Google Earth Files|*.kmz", %this @ ".onBrowseSelect", %this.lastPath );
    }
    else
    {
@@ -2399,7 +2399,7 @@ function ShapeEdDetailTree::onDefineIcons(%this)
 // a mesh)
 function ShapeEdDetailTree::isDetailItem( %this, %id )
 {
-   return ( %this.getParent( %id ) == 1 );
+   return ( %this.getParentItem( %id ) == 1 );
 }
 
 // Get the detail level index from the ID of an item in the details tree view
@@ -2409,7 +2409,7 @@ function ShapeEdDetailTree::getDetailLevelFromItem( %this, %id )
       %detSize = %this.getItemValue( %id );
       
    else
-      %detSize = %this.getItemValue( %this.getParent( %id ) );
+      %detSize = %this.getItemValue( %this.getParentItem( %id ) );
    return ShapeEditor.shape.getDetailLevelIndex( %detSize );
 }
 
@@ -2443,7 +2443,7 @@ function ShapeEdDetailTree::removeMeshEntry( %this, %name, %size )
    if ( ShapeEditor.shape.getDetailLevelIndex( %size ) < 0 )
    {
       // Last mesh of a detail level has been removed => remove the detail level
-      %this.removeItem( %this.getParent( %id ) );
+      %this.removeItem( %this.getParentItem( %id ) );
       ShapeEdDetails.update_onDetailsChanged();
    }
    else
@@ -2862,7 +2862,7 @@ function ShapeEdDetails::onAddMeshFromFile( %this, %path )
 {
    if ( %path $= "" )
    {
-      getLoadFormatFilename( %this @ ".onAddMeshFromFile", %this.lastPath );
+      getLoadFilename( "DTS Files|*.dts|COLLADA Files|*.dae|Google Earth Files|*.kmz", %this @ ".onAddMeshFromFile", %this.lastPath );
       return;
    }
 
@@ -3291,7 +3291,7 @@ function ShapeEdMountShapeMenu::onSelect( %this, %id, %text )
    if ( %text $= "Browse..." )
    {
       // Allow the user to browse for an external model file
-      getLoadFormatFilename( %this @ ".onBrowseSelect", %this.lastPath );
+      getLoadFilename( "DTS Files|*.dts|COLLADA Files|*.dae|Google Earth Files|*.kmz", %this @ ".onBrowseSelect", %this.lastPath );
    }
    else
    {
