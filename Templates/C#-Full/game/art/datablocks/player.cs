@@ -385,6 +385,7 @@ datablock ParticleData(LightPuff)
    times[0]      = 0.3;
    times[1]      = 1.0;
    times[2] = 1.0;
+   textureName = "art/particles/dustParticle.png";
 };
 
 datablock ParticleEmitterData(LightPuffEmitter)
@@ -543,6 +544,7 @@ datablock PlayerData(DefaultPlayerData)
    maxCrouchBackwardSpeed = 2.0;
    maxCrouchSideSpeed = 2.0;
 
+   swimForce = 4320;
    maxUnderwaterForwardSpeed = 8.4;
    maxUnderwaterBackwardSpeed = 7.8;
    maxUnderwaterSideSpeed = 4.0;

@@ -395,3 +395,147 @@ DefineEngineFunction( sfxGetActiveStates, const char*, (),,
    
    return Con::getReturnBuffer( str );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_sfxGetActiveStates(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   StringBuilder str;
+   
+   bool isFirst = true;
+   for( U32 i = 0; i < sgActiveStates.size(); ++ i )
+   {
+      if( !isFirst )
+         str.append( ' ' );
+         
+      str.append( sgActiveStates[ i ]->getName() );
+      isFirst = false;
+   }
+   
+   {wle_returnObject =Con::getReturnBuffer( str );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXState_activate(char * x__object)
+{
+SFXState* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->activate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXState_deactivate(char * x__object)
+{
+SFXState* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deactivate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXState_disable(char * x__object)
+{
+SFXState* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->disable();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXState_enable(char * x__object)
+{
+SFXState* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->enable();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXState_isActive(char * x__object)
+{
+SFXState* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isActive();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXState_isDisabled(char * x__object)
+{
+SFXState* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isDisabled();
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

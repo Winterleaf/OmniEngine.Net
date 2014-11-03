@@ -583,3 +583,279 @@ void FieldBrushObject::pasteFields( SimObject* pSimObject )
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_FieldBrushObject_copyFields(char * x__object, char * x__simObjName, char * x__pFieldList)
+{
+FieldBrushObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* simObjName = (const char*)x__simObjName;
+const char* pFieldList = (const char*)x__pFieldList;
+{
+        SimObject* pSimObject = dynamic_cast<SimObject*>( Sim::findObject( simObjName ) );
+        if ( pSimObject == NULL )
+    {
+                Con::warnf("FieldBrushObject::copyFields() - Invalid SimObject!");
+        return;
+    }
+        
+        object->copyFields( pSimObject, pFieldList );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_FieldBrushObject_pasteFields(char * x__object, char * x__simObjName)
+{
+FieldBrushObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* simObjName = (const char*)x__simObjName;
+{
+        SimObject* pSimObject = dynamic_cast<SimObject*>( Sim::findObject( simObjName ) );
+        if ( pSimObject == NULL )
+    {
+                Con::warnf("FieldBrushObject::pasteFields() - Invalid SimObject!");
+        return;
+    }
+        object->pasteFields( pSimObject );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_FieldBrushObject_queryFields(char * x__object, char * x__simObjName, char * x__groupList,  char* retval)
+{
+dSprintf(retval,16384,"");
+FieldBrushObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* simObjName = (const char*)x__simObjName;
+const char* groupList = (const char*)x__groupList;
+const char* wle_returnObject;
+{
+        SimObject* pSimObject = dynamic_cast<SimObject*>( Sim::findObject( simObjName ) );
+        if ( pSimObject == NULL )
+    {
+                Con::warnf("FieldBrushObject::queryFields() - Invalid SimObject!");
+        {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+    }
+        S32 maxBuffer = bufferSizes;
+    char* pReturnBuffer = Con::getReturnBuffer(bufferSizes);
+    char* pBuffer = pReturnBuffer;
+        const AbstractClassRep::FieldList& staticFields = pSimObject->getFieldList();
+        if (dStrcmp (groupList,"")==0 )
+    {
+        
+                for( U32 fieldIndex = 0; fieldIndex < staticFields.size(); ++fieldIndex )
+        {
+                        const AbstractClassRep::Field& staticField = staticFields[fieldIndex];
+                        if (    staticField.type != AbstractClassRep::StartGroupFieldType &&
+                    staticField.type != AbstractClassRep::EndGroupFieldType &&
+                    staticField.type != AbstractClassRep::DeprecatedFieldType )
+            {
+                                                if ( (maxBuffer - (S32)dStrlen(staticField.pFieldname) - 1) >= 0 )
+                {
+                                        S32 charsWritten = dSprintf( pBuffer, maxBuffer, "%s ", staticField.pFieldname );
+                    pBuffer += charsWritten;
+                    maxBuffer -= charsWritten;
+                }
+                else
+                {
+                                        Con::warnf("FieldBrushObject::queryFields() - Couldn't fit all fields into return string!");
+                    break;
+                }
+            }
+        }
+                if ( pBuffer != pReturnBuffer )
+        {
+            *(pBuffer-1) = 0;
+        }
+                {wle_returnObject =pReturnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+    }
+    
+        Vector<StringTableEntry> groups;
+            const U32 groupCount = StringUnit::getUnitCount( groupList, " \t\n" );
+    char tempBuf[256];
+        for ( U32 groupIndex = 0; groupIndex < groupCount; ++groupIndex )
+    {
+                dStrcpy( tempBuf, StringUnit::getUnit( groupList, groupIndex, " \t\n" ) );
+                dStrcat( tempBuf, "_begingroup" );
+                groups.push_back( StringTable->insert( tempBuf ) );
+    }
+        bool validGroup = false;
+        for( U32 fieldIndex = 0; fieldIndex < staticFields.size(); ++fieldIndex )
+    {
+                const AbstractClassRep::Field& staticField = staticFields[fieldIndex];
+                switch( staticField.type )
+        {
+                        case AbstractClassRep::StartGroupFieldType:
+            {
+                
+                                for ( U32 groupIndex = 0; groupIndex < groups.size(); ++groupIndex )
+                {
+                                        if ( groups[groupIndex] == staticField.pFieldname )
+                    {
+                                                validGroup = true;
+                        break;
+                    }
+                }
+            } break;
+                        case AbstractClassRep::EndGroupFieldType:
+            {
+                                validGroup = false;
+            } break;
+                        case AbstractClassRep::DeprecatedFieldType:
+            {
+            } break;
+                        default:
+            {
+                                if ( validGroup )
+                {
+                                                            if ( (maxBuffer - (S32)dStrlen(staticField.pFieldname) - 1) >= 0 )
+                    {
+                                                S32 charsWritten = dSprintf( pBuffer, maxBuffer, "%s ", staticField.pFieldname );
+                        pBuffer += charsWritten;
+                        maxBuffer -= charsWritten;
+                    }
+                    else
+                    {
+                                                Con::warnf("FieldBrushObject::queryFields() - Couldn't fit all fields into return string!");
+                                                fieldIndex = staticFields.size();
+                        break;
+                    }
+                }
+            } break;
+        };
+    }
+        if ( pBuffer != pReturnBuffer )
+    {
+        *(pBuffer-1) = 0;
+    }
+        {wle_returnObject =pReturnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_FieldBrushObject_queryGroups(char * x__object, char * x__simObjName,  char* retval)
+{
+dSprintf(retval,16384,"");
+FieldBrushObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* simObjName = (const char*)x__simObjName;
+const char* wle_returnObject;
+{
+        SimObject* pSimObject = dynamic_cast<SimObject*>( Sim::findObject( simObjName ) );
+        if ( pSimObject == NULL )
+    {
+                Con::warnf("FieldBrushObject::queryFieldGroups() - Invalid SimObject!");
+        {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+    }
+        S32 maxBuffer = bufferSizes;
+    char* pReturnBuffer = Con::getReturnBuffer(bufferSizes);
+    char* pBuffer = pReturnBuffer;
+        const AbstractClassRep::FieldList& staticFields = pSimObject->getFieldList();
+        for( U32 fieldIndex = 0; fieldIndex < staticFields.size(); ++fieldIndex )
+    {
+                const AbstractClassRep::Field& staticField = staticFields[fieldIndex];
+                if ( staticField.type == AbstractClassRep::StartGroupFieldType )
+        {
+                        char* pGroupNameNoSpaces = suppressSpaces(staticField.pGroupname);
+                                    if ( (maxBuffer - (S32)dStrlen(pGroupNameNoSpaces) - 1) >= 0 )
+            {
+                                                S32 charsWritten = dSprintf( pBuffer, maxBuffer, "%s ", pGroupNameNoSpaces );
+                pBuffer += charsWritten;
+                maxBuffer -= charsWritten;
+            }
+            else
+            {
+                                Con::warnf("FieldBrushObject::queryGroups() - Couldn't fit all groups into return string!");
+                break;
+            }
+        }
+    }
+        if ( pBuffer != pReturnBuffer )
+    {
+        *(pBuffer-1) = 0;
+    }
+        {wle_returnObject =pReturnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

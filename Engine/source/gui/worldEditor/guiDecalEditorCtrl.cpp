@@ -1220,3 +1220,238 @@ void DBRetargetUndoAction::redo()
 	mEditor->rebuildInstanceTree_callback();
 }
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_deleteDecalDatablock(char * x__object, char * x__datablock)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* datablock = (const char*)x__datablock;
+{
+	String lookupName( datablock );
+	if( lookupName == String::EmptyString )
+		return;
+	
+	object->deleteDecalDatablock( lookupName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_deleteSelectedDecal(char * x__object)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteSelectedDecal();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_editDecalDetails(char * x__object, U32 id, char * x__pos, char * x__tan, F32 size)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+Point3F tan = Point3F();
+sscanf(x__tan,"%f %f %f",&tan.x,&tan.y,&tan.z);
+{
+	DecalInstance *decalInstance = gDecalManager->mDecalInstanceVec[id];
+	if( decalInstance == NULL )
+		return;
+   decalInstance->mPosition = pos;
+	decalInstance->mTangent = tan;
+	decalInstance->mSize = size;
+	
+	if ( decalInstance == object->mSELDecal )
+		object->setGizmoFocus( decalInstance );
+	object->forceRedraw( decalInstance );
+	gDecalManager->notifyDecalModified( decalInstance );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiDecalEditorCtrl_getDecalCount(char * x__object)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	return gDecalManager->mDecalInstanceVec.size();
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_getDecalLookupName(char * x__object, U32 id,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	DecalInstance *decalInstance = gDecalManager->mDecalInstanceVec[id];
+	if( decalInstance == NULL )
+		{wle_returnObject ="invalid";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+	{wle_returnObject =decalInstance->mDataBlock->lookupName;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_getDecalTransform(char * x__object, U32 id,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	DecalInstance *decalInstance = gDecalManager->mDecalInstanceVec[id];
+	if( decalInstance == NULL )
+		{wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+	char* returnBuffer = Con::getReturnBuffer(256);
+   returnBuffer[0] = 0;
+   if ( decalInstance )
+   {
+	   dSprintf(returnBuffer, 256, "%f %f %f %f %f %f %f",
+         decalInstance->mPosition.x, decalInstance->mPosition.y, decalInstance->mPosition.z, 
+		   decalInstance->mTangent.x, decalInstance->mTangent.y, decalInstance->mTangent.z,
+		   decalInstance->mSize);
+   }
+	{wle_returnObject =returnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_getMode(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->mMode;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiDecalEditorCtrl_getSelectionCount(char * x__object)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   if ( object->mSELDecal != NULL )
+     return (S32)( 1);
+  return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_retargetDecalDatablock(char * x__object, char * x__dbFrom, char * x__dbTo)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* dbFrom = (const char*)x__dbFrom;
+const char* dbTo = (const char*)x__dbTo;
+{
+   if( dStrcmp( dbFrom, "" ) != 0 && dStrcmp( dbTo, "" ) != 0 )
+		object->retargetDecalDatablock( dbFrom, dbTo );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_selectDecal(char * x__object, U32 id)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	DecalInstance *decalInstance = gDecalManager->mDecalInstanceVec[id];
+	if( decalInstance == NULL )
+		return;
+	object->selectDecal( decalInstance );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiDecalEditorCtrl_setMode(char * x__object, char * x__newMode)
+{
+GuiDecalEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String newMode = String( x__newMode);
+{
+	object->setMode( newMode );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

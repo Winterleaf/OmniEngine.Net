@@ -1397,3 +1397,292 @@ DefineEngineMethod( EditTSCtrl, isMiddleMouseDown, bool, (),, "" )
 {
    return object->isMiddleMouseDown();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnEditTSCtrl_getDisplayType(char * x__object)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getDisplayType());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnEditTSCtrl_getGizmo(char * x__object)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getGizmo()->getId());
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnEditTSCtrl_getOrthoFOV(char * x__object)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getOrthoFOV());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnEditTSCtrl_isMiddleMouseDown(char * x__object)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isMiddleMouseDown();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_renderBox(char * x__object, char * x__pos, char * x__size)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+Point3F size = Point3F();
+sscanf(x__size,"%f %f %f",&size.x,&size.y,&size.z);
+{
+   if( !object->mConsoleRendering || !object->mConsoleFillColor.alpha )
+      return;
+   GFXStateBlockDesc desc;
+   desc.setBlend( true );
+   Box3F box;
+   box.set( size );
+   box.setCenter( pos );
+   MatrixF camera = GFX->getWorldMatrix();
+   camera.inverse();
+   if( box.isContained( camera.getPosition() ) )
+      desc.setCullMode( GFXCullNone );
+   GFX->getDrawUtil()->drawCube( desc, size, pos, object->mConsoleFillColor );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_renderCircle(char * x__object, char * x__pos, char * x__normal, F32 radius, S32 segments)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+Point3F normal = Point3F();
+sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
+
+{
+   if(!object->mConsoleRendering)
+      return;
+   if(!object->mConsoleFrameColor.alpha && !object->mConsoleFillColor.alpha)
+      return;
+   if ( segments <= 0 )
+      segments = object->mConsoleCircleSegments;
+   normal.normalizeSafe();
+   AngAxisF aa;
+   F32 dotUp = mDot( normal, Point3F(0,0,1) );
+   if ( dotUp == 1.0f )
+      aa.set( Point3F(0,0,1), 0.0f );        else if ( dotUp == -1.0f )
+      aa.set( Point3F(1,0,0), M_PI_F );      else
+   {
+      mCross( normal, Point3F(0,0,1), &aa.axis );
+      aa.axis.normalizeSafe();
+      aa.angle = mAcos( mClampF( dotUp, -1.f, 1.f ) );
+   }
+   MatrixF mat;
+   aa.setMatrix(&mat);
+   F32 step = M_2PI / segments;
+   F32 angle = 0.f;
+   Vector<Point3F> points(segments);
+   for(U32 i = 0; i < segments; i++)
+   {
+      Point3F pnt(mCos(angle), mSin(angle), 0.f);
+      mat.mulP(pnt);
+      pnt *= radius;
+      pnt += pos;
+      points.push_front(pnt);
+      angle += step;
+   }
+   GFX->setStateBlock(object->mBlendSB);
+      if(object->mConsoleFrameColor.alpha)
+   {
+      
+      PrimBuild::color( object->mConsoleFrameColor );
+      PrimBuild::begin( GFXLineStrip, points.size() + 1 );
+      for( S32 i = 0; i < points.size(); i++ )
+         PrimBuild::vertex3fv( points[i] );
+            if( points.size() > 0 )
+         PrimBuild::vertex3fv( points[0] );
+      PrimBuild::end();
+         }
+      if(object->mConsoleFillColor.alpha)
+   {
+      PrimBuild::color( object->mConsoleFillColor );
+      PrimBuild::begin( GFXTriangleFan, points.size() + 2 );
+            PrimBuild::vertex3fv( pos );
+            for( S32 i = 0; i < points.size(); i++ )
+         PrimBuild::vertex3fv( points[i] );
+      PrimBuild::vertex3fv( points[0] );
+      PrimBuild::end();
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_renderLine(char * x__object, char * x__start, char * x__end, F32 lineWidth)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F start = Point3F();
+sscanf(x__start,"%f %f %f",&start.x,&start.y,&start.z);
+Point3F end = Point3F();
+sscanf(x__end,"%f %f %f",&end.x,&end.y,&end.z);
+{
+   if ( !object->mConsoleRendering || !object->mConsoleFrameColor.alpha )
+      return;
+      if ( lineWidth <= 0 )
+      lineWidth = object->mConsoleLineWidth;
+   GFX->getDrawUtil()->drawLine( start, end, object->mConsoleFrameColor );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_renderSphere(char * x__object, char * x__pos, F32 radius, S32 sphereLevel)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+
+{
+   if ( !object->mConsoleRendering || !object->mConsoleFillColor.alpha )
+      return;
+      if ( sphereLevel <= 0 )
+      sphereLevel = object->mConsoleSphereLevel;
+   GFXStateBlockDesc desc;
+   desc.setBlend( true );
+   MatrixF camera = GFX->getWorldMatrix();
+   camera.inverse();
+   
+   SphereF sphere( pos, radius );
+   if( sphere.isContained( camera.getPosition() ) )
+      desc.setCullMode( GFXCullNone );
+   GFX->getDrawUtil()->drawSphere( desc, radius, pos, object->mConsoleFillColor );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_renderTriangle(char * x__object, char * x__a, char * x__b, char * x__c)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F a = Point3F();
+sscanf(x__a,"%f %f %f",&a.x,&a.y,&a.z);
+Point3F b = Point3F();
+sscanf(x__b,"%f %f %f",&b.x,&b.y,&b.z);
+Point3F c = Point3F();
+sscanf(x__c,"%f %f %f",&c.x,&c.y,&c.z);
+{
+   if(!object->mConsoleRendering)
+      return;
+   if(!object->mConsoleFrameColor.alpha && !object->mConsoleFillColor.alpha)
+      return;
+   const Point3F* pnts[3] = { &a, &b, &c };
+   GFX->setStateBlock(object->mBlendSB);
+      if( object->mConsoleFrameColor.alpha )
+   {
+      PrimBuild::color( object->mConsoleFrameColor );
+  
+      
+      PrimBuild::begin( GFXLineStrip, 4 );
+         PrimBuild::vertex3fv( *pnts[0] );
+         PrimBuild::vertex3fv( *pnts[1] );
+         PrimBuild::vertex3fv( *pnts[2] );
+         PrimBuild::vertex3fv( *pnts[0] );
+      PrimBuild::end();
+         }
+      if( object->mConsoleFillColor.alpha )
+   {
+      PrimBuild::color( object->mConsoleFillColor );
+      PrimBuild::begin( GFXTriangleList, 3 );
+         PrimBuild::vertex3fv( *pnts[0] );
+         PrimBuild::vertex3fv( *pnts[1] );
+         PrimBuild::vertex3fv( *pnts[2] );
+      PrimBuild::end();
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_setDisplayType(char * x__object, S32 displayType)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setDisplayType( displayType );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnEditTSCtrl_setOrthoFOV(char * x__object, F32 fov)
+{
+EditTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setOrthoFOV( fov );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

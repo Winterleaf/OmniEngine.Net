@@ -216,3 +216,127 @@ DefineEngineMethod( MissionArea, postApply, void, (),,
 {
    object->inspectPostApply();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getMissionAreaServerObject(char* retval)
+{
+dSprintf(retval,1024,"");
+MissionArea* wle_returnObject;
+{
+	{wle_returnObject =MissionArea::getServerObject();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnMissionArea_getArea(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+MissionArea* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   static const U32 bufSize = 48;
+   char* returnBuffer = Con::getReturnBuffer(bufSize);
+   RectI area = object->getArea();
+   dSprintf(returnBuffer, bufSize, "%d %d %d %d", area.point.x, area.point.y, area.extent.x, area.extent.y);
+   {wle_returnObject =(returnBuffer);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnMissionArea_postApply(char * x__object)
+{
+MissionArea* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->inspectPostApply();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnMissionArea_setArea(char * x__object, S32 x, S32 y, S32 width, S32 height)
+{
+MissionArea* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+
+{
+   if(object->isClientObject())
+   {
+      Con::errorf(ConsoleLogEntry::General, "MissionArea::cSetArea - cannot alter client object!");
+      return;
+   }
+   RectI rect;
+   rect.point.x = x;
+   rect.point.y = y;
+   rect.extent.x = width;
+   rect.extent.y = height;
+   object->setArea(rect);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

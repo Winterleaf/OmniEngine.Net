@@ -642,3 +642,73 @@ DefineConsoleMethod( SkyBox, postApply, void, (), , "")
 {
 	object->inspectPostApply();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SkyBox_postApply(char * x__object)
+{
+SkyBox* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->inspectPostApply();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

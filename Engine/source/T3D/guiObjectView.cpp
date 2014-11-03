@@ -1007,3 +1007,267 @@ DefineEngineMethod( GuiObjectView, setLightDirection, void, (Point3F direction),
 {
    object->setLightDirection( direction );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnGuiObjectView_getCameraSpeed(char * x__object)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getCameraSpeed());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_getModel(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( object->getModelName() );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_getMountedModel(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( object->getMountedModelName() );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_getMountSkin(char * x__object, S32 param1, S32 param2,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( object->getMountSkin() );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnGuiObjectView_getOrbitDistance(char * x__object)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getOrbitDistance());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_getSkin(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( object->getSkin() );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setCameraSpeed(char * x__object, F32 factor)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setCameraSpeed( factor );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setLightAmbient(char * x__object, char * x__color)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{
+   object->setLightAmbient( color );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setLightColor(char * x__object, char * x__color)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{  
+   object->setLightColor( color );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setLightDirection(char * x__object, char * x__direction)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F direction = Point3F();
+sscanf(x__direction,"%f %f %f",&direction.x,&direction.y,&direction.z);
+{
+   object->setLightDirection( direction );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setModel(char * x__object, char * x__shapeName)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* shapeName = (const char*)x__shapeName;
+{
+   object->setObjectModel( shapeName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setMount(char * x__object, char * x__shapeName, char * x__mountNodeIndexOrName)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* shapeName = (const char*)x__shapeName;
+const char* mountNodeIndexOrName = (const char*)x__mountNodeIndexOrName;
+{
+   if( dIsdigit( mountNodeIndexOrName[0] ) )
+      object->setMountNode( dAtoi( mountNodeIndexOrName ) );
+   else
+      object->setMountNode( mountNodeIndexOrName );
+      
+   object->setMountedObject( shapeName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setMountedModel(char * x__object, char * x__shapeName)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* shapeName = (const char*)x__shapeName;
+{
+   object->setObjectModel(shapeName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setMountSkin(char * x__object, char * x__skinName)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* skinName = (const char*)x__skinName;
+{
+   object->setMountSkin(skinName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setOrbitDistance(char * x__object, F32 distance)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setOrbitDistance( distance );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setSeq(char * x__object, char * x__indexOrName)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* indexOrName = (const char*)x__indexOrName;
+{
+   if( dIsdigit( indexOrName[0] ) )
+      object->setObjectAnimation( dAtoi( indexOrName ) );
+   else
+      object->setObjectAnimation( indexOrName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiObjectView_setSkin(char * x__object, char * x__skinName)
+{
+GuiObjectView* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* skinName = (const char*)x__skinName;
+{
+   object->setSkin( skinName );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

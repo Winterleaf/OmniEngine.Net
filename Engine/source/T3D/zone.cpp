@@ -104,3 +104,82 @@ DefineEngineMethod( Zone, dumpZoneState, void, ( bool updateFirst ), ( true ),
 {
    object->dumpZoneState( updateFirst );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnZone_dumpZoneState(char * x__object, bool updateFirst)
+{
+Zone* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->dumpZoneState( updateFirst );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnZone_getZoneId(char * x__object)
+{
+Zone* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getZoneRangeStart());
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

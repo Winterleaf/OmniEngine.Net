@@ -1283,3 +1283,235 @@ DefineConsoleMethod( GuiMeshRoadEditorCtrl, matchTerrainToRoad, void, (), , "" )
 {
    object->matchTerrainToRoad();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_deleteNode(char * x__object)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteSelectedNode();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_getMode(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getMode();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_GuiMeshRoadEditorCtrl_getNodeDepth(char * x__object)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getNodeDepth());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_getNodeNormal(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+	{wle_returnObject =object->getNodeNormal();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_getNodePosition(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+	{wle_returnObject =object->getNodePosition();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_GuiMeshRoadEditorCtrl_getNodeWidth(char * x__object)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getNodeWidth());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiMeshRoadEditorCtrl_getSelectedRoad(char * x__object)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   MeshRoad *road = object->getSelectedRoad();
+   if ( !road )
+     return (S32)( NULL);
+  return (S32)( road->getId());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_matchTerrainToRoad(char * x__object)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->matchTerrainToRoad();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_regenerate(char * x__object)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   MeshRoad *road = object->getSelectedRoad();
+   if ( road )
+      road->regenerate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_setMode(char * x__object, char * x__mode)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* mode = (const char*)x__mode;
+{
+   String newMode = ( mode );
+   object->setMode( newMode );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_setNodeDepth(char * x__object, F32 depth)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setNodeDepth( depth );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_setNodeNormal(char * x__object, char * x__normal)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F normal = Point3F();
+sscanf(x__normal,"%f %f %f",&normal.x,&normal.y,&normal.z);
+{
+   object->setNodeNormal( normal );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_setNodePosition(char * x__object, char * x__pos)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+{
+   object->setNodePosition( pos );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_setNodeWidth(char * x__object, F32 width)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setNodeWidth( width );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMeshRoadEditorCtrl_setSelectedRoad(char * x__object, char * x__objName)
+{
+GuiMeshRoadEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+{
+	if ( dStrcmp(objName, "" )==0)
+      object->setSelectedRoad(NULL);
+   else
+   {
+      MeshRoad *road = NULL;
+      if ( Sim::findObject( objName, road ) )
+         object->setSelectedRoad(road);
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

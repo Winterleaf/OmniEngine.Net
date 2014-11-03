@@ -865,3 +865,92 @@ bool Platform::setClipboard(const char *text)
 	return true;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getJoystickAxes(U32 deviceID,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
+   if ( mgr )
+      {wle_returnObject =( mgr->getJoystickAxesString( deviceID ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =( "" );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isJoystickDetected()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =( DInputDevice::joystickDetected() );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

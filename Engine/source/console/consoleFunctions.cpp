@@ -2625,3 +2625,2408 @@ DefineEngineFunction( isToolBuild, bool, (),,
    return false;
 #endif
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__call(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+const char * wle_returnObject;
+{
+S32 argc = 20;
+if (dStrlen(a19)==0)
+if (dStrlen(a18)==0)
+if (dStrlen(a17)==0)
+if (dStrlen(a16)==0)
+if (dStrlen(a15)==0)
+if (dStrlen(a14)==0)
+if (dStrlen(a13)==0)
+if (dStrlen(a12)==0)
+if (dStrlen(a11)==0)
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+if (argc>=12)
+arguments.push_back(a11);
+if (argc>=13)
+arguments.push_back(a12);
+if (argc>=14)
+arguments.push_back(a13);
+if (argc>=15)
+arguments.push_back(a14);
+if (argc>=16)
+arguments.push_back(a15);
+if (argc>=17)
+arguments.push_back(a16);
+if (argc>=18)
+arguments.push_back(a17);
+if (argc>=19)
+arguments.push_back(a18);
+if (argc>=20)
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   {wle_returnObject =Con::execute( argc - 1, argv + 1 );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__echo(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if (dStrlen(a19)==0)
+if (dStrlen(a18)==0)
+if (dStrlen(a17)==0)
+if (dStrlen(a16)==0)
+if (dStrlen(a15)==0)
+if (dStrlen(a14)==0)
+if (dStrlen(a13)==0)
+if (dStrlen(a12)==0)
+if (dStrlen(a11)==0)
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+if (argc>=12)
+arguments.push_back(a11);
+if (argc>=13)
+arguments.push_back(a12);
+if (argc>=14)
+arguments.push_back(a13);
+if (argc>=15)
+arguments.push_back(a14);
+if (argc>=16)
+arguments.push_back(a15);
+if (argc>=17)
+arguments.push_back(a16);
+if (argc>=18)
+arguments.push_back(a17);
+if (argc>=19)
+arguments.push_back(a18);
+if (argc>=20)
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   U32 len = 0;
+   S32 i;
+   for(i = 1; i < argc; i++)
+      len += dStrlen(argv[i]);
+   char *ret = Con::getReturnBuffer(len + 1);
+   ret[0] = 0;
+   for(i = 1; i < argc; i++)
+      dStrcat(ret, argv[i]);
+   Con::printf("%s", ret);
+   ret[0] = 0;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__error(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if (dStrlen(a19)==0)
+if (dStrlen(a18)==0)
+if (dStrlen(a17)==0)
+if (dStrlen(a16)==0)
+if (dStrlen(a15)==0)
+if (dStrlen(a14)==0)
+if (dStrlen(a13)==0)
+if (dStrlen(a12)==0)
+if (dStrlen(a11)==0)
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+if (argc>=12)
+arguments.push_back(a11);
+if (argc>=13)
+arguments.push_back(a12);
+if (argc>=14)
+arguments.push_back(a13);
+if (argc>=15)
+arguments.push_back(a14);
+if (argc>=16)
+arguments.push_back(a15);
+if (argc>=17)
+arguments.push_back(a16);
+if (argc>=18)
+arguments.push_back(a17);
+if (argc>=19)
+arguments.push_back(a18);
+if (argc>=20)
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   U32 len = 0;
+   S32 i;
+   for(i = 1; i < argc; i++)
+      len += dStrlen(argv[i]);
+   char *ret = Con::getReturnBuffer(len + 1);
+   ret[0] = 0;
+   for(i = 1; i < argc; i++)
+      dStrcat(ret, argv[i]);
+   Con::errorf(ConsoleLogEntry::General, "%s", ret);
+   ret[0] = 0;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn__execPrefs(char * x__a1, char * x__a2, char * x__a3)
+{
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+bool wle_returnObject;
+{
+S32 argc = 4;
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+const char** argv = &arguments[0];
+{
+   const char *filename = Platform::getPrefsPath(argv[1]);
+   if(filename == NULL || *filename == 0)
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      if(! Platform::isFile(filename) && ! Torque::FS::IsFile(filename))
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   argv[0] = "exec";
+   argv[1] = filename;
+   {wle_returnObject =dAtob(Con::execute(argc, argv));
+return (S32)(wle_returnObject);}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__warn(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if (dStrlen(a19)==0)
+if (dStrlen(a18)==0)
+if (dStrlen(a17)==0)
+if (dStrlen(a16)==0)
+if (dStrlen(a15)==0)
+if (dStrlen(a14)==0)
+if (dStrlen(a13)==0)
+if (dStrlen(a12)==0)
+if (dStrlen(a11)==0)
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+if (argc>=12)
+arguments.push_back(a11);
+if (argc>=13)
+arguments.push_back(a12);
+if (argc>=14)
+arguments.push_back(a13);
+if (argc>=15)
+arguments.push_back(a14);
+if (argc>=16)
+arguments.push_back(a15);
+if (argc>=17)
+arguments.push_back(a16);
+if (argc>=18)
+arguments.push_back(a17);
+if (argc>=19)
+arguments.push_back(a18);
+if (argc>=20)
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   U32 len = 0;
+   S32 i;
+   for(i = 1; i < argc; i++)
+      len += dStrlen(argv[i]);
+   char *ret = Con::getReturnBuffer(len + 1);
+   ret[0] = 0;
+   for(i = 1; i < argc; i++)
+      dStrcat(ret, argv[i]);
+   Con::warnf(ConsoleLogEntry::General, "%s", ret);
+   ret[0] = 0;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_closeSplashWindow()
+{
+{
+   Platform::closeSplashWindow();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_collapseEscape(char * x__text,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+const char* wle_returnObject;
+{
+   char* ret = Con::getReturnBuffer( text );
+   collapseEscape( ret );
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_compile(char * x__fileName, bool overrideNoDSO)
+{
+const char* fileName = (const char*)x__fileName;
+
+bool wle_returnObject;
+{
+   Con::expandScriptFilename( scriptFilenameBuffer, sizeof( scriptFilenameBuffer ), fileName );
+      StringTableEntry dsoPath = getDSOPath(scriptFilenameBuffer);
+   if(dsoPath && *dsoPath == 0)
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      bool isEditorScript = false;
+   const char *ext = dStrrchr( scriptFilenameBuffer, '.' );
+   if( ext && ( dStricmp( ext, ".cs" ) == 0 ) )
+   {
+      const char* ext2 = ext - 3;
+      if( dStricmp( ext2, ".ed.cs" ) == 0 )
+         isEditorScript = true;
+   }
+   else if( ext && ( dStricmp( ext, ".gui" ) == 0 ) )
+   {
+      const char* ext2 = ext - 3;
+      if( dStricmp( ext2, ".ed.gui" ) == 0 )
+         isEditorScript = true;
+   }
+   const char *filenameOnly = dStrrchr(scriptFilenameBuffer, '/');
+   if(filenameOnly)
+      ++filenameOnly;
+   else
+      filenameOnly = scriptFilenameBuffer;
+ 
+   char nameBuffer[512];
+   if( isEditorScript )
+      dStrcpyl(nameBuffer, sizeof(nameBuffer), dsoPath, "/", filenameOnly, ".edso", NULL);
+   else
+      dStrcpyl(nameBuffer, sizeof(nameBuffer), dsoPath, "/", filenameOnly, ".dso", NULL);
+   
+   void *data = NULL;
+   U32 dataSize = 0;
+   Torque::FS::ReadFile(scriptFilenameBuffer, data, dataSize, true);
+   if(data == NULL)
+   {
+      Con::errorf(ConsoleLogEntry::Script, "compile: invalid script file %s.", scriptFilenameBuffer);
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   const char *script = static_cast<const char *>(data);
+#ifdef TORQUE_DEBUG
+   Con::printf("Compiling %s...", scriptFilenameBuffer);
+#endif 
+   CodeBlock *code = new CodeBlock();
+   code->compile(nameBuffer, scriptFilenameBuffer, script, overrideNoDSO);
+   delete code;
+   delete[] script;
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_countBits(S32 v)
+{
+{
+   S32 c = 0;
+      
+      c =  ((v & 0xfff) * 0x1001001001001ULL & 0x84210842108421ULL) % 0x1f;
+   c += (((v & 0xfff000) >> 12) * 0x1001001001001ULL & 0x84210842108421ULL) % 
+      0x1f;
+   c += ((v >> 24) * 0x1001001001001ULL & 0x84210842108421ULL) % 0x1f;
+#ifndef TORQUE_SHIPPING
+         {
+      S32 c2 = 0;
+      S32 v2 = v;
+      for (c2 = 0; v2; v2 >>= 1)
+      {
+         c2 += v2 & 1;
+      }
+      if (c2 != c)
+         Con::errorf("countBits: Uh oh bit count mismatch");
+      AssertFatal(c2 == c, "countBits: uh oh, bit count mismatch");
+   }
+#endif
+  return (S32)( c);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_debug()
+{
+{
+   Platform::debugBreak();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_debugv(char * x__variableName)
+{
+const char* variableName = (const char*)x__variableName;
+{
+   if( variableName[ 0 ] == '%' )
+      Con::errorf( "%s = %s", variableName, Con::getLocalVariable( variableName ) );
+   else
+      Con::errorf( "%s = %s", variableName, Con::getVariable( variableName ) );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_deleteVariables(char * x__pattern)
+{
+const char* pattern = (const char*)x__pattern;
+{
+   gEvalState.globalVars.deleteVariables( pattern );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_detag(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+   if( str[ 0 ] == StringTagPrefixByte )
+   {
+      const char* word = dStrchr( str, ' ' );
+      if( word == NULL )
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+         
+      char* ret = Con::getReturnBuffer( dStrlen( word + 1 ) + 1 );
+      dStrcpy( ret, word + 1 );
+      {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   else
+      {wle_returnObject =str;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_displaySplashWindow(char * x__path)
+{
+const char* path = (const char*)x__path;
+bool wle_returnObject;
+{
+   {wle_returnObject =Platform::displaySplashWindow(path);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_endsWith(char * x__str, char * x__suffix, bool caseSensitive)
+{
+const char* str = (const char*)x__str;
+const char* suffix = (const char*)x__suffix;
+
+bool wle_returnObject;
+{
+      S32 srcLen = dStrlen( str );
+   S32 targetLen = dStrlen( suffix );
+   if (targetLen == 0)
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+      else if (srcLen == 0)
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   else if( targetLen > srcLen )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      
+   if( caseSensitive )
+      {wle_returnObject =( dStrcmp( &str[ srcLen - targetLen ], suffix ) == 0 );
+return (S32)(wle_returnObject);}
+      char* srcBuf = new char[ srcLen + 1 ];
+   char* targetBuf = new char[ targetLen + 1 ];
+      dStrcpy( srcBuf, str );
+   dStrcpy( targetBuf, suffix );
+      str = dStrlwr( srcBuf );
+   suffix = dStrlwr( targetBuf );
+      str += srcLen - targetLen;
+      bool endsWith = dStrcmp( str, suffix ) == 0;
+      delete [] srcBuf;
+   delete [] targetBuf;
+   {wle_returnObject =endsWith;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_eval(char * x__consoleString,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* consoleString = (const char*)x__consoleString;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::evaluate(consoleString, false, NULL);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_exec(char * x__fileName, bool noCalls, bool journalScript)
+{
+const char* fileName = (const char*)x__fileName;
+
+bool wle_returnObject;
+{
+   bool journal = false;
+   execDepth++;
+   if(journalDepth >= execDepth)
+      journalDepth = execDepth + 1;
+   else
+      journal = true;
+   bool ret = false;
+   if( journalScript && !journal )
+   {
+      journal = true;
+      journalDepth = execDepth;
+   }
+      Con::expandScriptFilename( scriptFilenameBuffer, sizeof( scriptFilenameBuffer ), fileName );
+         if(dStrEndsWith(scriptFilenameBuffer, ".dso"))
+   {
+      scriptFilenameBuffer[dStrlen(scriptFilenameBuffer) - dStrlen(".dso")] = '\0';
+   }
+      StringTableEntry dsoPath = getDSOPath(scriptFilenameBuffer);
+   const char *ext = dStrrchr(scriptFilenameBuffer, '.');
+   if(!ext)
+   {
+            Con::errorf(ConsoleLogEntry::Script, "exec: invalid script file name %s.", scriptFilenameBuffer);
+      execDepth--;
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+      bool isEditorScript = false;
+      if( dStricmp( ext, ".cs" ) == 0 )
+   {
+      const char* ext2 = ext - 3;
+      if( dStricmp( ext2, ".ed.cs" ) == 0 )
+         isEditorScript = true;
+   }
+   else if( dStricmp( ext, ".gui" ) == 0 )
+   {
+      const char* ext2 = ext - 3;
+      if( dStricmp( ext2, ".ed.gui" ) == 0 )
+         isEditorScript = true;
+   }
+   StringTableEntry scriptFileName = StringTable->insert(scriptFilenameBuffer);
+#ifndef TORQUE_OS_XENON
+      StringTableEntry prefsPath = Platform::getPrefsPath();
+   bool compiled = dStricmp(ext, ".mis") && !journal && !Con::getBoolVariable("Scripts::ignoreDSOs");
+            if(Platform::isFullPath(Platform::stripBasePath(scriptFilenameBuffer)))
+      compiled = false;
+            if( (dsoPath && *dsoPath == 0) || (prefsPath && prefsPath[ 0 ] && dStrnicmp(scriptFileName, prefsPath, dStrlen(prefsPath)) == 0) )
+      compiled = false;
+#else
+   bool compiled = false;                             
+#endif
+         if(journal && Journal::IsPlaying())
+   {
+      char fileNameBuf[256];
+      bool fileRead = false;
+      U32 fileSize;
+      Journal::ReadString(fileNameBuf);
+      Journal::Read(&fileRead);
+      if(!fileRead)
+      {
+         Con::errorf(ConsoleLogEntry::Script, "Journal script read (failed) for %s", fileNameBuf);
+         execDepth--;
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      }
+      Journal::Read(&fileSize);
+      char *script = new char[fileSize + 1];
+      Journal::Read(fileSize, script);
+      script[fileSize] = 0;
+      Con::printf("Executing (journal-read) %s.", scriptFileName);
+      CodeBlock *newCodeBlock = new CodeBlock();
+      newCodeBlock->compileExec(scriptFileName, script, noCalls, 0);
+      delete [] script;
+      execDepth--;
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+      Torque::FS::FileNodeRef scriptFile = Torque::FS::GetFileNode(scriptFileName);
+   Torque::FS::FileNodeRef dsoFile;
+   
+   char nameBuffer[512];
+   char* script = NULL;
+   U32 version;
+   Stream *compiledStream = NULL;
+   Torque::Time scriptModifiedTime, dsoModifiedTime;
+      bool edso = false;
+   if( dStricmp( ext, ".edso" ) == 0  && scriptFile != NULL )
+   {
+      edso = true;
+      dsoFile = scriptFile;
+      scriptFile = NULL;
+      dsoModifiedTime = dsoFile->getModifiedTime();
+      dStrcpy( nameBuffer, scriptFileName );
+   }
+      if(compiled && !edso)
+   {
+      const char *filenameOnly = dStrrchr(scriptFileName, '/');
+      if(filenameOnly)
+         ++filenameOnly;
+      else
+         filenameOnly = scriptFileName;
+      char pathAndFilename[1024];
+      Platform::makeFullPathName(filenameOnly, pathAndFilename, sizeof(pathAndFilename), dsoPath);
+      if( isEditorScript )
+         dStrcpyl(nameBuffer, sizeof(nameBuffer), pathAndFilename, ".edso", NULL);
+      else
+         dStrcpyl(nameBuffer, sizeof(nameBuffer), pathAndFilename, ".dso", NULL);
+      dsoFile = Torque::FS::GetFileNode(nameBuffer);
+      if(scriptFile != NULL)
+         scriptModifiedTime = scriptFile->getModifiedTime();
+      
+      if(dsoFile != NULL)
+         dsoModifiedTime = dsoFile->getModifiedTime();
+   }
+                              
+            if(compiled && dsoFile != NULL && (scriptFile == NULL|| (dsoModifiedTime >= scriptModifiedTime)))
+   {       compiledStream = FileStream::createAndOpen( nameBuffer, Torque::FS::File::Read );
+      if (compiledStream)
+      {
+                  compiledStream->read(&version);
+         if(version != Con::DSOVersion)
+         {
+            Con::warnf("exec: Found an old DSO (%s, ver %d < %d), ignoring.", nameBuffer, version, Con::DSOVersion);
+            delete compiledStream;
+            compiledStream = NULL;
+         }
+      }
+   }
+      if(journal && Journal::IsRecording())
+      Journal::WriteString(scriptFileName);
+   if(scriptFile != NULL && !compiledStream)
+   {
+            
+      void *data;
+      U32 dataSize = 0;
+      Torque::FS::ReadFile(scriptFileName, data, dataSize, true);
+      if(journal && Journal::IsRecording())
+         Journal::Write(bool(data != NULL));
+         
+      if( data == NULL )
+      {
+         Con::errorf(ConsoleLogEntry::Script, "exec: invalid script file %s.", scriptFileName);
+         execDepth--;
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      }
+      else
+      {
+         if( !dataSize )
+         {
+            execDepth --;
+            {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+         }
+         
+         script = (char *)data;
+         if(journal && Journal::IsRecording())
+         {
+            Journal::Write(dataSize);
+            Journal::Write(dataSize, data);
+         }
+      }
+#ifndef TORQUE_NO_DSO_GENERATION
+      if(compiled)
+      {
+         
+#ifdef TORQUE_DEBUG
+         Con::printf("Compiling %s...", scriptFileName);
+#endif   
+         CodeBlock *code = new CodeBlock();
+         code->compile(nameBuffer, scriptFileName, script);
+         delete code;
+         code = NULL;
+         compiledStream = FileStream::createAndOpen( nameBuffer, Torque::FS::File::Read );
+         if(compiledStream)
+         {
+            compiledStream->read(&version);
+         }
+         else
+         {
+                        delete [] script;
+            execDepth--;
+            {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+         }
+      }
+#endif
+   }
+   else
+   {
+      if(journal && Journal::IsRecording())
+         Journal::Write(bool(false));
+   }
+   if(compiledStream)
+   {
+                  delete [] script;
+      script = 0;
+      
+#ifdef TORQUE_DEBUG
+      Con::printf("Loading compiled script %s.", scriptFileName);
+#endif   
+      CodeBlock *code = new CodeBlock;
+      code->read(scriptFileName, *compiledStream);
+      delete compiledStream;
+      code->exec(0, scriptFileName, NULL, 0, NULL, noCalls, NULL, 0);
+      ret = true;
+   }
+   else
+      if(scriptFile)
+      {
+                           
+#ifdef TORQUE_DEBUG
+         Con::printf("Executing %s.", scriptFileName);
+#endif   
+         CodeBlock *newCodeBlock = new CodeBlock();
+         StringTableEntry name = StringTable->insert(scriptFileName);
+         newCodeBlock->compileExec(name, script, noCalls, 0);
+         ret = true;
+      }
+      else
+      {
+                  Con::warnf(ConsoleLogEntry::Script, "Missing file: %s!", scriptFileName);
+         ret = false;
+      }
+   delete [] script;
+   execDepth--;
+   {wle_returnObject =ret;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_expandEscape(char * x__text,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+const char* wle_returnObject;
+{
+   char* ret = Con::getReturnBuffer(dStrlen( text ) * 2 + 1 );     expandEscape( ret, text );
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_export(char * x__pattern, char * x__filename, bool append)
+{
+const char* pattern = (const char*)x__pattern;
+const char* filename = (const char*)x__filename;
+
+{
+   if( filename && filename[ 0 ] )
+   {
+#ifndef TORQUE2D_TOOLS_FIXME
+      if(Con::expandScriptFilename(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filename))
+         filename = scriptFilenameBuffer;
+#else
+      filename = Platform::getPrefsPath( filename );
+      if(filename == NULL || *filename == 0)
+         return;
+#endif
+   }
+   else
+      filename = NULL;
+   gEvalState.globalVars.exportVariables( pattern, filename, append );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_exportToSettings(char * x__pattern, char * x__filename, bool append)
+{
+const char* pattern = (const char*)x__pattern;
+const char* filename = (const char*)x__filename;
+
+{
+   if( filename && filename[ 0 ] )
+   {
+#ifndef TORQUE2D_TOOLS_FIXME
+      if(Con::expandScriptFilename(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), filename))
+         filename = scriptFilenameBuffer;
+#else
+      filename = Platform::getPrefsPath( filename );
+      if(filename == NULL || *filename == 0)
+         return;
+#endif
+   }
+   else
+      filename = NULL;
+   gEvalState.globalVars.exportVariablesAsSettings( pattern, filename, append );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_firstWord(char * x__text,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnit( text, 0, " \t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getDSOPath(char * x__scriptFileName,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* scriptFileName = (const char*)x__scriptFileName;
+const char* wle_returnObject;
+{
+   Con::expandScriptFilename( scriptFilenameBuffer, sizeof(scriptFilenameBuffer), scriptFileName );
+   
+   const char* filename = getDSOPath(scriptFilenameBuffer);
+   if(filename == NULL || *filename == 0)
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =filename;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getField(char * x__text, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnit( text, index, "\t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getFieldCount(char * x__text)
+{
+const char* text = (const char*)x__text;
+{
+  return (S32)( StringUnit::getUnitCount( text, "\t\n" ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getFields(char * x__text, S32 startIndex, S32 endIndex,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   if( endIndex < 0 )
+      endIndex = 1000000;
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnits( text, startIndex, endIndex, "\t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getFunctionPackage(char * x__funcName,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* funcName = (const char*)x__funcName;
+const char* wle_returnObject;
+{
+   Namespace::Entry* nse = Namespace::global()->lookup( StringTable->insert( funcName ) );
+   if( !nse )
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =nse->mPackage;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getMethodPackage(char * x__nameSpace, char * x__method,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* nameSpace = (const char*)x__nameSpace;
+const char* method = (const char*)x__method;
+const char* wle_returnObject;
+{
+   Namespace* ns = Namespace::find( StringTable->insert( nameSpace ) );
+   if( !ns )
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   Namespace::Entry* nse = ns->lookup( StringTable->insert( method ) );
+   if( !nse )
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =nse->mPackage;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getModNameFromPath(char * x__path,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* path = (const char*)x__path;
+const char * wle_returnObject;
+{
+   StringTableEntry modPath = Con::getModNameFromPath(path);
+   {wle_returnObject =modPath ? modPath : "";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getPrefsPath(char * x__relativeFileName,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* relativeFileName = (const char*)x__relativeFileName;
+const char * wle_returnObject;
+{
+   const char *filename = Platform::getPrefsPath(relativeFileName);
+   if(filename == NULL || *filename == 0)
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+     
+   {wle_returnObject =filename;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getRecord(char * x__text, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnit( text, index, "\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getRecordCount(char * x__text)
+{
+const char* text = (const char*)x__text;
+{
+  return (S32)( StringUnit::getUnitCount( text, "\n" ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getRecords(char * x__text, S32 startIndex, S32 endIndex,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   if( endIndex < 0 )
+      endIndex = 1000000;
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnits( text, startIndex, endIndex, "\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getSubStr(char * x__str, S32 start, S32 numChars,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+
+const char* wle_returnObject;
+{
+   S32 baseLen = dStrlen( str );
+   if( numChars == -1 )
+      numChars = baseLen - start;
+      
+   if (start < 0 || numChars < 0) {
+      Con::errorf(ConsoleLogEntry::Script, "getSubStr(...): error, starting position and desired length must be >= 0: (%d, %d)", start, numChars);
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   if (baseLen < start)
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   U32 actualLen = numChars;
+   if (start + numChars > baseLen)
+      actualLen = baseLen - start;
+   char *ret = Con::getReturnBuffer(actualLen + 1);
+   dStrncpy(ret, str + start, actualLen);
+   ret[actualLen] = '\0';
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getTag(char * x__textTagString,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* textTagString = (const char*)x__textTagString;
+const char* wle_returnObject;
+{
+   if(textTagString[0] == StringTagPrefixByte)
+   {
+      const char * space = dStrchr(textTagString, ' ');
+      U64 len;
+      if(space)
+         len = space - textTagString;
+      else
+         len = dStrlen(textTagString) + 1;
+      char * ret = Con::getReturnBuffer(len);
+      dStrncpy(ret, textTagString + 1, len - 1);
+      ret[len - 1] = 0;
+      {wle_returnObject =(ret);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   else
+      {wle_returnObject =(textTagString);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getTrailingNumber(char * x__str)
+{
+const char* str = (const char*)x__str;
+{
+   S32 suffix = -1;
+   String outStr( String::GetTrailingNumber( str, suffix ) );
+  return (S32)( suffix);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getVariable(char * x__varName,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* varName = (const char*)x__varName;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getVariable(varName);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getWebDeployment()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =Platform::getWebDeployment();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getWord(char * x__text, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnit( text, index, " \t\n") );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getWordCount(char * x__text)
+{
+const char* text = (const char*)x__text;
+{
+  return (S32)( StringUnit::getUnitCount( text, " \t\n" ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getWords(char * x__text, S32 startIndex, S32 endIndex,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   if( endIndex < 0 )
+      endIndex = 1000000;
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::getUnits( text, startIndex, endIndex, " \t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_gotoWebPage(char * x__address)
+{
+const char* address = (const char*)x__address;
+{
+         
+   char* protocolSep = dStrstr( address,"://");
+   if( protocolSep != NULL )
+   {
+      Platform::openWebBrowser( address );
+      return;
+   }
+               
+   String addr;
+   if( Platform::isFile( address ) || Platform::isDirectory( address ) )
+   {
+#ifdef TORQUE2D_TOOLS_FIXME
+      addr = String::ToString( "file://%s", address );
+#else
+      addr = String::ToString( "file://%s/%s", Platform::getCurrentDirectory(), address );
+#endif
+   }
+   else
+      addr = String::ToString( "http://%s", address );
+   
+   Platform::openWebBrowser( addr );
+   return;
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isalnum(char * x__str, S32 index)
+{
+const char* str = (const char*)x__str;
+
+bool wle_returnObject;
+{
+   if( index >= 0 && index < dStrlen( str ) )
+      {wle_returnObject =dIsalnum( str[ index ] );
+return (S32)(wle_returnObject);}
+   else
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isCurrentScriptToolScript()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =Con::isCurrentScriptToolScript();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isDebugBuild()
+{
+bool wle_returnObject;
+{
+#ifdef TORQUE_DEBUG
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+#else
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isDefined(char * x__varName, char * x__varValue)
+{
+const char* varName = (const char*)x__varName;
+const char* varValue = (const char*)x__varValue;
+bool wle_returnObject;
+{
+   if(dStrlen(varName) == 0)
+   {
+      Con::errorf("isDefined() - did you forget to put quotes around the variable name?");
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   StringTableEntry name = StringTable->insert(varName);
+      if (dStrchr(name, '.'))
+   {
+      static char scratchBuffer[4096];
+      S32 len = dStrlen(name);
+      AssertFatal(len < sizeof(scratchBuffer)-1, "isDefined() - name too long");
+      dMemcpy(scratchBuffer, name, len+1);
+      char * token = dStrtok(scratchBuffer, ".");
+      if (!token || token[0] == '\0')
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      StringTableEntry objName = StringTable->insert(token);
+            SimObject * obj = Sim::findObject(objName);
+                  if (!obj)
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+            token = dStrtok(0, ".\0");
+      if (!token)
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      while (token != NULL)
+      {
+         StringTableEntry valName = StringTable->insert(token);
+                  bool saveModStatic = obj->canModStaticFields();
+         bool saveModDyn = obj->canModDynamicFields();
+                  obj->setModStaticFields(true);
+         obj->setModDynamicFields(true);
+         const char* value = obj->getDataField(valName, 0);
+                  obj->setModStaticFields(saveModStatic);
+         obj->setModDynamicFields(saveModDyn);
+         if (!value)
+         {
+            obj->setDataField(valName, 0, varValue);
+            {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+         }
+         else
+         {
+                        token = dStrtok(0, ".\0");
+            if (token)
+            {
+                              obj = Sim::findObject(value);
+               if (!obj)
+                  {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+            }
+            else
+            {
+               if (dStrlen(value) > 0)
+                  {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+               else if (dStrcmp(varValue,"")!=0)
+               { 
+                  obj->setDataField(valName, 0, varValue); 
+               }
+                  
+            }
+         }
+      }
+   }
+   else if (name[0] == '%')
+   {
+            if( gEvalState.getStackDepth() > 0 )
+      {
+         Dictionary::Entry* ent = gEvalState.getCurrentFrame().lookup(name);
+         if (ent)
+            {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+         else if (dStrcmp (varValue,"")!=0)
+         {
+            gEvalState.getCurrentFrame().setVariable(name, varValue);
+         }
+      }
+      else
+         Con::errorf("%s() - no local variable frame.", __FUNCTION__);
+   }
+   else if (name[0] == '$')
+   {
+            Dictionary::Entry* ent = gEvalState.globalVars.lookup(name);
+      if (ent)
+         {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+      else if (dStrcmp( varValue,"") != 0)
+      {
+         gEvalState.globalVars.setVariable(name, varValue);
+      }
+   }
+   else
+   {
+            if (dStrcmp(varName, "0") && dStrcmp(varName, "") && (Sim::findObject(varName) != NULL))
+         {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+      else if (varValue != "")
+      {
+         Con::errorf("%s() - can't assign a value to a variable of the form \"%s\"", __FUNCTION__, varValue);
+      }
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isFunction(char * x__funcName)
+{
+const char* funcName = (const char*)x__funcName;
+bool wle_returnObject;
+{
+   {wle_returnObject =Con::isFunction(funcName);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isMethod(char * x__nameSpace, char * x__method)
+{
+const char* nameSpace = (const char*)x__nameSpace;
+const char* method = (const char*)x__method;
+bool wle_returnObject;
+{
+   Namespace* ns = Namespace::find( StringTable->insert( nameSpace ) );
+   Namespace::Entry* nse = ns->lookup( StringTable->insert( method ) );
+   if( !nse )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isShippingBuild()
+{
+bool wle_returnObject;
+{
+#ifdef TORQUE_SHIPPING
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+#else
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isspace(char * x__str, S32 index)
+{
+const char* str = (const char*)x__str;
+
+bool wle_returnObject;
+{
+   if( index >= 0 && index < dStrlen( str ) )
+      {wle_returnObject =dIsspace( str[ index ] );
+return (S32)(wle_returnObject);}
+   else
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isToolBuild()
+{
+bool wle_returnObject;
+{
+#ifdef TORQUE_TOOLS
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+#else
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ltrim(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+   const char *ret = str;
+   while(*ret == ' ' || *ret == '\n' || *ret == '\t')
+      ret++;
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_nextToken(char * x__str1, char * x__token, char * x__delim,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str1 = (const char*)x__str1;
+const char* token = (const char*)x__token;
+const char* delim = (const char*)x__delim;
+const char* wle_returnObject;
+{
+	char *str = (char *)str1;
+   if( str )
+   {
+                  while (isInSet(*str, delim))
+         str++;
+            const char *tmp = str;
+      while (*str && !isInSet(*str, delim))
+         str++;
+            if (*str)
+         *str++ = 0;
+            if (gEvalState.getStackDepth() > 0 && 
+         gEvalState.getCurrentFrame().scopeName)
+         Con::setLocalVariable(token,tmp);
+      else
+         Con::setVariable(token,tmp);
+            while (isInSet(*str, delim))
+         str++;
+   }
+   {wle_returnObject =str;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_popInstantGroup()
+{
+{
+   Con::popInstantGroup();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_pushInstantGroup(char * x__group)
+{
+String group = String( x__group);
+{
+   if( group.size() > 0 )
+      Con::pushInstantGroup( group );
+   else
+      Con::pushInstantGroup();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_quit()
+{
+{
+	if (Winterleaf_EngineCallback::mWLE_IsFunction)
+	{
+		char buffer[8000];
+		buffer[0] = 0;
+		std::vector<const char*> arguments;
+		arguments.push_back(StringTable->insert("Quit"));
+		arguments.push_back(StringTable->insert(""));
+		Winterleaf_EngineCallback::mWLE_GlobalFunction(2, &arguments[0], buffer);
+	}
+	else
+		Platform::postQuitMessage(0);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_quitWithErrorMessage(char * x__message)
+{
+const char* message = (const char*)x__message;
+{
+   Con::errorf( message );
+   Platform::AlertOK( "Error", message );
+   
+            
+   Platform::postQuitMessage( -1 );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_realQuit()
+{
+{
+   Platform::postQuitMessage(0);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_removeField(char * x__text, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::removeUnit( text, index, "\t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_removeRecord(char * x__text, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::removeUnit( text, index, "\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_removeWord(char * x__text, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::removeUnit( text, index, " \t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_restWords(char * x__text,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+const char* wle_returnObject;
+{
+   const char* ptr = text;
+   while( *ptr && *ptr != ' ' && *ptr != '\t' && *ptr != '\n' )
+      ptr ++;
+      
+      if( *ptr )
+      ptr ++;
+      
+   {wle_returnObject =Con::getReturnBuffer( ptr );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_rtrim(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+   S32 firstWhitespace = 0;
+   S32 pos = 0;
+   while(str[pos])
+   {
+      if(str[pos] != ' ' && str[pos] != '\n' && str[pos] != '\t')
+         firstWhitespace = pos + 1;
+      pos++;
+   }
+   char *ret = Con::getReturnBuffer(firstWhitespace + 1);
+   dStrncpy(ret, str, firstWhitespace);
+   ret[firstWhitespace] = 0;
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setField(char * x__text, S32 index, char * x__replacement,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* replacement = (const char*)x__replacement;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::setUnit( text, index, replacement, "\t\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setLogMode(S32 mode)
+{
+{
+   Con::setLogMode( mode );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setRecord(char * x__text, S32 index, char * x__replacement,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* replacement = (const char*)x__replacement;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::setUnit( text, index, replacement, "\n" ) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setVariable(char * x__varName, char * x__value)
+{
+const char* varName = (const char*)x__varName;
+const char* value = (const char*)x__value;
+{
+   return Con::setVariable(varName, value);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setWord(char * x__text, S32 index, char * x__replacement,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* text = (const char*)x__text;
+
+const char* replacement = (const char*)x__replacement;
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer( StringUnit::setUnit( text, index, replacement, " \t\n") );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_startsWith(char * x__str, char * x__prefix, bool caseSensitive)
+{
+const char* str = (const char*)x__str;
+const char* prefix = (const char*)x__prefix;
+
+bool wle_returnObject;
+{
+      S32 srcLen = dStrlen( str );
+   S32 targetLen = dStrlen( prefix );
+   if( targetLen == 0 )
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+      else if( srcLen == 0 )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   if( caseSensitive )
+      {wle_returnObject =( dStrncmp( str, prefix, targetLen ) == 0 );
+return (S32)(wle_returnObject);}
+      char* srcBuf = new char[ srcLen + 1 ];
+   char* targetBuf = new char[ targetLen + 1 ];
+      dStrcpy( srcBuf, str );
+   dStrcpy( targetBuf, prefix );
+      str = dStrlwr( srcBuf );
+   prefix = dStrlwr( targetBuf );
+      bool startsWith = dStrncmp( str, prefix, targetLen ) == 0;
+      delete [] srcBuf;
+   delete [] targetBuf;
+   {wle_returnObject =startsWith;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strasc(char * x__chr)
+{
+const char* chr = (const char*)x__chr;
+{
+  return (int)( oneUTF8toUTF32( chr ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strchr(char * x__str, char * x__chr,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* chr = (const char*)x__chr;
+const char* wle_returnObject;
+{
+   const char *ret = dStrchr( str, chr[ 0 ] );
+   {wle_returnObject =ret ? ret : "";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strchrpos(char * x__str, char * x__chr, S32 start)
+{
+const char* str = (const char*)x__str;
+const char* chr = (const char*)x__chr;
+
+{
+   if( start != 0 && start >= dStrlen( str ) )
+     return (S32)( -1);
+   
+   const char* ret = dStrchr( &str[ start ], chr[ 0 ] );
+  return (S32)( ret ? ret - str : -1);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strcmp(char * x__str1, char * x__str2)
+{
+const char* str1 = (const char*)x__str1;
+const char* str2 = (const char*)x__str2;
+{
+  return (S32)( dStrcmp( str1, str2 ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strformat(char * x__format, char * x__value,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* format = (const char*)x__format;
+const char* value = (const char*)x__value;
+const char* wle_returnObject;
+{
+   static const U32 bufSize = 64;
+   char* pBuffer = Con::getReturnBuffer(bufSize);
+   const char *pch = format;
+   pBuffer[0] = '\0';
+   while (*pch != '\0' && *pch !='%')
+      pch++;
+   while (*pch != '\0' && !dIsalpha(*pch))
+      pch++;
+   if (*pch == '\0')
+   {
+      Con::errorf("strFormat: Invalid format string!\n");
+      {wle_returnObject =pBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   
+   switch(*pch)
+   {
+      case 'c':
+      case 'C':
+      case 'd':
+      case 'i':
+      case 'o':
+      case 'u':
+      case 'x':
+      case 'X':
+         dSprintf( pBuffer, bufSize, format, dAtoi( value ) );
+         break;
+      case 'e':
+      case 'E':
+      case 'f':
+      case 'g':
+      case 'G':
+         dSprintf( pBuffer, bufSize, format, dAtof( value ) );
+         break;
+      default:
+         Con::errorf("strFormat: Invalid format string!\n");
+         break;
+   }
+   {wle_returnObject =pBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_stricmp(char * x__str1, char * x__str2)
+{
+const char* str1 = (const char*)x__str1;
+const char* str2 = (const char*)x__str2;
+{
+  return (S32)( dStricmp( str1, str2 ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strinatcmp(char * x__str1, char * x__str2)
+{
+const char* str1 = (const char*)x__str1;
+const char* str2 = (const char*)x__str2;
+{
+  return (S32)( dStrnatcasecmp( str1, str2 ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_stripChars(char * x__str, char * x__chars,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* chars = (const char*)x__chars;
+const char* wle_returnObject;
+{
+   char* ret = Con::getReturnBuffer( dStrlen( str ) + 1 );
+   dStrcpy( ret, str );
+   U32 pos = dStrcspn( ret, chars );
+   while ( pos < dStrlen( ret ) )
+   {
+      dStrcpy( ret + pos, ret + pos + 1 );
+      pos = dStrcspn( ret, chars );
+   }
+   {wle_returnObject =( ret );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_stripTrailingNumber(char * x__str,  char* retval)
+{
+dSprintf(retval,1024,"");
+const char* str = (const char*)x__str;
+String wle_returnObject;
+{
+   S32 suffix;
+   {wle_returnObject =String::GetTrailingNumber( str, suffix );
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strIsMatchExpr(char * x__pattern, char * x__str, bool caseSensitive)
+{
+const char* pattern = (const char*)x__pattern;
+const char* str = (const char*)x__str;
+
+bool wle_returnObject;
+{
+   {wle_returnObject =FindMatch::isMatch( pattern, str, caseSensitive );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strIsMatchMultipleExpr(char * x__patterns, char * x__str, bool caseSensitive)
+{
+const char* patterns = (const char*)x__patterns;
+const char* str = (const char*)x__str;
+
+bool wle_returnObject;
+{
+   {wle_returnObject =FindMatch::isMatchMultipleExprs( patterns, str, caseSensitive );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strlen(char * x__str)
+{
+const char* str = (const char*)x__str;
+{
+  return (S32)( dStrlen( str ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strlwr(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+   char *ret = Con::getReturnBuffer(dStrlen(str) + 1);
+   dStrcpy(ret, str);
+   {wle_returnObject =dStrlwr(ret);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strnatcmp(char * x__str1, char * x__str2)
+{
+const char* str1 = (const char*)x__str1;
+const char* str2 = (const char*)x__str2;
+{
+  return (S32)( dStrnatcmp( str1, str2 ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strpos(char * x__haystack, char * x__needle, S32 offset)
+{
+const char* haystack = (const char*)x__haystack;
+const char* needle = (const char*)x__needle;
+
+{
+   S32 start = offset;
+   U32 sublen = dStrlen( needle );
+   U32 strlen = dStrlen( haystack );
+   if(start < 0)
+     return (S32)( -1);
+   if(sublen + start > strlen)
+     return (S32)( -1);
+   for(; start + sublen <= strlen; start++)
+      if(!dStrncmp(haystack + start, needle, sublen))
+        return (S32)( start);
+  return (S32)( -1);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strrchr(char * x__str, char * x__chr,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* chr = (const char*)x__chr;
+const char* wle_returnObject;
+{
+   const char *ret = dStrrchr( str, chr[ 0 ] );
+   {wle_returnObject =ret ? ret : "";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strrchrpos(char * x__str, char * x__chr, S32 start)
+{
+const char* str = (const char*)x__str;
+const char* chr = (const char*)x__chr;
+
+{
+   if( start != 0 && start >= dStrlen( str ) )
+     return (S32)( -1);
+   const char* ret = dStrrchr( str, chr[ 0 ] );
+   if( !ret )
+     return (S32)( -1);
+      
+   S64 index = ret - str;
+   if( index < start )
+     return (S32)( -1);
+      
+  return (S32)( index);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strrepeat(char * x__str, S32 numTimes, char * x__delimiter,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+
+const char* delimiter = (const char*)x__delimiter;
+const char* wle_returnObject;
+{
+   StringBuilder result;
+   bool isFirst = false;
+   for( U32 i = 0; i < numTimes; ++ i )
+   {
+      if( !isFirst )
+         result.append( delimiter );
+         
+      result.append( str );
+      isFirst = false;
+   }
+   
+   {wle_returnObject =Con::getReturnBuffer( result );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strreplace(char * x__source, char * x__from, char * x__to,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* source = (const char*)x__source;
+const char* from = (const char*)x__from;
+const char* to = (const char*)x__to;
+const char* wle_returnObject;
+{
+   S32 fromLen = dStrlen( from );
+   if(!fromLen)
+      {wle_returnObject =source;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   S32 toLen = dStrlen( to );
+   S32 count = 0;
+   const char *scan = source;
+   while(scan)
+   {
+      scan = dStrstr(scan, from);
+      if(scan)
+      {
+         scan += fromLen;
+         count++;
+      }
+   }
+   char *ret = Con::getReturnBuffer(dStrlen(source) + 1 + (toLen - fromLen) * count);
+   U32 scanp = 0;
+   U32 dstp = 0;
+   for(;;)
+   {
+      const char *scan = dStrstr(source + scanp, from);
+      if(!scan)
+      {
+         dStrcpy(ret + dstp, source + scanp);
+         break;
+      }
+      U64 len = scan - (source + scanp);
+      dStrncpy(ret + dstp, source + scanp, len);
+      dstp += len;
+      dStrcpy(ret + dstp, to);
+      dstp += toLen;
+      scanp += len + fromLen;
+   }
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_strstr(char * x__string, char * x__substring)
+{
+const char* string = (const char*)x__string;
+const char* substring = (const char*)x__substring;
+{
+   const char* retpos = dStrstr( string, substring );
+   if( !retpos )
+     return (S32)( -1);
+      
+  return (S32)( retpos - string);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strupr(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+   char *ret = Con::getReturnBuffer(dStrlen(str) + 1);
+   dStrcpy(ret, str);
+   {wle_returnObject =dStrupr(ret);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_trace(bool enable)
+{
+{
+   gEvalState.traceOn = enable;
+   Con::printf( "Console trace %s", gEvalState.traceOn ? "enabled." : "disabled." );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_trim(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+   const char *ptr = str;
+   while(*ptr == ' ' || *ptr == '\n' || *ptr == '\t')
+      ptr++;
+   S32 firstWhitespace = 0;
+   S32 pos = 0;
+   while(ptr[pos])
+   {
+      if(ptr[pos] != ' ' && ptr[pos] != '\n' && ptr[pos] != '\t')
+         firstWhitespace = pos + 1;
+      pos++;
+   }
+   char *ret = Con::getReturnBuffer(firstWhitespace + 1);
+   dStrncpy(ret, ptr, firstWhitespace);
+   ret[firstWhitespace] = 0;
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

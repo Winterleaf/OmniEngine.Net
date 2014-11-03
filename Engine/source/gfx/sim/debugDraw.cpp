@@ -431,3 +431,129 @@ DefineEngineMethod( DebugDrawer, toggleDrawing, void, (),,
    object->toggleDrawing();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnDebugDrawer_drawBox(char * x__object, char * x__a, char * x__b, char * x__color)
+{
+DebugDrawer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F a = Point3F();
+sscanf(x__a,"%f %f %f",&a.x,&a.y,&a.z);
+Point3F b = Point3F();
+sscanf(x__b,"%f %f %f",&b.x,&b.y,&b.z);
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{
+   object->drawBox( a, b, color );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnDebugDrawer_drawLine(char * x__object, char * x__a, char * x__b, char * x__color)
+{
+DebugDrawer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F a = Point3F();
+sscanf(x__a,"%f %f %f",&a.x,&a.y,&a.z);
+Point3F b = Point3F();
+sscanf(x__b,"%f %f %f",&b.x,&b.y,&b.z);
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{
+   object->drawLine( a, b, color );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnDebugDrawer_setLastTTL(char * x__object, U32 ms)
+{
+DebugDrawer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setLastTTL( ms );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnDebugDrawer_setLastZTest(char * x__object, bool enabled)
+{
+DebugDrawer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setLastZTest( enabled );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnDebugDrawer_toggleDrawing(char * x__object)
+{
+DebugDrawer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->toggleDrawing();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnDebugDrawer_toggleFreeze(char * x__object)
+{
+DebugDrawer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->toggleFreeze();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

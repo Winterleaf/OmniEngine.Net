@@ -207,3 +207,70 @@ DefineEngineFunction(snapToggle, void, (),,
 //{
 //   gSnapLine = !gSnapLine;
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_snapToggle()
+{
+{
+	gSnapLine = !gSnapLine;
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

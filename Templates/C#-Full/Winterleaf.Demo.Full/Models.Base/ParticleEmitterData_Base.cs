@@ -1,63 +1,34 @@
-// WinterLeaf Entertainment
-// Copyright (c) 2014, WinterLeaf Entertainment LLC
-// 
-// All rights reserved.
-// 
-// The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
-// 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
-// 
-// This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
-// 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
-// 
-// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-// 
-//     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
-//     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-//     With respect to any Product that the Licensee develop using the Software:
-//     Licensee shall:
-//         display the OMNI Logo, in the start-up sequence of the Product (unless waived by WinterLeaf Entertainment);
-//         display in the "About" box or in the credits screen of the Product the text "OMNI by WinterLeaf Entertainment";
-//         display the OMNI Logo, on all external Product packaging materials and the back cover of any printed instruction manual or the end of any electronic instruction manual;
-//         notify WinterLeaf Entertainment in writing that You are publicly releasing a Product that was developed using the Software within the first 30 days following the release; and
-//         the Licensee hereby grant WinterLeaf Entertainment permission to refer to the Licensee or the name of any Product the Licensee develops using the Software for marketing purposes. All goodwill in each party's trademarks and logos will inure to the sole benefit of that party.
-//     Neither the name of WinterLeaf Entertainment LLC or OMNI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-//     The following restrictions apply to the use of OMNI "Community Edition":
-//     Licensee may not:
-//         create any derivative works of OMNI Engine, including but not limited to translations, localizations, or game making software other than Games;
-//         redistribute, encumber, sell, rent, lease, sublicense, or otherwise transfer rights to OMNI "Community Edition"; or
-//         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
-//         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
-//         use the Software for any illegal purpose.
-// 
-// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+
 
 #region
-
 using System;
-using System.ComponentModel;
-using WinterLeaf.Demo.Full.Models.User.Extendable;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using WinterLeaf.Engine;
+using WinterLeaf.Engine.Classes;
+using WinterLeaf.Engine.Containers;
+using WinterLeaf.Engine.Enums;
+using System.ComponentModel;
+using System.Threading;
+using  WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
-using WinterLeaf.Engine.Classes.Interopt;
-using WinterLeaf.Engine.Containers;
-using WinterLeaf.Engine.Enums;
-
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 #endregion
 
 namespace WinterLeaf.Demo.Full.Models.Base
-{
+    {
     /// <summary>
     /// 
     /// </summary>
-    [TypeConverter(typeof (TypeConverterGeneric<ParticleEmitterData_Base>))]
-    public partial class ParticleEmitterData_Base : GameBaseData
-    {
-        #region ProxyObjects Operator Overrides
+    [TypeConverter(typeof(TypeConverterGeneric<ParticleEmitterData_Base>))]
+    public partial class ParticleEmitterData_Base: GameBaseData
+{
 
+#region ProxyObjects Operator Overrides
         /// <summary>
         /// 
         /// </summary>
@@ -65,29 +36,27 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator ==(ParticleEmitterData_Base ts, string simobjectid)
-        {
-            return ReferenceEquals(ts, null) ? ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
-        }
-
-        /// <summary>
+            {
+            return object.ReferenceEquals(ts, null) ? object.ReferenceEquals(simobjectid, null) : ts.Equals(simobjectid);
+            }
+  /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
-        {
+            {
             return base.GetHashCode();
-        }
-
-        /// <summary>
+            }
+  /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-        {
-            return (this._ID == (string) myReflections.ChangeType(obj, typeof (string)));
-        }
-
+            {
+            
+            return (this._ID ==(string)myReflections.ChangeType( obj,typeof(string)));
+            }
         /// <summary>
         /// 
         /// </summary>
@@ -95,23 +64,25 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static bool operator !=(ParticleEmitterData_Base ts, string simobjectid)
-        {
-            if (ReferenceEquals(ts, null))
-                return !ReferenceEquals(simobjectid, null);
+            {
+            if (object.ReferenceEquals(ts, null))
+                return !object.ReferenceEquals(simobjectid, null);
             return !ts.Equals(simobjectid);
-        }
 
-        /// <summary>
+            }
+
+
+            /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator string(ParticleEmitterData_Base ts)
-        {
-            if (ReferenceEquals(ts, null))
-                return "0";
+        public static implicit operator string( ParticleEmitterData_Base ts)
+            {
+            if (object.ReferenceEquals(ts, null))
+                 return "0";
             return ts._ID;
-        }
+            }
 
         /// <summary>
         /// 
@@ -119,20 +90,20 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="ts"></param>
         /// <returns></returns>
         public static implicit operator ParticleEmitterData_Base(string ts)
-        {
+            {
             uint simobjectid = resolveobject(ts);
-            return (ParticleEmitterData_Base) Omni.self.getSimObject(simobjectid, typeof (ParticleEmitterData_Base));
-        }
+           return  (ParticleEmitterData_Base) Omni.self.getSimObject(simobjectid,typeof(ParticleEmitterData_Base));
+            }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator int(ParticleEmitterData_Base ts)
-        {
-            return (int) ts._iID;
-        }
+        public static implicit operator int( ParticleEmitterData_Base ts)
+            {
+            return (int)ts._iID;
+            }
 
         /// <summary>
         /// 
@@ -140,334 +111,474 @@ namespace WinterLeaf.Demo.Full.Models.Base
         /// <param name="simobjectid"></param>
         /// <returns></returns>
         public static implicit operator ParticleEmitterData_Base(int simobjectid)
-        {
-            return (ParticleEmitterData) Omni.self.getSimObject((uint) simobjectid, typeof (ParticleEmitterData_Base));
-        }
+            {
+            return  (ParticleEmitterData) Omni.self.getSimObject((uint)simobjectid,typeof(ParticleEmitterData_Base));
+            }
+
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static implicit operator uint(ParticleEmitterData_Base ts)
-        {
+        public static implicit operator uint( ParticleEmitterData_Base ts)
+            {
             return ts._iID;
-        }
+            }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public static implicit operator ParticleEmitterData_Base(uint simobjectid)
-        {
-            return (ParticleEmitterData_Base) Omni.self.getSimObject(simobjectid, typeof (ParticleEmitterData_Base));
-        }
+            {
+            return  (ParticleEmitterData_Base) Omni.self.getSimObject(simobjectid,typeof(ParticleEmitterData_Base));
+            }
+#endregion
+#region Init Persists
+/// <summary>
+/// The direction aligned particles should face, only valid if alignParticles is true. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public Point3F alignDirection
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".alignDirection").AsPoint3F();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".alignDirection", value.AsString());
+          }
+       }
+/// <summary>
+/// If true, particles always face along the axis defined by alignDirection. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool alignParticles
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".alignParticles").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".alignParticles", value.AsString());
+          }
+       }
+/// <summary>
+/// Used to generate the final particle color by controlling interpolation      between the particle color and the particle color multiplied by the      ambient light color. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float ambientFactor
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".ambientFactor").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".ambientFactor", value.AsString());
+          }
+       }
+/// <summary>
+/// String value that controls how emitted particles blend with the scene. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public TypeParticleBlendStyle blendStyle
+       {
+       get
+          {          return (TypeParticleBlendStyle) Omni.self.GetVar(_ID + ".blendStyle");
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".blendStyle", value.ToString());
+          }
+       }
+/// <summary>
+/// Distance along ejection Z axis from which to eject particles. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float ejectionOffset
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".ejectionOffset").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".ejectionOffset", value.AsString());
+          }
+       }
+/// <summary>
+/// Distance Padding along ejection Z axis from which to eject particles. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float ejectionOffsetVariance
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".ejectionOffsetVariance").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".ejectionOffsetVariance", value.AsString());
+          }
+       }
+/// <summary>
+/// Time (in milliseconds) between each particle ejection. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public int ejectionPeriodMS
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".ejectionPeriodMS").AsInt();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".ejectionPeriodMS", value.AsString());
+          }
+       }
+/// <summary>
+/// Particle ejection velocity. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float ejectionVelocity
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".ejectionVelocity").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".ejectionVelocity", value.AsString());
+          }
+       }
+/// <summary>
+/// This particle system should not use the mixed-resolution renderer.      If your particle system has large amounts of overdraw, consider      disabling this option. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool highResOnly
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".highResOnly").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".highResOnly", value.AsString());
+          }
+       }
+/// <summary>
+/// Lifetime of emitted particles (in milliseconds). 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public int lifetimeMS
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".lifetimeMS").AsInt();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".lifetimeMS", value.AsString());
+          }
+       }
+/// <summary>
+/// Variance in particle lifetime from 0 - lifetimeMS. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public int lifetimeVarianceMS
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".lifetimeVarianceMS").AsInt();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".lifetimeVarianceMS", value.AsString());
+          }
+       }
+/// <summary>
+/// If true, particles will be oriented to face in the direction they are moving. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool orientOnVelocity
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".orientOnVelocity").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".orientOnVelocity", value.AsString());
+          }
+       }
+/// <summary>
+/// If true, Particles will always face the camera. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool orientParticles
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".orientParticles").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".orientParticles", value.AsString());
+          }
+       }
+/// <summary>
+/// If false, particles emitted in the same frame have their positions      adjusted. If true, adjustment is skipped and particles will clump      together. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool overrideAdvance
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".overrideAdvance").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".overrideAdvance", value.AsString());
+          }
+       }
+/// <summary>
+/// @brief List of space or TAB delimited ParticleData datablock names.\n\n     A random one of these datablocks is selected each time a particle is      emitted. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public String particles
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".particles").AsString();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".particles", value.AsString());
+          }
+       }
+/// <summary>
+/// Variance in ejection period, from 1 - ejectionPeriodMS. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public int periodVarianceMS
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".periodVarianceMS").AsInt();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".periodVarianceMS", value.AsString());
+          }
+       }
+/// <summary>
+/// Reference angle, from the vertical plane, to eject particles from. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float phiReferenceVel
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".phiReferenceVel").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".phiReferenceVel", value.AsString());
+          }
+       }
+/// <summary>
+/// Variance from the reference angle, from 0 - 360. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float phiVariance
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".phiVariance").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".phiVariance", value.AsString());
+          }
+       }
+/// <summary>
+/// Controls whether particles are rendered onto reflective surfaces like water. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool renderReflection
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".renderReflection").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".renderReflection", value.AsString());
+          }
+       }
+/// <summary>
+/// @brief If true, reverses the normal draw order of particles.\n\n     Particles are normally drawn from newest to oldest, or in Z order      (furthest first) if sortParticles is true. Setting this field to      true will reverse that order: oldest first, or nearest first if      sortParticles is true. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool reverseOrder
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".reverseOrder").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".reverseOrder", value.AsString());
+          }
+       }
+/// <summary>
+/// For soft particles, the distance (in meters) where particles will be      faded based on the difference in depth between the particle and the      scene geometry. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float softnessDistance
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".softnessDistance").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".softnessDistance", value.AsString());
+          }
+       }
+/// <summary>
+/// If true, particles are sorted furthest to nearest.
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool sortParticles
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".sortParticles").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".sortParticles", value.AsString());
+          }
+       }
+/// <summary>
+/// Optional texture to override ParticleData::textureName. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public String textureName
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".textureName").AsString();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".textureName", value.AsString());
+          }
+       }
+/// <summary>
+/// Maximum angle, from the horizontal plane, to eject particles from. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float thetaMax
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".thetaMax").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".thetaMax", value.AsString());
+          }
+       }
+/// <summary>
+/// Minimum angle, from the horizontal plane, to eject from. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float thetaMin
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".thetaMin").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".thetaMin", value.AsString());
+          }
+       }
+/// <summary>
+/// @brief If true, use emitter specified colors instead of datablock colors.\n\n     Useful for ShapeBase dust and WheeledVehicle wheel particle emitters that use      the current material to control particle color. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool useEmitterColors
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".useEmitterColors").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".useEmitterColors", value.AsString());
+          }
+       }
+/// <summary>
+/// @brief If true, use emitter specified sizes instead of datablock sizes.\n     Useful for Debris particle emitters that control the particle size. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public bool useEmitterSizes
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".useEmitterSizes").AsBool();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".useEmitterSizes", value.AsString());
+          }
+       }
+/// <summary>
+/// Variance for ejection velocity, from 0 - ejectionVelocity. 
+/// </summary>
+[MemberGroup("ParticleEmitterData")]
+public float velocityVariance
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".velocityVariance").AsFloat();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".velocityVariance", value.AsString());
+          }
+       }
 
-        #endregion
+#endregion
+#region Member Functions
+/// <summary>
+/// Reloads the ParticleData datablocks and other fields used by this emitter.
+///    @tsexample
+///    // Get the editor's current particle emitter
+///    %emitter = PE_EmitterEditor.currEmitter
+///    // Change a field value
+///    %emitter.setFieldValue( %propertyField, %value );
+///    // Reload this emitter
+///    %emitter.reload();
+///    @endtsexample)
+/// 
+/// </summary>
+[MemberFunctionConsoleInteraction(true)]
+public  void reload(){
 
-        #region Init Persists
-
-        /// <summary>
-        /// The direction aligned particles should face, only valid if alignParticles is true. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public Point3F alignDirection
-        {
-            get { return Omni.self.GetVar(_ID + ".alignDirection").AsPoint3F(); }
-            set { Omni.self.SetVar(_ID + ".alignDirection", value.AsString()); }
-        }
-
-        /// <summary>
-        /// If true, particles always face along the axis defined by alignDirection. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool alignParticles
-        {
-            get { return Omni.self.GetVar(_ID + ".alignParticles").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".alignParticles", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Used to generate the final particle color by controlling interpolation      between the particle color and the particle color multiplied by the      ambient light color. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float ambientFactor
-        {
-            get { return Omni.self.GetVar(_ID + ".ambientFactor").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".ambientFactor", value.AsString()); }
-        }
-
-        /// <summary>
-        /// String value that controls how emitted particles blend with the scene. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public TypeParticleBlendStyle blendStyle
-        {
-            get { return (TypeParticleBlendStyle) Omni.self.GetVar(_ID + ".blendStyle"); }
-            set { Omni.self.SetVar(_ID + ".blendStyle", value.ToString()); }
-        }
-
-        /// <summary>
-        /// Distance along ejection Z axis from which to eject particles. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float ejectionOffset
-        {
-            get { return Omni.self.GetVar(_ID + ".ejectionOffset").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".ejectionOffset", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Distance Padding along ejection Z axis from which to eject particles. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float ejectionOffsetVariance
-        {
-            get { return Omni.self.GetVar(_ID + ".ejectionOffsetVariance").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".ejectionOffsetVariance", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Time (in milliseconds) between each particle ejection. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public int ejectionPeriodMS
-        {
-            get { return Omni.self.GetVar(_ID + ".ejectionPeriodMS").AsInt(); }
-            set { Omni.self.SetVar(_ID + ".ejectionPeriodMS", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Particle ejection velocity. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float ejectionVelocity
-        {
-            get { return Omni.self.GetVar(_ID + ".ejectionVelocity").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".ejectionVelocity", value.AsString()); }
-        }
-
-        /// <summary>
-        /// This particle system should not use the mixed-resolution renderer.      If your particle system has large amounts of overdraw, consider      disabling this option. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool highResOnly
-        {
-            get { return Omni.self.GetVar(_ID + ".highResOnly").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".highResOnly", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Lifetime of emitted particles (in milliseconds). 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public int lifetimeMS
-        {
-            get { return Omni.self.GetVar(_ID + ".lifetimeMS").AsInt(); }
-            set { Omni.self.SetVar(_ID + ".lifetimeMS", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Variance in particle lifetime from 0 - lifetimeMS. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public int lifetimeVarianceMS
-        {
-            get { return Omni.self.GetVar(_ID + ".lifetimeVarianceMS").AsInt(); }
-            set { Omni.self.SetVar(_ID + ".lifetimeVarianceMS", value.AsString()); }
-        }
-
-        /// <summary>
-        /// If true, particles will be oriented to face in the direction they are moving. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool orientOnVelocity
-        {
-            get { return Omni.self.GetVar(_ID + ".orientOnVelocity").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".orientOnVelocity", value.AsString()); }
-        }
-
-        /// <summary>
-        /// If true, Particles will always face the camera. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool orientParticles
-        {
-            get { return Omni.self.GetVar(_ID + ".orientParticles").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".orientParticles", value.AsString()); }
-        }
-
-        /// <summary>
-        /// If false, particles emitted in the same frame have their positions      adjusted. If true, adjustment is skipped and particles will clump      together. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool overrideAdvance
-        {
-            get { return Omni.self.GetVar(_ID + ".overrideAdvance").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".overrideAdvance", value.AsString()); }
-        }
-
-        /// <summary>
-        /// @brief List of space or TAB delimited ParticleData datablock names.\n\n     A random one of these datablocks is selected each time a particle is      emitted. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public String particles
-        {
-            get { return Omni.self.GetVar(_ID + ".particles").AsString(); }
-            set { Omni.self.SetVar(_ID + ".particles", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Variance in ejection period, from 1 - ejectionPeriodMS. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public int periodVarianceMS
-        {
-            get { return Omni.self.GetVar(_ID + ".periodVarianceMS").AsInt(); }
-            set { Omni.self.SetVar(_ID + ".periodVarianceMS", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Reference angle, from the vertical plane, to eject particles from. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float phiReferenceVel
-        {
-            get { return Omni.self.GetVar(_ID + ".phiReferenceVel").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".phiReferenceVel", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Variance from the reference angle, from 0 - 360. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float phiVariance
-        {
-            get { return Omni.self.GetVar(_ID + ".phiVariance").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".phiVariance", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Controls whether particles are rendered onto reflective surfaces like water. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool renderReflection
-        {
-            get { return Omni.self.GetVar(_ID + ".renderReflection").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".renderReflection", value.AsString()); }
-        }
-
-        /// <summary>
-        /// @brief If true, reverses the normal draw order of particles.\n\n     Particles are normally drawn from newest to oldest, or in Z order      (furthest first) if sortParticles is true. Setting this field to      true will reverse that order: oldest first, or nearest first if      sortParticles is true. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool reverseOrder
-        {
-            get { return Omni.self.GetVar(_ID + ".reverseOrder").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".reverseOrder", value.AsString()); }
-        }
-
-        /// <summary>
-        /// For soft particles, the distance (in meters) where particles will be      faded based on the difference in depth between the particle and the      scene geometry. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float softnessDistance
-        {
-            get { return Omni.self.GetVar(_ID + ".softnessDistance").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".softnessDistance", value.AsString()); }
-        }
-
-        /// <summary>
-        /// If true, particles are sorted furthest to nearest.
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool sortParticles
-        {
-            get { return Omni.self.GetVar(_ID + ".sortParticles").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".sortParticles", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Optional texture to override ParticleData::textureName. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public String textureName
-        {
-            get { return Omni.self.GetVar(_ID + ".textureName").AsString(); }
-            set { Omni.self.SetVar(_ID + ".textureName", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Maximum angle, from the horizontal plane, to eject particles from. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float thetaMax
-        {
-            get { return Omni.self.GetVar(_ID + ".thetaMax").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".thetaMax", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Minimum angle, from the horizontal plane, to eject from. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float thetaMin
-        {
-            get { return Omni.self.GetVar(_ID + ".thetaMin").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".thetaMin", value.AsString()); }
-        }
-
-        /// <summary>
-        /// @brief If true, use emitter specified colors instead of datablock colors.\n\n     Useful for ShapeBase dust and WheeledVehicle wheel particle emitters that use      the current material to control particle color. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool useEmitterColors
-        {
-            get { return Omni.self.GetVar(_ID + ".useEmitterColors").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".useEmitterColors", value.AsString()); }
-        }
-
-        /// <summary>
-        /// @brief If true, use emitter specified sizes instead of datablock sizes.\n     Useful for Debris particle emitters that control the particle size. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public bool useEmitterSizes
-        {
-            get { return Omni.self.GetVar(_ID + ".useEmitterSizes").AsBool(); }
-            set { Omni.self.SetVar(_ID + ".useEmitterSizes", value.AsString()); }
-        }
-
-        /// <summary>
-        /// Variance for ejection velocity, from 0 - ejectionVelocity. 
-        /// </summary>
-        [MemberGroup("ParticleEmitterData")]
-        public float velocityVariance
-        {
-            get { return Omni.self.GetVar(_ID + ".velocityVariance").AsFloat(); }
-            set { Omni.self.SetVar(_ID + ".velocityVariance", value.AsString()); }
-        }
-
-        #endregion
-
-        #region Member Functions
-
-        /// <summary>
-        /// Reloads the ParticleData datablocks and other fields used by this emitter.   @tsexample   // Get the editor's current particle emitter   %emitter = PE_EmitterEditor.currEmitter   // Change a field value   %emitter.setFieldValue( %propertyField, %value );   // Reload this emitter   %emitter.reload();   @endtsexample)
-        /// </summary>
-        [MemberFunctionConsoleInteraction(true)]
-        public void reload()
-        {
-            m_ts.fnParticleEmitterData_reload(_ID);
-        }
-
-        #endregion
-
-        #region T3D Callbacks
-
-        #endregion
-
-        public ParticleEmitterData_Base()
-        {
-        }
-    }
+pInvokes.m_ts.fnParticleEmitterData_reload(_ID);
 }
+
+#endregion
+#region T3D Callbacks
+
+#endregion
+public ParticleEmitterData_Base (){}
+}}

@@ -437,3 +437,76 @@ DefineEngineMethod( GuiIconButtonCtrl, setBitmap, void, (const char* buttonFilen
    Platform::makeFullPathName( buttonFilename, argBuffer, 512 );
    object->setBitmap( argBuffer );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiIconButtonCtrl_setBitmap(char * x__object, char * x__buttonFilename)
+{
+GuiIconButtonCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* buttonFilename = (const char*)x__buttonFilename;
+{
+   char* argBuffer = Con::getArgBuffer( 512 );
+   Platform::makeFullPathName( buttonFilename, argBuffer, 512 );
+   object->setBitmap( argBuffer );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -161,3 +161,91 @@ DefineEngineMethod(RenderPassStateToken, toggle, void, (),,
 {
    object->enable(!object->isEnabled());
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderPassStateToken_disable(char * x__object)
+{
+RenderPassStateToken* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->enable(false);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderPassStateToken_enable(char * x__object)
+{
+RenderPassStateToken* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->enable(true);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderPassStateToken_toggle(char * x__object)
+{
+RenderPassStateToken* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->enable(!object->isEnabled());
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

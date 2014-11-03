@@ -1723,3 +1723,333 @@ DefineEngineMethod( SFXSource, addMarker, void, ( String name, F32 pos ),,
 {
    object->addMarker( name, pos );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SFXSource_setTransform(char * x__object, char * x__position, char * x__direction)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* position = (const char*)x__position;
+const char* direction = (const char*)x__direction;
+{
+   MatrixF mat = object->getTransform();
+   if(dStrcmp( position , "")!=0 )
+   {
+      Point3F pos;
+      dSscanf( position, "%g %g %g", &pos.x, &pos.y, &pos.z );
+      mat.setPosition( pos );
+   }
+   
+   if(dStrcmp( direction ,"")!=0 )
+   {
+      Point3F dir;
+      dSscanf( direction, "%g %g %g", &dir.x, &dir.y, &dir.z );
+      mat.setColumn( 1, dir );
+   }
+   
+   object->setTransform( mat );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_addMarker(char * x__object, char * x__name, F32 pos)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String name = String( x__name);
+{
+   object->addMarker( name, pos );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_addParameter(char * x__object, char * x__parameter)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SFXParameter* parameter; Sim::findObject(x__parameter, parameter ); 
+{
+   if( parameter )
+      object->addParameter( parameter );
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnSFXSource_getAttenuatedVolume(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getAttenuatedVolume());
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnSFXSource_getFadeInTime(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getFadeInTime());
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnSFXSource_getFadeOutTime(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getFadeOutTime());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_getParameter(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,1024,"");
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SFXParameter* wle_returnObject;
+{
+   if( index >= object->getNumParameters() )
+   {
+      Con::errorf( "SFXSource::getParameter - index out of range: %i", index );
+      {wle_returnObject =0;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   
+   {wle_returnObject =object->getParameter( index );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXSource_getParameterCount(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getNumParameters());
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnSFXSource_getPitch(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getPitch());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXSource_getStatus(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SFXStatus wle_returnObject;
+{
+   {wle_returnObject =object->getStatus();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnSFXSource_getVolume(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getVolume());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXSource_isPaused(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isPaused();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXSource_isPlaying(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isPlaying();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXSource_isStopped(char * x__object)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isStopped();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_pause(char * x__object, F32 fadeOutTime)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pause( fadeOutTime );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_play(char * x__object, F32 fadeInTime)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->play( fadeInTime );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_removeParameter(char * x__object, char * x__parameter)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SFXParameter* parameter; Sim::findObject(x__parameter, parameter ); 
+{
+   if( parameter )
+      object->removeParameter( parameter );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_setCone(char * x__object, F32 innerAngle, F32 outerAngle, F32 outsideVolume)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   bool isValid = true;
+   
+   if( innerAngle < 0.0 || innerAngle > 360.0 )
+   {
+      Con::errorf( "SFXSource.setCone() - 'innerAngle' must be between 0 and 360" );
+      isValid = false;
+   }
+   if( outerAngle < 0.0 || outerAngle > 360.0 )
+   {
+      Con::errorf( "SFXSource.setCone() - 'outerAngle' must be between 0 and 360" );
+      isValid = false;
+   }
+   if( outsideVolume < 0.0 || outsideVolume > 1.0 )
+   {
+      Con::errorf( "SFXSource.setCone() - 'outsideVolume' must be between 0 and 1" );
+      isValid = false;
+   }
+   
+   if( !isValid )
+      return;
+      
+   object->setCone( innerAngle, outerAngle, outsideVolume );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_setFadeTimes(char * x__object, F32 fadeInTime, F32 fadeOutTime)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setFadeTimes( fadeInTime, fadeOutTime );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_setPitch(char * x__object, F32 pitch)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setPitch( pitch );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_setVolume(char * x__object, F32 volume)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setVolume( volume );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXSource_stop(char * x__object, F32 fadeOutTime)
+{
+SFXSource* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->stop( fadeOutTime );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

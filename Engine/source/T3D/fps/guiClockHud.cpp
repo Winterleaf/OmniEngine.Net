@@ -230,3 +230,91 @@ DefineEngineMethod(GuiClockHud, getTime, F32, (),, "Returns the current time, in
 {
    return object->getTime();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnGuiClockHud_getTime(char * x__object)
+{
+GuiClockHud* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getTime());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiClockHud_setReverseTime(char * x__object, F32 timeInSeconds)
+{
+GuiClockHud* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setReverseTime(timeInSeconds);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiClockHud_setTime(char * x__object, F32 timeInSeconds)
+{
+GuiClockHud* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setTime(timeInSeconds);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -1437,3 +1437,412 @@ DefineEngineMethod(AIPlayer, checkInFoV, bool, (ShapeBase* obj, F32 fov, bool ch
 {
    return object->checkInFoV(obj, fov, checkEnabled);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_AIPlayer_setAimObject(char * x__object, char * x__objName, char * x__offset)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+Point3F offset = Point3F();
+sscanf(x__offset,"%f %f %f",&offset.x,&offset.y,&offset.z);
+{
+      GameBase *targetObject;
+   if( Sim::findObject( objName, targetObject ) )
+   {
+      object->setAimObject( targetObject, offset );
+   }
+   else
+      object->setAimObject( 0, offset );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_AISearchSimSet(char * x__object, F32 fOV, F32 farDist, char * x__ObjToSearch, char * x__result)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+SimSet* ObjToSearch; Sim::findObject(x__ObjToSearch, ObjToSearch ); 
+SimSet* result; Sim::findObject(x__result, result ); 
+{
+	object->AISearch(fOV,farDist,ObjToSearch,result);
+	}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_checkInFoV(char * x__object, char * x__obj, F32 fov, bool checkEnabled)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+ShapeBase* obj; Sim::findObject(x__obj, obj ); 
+
+bool wle_returnObject;
+{
+   {wle_returnObject =object->checkInFoV(obj, fov, checkEnabled);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_checkInLos(char * x__object, char * x__obj, bool useMuzzle, bool checkEnabled)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+ShapeBase* obj; Sim::findObject(x__obj, obj ); 
+
+bool wle_returnObject;
+{
+   {wle_returnObject =object->checkInLos(obj, useMuzzle, checkEnabled);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_clearAim(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearAim();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_findCover(char * x__object, char * x__from, F32 radius)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+Point3F from = Point3F();
+sscanf(x__from,"%f %f %f",&from.x,&from.y,&from.z);
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   if(object->findCover(from, radius))
+   {
+      CoverPoint* cover = object->getCover();
+     return (S32)( cover ? cover->getId() : -1);
+   }
+   else
+   {
+     return (S32)( -1);
+   }
+#else
+	return -1;
+#endif
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_findNavMesh(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   NavMesh *mesh = object->getNavMesh();
+  return (S32)( mesh ? mesh->getId() : -1);
+#else
+	return -1;
+#endif
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_followNavPath(char * x__object, U32 obj)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   NavPath *path;
+   if(Sim::findObject(obj, path))
+      object->followNavPath(path);
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_followObject(char * x__object, U32 obj, F32 radius)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   SceneObject *follow;
+   if(Sim::findObject(obj, follow))
+      object->followObject(follow, radius);
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getAimLocation(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+	{wle_returnObject =object->getAimLocation();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_getAimObject(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	GameBase* obj = object->getAimObject();
+  return (S32)( obj? obj->getId(): -1);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getMoveDestination(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+	{wle_returnObject =object->getMoveDestination();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnAIPlayer_getMoveSpeed(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getMoveSpeed());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_getNavMesh(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   NavMesh *m = object->getNavMesh();
+  return (S32)( m ? m->getId() : 0);
+#else
+  return (S32)( 0);
+#endif
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getNavSize(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   switch(object->getNavSize())
+   {
+   case AIPlayer::Small:
+      {wle_returnObject ="Small";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   case AIPlayer::Regular:
+      {wle_returnObject ="Regular";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   case AIPlayer::Large:
+      {wle_returnObject ="Large";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+#else
+	{wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_getPathDestination(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+	{wle_returnObject =object->getPathDestination();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+#else
+	{wle_returnObject =Point3F::Zero;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_repath(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   object->repath();
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setAimLocation(char * x__object, char * x__target)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F target = Point3F();
+sscanf(x__target,"%f %f %f",&target.x,&target.y,&target.z);
+{
+	object->setAimLocation(target);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setMoveDestination(char * x__object, char * x__goal, bool slowDown)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F goal = Point3F();
+sscanf(x__goal,"%f %f %f",&goal.x,&goal.y,&goal.z);
+{
+   object->setMoveDestination( goal, slowDown);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setMoveSpeed(char * x__object, F32 speed)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setMoveSpeed(speed);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_setNavSize(char * x__object, char * x__size)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* size = (const char*)x__size;
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   if(!dStrcmp(size, "Small"))
+      object->setNavSize(AIPlayer::Small);
+   else if(!dStrcmp(size, "Regular"))
+      object->setNavSize(AIPlayer::Regular);
+   else if(!dStrcmp(size, "Large"))
+      object->setNavSize(AIPlayer::Large);
+   else
+      Con::errorf("AIPlayer::setNavSize: no such size '%s'.", size);
+#endif
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnAIPlayer_setPathDestination(char * x__object, char * x__goal)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+Point3F goal = Point3F();
+sscanf(x__goal,"%f %f %f",&goal.x,&goal.y,&goal.z);
+bool wle_returnObject;
+{
+#ifdef TORQUE_WALKABOUT_ENABLED
+   {wle_returnObject =object->setPathDestination(goal);
+return (S32)(wle_returnObject);}
+#else
+	{wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnAIPlayer_stop(char * x__object)
+{
+AIPlayer* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->stopMove();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

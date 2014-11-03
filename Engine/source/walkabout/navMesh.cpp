@@ -1637,3 +1637,291 @@ void NavMesh::write(Stream &stream, U32 tabStop, U32 flags)
    save();
    Parent::write(stream, tabStop, flags);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getNavMeshEventManager()
+{
+{
+  return (S32)( NavMesh::getEventManager()->getId());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WalkaboutUpdateAll(S32 objid, bool remove)
+{
+
+{
+   SceneObject *obj;
+   if(!Sim::findObject(objid, obj))
+      return;
+   if(remove)
+      obj->disableCollision();
+   SimSet *set = NavMesh::getServerSet();
+   for(U32 i = 0; i < set->size(); i++)
+   {
+      NavMesh *m = static_cast<NavMesh*>(set->at(i));
+      m->buildTiles(obj->getWorldBox());
+   }
+   if(remove)
+      obj->enableCollision();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WalkaboutUpdateMesh(S32 meshid, S32 objid, bool remove)
+{
+
+{
+   NavMesh *mesh;
+   SceneObject *obj;
+   if(!Sim::findObject(meshid, mesh))
+   {
+      Con::errorf("WalkaboutUpdateMesh: cannot find NavMesh %d", meshid);
+      return;
+   }
+   if(!Sim::findObject(objid, obj))
+   {
+      Con::errorf("WalkaboutUpdateMesh: cannot find SceneObject %d", objid);
+      return;
+   }
+   if(remove)
+      obj->disableCollision();
+   mesh->buildTiles(obj->getWorldBox());
+   if(remove)
+      obj->enableCollision();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_addLink(char * x__object, char * x__from, char * x__to, U32 flags)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+Point3F from = Point3F();
+sscanf(x__from,"%f %f %f",&from.x,&from.y,&from.z);
+Point3F to = Point3F();
+sscanf(x__to,"%f %f %f",&to.x,&to.y,&to.z);
+{
+  return (S32)( object->addLink(from, to, flags));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_build(char * x__object, bool background, bool save)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+
+bool wle_returnObject;
+{
+   {wle_returnObject =object->build(background, save);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_buildLinks(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->buildLinks();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_buildTiles(char * x__object, char * x__box)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Box3F box = Box3F();
+sscanf(x__box,"%f %f %f %f %f %f",&box.minExtents.x,&box.minExtents.y,&box.minExtents.z,&box.maxExtents.x,&box.maxExtents.y,&box.maxExtents.z);
+{
+   return object->buildTiles(box);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_cancelBuild(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->cancelBuild();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_createCoverPoints(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->createCoverPoints();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_deleteCoverPoints(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteCoverPoints();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_deleteLink(char * x__object, U32 id)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteLink(id);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_deleteLinks(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   }
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_getLink(char * x__object, char * x__pos)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+{
+  return (S32)( object->getLink(pos));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_getLinkCount(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getLinkCount());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_getLinkEnd(char * x__object, U32 id,  char* retval)
+{
+dSprintf(retval,1024,"");
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   {wle_returnObject =object->getLinkEnd(id);
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_getLinkFlags(char * x__object, U32 id)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getLinkFlags(id).getFlags());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_getLinkStart(char * x__object, U32 id,  char* retval)
+{
+dSprintf(retval,1024,"");
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   {wle_returnObject =object->getLinkStart(id);
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavMesh_load(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->load();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_save(char * x__object)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->save();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavMesh_setLinkFlags(char * x__object, U32 id, U32 flags)
+{
+NavMesh* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   LinkData d(flags);
+   object->setLinkFlags(id, d);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

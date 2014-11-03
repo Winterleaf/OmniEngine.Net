@@ -178,3 +178,76 @@ DefineConsoleFunction( stopPrecisionTimer, S32, ( S32 id), , "stopPrecisionTimer
 {
    return gScriptTimerMan.stopTimer( id );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_startPrecisionTimer()
+{
+{
+  return (S32)( gScriptTimerMan.startTimer());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_stopPrecisionTimer(S32 id)
+{
+{
+  return (S32)( gScriptTimerMan.stopTimer( id ));
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

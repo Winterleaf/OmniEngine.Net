@@ -1504,3 +1504,317 @@ void GuiPopUpMenuCtrl::replaceText(S32 boolVal)
 {
    mReplaceText = boolVal;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_add(char * x__object, char * x__name, S32 idNum, U32 scheme)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+
+{
+  	object->addEntry(name, idNum, scheme);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_addScheme(char * x__object, U32 id, char * x__fontColor, char * x__fontColorHL, char * x__fontColorSEL)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+ColorI fontColor = ColorI();
+{
+int r,g,b,a;
+sscanf(x__fontColor,"%d %d %d %d ",&r,&g,&b,&a);
+fontColor.red =(unsigned short)r;
+fontColor.green=(unsigned short)g;
+fontColor.blue=(unsigned short)b;
+fontColor.alpha=(unsigned short)a;
+}
+ColorI fontColorHL = ColorI();
+{
+int r,g,b,a;
+sscanf(x__fontColorHL,"%d %d %d %d ",&r,&g,&b,&a);
+fontColorHL.red =(unsigned short)r;
+fontColorHL.green=(unsigned short)g;
+fontColorHL.blue=(unsigned short)b;
+fontColorHL.alpha=(unsigned short)a;
+}
+ColorI fontColorSEL = ColorI();
+{
+int r,g,b,a;
+sscanf(x__fontColorSEL,"%d %d %d %d ",&r,&g,&b,&a);
+fontColorSEL.red =(unsigned short)r;
+fontColorSEL.green=(unsigned short)g;
+fontColorSEL.blue=(unsigned short)b;
+fontColorSEL.alpha=(unsigned short)a;
+}
+{
+   object->addScheme( id, fontColor, fontColorHL, fontColorSEL );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_changeTextById(char * x__object, S32 id, char * x__text)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* text = (const char*)x__text;
+{
+   object->setEntryText( id, text );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_clear(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clear();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_clearEntry(char * x__object, S32 entry)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearEntry(entry);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiPopUpMenuCtrl_findText(char * x__object, char * x__text)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* text = (const char*)x__text;
+{
+  return (S32)(( object->findText( text ) ));   
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_forceClose(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->closePopUp();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_forceOnAction(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->onAction();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiPopUpMenuCtrl_getSelected(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getSelected());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_getText(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getText();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_getTextById(char * x__object, S32 id,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =(object->getTextById(id));
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_replaceText(char * x__object, bool doReplaceText)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->replaceText(S32(doReplaceText));  
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_setEnumContent(char * x__object, char * x__className, char * x__enumName)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* className = (const char*)x__className;
+const char* enumName = (const char*)x__enumName;
+{
+   AbstractClassRep * classRep = AbstractClassRep::getClassList();
+      while(classRep)
+   {
+      if(!dStricmp(classRep->getClassName(), className))
+         break;
+      classRep = classRep->getNextClass();
+   }
+      if(!classRep)
+   {
+      Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", className);
+      return;
+   }
+      U32 i;
+   for(i = 0; i < classRep->mFieldList.size(); i++)
+      if(!dStricmp(classRep->mFieldList[i].pFieldname, enumName))
+         break;
+      if(i == classRep->mFieldList.size())
+   {   
+      Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", enumName, className);
+      return;
+   }
+   const AbstractClassRep::Field & field = classRep->mFieldList[i];
+   ConsoleBaseType* conType = ConsoleBaseType::getType( field.type );
+      if( !conType->getEnumTable() )
+   {
+      Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", enumName, className);
+      return;
+   }
+      const EngineEnumTable& table = *( conType->getEnumTable() );
+   const U32 numValues = table.getNumValues();
+   
+   for(i = 0; i < numValues; i++)
+      object->addEntry( table[i].getName(), table[i] );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_setFirstSelected(char * x__object, bool scriptCallback)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setFirstSelected( scriptCallback );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_setNoneSelected(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setNoneSelected();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_setSelected(char * x__object, S32 id, bool scriptCallback)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setSelected( id, scriptCallback );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiPopUpMenuCtrl_size(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)(( object->getNumEntries() )); 
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_sort(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiPopUpMenuCtrl_sortID(char * x__object)
+{
+GuiPopUpMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sortID();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

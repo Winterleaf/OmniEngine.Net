@@ -348,3 +348,87 @@ DefineEngineMethod( SFXParameter, reset, void, (),,
 {
    object->reset();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXParameter_getParameterName(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SFXParameter* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String wle_returnObject;
+{
+   {wle_returnObject =object->getInternalName();
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXParameter_reset(char * x__object)
+{
+SFXParameter* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->reset();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

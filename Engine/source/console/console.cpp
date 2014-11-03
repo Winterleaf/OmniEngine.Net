@@ -1588,3 +1588,107 @@ DefineEngineFunction( logWarning, void, ( const char* message ),,
 {
    Con::warnf( "%s", message );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getClipboard(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+	{wle_returnObject =Platform::getClipboard();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_log(char * x__message)
+{
+const char* message = (const char*)x__message;
+{
+   Con::printf( "%s", message );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_logError(char * x__message)
+{
+const char* message = (const char*)x__message;
+{
+   Con::errorf( "%s", message );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_logWarning(char * x__message)
+{
+const char* message = (const char*)x__message;
+{
+   Con::warnf( "%s", message );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setClipboard(char * x__text)
+{
+const char* text = (const char*)x__text;
+bool wle_returnObject;
+{
+	{wle_returnObject =Platform::setClipboard(text);
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -423,3 +423,86 @@ DefineConsoleFunction( enableSamples, void, (const char * pattern, bool state), 
 
    Sampler::enableKeys( pattern, state );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_beginSampling(char * x__location, char * x__backend)
+{
+const char* location = (const char*)x__location;
+const char* backend = (const char*)x__backend;
+{
+   beginSampling( location, backend );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_enableSamples(char * x__pattern, bool state)
+{
+const char* pattern = (const char*)x__pattern;
+
+{
+   Sampler::enableKeys( pattern, state );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_stopSampling()
+{
+{
+   stopSampling();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

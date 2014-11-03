@@ -1493,3 +1493,286 @@ DefineEngineMethod( NetConnection, connectLocal, const char*, (),,
    
    return "";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_checkMaxRate(char * x__object)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->checkMaxRate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_clearPaths(char * x__object)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setMissionPathsSent(false);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_connect(char * x__object, char * x__remoteAddress)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* remoteAddress = (const char*)x__remoteAddress;
+{
+   NetAddress addr;
+   if(!Net::stringToAddress(remoteAddress, &addr))
+   {
+      Con::errorf("NetConnection::connect: invalid address - %s", remoteAddress);
+      return;
+   }
+   object->connect(&addr);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_connectLocal(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   ConsoleObject *co = ConsoleObject::create(object->getClassName());
+   NetConnection *client = object;
+   NetConnection *server = dynamic_cast<NetConnection *>(co);
+   server->mWLE_OVERRIDE_PROXY_CLASSTYPE = Con::getVariable("$Pref::Server::Net::ClientGameConnectionModelClass");
+   BitStream *stream = BitStream::getPacketStream();
+   if(!server || !server->canRemoteCreate())
+   {
+      delete co;
+      {wle_returnObject ="error";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+      
+   server->registerObject();
+   server->setIsLocalClientConnection();
+   server->setSequence(0);
+   client->setSequence(0);
+   client->setRemoteConnectionObject(server);
+   server->setRemoteConnectionObject(client);
+            server->checkMaxRate();  
+   client->checkMaxRate();
+   stream->setPosition(0);
+   client->writeConnectRequest(stream);
+   stream->setPosition(0);
+   
+   const char* error;
+   if( !server->readConnectRequest( stream, &error ) )
+   {
+      client->onConnectionRejected( error );
+      server->deleteObject();
+      {wle_returnObject ="error";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   stream->setPosition(0);
+   server->writeConnectAccept(stream);
+   stream->setPosition(0);
+   if( !client->readConnectAccept( stream, &error ) )
+   {
+      client->handleStartupError( error );
+      server->deleteObject();
+      {wle_returnObject ="error";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   client->onConnectionEstablished(true);
+   server->onConnectionEstablished(false);
+   client->setEstablished();
+   server->setEstablished();
+   client->setConnectSequence(0);
+   server->setConnectSequence(0);
+   NetConnection::setLocalClientConnection(server);
+   server->assignName("LocalClientConnection");
+   
+   {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_getAddress(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   if(object->isLocalConnection())
+      {wle_returnObject ="local";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   char *buffer = Con::getReturnBuffer(256);
+   Net::addressToString(object->getNetAddress(), buffer);
+   {wle_returnObject =buffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNetConnection_getGhostID(char * x__object, S32 realID)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   NetObject * foo;
+   if(Sim::findObject(realID, foo))
+   {
+     return (S32)( object->getGhostIndex(foo));
+   }
+   else
+   {
+      Con::errorf("NetConnection::serverToGhostID - could not find specified object");
+     return (S32)( -1);
+   }
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNetConnection_getPacketLoss(char * x__object)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)(( S32( 100 * object->getPacketLoss() ) ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNetConnection_getPing(char * x__object)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)(( S32( object->getRoundTripTime() ) ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNetConnection_resolveGhostID(char * x__object, S32 ghostID)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      if(ghostID < 0 || ghostID > NetConnection::MaxGhostCount)return (S32)( 0);
+   NetObject *foo = object->resolveGhost(ghostID);
+   if(foo)
+     return (S32)( foo->getId());
+   else
+     return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNetConnection_resolveObjectFromGhostIndex(char * x__object, S32 ghostID)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      if(ghostID < 0 || ghostID > NetConnection::MaxGhostCount)return (S32)( 0);
+   NetObject *foo = object->resolveObjectFromGhostIndex(ghostID);
+   if(foo)
+     return (S32)( foo->getId());
+   else
+     return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_setSimulatedNetParams(char * x__object, F32 packetLoss, S32 delay)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setSimulatedNetParams(packetLoss, delay);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNetConnection_transmitPaths(char * x__object)
+{
+NetConnection* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   gServerPathManager->transmitPaths(object);
+   object->setMissionPathsSent(true);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

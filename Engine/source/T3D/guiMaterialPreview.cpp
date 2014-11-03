@@ -500,3 +500,123 @@ DefineEngineMethod(GuiMaterialPreview, setAmbientLightColor, void, ( ColorF colo
 {
    object->setAmbientLightColor( color.red, color.green, color.blue );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMaterialPreview_deleteModel(char * x__object)
+{
+GuiMaterialPreview* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteModel();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMaterialPreview_reset(char * x__object)
+{
+GuiMaterialPreview* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->resetViewport();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMaterialPreview_setAmbientLightColor(char * x__object, char * x__color)
+{
+GuiMaterialPreview* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{
+   object->setAmbientLightColor( color.red, color.green, color.blue );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMaterialPreview_setLightColor(char * x__object, char * x__color)
+{
+GuiMaterialPreview* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{
+   object->setLightColor( color.red, color.green, color.blue );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMaterialPreview_setModel(char * x__object, char * x__shapeName)
+{
+GuiMaterialPreview* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* shapeName = (const char*)x__shapeName;
+{
+   object->setObjectModel(shapeName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMaterialPreview_setOrbitDistance(char * x__object, F32 distance)
+{
+GuiMaterialPreview* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setOrbitDistance(distance);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

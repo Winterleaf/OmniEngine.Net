@@ -679,3 +679,73 @@ DefineEngineMethod( ProximityMine, explode, void, (),,
 {
    object->explode();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnProximityMine_explode(char * x__object)
+{
+ProximityMine* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->explode();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

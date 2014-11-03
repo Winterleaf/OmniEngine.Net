@@ -172,3 +172,76 @@ DefineConsoleMethod( GuiMaterialCtrl, setMaterial, bool, ( const char * material
 {
    return object->setMaterial( materialName );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiMaterialCtrl_setMaterial(char * x__object, char * x__materialName)
+{
+GuiMaterialCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* materialName = (const char*)x__materialName;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setMaterial( materialName );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

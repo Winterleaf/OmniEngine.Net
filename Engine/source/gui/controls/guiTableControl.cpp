@@ -707,3 +707,134 @@ DefineEngineMethod( GuiTableControl, getSelectedRow, S32, (),,
 {
    return object->getSelectedRow();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTableControl_addChildRow(char * x__object, char * x__text, int index)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+
+{
+	object->addChildRow( index, text );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTableControl_addHeading(char * x__object, char * x__text, int index)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+
+{
+	object->addHeading( text, index );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTableControl_clearChildren(char * x__object)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->clearChildren( );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTableControl_findColumnTextIndex(char * x__object, S32 columnId, char * x__columnText)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+const char* columnText = (const char*)x__columnText;
+{
+	return object->findEntryByColumnText( columnId, columnText );
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTableControl_getSelectedRow(char * x__object)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getSelectedRow());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTableControl_setColumnSort(char * x__object, S32 column, bool ascending)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	object->setColumnSort( column, ascending );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTableControl_setSelectedRow(char * x__object, int rowNum)
+{
+GuiTableControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setSelectedRow( Point2I( 0, rowNum ) );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -948,3 +948,82 @@ void Debris::setSize( F32 size )
 {
    mSize = size;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnDebris_init(char * x__object, char * x__inputPosition, char * x__inputVelocity)
+{
+Debris* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* inputPosition = (const char*)x__inputPosition;
+const char* inputVelocity = (const char*)x__inputVelocity;
+bool wle_returnObject;
+{
+   Point3F pos;
+   dSscanf( inputPosition, "%f %f %f", &pos.x, &pos.y, &pos.z );
+   Point3F vel;
+   dSscanf( inputVelocity, "%f %f %f", &vel.x, &vel.y, &vel.z );
+   object->init( pos, vel );
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

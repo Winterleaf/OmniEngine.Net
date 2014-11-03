@@ -920,3 +920,70 @@ DefineEngineFunction( getActiveDDSFiles, S32, (),,
 {
    return DDSFile::smActiveCopies;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getActiveDDSFiles()
+{
+{
+  return (S32)( DDSFile::smActiveCopies);
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

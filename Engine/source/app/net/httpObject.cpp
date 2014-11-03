@@ -452,3 +452,92 @@ DefineEngineMethod( HTTPObject, post, void, ( const char* Address, const char* r
 {
    object->post(Address, requirstURI, query, post);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnHTTPObject_get(char * x__object, char * x__Address, char * x__requirstURI, char * x__query)
+{
+HTTPObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* Address = (const char*)x__Address;
+const char* requirstURI = (const char*)x__requirstURI;
+const char* query = (const char*)x__query;
+{
+   if( !query || !query[ 0 ] )
+		object->get(Address, requirstURI, NULL);
+   else
+		object->get(Address, requirstURI, query);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnHTTPObject_post(char * x__object, char * x__Address, char * x__requirstURI, char * x__query, char * x__post)
+{
+HTTPObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* Address = (const char*)x__Address;
+const char* requirstURI = (const char*)x__requirstURI;
+const char* query = (const char*)x__query;
+const char* post = (const char*)x__post;
+{
+   object->post(Address, requirstURI, query, post);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

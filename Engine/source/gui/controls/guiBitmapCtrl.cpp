@@ -279,3 +279,87 @@ DefineConsoleMethod( GuiBitmapCtrl, setBitmap, void, ( const char * fileRoot, bo
    Con::expandScriptFilename(filename, sizeof(filename), fileRoot);
    object->setBitmap(filename, resize );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiBitmapCtrl_setBitmap(char * x__object, char * x__fileRoot, bool resize)
+{
+GuiBitmapCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* fileRoot = (const char*)x__fileRoot;
+
+{
+   char filename[1024];
+   Con::expandScriptFilename(filename, sizeof(filename), fileRoot);
+   object->setBitmap(filename, resize );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiBitmapCtrl_setValue(char * x__object, S32 x, S32 y)
+{
+GuiBitmapCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setValue(x, y);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

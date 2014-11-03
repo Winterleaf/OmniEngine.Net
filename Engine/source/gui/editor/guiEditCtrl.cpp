@@ -2957,3 +2957,499 @@ ConsoleDocClass( GuiEditorRuler,
    "Editor use only.\n\n"
    "@internal"
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_addNewCtrl(char * x__object, char * x__ctrl)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
+{
+	if (ctrl)
+		object->addNewControl(ctrl);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_addSelection(char * x__object, S32 id)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->addSelection(id);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_bringToFront(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->bringToFront();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_clearGuides(char * x__object, S32 axis)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if( axis != -1 )
+   {
+      if( axis < 0 || axis > 1 )
+      {
+         Con::errorf( "GuiEditCtrl::clearGuides - invalid axis '%i'", axis );
+         return;
+      }
+      
+      object->clearGuides( ( GuiEditCtrl::guideAxis ) axis );
+   }
+   else
+   {
+      object->clearGuides( GuiEditCtrl::GuideHorizontal );
+      object->clearGuides( GuiEditCtrl::GuideVertical );
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_clearSelection(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_deleteSelection(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_fitIntoParents(char * x__object, bool width, bool height)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+      
+   object->fitIntoParents( width, height );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiEditCtrl_getContentControl(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   GuiControl* ctrl = object->getContentControl();
+   if( ctrl )
+     return (S32)( ctrl->getId());
+   else
+     return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiEditCtrl_getCurrentAddSet(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   const GuiControl* add = object->getCurrentAddSet();
+  return (S32)( add ? add->getId() : 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_getMouseMode(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   switch( object->getMouseMode() )
+   {
+      case GuiEditCtrl::Selecting:
+         {wle_returnObject ="Selecting";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      
+      case GuiEditCtrl::DragSelecting:
+         {wle_returnObject ="DragSelecting";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      case GuiEditCtrl::MovingSelection:
+         {wle_returnObject ="MovingSelection";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      
+      case GuiEditCtrl::SizingSelection:
+         {wle_returnObject ="SizingSelection";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+            
+      case GuiEditCtrl::DragGuide:
+         {wle_returnObject ="DragGuide";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+         
+      case GuiEditCtrl::DragClone:
+         {wle_returnObject ="DragClone";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+         
+      default:
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiEditCtrl_getNumSelected(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getNumSelected());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_getSelectionGlobalBounds(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   RectI bounds = object->getSelectionGlobalBounds();
+   String str = String::ToString( "%i %i %i %i", bounds.point.x, bounds.point.y, bounds.extent.x, bounds.extent.y );
+   
+   char* buffer = Con::getReturnBuffer( str.length() );
+   dStrcpy( buffer, str.c_str() );
+   
+   {wle_returnObject =buffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_justify(char * x__object, U32 mode)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->justifySelection( (GuiEditCtrl::Justification)mode );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_loadSelection(char * x__object, char * x__filename)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filename = (const char*)x__filename;
+{
+   object->loadSelection( filename );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_moveSelection(char * x__object, char * x__pos)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2I pos = Point2I();
+sscanf(x__pos,"%i %i",&pos.x,&pos.y);
+{
+   object->moveAndSnapSelection(Point2I(pos));
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_pushToBack(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pushToBack();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_readGuides(char * x__object, char * x__ctrl, S32 axis)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
+{
+      
+   if( !ctrl  )
+   {
+      return;
+   }
+   
+      
+   if( axis != -1 )
+   {
+      if( axis < 0 || axis > 1 )
+      {
+         Con::errorf( "GuiEditCtrl::readGuides - invalid axis '%s'", axis );
+         return;
+      }
+      
+      object->readGuides( ( GuiEditCtrl::guideAxis ) axis, ctrl );
+   }
+   else
+   {
+      object->readGuides( GuiEditCtrl::GuideHorizontal, ctrl );
+      object->readGuides( GuiEditCtrl::GuideVertical, ctrl );
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_removeSelection(char * x__object, S32 id)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->removeSelection(id);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_saveSelection(char * x__object, char * x__filename)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filename = (const char*)x__filename;
+{
+      
+   object->saveSelection( filename );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_select(char * x__object, char * x__ctrl)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
+{
+	if (ctrl)
+   object->setSelection(ctrl, false);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_selectAll(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->selectAll();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_selectChildren(char * x__object, bool addToSelection)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+      
+   object->selectChildren( addToSelection );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_selectParents(char * x__object, bool addToSelection)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+      
+   object->selectParents( addToSelection );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_setContentControl(char * x__object, char * x__ctrl)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
+{
+	if (ctrl)
+		object->setContentControl(ctrl);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_setCurrentAddSet(char * x__object, char * x__addSet)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* addSet; Sim::findObject(x__addSet, addSet ); 
+{
+	if (addSet)
+   object->setCurrentAddSet(addSet);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_setSnapToGrid(char * x__object, U32 gridsize)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setSnapToGrid(gridsize);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_toggle(char * x__object)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setEditMode( !object->isActive() );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiEditCtrl_writeGuides(char * x__object, char * x__ctrl, S32 axis)
+{
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* ctrl; Sim::findObject(x__ctrl, ctrl ); 
+{
+      
+   if( ! ctrl ) 
+   {
+      return;
+   }
+   
+      
+   if( axis != -1 )
+   {
+      if( axis < 0 || axis > 1 )
+      {
+         Con::errorf( "GuiEditCtrl::writeGuides - invalid axis '%s'", axis );
+         return;
+      }
+      
+      object->writeGuides( ( GuiEditCtrl::guideAxis ) axis, ctrl );
+   }
+   else
+   {
+      object->writeGuides( GuiEditCtrl::GuideHorizontal, ctrl );
+      object->writeGuides( GuiEditCtrl::GuideVertical, ctrl );
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiEditCtrl_getSelection(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimSet* wle_returnObject;
+{
+   {wle_returnObject =object->getSelectedSet();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiEditCtrl_getTrash(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimGroup* wle_returnObject;
+{
+   {wle_returnObject =object->getTrash();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

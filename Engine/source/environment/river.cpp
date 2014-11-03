@@ -2513,3 +2513,110 @@ DefineEngineMethod( River, setMaxDivisionSize, void, ( F32 meters ),,
 {
    object->setMaxDivisionSize( meters );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRiver_regenerate(char * x__object)
+{
+River* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->regenerate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRiver_setBatchSize(char * x__object, F32 meters)
+{
+River* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setBatchSize( meters );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRiver_setMaxDivisionSize(char * x__object, F32 meters)
+{
+River* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setMaxDivisionSize( meters );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRiver_setMetersPerSegment(char * x__object, F32 meters)
+{
+River* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setMetersPerSegment( meters );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRiver_setNodeDepth(char * x__object, S32 idx, F32 meters)
+{
+River* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setNodeDepth( idx, meters );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

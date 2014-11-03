@@ -1431,3 +1431,584 @@ DefineConsoleMethod(GuiParticleGraphCtrl, resetSelectedPoint, void, (), , "()"
 {
 	object->resetSelectedPoint();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_addPlotPoint(char * x__object, S32 plotID, F32 x, F32 y, bool setAdded,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+
+const char* wle_returnObject;
+{
+   S32 pointAdded = 0;
+   char *retBuffer = Con::getReturnBuffer(32);
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+	   dSprintf(retBuffer, 32, "%d", -2);
+      {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   pointAdded = object->addPlotPoint( plotID, Point2F(x, y), setAdded);
+   
+   dSprintf(retBuffer, 32, "%d", pointAdded);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_changePlotPoint(char * x__object, S32 plotID, S32 i, F32 x, F32 y,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+      char *retBuffer = Con::getReturnBuffer(64);
+      const S32 index = -1;
+      dSprintf(retBuffer, 64, "%d", index);
+      {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   char *retBuffer = Con::getReturnBuffer(64);
+   const S32 index = object->changePlotPoint( plotID, i, Point2F(x, y));
+   dSprintf(retBuffer, 64, "%d", index);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_clearAllGraphs(char * x__object)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearAllGraphs();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_clearGraph(char * x__object, S32 plotID)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+	   return;
+   }
+   object->clearGraph( plotID );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getGraphColor(char * x__object, S32 plotID,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   char *retBuffer = Con::getReturnBuffer(64);
+   const ColorF &color = object->getGraphColor(plotID);
+   dSprintf(retBuffer, 64, "%f %f %f", color.red, color.green, color.blue);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getGraphMax(char * x__object, S32 plotID,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   char *retBuffer = Con::getReturnBuffer(64);
+   const Point2F graphMax = object->getGraphMax(plotID);
+   dSprintf(retBuffer, 64, "%f %f", graphMax.x, graphMax.y);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getGraphMin(char * x__object, S32 plotID,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   char *retBuffer = Con::getReturnBuffer(64);
+   const Point2F graphMin = object->getGraphMin(plotID);
+   dSprintf(retBuffer, 64, "%f %f", graphMin.x, graphMin.y);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getGraphName(char * x__object, S32 plotID,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   char *retBuffer = Con::getReturnBuffer(64);
+   const StringTableEntry graphName = object->getGraphName(plotID);
+   dSprintf(retBuffer, 64, "%s", graphName);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getPlotIndex(char * x__object, S32 plotID, F32 x, F32 y,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   char *retBuffer = Con::getReturnBuffer(32);
+   const S32 &index = object->getPlotIndex(plotID, x, y);
+   dSprintf(retBuffer, 32, "%d", index);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getPlotPoint(char * x__object, S32 plotID, S32 samples,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   if(samples > object->MaxDataPoints)
+   {
+	   Con::errorf("Invalid sample.");
+   }
+   char *retBuffer = Con::getReturnBuffer(64);
+   const Point2F &pos = object->getPlotPoint(plotID, samples);
+   dSprintf(retBuffer, 64, "%f %f", pos.x, pos.y);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getSelectedPlot(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   char *retBuffer = Con::getReturnBuffer(32);
+   const S32 plot = object->getSelectedPlot();
+   dSprintf(retBuffer, 32, "%d", plot);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_getSelectedPoint(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   char *retBuffer = Con::getReturnBuffer(32);
+   const S32 point = object->getSelectedPoint();
+   dSprintf(retBuffer, 32, "%d", point);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_insertPlotPoint(char * x__object, S32 plotID, S32 i, F32 x, F32 y)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+	   return;
+   }
+   object->insertPlotPoint( plotID, i, Point2F(x, y));
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_isExistingPoint(char * x__object, S32 plotID, S32 samples,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* wle_returnObject;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+   }
+   if(samples > object->MaxDataPoints)
+   {
+	   Con::errorf("Invalid sample.");
+   }
+   char *retBuffer = Con::getReturnBuffer(32);
+   const bool isPoint = object->isExistingPoint(plotID, samples);
+   dSprintf(retBuffer, 32, "%d", isPoint);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_resetSelectedPoint(char * x__object)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->resetSelectedPoint();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setAutoGraphMax(char * x__object, bool autoMax)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setAutoGraphMax(autoMax);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setAutoRemove(char * x__object, bool autoRemove)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setAutoRemove(autoRemove);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphHidden(char * x__object, S32 plotID, bool isHidden)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphHidden(plotID, isHidden);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphMax(char * x__object, S32 plotID, F32 maxX, F32 maxY)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphMax(plotID, Point2F(maxX, maxY));
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphMaxX(char * x__object, S32 plotID, F32 maxX)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphMaxX(plotID, maxX);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphMaxY(char * x__object, S32 plotID, F32 maxX)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphMaxY(plotID, maxX);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphMin(char * x__object, S32 plotID, F32 minX, F32 minY)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphMin(plotID, Point2F(minX, minY));
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphMinX(char * x__object, S32 plotID, F32 minX)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphMinX(plotID, minX);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphMinY(char * x__object, S32 plotID, F32 minX)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphMinY(plotID, minX);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setGraphName(char * x__object, S32 plotID, char * x__graphName)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* graphName = (const char*)x__graphName;
+{
+	if(plotID > object->MaxPlots)
+	{
+		Con::errorf("Invalid plotID.");
+		return;
+	}
+	object->setGraphName(plotID, graphName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setPointXMovementClamped(char * x__object, bool autoRemove)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setPointXMovementClamped(autoRemove);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setRenderAll(char * x__object, bool autoRemove)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setRenderAll(autoRemove);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setRenderGraphTooltip(char * x__object, bool autoRemove)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setRenderGraphTooltip(autoRemove);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setSelectedPlot(char * x__object, S32 plotID)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(plotID > object->MaxPlots)
+   {
+	   Con::errorf("Invalid plotID.");
+	   return;
+   }
+   object->setSelectedPlot( plotID );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiParticleGraphCtrl_setSelectedPoint(char * x__object, S32 point)
+{
+GuiParticleGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(point >= object->mPlots[object->mSelectedPlot].mGraphData.size() || point < 0)
+   {
+	   Con::errorf("Invalid point to select.");
+	   return;
+   }
+   object->setSelectedPoint( point );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

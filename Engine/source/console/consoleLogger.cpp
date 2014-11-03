@@ -266,3 +266,88 @@ DefineConsoleMethod( ConsoleLogger, detach, bool, (), , "() Detaches the logger 
    ConsoleLogger *logger = static_cast<ConsoleLogger *>( object );
    return logger->detach();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ConsoleLogger_attach(char * x__object)
+{
+ConsoleLogger* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   ConsoleLogger *logger = static_cast<ConsoleLogger *>( object );
+   {wle_returnObject =logger->attach();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ConsoleLogger_detach(char * x__object)
+{
+ConsoleLogger* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   ConsoleLogger *logger = static_cast<ConsoleLogger *>( object );
+   {wle_returnObject =logger->detach();
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -359,3 +359,156 @@ void GuiTerrPreviewCtrl::onRender(Point2I offset, const RectI &updateRect)
    renderChildControls(offset, updateRect);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_getOrigin(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2F wle_returnObject;
+{
+   {wle_returnObject =object->getOrigin();
+dSprintf(retval,1024,"%f %f ",wle_returnObject.x,wle_returnObject.y);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_getRoot(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2F wle_returnObject;
+{
+   {wle_returnObject =object->getRoot();
+dSprintf(retval,1024,"%f %f ",wle_returnObject.x,wle_returnObject.y);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_getValue(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   Point2F r = object->getRoot();
+   Point2F o = object->getOrigin();
+   static char valuebuf[64];
+   dSprintf(valuebuf,sizeof(valuebuf),"%g %g %g %g", r.x, -r.y, o.x, -o.y);
+   {wle_returnObject =valuebuf;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_reset(char * x__object)
+{
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->reset();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_setOrigin(char * x__object, char * x__pos)
+{
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2F pos = Point2F();
+sscanf(x__pos,"%f %f",&pos.x,&pos.y);
+{
+   object->setOrigin( pos );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_setRoot(char * x__object)
+{
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setRoot();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTerrPreviewCtrl_setValue(char * x__object, char * x__tuple)
+{
+GuiTerrPreviewCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* tuple = (const char*)x__tuple;
+{
+   Point2F r,o;
+   dSscanf(tuple, "%g %g %g %g", &r.x, &r.y, &o.x, &o.y);
+   r.y = -r.y;
+   o.y = -o.y;
+   object->reset();
+   object->setRoot(r);
+   object->setOrigin(o);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

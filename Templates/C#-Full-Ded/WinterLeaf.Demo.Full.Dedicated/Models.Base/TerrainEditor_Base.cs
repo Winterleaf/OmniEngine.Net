@@ -504,13 +504,13 @@ public  void attachTerrain(string terrain = ""){
 pInvokes.m_ts.fn_TerrainEditor_attachTerrain(_ID, terrain);
 }
 /// <summary>
-/// (float minHeight, float maxHeight, float minSlope, float maxSlope))  
+/// (F32 minHeight, F32 maxHeight, F32 minSlope, F32 maxSlope , F32 coverage))  
 /// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
-public  void autoMaterialLayer(float minHeight, float maxHeight, float minSlope, float maxSlope){
+public  void autoMaterialLayer(float minHeight, float maxHeight, float minSlope, float maxSlope, float coverage){
 
-pInvokes.m_ts.fn_TerrainEditor_autoMaterialLayer(_ID, minHeight, maxHeight, minSlope, maxSlope);
+pInvokes.m_ts.fn_TerrainEditor_autoMaterialLayer(_ID, minHeight, maxHeight, minSlope, maxSlope, coverage);
 }
 /// <summary>
 /// )

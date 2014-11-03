@@ -3279,3 +3279,1528 @@ bool TSShapeConstructor::ChangeSet::addCmd_removeImposter( const TSShapeConstruc
 
    return true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_addImposter(char * x__object, S32 size, S32 equatorSteps, S32 polarSteps, S32 dl, S32 dim, bool includePoles, F32 polarAngle)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+
+
+
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::addImposter - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->addImposter (size,equatorSteps,polarSteps,dl,dim,includePoles,polarAngle));
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_addMesh(char * x__object, char * x__meshName, char * x__srcShape, char * x__srcMesh)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* meshName = (const char*)x__meshName;
+const char* srcShape = (const char*)x__srcShape;
+const char* srcMesh = (const char*)x__srcMesh;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::addMesh - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->addMesh (meshName,srcShape,srcMesh);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_addNode(char * x__object, char * x__name, char * x__parentName, char * x__txfm, bool isWorld)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+const char* parentName = (const char*)x__parentName;
+TransformF txfm = TransformF();
+sscanf( x__txfm,"%f %f %f %f %f %f %f", &txfm.mPosition.x, &txfm.mPosition.y, &txfm.mPosition.z, &txfm.mOrientation.axis.x, &txfm.mOrientation.axis.y, &txfm.mOrientation.axis.z, &txfm.mOrientation.angle);
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::addNode - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->addNode (name,parentName,txfm,isWorld);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_addSequence(char * x__object, char * x__source, char * x__name, S32 start, S32 end, bool padRot, bool padTrans)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* source = (const char*)x__source;
+const char* name = (const char*)x__name;
+
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::addSequence - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->addSequence (source,name,start,end,padRot,padTrans);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_addTrigger(char * x__object, char * x__name, S32 keyframe, S32 state)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::addTrigger - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->addTrigger (name,keyframe,state);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_dumpShape(char * x__object, char * x__filename)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filename = (const char*)x__filename;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::dumpShape - shape not loaded" );
+         return ;
+      } 
+      return object->dumpShape (filename);
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getBounds(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Box3F wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getBounds - shape not loaded" );
+         {wle_returnObject =Box3F::Invalid;
+dSprintf(retval,1024,"%f %f %f %f %f %f ",wle_returnObject.minExtents.x,wle_returnObject.minExtents.y,wle_returnObject.minExtents.z,wle_returnObject.maxExtents.x,wle_returnObject.maxExtents.y,wle_returnObject.maxExtents.z);
+return;
+}
+      } 
+      {wle_returnObject =object->getBounds ();
+dSprintf(retval,1024,"%f %f %f %f %f %f ",wle_returnObject.minExtents.x,wle_returnObject.minExtents.y,wle_returnObject.minExtents.z,wle_returnObject.maxExtents.x,wle_returnObject.maxExtents.y,wle_returnObject.maxExtents.z);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getDetailLevelCount(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getDetailLevelCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getDetailLevelCount ());
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getDetailLevelIndex(char * x__object, S32 size)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getDetailLevelIndex - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->getDetailLevelIndex (size));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getDetailLevelName(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getDetailLevelName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getDetailLevelName (index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getDetailLevelSize(char * x__object, S32 index)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getDetailLevelSize - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getDetailLevelSize (index));
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getImposterDetailLevel(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getImposterDetailLevel - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->getImposterDetailLevel ());
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getImposterSettings(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getImposterSettings - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getImposterSettings (index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getMeshCount(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getMeshCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getMeshCount (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getMeshMaterial(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getMeshMaterial - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getMeshMaterial (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getMeshName(char * x__object, char * x__name, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getMeshName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getMeshName (name,index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getMeshSize(char * x__object, char * x__name, S32 index)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getMeshSize - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->getMeshSize (name,index));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getMeshType(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getMeshType - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getMeshType (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getNodeChildCount(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeChildCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getNodeChildCount (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getNodeChildName(char * x__object, char * x__name, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeChildName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getNodeChildName (name,index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getNodeCount(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getNodeCount ());
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getNodeIndex(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeIndex - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->getNodeIndex (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getNodeName(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getNodeName (index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getNodeObjectCount(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeObjectCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getNodeObjectCount (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getNodeObjectName(char * x__object, char * x__name, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeObjectName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getNodeObjectName (name,index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getNodeParentName(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeParentName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getNodeParentName (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getNodeTransform(char * x__object, char * x__name, bool isWorld,  char* retval)
+{
+dSprintf(retval,1024,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+
+TransformF wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getNodeTransform - shape not loaded" );
+         {wle_returnObject =TransformF::Identity;
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+      } 
+      {wle_returnObject =object->getNodeTransform (name,isWorld);
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getObjectCount(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getObjectCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getObjectCount ());
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getObjectIndex(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getObjectIndex - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->getObjectIndex (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getObjectName(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getObjectName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getObjectName (index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getObjectNode(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getObjectNode - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getObjectNode (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getSequenceBlend(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceBlend - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getSequenceBlend (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getSequenceCount(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getSequenceCount ());
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getSequenceCyclic(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceCyclic - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->getSequenceCyclic (name);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getSequenceFrameCount(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceFrameCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getSequenceFrameCount (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getSequenceGroundSpeed(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceGroundSpeed - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getSequenceGroundSpeed (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getSequenceIndex(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceIndex - shape not loaded" );
+        return (S32)( -1);
+      } 
+     return (S32)( object->getSequenceIndex (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getSequenceName(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getSequenceName (index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnTSShapeConstructor_getSequencePriority(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequencePriority - shape not loaded" );
+        return (F32)( -1.0f);
+      } 
+     return (F32)( object->getSequencePriority (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getSequenceSource(char * x__object, char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getSequenceSource - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getSequenceSource (name);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getTargetCount(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getTargetCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getTargetCount ());
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getTargetName(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getTargetName - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getTargetName (index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_getTrigger(char * x__object, char * x__name, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+
+const char* wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getTrigger - shape not loaded" );
+         {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      } 
+      {wle_returnObject =object->getTrigger (name,index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_getTriggerCount(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* name = (const char*)x__name;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::getTriggerCount - shape not loaded" );
+        return (S32)( 0);
+      } 
+     return (S32)( object->getTriggerCount (name));
+   } 
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_notifyShapeChanged(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::notifyShapeChanged - shape not loaded" );
+         return ;
+      } 
+      return object->notifyShapeChanged ();
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeDetailLevel(char * x__object, S32 index)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeDetailLevel - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeDetailLevel (index);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeImposter(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeImposter - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeImposter ();
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeMesh(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeMesh - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeMesh (name);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeNode(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeNode - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeNode (name);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeObject(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeObject - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeObject (name);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeSequence(char * x__object, char * x__name)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeSequence - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeSequence (name);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_removeTrigger(char * x__object, char * x__name, S32 keyframe, S32 state)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::removeTrigger - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->removeTrigger (name,keyframe,state);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_renameDetailLevel(char * x__object, char * x__oldName, char * x__newName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* oldName = (const char*)x__oldName;
+const char* newName = (const char*)x__newName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::renameDetailLevel - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->renameDetailLevel (oldName,newName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_renameNode(char * x__object, char * x__oldName, char * x__newName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* oldName = (const char*)x__oldName;
+const char* newName = (const char*)x__newName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::renameNode - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->renameNode (oldName,newName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_renameObject(char * x__object, char * x__oldName, char * x__newName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* oldName = (const char*)x__oldName;
+const char* newName = (const char*)x__newName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::renameObject - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->renameObject (oldName,newName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_renameSequence(char * x__object, char * x__oldName, char * x__newName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* oldName = (const char*)x__oldName;
+const char* newName = (const char*)x__newName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::renameSequence - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->renameSequence (oldName,newName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_saveShape(char * x__object, char * x__filename)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filename = (const char*)x__filename;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::saveShape - shape not loaded" );
+         return ;
+      } 
+      return object->saveShape (filename);
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setBounds(char * x__object, char * x__bbox)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+Box3F bbox = Box3F();
+sscanf(x__bbox,"%f %f %f %f %f %f",&bbox.minExtents.x,&bbox.minExtents.y,&bbox.minExtents.z,&bbox.maxExtents.x,&bbox.maxExtents.y,&bbox.maxExtents.z);
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setBounds - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setBounds (bbox);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setDetailLevelSize(char * x__object, S32 index, S32 newSize)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setDetailLevelSize - shape not loaded" );
+        return (S32)( index);
+      } 
+     return (S32)( object->setDetailLevelSize (index,newSize));
+   } 
+;
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setMeshMaterial(char * x__object, char * x__meshName, char * x__matName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* meshName = (const char*)x__meshName;
+const char* matName = (const char*)x__matName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setMeshMaterial - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setMeshMaterial (meshName,matName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setMeshSize(char * x__object, char * x__name, S32 size)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setMeshSize - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setMeshSize (name,size);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setMeshType(char * x__object, char * x__name, char * x__type)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+const char* type = (const char*)x__type;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setMeshType - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setMeshType (name,type);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setNodeParent(char * x__object, char * x__name, char * x__parentName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+const char* parentName = (const char*)x__parentName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setNodeParent - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setNodeParent (name,parentName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setNodeTransform(char * x__object, char * x__name, char * x__txfm, bool isWorld)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+TransformF txfm = TransformF();
+sscanf( x__txfm,"%f %f %f %f %f %f %f", &txfm.mPosition.x, &txfm.mPosition.y, &txfm.mPosition.z, &txfm.mOrientation.axis.x, &txfm.mOrientation.axis.y, &txfm.mOrientation.axis.z, &txfm.mOrientation.angle);
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setNodeTransform - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setNodeTransform (name,txfm,isWorld);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setObjectNode(char * x__object, char * x__objName, char * x__nodeName)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* objName = (const char*)x__objName;
+const char* nodeName = (const char*)x__nodeName;
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setObjectNode - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setObjectNode (objName,nodeName);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setSequenceBlend(char * x__object, char * x__name, bool blend, char * x__blendSeq, S32 blendFrame)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+const char* blendSeq = (const char*)x__blendSeq;
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setSequenceBlend - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setSequenceBlend (name,blend,blendSeq,blendFrame);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setSequenceCyclic(char * x__object, char * x__name, bool cyclic)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setSequenceCyclic - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setSequenceCyclic (name,cyclic);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setSequenceGroundSpeed(char * x__object, char * x__name, char * x__transSpeed, char * x__rotSpeed)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+Point3F transSpeed = Point3F();
+sscanf(x__transSpeed,"%f %f %f",&transSpeed.x,&transSpeed.y,&transSpeed.z);
+Point3F rotSpeed = Point3F();
+sscanf(x__rotSpeed,"%f %f %f",&rotSpeed.x,&rotSpeed.y,&rotSpeed.z);
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setSequenceGroundSpeed - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setSequenceGroundSpeed (name,transSpeed,rotSpeed);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSShapeConstructor_setSequencePriority(char * x__object, char * x__name, F32 priority)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+bool wle_returnObject;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::setSequencePriority - shape not loaded" );
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      } 
+      {wle_returnObject =object->setSequencePriority (name,priority);
+return (S32)(wle_returnObject);}
+   } 
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSShapeConstructor_writeChangeSet(char * x__object)
+{
+TSShapeConstructor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+      /* Check that shape is loaded */
+      if( !object->getShape() ) 
+      {
+         Con::errorf( "TSShapeConstructor::writeChangeSet - shape not loaded" );
+         return ;
+      } 
+      return object->writeChangeSet ();
+   } 
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -720,3 +720,114 @@ DefineEngineMethod( GameBase, applyRadialImpulse, void, ( Point3F origin, F32 ra
 {
    object->applyRadialImpulse( origin, radius, magnitude );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGameBase_applyImpulse(char * x__object, char * x__pos, char * x__vel)
+{
+GameBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+VectorF vel = VectorF();
+sscanf(x__vel,"%f %f %f", &vel.x, &vel.y, &vel.z);
+
+bool wle_returnObject;
+{
+   object->applyImpulse(pos,vel);
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGameBase_applyRadialImpulse(char * x__object, char * x__origin, F32 radius, F32 magnitude)
+{
+GameBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F origin = Point3F();
+sscanf(x__origin,"%f %f %f",&origin.x,&origin.y,&origin.z);
+
+{
+   object->applyRadialImpulse( origin, radius, magnitude );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGameBase_getDataBlock(char * x__object)
+{
+GameBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getDataBlock()? object->getDataBlock()->getId(): 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGameBase_setDataBlock(char * x__object, char * x__data)
+{
+GameBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+GameBaseData* data; Sim::findObject(x__data, data ); 
+bool wle_returnObject;
+{
+   {wle_returnObject =( data && object->setDataBlock(data) );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

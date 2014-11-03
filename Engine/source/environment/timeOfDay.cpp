@@ -749,3 +749,113 @@ DefineEngineMethod( TimeOfDay, animate, void, ( F32 elevation, F32 degreesPerSec
 {
    object->animate( elevation, degreesPerSecond );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTimeOfDay_addTimeOfDayEvent(char * x__object, F32 elevation, char * x__identifier)
+{
+TimeOfDay* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* identifier = (const char*)x__identifier;
+{
+   object->addTimeEvent( elevation, identifier );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTimeOfDay_animate(char * x__object, F32 elevation, F32 degreesPerSecond)
+{
+TimeOfDay* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->animate( elevation, degreesPerSecond );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTimeOfDay_setDayLength(char * x__object, F32 seconds)
+{
+TimeOfDay* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if ( seconds > 0.0f )
+      object->setDayLength( seconds );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTimeOfDay_setPlay(char * x__object, bool enabled)
+{
+TimeOfDay* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setPlay( enabled );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTimeOfDay_setTimeOfDay(char * x__object, F32 time)
+{
+TimeOfDay* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setTimeOfDay( time );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

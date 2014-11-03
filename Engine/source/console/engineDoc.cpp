@@ -721,3 +721,72 @@ DefineEngineFunction( dumpEngineDocs, bool, ( const char* outputFile ),,
    return dumpEngineDocs( outputFile );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_dumpEngineDocs(char * x__outputFile)
+{
+const char* outputFile = (const char*)x__outputFile;
+bool wle_returnObject;
+{
+   {wle_returnObject =dumpEngineDocs( outputFile );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

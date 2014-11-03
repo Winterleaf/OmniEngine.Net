@@ -278,3 +278,200 @@ DefineConsoleMethod(PopupMenu, showPopup, void, (const char * canvasName, S32 x,
    GuiCanvas *pCanvas = dynamic_cast<GuiCanvas*>(Sim::findObject(canvasName));
    object->showPopup(pCanvas, x, y);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_attachToMenuBar(char * x__object, char * x__canvasName, S32 pos, char * x__title)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* canvasName = (const char*)x__canvasName;
+
+const char* title = (const char*)x__title;
+{
+   object->attachToMenuBar(dynamic_cast<GuiCanvas*>(Sim::findObject(canvasName)), pos, title);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_checkItem(char * x__object, S32 pos, bool checked)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->checkItem(pos, checked);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_checkRadioItem(char * x__object, S32 firstPos, S32 lastPos, S32 checkPos)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->checkRadioItem(firstPos, lastPos, checkPos);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_enableItem(char * x__object, S32 pos, bool enabled)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->enableItem(pos, enabled);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PopupMenu_getItemCount(char * x__object)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getItemCount());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PopupMenu_insertItem(char * x__object, S32 pos, char * x__title, char * x__accelerator)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+const char* title = (const char*)x__title;
+const char* accelerator = (const char*)x__accelerator;
+{
+  return (S32)( object->insertItem(pos, title, accelerator));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PopupMenu_insertSubMenu(char * x__object, S32 pos, char * x__title, char * x__subMenu)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+
+String title = String( x__title);
+String subMenu = String( x__subMenu);
+{
+   PopupMenu *mnu = dynamic_cast<PopupMenu *>(Sim::findObject(subMenu));
+   if(mnu == NULL)
+   {
+      Con::errorf("PopupMenu::insertSubMenu - Invalid PopupMenu object specified for submenu");
+     return (S32)( -1);
+   }
+  return (S32)( object->insertSubMenu(pos, title, mnu));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PopupMenu_isItemChecked(char * x__object, S32 pos)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isItemChecked(pos);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_removeFromMenuBar(char * x__object)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->removeFromMenuBar();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_removeItem(char * x__object, S32 pos)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->removeItem(pos);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PopupMenu_setItem(char * x__object, S32 pos, char * x__title, char * x__accelerator)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+
+const char* title = (const char*)x__title;
+const char* accelerator = (const char*)x__accelerator;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setItem(pos, title, accelerator);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PopupMenu_showPopup(char * x__object, char * x__canvasName, S32 x, S32 y)
+{
+PopupMenu* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* canvasName = (const char*)x__canvasName;
+
+{
+   GuiCanvas *pCanvas = dynamic_cast<GuiCanvas*>(Sim::findObject(canvasName));
+   object->showPopup(pCanvas, x, y);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

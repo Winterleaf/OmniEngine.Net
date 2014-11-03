@@ -671,3 +671,106 @@ DefineConsoleFunction( setShadowVizLight, const char*, (const char* name), (""),
    return result;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setShadowVizLight(char * x__name,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* name = (const char*)x__name;
+const char* wle_returnObject;
+{
+   static const String DebugTargetName( "AL_ShadowVizTexture" );
+   NamedTexTarget *target = NamedTexTarget::find( DebugTargetName );
+   if ( target )
+      target->unregister();
+   AdvancedLightManager *lm = dynamic_cast<AdvancedLightManager*>( LIGHTMGR );
+   if ( !lm )
+      {wle_returnObject =0;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   SimObject *object;
+   Sim::findObject( name, object );
+   LightShadowMap *lightShadowMap = lm->findShadowMapForObject( object );
+   if ( !lightShadowMap || !lightShadowMap->getTexture() )
+      {wle_returnObject =0;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   lightShadowMap->setDebugTarget( DebugTargetName );
+   GFXTextureObject *texObject = lightShadowMap->getTexture();
+   const Point3I &size = texObject->getSize();
+   F32 aspect = (F32)size.x / (F32)size.y;
+   static const U32 bufSize = 64;
+   char *result = Con::getReturnBuffer( bufSize );
+   dSprintf( result, bufSize, "%d %d %g", size.x, size.y, aspect ); 
+   {wle_returnObject =result;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

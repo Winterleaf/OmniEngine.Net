@@ -295,3 +295,160 @@ DefineConsoleFunction( redbookGetLastError, const char *, (), , "Get a string ex
 }
 
 ConsoleFunctionGroupEnd( Redbook );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookClose()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =(RedBook::close());
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookGetDeviceCount()
+{
+{
+  return (S32)((RedBook::getDeviceCount()));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_redbookGetDeviceName(S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char * wle_returnObject;
+{
+   {wle_returnObject =(RedBook::getDeviceName(index));
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_redbookGetLastError(char* retval)
+{
+dSprintf(retval,16384,"");
+const char * wle_returnObject;
+{
+   {wle_returnObject =(RedBook::getLastError());
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookGetTrackCount()
+{
+{
+   U32 trackCount;
+   if(!RedBook::getTrackCount(&trackCount))
+     return (S32)((0));
+  return (S32)((trackCount));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_redbookGetVolume()
+{
+{
+   F32 vol;
+   if(!RedBook::getVolume(&vol))
+     return (F32)((0.f));
+   else
+     return (F32)((vol));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookOpen(char * x__device)
+{
+const char* device = (const char*)x__device;
+bool wle_returnObject;
+{
+   if(dStrcmp(device,"")==0)
+      {wle_returnObject =(RedBook::open(RedBook::getDeviceName(0)));
+return (S32)(wle_returnObject);}
+   else
+      {wle_returnObject =(RedBook::open(device));
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookPlay(S32 track)
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =(RedBook::play(track));
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookSetVolume(F32 volume)
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =(RedBook::setVolume(volume));
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_redbookStop()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =(RedBook::stop());
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

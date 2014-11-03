@@ -212,3 +212,81 @@ void Platform::openFile(const char* path )
    ::ShellExecute( NULL,TEXT("open"),p, NULL, NULL, SW_SHOWNORMAL);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_shellExecute(char * x__executable, char * x__args, char * x__directory)
+{
+const char* executable = (const char*)x__executable;
+const char* args = (const char*)x__args;
+const char* directory = (const char*)x__directory;
+bool wle_returnObject;
+{
+   ExecuteThread *et = new ExecuteThread( executable, args, directory );
+   if(! et->isAlive())
+   {
+      delete et;
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

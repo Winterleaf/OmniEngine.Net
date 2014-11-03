@@ -483,3 +483,103 @@ void LightBase::pauseAnimation( void )
         setMaskBits( UpdateMask );
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_LightBase_pauseAnimation(char * x__object)
+{
+LightBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+    object->pauseAnimation();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_LightBase_playAnimation(char * x__object, char * x__anim)
+{
+LightBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* anim = (const char*)x__anim;
+{
+    if ( anim == "" )
+    {
+        object->playAnimation();
+        return;
+    }
+    LightAnimData *animData;
+    if ( !Sim::findObject( anim, animData ) )
+    {
+        Con::errorf( "LightBase::playAnimation() - Invalid LightAnimData '%s'.", anim );
+        return;
+    }
+        object->playAnimation( animData );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnLightBase_setLightEnabled(char * x__object, bool state)
+{
+LightBase* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+  object->setLightEnabled( state );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

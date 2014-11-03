@@ -477,3 +477,89 @@ DefineConsoleFunction( testJavaScriptBridge, const char *, (const char* arg1, co
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_testJavaScriptBridge(char * x__arg1, char * x__arg2, char * x__arg3,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* arg1 = (const char*)x__arg1;
+const char* arg2 = (const char*)x__arg2;
+const char* arg3 = (const char*)x__arg3;
+const char * wle_returnObject;
+{
+	S32 failed = 0;
+		if (dStrcmp(arg1,"one"))
+			failed = 2;
+		if (dStrcmp(arg2,"two"))
+			failed = 2;
+		if (dStrcmp(arg3,"three"))
+			failed = 2;
+	
+		const char* jret = Con::evaluate("JS::bridgeCallback(\"one\",\"two\",\"three\");");
+	if (dStrcmp(jret,"42"))
+		failed = 3;
+	static const U32 bufSize = 256;
+	char *ret = Con::getReturnBuffer(bufSize);
+	dSprintf(ret, bufSize, "%i", failed);
+	{wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

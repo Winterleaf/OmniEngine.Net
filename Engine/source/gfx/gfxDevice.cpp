@@ -1328,3 +1328,169 @@ DefineEngineFunction( getBestHDRFormat, GFXFormat, (),,
 
    return format;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_clearGFXResourceFlags()
+{
+{
+   GFX->clearResourceFlags();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_describeGFXResources(char * x__resourceTypes, char * x__filePath, bool unflaggedOnly)
+{
+const char* resourceTypes = (const char*)x__resourceTypes;
+const char* filePath = (const char*)x__filePath;
+
+{
+   GFX->describeResources( resourceTypes, filePath, unflaggedOnly );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_describeGFXStateBlocks(char * x__filePath)
+{
+const char* filePath = (const char*)x__filePath;
+{
+   GFX->dumpStates( filePath );   
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_flagCurrentGFXResources()
+{
+{
+   GFX->flagCurrentResources();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getBestHDRFormat()
+{
+GFXFormat wle_returnObject;
+{
+      
+         Vector<GFXFormat> formats;
+   formats.push_back( GFXFormatR10G10B10A2 );
+   formats.push_back( GFXFormatR16G16B16A16F );
+   formats.push_back( GFXFormatR16G16B16A16 );    
+   GFXFormat format = GFX->selectSupportedFormat(  &GFXDefaultRenderTargetProfile,
+                                                   formats, 
+                                                   true,
+                                                   true,
+                                                   true );
+   {wle_returnObject =format;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getDisplayDeviceInformation(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   if (!GFXDevice::devicePresent())
+      {wle_returnObject ="(no device)";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   const GFXAdapter& adapter = GFX->getAdapter();
+   {wle_returnObject =adapter.getName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getDisplayDeviceList(char* retval)
+{
+dSprintf(retval,1024,"");
+String wle_returnObject;
+{
+   Vector<GFXAdapter*> adapters;
+   GFXInit::getAdapters(&adapters);
+   StringBuilder str;
+   for (S32 i=0; i<adapters.size(); i++)
+   {
+      if (i)
+         str.append( '\t' );
+      str.append(adapters[i]->mName);
+   }
+   {wle_returnObject =str.end();
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getPixelShaderVersion()
+{
+{
+  return (F32)( GFX->getPixelShaderVersion());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_listGFXResources(bool unflaggedOnly)
+{
+{
+   GFX->listResources(unflaggedOnly);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setPixelShaderVersion(F32 version)
+{
+{
+   GFX->setPixelShaderVersion( version );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

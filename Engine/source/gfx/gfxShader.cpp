@@ -185,3 +185,79 @@ DefineEngineFunction( removeGlobalShaderMacro, void, ( const char *name ),,
 {
    GFXShader::removeGlobalMacro( name );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_addGlobalShaderMacro(char * x__name, char * x__value)
+{
+const char* name = (const char*)x__name;
+const char* value = (const char*)x__value;
+{
+   GFXShader::addGlobalMacro( name, value );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_removeGlobalShaderMacro(char * x__name)
+{
+const char* name = (const char*)x__name;
+{
+   GFXShader::removeGlobalMacro( name );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

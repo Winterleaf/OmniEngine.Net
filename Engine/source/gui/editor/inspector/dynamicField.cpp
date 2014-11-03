@@ -322,3 +322,74 @@ DefineConsoleMethod( GuiInspectorDynamicField, renameField, void, (const char* n
 {
    object->renameField( newDynamicFieldName );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorDynamicField_renameField(char * x__object, char * x__newDynamicFieldName)
+{
+GuiInspectorDynamicField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* newDynamicFieldName = (const char*)x__newDynamicFieldName;
+{
+   object->renameField( newDynamicFieldName );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

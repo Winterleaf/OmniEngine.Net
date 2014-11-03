@@ -166,3 +166,86 @@ DefineEngineFunction( getTextureProfileStats, String, (),,
    return result.end();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getTextureProfileStats(char* retval)
+{
+dSprintf(retval,1024,"");
+String wle_returnObject;
+{
+   StringBuilder result;
+   GFXTextureProfile *profile = GFXTextureProfile::getHead();
+   while ( profile )
+   {
+      const GFXTextureProfileStats &stats = profile->getStats();
+      F32 mb = ( stats.activeBytes / 1024.0f ) / 1024.0f;
+      result.format( "%s %d %0.2f\n",
+         profile->getName().c_str(),
+         stats.activeCount,
+         mb );
+      profile = profile->getNext();
+   }
+   {wle_returnObject =result.end();
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -941,3 +941,82 @@ DefineEngineMethod( SFXController, setCurrentSlot, void, ( S32 index ),,
 {
    object->setCurrentSlot( index );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSFXController_getCurrentSlot(char * x__object)
+{
+SFXController* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getCurrentSlot());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSFXController_setCurrentSlot(char * x__object, S32 index)
+{
+SFXController* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setCurrentSlot( index );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

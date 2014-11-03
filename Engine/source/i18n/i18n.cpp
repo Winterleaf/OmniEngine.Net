@@ -86,3 +86,87 @@ DefineConsoleFunction( setCoreLangTable, void, (const char * lgTable), , "(strin
 }
 
 //-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getCoreLangTable()
+{
+{
+	if(gCoreLangTable)
+		return gCoreLangTable->getId();
+   else
+     return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setCoreLangTable(char * x__lgTable)
+{
+const char* lgTable = (const char*)x__lgTable;
+{
+	LangTable * lt;
+   
+   if(Sim::findObject(lgTable, lt))
+   { gCoreLangTable = lt; }
+   else
+   {       
+      Con::errorf("setCoreLangTable - Unable to find LanTable '%s'", lgTable); 
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

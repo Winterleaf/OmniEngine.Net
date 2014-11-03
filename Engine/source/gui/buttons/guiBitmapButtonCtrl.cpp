@@ -551,3 +551,74 @@ void GuiBitmapButtonTextCtrl::renderButton( GFXTexHandle &texture, const Point2I
    GFX->getDrawUtil()->setBitmapModulation( mProfile->mFontColor );
    renderJustifiedText(textPos, getExtent(), mButtonText);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiBitmapButtonCtrl_setBitmap(char * x__object, char * x__path)
+{
+GuiBitmapButtonCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* path = (const char*)x__path;
+{
+   object->setBitmap( path );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

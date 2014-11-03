@@ -1171,3 +1171,93 @@ DefineEngineMethod( PhysicsShape, restore, void, (),,
 {
    object->restore();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPhysicsShape_destroy(char * x__object)
+{
+PhysicsShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->destroy();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPhysicsShape_isDestroyed(char * x__object)
+{
+PhysicsShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isDestroyed();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPhysicsShape_restore(char * x__object)
+{
+PhysicsShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->restore();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

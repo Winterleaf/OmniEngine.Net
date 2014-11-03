@@ -108,7 +108,6 @@ datablock ItemData(RyderAmmo)
    pickUpName = "Ryder bullet";
    maxInventory = 8;
    clip = RyderClip;
-   preload = true;
 };
 
 //--------------------------------------------------------------------------
@@ -368,5 +367,4 @@ datablock ShapeBaseImageData(RyderWeaponImage)
    stateSequenceTransitionOut[13]   = true;
    stateAllowImageChange[13]        = false;
    stateSequence[13]                = "sprint";
-   preload = true;
 };

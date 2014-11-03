@@ -1713,3 +1713,98 @@ void GuiInspectorTypeSFXSourceName::consoleInit()
 
    ConsoleBaseType::getType( TypeSFXSourceName )->setInspectorFieldType( "GuiInspectorTypeSFXSourceName" );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiInspectorTypeBitMask32_applyBit(char * x__object)
+{
+GuiInspectorTypeBitMask32* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->updateData();
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiInspectorTypeFileName_apply(char * x__object, char * x__a2)
+{
+GuiInspectorTypeFileName* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+{
+S32 argc = 3;
+argc=3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+const char** argv = &arguments[0];
+{
+   String path( argv[2] );
+   if ( path.isNotEmpty() )
+      path = Platform::makeRelativePathName( path, Platform::getMainDotCsDir() );
+      
+   object->setData( path.c_str() );
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

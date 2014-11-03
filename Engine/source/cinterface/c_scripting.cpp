@@ -418,3 +418,86 @@ ConsoleFunction(TestFunction2Args, const char *, 3, 3, "testFunction(arg1, arg2)
 {
    return "Return Value";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__TestFunction2Args(char * x__a1, char * x__a2,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char * wle_returnObject;
+{
+S32 argc = 3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+arguments.push_back(a2);
+{
+   {wle_returnObject =" Value";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

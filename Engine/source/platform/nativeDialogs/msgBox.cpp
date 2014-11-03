@@ -99,3 +99,74 @@ DefineEngineFunction( messageBox, S32, ( const char* title, const char* message,
 {
    return Platform::messageBox( title, message, buttons, icons );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_messageBox(char * x__title, char * x__message, S32 x__buttons, S32 x__icons)
+{
+const char* title = (const char*)x__title;
+const char* message = (const char*)x__message;
+MBButtons buttons = (MBButtons)x__buttons;
+MBIcons icons = (MBIcons)x__icons;
+{
+  return (S32)( Platform::messageBox( title, message, buttons, icons ));
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -626,3 +626,82 @@ DefineConsoleFunction( isKoreanBuild, bool, ( ), , "isKoreanBuild()")
 
    return( result );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isKoreanBuild()
+{
+bool wle_returnObject;
+{
+   HKEY regKey;
+   bool result = false;
+   if ( RegOpenKeyEx( HKEY_LOCAL_MACHINE, TorqueRegKey, 0, KEY_QUERY_VALUE, &regKey ) == ERROR_SUCCESS )
+   {
+      DWORD val;
+      DWORD size = sizeof( val );
+      if ( RegQueryValueEx( regKey, dT("Korean"), NULL, NULL, (U8*) &val, &size ) == ERROR_SUCCESS )
+         result = ( val > 0 );
+      RegCloseKey( regKey );
+   }
+   {wle_returnObject =( result );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

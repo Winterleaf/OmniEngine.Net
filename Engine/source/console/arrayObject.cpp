@@ -927,3 +927,531 @@ DefineEngineMethod( ArrayObject, echo, void, (),,
 {
    object->echo();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_add(char * x__object, char * x__key, char * x__value)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* key = (const char*)x__key;
+const char* value = (const char*)x__value;
+{
+   object->push_back( key, value );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_append(char * x__object, char * x__target)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+ArrayObject* target; Sim::findObject(x__target, target ); 
+bool wle_returnObject;
+{
+   if ( target )
+   {
+      object->append( target );
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_count(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( (S32)object->count());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_countKey(char * x__object, char * x__key)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* key = (const char*)x__key;
+{
+  return (S32)( (S32)object->countKey( key ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_countValue(char * x__object, char * x__value)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* value = (const char*)x__value;
+{
+  return (S32)( (S32)object->countValue( value ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_crop(char * x__object, char * x__target)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+ArrayObject* target; Sim::findObject(x__target, target ); 
+bool wle_returnObject;
+{
+   if ( target )
+   {
+      object->crop( target );
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_duplicate(char * x__object, char * x__target)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+ArrayObject* target; Sim::findObject(x__target, target ); 
+bool wle_returnObject;
+{
+   if ( target )
+   {
+      object->duplicate( target );
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_echo(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->echo();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_empty(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->empty();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_erase(char * x__object, S32 index)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->erase( index );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_getCurrent(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getCurrent());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_getIndexFromKey(char * x__object, char * x__key)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* key = (const char*)x__key;
+{
+  return (S32)( object->getIndexFromKey( key ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_getIndexFromValue(char * x__object, char * x__value)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* value = (const char*)x__value;
+{
+  return (S32)( object->getIndexFromValue( value ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_getKey(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getKeyFromIndex( index ).c_str();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_getValue(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getValueFromIndex( index ).c_str();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_insert(char * x__object, char * x__key, char * x__value, S32 index)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* key = (const char*)x__key;
+const char* value = (const char*)x__value;
+
+{
+   object->insert( key, value, index );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_moveFirst(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->moveFirst());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_moveLast(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->moveLast());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_moveNext(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->moveNext());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnArrayObject_movePrev(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->movePrev());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_pop_back(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pop_back();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_pop_front(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pop_front();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_push_back(char * x__object, char * x__key, char * x__value)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* key = (const char*)x__key;
+const char* value = (const char*)x__value;
+{
+   object->push_back( key, value );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_push_front(char * x__object, char * x__key, char * x__value)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* key = (const char*)x__key;
+const char* value = (const char*)x__value;
+{
+   object->push_front( key, value );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_setCurrent(char * x__object, S32 index)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setCurrent( index );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_setKey(char * x__object, char * x__key, S32 index)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* key = (const char*)x__key;
+
+{
+   object->setKey( key, index );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_setValue(char * x__object, char * x__value, S32 index)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* value = (const char*)x__value;
+
+{
+   object->setValue( value, index );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sort(char * x__object, bool ascending)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( true, ascending, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sorta(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( true, true, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortd(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( true, false, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortf(char * x__object, char * x__functionName)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* functionName = (const char*)x__functionName;
+{
+   object->sort( true, true, functionName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortfd(char * x__object, char * x__functionName)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* functionName = (const char*)x__functionName;
+{
+   object->sort( true, false, functionName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortfk(char * x__object, char * x__functionName)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* functionName = (const char*)x__functionName;
+{
+   object->sort( false, true, functionName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortfkd(char * x__object, char * x__functionName)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* functionName = (const char*)x__functionName;
+{
+   object->sort( false, false, functionName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortk(char * x__object, bool ascending)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( false, ascending, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortka(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( false, true, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortkd(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( false, false, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortn(char * x__object, bool ascending)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( true, ascending, true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortna(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( true, true, true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortnd(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( true, false, true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortnk(char * x__object, bool ascending)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( false, ascending, true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortnka(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( false, true, true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_sortnkd(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sort( false, false, true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_uniqueKey(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->uniqueKey();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnArrayObject_uniqueValue(char * x__object)
+{
+ArrayObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->uniqueValue();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -162,3 +162,119 @@ DefineConsoleMethod( EditManager, isEditorEnabled, bool, (), , "Return the value
 {
    return gEditingMission;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EditManager_editorDisabled(char * x__object)
+{
+EditManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->editorDisabled();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EditManager_editorEnabled(char * x__object)
+{
+EditManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->editorEnabled();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EditManager_gotoBookmark(char * x__object, S32 val)
+{
+EditManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(val < 0 || val > 9)
+      return;
+   GameBase * control = getControlObj();
+   if(control)
+      control->setTransform(object->mBookmarks[val]);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_EditManager_isEditorEnabled(char * x__object)
+{
+EditManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =gEditingMission;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EditManager_setBookmark(char * x__object, S32 val)
+{
+EditManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(val < 0 || val > 9)
+      return;
+   GameBase * control = getControlObj();
+   if(control)
+      object->mBookmarks[val] = control->getTransform();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

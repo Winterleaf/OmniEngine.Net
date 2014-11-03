@@ -420,3 +420,146 @@ DefineConsoleFunction( dispatchMessageObject, bool, (const char *queueName, cons
 
    return Dispatcher::dispatchMessageObject(queueName, msg);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_dispatchMessage(char * x__queueName, char * x__message, char * x__data)
+{
+const char* queueName = (const char*)x__queueName;
+const char* message = (const char*)x__message;
+const char* data = (const char*)x__data;
+bool wle_returnObject;
+{
+   {wle_returnObject =Dispatcher::dispatchMessage(queueName, message, data);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_dispatchMessageObject(char * x__queueName, char * x__message)
+{
+const char* queueName = (const char*)x__queueName;
+const char* message = (const char*)x__message;
+bool wle_returnObject;
+{
+   Message *msg = dynamic_cast<Message *>(Sim::findObject(message));
+   if(msg == NULL)
+   {
+      Con::errorf("dispatchMessageObject - Unable to find message object");
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =Dispatcher::dispatchMessageObject(queueName, msg);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isQueueRegistered(char * x__queueName)
+{
+const char* queueName = (const char*)x__queueName;
+bool wle_returnObject;
+{
+   {wle_returnObject =Dispatcher::isQueueRegistered(queueName);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_registerMessageListener(char * x__queueName, char * x__listenerName)
+{
+const char* queueName = (const char*)x__queueName;
+const char* listenerName = (const char*)x__listenerName;
+bool wle_returnObject;
+{
+   Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(listenerName));
+   if(listener == NULL)
+   {
+      Con::errorf("registerMessageListener - Unable to find listener object, not an IMessageListener ?!");
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =Dispatcher::registerMessageListener(queueName, listener);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_registerMessageQueue(char * x__queueName)
+{
+const char* queueName = (const char*)x__queueName;
+{
+   return Dispatcher::registerMessageQueue(queueName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_unregisterMessageListener(char * x__queueName, char * x__listenerName)
+{
+const char* queueName = (const char*)x__queueName;
+const char* listenerName = (const char*)x__listenerName;
+{
+   Dispatcher::IMessageListener *listener = dynamic_cast<Dispatcher::IMessageListener *>(Sim::findObject(listenerName));
+   if(listener == NULL)
+   {
+      Con::errorf("unregisterMessageListener - Unable to find listener object, not an IMessageListener ?!");
+      return;
+   }
+   Dispatcher::unregisterMessageListener(queueName, listener);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_unregisterMessageQueue(char * x__queueName)
+{
+const char* queueName = (const char*)x__queueName;
+{
+   return Dispatcher::unregisterMessageQueue(queueName);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

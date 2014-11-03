@@ -499,3 +499,183 @@ DefineConsoleMethod( FileObject, writeObject, void,  (const char * simName, cons
    object->writeObject( obj, (const U8*)objName );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_FileObject_writeObject(char * x__object, char * x__simName, char * x__objName)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* simName = (const char*)x__simName;
+const char* objName = (const char*)x__objName;
+{
+   SimObject* obj = Sim::findObject( simName );
+   if( !obj )
+   {
+      Con::printf("FileObject::writeObject - Invalid Object!");
+      return;
+   }
+	if (!dStrcmp(objName,""))
+       objName = NULL;
+   object->writeObject( obj, (const U8*)objName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnFileObject_close(char * x__object)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->close();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnFileObject_isEOF(char * x__object)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->isEOF();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnFileObject_openForAppend(char * x__object, char * x__filename)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* filename = (const char*)x__filename;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->openForWrite(filename, true);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnFileObject_openForRead(char * x__object, char * x__filename)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* filename = (const char*)x__filename;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->readMemory(filename);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnFileObject_openForWrite(char * x__object, char * x__filename)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* filename = (const char*)x__filename;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->openForWrite(filename);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnFileObject_peekLine(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	static const U32 bufSize = 512;
+	char *line = Con::getReturnBuffer( bufSize );
+	object->peekLine( (U8*)line, bufSize );
+	{wle_returnObject =line;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnFileObject_readLine(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =(const char *) object->readLine();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnFileObject_writeLine(char * x__object, char * x__text)
+{
+FileObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+{
+	object->writeLine((const U8 *) text);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

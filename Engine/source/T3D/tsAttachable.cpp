@@ -643,3 +643,123 @@ DefineEngineMethod(TSAttachable, getAttachment, SceneObject *, (S32 index), (0),
 {
    return object->getAttachment(index);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSAttachable_attachObject(char * x__object, char * x__obj)
+{
+TSAttachable* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SceneObject* obj; Sim::findObject(x__obj, obj ); 
+bool wle_returnObject;
+{
+   {wle_returnObject =object->attachObject(obj);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSAttachable_detachAll(char * x__object)
+{
+TSAttachable* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->detachAll();
+   return;
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSAttachable_detachObject(char * x__object, char * x__obj)
+{
+TSAttachable* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SceneObject* obj; Sim::findObject(x__obj, obj ); 
+bool wle_returnObject;
+{
+   {wle_returnObject =object->detachObject(obj);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSAttachable_getAttachment(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,1024,"");
+TSAttachable* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SceneObject * wle_returnObject;
+{
+   {wle_returnObject =object->getAttachment(index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSAttachable_getNumAttachments(char * x__object)
+{
+TSAttachable* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getNumAttachments());
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -1183,3 +1183,82 @@ DefineEngineFunction( getBitmapInfo, String, ( const char *filename ),,
                                           image->getHeight(),
                                           image->getBytesPerPixel() );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getBitmapInfo(char * x__filename,  char* retval)
+{
+dSprintf(retval,1024,"");
+const char* filename = (const char*)x__filename;
+String wle_returnObject;
+{
+   Resource<GBitmap> image = GBitmap::load( filename );
+   if ( !image )
+      {wle_returnObject =String::EmptyString;
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+   {wle_returnObject =String::ToString( "%d\t%d\t%d", image->getWidth(),                                           image->getHeight(),                                          image->getBytesPerPixel() );
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

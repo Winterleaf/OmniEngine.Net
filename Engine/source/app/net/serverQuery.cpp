@@ -2124,3 +2124,187 @@ void DemoNetInterface::handleInfoPacket( const NetAddress* address, U8 packetTyp
 
 
 ConsoleFunctionGroupEnd( ServerQuery );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_cancelServerQuery()
+{
+{
+   cancelServerQuery();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getServerCount()
+{
+{
+  return (int)( gServerList.size());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryAllServers(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
+{
+
+const char* gameType = (const char*)x__gameType;
+const char* missionType = (const char*)x__missionType;
+
+
+
+
+{
+   U32 buddyList = 0;
+   clearServerList();
+   queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
+      maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
+   queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
+	   regionMask, maxPing, minCPU, filterFlags);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryLanServers(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
+{
+
+const char* gameType = (const char*)x__gameType;
+const char* missionType = (const char*)x__missionType;
+
+
+
+
+{
+   clearServerList();
+   queryLanServers(lanPort, flags, gameType, missionType, minPlayers, maxPlayers, maxBots,
+	   regionMask, maxPing, minCPU, filterFlags);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_queryMasterServer(U32 lanPort, U32 flags, char * x__gameType, char * x__missionType, U32 minPlayers, U32 maxPlayers, U32 maxBots, U32 regionMask, U32 maxPing, U32 minCPU, U32 filterFlags)
+{
+
+const char* gameType = (const char*)x__gameType;
+const char* missionType = (const char*)x__missionType;
+
+
+
+
+{
+   U32 buddyList = 0;
+   clearServerList();
+   queryMasterServer(flags,gameType,missionType,minPlayers,maxPlayers,
+      maxBots,regionMask,maxPing,minCPU,filterFlags,0,&buddyList);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_querySingleServer(char * x__addrText, U8 flags)
+{
+const char* addrText = (const char*)x__addrText;
+
+{
+   NetAddress addr;
+   Net::stringToAddress( addrText, &addr );
+   querySingleServer(&addr,flags);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setServerInfo(U32 index)
+{
+bool wle_returnObject;
+{
+   if (index < gServerList.size()) {
+      ServerInfo& info = gServerList[index];
+      char addrString[256];
+      Net::addressToString( &info.address, addrString );
+      Con::setIntVariable("ServerInfo::Status",info.status);
+      Con::setVariable("ServerInfo::Address",addrString);
+      Con::setVariable("ServerInfo::Name",info.name);
+      Con::setVariable("ServerInfo::GameType",info.gameType);
+      Con::setVariable("ServerInfo::MissionName",info.missionName);
+      Con::setVariable("ServerInfo::MissionType",info.missionType);
+      Con::setVariable("ServerInfo::State",info.statusString);
+      Con::setVariable("ServerInfo::Info",info.infoString);
+      Con::setIntVariable("ServerInfo::PlayerCount",info.numPlayers);
+      Con::setIntVariable("ServerInfo::MaxPlayers",info.maxPlayers);
+      Con::setIntVariable("ServerInfo::BotCount",info.numBots);
+      Con::setIntVariable("ServerInfo::Version",info.version);
+      Con::setIntVariable("ServerInfo::Ping",info.ping);
+      Con::setIntVariable("ServerInfo::CPUSpeed",info.cpuSpeed);
+      Con::setBoolVariable("ServerInfo::Favorite",info.isFavorite);
+      Con::setBoolVariable("ServerInfo::Dedicated",info.isDedicated());
+      Con::setBoolVariable("ServerInfo::Password",info.isPassworded());
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_startHeartbeat()
+{
+{
+   if (validateAuthenticatedServer()) {
+      gHeartbeatSeq++;
+      processHeartbeat(gHeartbeatSeq);     }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_stopHeartbeat()
+{
+{
+   gHeartbeatSeq++;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_stopServerQuery()
+{
+{
+   stopServerQuery();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

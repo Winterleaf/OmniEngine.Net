@@ -365,3 +365,117 @@ DefineEngineMethod( RenderPassManager, removeManager, void, ( RenderBinManager *
       object->removeManager( renderBin );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderPassManager_addManager(char * x__object, char * x__renderBin)
+{
+RenderPassManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+RenderBinManager* renderBin; Sim::findObject(x__renderBin, renderBin ); 
+{
+   if ( renderBin )
+      object->addManager( renderBin );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderPassManager_getManager(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,1024,"");
+RenderPassManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+RenderBinManager* wle_returnObject;
+{
+   if(index < 0 || index >= object->getManagerCount())
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   {wle_returnObject =object->getManager(index);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnRenderPassManager_getManagerCount(char * x__object)
+{
+RenderPassManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getManagerCount());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderPassManager_removeManager(char * x__object, char * x__renderBin)
+{
+RenderPassManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+RenderBinManager* renderBin; Sim::findObject(x__renderBin, renderBin ); 
+{
+   if ( renderBin )
+      object->removeManager( renderBin );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

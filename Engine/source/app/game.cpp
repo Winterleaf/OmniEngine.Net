@@ -251,3 +251,180 @@ bool serverProcess(U32 timeDelta)
    return ret;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_activateDirectInput()
+{
+{
+   if ( !Input::isActive() )
+      Input::activate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_closeNetPort()
+{
+{
+   Net::closePort();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_deactivateDirectInput()
+{
+{
+   if ( Input::isActive() )
+      Input::deactivate();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getRealTime()
+{
+{
+  return (S32)( Platform::getRealMilliseconds());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getSimTime()
+{
+{
+  return (S32)( Sim::getCurrentTime());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_lockMouse(bool isLocked)
+{
+{
+   Platform::setWindowLocked(isLocked);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_playJournal(char * x__filename)
+{
+const char* filename = (const char*)x__filename;
+{
+         Journal::Play(filename);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_saveJournal(char * x__filename)
+{
+const char* filename = (const char*)x__filename;
+{
+   Journal::Record(filename);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setNetPort(int port, bool bind)
+{
+
+bool wle_returnObject;
+{
+   {wle_returnObject =Net::openPort((S32)port, bind);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_strToPlayerName(char * x__ptr,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* ptr = (const char*)x__ptr;
+const char* wle_returnObject;
+{
+	   while ( *ptr == ' ' || *ptr == '_' )
+      ptr++;
+   U32 len = dStrlen( ptr );
+   if ( len )
+   {
+      char* ret = Con::getReturnBuffer( MaxPlayerNameLength + 1 );
+      char* rptr = ret;
+      ret[MaxPlayerNameLength - 1] = '\0';
+      ret[MaxPlayerNameLength] = '\0';
+      bool space = false;
+      U8 ch;
+      while ( *ptr && dStrlen( ret ) < MaxPlayerNameLength )
+      {
+         ch = (U8) *ptr;
+                  if ( ch < 32 || ch == ',' || ch == '.' || ch == '\'' || ch == '`' )
+         {
+            ptr++;
+            continue;
+         }
+                  if ( ch == ' ' || ch == '_' )
+         {
+            if ( space )
+            {
+               ptr++;
+               continue;
+            }
+            else
+               space = true;
+         }
+         else
+            space = false;
+         *rptr++ = *ptr;
+         ptr++;
+      }
+      *rptr = '\0';
+				{wle_returnObject =GuiMLTextCtrl::stripControlChars(ret);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+	{wle_returnObject =( "" );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

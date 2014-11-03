@@ -336,16 +336,6 @@ public  void attachToObject(uint objectID){
 
 pInvokes.m_ts.fnForestWindEmitter_attachToObject(_ID, objectID);
 }
-/// <summary>
-/// @brief Mounts the wind emitter to another scene object
-///    @param )
-/// 
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  void resetWind(int randomSeed){
-
-pInvokes.m_ts.fnForestWindEmitter_resetWind(_ID, randomSeed);
-}
 
 #endregion
 #region T3D Callbacks

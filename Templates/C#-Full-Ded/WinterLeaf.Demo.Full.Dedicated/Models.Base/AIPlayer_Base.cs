@@ -311,6 +311,32 @@ public  void AISearchSimSet(float fOV, float farDist, string ObjToSearch, string
 pInvokes.m_ts.fnAIPlayer_AISearchSimSet(_ID, fOV, farDist, ObjToSearch, result);
 }
 /// <summary>
+/// @brief Check whether an object is within a specified veiw cone.
+///    @obj Object to check. (If blank, it will check the current target).
+///    @fov view angle in degrees.(Defaults to 45)
+///    @checkEnabled check whether the object can take damage and if so is still alive.(Defaults to false))
+/// 
+/// </summary>
+[MemberFunctionConsoleInteraction(true)]
+public  bool checkInFoV(string obj = null , float fov = 45.0f, bool checkEnabled = false){
+if (obj== null) {obj = null;}
+
+return pInvokes.m_ts.fnAIPlayer_checkInFoV(_ID, obj, fov, checkEnabled);
+}
+/// <summary>
+/// @brief Check whether an object is in line of sight.
+///    @obj Object to check. (If blank, it will check the current target).
+///    @useMuzzle Use muzzle position. Otherwise use eye position. (defaults to false).
+///    @checkEnabled check whether the object can take damage and if so is still alive.(Defaults to false))
+/// 
+/// </summary>
+[MemberFunctionConsoleInteraction(true)]
+public  bool checkInLos(string obj = null , bool useMuzzle = false, bool checkEnabled = false){
+if (obj== null) {obj = null;}
+
+return pInvokes.m_ts.fnAIPlayer_checkInLos(_ID, obj, useMuzzle, checkEnabled);
+}
+/// <summary>
 /// @brief Use this to stop aiming at an object or a point.
 ///    
 ///    @see setAimLocation()

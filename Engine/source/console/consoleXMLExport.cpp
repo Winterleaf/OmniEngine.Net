@@ -313,15 +313,105 @@ namespace Con {
 
 }; // namespace Con
 
-
+#endif
 DefineConsoleFunction( consoleExportXML, const char*, (), ,"Exports console definition XML representation" )
 {
+#if 0
    Con::XMLExport xmlExport;
    String xml;
    xmlExport.exportXML(xml);
    char* ret = Con::getReturnBuffer(xml.length() + 1);
    dStrcpy(ret, xml.c_str());
    return ret;
+#else
+	return "";
+#endif
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_consoleExportXML(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+#if 0
+   Con::XMLExport xmlExport;
+   String xml;
+   xmlExport.exportXML(xml);
+   char* ret = Con::getReturnBuffer(xml.length() + 1);
+   dStrcpy(ret, xml.c_str());
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+#else
+	{wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
 #endif
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

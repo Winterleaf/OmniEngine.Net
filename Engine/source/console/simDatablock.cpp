@@ -240,3 +240,116 @@ DefineConsoleFunction( deleteDataBlocks, void, (),,
    SimDataBlock::sNextObjectId = DataBlockObjectIdFirst;
    SimDataBlock::sNextModifiedKey = 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_deleteDataBlocks()
+{
+{
+      SimGroup *grp = Sim::getDataBlockGroup();
+   grp->deleteAllObjects();
+   SimDataBlock::sNextObjectId = DataBlockObjectIdFirst;
+   SimDataBlock::sNextModifiedKey = 0;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_preloadClientDataBlocks()
+{
+{
+      SimGroup *grp = Sim::getDataBlockGroup();
+   String errorStr;
+   for(S32 i = grp->size() - 1; i >= 0; i--)
+   {
+      AssertFatal(dynamic_cast<SimDataBlock*>((*grp)[i]), "Doh! non-datablock in datablock group!");
+      SimDataBlock *obj = (SimDataBlock*)(*grp)[i];
+      if (!obj->preload(false, errorStr))
+         Con::errorf("Failed to preload client datablock, %s: %s", obj->getName(), errorStr.c_str());
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimDataBlock_reloadOnLocalClient(char * x__object)
+{
+SimDataBlock* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   
+   GameConnection* localClient = GameConnection::getLocalClientConnection();
+   if( !localClient )
+      return;
+   
+   if( !object->preload( true, NetConnection::getErrorBuffer() ) )
+   {
+      Con::errorf( NetConnection::getErrorBuffer() );
+      return;
+   }
+   U8 buffer[ 16384 ];
+   BitStream stream( buffer, 16384 );
+   object->packData( &stream );
+   stream.setPosition(0);
+   object->unpackData( &stream );
+   if( !object->preload( false, NetConnection::getErrorBuffer() ) )
+   {
+      Con::errorf( NetConnection::getErrorBuffer() );
+      return;
+   }
+      object->inspectPostApply();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -138,7 +138,6 @@ datablock ItemData(AITurretAmmo)
 
    // Dynamic properties defined by the scripts
    pickUpName = "turret ammo";
-   preload = true;
 };
 
 //-----------------------------------------------------------------------------
@@ -168,7 +167,6 @@ datablock ItemData(AITurretHead)
    description = "AI Turret Head";
    image = AITurretHeadImage;
    reticle = "crossHair";
-   preload = true;
 };
 datablock ShapeBaseImageData(AITurretHeadImage)
 {
@@ -302,7 +300,6 @@ datablock ShapeBaseImageData(AITurretHeadImage)
    // Turret has been destroyed
    stateName[9]                     = "Destroyed";
    stateSequence[9]                 = "destroyed";
-   preload = true;
 };
 
 //-----------------------------------------------------------------------------
@@ -398,7 +395,6 @@ datablock AITurretShapeData(AITurret)
    // This state is set in the onDestroyed() callback.
    stateName[7]                     = "Destroyed";
    stateSequence[7]                 = "destroyed";
-   preload = true;
 };
 
 //-----------------------------------------------------------------------------
@@ -427,7 +423,6 @@ datablock AITurretShapeData(DeployableTurret : AITurret)
    image = DeployableTurretImage;
    reticle = "blank";
    zoomReticle = 'blank';
-   preload = true;
 };
 
 datablock ShapeBaseImageData(DeployableTurretImage)
@@ -566,5 +561,4 @@ datablock ShapeBaseImageData(DeployableTurretImage)
    stateSequenceTransitionOut[9]    = true;
    stateAllowImageChange[9]         = false;
    stateSequence[9]                 = "sprint";
-   preload = true;
 };

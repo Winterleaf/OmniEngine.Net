@@ -841,3 +841,85 @@ DefineEngineMethod( Trigger, getObject, S32, ( S32 index ),,
    else
       return object->getObject(U32(index))->getId();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTrigger_getNumObjects(char * x__object)
+{
+Trigger* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getNumTriggeringObjects());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTrigger_getObject(char * x__object, S32 index)
+{
+Trigger* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   if (index >= object->getNumTriggeringObjects() || index < 0)
+     return (S32)( -1);
+   else
+     return (S32)( object->getObject(U32(index))->getId());
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

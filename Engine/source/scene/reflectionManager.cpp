@@ -313,3 +313,70 @@ DefineEngineFunction( setReflectFormat, void, ( GFXFormat format ),,
    REFLECTMGR->setReflectFormat( format );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setReflectFormat(S32 x__format)
+{
+GFXFormat format = (GFXFormat)x__format;
+{
+   REFLECTMGR->setReflectFormat( format );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

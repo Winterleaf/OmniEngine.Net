@@ -1416,3 +1416,144 @@ DefineEngineMethod( GuiScrollCtrl, computeSizes, void, (),,
 {
    object->computeSizes();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiScrollCtrl_computeSizes(char * x__object)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->computeSizes();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiScrollCtrl_getScrollPosition(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2I wle_returnObject;
+{
+   {wle_returnObject =object->getChildRelPos();
+dSprintf(retval,1024,"%i %i ",wle_returnObject.x,wle_returnObject.y);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiScrollCtrl_getScrollPositionX(char * x__object)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getChildRelPos().x);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiScrollCtrl_getScrollPositionY(char * x__object)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getChildRelPos().y);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiScrollCtrl_scrollToBottom(char * x__object)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->scrollTo( 0, 0x7FFFFFFF );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiScrollCtrl_scrollToObject(char * x__object, char * x__control)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+GuiControl* control; Sim::findObject(x__control, control ); 
+{
+   if( control )
+      object->scrollToObject( control );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiScrollCtrl_scrollToTop(char * x__object)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->scrollTo( 0, 0 );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiScrollCtrl_setScrollPosition(char * x__object, S32 x, S32 y)
+{
+GuiScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->scrollTo( x, y );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

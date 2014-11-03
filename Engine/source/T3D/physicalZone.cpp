@@ -443,3 +443,85 @@ void PhysicalZone::deactivate()
    mActive = false;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPhysicalZone_activate(char * x__object)
+{
+PhysicalZone* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if (object->isClientObject())
+      return;
+   object->activate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPhysicalZone_deactivate(char * x__object)
+{
+PhysicalZone* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if (object->isClientObject())
+      return;
+   object->deactivate();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

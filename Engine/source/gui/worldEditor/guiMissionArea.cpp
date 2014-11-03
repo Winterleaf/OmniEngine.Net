@@ -729,3 +729,83 @@ void GuiMissionAreaUndoAction::undo()
    // Let the script get a chance at it.
    mMissionAreaEditor->onUndo_callback();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMissionAreaCtrl_setMissionArea(char * x__object, char * x__area)
+{
+GuiMissionAreaCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+MissionArea* area; Sim::findObject(x__area, area ); 
+{
+   object->setMissionArea( area );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMissionAreaCtrl_updateTerrain(char * x__object)
+{
+GuiMissionAreaCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->updateTerrain();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

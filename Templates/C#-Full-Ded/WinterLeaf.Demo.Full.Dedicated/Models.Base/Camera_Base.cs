@@ -540,10 +540,10 @@ pInvokes.m_ts.fnCamera_setOffset(_ID, offset.AsString());
 /// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
-public  bool setOrbitMode(string orbitObject, TransformF orbitPoint, float minDistance, float maxDistance, float initDistance, bool ownClientObj = false, Point3F offset = null , bool lockedx = false){
+public  void setOrbitMode(string orbitObject, TransformF orbitPoint, float minDistance, float maxDistance, float initDistance, bool ownClientObj = false, Point3F offset = null , bool lockedx = false){
 if (offset== null) {offset = new Point3F(0.0f, 0.0f, 0.0f);}
 
-return pInvokes.m_ts.fnCamera_setOrbitMode(_ID, orbitObject, orbitPoint.AsString(), minDistance, maxDistance, initDistance, ownClientObj, offset.AsString(), lockedx);
+pInvokes.m_ts.fnCamera_setOrbitMode(_ID, orbitObject, orbitPoint.AsString(), minDistance, maxDistance, initDistance, ownClientObj, offset.AsString(), lockedx);
 }
 /// <summary>
 /// Set the camera to orbit around a given object.

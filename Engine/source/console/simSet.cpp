@@ -1177,3 +1177,788 @@ DefineEngineMethod( SimSet, acceptsAsChild, bool, ( SimObject* obj ),,
    
    return object->acceptsAsChild( obj );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimSet_deleteAllObjects(char * x__object)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteAllObjects();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_SimSet_getFullCount(char * x__object)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->sizeRecursive());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimSet_sort(char * x__object, char * x__callbackFunction)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* callbackFunction = (const char*)x__callbackFunction;
+{
+   object->scriptSort( callbackFunction );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimSet_acceptsAsChild(char * x__object, char * x__obj)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+bool wle_returnObject;
+{
+   if( !obj )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   
+   {wle_returnObject =object->acceptsAsChild( obj );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_add(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if ( dStrlen(a19) == 0 )
+if ( dStrlen(a18) == 0 )
+if ( dStrlen(a17) == 0 )
+if ( dStrlen(a16) == 0 )
+if ( dStrlen(a15) == 0 )
+if ( dStrlen(a14) == 0 )
+if ( dStrlen(a13) == 0 )
+if ( dStrlen(a12) == 0 )
+if ( dStrlen(a11) == 0 )
+if ( dStrlen(a10) == 0 )
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+if ( dStrlen(a5) == 0 )
+if ( dStrlen(a4) == 0 )
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+if ( argc >4 )
+arguments.push_back(a4);
+if ( argc >5 )
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+if ( argc >10 )
+arguments.push_back(a10);
+if ( argc >11 )
+arguments.push_back(a11);
+if ( argc >12 )
+arguments.push_back(a12);
+if ( argc >13 )
+arguments.push_back(a13);
+if ( argc >14 )
+arguments.push_back(a14);
+if ( argc >15 )
+arguments.push_back(a15);
+if ( argc >16 )
+arguments.push_back(a16);
+if ( argc >17 )
+arguments.push_back(a17);
+if ( argc >18 )
+arguments.push_back(a18);
+if ( argc >19 )
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   for(S32 i = 2; i < argc; i++)
+   {
+      SimObject *obj = Sim::findObject( argv[ i ] );
+      if(obj)
+         object->addObject( obj );
+      else
+         Con::printf("Set::add: Object \"%s\" doesn't exist", argv[ i ] );
+   }
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_bringToFront(char * x__object, char * x__obj)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+{
+   if( obj )
+      object->bringObjectToFront( obj );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_callOnChildren(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if ( dStrlen(a19) == 0 )
+if ( dStrlen(a18) == 0 )
+if ( dStrlen(a17) == 0 )
+if ( dStrlen(a16) == 0 )
+if ( dStrlen(a15) == 0 )
+if ( dStrlen(a14) == 0 )
+if ( dStrlen(a13) == 0 )
+if ( dStrlen(a12) == 0 )
+if ( dStrlen(a11) == 0 )
+if ( dStrlen(a10) == 0 )
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+if ( dStrlen(a5) == 0 )
+if ( dStrlen(a4) == 0 )
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+if ( argc >4 )
+arguments.push_back(a4);
+if ( argc >5 )
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+if ( argc >10 )
+arguments.push_back(a10);
+if ( argc >11 )
+arguments.push_back(a11);
+if ( argc >12 )
+arguments.push_back(a12);
+if ( argc >13 )
+arguments.push_back(a13);
+if ( argc >14 )
+arguments.push_back(a14);
+if ( argc >15 )
+arguments.push_back(a15);
+if ( argc >16 )
+arguments.push_back(a16);
+if ( argc >17 )
+arguments.push_back(a17);
+if ( argc >18 )
+arguments.push_back(a18);
+if ( argc >19 )
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   object->callOnChildren( argv[2], argc - 3, argv + 3 );
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_callOnChildrenNoRecurse(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if ( dStrlen(a19) == 0 )
+if ( dStrlen(a18) == 0 )
+if ( dStrlen(a17) == 0 )
+if ( dStrlen(a16) == 0 )
+if ( dStrlen(a15) == 0 )
+if ( dStrlen(a14) == 0 )
+if ( dStrlen(a13) == 0 )
+if ( dStrlen(a12) == 0 )
+if ( dStrlen(a11) == 0 )
+if ( dStrlen(a10) == 0 )
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+if ( dStrlen(a5) == 0 )
+if ( dStrlen(a4) == 0 )
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+if ( argc >4 )
+arguments.push_back(a4);
+if ( argc >5 )
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+if ( argc >10 )
+arguments.push_back(a10);
+if ( argc >11 )
+arguments.push_back(a11);
+if ( argc >12 )
+arguments.push_back(a12);
+if ( argc >13 )
+arguments.push_back(a13);
+if ( argc >14 )
+arguments.push_back(a14);
+if ( argc >15 )
+arguments.push_back(a15);
+if ( argc >16 )
+arguments.push_back(a16);
+if ( argc >17 )
+arguments.push_back(a17);
+if ( argc >18 )
+arguments.push_back(a18);
+if ( argc >19 )
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   object->callOnChildren( argv[2], argc - 3, argv + 3, false );
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_clear(char * x__object)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clear();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_findObjectByInternalName(char * x__object, char * x__internalName, bool searchChildren,  char* retval)
+{
+dSprintf(retval,1024,"");
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* internalName = (const char*)x__internalName;
+
+SimObject* wle_returnObject;
+{
+   StringTableEntry pcName = StringTable->insert( internalName );
+   {wle_returnObject =object->findObjectByInternalName( pcName, searchChildren );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimSet_getCount(char * x__object)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->size());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_getObject(char * x__object, U32 index,  char* retval)
+{
+dSprintf(retval,1024,"");
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* wle_returnObject;
+{
+   if( index < 0 || index >= object->size() )
+   {
+      Con::errorf( "Set::getObject - index out of range." );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   
+   {wle_returnObject =( *object )[ index ];
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimSet_getObjectIndex(char * x__object, char * x__obj)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+{
+   if( !obj )
+     return (S32)( -1);
+   object->lock();
+   S32 count = 0;
+   for( SimSet::iterator i = object->begin(); i != object->end(); i++)
+   {
+      if( *i == obj )
+      {
+         object->unlock();
+        return (S32)( count);
+      }
+      ++count;
+   }
+   object->unlock();
+  return (S32)( -1);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_getRandom(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* wle_returnObject;
+{
+   {wle_returnObject =object->getRandom();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSimSet_isMember(char * x__object, char * x__obj)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+bool wle_returnObject;
+{
+   if( !obj )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   {wle_returnObject =( object->find( object->begin(), object->end(), obj ) != object->end() );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_listObjects(char * x__object)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->lock();
+   SimSet::iterator itr;
+   for(itr = object->begin(); itr != object->end(); itr++)
+   {
+      SimObject *obj = *itr;
+      bool isSet = dynamic_cast<SimSet *>(obj) != 0;
+      const char *name = obj->getName();
+      if(name)
+         Con::printf("   %d,\"%s\": %s %s", obj->getId(), name,
+         obj->getClassName(), isSet ? "(g)":"");
+      else
+         Con::printf("   %d: %s %s", obj->getId(), obj->getClassName(),
+         isSet ? "(g)" : "");
+   }
+   object->unlock();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_pushToBack(char * x__object, char * x__obj)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+{
+   if( obj )
+      object->pushObjectToBack( obj );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_remove(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if ( dStrlen(a19) == 0 )
+if ( dStrlen(a18) == 0 )
+if ( dStrlen(a17) == 0 )
+if ( dStrlen(a16) == 0 )
+if ( dStrlen(a15) == 0 )
+if ( dStrlen(a14) == 0 )
+if ( dStrlen(a13) == 0 )
+if ( dStrlen(a12) == 0 )
+if ( dStrlen(a11) == 0 )
+if ( dStrlen(a10) == 0 )
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+if ( dStrlen(a5) == 0 )
+if ( dStrlen(a4) == 0 )
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+if ( argc >4 )
+arguments.push_back(a4);
+if ( argc >5 )
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+if ( argc >10 )
+arguments.push_back(a10);
+if ( argc >11 )
+arguments.push_back(a11);
+if ( argc >12 )
+arguments.push_back(a12);
+if ( argc >13 )
+arguments.push_back(a13);
+if ( argc >14 )
+arguments.push_back(a14);
+if ( argc >15 )
+arguments.push_back(a15);
+if ( argc >16 )
+arguments.push_back(a16);
+if ( argc >17 )
+arguments.push_back(a17);
+if ( argc >18 )
+arguments.push_back(a18);
+if ( argc >19 )
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+   for(S32 i = 2; i < argc; i++)
+   {
+      SimObject *obj = Sim::findObject(argv[i]);
+      object->lock();
+      if(obj && object->find(object->begin(),object->end(),obj) != object->end())
+         object->removeObject(obj);
+      else
+         Con::printf("Set::remove: Object \"%s\" does not exist in set", argv[i]);
+      object->unlock();
+   }
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimSet_reorderChild(char * x__object, char * x__child1, char * x__child2)
+{
+SimSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* child1; Sim::findObject(x__child1, child1 ); 
+SimObject* child2; Sim::findObject(x__child2, child2 ); 
+{
+   SimObject* pObject = child1;
+   SimObject* pTarget = child2;
+   if(pObject && pTarget)
+   {
+      object->reOrder(pObject,pTarget);
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

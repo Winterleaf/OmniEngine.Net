@@ -536,3 +536,119 @@ void GuiGameListOptionsProfile::initPersistFields()
 
    Parent::initPersistFields();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListOptionsCtrl_addRow(char * x__object, char * x__label, char * x__options, bool wrapOptions, char * x__callback, S32 icon, S32 yPad, bool enabled)
+{
+GuiGameListOptionsCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* label = (const char*)x__label;
+const char* options = (const char*)x__options;
+
+const char* callback = (const char*)x__callback;
+
+
+{
+   object->addRow( label, options, wrapOptions, callback, icon, yPad, enabled );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListOptionsCtrl_getCurrentOption(char * x__object, S32 row,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiGameListOptionsCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   {wle_returnObject =object->getCurrentOption( row );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiGameListOptionsCtrl_selectOption(char * x__object, S32 row, char * x__option)
+{
+GuiGameListOptionsCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+
+const char* option = (const char*)x__option;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->selectOption( row, option );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListOptionsCtrl_setOptions(char * x__object, S32 row, char * x__optionsList)
+{
+GuiGameListOptionsCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* optionsList = (const char*)x__optionsList;
+{
+   object->setOptions( row, optionsList );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

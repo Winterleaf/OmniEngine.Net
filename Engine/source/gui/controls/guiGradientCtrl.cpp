@@ -693,3 +693,112 @@ DefineConsoleMethod(GuiGradientCtrl, getColor, ColorF, (S32 idx), , "Get color v
 
 	return ColorF::ONE;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiGradientCtrl_getColor(char * x__object, S32 idx,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiGradientCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorF wle_returnObject;
+{
+	if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
+	{
+		if ( idx >= 0 && idx < object->mColorRange.size() )
+		{
+			{wle_returnObject =object->mColorRange[idx].swatch->getColor();
+dSprintf(retval,1024,"%f %f %f %f ",wle_returnObject.red,wle_returnObject.green,wle_returnObject.blue,wle_returnObject.alpha);
+return;
+}
+		}
+	}
+	else if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
+	{
+		if ( idx >= 0 && idx < object->mAlphaRange.size() )
+		{
+			{wle_returnObject =object->mAlphaRange[idx].swatch->getColor();
+dSprintf(retval,1024,"%f %f %f %f ",wle_returnObject.red,wle_returnObject.green,wle_returnObject.blue,wle_returnObject.alpha);
+return;
+}
+		}
+	}
+	{wle_returnObject =ColorF::ONE;
+dSprintf(retval,1024,"%f %f %f %f ",wle_returnObject.red,wle_returnObject.green,wle_returnObject.blue,wle_returnObject.alpha);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiGradientCtrl_getColorCount(char * x__object)
+{
+GuiGradientCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
+		return object->mColorRange.size();
+	else if( object->getDisplayMode() == GuiGradientCtrl::pHorizColorRange )
+		return object->mColorRange.size();
+	
+	return 0;
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

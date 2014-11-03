@@ -285,3 +285,74 @@ DefineEngineMethod( GuiProgressBitmapCtrl, setBitmap, void, ( const char* filena
 {
    object->setBitmap( filename );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiProgressBitmapCtrl_setBitmap(char * x__object, char * x__filename)
+{
+GuiProgressBitmapCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filename = (const char*)x__filename;
+{
+   object->setBitmap( filename );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

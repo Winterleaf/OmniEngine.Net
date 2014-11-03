@@ -652,3 +652,167 @@ DefineConsoleMethod(GuiNavEditorCtrl, setMode, void, (String newMode) , , "setMo
 	
    object->setMode(newMode);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiNavEditorCtrl_getMode(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getMode();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiNavEditorCtrl_setMode(char * x__object, char * x__newMode)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String newMode = String( x__newMode);
+{
+   	
+   object->setMode(newMode);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiNavEditorCtrl_buildTile(char * x__object)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->buildTile();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiNavEditorCtrl_deleteLink(char * x__object)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteLink();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiNavEditorCtrl_deselect(char * x__object)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deselect();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiNavEditorCtrl_getMesh(char * x__object)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getMeshId());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiNavEditorCtrl_getPlayer(char * x__object)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getPlayerId());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiNavEditorCtrl_selectMesh(char * x__object, S32 id)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   NavMesh *obj;
+   if(Sim::findObject(id, obj))
+      object->selectMesh(obj);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiNavEditorCtrl_setLinkFlags(char * x__object, U32 flags)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setLinkFlags(LinkData(flags));
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiNavEditorCtrl_spawnPlayer(char * x__object)
+{
+GuiNavEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   Point3F c;
+   if(object->get3DCentre(c))
+      object->spawnPlayer(c);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

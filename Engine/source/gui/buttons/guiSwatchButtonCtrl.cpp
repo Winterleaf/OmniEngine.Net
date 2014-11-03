@@ -179,3 +179,75 @@ DefineEngineMethod( GuiSwatchButtonCtrl, setColor, void, ( const char* newColor 
    object->setField( "color", newColor );
    object->execAltConsoleCallback();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiSwatchButtonCtrl_setColor(char * x__object, char * x__newColor)
+{
+GuiSwatchButtonCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* newColor = (const char*)x__newColor;
+{
+   object->setField( "color", newColor );
+   object->execAltConsoleCallback();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

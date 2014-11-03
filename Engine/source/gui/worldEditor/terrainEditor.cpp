@@ -2930,3 +2930,689 @@ DefineConsoleMethod( TerrainEditor, autoMaterialLayer, void, (F32 minHeight, F32
 {  
    object->autoMaterialLayer( minHeight,maxHeight, minSlope, maxSlope, coverage );  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_addMaterial(char * x__object, char * x__matName)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+String matName = String( x__matName);
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( !terr )
+     return (S32)( false);
+   
+   terr->addMaterial( matName );
+   object->setDirty();
+  return (S32)( true);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_attachTerrain(char * x__object, char * x__terrain)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* terrain = (const char*)x__terrain;
+{
+   SimSet * missionGroup = dynamic_cast<SimSet*>(Sim::findObject("MissionGroup"));
+   if (!missionGroup)
+   {
+      Con::errorf(ConsoleLogEntry::Script, "TerrainEditor::attach: no mission group found");
+      return;
+   }
+   VectorPtr<TerrainBlock*> terrains;
+      if (dStrcmp (terrain,"")==0)
+   {
+      for(SimSetIterator itr(missionGroup); *itr; ++itr)
+      {
+         TerrainBlock* terrBlock = dynamic_cast<TerrainBlock*>(*itr);
+         if (terrBlock)
+            terrains.push_back(terrBlock);
+      }
+               }
+   else     {
+      TerrainBlock* terrBlock = dynamic_cast<TerrainBlock*>(Sim::findObject(terrain));
+      if (terrBlock)
+         terrains.push_back(terrBlock);
+      if(terrains.size() == 0)
+         Con::errorf(ConsoleLogEntry::Script, "TerrainEditor::attach: failed to attach to object '%s'", terrain);
+   }
+   if (terrains.size() > 0)
+   {
+      for (U32 i = 0; i < terrains.size(); i++)
+      {
+         if (!terrains[i]->isServerObject())
+         {
+            terrains[i] = NULL;
+            Con::errorf(ConsoleLogEntry::Script, "TerrainEditor::attach: cannot attach to client TerrainBlock");
+         }
+      }
+   }
+   for (U32 i = 0; i < terrains.size(); i++)
+   {
+      if (terrains[i])
+	      object->attachTerrain(terrains[i]);
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_autoMaterialLayer(char * x__object, F32 minHeight, F32 maxHeight, F32 minSlope, F32 maxSlope, F32 coverage)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+
+{  
+   object->autoMaterialLayer( minHeight,maxHeight, minSlope, maxSlope, coverage );  
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_clearSelection(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getActionName(char * x__object, U32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =(object->getActionName(index));
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getActiveTerrain(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   S32 ret = 0;
+   TerrainBlock* terrain = object->getActiveTerrain();
+   if (terrain)
+      ret = terrain->getId();
+	return ret;
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getBrushPos(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getBrushPos();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_TerrainEditor_getBrushPressure(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getBrushPressure());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getBrushSize(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   Point2I size = object->getBrushSize();
+   char * ret = Con::getReturnBuffer(32);
+   dSprintf(ret, 32, "%d %d", size.x, size.y);
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_TerrainEditor_getBrushSoftness(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+	
+  return (F32)( object->getBrushSoftness());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getBrushType(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getBrushType();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getCurrentAction(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getCurrentAction();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getMaterialCount(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( terr )
+     return (S32)( terr->getMaterialCount());
+  return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getMaterialIndex(char * x__object, char * x__name)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+String name = String( x__name);
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( !terr )
+     return (S32)( -1);
+      
+   const U32 count = terr->getMaterialCount();
+   
+   for( U32 i = 0; i < count; ++ i )
+      if( dStricmp( name, terr->getMaterialName( i ) ) == 0 )
+        return (S32)( i);
+         
+  return (S32)( -1);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getMaterialName(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( !terr )
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      
+   if( index < 0 || index >= terr->getMaterialCount() )
+   {
+      Con::errorf( "TerrainEditor::getMaterialName - index out of range!" );
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   
+   const char* name = terr->getMaterialName( index );
+   {wle_returnObject =Con::getReturnBuffer( name );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getMaterials(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( !terr )
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   char *ret = Con::getReturnBuffer(4096);
+   ret[0] = 0;
+   for(U32 i = 0; i < terr->getMaterialCount(); i++)
+   {
+      dStrcat( ret, terr->getMaterialName(i) );
+      dStrcat( ret, "\n" );
+   }
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getNumActions(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	return(object->getNumActions());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getNumTextures(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	return object->getNumTextures();
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_TerrainEditor_getSlopeLimitMaxAngle(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->mSlopeMaxAngle);
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_TerrainEditor_getSlopeLimitMinAngle(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->mSlopeMinAngle);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getTerrainBlock(char * x__object, S32 index)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   TerrainBlock* tb = object->getTerrainBlock(index);
+   if(!tb)
+     return (S32)( 0);
+   else
+     return (S32)( tb->getId());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getTerrainBlockCount(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getTerrainBlockCount());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_getTerrainBlocksMaterialList(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   Vector<StringTableEntry> list;
+   object->getTerrainBlocksMaterialList(list);
+   if(list.size() == 0)
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      S32 size = 0;
+   for(U32 i = 0; i < list.size(); ++i)
+   {
+      size += dStrlen(list[i]);
+      ++size;
+   }
+   ++size;
+      char *ret = Con::getReturnBuffer(size);
+   ret[0] = 0;
+   for(U32 i = 0; i < list.size(); ++i)
+   {
+      dStrcat( ret, list[i] );
+      dStrcat( ret, "\n" );
+   }
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_getTerrainUnderWorldPoint(char * x__object, char * x__ptOrX, char * x__Y, char * x__Z)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* ptOrX = (const char*)x__ptOrX;
+const char* Y = (const char*)x__Y;
+const char* Z = (const char*)x__Z;
+{   
+   TerrainEditor *tEditor = (TerrainEditor *) object;
+   if(tEditor == NULL)
+     return (S32)( 0);
+   Point3F pos;
+   if(ptOrX != "" && Y == "" && Z == "")
+      dSscanf(ptOrX, "%f %f %f", &pos.x, &pos.y, &pos.z);
+   else if(ptOrX != "" && Y != "" && Z != "")
+   {
+      pos.x = dAtof(ptOrX);
+      pos.y = dAtof(Y);
+      pos.z = dAtof(Z);
+   }
+   else
+   {
+      Con::errorf("TerrainEditor.getTerrainUnderWorldPoint(): Invalid argument count! Valid arguments are either \"x y z\" or x,y,z\n");
+     return (S32)( 0);
+   }
+   TerrainBlock* terrain = tEditor->getTerrainUnderWorldPoint(pos);
+   if(terrain != NULL)
+   {
+     return (S32)( terrain->getId());
+   }
+  return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_markEmptySquares(char * x__object)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->markEmptySquares();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_mirrorTerrain(char * x__object, S32 mirrorIndex)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mirrorTerrain(mirrorIndex);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_processAction(char * x__object, char * x__action)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String action = String( x__action);
+{
+	object->processAction(action);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_removeMaterial(char * x__object, S32 index)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( !terr )
+      return;
+      
+   if ( index < 0 || index >= terr->getMaterialCount() )
+   {
+      Con::errorf( "TerrainEditor::removeMaterial - index out of range!" );
+      return;
+   }
+   if ( terr->getMaterialCount() == 1 )
+   {
+      Con::errorf( "TerrainEditor::removeMaterial - cannot remove material, there is only one!" );
+      return;
+   }
+   const char *matName = terr->getMaterialName( index );
+   object->submitMaterialUndo( String::ToString( "Remove TerrainMaterial %s", matName ) );
+   
+   terr->removeMaterial( index );
+   object->setDirty();
+   object->scheduleMaterialUpdate();
+   object->setGridUpdateMinMax();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_reorderMaterial(char * x__object, S32 index, S32 orderPos)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->reorderMaterial( index, orderPos );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_resetSelWeights(char * x__object, bool clear)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->resetSelWeights(clear);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setAction(char * x__object, char * x__action_name)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* action_name = (const char*)x__action_name;
+{
+	object->setAction(action_name);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setBrushPos(char * x__object, char * x__pos)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2I pos = Point2I();
+sscanf(x__pos,"%i %i",&pos.x,&pos.y);
+{
+   object->setBrushPos(pos);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setBrushPressure(char * x__object, F32 pressure)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setBrushPressure( pressure );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setBrushSize(char * x__object, S32 w, S32 h)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	object->setBrushSize( w, h==0?w:h );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setBrushSoftness(char * x__object, F32 softness)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setBrushSoftness( softness );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setBrushType(char * x__object, char * x__type)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String type = String( x__type);
+{
+	object->setBrushType(type);
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_TerrainEditor_setSlopeLimitMaxAngle(char * x__object, F32 angle)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+	if ( angle > 90.0f )
+		angle = 90.0f;
+   if ( angle < object->mSlopeMinAngle )
+      angle = object->mSlopeMinAngle;
+      
+	object->mSlopeMaxAngle = angle;
+	return angle;
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_TerrainEditor_setSlopeLimitMinAngle(char * x__object, F32 angle)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+	if ( angle < 0.0f )
+		angle = 0.0f;
+   if ( angle > object->mSlopeMaxAngle )
+      angle = object->mSlopeMaxAngle;
+	object->mSlopeMinAngle = angle;
+	return angle;
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TerrainEditor_setTerraformOverlay(char * x__object, bool overlayEnable)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   }
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainEditor_updateMaterial(char * x__object, U32 index, char * x__matName)
+{
+TerrainEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+
+String matName = String( x__matName);
+bool wle_returnObject;
+{
+   TerrainBlock *terr = object->getClientTerrain();
+   if ( !terr )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   
+   if ( index >= terr->getMaterialCount() )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   terr->updateMaterial( index, matName );
+   object->setDirty();
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

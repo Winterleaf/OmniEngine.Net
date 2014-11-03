@@ -1054,3 +1054,375 @@ DefineConsoleFunction( getRandom, F32, (S32 a, S32 b), (1, 0),
 }
 
 //------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getBoxCenter(char * x__box,  char* retval)
+{
+dSprintf(retval,1024,"");
+Box3F box = Box3F();
+sscanf(x__box,"%f %f %f %f %f %f",&box.minExtents.x,&box.minExtents.y,&box.minExtents.z,&box.maxExtents.x,&box.maxExtents.y,&box.maxExtents.z);
+Point3F wle_returnObject;
+{
+   {wle_returnObject =box.getCenter();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getRandom(S32 a, S32 b)
+{
+
+{
+   if (b == 0)
+     return (F32)( F32(gRandGen.randI(0,getMax( a, 0 ))));
+   else
+   {
+      if (b != 0) 
+      {
+         S32 min = a;
+         S32 max = b;
+         if (min > max) 
+         {
+            S32 t = min;
+            min = max;
+            max = t;
+         }
+        return (F32)( F32(gRandGen.randI(min,max)));
+      }
+   }
+  return (F32)( gRandGen.randF());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getRandomSeed()
+{
+{
+  return (S32)( gRandGen.getSeed());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MatrixCreate(char * x__position, char * x__orientation,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF position = VectorF();
+sscanf(x__position,"%f %f %f", &position.x, &position.y, &position.z);
+
+AngAxisF orientation = AngAxisF();
+sscanf(x__orientation,"%f %f %f %f",&orientation.axis.x,&orientation.axis.y,&orientation.axis.z,&orientation.angle);
+TransformF wle_returnObject;
+{
+   TransformF transform( position, orientation );
+   {wle_returnObject =transform;
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MatrixCreateFromEuler(char * x__angles,  char* retval)
+{
+dSprintf(retval,1024,"");
+Point3F angles = Point3F();
+sscanf(x__angles,"%f %f %f",&angles.x,&angles.y,&angles.z);
+TransformF wle_returnObject;
+{
+   QuatF rotQ( angles );
+   AngAxisF aa;
+   aa.set(rotQ);
+   {wle_returnObject =TransformF( Point3F::Zero, aa );
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MatrixMulPoint(char * x__transform, char * x__point,  char* retval)
+{
+dSprintf(retval,1024,"");
+TransformF transform = TransformF();
+sscanf( x__transform,"%f %f %f %f %f %f %f", &transform.mPosition.x, &transform.mPosition.y, &transform.mPosition.z, &transform.mOrientation.axis.x, &transform.mOrientation.axis.y, &transform.mOrientation.axis.z, &transform.mOrientation.angle);
+Point3F point = Point3F();
+sscanf(x__point,"%f %f %f",&point.x,&point.y,&point.z);
+Point3F wle_returnObject;
+{
+   MatrixF m = transform.getMatrix();
+   m.mulP( point );
+   {wle_returnObject =point;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MatrixMultiply(char * x__left, char * x__right,  char* retval)
+{
+dSprintf(retval,1024,"");
+TransformF left = TransformF();
+sscanf( x__left,"%f %f %f %f %f %f %f", &left.mPosition.x, &left.mPosition.y, &left.mPosition.z, &left.mOrientation.axis.x, &left.mOrientation.axis.y, &left.mOrientation.axis.z, &left.mOrientation.angle);
+TransformF right = TransformF();
+sscanf( x__right,"%f %f %f %f %f %f %f", &right.mPosition.x, &right.mPosition.y, &right.mPosition.z, &right.mOrientation.axis.x, &right.mOrientation.axis.y, &right.mOrientation.axis.z, &right.mOrientation.angle);
+TransformF wle_returnObject;
+{
+   MatrixF m1 = left.getMatrix();
+   MatrixF m2 = right.getMatrix();
+   m1.mul( m2 );
+   {wle_returnObject =TransformF( m1 );
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MatrixMulVector(char * x__transform, char * x__vector,  char* retval)
+{
+dSprintf(retval,1024,"");
+TransformF transform = TransformF();
+sscanf( x__transform,"%f %f %f %f %f %f %f", &transform.mPosition.x, &transform.mPosition.y, &transform.mPosition.z, &transform.mOrientation.axis.x, &transform.mOrientation.axis.y, &transform.mOrientation.axis.z, &transform.mOrientation.angle);
+VectorF vector = VectorF();
+sscanf(x__vector,"%f %f %f", &vector.x, &vector.y, &vector.z);
+
+VectorF wle_returnObject;
+{
+   MatrixF m = transform.getMatrix();
+   m.mulV( vector );
+   {wle_returnObject =vector;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setRandomSeed(S32 seed)
+{
+{
+   if( seed == -1 )
+      seed = Platform::getRealMilliseconds();
+	MRandomLCG::setGlobalRandSeed( seed );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorAdd(char * x__a, char * x__b,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF b = VectorF();
+sscanf(x__b,"%f %f %f", &b.x, &b.y, &b.z);
+
+VectorF wle_returnObject;
+{
+   {wle_returnObject =a + b;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorCross(char * x__a, char * x__b,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF b = VectorF();
+sscanf(x__b,"%f %f %f", &b.x, &b.y, &b.z);
+
+VectorF wle_returnObject;
+{
+   VectorF v;
+   mCross( a, b, &v );
+   {wle_returnObject =v;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_VectorDist(char * x__a, char * x__b)
+{
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF b = VectorF();
+sscanf(x__b,"%f %f %f", &b.x, &b.y, &b.z);
+
+{
+   VectorF v = b - a;
+  return (F32)( v.len());
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_VectorDot(char * x__a, char * x__b)
+{
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF b = VectorF();
+sscanf(x__b,"%f %f %f", &b.x, &b.y, &b.z);
+
+{
+  return (F32)( mDot( a, b ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_VectorLen(char * x__v)
+{
+VectorF v = VectorF();
+sscanf(x__v,"%f %f %f", &v.x, &v.y, &v.z);
+
+{
+  return (F32)( v.len());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorLerp(char * x__a, char * x__b, F32 t,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF b = VectorF();
+sscanf(x__b,"%f %f %f", &b.x, &b.y, &b.z);
+
+VectorF wle_returnObject;
+{
+   VectorF c;
+   c.interpolate( a, b, t );
+   
+   {wle_returnObject =c;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorNormalize(char * x__v,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF v = VectorF();
+sscanf(x__v,"%f %f %f", &v.x, &v.y, &v.z);
+
+VectorF wle_returnObject;
+{
+   VectorF n( v );
+   n.normalizeSafe();
+   {wle_returnObject =n;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorOrthoBasis(char * x__aa,  char* retval)
+{
+dSprintf(retval,1024,"");
+AngAxisF aa = AngAxisF();
+sscanf(x__aa,"%f %f %f %f",&aa.axis.x,&aa.axis.y,&aa.axis.z,&aa.angle);
+MatrixF wle_returnObject;
+{
+   MatrixF mat;
+   aa.setMatrix(&mat);
+   {wle_returnObject =mat;
+Point3F col0, col1, col2;wle_returnObject.getColumn(0, &col0);wle_returnObject.getColumn(1, &col1);wle_returnObject.getColumn(2, &col2);dSprintf(retval,1024,"%g %g %g %g %g %g %g %g %g",col0.x, col0.y, col0.z, col1.x, col1.y, col1.z, col2.x, col2.y, col2.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorRot(char * x__v, F32 angle,  char* retval)
+{
+dSprintf(retval,16384,"");
+Point3F v = Point3F();
+sscanf(x__v,"%f %f %f",&v.x,&v.y,&v.z);
+const char* wle_returnObject;
+{
+			
+		
+	float x = 0, y = 0;
+	x = v.x * cos(angle) - v.y * sin(angle);            
+	y = v.x * sin(angle) + v.y * cos(angle); 
+	char* returnBuffer = Con::getReturnBuffer(256);
+	dSprintf(returnBuffer,256,"%g %g %g", x, y, v.z);
+	{wle_returnObject =returnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorScale(char * x__a, F32 scalar,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF wle_returnObject;
+{
+   {wle_returnObject =a * scalar;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_VectorSub(char * x__a, char * x__b,  char* retval)
+{
+dSprintf(retval,1024,"");
+VectorF a = VectorF();
+sscanf(x__a,"%f %f %f", &a.x, &a.y, &a.z);
+
+VectorF b = VectorF();
+sscanf(x__b,"%f %f %f", &b.x, &b.y, &b.z);
+
+VectorF wle_returnObject;
+{
+   {wle_returnObject =a - b;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

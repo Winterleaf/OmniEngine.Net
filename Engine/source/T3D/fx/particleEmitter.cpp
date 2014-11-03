@@ -2017,3 +2017,73 @@ DefineEngineMethod(ParticleEmitterData, reload, void,(),,
 {
    object->reload();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnParticleEmitterData_reload(char * x__object)
+{
+ParticleEmitterData* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->reload();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

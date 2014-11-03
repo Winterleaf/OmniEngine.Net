@@ -1451,3 +1451,73 @@ DefineEngineMethod(Projectile, presimulate, void, (F32 seconds), (1.0f),
 {
 	object->simulate( seconds );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnProjectile_presimulate(char * x__object, F32 seconds)
+{
+Projectile* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->simulate( seconds );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

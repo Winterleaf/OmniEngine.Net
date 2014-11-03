@@ -77,7 +77,6 @@ datablock ParticleData(GrenadeDebrisFireParticle)
    animTexName = "art/particles/impact";
    colors[3] = "1 1 1 0.407";
    sizes[3] = "0.5";
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeDebrisFireEmitter)
@@ -120,7 +119,6 @@ datablock DebrisData(GrenadeDebris)
    gravModifier = 1.0;
    terminalVelocity = 20;
    ignoreWater = false;
-   preload = true;
 };
 
 // ----------------------------------------------------------------------------
@@ -154,7 +152,6 @@ datablock ParticleData(GrenadeSplashMist)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeSplashMistEmitter)
@@ -195,7 +192,6 @@ datablock ParticleData(GrenadeSplashParticle)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeSplashEmitter)
@@ -246,7 +242,6 @@ datablock ParticleData(GrenadeSplashRingParticle)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeSplashRingEmitter)
@@ -328,7 +323,6 @@ datablock ParticleData(GrenadeExpFire)
    dragCoefficient = "1.99902";
    sizes[3] = "10";
    colors[3] = "0 0 0 0";
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeExpFireEmitter)
@@ -369,7 +363,6 @@ datablock ParticleData(GrenadeExpDust)
    animTexName = "art/particles/smoke.png";
    colors[3] = "0.996078 0.996078 0.996078 0";
    sizes[3] = "15";
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeExpDustEmitter)
@@ -407,7 +400,6 @@ datablock ParticleData(GrenadeExpSpark)
    times[0] = 0;
    times[1] = 0.5;
    times[2] = 1;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeExpSparkEmitter)
@@ -448,7 +440,6 @@ datablock ParticleData(GrenadeExpSparks)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeExpSparksEmitter)
@@ -492,7 +483,6 @@ datablock ParticleData(GrenadeExpSmoke)
    times[2] = 1;
    animTexName = "art/particles/smoke";
    times[3] = "1";
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeExpSmokeEmitter)
@@ -579,7 +569,6 @@ datablock ParticleData(GLWaterExpDust)
    times[0] = 0.0;
    times[1] = 1.0;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GLWaterExpDustEmitter)
@@ -619,7 +608,6 @@ datablock ParticleData(GLWaterExpSparks)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GLWaterExpSparkEmitter)
@@ -664,7 +652,6 @@ datablock ParticleData(GLWaterExpSmoke)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GLWaterExpSmokeEmitter)
@@ -705,7 +692,6 @@ datablock ParticleData(GLWaterExpBubbles)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GLWaterExpBubbleEmitter)
@@ -835,7 +821,6 @@ datablock ParticleData(GrenadeTrailWaterParticle)
    times[0] = 0.0;
    times[1] = 0.5;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeTrailWaterEmitter)
@@ -882,7 +867,6 @@ datablock ParticleData(GrenadeProjSmokeTrail)
    times[0] = 0.0;
    times[1] = 0.4;
    times[2] = 1.0;
-   preload = true;
 };
 
 datablock ParticleEmitterData(GrenadeProjSmokeTrailEmitter)
@@ -909,7 +893,7 @@ datablock ProjectileData(GrenadeLauncherProjectile)
    explosion = GrenadeLauncherExplosion;
    waterExplosion = GrenadeLauncherWaterExplosion;
 
-   decal = ExpBlastDecal;
+   decal = ScorchRXDecal;
    splash = GrenadeSplash;
 
    particleEmitter = GrenadeProjSmokeTrailEmitter;
@@ -930,5 +914,4 @@ datablock ProjectileData(GrenadeLauncherProjectile)
    lightDesc = GrenadeLauncherLightDesc;
 
    damageType = "GrenadeDamage";
-   preload = true;
 };

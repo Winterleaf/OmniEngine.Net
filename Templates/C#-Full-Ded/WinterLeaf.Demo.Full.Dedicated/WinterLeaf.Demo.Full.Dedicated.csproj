@@ -8,8 +8,8 @@
     <ProjectGuid>{6A6B388C-7C5E-49E2-938E-E4EC95570673}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WinterLeaf.Demo.Full.Dedicated</RootNamespace>
-    <AssemblyName>WinterLeaf.Demo.Full.Dedicated</AssemblyName>
+    <RootNamespace>Winterleaf.Demo.Full.Dedicated</RootNamespace>
+    <AssemblyName>Winterleaf.Demo.Full.Dedicated</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -387,7 +387,6 @@
     <Compile Include="Models.Base\RigidShapeData_Base.cs" />
     <Compile Include="Models.Base\RigidShape_Base.cs" />
     <Compile Include="Models.Base\River_Base.cs" />
-    <Compile Include="Models.Base\RuntimeRegisteredSimObject_Base.cs" />
     <Compile Include="Models.Base\SaveFileDialog_Base.cs" />
     <Compile Include="Models.Base\ScatterSky_Base.cs" />
     <Compile Include="Models.Base\SceneLighting_Base.cs" />
@@ -805,7 +804,6 @@
     <Compile Include="Models.User\Extendable\RigidShape.cs" />
     <Compile Include="Models.User\Extendable\RigidShapeData.cs" />
     <Compile Include="Models.User\Extendable\River.cs" />
-    <Compile Include="Models.User\Extendable\RuntimeRegisteredSimObject.cs" />
     <Compile Include="Models.User\Extendable\SaveFileDialog.cs" />
     <Compile Include="Models.User\Extendable\ScatterSky.cs" />
     <Compile Include="Models.User\Extendable\SceneLighting.cs" />

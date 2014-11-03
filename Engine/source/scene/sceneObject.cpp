@@ -1580,3 +1580,478 @@ DefineEngineMethod( SceneObject, isGlobalBounds, bool, (),,
 {
    return object->isGlobalBounds();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getEulerRotation(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   Point3F euler = object->getTransform().toEuler();
+   
+      euler.x = mRadToDeg( euler.x );
+   euler.y = mRadToDeg( euler.y );
+   euler.z = mRadToDeg( euler.z );
+   
+   {wle_returnObject =euler;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getForwardVector(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+VectorF wle_returnObject;
+{
+   {wle_returnObject =object->getTransform().getForwardVector();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getInverseTransform(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF wle_returnObject;
+{
+   {wle_returnObject =object->getWorldTransform();
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_getMountedObject(char * x__object, S32 slot)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   SceneObject* mobj = object->getMountedObject( slot );
+  return (S32)( mobj? mobj->getId(): 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_getMountedObjectCount(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getMountedObjectCount());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_getMountedObjectNode(char * x__object, S32 slot)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getMountedObjectNode( slot ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_getMountNodeObject(char * x__object, S32 node)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   SceneObject* mobj = object->getMountNodeObject( node );
+  return (S32)( mobj? mobj->getId(): 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getObjectBox(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Box3F wle_returnObject;
+{
+   {wle_returnObject =object->getObjBox();
+dSprintf(retval,1024,"%f %f %f %f %f %f ",wle_returnObject.minExtents.x,wle_returnObject.minExtents.y,wle_returnObject.minExtents.z,wle_returnObject.maxExtents.x,wle_returnObject.maxExtents.y,wle_returnObject.maxExtents.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_getObjectMount(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->isMounted()? object->getObjectMount()->getId(): 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getPosition(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   {wle_returnObject =object->getTransform().getPosition();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getRightVector(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+VectorF wle_returnObject;
+{
+   {wle_returnObject =object->getTransform().getRightVector();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getScale(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   {wle_returnObject =object->getScale();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getTransform(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF wle_returnObject;
+{
+   {wle_returnObject =object->getTransform();
+dSprintf(retval,1024,"%f %f %f %f %f %f %f ",wle_returnObject.mPosition.x,wle_returnObject.mPosition.y,wle_returnObject.mPosition.z,wle_returnObject.mOrientation.axis.x,wle_returnObject.mOrientation.axis.y,wle_returnObject.mOrientation.axis.z,wle_returnObject.mOrientation.angle);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_getType(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getTypeMask());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getUpVector(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+VectorF wle_returnObject;
+{
+   {wle_returnObject =object->getTransform().getUpVector();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getWorldBox(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Box3F wle_returnObject;
+{
+   {wle_returnObject =object->getWorldBox();
+dSprintf(retval,1024,"%f %f %f %f %f %f ",wle_returnObject.minExtents.x,wle_returnObject.minExtents.y,wle_returnObject.minExtents.z,wle_returnObject.maxExtents.x,wle_returnObject.maxExtents.y,wle_returnObject.maxExtents.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_getWorldBoxCenter(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   Point3F center;
+   object->getWorldBox().getCenter( &center );
+   {wle_returnObject =center;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_isGlobalBounds(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isGlobalBounds();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_isMounted(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isMounted();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_mountObject(char * x__object, char * x__objB, S32 slot, char * x__txfm)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SceneObject* objB; Sim::findObject(x__objB, objB ); 
+TransformF txfm = TransformF();
+sscanf( x__txfm,"%f %f %f %f %f %f %f", &txfm.mPosition.x, &txfm.mPosition.y, &txfm.mPosition.z, &txfm.mOrientation.axis.x, &txfm.mOrientation.axis.y, &txfm.mOrientation.axis.z, &txfm.mOrientation.angle);
+bool wle_returnObject;
+{
+   if ( objB )
+   {
+      object->mountObject( objB, slot, txfm.getMatrix() );
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_setScale(char * x__object, char * x__scale)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F scale = Point3F();
+sscanf(x__scale,"%f %f %f",&scale.x,&scale.y,&scale.z);
+{
+   object->setScale( scale );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_setTransform(char * x__object, char * x__txfm)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF txfm = TransformF();
+sscanf( x__txfm,"%f %f %f %f %f %f %f", &txfm.mPosition.x, &txfm.mPosition.y, &txfm.mPosition.z, &txfm.mOrientation.axis.x, &txfm.mOrientation.axis.y, &txfm.mOrientation.axis.z, &txfm.mOrientation.angle);
+{
+   if ( !txfm.hasRotation() )
+      object->setPosition( txfm.getPosition() );
+   else
+      object->setTransform( txfm.getMatrix() );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_TickCounterAdd(char * x__object, char * x__countername, U32 interval)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* countername = (const char*)x__countername;
+
+bool wle_returnObject;
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+{wle_returnObject =object->counterAdd(countername,interval);
+return (S32)(wle_returnObject);}
+#else
+{wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) U32  __cdecl wle_fnSceneObject_TickCounterGetInterval(char * x__object, char * x__countername)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (U32)( 0);
+const char* countername = (const char*)x__countername;
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+	return object->counterGetInterval(countername);
+#else
+	return 0;
+#endif
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_TickCounterHas(char * x__object, char * x__countername)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* countername = (const char*)x__countername;
+bool wle_returnObject;
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+	{wle_returnObject =object->counterHas(countername);
+return (S32)(wle_returnObject);}
+#else
+	{wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_TickCounterRemove(char * x__object, char * x__countername)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* countername = (const char*)x__countername;
+bool wle_returnObject;
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+	{wle_returnObject =object->counterRemove(countername);
+return (S32)(wle_returnObject);}
+#else
+	{wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_TickCounterReset(char * x__object, char * x__countername)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* countername = (const char*)x__countername;
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+	object->counterReset(countername);
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_TickCountersClear(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+	   object->countersClear();
+#endif
+	}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_TickCounterSuspend(char * x__object, char * x__countername, bool suspend)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* countername = (const char*)x__countername;
+
+{
+#ifdef ENABLE_SIMOBJECT_TICK_EVENTS
+	object->counterSuspend(countername,suspend);
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSceneObject_unmount(char * x__object)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->unmount();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSceneObject_unmountObject(char * x__object, char * x__target)
+{
+SceneObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SceneObject* target; Sim::findObject(x__target, target ); 
+bool wle_returnObject;
+{
+   if ( target )
+   {
+      object->unmountObject(target);
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

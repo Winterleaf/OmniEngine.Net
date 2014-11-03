@@ -418,3 +418,88 @@ DefineEngineMethod(ParticleEmitterNode, setActive, void, (bool active),,
 {
    object->setActive( active );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnParticleEmitterNode_setActive(char * x__object, bool active)
+{
+ParticleEmitterNode* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setActive( active );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnParticleEmitterNode_setEmitterDataBlock(char * x__object, char * x__emitterDatablock)
+{
+ParticleEmitterNode* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ParticleEmitterData* emitterDatablock; Sim::findObject(x__emitterDatablock, emitterDatablock ); 
+{
+   if ( !emitterDatablock )
+   {
+      Con::errorf("ParticleEmitterData datablock could not be found when calling setEmitterDataBlock in particleEmitterNode.");
+      return;
+   }
+   object->setEmitterDataBlock(emitterDatablock);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

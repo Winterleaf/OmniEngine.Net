@@ -1332,3 +1332,90 @@ DefineConsoleFunction( getFormatFilters, const char*, ( ),,
 {
    return Con::getReturnBuffer(TSShapeLoader::getFormatFilters());
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getFormatExtensions(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer(TSShapeLoader::getFormatExtensions());
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getFormatFilters(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   {wle_returnObject =Con::getReturnBuffer(TSShapeLoader::getFormatFilters());
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

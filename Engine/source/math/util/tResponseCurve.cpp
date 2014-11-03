@@ -78,3 +78,92 @@ DefineConsoleMethod( SimResponseCurve, clear, void, (), , "clear()" )
 {
    object->clear();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimResponseCurve_addPoint(char * x__object, F32 value, F32 time)
+{
+SimResponseCurve* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->addPoint( value, time );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimResponseCurve_clear(char * x__object)
+{
+SimResponseCurve* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clear();
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_SimResponseCurve_getValue(char * x__object, F32 time)
+{
+SimResponseCurve* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getValue( time ));
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

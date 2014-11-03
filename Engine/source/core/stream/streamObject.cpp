@@ -475,3 +475,241 @@ DefineEngineMethod(StreamObject, copyFrom, bool, (SimObject* other),,
 
    return object->copyFrom(so);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnStreamObject_copyFrom(char * x__object, char * x__other)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+SimObject* other; Sim::findObject(x__other, other ); 
+bool wle_returnObject;
+{
+   StreamObject *so = dynamic_cast<StreamObject *>(other);
+   if(so == NULL)
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   {wle_returnObject =object->copyFrom(so);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnStreamObject_getPosition(char * x__object)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	return object->getPosition();
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_getStatus(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getStatus();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnStreamObject_getStreamSize(char * x__object)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	return object->getStreamSize();
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnStreamObject_isEOF(char * x__object)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->isEOS();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnStreamObject_isEOS(char * x__object)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->isEOS();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_readLine(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	const char *str = object->readLine();
+	{wle_returnObject =str ? str : "";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_readLongString(char * x__object, S32 maxLength,  char* retval)
+{
+dSprintf(retval,1024,"");
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String wle_returnObject;
+{
+   const char *str = object->readLongString(maxLength);
+   {wle_returnObject =str ? str : "";
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_readString(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String wle_returnObject;
+{
+   const char *str = object->readString();
+   {wle_returnObject =str ? str : "";
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_readSTString(char * x__object, bool caseSensitive,  char* retval)
+{
+dSprintf(retval,1024,"");
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+String wle_returnObject;
+{
+   const char *str = object->readSTString(caseSensitive);
+   {wle_returnObject =str ? str : "";
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnStreamObject_setPosition(char * x__object, S32 newPosition)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->setPosition(newPosition);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_writeLine(char * x__object, char * x__line)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* line = (const char*)x__line;
+{
+	object->writeLine((U8 *)line);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_writeLongString(char * x__object, S32 maxLength, char * x__string)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* string = (const char*)x__string;
+{
+   object->writeLongString(maxLength, string);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnStreamObject_writeString(char * x__object, char * x__string, S32 maxLength)
+{
+StreamObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* string = (const char*)x__string;
+
+{
+   object->writeString(string, maxLength);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

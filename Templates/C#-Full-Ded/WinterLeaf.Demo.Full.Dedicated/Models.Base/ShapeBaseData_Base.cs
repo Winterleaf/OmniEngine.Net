@@ -216,10 +216,10 @@ public virtual  void onDamage(ShapeBase obj, float delta){}
 public virtual  void onTrigger(ShapeBase obj, int index, bool state){}
 
         /// <summary>
-        /// @brief Called when a thread playing a non-cyclic sequence reaches the end of the    sequence.   @param obj The ShapeBase object   @param slot Thread slot that finished playing )
+        /// @brief Called when a thread playing a non-cyclic sequence reaches the end of the    sequence.   @param obj The ShapeBase object   @param slot Thread slot that finished playing   @param name Thread name that finished playing)
         /// </summary>
         [ConsoleInteraction(true)]
-public virtual  void onEndSequence(ShapeBase obj, int slot){}
+public virtual  void onEndSequence(ShapeBase obj, int slot, string name){}
 
         /// <summary>
         /// @brief Called when the object is forced to uncloak.   @param obj The ShapeBase object   @param reason String describing why the object was uncloaked )

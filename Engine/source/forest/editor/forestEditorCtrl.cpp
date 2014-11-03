@@ -405,3 +405,118 @@ DefineConsoleMethod( ForestEditorCtrl, isDirty, bool, (), , "" )
 {
    return object->isDirty();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestEditorCtrl_deleteMeshSafe(char * x__object, char * x__obj)
+{
+ForestEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* obj = (const char*)x__obj;
+{
+   ForestItemData *db;
+   if ( !Sim::findObject( obj, db ) )
+      return;
+   object->deleteMeshSafe( db );   
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ForestEditorCtrl_getActiveTool(char * x__object)
+{
+ForestEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   ForestTool *tool = object->getActiveTool();
+  return (S32)( tool ? tool->getId() : 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ForestEditorCtrl_isDirty(char * x__object)
+{
+ForestEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isDirty();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestEditorCtrl_setActiveTool(char * x__object, char * x__toolName)
+{
+ForestEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* toolName = (const char*)x__toolName;
+{
+   ForestTool *tool = dynamic_cast<ForestTool*>( Sim::findObject( toolName ) );
+   object->setActiveTool( tool );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestEditorCtrl_updateActiveForest(char * x__object)
+{
+ForestEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->updateActiveForest( true );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

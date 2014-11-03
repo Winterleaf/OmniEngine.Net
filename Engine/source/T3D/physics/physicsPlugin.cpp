@@ -213,3 +213,163 @@ DefineConsoleFunction( physicsDebugDraw, void, (bool enable), , "physicsDebugDra
    if ( PHYSICSMGR )
       PHYSICSMGR->enableDebugDraw( enable );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsDebugDraw(bool enable)
+{
+{
+   if ( PHYSICSMGR )
+      PHYSICSMGR->enableDebugDraw( enable );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsDestroy()
+{
+{
+   if ( PHYSICSMGR )
+      PHYSICSMGR->destroyPlugin();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsDestroyWorld(char * x__worldName)
+{
+const char* worldName = (const char*)x__worldName;
+{
+   if ( PHYSICSMGR )
+      { PHYSICSMGR->destroyWorld( String( worldName ) ); }
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_physicsGetTimeScale()
+{
+{
+  return (F32)( PHYSICSMGR && PHYSICSMGR->getTimeScale());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsInit(char * x__library)
+{
+const char* library = (const char*)x__library;
+bool wle_returnObject;
+{
+   {wle_returnObject =PhysicsPlugin::activate( library );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsInitWorld(char * x__worldName)
+{
+const char* worldName = (const char*)x__worldName;
+bool wle_returnObject;
+{
+    bool res = PHYSICSMGR && PHYSICSMGR->createWorld( String( worldName ) );
+   {wle_returnObject =res;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsPluginPresent()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =PHYSICSMGR != NULL;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsRestoreState()
+{
+{
+   if ( PHYSICSMGR )
+      PHYSICSMGR->reset();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsSetTimeScale(F32 scale)
+{
+{
+   if ( PHYSICSMGR )
+      PHYSICSMGR->setTimeScale( scale );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_physicsSimulationEnabled()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =PHYSICSMGR && PHYSICSMGR->isSimulationEnabled();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsStartSimulation(char * x__worldName)
+{
+const char* worldName = (const char*)x__worldName;
+{
+   if ( PHYSICSMGR )
+      PHYSICSMGR->enableSimulation( String( worldName ), true );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsStopSimulation(char * x__worldName)
+{
+const char* worldName = (const char*)x__worldName;
+{
+   if ( PHYSICSMGR )
+      PHYSICSMGR->enableSimulation( String( worldName ), false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_physicsStoreState()
+{
+{
+   PhysicsPlugin::getPhysicsResetSignal().trigger( PhysicsResetEvent_Store );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

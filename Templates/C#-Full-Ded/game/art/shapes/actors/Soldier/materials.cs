@@ -36,7 +36,6 @@ singleton Material(Mat_Soldier_Main)
    translucent = false;
    showFootprints = "0";
    materialTag0 = "Player";
-   preload = true;
 };
 
 singleton Material(Mat_Soldier_Dazzle)
@@ -57,7 +56,6 @@ singleton Material(Mat_Soldier_Dazzle)
    castShadows = "0";
    showFootprints = "0";
    materialTag0 = "Player";
-   preload = true;
 };
 
 singleton Material(soldier_rigged_BoundsMaterial)
@@ -67,7 +65,6 @@ singleton Material(soldier_rigged_BoundsMaterial)
    specular[0] = "0.9 0.9 0.9 1";
    specularPower[0] = "10";
    translucent = "1";
-   preload = true;
 };
 
 singleton Material(soldier_rigged_ShapeBounds)
@@ -78,7 +75,6 @@ singleton Material(soldier_rigged_ShapeBounds)
    specularPower[0] = "10";
    translucentBlendOp = "None";
    materialTag0 = "Player";
-   preload = true;
 };
 
 //-----------------------------------------------------------------------------

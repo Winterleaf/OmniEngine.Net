@@ -248,3 +248,81 @@ DefineEngineFunction( reloadResource, void, ( const char* path ),,
 }
 
 ConsoleFunctionGroupEnd( ResourceManagerFunctions );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__resourceDump()
+{
+{
+{
+	#ifdef TORQUE_DEBUG
+   ResourceManager::get().dumpToConsole();
+	#endif
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_reloadResource(char * x__path)
+{
+const char* path = (const char*)x__path;
+{
+   ResourceManager::get().reloadResource( path );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

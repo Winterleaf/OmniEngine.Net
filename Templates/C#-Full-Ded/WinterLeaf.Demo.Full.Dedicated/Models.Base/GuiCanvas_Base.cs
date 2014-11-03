@@ -501,6 +501,15 @@ public  void hideCursor(){
 pInvokes.m_ts.fnGuiCanvas_hideCursor(_ID);
 }
 /// <summary>
+/// ( GuiCanvas, hideWindow, void, 2, 2,  )
+/// 
+/// </summary>
+[MemberFunctionConsoleInteraction(true)]
+public  void hideWindow(){
+
+pInvokes.m_ts.fnGuiCanvas_hideWindow(_ID);
+}
+/// <summary>
 /// @brief Determines if mouse cursor is enabled.
 /// 
 /// 				   @tsexample
@@ -663,6 +672,15 @@ pInvokes.m_ts.fnGuiCanvas_setWindowTitle(_ID, newTitle);
 public  void showCursor(){
 
 pInvokes.m_ts.fnGuiCanvas_showCursor(_ID);
+}
+/// <summary>
+/// ( GuiCanvas, showWindow, void, 2, 2,  )
+/// 
+/// </summary>
+[MemberFunctionConsoleInteraction(true)]
+public  void showWindow(){
+
+pInvokes.m_ts.fnGuiCanvas_showWindow(_ID);
 }
 /// <summary>
 /// @brief toggle canvas from fullscreen to windowed mode or back.

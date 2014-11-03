@@ -451,3 +451,102 @@ bool GuiFileTreeCtrl::setSelectedPath( const char* path )
    }
    return false;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiFileTreeCtrl_getSelectedPath(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiFileTreeCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   const String& path = object->getSelectedPath();
+   {wle_returnObject =Con::getStringArg( path );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiFileTreeCtrl_reload(char * x__object)
+{
+GuiFileTreeCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->updateTree();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiFileTreeCtrl_setSelectedPath(char * x__object, char * x__path)
+{
+GuiFileTreeCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* path = (const char*)x__path;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setSelectedPath( path );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

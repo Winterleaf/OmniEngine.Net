@@ -308,3 +308,76 @@ DefineConsoleFunction( getFarClippingDistance, F32,() ,,
    return CameraAndFOV::mFarClippingDistance;
 }
 // Copyright (c) 2014 Winterleaf Entertainment, LLC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getFarClippingDistance()
+{
+{
+  return (F32)( CameraAndFOV::mFarClippingDistance);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setFarClippingDistance(F32 dist)
+{
+{
+   CameraAndFOV::mFarClippingDistance=dist;
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

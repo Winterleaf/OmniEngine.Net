@@ -332,3 +332,89 @@ DefineConsoleMethod( StaticShape, getPoweredState, bool, (), , "@internal")
       return(false);
    return(object->isPowered());
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_StaticShape_getPoweredState(char * x__object)
+{
+StaticShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   if(!object->isServerObject())
+      {wle_returnObject =(false);
+return (S32)(wle_returnObject);}
+   {wle_returnObject =(object->isPowered());
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_StaticShape_setPoweredState(char * x__object, bool isPowered)
+{
+StaticShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(!object->isServerObject())
+      return;
+   object->setPowered(isPowered);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

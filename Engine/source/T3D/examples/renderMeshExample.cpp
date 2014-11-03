@@ -354,3 +354,73 @@ DefineEngineMethod( RenderMeshExample, postApply, void, (),,
 {
 	object->inspectPostApply();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRenderMeshExample_postApply(char * x__object)
+{
+RenderMeshExample* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->inspectPostApply();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

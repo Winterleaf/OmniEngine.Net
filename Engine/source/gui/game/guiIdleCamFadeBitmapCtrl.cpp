@@ -193,3 +193,82 @@ DefineConsoleMethod(GuiIdleCamFadeBitmapCtrl, fadeOut, void, (), , "()"
 {
    object->fadeOut();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiIdleCamFadeBitmapCtrl_fadeIn(char * x__object)
+{
+GuiIdleCamFadeBitmapCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->fadeIn();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiIdleCamFadeBitmapCtrl_fadeOut(char * x__object)
+{
+GuiIdleCamFadeBitmapCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->fadeOut();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

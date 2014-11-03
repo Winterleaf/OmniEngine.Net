@@ -387,7 +387,6 @@
     <Compile Include="Models.Base\RigidShapeData_Base.cs" />
     <Compile Include="Models.Base\RigidShape_Base.cs" />
     <Compile Include="Models.Base\River_Base.cs" />
-    <Compile Include="Models.Base\RuntimeRegisteredSimObject_Base.cs" />
     <Compile Include="Models.Base\SaveFileDialog_Base.cs" />
     <Compile Include="Models.Base\ScatterSky_Base.cs" />
     <Compile Include="Models.Base\SceneLighting_Base.cs" />
@@ -805,7 +804,6 @@
     <Compile Include="Models.User\Extendable\RigidShape.cs" />
     <Compile Include="Models.User\Extendable\RigidShapeData.cs" />
     <Compile Include="Models.User\Extendable\River.cs" />
-    <Compile Include="Models.User\Extendable\RuntimeRegisteredSimObject.cs" />
     <Compile Include="Models.User\Extendable\SaveFileDialog.cs" />
     <Compile Include="Models.User\Extendable\ScatterSky.cs" />
     <Compile Include="Models.User\Extendable\SceneLighting.cs" />

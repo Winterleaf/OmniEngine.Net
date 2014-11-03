@@ -189,3 +189,74 @@ DefineEngineMethod( SimpleNetObject, setMessage, void, (const char* msg),,
 //{
 //   object->setMessage(argv[2]);
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnSimpleNetObject_setMessage(char * x__object, char * x__msg)
+{
+SimpleNetObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* msg = (const char*)x__msg;
+{
+	object->setMessage(msg);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

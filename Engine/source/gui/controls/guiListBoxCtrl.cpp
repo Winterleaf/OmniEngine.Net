@@ -1647,3 +1647,403 @@ void GuiListBoxCtrl::removeFilteredItem( String item )
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_addFilteredItem(char * x__object, char * x__newItem)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* newItem = (const char*)x__newItem;
+{
+	String item(newItem);
+	if( item == String::EmptyString )
+		return;
+	object->addFilteredItem( item );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiListBoxCtrl_addItem(char * x__object, char * x__newItem, char * x__color)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* newItem = (const char*)x__newItem;
+const char* color = (const char*)x__color;
+{
+   if(dStricmp(color,"") == 0)
+   {
+     return (S32)( object->addItem( newItem ));
+   }
+   else
+   {
+      U32 elementCount = GuiListBoxCtrl::getStringElementCount(color);
+     if(elementCount == 3)
+     {
+         F32 red, green, blue;
+         red = dAtof(GuiListBoxCtrl::getStringElement( color, 0 ));
+         green = dAtof(GuiListBoxCtrl::getStringElement( color, 1 ));
+         blue = dAtof(GuiListBoxCtrl::getStringElement( color, 2 ));
+        return (S32)( object->addItemWithColor( newItem, ColorF(red, green, blue) ));
+     }
+     else if(elementCount == 1)
+     {
+         U32 objId = dAtoi( color );
+        return (S32)( object->addItem( newItem, (void*)objId ));
+     }
+     else
+     {
+         Con::warnf("GuiListBoxCtrl::addItem() - Invalid number of parameters for the color!");
+        return (S32)( -1);
+     }
+   }
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_clearItemColor(char * x__object, S32 index)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearItemColor(index);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_clearItems(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearItems();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_clearSelection(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_deleteItem(char * x__object, S32 itemIndex)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteItem( itemIndex );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_doMirror(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->_mirror();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiListBoxCtrl_findItemText(char * x__object, char * x__findText, bool bCaseSensitive)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* findText = (const char*)x__findText;
+
+{
+  return (S32)( object->findItemText( findText, bCaseSensitive ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiListBoxCtrl_getItemCount(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getItemCount());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_getItemObject(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   SimObject *outObj = object->getItemObject( index );
+   if ( !outObj )
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =outObj->getIdString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_getItemText(char * x__object, S32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getItemText( index );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiListBoxCtrl_getLastClickItem(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   GuiListBoxCtrl::LBItem *lastItem = object->mLastClickItem;
+   if ( !lastItem )
+     return (S32)( -1);
+  return (S32)( object->getItemIndex( lastItem ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiListBoxCtrl_getSelCount(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getSelCount());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiListBoxCtrl_getSelectedItem(char * x__object)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getSelectedItem());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_getSelectedItems(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   S32 selCount = object->getSelCount();
+   if( selCount == -1 || selCount == 0 )
+      {wle_returnObject =StringTable->lookup("-1");
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   else if( selCount == 1 )
+      {wle_returnObject =Con::getIntArg(object->getSelectedItem());
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   Vector<S32> selItems;
+   object->getSelectedItems( selItems );
+   if( selItems.empty() )
+      {wle_returnObject =StringTable->lookup("-1");
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   static const U32 bufSize = selItems.size() * 4;
+   UTF8 *retBuffer = Con::getReturnBuffer( bufSize );
+   dMemset( retBuffer, 0, bufSize );
+   Vector<S32>::iterator i = selItems.begin();
+   for( ; i != selItems.end(); i++ )
+   {
+      UTF8 retFormat[12];
+      dSprintf( retFormat, 12, "%d ", (*i) );
+      dStrcat( retBuffer, retFormat );
+   }
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_insertItem(char * x__object, char * x__text, S32 index)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+
+{
+   object->insertItem( index, text );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_removeFilteredItem(char * x__object, char * x__itemName)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* itemName = (const char*)x__itemName;
+{
+	String item(itemName);
+	if( item == String::EmptyString )
+		return;
+	object->removeFilteredItem( item );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setCurSel(char * x__object, S32 indexId)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setCurSel( indexId );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setCurSelRange(char * x__object, S32 indexStart, S32 indexStop)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setCurSelRange( indexStart , indexStop );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setItemColor(char * x__object, S32 index, char * x__color)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+ColorF color = ColorF();
+sscanf(x__color,"%f %f %f %f",&color.red,&color.green,&color.blue,&color.alpha);
+{
+   object->setItemColor( index, color );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setItemText(char * x__object, S32 index, char * x__newtext)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* newtext = (const char*)x__newtext;
+{
+   object->setItemText(index, newtext );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setItemTooltip(char * x__object, S32 index, char * x__text)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* text = (const char*)x__text;
+{
+   if( index > object->mItems.size() || index < 0 )
+   {
+      Con::errorf( "GuiListBoxCtrl::setItemTooltip - index '%i' out of range", index );
+      return;
+   }
+   
+   object->mItems[ index ]->itemTooltip = text;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setMultipleSelection(char * x__object, bool allowMultSelections)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setMultipleSelection( allowMultSelections );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiListBoxCtrl_setSelected(char * x__object, S32 index, bool setSelected)
+{
+GuiListBoxCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   if( setSelected == true )
+      object->addSelection( index );
+   else
+      object->removeSelection( index );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

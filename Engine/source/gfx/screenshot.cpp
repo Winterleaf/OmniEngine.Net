@@ -281,3 +281,84 @@ DefineEngineFunction( screenShot, void,
                               tileOverlap );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_screenShot(char * x__file, char * x__format, U32 tileCount, F32 tileOverlap)
+{
+const char* file = (const char*)x__file;
+const char* format = (const char*)x__format;
+
+{
+   if ( !gScreenShot )
+   {
+      Con::errorf( "Screenshot module not initialized by device" );
+      return;
+   }
+	Torque::Path ssPath( file );
+   Torque::FS::CreatePath( ssPath );
+   Torque::FS::FileSystemRef fs = Torque::FS::GetFileSystem(ssPath);
+   Torque::Path newPath = fs->mapTo(ssPath);
+   gScreenShot->setPending(   newPath.getFullPath(), 
+                              dStricmp( format, "JPEG" ) == 0,
+                              tileCount, 
+                              tileOverlap );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

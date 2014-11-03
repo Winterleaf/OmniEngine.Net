@@ -7284,3 +7284,282 @@ void Player::readAttachedPacketData(GameConnection *connection, BitStream *strea
       setControlObject(0);
 }
 //Walkable Shapes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowAllPoses(char * x__object)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowAllPoses();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowCrouching(char * x__object, bool state)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowCrouching(state);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowJetJumping(char * x__object, bool state)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowJetJumping(state);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowJumping(char * x__object, bool state)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowJumping(state);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowProne(char * x__object, bool state)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowProne(state);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowSprinting(char * x__object, bool state)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowSprinting(state);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_allowSwimming(char * x__object, bool state)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->allowSwimming(state);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_checkDismountPoint(char * x__object, char * x__oldPos, char * x__pos)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+Point3F oldPos = Point3F();
+sscanf(x__oldPos,"%f %f %f",&oldPos.x,&oldPos.y,&oldPos.z);
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+bool wle_returnObject;
+{
+   MatrixF oldPosMat(true);
+   oldPosMat.setColumn(3, oldPos);
+   MatrixF posMat(true);
+   posMat.setColumn(3, pos);
+   {wle_returnObject =object->checkDismountPosition(oldPosMat, posMat);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_clearControlObject(char * x__object)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setControlObject(0);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_getControlObject(char * x__object)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   ShapeBase* controlObject = object->getControlObject();
+  return (S32)( controlObject ? controlObject->getId(): 0);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_getDamageLocation(char * x__object, char * x__pos,  char* retval)
+{
+dSprintf(retval,16384,"");
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+const char* wle_returnObject;
+{
+   const char *buffer1;
+   const char *buffer2;
+   object->getDamageLocation(pos, buffer1, buffer2);
+   static const U32 bufSize = 128;
+   char *buff = Con::getReturnBuffer(bufSize);
+   dSprintf(buff, bufSize, "%s %s", buffer1, buffer2);
+   {wle_returnObject =buff;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_getNumDeathAnimations(char * x__object)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   S32 count = 0;
+   const PlayerData * db = dynamic_cast<PlayerData*>( object->getDataBlock() );
+   if ( db )
+   {
+      for ( S32 i = 0; i < db->actionCount; i++ )
+         if ( db->actionList[i].death )
+            count++;
+   }
+  return (S32)( count);
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_getPose(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getPoseName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPlayer_getState(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getStateName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_setActionThread(char * x__object, char * x__name, bool hold, bool fsp)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setActionThread( name, hold, true, fsp);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_setArmThread(char * x__object, char * x__name)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setArmThread( name );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnPlayer_setControlObject(char * x__object, char * x__obj)
+{
+Player* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+ShapeBase* obj; Sim::findObject(x__obj, obj ); 
+bool wle_returnObject;
+{
+   if (obj) {
+      object->setControlObject(obj);
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   else
+      object->setControlObject(0);
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -221,3 +221,167 @@ DefineEngineMethod( GuiDirectoryFileListCtrl, getSelectedFile, const char*, (),,
 {
    return object->getSelectedFileName();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiDirectoryFileListCtrl_getSelectedFile(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiDirectoryFileListCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getSelectedFileName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiDirectoryFileListCtrl_getSelectedFiles(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiDirectoryFileListCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   Vector<S32> ItemVector;
+   object->getSelectedItems( ItemVector );
+   if( ItemVector.empty() )
+      {wle_returnObject =StringTable->insert( "" );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      static const U32 itemBufSize = 256;
+   char itemBuffer[itemBufSize];
+   static const U32 bufSize = ItemVector.size() * 64;
+   char* returnBuffer = Con::getReturnBuffer( bufSize );
+   dMemset( returnBuffer, 0, bufSize );
+      StringTableEntry itemText = object->getItemText( ItemVector[0] );
+   if( !itemText )
+      {wle_returnObject =StringTable->lookup("");
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   dSprintf( returnBuffer, bufSize, "%s", itemText );
+      if( ItemVector.size() == 1 )
+      {wle_returnObject =returnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      for( S32 i = 1; i < ItemVector.size(); i++ )
+   {
+      StringTableEntry itemText = object->getItemText( ItemVector[i] );
+      if( !itemText )
+         continue;
+      dMemset( itemBuffer, 0, itemBufSize );
+      dSprintf( itemBuffer, itemBufSize, " %s", itemText );
+      dStrcat( returnBuffer, itemBuffer );
+   }
+   {wle_returnObject =returnBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiDirectoryFileListCtrl_reload(char * x__object)
+{
+GuiDirectoryFileListCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->update();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiDirectoryFileListCtrl_setFilter(char * x__object, char * x__filter)
+{
+GuiDirectoryFileListCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filter = (const char*)x__filter;
+{
+   object->setCurrentFilter( filter );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiDirectoryFileListCtrl_setPath(char * x__object, char * x__path, char * x__filter)
+{
+GuiDirectoryFileListCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* path = (const char*)x__path;
+const char* filter = (const char*)x__filter;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setCurrentPath( path, filter );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

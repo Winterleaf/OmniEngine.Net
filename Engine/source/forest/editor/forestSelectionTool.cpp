@@ -588,3 +588,117 @@ DefineConsoleMethod( ForestSelectionTool, pasteSelection, void, (), , "" )
    object->pasteSelection();
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestSelectionTool_clearSelection(char * x__object)
+{
+ForestSelectionTool* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestSelectionTool_copySelection(char * x__object)
+{
+ForestSelectionTool* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->copySelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestSelectionTool_cutSelection(char * x__object)
+{
+ForestSelectionTool* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->cutSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestSelectionTool_deleteSelection(char * x__object)
+{
+ForestSelectionTool* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->deleteSelection();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ForestSelectionTool_getSelectionCount(char * x__object)
+{
+ForestSelectionTool* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getSelectionCount());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_ForestSelectionTool_pasteSelection(char * x__object)
+{
+ForestSelectionTool* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pasteSelection();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -214,3 +214,91 @@ DefineConsoleMethod( TheoraTextureObject, pause, void, (),,
 }
 
 #endif // TORQUE_OGGTHEORA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TheoraTextureObject_pause(char * x__object)
+{
+TheoraTextureObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pause();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TheoraTextureObject_play(char * x__object)
+{
+TheoraTextureObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->play();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_TheoraTextureObject_stop(char * x__object)
+{
+TheoraTextureObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->stop();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

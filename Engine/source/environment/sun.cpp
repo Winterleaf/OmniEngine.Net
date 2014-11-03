@@ -558,3 +558,83 @@ DefineConsoleMethod(Sun, animate, void, ( F32 duration, F32 startAzimuth, F32 en
    object->animate(duration, startAzimuth, endAzimuth, startElevation, endElevation);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Sun_animate(char * x__object, F32 duration, F32 startAzimuth, F32 endAzimuth, F32 startElevation, F32 endElevation)
+{
+Sun* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+
+{
+   object->animate(duration, startAzimuth, endAzimuth, startElevation, endElevation);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Sun_apply(char * x__object)
+{
+Sun* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->inspectPostApply();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

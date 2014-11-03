@@ -356,3 +356,73 @@ DefineEngineMethod( GuiAutoScrollCtrl, reset, void, (),,
 {
    object->reset();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoScrollCtrl_reset(char * x__object)
+{
+GuiAutoScrollCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->reset();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

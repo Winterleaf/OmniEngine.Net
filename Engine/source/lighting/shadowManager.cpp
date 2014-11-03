@@ -78,3 +78,74 @@ DefineConsoleFunction( setShadowManager, bool, (const char* sShadowSystemName), 
    */
    return true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setShadowManager(char * x__sShadowSystemName)
+{
+const char* sShadowSystemName = (const char*)x__sShadowSystemName;
+bool wle_returnObject;
+{
+   
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -158,3 +158,176 @@ DefineConsoleFunction( isWebDemo, bool, (), , "")
    return false;
 #endif
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getAppVersionNumber()
+{
+{
+  return (S32)( getAppVersionNumber());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getAppVersionString(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   {wle_returnObject =getAppVersionString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getBuildString(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+#ifdef TORQUE_DEBUG
+   {wle_returnObject ="Debug";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+#else
+   {wle_returnObject ="Release";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+#endif
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getCompileTimeString(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   {wle_returnObject =getCompileTimeString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getEngineName(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   {wle_returnObject =getEngineProductString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getVersionNumber()
+{
+{
+  return (S32)( getVersionNumber());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getVersionString(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   {wle_returnObject =getVersionString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isDemo()
+{
+bool wle_returnObject;
+{
+#ifdef TORQUE_DEMO
+   {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+#else
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isWebDemo()
+{
+bool wle_returnObject;
+{
+#ifdef TORQUE_DEMO
+   {wle_returnObject =Platform::getWebDeployment();
+return (S32)(wle_returnObject);}
+#else
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+#endif
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -80,3 +80,70 @@ DefineConsoleFunction( initDisplayDeviceInfo, void, (), , "()"
 {
    initDisplayDeviceInfo();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_initDisplayDeviceInfo()
+{
+{
+   initDisplayDeviceInfo();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -974,3 +974,116 @@ DefineEngineMethod(VolumetricFog, SetFogModulation, void, (F32 new_strenght, Poi
 {
 	object->setFogModulation(new_strenght, new_speed1, new_speed2);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogColor(char * x__object, char * x__new_color)
+{
+VolumetricFog* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorI new_color = ColorI();
+{
+int r,g,b,a;
+sscanf(x__new_color,"%d %d %d %d ",&r,&g,&b,&a);
+new_color.red =(unsigned short)r;
+new_color.green=(unsigned short)g;
+new_color.blue=(unsigned short)b;
+new_color.alpha=(unsigned short)a;
+}
+{
+	object->setFogColor(new_color);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogColorF(char * x__object, char * x__new_color)
+{
+VolumetricFog* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ColorF new_color = ColorF();
+sscanf(x__new_color,"%f %f %f %f",&new_color.red,&new_color.green,&new_color.blue,&new_color.alpha);
+{
+	object->setFogColor(new_color);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogDensity(char * x__object, F32 new_density)
+{
+VolumetricFog* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->setFogDensity(new_density);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnVolumetricFog_SetFogModulation(char * x__object, F32 new_strenght, char * x__new_speed1, char * x__new_speed2)
+{
+VolumetricFog* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+Point2F new_speed1 = Point2F();
+sscanf(x__new_speed1,"%f %f",&new_speed1.x,&new_speed1.y);
+Point2F new_speed2 = Point2F();
+sscanf(x__new_speed2,"%f %f",&new_speed2.x,&new_speed2.y);
+{
+	object->setFogModulation(new_strenght, new_speed1, new_speed2);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

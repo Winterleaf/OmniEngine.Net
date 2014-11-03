@@ -490,3 +490,112 @@ DefineConsoleFunction( getMapEntry, const char*, (const char * texName), ,
 {
 	return MATMGR->getMapEntry( String(texName) );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_addMaterialMapping(char * x__texName, char * x__matName)
+{
+const char* texName = (const char*)x__texName;
+const char* matName = (const char*)x__matName;
+{
+   MATMGR->mapMaterial(texName, matName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_dumpMaterialInstances()
+{
+{
+   MATMGR->dumpMaterialInstances();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getMapEntry(char * x__texName,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* texName = (const char*)x__texName;
+const char* wle_returnObject;
+{
+	{wle_returnObject =MATMGR->getMapEntry( String(texName) );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getMaterialMapping(char * x__texName,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* texName = (const char*)x__texName;
+const char* wle_returnObject;
+{
+   {wle_returnObject =MATMGR->getMapEntry(texName).c_str();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_reInitMaterials()
+{
+{
+   MATMGR->flushAndReInitInstances();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

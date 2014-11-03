@@ -889,3 +889,190 @@ DefineConsoleStaticMethod( GuiInspector, findByObject, S32, (const char * classN
 
    return obj->getId();      
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_addInspect(char * x__object, char * x__className, bool autoSync)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* className = (const char*)x__className;
+
+{
+   SimObject* obj;
+   if( !Sim::findObject( className, obj ) )
+   {
+      Con::errorf( "GuiInspector::addInspect(): invalid object: %s", className );
+      return;
+   }
+	object->addInspectObject( obj, autoSync );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_apply(char * x__object)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sendInspectPostApply();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_getInspectObject(char * x__object, U32 index,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+      
+   if( index >= object->getNumInspectObjects() )
+   {
+      Con::errorf( "GuiInspector::getInspectObject() - index out of range: %i", index );
+      {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   }
+   
+   {wle_returnObject =object->getInspectObject( index )->getIdString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiInspector_getNumInspectObjects(char * x__object)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getNumInspectObjects());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_inspect(char * x__object, char * x__className)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* className = (const char*)x__className;
+{
+   SimObject * target = Sim::findObject(className);
+   if(!target)
+   {
+      if(dAtoi(className) > 0)
+         Con::warnf("GuiInspector::inspect(): invalid object: %s", className);
+      object->clearInspectObjects();
+      return;
+   }
+   object->inspectObject(target);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_refresh(char * x__object)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if ( object->getNumInspectObjects() == 0 )
+      return;
+   SimObject *target = object->getInspectObject();
+   if ( target )
+      object->inspectObject( target );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_removeInspect(char * x__object, char * x__obj)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+{
+	if (object)
+   object->removeInspectObject( obj );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_setName(char * x__object, char * x__newObjectName)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* newObjectName = (const char*)x__newObjectName;
+{
+   object->setName(newObjectName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspector_setObjectField(char * x__object, char * x__fieldname, char * x__data)
+{
+GuiInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* fieldname = (const char*)x__fieldname;
+const char* data = (const char*)x__data;
+{
+   object->setObjectField( fieldname, data );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

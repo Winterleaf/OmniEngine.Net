@@ -1238,21 +1238,6 @@ public  bool setImageTrigger(int slot, bool state){
 return pInvokes.m_ts.fnShapeBase_setImageTrigger(_ID, slot, state);
 }
 /// <summary>
-/// @brief Setup the invincible effect.
-/// 
-///    This effect is used for HUD feedback to the user that they are invincible.
-///    @note Currently not implemented
-/// 
-///    @param time duration in seconds for the invincible effect
-///    @param speed speed at which the invincible effect progresses )
-/// 
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  void setInvincibleMode(float time, float speed){
-
-pInvokes.m_ts.fnShapeBase_setInvincibleMode(_ID, time, speed);
-}
-/// <summary>
 /// @brief Set the hidden state on the named shape mesh.
 /// 
 ///    @param name name of the mesh to hide/show

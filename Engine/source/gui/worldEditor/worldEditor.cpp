@@ -3960,3 +3960,881 @@ DefineEngineMethod( WorldEditor, createConvexShapeFrom, ConvexShape*, ( SceneObj
 
    return shape;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_addUndoState(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->addUndoState();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_alignByAxis(char * x__object, S32 boundsAxis)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	if(!object->alignByAxis(boundsAxis))
+		Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByAxis: invalid axis '%s'", boundsAxis));
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_alignByBounds(char * x__object, S32 boundsAxis)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	if(!object->alignByBounds(boundsAxis))
+		Con::warnf(ConsoleLogEntry::General, avar("worldEditor.alignByBounds: invalid bounds axis '%s'", boundsAxis));
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_canPasteSelection(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->canPasteSelection();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_clearIgnoreList(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->clearIgnoreList();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_clearSelection(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->clearSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_colladaExportSelection(char * x__object, char * x__path)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* path = (const char*)x__path;
+{  
+   object->colladaExportSelection( path );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_copySelection(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->copyCurrentSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_cutSelection(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->cutCurrentSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_dropSelection(char * x__object, bool skipUndo)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->dropCurrentSelection( skipUndo );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_explodeSelectedPrefab(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->explodeSelectedPrefab();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getActiveSelection(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   if( !object->getActiveSelectionSet() )
+     return (S32)( 0);
+      
+  return (S32)( object->getActiveSelectionSet()->getId());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getSelectedObject(char * x__object, S32 index)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   if(index < 0 || index >= object->getSelectionSize())
+   {
+      Con::errorf(ConsoleLogEntry::General, "WorldEditor::getSelectedObject: invalid object index");
+     return (S32)((-1));
+   }
+  return (S32)((object->getSelectObject(index)));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_getSelectionCentroid(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+	{wle_returnObject =object->getSelectionCentroidText();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_getSelectionExtent(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   {wle_returnObject =object->getSelectionExtent();
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_WorldEditor_getSelectionRadius(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+	return object->getSelectionRadius();
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getSelectionSize(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+	return object->getSelectionSize();
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_WorldEditor_getSoftSnap(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->mSoftSnap;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_WorldEditor_getSoftSnapBackfaceTolerance(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+	return object->mSoftSnapBackfaceTolerance;
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_WorldEditor_getSoftSnapSize(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+	return object->mSoftSnapSize;
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_hideObject(char * x__object, char * x__obj, bool hide)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SceneObject* obj; Sim::findObject(x__obj, obj ); 
+{
+	if (obj)
+   object->hideObject(obj, hide);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_hideSelection(char * x__object, bool hide)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->hideSelection(hide);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_invalidateSelectionCentroid(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   WorldEditor::Selection* sel = object->getActiveSelectionSet();
+   if(sel)
+	   sel->invalidateCentroid();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_lockSelection(char * x__object, bool lock)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->lockSelection(lock);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_makeSelectionPrefab(char * x__object, char * x__filename)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* filename = (const char*)x__filename;
+{
+   object->makeSelectionPrefab( filename );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_mountRelative(char * x__object, char * x__objA, char * x__objB)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SceneObject* objA; Sim::findObject(x__objA, objA ); 
+SceneObject* objB; Sim::findObject(x__objB, objB ); 
+{
+	if (!objA || !objB)
+		return;
+   MatrixF xfm = objB->getTransform();   
+   MatrixF mat = objA->getWorldTransform();
+   xfm.mul( mat );
+   
+   Point3F pos = objB->getPosition();
+   MatrixF temp = objA->getTransform();
+   temp.scale( objA->getScale() );
+   temp.inverse();
+   temp.mulP( pos );
+   
+   xfm.setPosition( pos );
+   
+   objA->mountObject( objB, -1, xfm );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_pasteSelection(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->pasteSelection();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_redirectConsole(char * x__object, S32 objID)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->redirectConsole(objID);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_resetSelectedRotation(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->resetSelectedRotation();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_resetSelectedScale(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->resetSelectedScale();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_selectObject(char * x__object, char * x__objName)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+{
+	object->selectObject(objName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setActiveSelection(char * x__object, char * x__selection)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+WorldEditorSelection* selection; Sim::findObject(x__selection, selection ); 
+{
+	if (selection)
+   object->makeActiveSelectionSet( selection );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setSoftSnap(char * x__object, bool enable)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnap = enable;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setSoftSnapBackfaceTolerance(char * x__object, F32 range)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnapBackfaceTolerance = range;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_setSoftSnapSize(char * x__object, F32 size)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnapSize = size;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapDebugRender(char * x__object, bool enable)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnapDebugRender = enable;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapRender(char * x__object, bool enable)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnapRender = enable;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapRenderTriangle(char * x__object, bool enable)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnapRenderTriangle = enable;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_softSnapSizeByBounds(char * x__object, bool enable)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->mSoftSnapSizeByBounds = enable;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_transformSelection(char * x__object, bool position, char * x__point, bool relativePos, bool rotate, char * x__rotation, bool relativeRot, bool rotLocal, S32 scaleType, char * x__scale, bool sRelative, bool sLocal)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+Point3F point = Point3F();
+sscanf(x__point,"%f %f %f",&point.x,&point.y,&point.z);
+
+Point3F rotation = Point3F();
+sscanf(x__rotation,"%f %f %f",&rotation.x,&rotation.y,&rotation.z);
+
+
+Point3F scale = Point3F();
+sscanf(x__scale,"%f %f %f",&scale.x,&scale.y,&scale.z);
+
+{
+   object->transformSelection(position, point, relativePos, rotate, rotation, relativeRot, rotLocal, scaleType, scale, sRelative, sLocal);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_WorldEditor_unselectObject(char * x__object, char * x__objName)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+{
+	object->unselectObject(objName);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_createConvexShapeFrom(char * x__object, char * x__polyObject,  char* retval)
+{
+dSprintf(retval,1024,"");
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SceneObject* polyObject; Sim::findObject(x__polyObject, polyObject ); 
+ConvexShape* wle_returnObject;
+{
+   if( !polyObject )
+   {
+      Con::errorf( "WorldEditor::createConvexShapeFrom - Invalid object" );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   IScenePolyhedralObject* iPoly = dynamic_cast< IScenePolyhedralObject* >( polyObject );
+   if( !iPoly )
+   {
+      Con::errorf( "WorldEditor::createConvexShapeFrom - Not a polyhedral object!" );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   
+   AnyPolyhedron polyhedron = iPoly->ToAnyPolyhedron();
+   const U32 numPlanes = polyhedron.getNumPlanes();
+   if( !numPlanes )
+   {
+      Con::errorf( "WorldEditor::createConvexShapeFrom - Object returned no valid polyhedron" );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   
+   ConvexShape* shape = new ConvexShape();
+   
+   for( U32 i = 0; i < numPlanes; ++ i )
+   {
+      const PlaneF& plane = polyhedron.getPlanes()[ i ];
+            
+      Point3F normal = plane.getNormal();
+      normal.neg();
+                  
+      MatrixF orientation( true );
+      MathUtils::getMatrixFromUpVector( normal, &orientation );
+      const QuatF quat( orientation );
+      
+      const Point3F position = plane.getPosition();
+      
+      char buffer[ 1024 ];
+      dSprintf( buffer, sizeof( buffer ), "%g %g %g %g %g %g %g",
+         quat.x, quat.y, quat.z, quat.w,
+         position.x, position.y, position.z
+      );
+      
+      static StringTableEntry sSurface = StringTable->insert( "surface" );
+      shape->setDataField( sSurface, NULL, buffer );
+   }
+   
+   shape->setTransform( polyObject->getTransform() );
+   shape->setScale( polyObject->getScale() );
+   
+   if( !shape->registerObject() )
+   {
+      Con::errorf( "WorldEditor::createConvexShapeFrom - Could not register ConvexShape!" );
+      delete shape;
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   {wle_returnObject =shape;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_createPolyhedralObject(char * x__object, char * x__className, char * x__geometryProvider,  char* retval)
+{
+dSprintf(retval,1024,"");
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* className = (const char*)x__className;
+SceneObject* geometryProvider; Sim::findObject(x__geometryProvider, geometryProvider ); 
+SceneObject* wle_returnObject;
+{
+   if( !geometryProvider )
+   {
+      Con::errorf( "WorldEditor::createPolyhedralObject - Invalid geometry provider!" );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   if( !className || !className[ 0 ] )
+   {
+      Con::errorf( "WorldEditor::createPolyhedralObject - Invalid class name" );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   AbstractClassRep* classRep = AbstractClassRep::findClassRep( className );
+   if( !classRep )
+   {
+      Con::errorf( "WorldEditor::createPolyhedralObject - No such class: %s", className );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+      
+   MatrixF savedTransform = geometryProvider->getTransform();
+   Point3F savedScale = geometryProvider->getScale();
+   geometryProvider->setTransform( MatrixF::Identity );
+   geometryProvider->setScale( Point3F( 1.f, 1.f, 1.f ) );
+      
+   OptimizedPolyList polyList;
+   if( !geometryProvider->buildPolyList( PLC_Export, &polyList, geometryProvider->getObjBox(), geometryProvider->getObjBox().getBoundingSphere() ) )
+   {
+      Con::errorf( "WorldEditor::createPolyhedralObject - Failed to extract geometry!" );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   
+   geometryProvider->setTransform( savedTransform );
+   geometryProvider->setScale( savedScale );
+   
+   SceneObject* object = dynamic_cast< SceneObject* >( classRep->create() );
+   if( !Object )
+   {
+      Con::errorf( "WorldEditor::createPolyhedralObject - Could not create SceneObject with class '%s'", className );
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   
+   Polyhedron polyhedron = polyList.toPolyhedron();
+   
+   const U32 numPoints = polyhedron.getNumPoints();
+   const Point3F* points = polyhedron.getPoints();
+   for( U32 i = 0; i < numPoints; ++ i )
+   {
+      static StringTableEntry sPoint = StringTable->insert( "point" );
+      object->setDataField( sPoint, NULL, EngineMarshallData( points[ i ] ) );
+   }
+   
+   const U32 numPlanes = polyhedron.getNumPlanes();
+   const PlaneF* planes = polyhedron.getPlanes();
+   for( U32 i = 0; i < numPlanes; ++ i )
+   {
+      static StringTableEntry sPlane = StringTable->insert( "plane" );
+      const PlaneF& plane = planes[ i ];
+      char buffer[ 1024 ];
+      dSprintf( buffer, sizeof( buffer ), "%g %g %g %g", plane.x, plane.y, plane.z, plane.d );
+      object->setDataField( sPlane, NULL, buffer );
+   }
+   
+   const U32 numEdges = polyhedron.getNumEdges();
+   const Polyhedron::Edge* edges = polyhedron.getEdges();
+   for( U32 i = 0; i < numEdges; ++ i )
+   {
+      static StringTableEntry sEdge = StringTable->insert( "edge" );
+      const Polyhedron::Edge& edge = edges[ i ];
+      char buffer[ 1024 ];
+      dSprintf( buffer, sizeof( buffer ), "%i %i %i %i ",
+         edge.face[ 0 ], edge.face[ 1 ],
+         edge.vertex[ 0 ], edge.vertex[ 1 ]
+      );
+      object->setDataField( sEdge, NULL, buffer );
+   }
+   
+   object->setTransform( savedTransform );
+   object->setScale( savedScale );
+   
+   if( !object->registerObject() )
+   {
+      Con::errorf( "WorldEditor::createPolyhedralObject - Failed to register object!" );
+      delete object;
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+   }
+   {wle_returnObject =object;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnWorldEditor_getSoftSnapAlignment(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+WorldEditor::AlignmentType wle_returnObject;
+{
+   {wle_returnObject =object->mSoftSnapAlignment;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnWorldEditor_getTerrainSnapAlignment(char * x__object)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+WorldEditor::AlignmentType wle_returnObject;
+{
+   {wle_returnObject =object->mTerrainSnapAlignment;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_ignoreObjClass(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+{
+S32 argc = 20;
+if ( dStrlen(a19) == 0 )
+if ( dStrlen(a18) == 0 )
+if ( dStrlen(a17) == 0 )
+if ( dStrlen(a16) == 0 )
+if ( dStrlen(a15) == 0 )
+if ( dStrlen(a14) == 0 )
+if ( dStrlen(a13) == 0 )
+if ( dStrlen(a12) == 0 )
+if ( dStrlen(a11) == 0 )
+if ( dStrlen(a10) == 0 )
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+if ( dStrlen(a5) == 0 )
+if ( dStrlen(a4) == 0 )
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+if ( argc >4 )
+arguments.push_back(a4);
+if ( argc >5 )
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+if ( argc >10 )
+arguments.push_back(a10);
+if ( argc >11 )
+arguments.push_back(a11);
+if ( argc >12 )
+arguments.push_back(a12);
+if ( argc >13 )
+arguments.push_back(a13);
+if ( argc >14 )
+arguments.push_back(a14);
+if ( argc >15 )
+arguments.push_back(a15);
+if ( argc >16 )
+arguments.push_back(a16);
+if ( argc >17 )
+arguments.push_back(a17);
+if ( argc >18 )
+arguments.push_back(a18);
+if ( argc >19 )
+arguments.push_back(a19);
+const char** argv = &arguments[0];
+{
+	object->ignoreObjClass(argc, argv);
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_setSoftSnapAlignment(char * x__object, S32 x__type)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+WorldEditor::AlignmentType type = (WorldEditor::AlignmentType)x__type;
+{
+   object->mSoftSnapAlignment = type;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnWorldEditor_setTerrainSnapAlignment(char * x__object, S32 x__alignment)
+{
+WorldEditor* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+WorldEditor::AlignmentType alignment = (WorldEditor::AlignmentType)x__alignment;
+{
+   object->mTerrainSnapAlignment = alignment;
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

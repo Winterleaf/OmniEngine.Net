@@ -2458,3 +2458,92 @@ DefineEngineMethod( MeshRoad, postApply, void, (),,
 {
    object->inspectPostApply();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnMeshRoad_postApply(char * x__object)
+{
+MeshRoad* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->inspectPostApply();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnMeshRoad_regenerate(char * x__object)
+{
+MeshRoad* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->regenerate();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnMeshRoad_setNodeDepth(char * x__object, S32 idx, F32 meters)
+{
+MeshRoad* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setNodeDepth( idx, meters );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

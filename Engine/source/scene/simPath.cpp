@@ -524,3 +524,94 @@ void Marker::unpackUpdate(NetConnection* con, BitStream* stream)
 
    setTransform(otow);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_pathOnMissionLoadDone()
+{
+{
+      SimGroup* pMissionGroup = dynamic_cast<SimGroup*>(Sim::findObject("MissionGroup"));
+   AssertFatal(pMissionGroup != NULL, "Error, mission done loading and no mission group?");
+   U32 currStart = 0;
+   U32 currEnd   = 1;
+   Vector<SimGroup*> groups;
+   groups.push_back(pMissionGroup);
+   while (true) {
+      for (U32 i = currStart; i < currEnd; i++) {
+         for (SimGroup::iterator itr = groups[i]->begin(); itr != groups[i]->end(); itr++) {
+            if (dynamic_cast<SimGroup*>(*itr) != NULL)
+               groups.push_back(static_cast<SimGroup*>(*itr));
+         }
+      }
+      if (groups.size() == currEnd) {
+         break;
+      } else {
+         currStart = currEnd;
+         currEnd   = groups.size();
+      }
+   }
+   for (U32 i = 0; i < groups.size(); i++) {
+      SimPath::Path* pPath = dynamic_cast<SimPath::Path*>(groups[i]);
+      if (pPath)
+         pPath->updatePath();
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

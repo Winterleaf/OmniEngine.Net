@@ -2405,3 +2405,175 @@ bool GuiMLTextCtrl::resize( const Point2I& newPosition, const Point2I& newExtent
    
    return false;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_StripMLControlChars(char * x__inString,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* inString = (const char*)x__inString;
+const char* wle_returnObject;
+{
+   {wle_returnObject =GuiMLTextCtrl::stripControlChars(inString);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_addText(char * x__object, char * x__text, bool reformat)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+
+{
+   object->addText(text, dStrlen(text), reformat);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_forceReflow(char * x__object)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(!object->isAwake())
+      Con::errorf("GuiMLTextCtrl::forceReflow can only be called on visible controls.");
+   else
+      object->reflow();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_getText(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =( object->getTextContent() );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_scrollToBottom(char * x__object)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->scrollToBottom();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_scrollToTag(char * x__object, S32 tagID)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->scrollToTag( tagID );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_scrollToTop(char * x__object, S32 param1, S32 param2)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->scrollToTop();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_setAlpha(char * x__object, F32 alphaVal)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setAlpha(alphaVal);
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiMLTextCtrl_setCursorPosition(char * x__object, S32 newPos)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->setCursorPosition(newPos);
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiMLTextCtrl_setText(char * x__object, char * x__text)
+{
+GuiMLTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+{
+   object->setText(text, dStrlen(text));
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

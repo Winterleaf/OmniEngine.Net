@@ -235,15 +235,6 @@ public float windSpeed
 
 #endregion
 #region Member Functions
-/// <summary>
-/// Change coverage of the cloudlayer.)  
-/// 
-/// </summary>
-[MemberFunctionConsoleInteraction(true)]
-public  void ChangeCoverage(float newCoverage){
-
-pInvokes.m_ts.fnCloudLayer_ChangeCoverage(_ID, newCoverage);
-}
 
 #endregion
 #region T3D Callbacks

@@ -596,3 +596,76 @@ DefineEngineMethod( ForestWindEmitter, attachToObject, void, ( U32 objectID ),,
 
 	object->attachToObject( obj );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnForestWindEmitter_attachToObject(char * x__object, U32 objectID)
+{
+ForestWindEmitter* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	SceneObject *obj = dynamic_cast<SceneObject*>( Sim::findObject( objectID ) );
+	if ( !obj )
+		Con::warnf( "ForestWindEmitter::attachToObject - failed to find object with ID: %d", objectID );
+	object->attachToObject( obj );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

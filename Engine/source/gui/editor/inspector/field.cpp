@@ -665,3 +665,151 @@ DefineConsoleMethod( GuiInspectorField, reset, void, (), , "() - Reset to defaul
 {
    object->resetData();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_apply(char * x__object, char * x__newValue, bool callbacks)
+{
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* newValue = (const char*)x__newValue;
+
+{
+   object->setData( newValue, callbacks );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_applyWithoutUndo(char * x__object, char * x__data)
+{
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* data = (const char*)x__data;
+{
+   object->setData( data, false );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_getData(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getData();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_getInspectedFieldName(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getFieldName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_getInspectedFieldType(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getFieldType();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiInspectorField_getInspector(char * x__object)
+{
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getInspector()->getId());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiInspectorField_reset(char * x__object)
+{
+GuiInspectorField* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->resetData();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

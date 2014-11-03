@@ -618,3 +618,79 @@ void CameraBookmark::initPersistFields()
    Parent::initPersistFields();
    removeField("nameTag"); // From GameBase
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_SpawnSphere_spawnObject(char * x__object, char * x__additionalProps)
+{
+SpawnSphere* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+String additionalProps = String( x__additionalProps);
+{
+   
+      
+   SimObject* obj = object->spawnObject(additionalProps);
+   if (obj)
+     return (S32)( obj->getId());
+  return (S32)( -1);
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -740,3 +740,74 @@ ConsoleSetType( TypeRectSpacingI )
    else
       Con::printf("RectSpacingI must be set as { t, b, l, r } or \"t b l r\"");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_GuiControlProfile_getStringWidth(char * x__object, char * x__pString)
+{
+GuiControlProfile* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* pString = (const char*)x__pString;
+{
+   return (S32)( object->mFont->getStrNWidth( pString, dStrlen( pString ) ));
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

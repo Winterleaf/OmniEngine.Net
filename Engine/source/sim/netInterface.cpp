@@ -656,3 +656,69 @@ DefineConsoleFunction( allowConnections, void, ( bool allow ), , "allowConnectio
 
 ConsoleFunctionGroupEnd(NetInterface);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_allowConnections(bool allow)
+{
+{
+   GNet->setAllowsConnections(allow);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -377,3 +377,71 @@ DefineEngineFunction( debugDumpAllObjects, void, (),,
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_debugDumpAllObjects()
+{
+{
+	#ifdef TORQUE_DEBUG
+   EngineObject::debugDumpInstances();
+	#endif 
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

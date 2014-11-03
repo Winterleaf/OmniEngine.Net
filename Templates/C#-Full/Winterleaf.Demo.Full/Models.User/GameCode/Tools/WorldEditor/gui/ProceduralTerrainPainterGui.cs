@@ -47,394 +47,485 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         [ConsoleInteraction(true, "ProceduralTerrainPainterGui_initialize")]
         public static void initialize()
         {
-            #region GuiControl (ProceduralTerrainPainterGui)        oc_Newobject13
+        ObjectCreator oc_Newobject00016;
+        ObjectCreator oc_Newobject00015;
+        ObjectCreator oc_Newobject00014;
+        ObjectCreator oc_Newobject00013;
+        ObjectCreator oc_Newobject00012;
+        ObjectCreator oc_Newobject00011;
+        ObjectCreator oc_Newobject00010;
+        ObjectCreator oc_Newobject00009;
+        ObjectCreator oc_Newobject00008;
+        ObjectCreator oc_Newobject00007;
+        ObjectCreator oc_Newobject00006;
+        ObjectCreator oc_Newobject00005;
+        ObjectCreator oc_Newobject00004;
+        ObjectCreator oc_Newobject00003;
+        ObjectCreator oc_Newobject00002;
+        ObjectCreator oc_Newobject00001;
+        if (true)
+            {
 
-            ObjectCreator oc_Newobject13 = new ObjectCreator("GuiControl", "ProceduralTerrainPainterGui");
-            oc_Newobject13["canSaveDynamicFields"] = "0";
-            oc_Newobject13["isContainer"] = "1";
-            oc_Newobject13["Profile"] = "ToolsGuiDefaultProfile";
-            oc_Newobject13["HorizSizing"] = "right";
-            oc_Newobject13["VertSizing"] = "bottom";
-            oc_Newobject13["Position"] = "0 0";
-            oc_Newobject13["Extent"] = "1024 768";
-            oc_Newobject13["MinExtent"] = "8 2";
-            oc_Newobject13["canSave"] = "1";
-            oc_Newobject13["Visible"] = "1";
-            oc_Newobject13["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject13["hovertime"] = "1000";
+            #region GuiControl (ProceduralTerrainPainterGui)        oc_Newobject00016
+            oc_Newobject00016 = new ObjectCreator("GuiControl", "ProceduralTerrainPainterGui");
+            oc_Newobject00016["canSaveDynamicFields"] = "0";
+            oc_Newobject00016["isContainer"] = "1";
+            oc_Newobject00016["Profile"] = "ToolsGuiDefaultProfile";
+            oc_Newobject00016["HorizSizing"] = "right";
+            oc_Newobject00016["VertSizing"] = "bottom";
+            oc_Newobject00016["Position"] = "0 0";
+            oc_Newobject00016["Extent"] = "1024 768";
+            oc_Newobject00016["MinExtent"] = "8 2";
+            oc_Newobject00016["canSave"] = "1";
+            oc_Newobject00016["Visible"] = "1";
+            oc_Newobject00016["tooltipprofile"] = "ToolsGuiToolTipProfile";
+            oc_Newobject00016["hovertime"] = "1000";
+            if (true)
+                {
 
-            #region GuiWindowCtrl (ProceduralTerrainPainterDescription)        oc_Newobject12
+                #region GuiWindowCtrl (ProceduralTerrainPainterDescription)        oc_Newobject00015
+                oc_Newobject00015 = new ObjectCreator("GuiWindowCtrl", "ProceduralTerrainPainterDescription");
+                oc_Newobject00015["canSaveDynamicFields"] = "0";
+                oc_Newobject00015["isContainer"] = "1";
+                oc_Newobject00015["Profile"] = "ToolsGuiWindowProfile";
+                oc_Newobject00015["HorizSizing"] = "right";
+                oc_Newobject00015["VertSizing"] = "bottom";
+                oc_Newobject00015["Position"] = "285 83";
+                oc_Newobject00015["Extent"] = "175 233";
+                oc_Newobject00015["MinExtent"] = "8 2";
+                oc_Newobject00015["canSave"] = "1";
+                oc_Newobject00015["Visible"] = "1";
+                oc_Newobject00015["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                oc_Newobject00015["hovertime"] = "1000";
+                oc_Newobject00015["Margin"] = "0 0 0 0";
+                oc_Newobject00015["Padding"] = "0 0 0 0";
+                oc_Newobject00015["AnchorTop"] = "1";
+                oc_Newobject00015["AnchorBottom"] = "0";
+                oc_Newobject00015["AnchorLeft"] = "1";
+                oc_Newobject00015["AnchorRight"] = "0";
+                oc_Newobject00015["resizeWidth"] = "0";
+                oc_Newobject00015["resizeHeight"] = "0";
+                oc_Newobject00015["canMove"] = "1";
+                oc_Newobject00015["canClose"] = "1";
+                oc_Newobject00015["canMinimize"] = "0";
+                oc_Newobject00015["canMaximize"] = "0";
+                oc_Newobject00015["minSize"] = "50 50";
+                oc_Newobject00015["EdgeSnap"] = "1";
+                oc_Newobject00015["canCollapse"] = "0";
+                oc_Newobject00015["CollapseGroup"] = "-1";
+                oc_Newobject00015["CollapseGroupNum"] = "-1";
+                oc_Newobject00015["closeCommand"] = "Canvas.popDialog(ProceduralTerrainPainterGui);";
+                oc_Newobject00015["text"] = "Generate layer mask";
+                if (true)
+                    {
 
-            ObjectCreator oc_Newobject12 = new ObjectCreator("GuiWindowCtrl", "ProceduralTerrainPainterDescription");
-            oc_Newobject12["canSaveDynamicFields"] = "0";
-            oc_Newobject12["isContainer"] = "1";
-            oc_Newobject12["Profile"] = "ToolsGuiWindowProfile";
-            oc_Newobject12["HorizSizing"] = "right";
-            oc_Newobject12["VertSizing"] = "bottom";
-            oc_Newobject12["Position"] = "285 83";
-            oc_Newobject12["Extent"] = "175 209";
-            oc_Newobject12["MinExtent"] = "8 2";
-            oc_Newobject12["canSave"] = "1";
-            oc_Newobject12["Visible"] = "1";
-            oc_Newobject12["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject12["hovertime"] = "1000";
-            oc_Newobject12["Margin"] = "0 0 0 0";
-            oc_Newobject12["Padding"] = "0 0 0 0";
-            oc_Newobject12["AnchorTop"] = "1";
-            oc_Newobject12["AnchorBottom"] = "0";
-            oc_Newobject12["AnchorLeft"] = "1";
-            oc_Newobject12["AnchorRight"] = "0";
-            oc_Newobject12["resizeWidth"] = "0";
-            oc_Newobject12["resizeHeight"] = "0";
-            oc_Newobject12["canMove"] = "1";
-            oc_Newobject12["canClose"] = "1";
-            oc_Newobject12["canMinimize"] = "0";
-            oc_Newobject12["canMaximize"] = "0";
-            oc_Newobject12["minSize"] = "50 50";
-            oc_Newobject12["EdgeSnap"] = "1";
-            oc_Newobject12["canCollapse"] = "0";
-            oc_Newobject12["CollapseGroup"] = "-1";
-            oc_Newobject12["CollapseGroupNum"] = "-1";
-            oc_Newobject12["closeCommand"] = "Canvas.popDialog(ProceduralTerrainPainterGui);";
-            oc_Newobject12["text"] = "Generate layer mask";
+                    #region GuiButtonCtrl ()        oc_Newobject00001
+                    oc_Newobject00001 = new ObjectCreator("GuiButtonCtrl", "");
+                    oc_Newobject00001["canSaveDynamicFields"] = "0";
+                    oc_Newobject00001["isContainer"] = "0";
+                    oc_Newobject00001["Profile"] = "ToolsGuiButtonProfile";
+                    oc_Newobject00001["HorizSizing"] = "right";
+                    oc_Newobject00001["VertSizing"] = "bottom";
+                    oc_Newobject00001["Position"] = "19 193";
+                    oc_Newobject00001["Extent"] = "140 30";
+                    oc_Newobject00001["MinExtent"] = "8 2";
+                    oc_Newobject00001["canSave"] = "1";
+                    oc_Newobject00001["Visible"] = "1";
+                    oc_Newobject00001["Command"] = "generateProceduralTerrainMask();";
+                    oc_Newobject00001["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00001["hovertime"] = "1000";
+                    oc_Newobject00001["text"] = "Generate";
+                    oc_Newobject00001["groupNum"] = "-1";
+                    oc_Newobject00001["buttonType"] = "PushButton";
+                    oc_Newobject00001["useMouseEvents"] = "0";
+                    #endregion
 
-            #region GuiButtonCtrl ()        oc_Newobject1
+                    oc_Newobject00015["#Newobject00001"] = oc_Newobject00001;
 
-            ObjectCreator oc_Newobject1 = new ObjectCreator("GuiButtonCtrl", "");
-            oc_Newobject1["canSaveDynamicFields"] = "0";
-            oc_Newobject1["isContainer"] = "0";
-            oc_Newobject1["Profile"] = "ToolsGuiButtonProfile";
-            oc_Newobject1["HorizSizing"] = "right";
-            oc_Newobject1["VertSizing"] = "bottom";
-            oc_Newobject1["Position"] = "19 164";
-            oc_Newobject1["Extent"] = "140 30";
-            oc_Newobject1["MinExtent"] = "8 2";
-            oc_Newobject1["canSave"] = "1";
-            oc_Newobject1["Visible"] = "1";
-            oc_Newobject1["Command"] = "generateProceduralTerrainMask();";
-            oc_Newobject1["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject1["hovertime"] = "1000";
-            oc_Newobject1["text"] = "Generate";
-            oc_Newobject1["groupNum"] = "-1";
-            oc_Newobject1["buttonType"] = "PushButton";
-            oc_Newobject1["useMouseEvents"] = "0";
+                    #region GuiTextCtrl ()        oc_Newobject00002
+                    oc_Newobject00002 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00002["canSaveDynamicFields"] = "0";
+                    oc_Newobject00002["isContainer"] = "0";
+                    oc_Newobject00002["Profile"] = "GuiTextProfile";
+                    oc_Newobject00002["HorizSizing"] = "right";
+                    oc_Newobject00002["VertSizing"] = "bottom";
+                    oc_Newobject00002["Position"] = "15 37";
+                    oc_Newobject00002["Extent"] = "33 13";
+                    oc_Newobject00002["MinExtent"] = "8 2";
+                    oc_Newobject00002["canSave"] = "1";
+                    oc_Newobject00002["Visible"] = "1";
+                    oc_Newobject00002["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00002["hovertime"] = "1000";
+                    oc_Newobject00002["Margin"] = "0 0 0 0";
+                    oc_Newobject00002["Padding"] = "0 0 0 0";
+                    oc_Newobject00002["AnchorTop"] = "1";
+                    oc_Newobject00002["AnchorBottom"] = "0";
+                    oc_Newobject00002["AnchorLeft"] = "1";
+                    oc_Newobject00002["AnchorRight"] = "0";
+                    oc_Newobject00002["text"] = "HEIGHT";
+                    oc_Newobject00002["maxLength"] = "1024";
+                    #endregion
 
+                    oc_Newobject00015["#Newobject00002"] = oc_Newobject00002;
+
+                    #region GuiTextCtrl ()        oc_Newobject00003
+                    oc_Newobject00003 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00003["canSaveDynamicFields"] = "0";
+                    oc_Newobject00003["isContainer"] = "0";
+                    oc_Newobject00003["Profile"] = "GuiTextProfile";
+                    oc_Newobject00003["HorizSizing"] = "right";
+                    oc_Newobject00003["VertSizing"] = "bottom";
+                    oc_Newobject00003["Position"] = "59 37";
+                    oc_Newobject00003["Extent"] = "23 14";
+                    oc_Newobject00003["MinExtent"] = "8 2";
+                    oc_Newobject00003["canSave"] = "1";
+                    oc_Newobject00003["Visible"] = "1";
+                    oc_Newobject00003["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00003["hovertime"] = "1000";
+                    oc_Newobject00003["Margin"] = "0 0 0 0";
+                    oc_Newobject00003["Padding"] = "0 0 0 0";
+                    oc_Newobject00003["AnchorTop"] = "1";
+                    oc_Newobject00003["AnchorBottom"] = "0";
+                    oc_Newobject00003["AnchorLeft"] = "1";
+                    oc_Newobject00003["AnchorRight"] = "0";
+                    oc_Newobject00003["text"] = "Min.";
+                    oc_Newobject00003["maxLength"] = "1024";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00003"] = oc_Newobject00003;
+
+                    #region GuiTextCtrl ()        oc_Newobject00004
+                    oc_Newobject00004 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00004["canSaveDynamicFields"] = "0";
+                    oc_Newobject00004["isContainer"] = "0";
+                    oc_Newobject00004["Profile"] = "GuiTextProfile";
+                    oc_Newobject00004["HorizSizing"] = "right";
+                    oc_Newobject00004["VertSizing"] = "bottom";
+                    oc_Newobject00004["Position"] = "59 62";
+                    oc_Newobject00004["Extent"] = "23 14";
+                    oc_Newobject00004["MinExtent"] = "8 2";
+                    oc_Newobject00004["canSave"] = "1";
+                    oc_Newobject00004["Visible"] = "1";
+                    oc_Newobject00004["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00004["hovertime"] = "1000";
+                    oc_Newobject00004["Margin"] = "0 0 0 0";
+                    oc_Newobject00004["Padding"] = "0 0 0 0";
+                    oc_Newobject00004["AnchorTop"] = "1";
+                    oc_Newobject00004["AnchorBottom"] = "0";
+                    oc_Newobject00004["AnchorLeft"] = "1";
+                    oc_Newobject00004["AnchorRight"] = "0";
+                    oc_Newobject00004["text"] = "Max.";
+                    oc_Newobject00004["maxLength"] = "1024";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00004"] = oc_Newobject00004;
+
+                    #region GuiTextEditCtrl ()        oc_Newobject00005
+                    oc_Newobject00005 = new ObjectCreator("GuiTextEditCtrl", "");
+                    oc_Newobject00005["canSaveDynamicFields"] = "0";
+                    oc_Newobject00005["isContainer"] = "0";
+                    oc_Newobject00005["Profile"] = "GuiTextEditProfile";
+                    oc_Newobject00005["HorizSizing"] = "right";
+                    oc_Newobject00005["VertSizing"] = "bottom";
+                    oc_Newobject00005["Position"] = "97 35";
+                    oc_Newobject00005["Extent"] = "66 18";
+                    oc_Newobject00005["MinExtent"] = "8 2";
+                    oc_Newobject00005["canSave"] = "1";
+                    oc_Newobject00005["Visible"] = "1";
+                    oc_Newobject00005["Variable"] = "$TPPHeightMin";
+                    oc_Newobject00005["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00005["hovertime"] = "1000";
+                    oc_Newobject00005["Margin"] = "0 0 0 0";
+                    oc_Newobject00005["Padding"] = "0 0 0 0";
+                    oc_Newobject00005["AnchorTop"] = "1";
+                    oc_Newobject00005["AnchorBottom"] = "0";
+                    oc_Newobject00005["AnchorLeft"] = "1";
+                    oc_Newobject00005["AnchorRight"] = "0";
+                    oc_Newobject00005["maxLength"] = "1024";
+                    oc_Newobject00005["historySize"] = "0";
+                    oc_Newobject00005["password"] = "0";
+                    oc_Newobject00005["tabComplete"] = "0";
+                    oc_Newobject00005["sinkAllKeyEvents"] = "0";
+                    oc_Newobject00005["passwordMask"] = "*";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00005"] = oc_Newobject00005;
+
+                    #region GuiTextEditCtrl ()        oc_Newobject00006
+                    oc_Newobject00006 = new ObjectCreator("GuiTextEditCtrl", "");
+                    oc_Newobject00006["canSaveDynamicFields"] = "0";
+                    oc_Newobject00006["isContainer"] = "0";
+                    oc_Newobject00006["Profile"] = "GuiTextEditProfile";
+                    oc_Newobject00006["HorizSizing"] = "right";
+                    oc_Newobject00006["VertSizing"] = "bottom";
+                    oc_Newobject00006["Position"] = "97 60";
+                    oc_Newobject00006["Extent"] = "66 18";
+                    oc_Newobject00006["MinExtent"] = "8 2";
+                    oc_Newobject00006["canSave"] = "1";
+                    oc_Newobject00006["Visible"] = "1";
+                    oc_Newobject00006["Variable"] = "$TPPHeightMax";
+                    oc_Newobject00006["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00006["hovertime"] = "1000";
+                    oc_Newobject00006["Margin"] = "0 0 0 0";
+                    oc_Newobject00006["Padding"] = "0 0 0 0";
+                    oc_Newobject00006["AnchorTop"] = "1";
+                    oc_Newobject00006["AnchorBottom"] = "0";
+                    oc_Newobject00006["AnchorLeft"] = "1";
+                    oc_Newobject00006["AnchorRight"] = "0";
+                    oc_Newobject00006["maxLength"] = "1024";
+                    oc_Newobject00006["historySize"] = "0";
+                    oc_Newobject00006["password"] = "0";
+                    oc_Newobject00006["tabComplete"] = "0";
+                    oc_Newobject00006["sinkAllKeyEvents"] = "0";
+                    oc_Newobject00006["passwordMask"] = "*";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00006"] = oc_Newobject00006;
+
+                    #region GuiTextCtrl ()        oc_Newobject00007
+                    oc_Newobject00007 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00007["canSaveDynamicFields"] = "0";
+                    oc_Newobject00007["isContainer"] = "0";
+                    oc_Newobject00007["Profile"] = "GuiTextProfile";
+                    oc_Newobject00007["HorizSizing"] = "right";
+                    oc_Newobject00007["VertSizing"] = "bottom";
+                    oc_Newobject00007["Position"] = "15 101";
+                    oc_Newobject00007["Extent"] = "33 13";
+                    oc_Newobject00007["MinExtent"] = "8 2";
+                    oc_Newobject00007["canSave"] = "1";
+                    oc_Newobject00007["Visible"] = "1";
+                    oc_Newobject00007["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00007["hovertime"] = "1000";
+                    oc_Newobject00007["Margin"] = "0 0 0 0";
+                    oc_Newobject00007["Padding"] = "0 0 0 0";
+                    oc_Newobject00007["AnchorTop"] = "1";
+                    oc_Newobject00007["AnchorBottom"] = "0";
+                    oc_Newobject00007["AnchorLeft"] = "1";
+                    oc_Newobject00007["AnchorRight"] = "0";
+                    oc_Newobject00007["text"] = "SLOPE";
+                    oc_Newobject00007["maxLength"] = "1024";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00007"] = oc_Newobject00007;
+
+                    #region GuiTextCtrl ()        oc_Newobject00008
+                    oc_Newobject00008 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00008["canSaveDynamicFields"] = "0";
+                    oc_Newobject00008["isContainer"] = "0";
+                    oc_Newobject00008["Profile"] = "GuiTextProfile";
+                    oc_Newobject00008["HorizSizing"] = "right";
+                    oc_Newobject00008["VertSizing"] = "bottom";
+                    oc_Newobject00008["Position"] = "59 101";
+                    oc_Newobject00008["Extent"] = "23 14";
+                    oc_Newobject00008["MinExtent"] = "8 2";
+                    oc_Newobject00008["canSave"] = "1";
+                    oc_Newobject00008["Visible"] = "1";
+                    oc_Newobject00008["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00008["hovertime"] = "1000";
+                    oc_Newobject00008["Margin"] = "0 0 0 0";
+                    oc_Newobject00008["Padding"] = "0 0 0 0";
+                    oc_Newobject00008["AnchorTop"] = "1";
+                    oc_Newobject00008["AnchorBottom"] = "0";
+                    oc_Newobject00008["AnchorLeft"] = "1";
+                    oc_Newobject00008["AnchorRight"] = "0";
+                    oc_Newobject00008["text"] = "Min.";
+                    oc_Newobject00008["maxLength"] = "1024";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00008"] = oc_Newobject00008;
+
+                    #region GuiTextCtrl ()        oc_Newobject00009
+                    oc_Newobject00009 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00009["canSaveDynamicFields"] = "0";
+                    oc_Newobject00009["isContainer"] = "0";
+                    oc_Newobject00009["Profile"] = "ToolsGuiTextProfile";
+                    oc_Newobject00009["HorizSizing"] = "right";
+                    oc_Newobject00009["VertSizing"] = "bottom";
+                    oc_Newobject00009["Position"] = "59 126";
+                    oc_Newobject00009["Extent"] = "23 14";
+                    oc_Newobject00009["MinExtent"] = "8 2";
+                    oc_Newobject00009["canSave"] = "1";
+                    oc_Newobject00009["Visible"] = "1";
+                    oc_Newobject00009["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00009["hovertime"] = "1000";
+                    oc_Newobject00009["Margin"] = "0 0 0 0";
+                    oc_Newobject00009["Padding"] = "0 0 0 0";
+                    oc_Newobject00009["AnchorTop"] = "1";
+                    oc_Newobject00009["AnchorBottom"] = "0";
+                    oc_Newobject00009["AnchorLeft"] = "1";
+                    oc_Newobject00009["AnchorRight"] = "0";
+                    oc_Newobject00009["text"] = "Max.";
+                    oc_Newobject00009["maxLength"] = "1024";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00009"] = oc_Newobject00009;
+
+                    #region GuiTextEditCtrl ()        oc_Newobject00010
+                    oc_Newobject00010 = new ObjectCreator("GuiTextEditCtrl", "");
+                    oc_Newobject00010["canSaveDynamicFields"] = "0";
+                    oc_Newobject00010["isContainer"] = "0";
+                    oc_Newobject00010["Profile"] = "ToolsGuiTextEditProfile";
+                    oc_Newobject00010["HorizSizing"] = "right";
+                    oc_Newobject00010["VertSizing"] = "bottom";
+                    oc_Newobject00010["Position"] = "97 99";
+                    oc_Newobject00010["Extent"] = "66 18";
+                    oc_Newobject00010["MinExtent"] = "8 2";
+                    oc_Newobject00010["canSave"] = "1";
+                    oc_Newobject00010["Visible"] = "1";
+                    oc_Newobject00010["Variable"] = "$TPPSlopeMin";
+                    oc_Newobject00010["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00010["hovertime"] = "1000";
+                    oc_Newobject00010["Margin"] = "0 0 0 0";
+                    oc_Newobject00010["Padding"] = "0 0 0 0";
+                    oc_Newobject00010["AnchorTop"] = "1";
+                    oc_Newobject00010["AnchorBottom"] = "0";
+                    oc_Newobject00010["AnchorLeft"] = "1";
+                    oc_Newobject00010["AnchorRight"] = "0";
+                    oc_Newobject00010["maxLength"] = "1024";
+                    oc_Newobject00010["historySize"] = "0";
+                    oc_Newobject00010["password"] = "0";
+                    oc_Newobject00010["tabComplete"] = "0";
+                    oc_Newobject00010["sinkAllKeyEvents"] = "0";
+                    oc_Newobject00010["passwordMask"] = "*";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00010"] = oc_Newobject00010;
+
+                    #region GuiTextEditCtrl ()        oc_Newobject00011
+                    oc_Newobject00011 = new ObjectCreator("GuiTextEditCtrl", "");
+                    oc_Newobject00011["canSaveDynamicFields"] = "0";
+                    oc_Newobject00011["isContainer"] = "0";
+                    oc_Newobject00011["Profile"] = "ToolsGuiTextEditProfile";
+                    oc_Newobject00011["HorizSizing"] = "right";
+                    oc_Newobject00011["VertSizing"] = "bottom";
+                    oc_Newobject00011["Position"] = "97 124";
+                    oc_Newobject00011["Extent"] = "66 18";
+                    oc_Newobject00011["MinExtent"] = "8 2";
+                    oc_Newobject00011["canSave"] = "1";
+                    oc_Newobject00011["Visible"] = "1";
+                    oc_Newobject00011["Variable"] = "$TPPSlopeMax";
+                    oc_Newobject00011["tooltipprofile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00011["hovertime"] = "1000";
+                    oc_Newobject00011["Margin"] = "0 0 0 0";
+                    oc_Newobject00011["Padding"] = "0 0 0 0";
+                    oc_Newobject00011["AnchorTop"] = "1";
+                    oc_Newobject00011["AnchorBottom"] = "0";
+                    oc_Newobject00011["AnchorLeft"] = "1";
+                    oc_Newobject00011["AnchorRight"] = "0";
+                    oc_Newobject00011["maxLength"] = "1024";
+                    oc_Newobject00011["historySize"] = "0";
+                    oc_Newobject00011["password"] = "0";
+                    oc_Newobject00011["tabComplete"] = "0";
+                    oc_Newobject00011["sinkAllKeyEvents"] = "0";
+                    oc_Newobject00011["passwordMask"] = "*";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00011"] = oc_Newobject00011;
+
+                    #region GuiTextCtrl ()        oc_Newobject00012
+                    oc_Newobject00012 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00012["text"] = "COVERAGE";
+                    oc_Newobject00012["maxLength"] = "1024";
+                    oc_Newobject00012["margin"] = "0 0 0 0";
+                    oc_Newobject00012["padding"] = "0 0 0 0";
+                    oc_Newobject00012["anchorTop"] = "1";
+                    oc_Newobject00012["anchorBottom"] = "0";
+                    oc_Newobject00012["anchorLeft"] = "1";
+                    oc_Newobject00012["anchorRight"] = "0";
+                    oc_Newobject00012["position"] = "10 165";
+                    oc_Newobject00012["extent"] = "55 13";
+                    oc_Newobject00012["minExtent"] = "8 2";
+                    oc_Newobject00012["horizSizing"] = "right";
+                    oc_Newobject00012["vertSizing"] = "bottom";
+                    oc_Newobject00012["profile"] = "GuiTextProfile";
+                    oc_Newobject00012["visible"] = "1";
+                    oc_Newobject00012["active"] = "1";
+                    oc_Newobject00012["tooltipProfile"] = "GuiToolTipProfile";
+                    oc_Newobject00012["hovertime"] = "1000";
+                    oc_Newobject00012["isContainer"] = "0";
+                    oc_Newobject00012["canSave"] = "1";
+                    oc_Newobject00012["canSaveDynamicFields"] = "0";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00012"] = oc_Newobject00012;
+
+                    #region GuiTextEditCtrl ()        oc_Newobject00013
+                    oc_Newobject00013 = new ObjectCreator("GuiTextEditCtrl", "");
+                    oc_Newobject00013["historySize"] = "0";
+                    oc_Newobject00013["tabComplete"] = "0";
+                    oc_Newobject00013["sinkAllKeyEvents"] = "0";
+                    oc_Newobject00013["password"] = "0";
+                    oc_Newobject00013["passwordMask"] = "*";
+                    oc_Newobject00013["text"] = "1";
+                    oc_Newobject00013["maxLength"] = "1024";
+                    oc_Newobject00013["margin"] = "0 0 0 0";
+                    oc_Newobject00013["padding"] = "0 0 0 0";
+                    oc_Newobject00013["anchorTop"] = "1";
+                    oc_Newobject00013["anchorBottom"] = "0";
+                    oc_Newobject00013["anchorLeft"] = "1";
+                    oc_Newobject00013["anchorRight"] = "0";
+                    oc_Newobject00013["position"] = "97 162";
+                    oc_Newobject00013["extent"] = "66 18";
+                    oc_Newobject00013["minExtent"] = "8 2";
+                    oc_Newobject00013["horizSizing"] = "right";
+                    oc_Newobject00013["vertSizing"] = "bottom";
+                    oc_Newobject00013["profile"] = "GuiTextEditProfile";
+                    oc_Newobject00013["visible"] = "1";
+                    oc_Newobject00013["active"] = "1";
+                    oc_Newobject00013["variable"] = "$TPPCoverage";
+                    oc_Newobject00013["tooltipProfile"] = "GuiToolTipProfile";
+                    oc_Newobject00013["hovertime"] = "1000";
+                    oc_Newobject00013["isContainer"] = "0";
+                    oc_Newobject00013["canSave"] = "1";
+                    oc_Newobject00013["canSaveDynamicFields"] = "0";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00013"] = oc_Newobject00013;
+
+                    #region GuiTextCtrl ()        oc_Newobject00014
+                    oc_Newobject00014 = new ObjectCreator("GuiTextCtrl", "");
+                    oc_Newobject00014["text"] = "%";
+                    oc_Newobject00014["maxLength"] = "1024";
+                    oc_Newobject00014["margin"] = "0 0 0 0";
+                    oc_Newobject00014["padding"] = "0 0 0 0";
+                    oc_Newobject00014["anchorTop"] = "1";
+                    oc_Newobject00014["anchorBottom"] = "0";
+                    oc_Newobject00014["anchorLeft"] = "1";
+                    oc_Newobject00014["anchorRight"] = "0";
+                    oc_Newobject00014["position"] = "77 164";
+                    oc_Newobject00014["extent"] = "11 14";
+                    oc_Newobject00014["minExtent"] = "8 2";
+                    oc_Newobject00014["horizSizing"] = "right";
+                    oc_Newobject00014["vertSizing"] = "bottom";
+                    oc_Newobject00014["profile"] = "ToolsGuiTextProfile";
+                    oc_Newobject00014["visible"] = "1";
+                    oc_Newobject00014["active"] = "1";
+                    oc_Newobject00014["tooltipProfile"] = "ToolsGuiToolTipProfile";
+                    oc_Newobject00014["hovertime"] = "1000";
+                    oc_Newobject00014["isContainer"] = "0";
+                    oc_Newobject00014["canSave"] = "1";
+                    oc_Newobject00014["canSaveDynamicFields"] = "0";
+                    #endregion
+
+                    oc_Newobject00015["#Newobject00014"] = oc_Newobject00014;
+
+                    }
+                #endregion
+
+                oc_Newobject00016["#Newobject00015"] = oc_Newobject00015;
+
+                }
             #endregion
+            oc_Newobject00016.Create();
 
-            oc_Newobject12["#Newobject1"] = oc_Newobject1;
-
-            #region GuiTextCtrl ()        oc_Newobject2
-
-            ObjectCreator oc_Newobject2 = new ObjectCreator("GuiTextCtrl", "");
-            oc_Newobject2["canSaveDynamicFields"] = "0";
-            oc_Newobject2["isContainer"] = "0";
-            oc_Newobject2["Profile"] = "GuiTextProfile";
-            oc_Newobject2["HorizSizing"] = "right";
-            oc_Newobject2["VertSizing"] = "bottom";
-            oc_Newobject2["Position"] = "15 37";
-            oc_Newobject2["Extent"] = "33 13";
-            oc_Newobject2["MinExtent"] = "8 2";
-            oc_Newobject2["canSave"] = "1";
-            oc_Newobject2["Visible"] = "1";
-            oc_Newobject2["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject2["hovertime"] = "1000";
-            oc_Newobject2["Margin"] = "0 0 0 0";
-            oc_Newobject2["Padding"] = "0 0 0 0";
-            oc_Newobject2["AnchorTop"] = "1";
-            oc_Newobject2["AnchorBottom"] = "0";
-            oc_Newobject2["AnchorLeft"] = "1";
-            oc_Newobject2["AnchorRight"] = "0";
-            oc_Newobject2["text"] = "HEIGHT";
-            oc_Newobject2["maxLength"] = "1024";
-
-            #endregion
-
-            oc_Newobject12["#Newobject2"] = oc_Newobject2;
-
-            #region GuiTextCtrl ()        oc_Newobject3
-
-            ObjectCreator oc_Newobject3 = new ObjectCreator("GuiTextCtrl", "");
-            oc_Newobject3["canSaveDynamicFields"] = "0";
-            oc_Newobject3["isContainer"] = "0";
-            oc_Newobject3["Profile"] = "GuiTextProfile";
-            oc_Newobject3["HorizSizing"] = "right";
-            oc_Newobject3["VertSizing"] = "bottom";
-            oc_Newobject3["Position"] = "59 37";
-            oc_Newobject3["Extent"] = "23 14";
-            oc_Newobject3["MinExtent"] = "8 2";
-            oc_Newobject3["canSave"] = "1";
-            oc_Newobject3["Visible"] = "1";
-            oc_Newobject3["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject3["hovertime"] = "1000";
-            oc_Newobject3["Margin"] = "0 0 0 0";
-            oc_Newobject3["Padding"] = "0 0 0 0";
-            oc_Newobject3["AnchorTop"] = "1";
-            oc_Newobject3["AnchorBottom"] = "0";
-            oc_Newobject3["AnchorLeft"] = "1";
-            oc_Newobject3["AnchorRight"] = "0";
-            oc_Newobject3["text"] = "Min.";
-            oc_Newobject3["maxLength"] = "1024";
-
-            #endregion
-
-            oc_Newobject12["#Newobject3"] = oc_Newobject3;
-
-            #region GuiTextCtrl ()        oc_Newobject4
-
-            ObjectCreator oc_Newobject4 = new ObjectCreator("GuiTextCtrl", "");
-            oc_Newobject4["canSaveDynamicFields"] = "0";
-            oc_Newobject4["isContainer"] = "0";
-            oc_Newobject4["Profile"] = "GuiTextProfile";
-            oc_Newobject4["HorizSizing"] = "right";
-            oc_Newobject4["VertSizing"] = "bottom";
-            oc_Newobject4["Position"] = "59 62";
-            oc_Newobject4["Extent"] = "23 14";
-            oc_Newobject4["MinExtent"] = "8 2";
-            oc_Newobject4["canSave"] = "1";
-            oc_Newobject4["Visible"] = "1";
-            oc_Newobject4["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject4["hovertime"] = "1000";
-            oc_Newobject4["Margin"] = "0 0 0 0";
-            oc_Newobject4["Padding"] = "0 0 0 0";
-            oc_Newobject4["AnchorTop"] = "1";
-            oc_Newobject4["AnchorBottom"] = "0";
-            oc_Newobject4["AnchorLeft"] = "1";
-            oc_Newobject4["AnchorRight"] = "0";
-            oc_Newobject4["text"] = "Max.";
-            oc_Newobject4["maxLength"] = "1024";
-
-            #endregion
-
-            oc_Newobject12["#Newobject4"] = oc_Newobject4;
-
-            #region GuiTextEditCtrl ()        oc_Newobject5
-
-            ObjectCreator oc_Newobject5 = new ObjectCreator("GuiTextEditCtrl", "");
-            oc_Newobject5["canSaveDynamicFields"] = "0";
-            oc_Newobject5["isContainer"] = "0";
-            oc_Newobject5["Profile"] = "GuiTextEditProfile";
-            oc_Newobject5["HorizSizing"] = "right";
-            oc_Newobject5["VertSizing"] = "bottom";
-            oc_Newobject5["Position"] = "97 35";
-            oc_Newobject5["Extent"] = "66 18";
-            oc_Newobject5["MinExtent"] = "8 2";
-            oc_Newobject5["canSave"] = "1";
-            oc_Newobject5["Visible"] = "1";
-            oc_Newobject5["Variable"] = "$TPPHeightMin";
-            oc_Newobject5["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject5["hovertime"] = "1000";
-            oc_Newobject5["Margin"] = "0 0 0 0";
-            oc_Newobject5["Padding"] = "0 0 0 0";
-            oc_Newobject5["AnchorTop"] = "1";
-            oc_Newobject5["AnchorBottom"] = "0";
-            oc_Newobject5["AnchorLeft"] = "1";
-            oc_Newobject5["AnchorRight"] = "0";
-            oc_Newobject5["maxLength"] = "1024";
-            oc_Newobject5["historySize"] = "0";
-            oc_Newobject5["password"] = "0";
-            oc_Newobject5["tabComplete"] = "0";
-            oc_Newobject5["sinkAllKeyEvents"] = "0";
-            oc_Newobject5["passwordMask"] = "*";
-
-            #endregion
-
-            oc_Newobject12["#Newobject5"] = oc_Newobject5;
-
-            #region GuiTextEditCtrl ()        oc_Newobject6
-
-            ObjectCreator oc_Newobject6 = new ObjectCreator("GuiTextEditCtrl", "");
-            oc_Newobject6["canSaveDynamicFields"] = "0";
-            oc_Newobject6["isContainer"] = "0";
-            oc_Newobject6["Profile"] = "GuiTextEditProfile";
-            oc_Newobject6["HorizSizing"] = "right";
-            oc_Newobject6["VertSizing"] = "bottom";
-            oc_Newobject6["Position"] = "97 60";
-            oc_Newobject6["Extent"] = "66 18";
-            oc_Newobject6["MinExtent"] = "8 2";
-            oc_Newobject6["canSave"] = "1";
-            oc_Newobject6["Visible"] = "1";
-            oc_Newobject6["Variable"] = "$TPPHeightMax";
-            oc_Newobject6["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject6["hovertime"] = "1000";
-            oc_Newobject6["Margin"] = "0 0 0 0";
-            oc_Newobject6["Padding"] = "0 0 0 0";
-            oc_Newobject6["AnchorTop"] = "1";
-            oc_Newobject6["AnchorBottom"] = "0";
-            oc_Newobject6["AnchorLeft"] = "1";
-            oc_Newobject6["AnchorRight"] = "0";
-            oc_Newobject6["maxLength"] = "1024";
-            oc_Newobject6["historySize"] = "0";
-            oc_Newobject6["password"] = "0";
-            oc_Newobject6["tabComplete"] = "0";
-            oc_Newobject6["sinkAllKeyEvents"] = "0";
-            oc_Newobject6["passwordMask"] = "*";
-
-            #endregion
-
-            oc_Newobject12["#Newobject6"] = oc_Newobject6;
-
-            #region GuiTextCtrl ()        oc_Newobject7
-
-            ObjectCreator oc_Newobject7 = new ObjectCreator("GuiTextCtrl", "");
-            oc_Newobject7["canSaveDynamicFields"] = "0";
-            oc_Newobject7["isContainer"] = "0";
-            oc_Newobject7["Profile"] = "GuiTextProfile";
-            oc_Newobject7["HorizSizing"] = "right";
-            oc_Newobject7["VertSizing"] = "bottom";
-            oc_Newobject7["Position"] = "15 101";
-            oc_Newobject7["Extent"] = "33 13";
-            oc_Newobject7["MinExtent"] = "8 2";
-            oc_Newobject7["canSave"] = "1";
-            oc_Newobject7["Visible"] = "1";
-            oc_Newobject7["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject7["hovertime"] = "1000";
-            oc_Newobject7["Margin"] = "0 0 0 0";
-            oc_Newobject7["Padding"] = "0 0 0 0";
-            oc_Newobject7["AnchorTop"] = "1";
-            oc_Newobject7["AnchorBottom"] = "0";
-            oc_Newobject7["AnchorLeft"] = "1";
-            oc_Newobject7["AnchorRight"] = "0";
-            oc_Newobject7["text"] = "SLOPE";
-            oc_Newobject7["maxLength"] = "1024";
-
-            #endregion
-
-            oc_Newobject12["#Newobject7"] = oc_Newobject7;
-
-            #region GuiTextCtrl ()        oc_Newobject8
-
-            ObjectCreator oc_Newobject8 = new ObjectCreator("GuiTextCtrl", "");
-            oc_Newobject8["canSaveDynamicFields"] = "0";
-            oc_Newobject8["isContainer"] = "0";
-            oc_Newobject8["Profile"] = "GuiTextProfile";
-            oc_Newobject8["HorizSizing"] = "right";
-            oc_Newobject8["VertSizing"] = "bottom";
-            oc_Newobject8["Position"] = "59 101";
-            oc_Newobject8["Extent"] = "23 14";
-            oc_Newobject8["MinExtent"] = "8 2";
-            oc_Newobject8["canSave"] = "1";
-            oc_Newobject8["Visible"] = "1";
-            oc_Newobject8["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject8["hovertime"] = "1000";
-            oc_Newobject8["Margin"] = "0 0 0 0";
-            oc_Newobject8["Padding"] = "0 0 0 0";
-            oc_Newobject8["AnchorTop"] = "1";
-            oc_Newobject8["AnchorBottom"] = "0";
-            oc_Newobject8["AnchorLeft"] = "1";
-            oc_Newobject8["AnchorRight"] = "0";
-            oc_Newobject8["text"] = "Min.";
-            oc_Newobject8["maxLength"] = "1024";
-
-            #endregion
-
-            oc_Newobject12["#Newobject8"] = oc_Newobject8;
-
-            #region GuiTextCtrl ()        oc_Newobject9
-
-            ObjectCreator oc_Newobject9 = new ObjectCreator("GuiTextCtrl", "");
-            oc_Newobject9["canSaveDynamicFields"] = "0";
-            oc_Newobject9["isContainer"] = "0";
-            oc_Newobject9["Profile"] = "ToolsGuiTextProfile";
-            oc_Newobject9["HorizSizing"] = "right";
-            oc_Newobject9["VertSizing"] = "bottom";
-            oc_Newobject9["Position"] = "59 126";
-            oc_Newobject9["Extent"] = "23 14";
-            oc_Newobject9["MinExtent"] = "8 2";
-            oc_Newobject9["canSave"] = "1";
-            oc_Newobject9["Visible"] = "1";
-            oc_Newobject9["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject9["hovertime"] = "1000";
-            oc_Newobject9["Margin"] = "0 0 0 0";
-            oc_Newobject9["Padding"] = "0 0 0 0";
-            oc_Newobject9["AnchorTop"] = "1";
-            oc_Newobject9["AnchorBottom"] = "0";
-            oc_Newobject9["AnchorLeft"] = "1";
-            oc_Newobject9["AnchorRight"] = "0";
-            oc_Newobject9["text"] = "Max.";
-            oc_Newobject9["maxLength"] = "1024";
-
-            #endregion
-
-            oc_Newobject12["#Newobject9"] = oc_Newobject9;
-
-            #region GuiTextEditCtrl ()        oc_Newobject10
-
-            ObjectCreator oc_Newobject10 = new ObjectCreator("GuiTextEditCtrl", "");
-            oc_Newobject10["canSaveDynamicFields"] = "0";
-            oc_Newobject10["isContainer"] = "0";
-            oc_Newobject10["Profile"] = "ToolsGuiTextEditProfile";
-            oc_Newobject10["HorizSizing"] = "right";
-            oc_Newobject10["VertSizing"] = "bottom";
-            oc_Newobject10["Position"] = "97 99";
-            oc_Newobject10["Extent"] = "66 18";
-            oc_Newobject10["MinExtent"] = "8 2";
-            oc_Newobject10["canSave"] = "1";
-            oc_Newobject10["Visible"] = "1";
-            oc_Newobject10["Variable"] = "$TPPSlopeMin";
-            oc_Newobject10["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject10["hovertime"] = "1000";
-            oc_Newobject10["Margin"] = "0 0 0 0";
-            oc_Newobject10["Padding"] = "0 0 0 0";
-            oc_Newobject10["AnchorTop"] = "1";
-            oc_Newobject10["AnchorBottom"] = "0";
-            oc_Newobject10["AnchorLeft"] = "1";
-            oc_Newobject10["AnchorRight"] = "0";
-            oc_Newobject10["maxLength"] = "1024";
-            oc_Newobject10["historySize"] = "0";
-            oc_Newobject10["password"] = "0";
-            oc_Newobject10["tabComplete"] = "0";
-            oc_Newobject10["sinkAllKeyEvents"] = "0";
-            oc_Newobject10["passwordMask"] = "*";
-
-            #endregion
-
-            oc_Newobject12["#Newobject10"] = oc_Newobject10;
-
-            #region GuiTextEditCtrl ()        oc_Newobject11
-
-            ObjectCreator oc_Newobject11 = new ObjectCreator("GuiTextEditCtrl", "");
-            oc_Newobject11["canSaveDynamicFields"] = "0";
-            oc_Newobject11["isContainer"] = "0";
-            oc_Newobject11["Profile"] = "ToolsGuiTextEditProfile";
-            oc_Newobject11["HorizSizing"] = "right";
-            oc_Newobject11["VertSizing"] = "bottom";
-            oc_Newobject11["Position"] = "97 124";
-            oc_Newobject11["Extent"] = "66 18";
-            oc_Newobject11["MinExtent"] = "8 2";
-            oc_Newobject11["canSave"] = "1";
-            oc_Newobject11["Visible"] = "1";
-            oc_Newobject11["Variable"] = "$TPPSlopeMax";
-            oc_Newobject11["tooltipprofile"] = "ToolsGuiToolTipProfile";
-            oc_Newobject11["hovertime"] = "1000";
-            oc_Newobject11["Margin"] = "0 0 0 0";
-            oc_Newobject11["Padding"] = "0 0 0 0";
-            oc_Newobject11["AnchorTop"] = "1";
-            oc_Newobject11["AnchorBottom"] = "0";
-            oc_Newobject11["AnchorLeft"] = "1";
-            oc_Newobject11["AnchorRight"] = "0";
-            oc_Newobject11["maxLength"] = "1024";
-            oc_Newobject11["historySize"] = "0";
-            oc_Newobject11["password"] = "0";
-            oc_Newobject11["tabComplete"] = "0";
-            oc_Newobject11["sinkAllKeyEvents"] = "0";
-            oc_Newobject11["passwordMask"] = "*";
-
-            #endregion
-
-            oc_Newobject12["#Newobject11"] = oc_Newobject11;
-
-            #endregion
-
-            oc_Newobject13["#Newobject12"] = oc_Newobject12;
-
-            #endregion
-
-            oc_Newobject13.Create();
+            }
 
             omni.iGlobal["$TPPHeightMin"] = -10000;
             omni.iGlobal["$TPPHeightMax"] = 10000;
             omni.iGlobal["$TPPSlopeMin"] = 0;
             omni.iGlobal["$TPPSlopeMax"] = 90;
+            omni.iGlobal["$TPPCoverage"] = 100;
+
         }
 
         [ConsoleInteraction]
@@ -447,7 +538,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         public static void generateProceduralTerrainMask()
         {
             ((GuiCanvas) "Canvas").popDialog("ProceduralTerrainPainterGui");
-            ((TerrainEditor) "ETerrainEditor").autoMaterialLayer(omni.fGlobal["$TPPHeightMin"], omni.fGlobal["$TPPHeightMax"], omni.fGlobal["$TPPSlopeMin"], omni.fGlobal["$TPPSlopeMax"]);
+            ((TerrainEditor) "ETerrainEditor").autoMaterialLayer(omni.fGlobal["$TPPHeightMin"],
+                omni.fGlobal["$TPPHeightMax"], omni.fGlobal["$TPPSlopeMin"], omni.fGlobal["$TPPSlopeMax"], omni.fGlobal["$TPPCoverage"]);
         }
     }
 }

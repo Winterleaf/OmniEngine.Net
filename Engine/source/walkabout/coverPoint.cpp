@@ -326,3 +326,75 @@ void CoverPoint::render(ObjectRenderInst *ri, SceneRenderState *state, BaseMatIn
    if(peekOver())
       GFX->getDrawUtil()->drawArrow(desc, Point3F(0, 0, height * 0.5), Point3F(0, 0, height), ColorI::GREEN);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnCoverPoint_isOccupied(char * x__object)
+{
+CoverPoint* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isOccupied();
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

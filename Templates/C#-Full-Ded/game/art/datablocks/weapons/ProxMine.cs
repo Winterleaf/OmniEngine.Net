@@ -22,7 +22,7 @@
 
 datablock SFXProfile( MineArmedSound )
 {
-   filename = "art/sound/weapons/mine_armed.wav";
+   filename = "art/sound/weapons/mine_armed";
    description = AudioClose3d;
    preload = true;
 };
@@ -43,7 +43,6 @@ datablock SFXProfile( MineTriggeredSound )
 
 datablock ProximityMineData( ProxMine )
 {
-   
    // ShapeBaseData fields
    category = "Weapon";
    shapeFile = "art/shapes/weapons/ProxMine/TP_ProxMine.DAE";
@@ -82,7 +81,6 @@ datablock ProximityMineData( ProxMine )
    radiusDamage = 300;           // amount of damage to apply to objects in radius
    damageRadius = 8;            // search radius to damage objects when exploding
    areaImpulse = 2000;          // magnitude of impulse to apply to objects in radius
-   preload = true;
 };
 
 datablock ShapeBaseImageData( ProxMineImage )
@@ -230,5 +228,4 @@ datablock ShapeBaseImageData( ProxMineImage )
    stateSequenceTransitionOut[9]    = true;
    stateAllowImageChange[9]         = false;
    stateSequence[9]                 = "sprint2run";
-   preload = true;
 };

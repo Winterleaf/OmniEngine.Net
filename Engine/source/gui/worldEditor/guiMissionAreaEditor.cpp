@@ -117,3 +117,105 @@ DefineConsoleMethod( GuiMissionAreaEditorCtrl, getSelectedMissionArea, const cha
 
    return missionArea->getIdString();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMissionAreaEditorCtrl_getSelectedMissionArea(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiMissionAreaEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   MissionArea *missionArea = object->getSelectedMissionArea();
+   if ( !missionArea )
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =missionArea->getIdString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiMissionAreaEditorCtrl_setSelectedMissionArea(char * x__object, char * x__missionAreaName)
+{
+GuiMissionAreaEditorCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* missionAreaName = (const char*)x__missionAreaName;
+{
+   if ( missionAreaName == "" )
+      object->setSelectedMissionArea(NULL);
+   else
+   {
+      MissionArea *missionArea = NULL;
+      if ( Sim::findObject( missionAreaName, missionArea ) )
+         object->setSelectedMissionArea(missionArea);
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

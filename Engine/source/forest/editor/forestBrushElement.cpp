@@ -198,3 +198,83 @@ DefineConsoleMethod( ForestBrush, containsItemData, bool, ( const char * obj ), 
 
    return object->containsItemData( data );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_ForestBrush_containsItemData(char * x__object, char * x__obj)
+{
+ForestBrush* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* obj = (const char*)x__obj;
+bool wle_returnObject;
+{
+   ForestItemData *data = NULL;
+   if ( !Sim::findObject( obj, data ) )
+   {
+      Con::warnf( "ForestBrush::containsItemData - invalid object passed" );
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =object->containsItemData( data );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

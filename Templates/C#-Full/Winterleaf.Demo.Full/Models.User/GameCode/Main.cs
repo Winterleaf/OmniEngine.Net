@@ -192,6 +192,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
                 omni.console.Call("onStart");
                 //onStart();
                 omni.console.print("Engine initialized...");
+                GuiCanvas canvas1 = "Canvas";
+                if (!omni.bGlobal["$isDedicated"])
+                    {
+                    omni.Util.closeSplashWindow();
+                    canvas1.showWindow();
+                    }
+
                 if (omni.sGlobal["$platform"] == "xenon")
                     {
                     const string mission = "levels//Empty Terrain.mis";
@@ -210,7 +217,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
                     }
                 }
 
+
             GuiCanvas canvas = "Canvas";
+            
+
 
             if (omni.bGlobal["$startWorldEditor"])
                 {

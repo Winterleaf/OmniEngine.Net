@@ -1345,3 +1345,465 @@ void GuiAutoCompleteCtrl::replaceText(S32 boolVal)
 {
    mReplaceText = boolVal;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_add(char * x__object, char * x__a2, char * x__a3, char * x__a4)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+{
+S32 argc = 5;
+if ( dStrlen(a4) == 0 )
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+else
+argc=5;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+if ( argc >4 )
+arguments.push_back(a4);
+const char** argv = &arguments[0];
+{
+	if ( argc == 4 )
+		object->addEntry(argv[2],dAtoi(argv[3]));
+   if ( argc == 5 )
+      object->addEntry(argv[2],dAtoi(argv[3]),dAtoi(argv[4]));
+   else
+      object->addEntry(argv[2]);
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_addScheme(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+{
+S32 argc = 6;
+argc=6;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+arguments.push_back(a3);
+arguments.push_back(a4);
+arguments.push_back(a5);
+const char** argv = &arguments[0];
+{
+   ColorI fontColor, fontColorHL, fontColorSEL;
+   U32 r, g, b;
+   char buf[64];
+   dStrcpy( buf, argv[3] );
+   char* temp = dStrtok( buf, " \0" );
+   r = temp ? dAtoi( temp ) : 0;
+   temp = dStrtok( NULL, " \0" );
+   g = temp ? dAtoi( temp ) : 0;
+   temp = dStrtok( NULL, " \0" );
+   b = temp ? dAtoi( temp ) : 0;
+   fontColor.set( r, g, b );
+   dStrcpy( buf, argv[4] );
+   temp = dStrtok( buf, " \0" );
+   r = temp ? dAtoi( temp ) : 0;
+   temp = dStrtok( NULL, " \0" );
+   g = temp ? dAtoi( temp ) : 0;
+   temp = dStrtok( NULL, " \0" );
+   b = temp ? dAtoi( temp ) : 0;
+   fontColorHL.set( r, g, b );
+   dStrcpy( buf, argv[5] );
+   temp = dStrtok( buf, " \0" );
+   r = temp ? dAtoi( temp ) : 0;
+   temp = dStrtok( NULL, " \0" );
+   g = temp ? dAtoi( temp ) : 0;
+   temp = dStrtok( NULL, " \0" );
+   b = temp ? dAtoi( temp ) : 0;
+   fontColorSEL.set( r, g, b );
+   object->addScheme( dAtoi( argv[2] ), fontColor, fontColorHL, fontColorSEL );
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_changeTextById(char * x__object, char * x__a2, char * x__a3)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+{
+S32 argc = 4;
+argc=4;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+arguments.push_back(a3);
+const char** argv = &arguments[0];
+{
+   object->setEntryText( dAtoi( argv[ 2 ] ), argv[ 3 ] );
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_clear(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->clear();
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_clearEntry(char * x__object, char * x__a2)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+{
+S32 argc = 3;
+argc=3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+const char** argv = &arguments[0];
+{
+   object->clearEntry(dAtoi(argv[2]));  
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiAutoCompleteCtrl_findText(char * x__object, char * x__a2)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+const char* a2 = (const char*)x__a2;
+{
+S32 argc = 3;
+argc=3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+const char** argv = &arguments[0];
+{
+  return (S32)(( object->findText( argv[2] ) ));   
+}
+}
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_forceClose(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->closePopUp();
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_forceOnAction(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->onAction();
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiAutoCompleteCtrl_getSelected(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+{
+  return (S32)( object->getSelected());
+}
+}
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_getText(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->getText("");
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_getTextById(char * x__object, char * x__a2,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* wle_returnObject;
+{
+S32 argc = 3;
+argc=3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+const char** argv = &arguments[0];
+{
+   {wle_returnObject =(object->getTextById(dAtoi(argv[2])));
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_replaceText(char * x__object, char * x__a2)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+{
+S32 argc = 3;
+argc=3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+const char** argv = &arguments[0];
+{
+   object->replaceText(dAtoi(argv[2]));  
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_setEnumContent(char * x__object, char * x__a2, char * x__a3)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+{
+S32 argc = 4;
+argc=4;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+arguments.push_back(a3);
+const char** argv = &arguments[0];
+{
+   AbstractClassRep * classRep = AbstractClassRep::getClassList();
+      while(classRep)
+   {
+      if(!dStricmp(classRep->getClassName(), argv[2]))
+         break;
+      classRep = classRep->getNextClass();
+   }
+      if(!classRep)
+   {
+      Con::warnf(ConsoleLogEntry::General, "failed to locate class rep for '%s'", argv[2]);
+      return;
+   }
+      U32 i;
+   for(i = 0; i < classRep->mFieldList.size(); i++)
+      if(!dStricmp(classRep->mFieldList[i].pFieldname, argv[3]))
+         break;
+      if(i == classRep->mFieldList.size())
+   {   
+      Con::warnf(ConsoleLogEntry::General, "failed to locate field '%s' for class '%s'", argv[3], argv[2]);
+      return;
+   }
+   const AbstractClassRep::Field & field = classRep->mFieldList[i];
+   ConsoleBaseType* conType = ConsoleBaseType::getType( field.type );
+      if( !conType->getEnumTable() )
+   {
+      Con::warnf(ConsoleLogEntry::General, "field '%s' is not an enumeration for class '%s'", argv[3], argv[2]);
+      return;
+   }
+      const EngineEnumTable& table = *( conType->getEnumTable() );
+   const U32 numValues = table.getNumValues();
+   
+   for(i = 0; i < numValues; i++)
+      object->addEntry( table[i].getName(), table[i] );
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_setFirstSelected(char * x__object, char * x__a2)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+{
+S32 argc = 3;
+if ( dStrlen(a2) == 0 )
+argc=2;
+else
+argc=3;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+if ( argc >2 )
+arguments.push_back(a2);
+const char** argv = &arguments[0];
+{
+	if( argc > 2 )
+      object->setFirstSelected( dAtob( argv[2] ) );
+   else
+      object->setFirstSelected();
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_setNoneSelected(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->setNoneSelected();
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_setSelected(char * x__object, char * x__a2, char * x__a3)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+{
+S32 argc = 4;
+if ( dStrlen(a3) == 0 )
+argc=3;
+else
+argc=4;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+if ( argc >3 )
+arguments.push_back(a3);
+const char** argv = &arguments[0];
+{
+   if( argc > 3 )
+      object->setSelected( dAtoi( argv[2] ), dAtob( argv[3] ) );
+   else
+      object->setSelected( dAtoi( argv[2] ) );
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiAutoCompleteCtrl_size(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+{
+  return (S32)(( object->getNumEntries() )); 
+}
+}
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_sort(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->sort();
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiAutoCompleteCtrl_sortID(char * x__object)
+{
+GuiAutoCompleteCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+{
+   object->sortID();
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

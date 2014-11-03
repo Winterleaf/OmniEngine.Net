@@ -336,3 +336,303 @@ DefineConsoleFunction( mIsPow2, bool, ( S32 v ),,
 {
    return isPow2( v );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getMax(F32 v1, F32 v2)
+{
+
+{
+  return (F32)( getMax( v1, v2 ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getMin(F32 v1, F32 v2)
+{
+
+{
+  return (F32)( getMin( v1, v2 ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_m2Pi()
+{
+{
+  return (F32)( M_2PI_F);
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mAbs(F32 v)
+{
+{
+  return (F32)( mFabs( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mAcos(F32 v)
+{
+{
+  return (F32)( mAcos( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mAsin(F32 v)
+{
+{
+  return (F32)( mAsin( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mAtan(F32 rise, F32 run)
+{
+
+{
+  return (F32)( mAtan2( rise, run ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_mCeil(F32 v)
+{
+{
+  return (S32)( (S32)mCeil( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mClamp(F32 v, F32 min, F32 max)
+{
+
+{
+  return (F32)( mClampF( v, min, max ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mCos(F32 v)
+{
+{
+  return (F32)( mCos( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mDegToRad(F32 degrees)
+{
+{
+  return (F32)( mDegToRad( degrees ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_mFloatLength(F32 v, U32 precision,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   char fmtString[8] = "%.9f";
+   if (precision >= 9)
+      precision = 9;
+   fmtString[2] = '0' + precision;
+   static const U32 bufSize = 256;
+   char * outBuffer = Con::getReturnBuffer(bufSize);
+   dSprintf(outBuffer, bufSize, fmtString, v);
+   {wle_returnObject =outBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_mFloor(F32 v)
+{
+{
+  return (S32)( (S32)mFloor( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mFMod(F32 v, F32 d)
+{
+
+{
+  return (F32)( mFmod( v, d ));
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_mIsPow2(S32 v)
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =isPow2( v );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mLerp(F32 v1, F32 v2, F32 time)
+{
+
+{
+  return (F32)( mLerp( v1, v2, time ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mLog(F32 v)
+{
+{
+  return (F32)( mLog( v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mPi()
+{
+{
+  return (F32)( M_PI_F);
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mPow(F32 v, F32 p)
+{
+
+{
+  return (F32)( mPow( v, p ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mRadToDeg(F32 radians)
+{
+{
+  return (F32)( mRadToDeg( radians ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mRound(F32 v, S32 n)
+{
+
+{  
+    if(n <= 0)
+	{
+       return (F32)( mRound(v));  
+	}
+    else  
+	{
+       return (F32)( mRound(v, n));  
+	}
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mSaturate(F32 v)
+{
+{
+  return (F32)( mClampF( v, 0.0f, 1.0f ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mSin(F32 v)
+{
+{
+  return (F32)( mSin( v ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_mSolveCubic(F32 a, F32 b, F32 c, F32 d,  char* retval)
+{
+dSprintf(retval,16384,"");
+
+const char* wle_returnObject;
+{    
+   F32 x[3];
+   U32 sol = mSolveCubic( a, b, c, d, x );
+   static const U32 bufSize = 256;
+   char * retBuffer = Con::getReturnBuffer(bufSize);
+   dSprintf(retBuffer, bufSize, "%d %g %g %g", sol, x[0], x[1], x[2]);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_mSolveQuadratic(F32 a, F32 b, F32 c,  char* retval)
+{
+dSprintf(retval,16384,"");
+
+const char* wle_returnObject;
+{
+   F32 x[2];
+   U32 sol = mSolveQuadratic( a, b, c, x );
+   static const U32 bufSize = 256;
+   char * retBuffer = Con::getReturnBuffer(bufSize);
+   dSprintf(retBuffer, bufSize, "%d %g %g", sol, x[0], x[1]);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_mSolveQuartic(F32 a, F32 b, F32 c, F32 d, F32 e,  char* retval)
+{
+dSprintf(retval,16384,"");
+
+
+const char* wle_returnObject;
+{
+   F32 x[4];
+   static const U32 bufSize = 256;
+   char * retBuffer = Con::getReturnBuffer(bufSize);
+   U32 sol = mSolveQuartic(a, b, c, d, e, x);
+   dSprintf(retBuffer, 256, "%d %g %g %g %g", sol, x[0], x[1], x[2], x[3]);
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mSqrt(F32 v)
+{
+{
+  return (F32)( mSqrt (v ));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_mTan(F32 v)
+{
+{
+  return (F32)( mTan( v ));
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

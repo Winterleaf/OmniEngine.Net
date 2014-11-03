@@ -203,7 +203,7 @@ pInvokes.m_ts.fnTCPObject_disconnect(_ID);
 /// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
-public  void listen(int port){
+public  void listen(uint port){
 
 pInvokes.m_ts.fnTCPObject_listen(_ID, port);
 }

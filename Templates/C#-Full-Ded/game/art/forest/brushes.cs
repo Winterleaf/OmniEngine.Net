@@ -26,24 +26,15 @@
 
 //--- OBJECT WRITE BEGIN ---
 new SimGroup(ForestBrushGroup) {
-   editable = "0";
-   canSave = "1";
    canSaveDynamicFields = "1";
-   Enabled = "1";
 
    new ForestBrush() {
       internalName = "ExampleForestBrush";
-      editable = "0";
-      canSave = "1";
       canSaveDynamicFields = "1";
-      Enabled = "1";
 
       new ForestBrushElement() {
          internalName = "ExampleElement";
-         editable = "0";
-         canSave = "1";
          canSaveDynamicFields = "1";
-         Enabled = "1";
          ForestItemData = "ExampleForestMesh";
          probability = "1";
          rotationRange = "360";
@@ -57,10 +48,10 @@ new SimGroup(ForestBrushGroup) {
          slopeMax = "30";
          elevationMin = "-10000";
          elevationMax = "10000";
-            clumpCountExponent = "1";
-            clumpCountMax = "1";
-            clumpCountMin = "1";
-            clumpRadius = "10";
+         clumpCountMin = "1";
+         clumpCountMax = "1";
+         clumpCountExponent = "1";
+         clumpRadius = "10";
       };
    };
 };

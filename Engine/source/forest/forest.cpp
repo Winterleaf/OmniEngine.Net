@@ -392,3 +392,130 @@ DefineEngineMethod( Forest, addItemWithTransform, void, (ForestItemData *data, T
    if(object->getData() && data)
       object->getData()->addItem(data, trans.getMatrix(), scale);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Forest_clear(char * x__object)
+{
+Forest* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clear();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_Forest_isDirty(char * x__object)
+{
+Forest* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->getData() && object->getData()->isDirty();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Forest_regenCells(char * x__object)
+{
+Forest* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->getData()->regenCells();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Forest_saveDataFile(char * x__object, char * x__path)
+{
+Forest* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* path = (const char*)x__path;
+{   
+   object->saveDataFile( path );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnForest_addItem(char * x__object, char * x__data, char * x__position, F32 rotation, F32 scale)
+{
+Forest* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ForestItemData* data; Sim::findObject(x__data, data ); 
+Point3F position = Point3F();
+sscanf(x__position,"%f %f %f",&position.x,&position.y,&position.z);
+
+{ 
+   if(object->getData() && data)
+      object->getData()->addItem(data, position, rotation, scale);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnForest_addItemWithTransform(char * x__object, char * x__data, char * x__trans, F32 scale)
+{
+Forest* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+ForestItemData* data; Sim::findObject(x__data, data ); 
+TransformF trans = TransformF();
+sscanf( x__trans,"%f %f %f %f %f %f %f", &trans.mPosition.x, &trans.mPosition.y, &trans.mPosition.z, &trans.mOrientation.axis.x, &trans.mOrientation.axis.y, &trans.mOrientation.axis.z, &trans.mOrientation.angle);
+{ 
+   if(object->getData() && data)
+      object->getData()->addItem(data, trans.getMatrix(), scale);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

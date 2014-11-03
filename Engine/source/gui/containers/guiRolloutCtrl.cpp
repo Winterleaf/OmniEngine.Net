@@ -648,3 +648,141 @@ DefineEngineMethod( GuiRolloutCtrl, sizeToContents, void, (),,
 {
    object->sizeToContents();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_collapse(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->collapse();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_expand(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->expand();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_instantCollapse(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->instantCollapse();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_instantExpand(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->instantExpand();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiRolloutCtrl_isExpanded(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isExpanded();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_sizeToContents(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->sizeToContents();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_toggleCollapse(char * x__object)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if( object->isExpanded() )
+      object->collapse();
+   else
+	  object->expand();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiRolloutCtrl_toggleExpanded(char * x__object, bool instantly)
+{
+GuiRolloutCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->toggleExpanded( instantly );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

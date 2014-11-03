@@ -2200,3 +2200,360 @@ AsciiMapping gAsciiMap[] =
    //{ "ydieresis",       0x00ff },
    { "nomatch",         0xFFFF }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getCurrentActionMap(char* retval)
+{
+dSprintf(retval,1024,"");
+ActionMap* wle_returnObject;
+{
+   SimSet* pActionMapSet = Sim::getActiveActionMapSet();
+   {wle_returnObject =dynamic_cast< ActionMap* >( pActionMapSet->last() );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnActionMap_bind(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+bool wle_returnObject;
+{
+S32 argc = 10;
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+if ( dStrlen(a5) == 0 )
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+arguments.push_back(a3);
+arguments.push_back(a4);
+if ( argc >5 )
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+const char** argv = &arguments[0];
+{
+   {wle_returnObject =object->processBind( argc - 2, argv + 2, NULL );
+return (S32)(wle_returnObject);}
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnActionMap_bindCmd(char * x__object, char * x__device, char * x__action, char * x__makeCmd, char * x__breakCmd)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+const char* makeCmd = (const char*)x__makeCmd;
+const char* breakCmd = (const char*)x__breakCmd;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->processBindCmd( device, action, makeCmd, breakCmd );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnActionMap_bindObj(char * x__object, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+bool wle_returnObject;
+{
+S32 argc = 11;
+if ( dStrlen(a10) == 0 )
+if ( dStrlen(a9) == 0 )
+if ( dStrlen(a8) == 0 )
+if ( dStrlen(a7) == 0 )
+if ( dStrlen(a6) == 0 )
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back("");
+arguments.push_back(a2);
+arguments.push_back(a3);
+arguments.push_back(a4);
+arguments.push_back(a5);
+if ( argc >6 )
+arguments.push_back(a6);
+if ( argc >7 )
+arguments.push_back(a7);
+if ( argc >8 )
+arguments.push_back(a8);
+if ( argc >9 )
+arguments.push_back(a9);
+if ( argc >10 )
+arguments.push_back(a10);
+const char** argv = &arguments[0];
+{
+    SimObject* simObject = Sim::findObject(argv[argc - 1]);
+    if ( simObject == NULL )
+    {
+        Con::warnf("ActionMap::bindObj() - Cannot bind, specified object was not found!");
+        {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+    }
+    {wle_returnObject =object->processBind( argc - 3, argv + 2, simObject );
+return (S32)(wle_returnObject);}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnActionMap_getBinding(char * x__object, char * x__command,  char* retval)
+{
+dSprintf(retval,16384,"");
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* command = (const char*)x__command;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getBinding( command );	
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnActionMap_getCommand(char * x__object, char * x__device, char * x__action,  char* retval)
+{
+dSprintf(retval,16384,"");
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getCommand( device, action );	
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnActionMap_getDeadZone(char * x__object, char * x__device, char * x__action,  char* retval)
+{
+dSprintf(retval,16384,"");
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getDeadZone( device, action );	
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnActionMap_getScale(char * x__object, char * x__device, char * x__action)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+{
+	return object->getScale( device, action );	
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnActionMap_isInverted(char * x__object, char * x__device, char * x__action)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+bool wle_returnObject;
+{
+	{wle_returnObject =object->isInverted( device, action );	
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnActionMap_pop(char * x__object)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   SimSet* pActionMapSet = Sim::getActiveActionMapSet();
+   pActionMapSet->removeObject( object );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnActionMap_push(char * x__object)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   SimSet* pActionMapSet = Sim::getActiveActionMapSet();
+   pActionMapSet->pushObject( object );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnActionMap_save(char * x__object, char * x__fileName, bool append)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* fileName = (const char*)x__fileName;
+
+{
+   char buffer[1024];
+   if(fileName)
+   {
+      if(Con::expandScriptFilename(buffer, sizeof(buffer), fileName))
+         fileName = buffer;
+   }
+   object->dumpActionMap( fileName, append );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnActionMap_unbind(char * x__object, char * x__device, char * x__action)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->processUnbind( device, action );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnActionMap_unbindObj(char * x__object, char * x__device, char * x__action, char * x__obj)
+{
+ActionMap* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* device = (const char*)x__device;
+const char* action = (const char*)x__action;
+const char* obj = (const char*)x__obj;
+bool wle_returnObject;
+{
+    SimObject* simObject = Sim::findObject(obj);
+    if ( simObject == NULL )
+    {
+        Con::warnf("ActionMap::unbindObj() - Cannot unbind, specified object was not found!");
+        {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+    }
+    {wle_returnObject =object->processUnbind( device, action, simObject );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -884,3 +884,161 @@ void GuiGameListMenuProfile::initPersistFields()
 
    removeField("profileForChildren");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListMenuCtrl_activateRow(char * x__object)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->activateRow();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListMenuCtrl_addRow(char * x__object, char * x__label, char * x__callback, S32 icon, S32 yPad, bool useHighlightIcon, bool enabled)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* label = (const char*)x__label;
+const char* callback = (const char*)x__callback;
+
+
+{
+   object->addRow( label, callback, icon, yPad, useHighlightIcon, enabled );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiGameListMenuCtrl_getRowCount(char * x__object)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getRowCount());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListMenuCtrl_getRowLabel(char * x__object, S32 row,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   {wle_returnObject =object->getRowLabel( row );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiGameListMenuCtrl_getSelectedRow(char * x__object)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getSelected());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiGameListMenuCtrl_isRowEnabled(char * x__object, S32 row)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isRowEnabled( row );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListMenuCtrl_setRowEnabled(char * x__object, S32 row, bool enabled)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   object->setRowEnabled( row, enabled );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListMenuCtrl_setRowLabel(char * x__object, S32 row, char * x__label)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* label = (const char*)x__label;
+{
+   object->setRowLabel( row, label );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGameListMenuCtrl_setSelected(char * x__object, S32 row)
+{
+GuiGameListMenuCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setSelected( row );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

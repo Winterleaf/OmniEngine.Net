@@ -275,3 +275,86 @@ void InspectorFieldUndoAction::undo()
    // since an undo action must become a redo action and vice-versa
    mData = data;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MECreateUndoAction_addObject(char * x__object, char * x__obj)
+{
+MECreateUndoAction* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+{
+	if (obj)
+   	object->addObject( obj );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_MEDeleteUndoAction_deleteObject(char * x__object, char * x__obj)
+{
+MEDeleteUndoAction* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+SimObject* obj; Sim::findObject(x__obj, obj ); 
+{
+	if (obj)
+   	object->deleteObject( obj );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

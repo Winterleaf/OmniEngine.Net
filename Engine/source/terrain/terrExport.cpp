@@ -153,3 +153,94 @@ DefineConsoleMethod( TerrainBlock, exportLayerMaps, bool, (const char * filePref
    return object->exportLayerMaps( filePrefix, format );
 }
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainBlock_exportHeightMap(char * x__object, char * x__fileNameStr, char * x__format)
+{
+TerrainBlock* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* fileNameStr = (const char*)x__fileNameStr;
+const char* format = (const char*)x__format;
+bool wle_returnObject;
+{
+   UTF8 fileName[1024];
+   Con::expandScriptFilename( fileName, sizeof( fileName ), fileNameStr );
+   {wle_returnObject =object->exportHeightMap( fileName, format );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_TerrainBlock_exportLayerMaps(char * x__object, char * x__filePrefixStr, char * x__format)
+{
+TerrainBlock* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* filePrefixStr = (const char*)x__filePrefixStr;
+const char* format = (const char*)x__format;
+bool wle_returnObject;
+{
+   UTF8 filePrefix[1024];
+   Con::expandScriptFilename( filePrefix, sizeof( filePrefix ), filePrefixStr );
+   {wle_returnObject =object->exportLayerMaps( filePrefix, format );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

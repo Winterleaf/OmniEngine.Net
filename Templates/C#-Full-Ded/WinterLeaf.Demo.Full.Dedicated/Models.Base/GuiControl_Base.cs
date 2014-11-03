@@ -694,7 +694,6 @@ public bool windowSettings
 #region Member Functions
 /// <summary>
 /// )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  RectI getBounds(){
@@ -703,7 +702,6 @@ return new RectI ( pInvokes.m_ts.fn_GuiControl_getBounds(_ID));
 }
 /// <summary>
 /// )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string getValue(){
@@ -712,7 +710,6 @@ return pInvokes.m_ts.fn_GuiControl_getValue(_ID);
 }
 /// <summary>
 /// )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isActive(){
@@ -721,7 +718,6 @@ return pInvokes.m_ts.fn_GuiControl_isActive(_ID);
 }
 /// <summary>
 /// (bool isFirst))
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void makeFirstResponder(bool isFirst){
@@ -729,9 +725,7 @@ public  void makeFirstResponder(bool isFirst){
 pInvokes.m_ts.fn_GuiControl_makeFirstResponder(_ID, isFirst);
 }
 /// <summary>
-///  Set the width and height of the control.
-///    @hide )
-/// 
+///  Set the width and height of the control.   @hide )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setExtent(Point2F ext){
@@ -739,13 +733,7 @@ public  void setExtent(Point2F ext){
 pInvokes.m_ts.fn_GuiControl_setExtent(_ID, ext.AsString());
 }
 /// <summary>
-/// Add the given control as a child to this control.
-///    This is synonymous to calling SimGroup::addObject.
-///    @param control The control to add as a child.
-///    @note The control will retain its current position and size.
-///    @see SimGroup::addObject
-///    @ref GuiControl_Hierarchy )
-/// 
+/// Add the given control as a child to this control.   This is synonymous to calling SimGroup::addObject.   @param control The control to add as a child.   @note The control will retain its current position and size.   @see SimGroup::addObject   @ref GuiControl_Hierarchy )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void addGuiControl(string control){
@@ -754,7 +742,6 @@ pInvokes.m_ts.fnGuiControl_addGuiControl(_ID, control);
 }
 /// <summary>
 /// Returns if the control's background color can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool canChangeContextBackColor(){
@@ -763,7 +750,6 @@ return pInvokes.m_ts.fnGuiControl_canChangeContextBackColor(_ID);
 }
 /// <summary>
 /// Returns if the control's fill color can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool canChangeContextFillColor(){
@@ -772,7 +758,6 @@ return pInvokes.m_ts.fnGuiControl_canChangeContextFillColor(_ID);
 }
 /// <summary>
 /// Returns if the control's font color can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool canChangeContextFontColor(){
@@ -781,7 +766,6 @@ return pInvokes.m_ts.fnGuiControl_canChangeContextFontColor(_ID);
 }
 /// <summary>
 /// Returns if the control's font size can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool canChangeContextFontSize(){
@@ -790,7 +774,6 @@ return pInvokes.m_ts.fnGuiControl_canChangeContextFontSize(_ID);
 }
 /// <summary>
 /// Returns if the control's window settings can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool canShowContextWindowSettings(){
@@ -798,9 +781,7 @@ public  bool canShowContextWindowSettings(){
 return pInvokes.m_ts.fnGuiControl_canShowContextWindowSettings(_ID);
 }
 /// <summary>
-/// Clear this control from being the first responder in its hierarchy chain.
-///    @param ignored Ignored.  Supported for backwards-compatibility. )
-/// 
+/// Clear this control from being the first responder in its hierarchy chain.   @param ignored Ignored.  Supported for backwards-compatibility. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void clearFirstResponder(bool ignored = false){
@@ -808,10 +789,7 @@ public  void clearFirstResponder(bool ignored = false){
 pInvokes.m_ts.fnGuiControl_clearFirstResponder(_ID, ignored);
 }
 /// <summary>
-/// Test whether the given control is a direct or indirect child to this control.
-///    @param control The potential child control.
-///    @return True if the given control is a direct or indirect child to this control. )
-/// 
+/// Test whether the given control is a direct or indirect child to this control.   @param control The potential child control.   @return True if the given control is a direct or indirect child to this control. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool controlIsChild(string control){
@@ -819,10 +797,7 @@ public  bool controlIsChild(string control){
 return pInvokes.m_ts.fnGuiControl_controlIsChild(_ID, control);
 }
 /// <summary>
-/// Test whether the given control is a sibling of this control.
-///    @param control The potential sibling control.
-///    @return True if the given control is a sibling of this control. )
-/// 
+/// Test whether the given control is a sibling of this control.   @param control The potential sibling control.   @return True if the given control is a sibling of this control. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool controlIsSibling(string control){
@@ -830,14 +805,7 @@ public  bool controlIsSibling(string control){
 return pInvokes.m_ts.fnGuiControl_controlIsSibling(_ID, control);
 }
 /// <summary>
-/// Find the topmost child control located at the given coordinates.
-///    @note Only children that are both visible and have the 'modal' flag set in their profile will be considered in the search.
-///    @param x The X coordinate in the control's own coordinate space.
-///    @param y The Y coordinate in the control's own coordinate space.
-///    @return The topmost child control at the given coordintes or the control on which the method was called if no matching child could be found.
-///    @see GuiControlProfile::modal
-///    @see findHitControls )
-/// 
+/// Find the topmost child control located at the given coordinates.   @note Only children that are both visible and have the 'modal' flag set in their profile will be considered in the search.   @param x The X coordinate in the control's own coordinate space.   @param y The Y coordinate in the control's own coordinate space.   @return The topmost child control at the given coordintes or the control on which the method was called if no matching child could be found.   @see GuiControlProfile::modal   @see findHitControls )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string findHitControl(int x, int y){
@@ -845,20 +813,7 @@ public  string findHitControl(int x, int y){
 return pInvokes.m_ts.fnGuiControl_findHitControl(_ID, x, y);
 }
 /// <summary>
-/// Find all visible child controls that intersect with the given rectangle.
-///    @note Invisible child controls will not be included in the search.
-///    @param x The X coordinate of the rectangle's upper left corner in the control's own coordinate space.
-///    @param y The Y coordinate of the rectangle's upper left corner in the control's own coordinate space.
-///    @param width The width of the search rectangle in pixels.
-///    @param height The height of the search rectangle in pixels.
-///    @return A space-separated list of the IDs of all visible control objects intersecting the given rectangle.
-///    @tsexample
-///    // Lock all controls in the rectangle at x=10 and y=10 and the extent width=100 and height=100.
-///    foreach$( %ctrl in %this.findHitControls( 10, 10, 100, 100 ) )
-///       %ctrl.setLocked( true );
-///    @endtsexample
-///    @see findHitControl )
-/// 
+/// Find all visible child controls that intersect with the given rectangle.   @note Invisible child controls will not be included in the search.   @param x The X coordinate of the rectangle's upper left corner in the control's own coordinate space.   @param y The Y coordinate of the rectangle's upper left corner in the control's own coordinate space.   @param width The width of the search rectangle in pixels.   @param height The height of the search rectangle in pixels.   @return A space-separated list of the IDs of all visible control objects intersecting the given rectangle.   @tsexample   // Lock all controls in the rectangle at x=10 and y=10 and the extent width=100 and height=100.   foreach$( %ctrl in %this.findHitControls( 10, 10, 100, 100 ) )      %ctrl.setLocked( true );   @endtsexample   @see findHitControl )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string findHitControls(int x, int y, int width, int height){
@@ -867,7 +822,6 @@ return pInvokes.m_ts.fnGuiControl_findHitControls(_ID, x, y, width, height);
 }
 /// <summary>
 /// Get the alpha fade time for the object. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  int getAlphaFadeTime(){
@@ -876,7 +830,6 @@ return pInvokes.m_ts.fnGuiControl_getAlphaFadeTime(_ID);
 }
 /// <summary>
 /// Get the alpha for the object. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  float getAlphaValue(){
@@ -884,10 +837,7 @@ public  float getAlphaValue(){
 return pInvokes.m_ts.fnGuiControl_getAlphaValue(_ID);
 }
 /// <summary>
-/// Get the aspect ratio of the control's extents.
-///    @return The width of the control divided by its height.
-///    @see getExtent )
-/// 
+/// Get the aspect ratio of the control's extents.   @return The width of the control divided by its height.   @see getExtent )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  float getAspect(){
@@ -895,9 +845,7 @@ public  float getAspect(){
 return pInvokes.m_ts.fnGuiControl_getAspect(_ID);
 }
 /// <summary>
-/// Get the coordinate of the control's center point relative to its parent.
-///    @return The coordinate of the control's center point in parent-relative coordinates. )
-/// 
+/// Get the coordinate of the control's center point relative to its parent.   @return The coordinate of the control's center point in parent-relative coordinates. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getCenter(){
@@ -906,7 +854,6 @@ return new Point2I ( pInvokes.m_ts.fnGuiControl_getCenter(_ID));
 }
 /// <summary>
 /// Sets the font size of a control. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  int getControlFontSize(){
@@ -915,7 +862,6 @@ return pInvokes.m_ts.fnGuiControl_getControlFontSize(_ID);
 }
 /// <summary>
 /// Returns if the control is locked or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool getControlLock(){
@@ -924,7 +870,6 @@ return pInvokes.m_ts.fnGuiControl_getControlLock(_ID);
 }
 /// <summary>
 /// Returns the filename of the texture of the control. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string getControlTextureFile(){
@@ -932,9 +877,7 @@ public  string getControlTextureFile(){
 return pInvokes.m_ts.fnGuiControl_getControlTextureFile(_ID);
 }
 /// <summary>
-/// Get the width and height of the control.
-///    @return A point structure containing the width of the control in x and the height in y. )
-/// 
+/// Get the width and height of the control.   @return A point structure containing the width of the control in x and the height in y. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getExtent(){
@@ -942,13 +885,7 @@ public  Point2I getExtent(){
 return new Point2I ( pInvokes.m_ts.fnGuiControl_getExtent(_ID));
 }
 /// <summary>
-/// Get the first responder set on this GuiControl tree.
-///    @return The first responder set on the control's subtree.
-///    @see isFirstResponder
-///    @see makeFirstResponder
-///    @see setFirstResponder
-///    @ref GuiControl_FirstResponders )
-/// 
+/// Get the first responder set on this GuiControl tree.   @return The first responder set on the control's subtree.   @see isFirstResponder   @see makeFirstResponder   @see setFirstResponder   @ref GuiControl_FirstResponders )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string getFirstResponder(){
@@ -956,9 +893,7 @@ public  string getFirstResponder(){
 return pInvokes.m_ts.fnGuiControl_getFirstResponder(_ID);
 }
 /// <summary>
-/// Get the coordinate of the control's center point in coordinates relative to the root control in its control hierarchy.
-///    @Return the center coordinate of the control in root-relative coordinates. )
-/// 
+/// Get the coordinate of the control's center point in coordinates relative to the root control in its control hierarchy.   @Return the center coordinate of the control in root-relative coordinates. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getGlobalCenter(){
@@ -966,9 +901,7 @@ public  Point2I getGlobalCenter(){
 return new Point2I ( pInvokes.m_ts.fnGuiControl_getGlobalCenter(_ID));
 }
 /// <summary>
-/// Get the position of the control relative to the root of the GuiControl hierarchy it is contained in.
-///    @return The control's current position in root-relative coordinates. )
-/// 
+/// Get the position of the control relative to the root of the GuiControl hierarchy it is contained in.   @return The control's current position in root-relative coordinates. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getGlobalPosition(){
@@ -976,10 +909,7 @@ public  Point2I getGlobalPosition(){
 return new Point2I ( pInvokes.m_ts.fnGuiControl_getGlobalPosition(_ID));
 }
 /// <summary>
-/// Get the maximum allowed size of the control.
-///    @return The maximum size to which the control can be shrunk.
-///    @see maxExtent )
-/// 
+/// Get the maximum allowed size of the control.   @return The maximum size to which the control can be shrunk.   @see maxExtent )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getMaxExtent(){
@@ -987,10 +917,7 @@ public  Point2I getMaxExtent(){
 return new Point2I ( pInvokes.m_ts.fnGuiControl_getMaxExtent(_ID));
 }
 /// <summary>
-/// Get the minimum allowed size of the control.
-///    @return The minimum size to which the control can be shrunk.
-///    @see minExtent )
-/// 
+/// Get the minimum allowed size of the control.   @return The minimum size to which the control can be shrunk.   @see minExtent )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getMinExtent(){
@@ -999,7 +926,6 @@ return new Point2I ( pInvokes.m_ts.fnGuiControl_getMinExtent(_ID));
 }
 /// <summary>
 /// Get the mouse over alpha for the object. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  float getMouseOverAlphaValue(){
@@ -1007,9 +933,7 @@ public  float getMouseOverAlphaValue(){
 return pInvokes.m_ts.fnGuiControl_getMouseOverAlphaValue(_ID);
 }
 /// <summary>
-/// Get the immediate parent control of the control.
-///    @return The immediate parent GuiControl or 0 if the control is not parented to a GuiControl. )
-/// 
+/// Get the immediate parent control of the control.   @return The immediate parent GuiControl or 0 if the control is not parented to a GuiControl. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string getParent(){
@@ -1017,9 +941,7 @@ public  string getParent(){
 return pInvokes.m_ts.fnGuiControl_getParent(_ID);
 }
 /// <summary>
-/// Get the control's current position relative to its parent.
-///    @return The coordinate of the control in its parent's coordinate space. )
-/// 
+/// Get the control's current position relative to its parent.   @return The coordinate of the control in its parent's coordinate space. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  Point2I getPosition(){
@@ -1027,10 +949,7 @@ public  Point2I getPosition(){
 return new Point2I ( pInvokes.m_ts.fnGuiControl_getPosition(_ID));
 }
 /// <summary>
-/// Get the canvas on which the control is placed.
-///    @return The canvas on which the control's hierarchy is currently placed or 0 if the control is not currently placed on a GuiCanvas.
-///    @see GuiControl_Hierarchy )
-/// 
+/// Get the canvas on which the control is placed.   @return The canvas on which the control's hierarchy is currently placed or 0 if the control is not currently placed on a GuiCanvas.   @see GuiControl_Hierarchy )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string getRoot(){
@@ -1039,7 +958,6 @@ return pInvokes.m_ts.fnGuiControl_getRoot(_ID);
 }
 /// <summary>
 /// Get root control )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  string getRootControl(){
@@ -1047,11 +965,7 @@ public  string getRootControl(){
 return pInvokes.m_ts.fnGuiControl_getRootControl(_ID);
 }
 /// <summary>
-/// Test whether the control is currently awake.
-///    If a control is awake it means that it is part of the GuiControl hierarchy of a GuiCanvas.
-///    @return True if the control is awake.
-///    @ref GuiControl_Waking )
-/// 
+/// Test whether the control is currently awake.   If a control is awake it means that it is part of the GuiControl hierarchy of a GuiCanvas.   @return True if the control is awake.   @ref GuiControl_Waking )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isAwake(){
@@ -1060,7 +974,6 @@ return pInvokes.m_ts.fnGuiControl_isAwake(_ID);
 }
 /// <summary>
 /// Returns if the control's alpha value can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isContextAlphaEnabled(){
@@ -1069,7 +982,6 @@ return pInvokes.m_ts.fnGuiControl_isContextAlphaEnabled(_ID);
 }
 /// <summary>
 /// Returns if the control's alpha fade value can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isContextAlphaFadeEnabled(){
@@ -1078,7 +990,6 @@ return pInvokes.m_ts.fnGuiControl_isContextAlphaFadeEnabled(_ID);
 }
 /// <summary>
 /// Returns if the control can be locked in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isContextLockable(){
@@ -1087,7 +998,6 @@ return pInvokes.m_ts.fnGuiControl_isContextLockable(_ID);
 }
 /// <summary>
 /// Returns if the control's mouse-over alpha value can be changed in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isContextMouseOverAlphaEnabled(){
@@ -1096,7 +1006,6 @@ return pInvokes.m_ts.fnGuiControl_isContextMouseOverAlphaEnabled(_ID);
 }
 /// <summary>
 /// Returns if the control can be moved in the game or not. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isContextMovable(){
@@ -1104,12 +1013,7 @@ public  bool isContextMovable(){
 return pInvokes.m_ts.fnGuiControl_isContextMovable(_ID);
 }
 /// <summary>
-/// Test whether the control is the current first responder.
-///    @return True if the control is the current first responder.
-///    @see makeFirstResponder
-///    @see setFirstResponder
-///    @ref GuiControl_FirstResponders )
-/// 
+/// Test whether the control is the current first responder.   @return True if the control is the current first responder.   @see makeFirstResponder   @see setFirstResponder   @ref GuiControl_FirstResponders )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isFirstResponder(){
@@ -1117,9 +1021,7 @@ public  bool isFirstResponder(){
 return pInvokes.m_ts.fnGuiControl_isFirstResponder(_ID);
 }
 /// <summary>
-/// Indicates if the mouse is locked in this control.
-///    @return True if the mouse is currently locked. )
-/// 
+/// Indicates if the mouse is locked in this control.   @return True if the mouse is currently locked. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isMouseLocked(){
@@ -1127,12 +1029,7 @@ public  bool isMouseLocked(){
 return pInvokes.m_ts.fnGuiControl_isMouseLocked(_ID);
 }
 /// <summary>
-/// Test whether the control is currently set to be visible.
-///    @return True if the control is currently set to be visible.
-///    @note This method does not tell anything about whether the control is actually visible to 
-///       the user at the moment.
-///    @ref GuiControl_VisibleActive )
-/// 
+/// Test whether the control is currently set to be visible.   @return True if the control is currently set to be visible.   @note This method does not tell anything about whether the control is actually visible to       the user at the moment.   @ref GuiControl_VisibleActive )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool isVisible(){
@@ -1140,13 +1037,7 @@ public  bool isVisible(){
 return pInvokes.m_ts.fnGuiControl_isVisible(_ID);
 }
 /// <summary>
-/// Test whether the given point lies within the rectangle of the control.
-///    @param x X coordinate of the point in parent-relative coordinates.
-///    @param y Y coordinate of the point in parent-relative coordinates.
-///    @return True if the point is within the control, false if not.
-///    @see getExtent
-///    @see getPosition )
-/// 
+/// Test whether the given point lies within the rectangle of the control.   @param x X coordinate of the point in parent-relative coordinates.   @param y Y coordinate of the point in parent-relative coordinates.   @return True if the point is within the control, false if not.   @see getExtent   @see getPosition )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool pointInControl(int x, int y){
@@ -1163,9 +1054,7 @@ public  void refresh(){
 pInvokes.m_ts.fnGuiControl_refresh(_ID);
 }
 /// <summary>
-/// Removes the plus cursor.
-///    @param ignored Ignored.  Supported for backwards-compatibility. )
-/// 
+/// Removes the plus cursor.   @param ignored Ignored.  Supported for backwards-compatibility. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void resetCur(){
@@ -1173,13 +1062,7 @@ public  void resetCur(){
 pInvokes.m_ts.fnGuiControl_resetCur(_ID);
 }
 /// <summary>
-/// Resize and reposition the control using the give coordinates and dimensions.  Child controls 
-///    will resize according to their layout behaviors.
-///    @param x The new X coordinate of the control in its parent's coordinate space.
-///    @param y The new Y coordinate of the control in its parent's coordinate space.
-///    @param width The new width to which the control should be resized.
-///    @param height The new height to which the control should be resized. )
-/// 
+/// Resize and reposition the control using the give coordinates and dimensions.  Child controls    will resize according to their layout behaviors.   @param x The new X coordinate of the control in its parent's coordinate space.   @param y The new Y coordinate of the control in its parent's coordinate space.   @param width The new width to which the control should be resized.   @param height The new height to which the control should be resized. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void resize(int x, int y, int width, int height){
@@ -1188,7 +1071,6 @@ pInvokes.m_ts.fnGuiControl_resize(_ID, x, y, width, height);
 }
 /// <summary>
 ///  )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setActive(bool state = true){
@@ -1196,9 +1078,7 @@ public  void setActive(bool state = true){
 pInvokes.m_ts.fnGuiControl_setActive(_ID, state);
 }
 /// <summary>
-/// Set the alpha for the object.
-///    @param value Range 0, 1 for the transparency. )
-/// 
+/// Set the alpha for the object.   @param value Range 0, 1 for the transparency. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setAlphaFadeTime(int fadeTime = 1000){
@@ -1206,9 +1086,7 @@ public  void setAlphaFadeTime(int fadeTime = 1000){
 pInvokes.m_ts.fnGuiControl_setAlphaFadeTime(_ID, fadeTime);
 }
 /// <summary>
-/// Set the alpha for the object.
-///    @param value Range 0, 1 for the transparency. )
-/// 
+/// Set the alpha for the object.   @param value Range 0, 1 for the transparency. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setAlphaValue(float alpha = 1){
@@ -1216,10 +1094,7 @@ public  void setAlphaValue(float alpha = 1){
 pInvokes.m_ts.fnGuiControl_setAlphaValue(_ID, alpha);
 }
 /// <summary>
-/// Set the control's position by its center point.
-///    @param x The X coordinate of the new center point of the control relative to the control's parent.
-///    @param y The Y coordinate of the new center point of the control relative to the control's parent. )
-/// 
+/// Set the control's position by its center point.   @param x The X coordinate of the new center point of the control relative to the control's parent.   @param y The Y coordinate of the new center point of the control relative to the control's parent. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setCenter(int x, int y){
@@ -1228,7 +1103,6 @@ pInvokes.m_ts.fnGuiControl_setCenter(_ID, x, y);
 }
 /// <summary>
 /// Displays the option to set the alpha of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextAlpha(bool alpha){
@@ -1237,7 +1111,6 @@ pInvokes.m_ts.fnGuiControl_setContextAlpha(_ID, alpha);
 }
 /// <summary>
 /// Displays the option to set the alpha fade value of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextAlphaFade(bool fade){
@@ -1246,7 +1119,6 @@ pInvokes.m_ts.fnGuiControl_setContextAlphaFade(_ID, fade);
 }
 /// <summary>
 /// Displays the option to set the background color of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextBackColor(bool backColor){
@@ -1255,7 +1127,6 @@ pInvokes.m_ts.fnGuiControl_setContextBackColor(_ID, backColor);
 }
 /// <summary>
 /// Displays the option to set the fill color of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextFillColor(bool fillColor){
@@ -1264,7 +1135,6 @@ pInvokes.m_ts.fnGuiControl_setContextFillColor(_ID, fillColor);
 }
 /// <summary>
 /// Displays the option to set the font color of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextFontColor(bool fontColor){
@@ -1273,7 +1143,6 @@ pInvokes.m_ts.fnGuiControl_setContextFontColor(_ID, fontColor);
 }
 /// <summary>
 /// Displays the option to set the font size of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextFontSize(bool fontSize){
@@ -1282,7 +1151,6 @@ pInvokes.m_ts.fnGuiControl_setContextFontSize(_ID, fontSize);
 }
 /// <summary>
 /// Displays the option to lock the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextLockControl(bool lockx){
@@ -1291,7 +1159,6 @@ pInvokes.m_ts.fnGuiControl_setContextLockControl(_ID, lockx);
 }
 /// <summary>
 /// Displays the option to set the mouse-over alpha of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextMouseOverAlpha(bool mouseOver){
@@ -1300,7 +1167,6 @@ pInvokes.m_ts.fnGuiControl_setContextMouseOverAlpha(_ID, mouseOver);
 }
 /// <summary>
 /// Displays the option to move the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setContextMoveControl(bool move){
@@ -1309,7 +1175,6 @@ pInvokes.m_ts.fnGuiControl_setContextMoveControl(_ID, move);
 }
 /// <summary>
 /// Set control background color. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setControlBackgroundColor(ColorI color){
@@ -1318,7 +1183,6 @@ pInvokes.m_ts.fnGuiControl_setControlBackgroundColor(_ID, color.AsString());
 }
 /// <summary>
 /// Set control fill color. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setControlFillColor(ColorI color){
@@ -1327,7 +1191,6 @@ pInvokes.m_ts.fnGuiControl_setControlFillColor(_ID, color.AsString());
 }
 /// <summary>
 /// Set control font color. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setControlFontColor(ColorI color){
@@ -1336,7 +1199,6 @@ pInvokes.m_ts.fnGuiControl_setControlFontColor(_ID, color.AsString());
 }
 /// <summary>
 /// Sets the font size of a control. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setControlFontSize(int fontSize){
@@ -1345,7 +1207,6 @@ pInvokes.m_ts.fnGuiControl_setControlFontSize(_ID, fontSize);
 }
 /// <summary>
 /// Lock the control. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setControlLock(bool lockedx){
@@ -1354,7 +1215,6 @@ pInvokes.m_ts.fnGuiControl_setControlLock(_ID, lockedx);
 }
 /// <summary>
 /// Set control texture. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setControlTexture(string fileName){
@@ -1362,9 +1222,7 @@ public  void setControlTexture(string fileName){
 pInvokes.m_ts.fnGuiControl_setControlTexture(_ID, fileName);
 }
 /// <summary>
-/// Sets the cursor as a plus.
-///    @param ignored Ignored.  Supported for backwards-compatibility. )
-/// 
+/// Sets the cursor as a plus.   @param ignored Ignored.  Supported for backwards-compatibility. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setCur(){
@@ -1372,12 +1230,7 @@ public  void setCur(){
 pInvokes.m_ts.fnGuiControl_setCur(_ID);
 }
 /// <summary>
-/// Make this control the current first responder.
-///    @note Only controls with a profile that has canKeyFocus enabled are able to become first responders.
-///    @see GuiControlProfile::canKeyFocus
-///    @see isFirstResponder
-///    @ref GuiControl_FirstResponders )
-/// 
+/// Make this control the current first responder.   @note Only controls with a profile that has canKeyFocus enabled are able to become first responders.   @see GuiControlProfile::canKeyFocus   @see isFirstResponder   @ref GuiControl_FirstResponders )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setFirstResponderX(){
@@ -1385,9 +1238,7 @@ public  void setFirstResponderX(){
 pInvokes.m_ts.fnGuiControl_setFirstResponder(_ID);
 }
 /// <summary>
-/// Set the alpha for the object.
-///    @param value Range 0, 1 for the transparency. )
-/// 
+/// Set the alpha for the object.   @param value Range 0, 1 for the transparency. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setMouseOverAlphaValue(float alpha = 1){
@@ -1395,10 +1246,7 @@ public  void setMouseOverAlphaValue(float alpha = 1){
 pInvokes.m_ts.fnGuiControl_setMouseOverAlphaValue(_ID, alpha);
 }
 /// <summary>
-/// Position the control in the local space of the parent control.
-///    @param x The new X coordinate of the control relative to its parent's upper left corner.
-///    @param y The new Y coordinate of the control relative to its parent's upper left corner. )
-/// 
+/// Position the control in the local space of the parent control.   @param x The new X coordinate of the control relative to its parent's upper left corner.   @param y The new Y coordinate of the control relative to its parent's upper left corner. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setPosition(int x, int y){
@@ -1406,10 +1254,7 @@ public  void setPosition(int x, int y){
 pInvokes.m_ts.fnGuiControl_setPosition(_ID, x, y);
 }
 /// <summary>
-/// Set position of the control relative to the root of the GuiControl hierarchy it is contained in.
-///    @param x The new X coordinate of the control relative to the root's upper left corner.
-///    @param y The new Y coordinate of the control relative to the root's upper left corner. )
-/// 
+/// Set position of the control relative to the root of the GuiControl hierarchy it is contained in.   @param x The new X coordinate of the control relative to the root's upper left corner.   @param y The new Y coordinate of the control relative to the root's upper left corner. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setPositionGlobal(int x, int y){
@@ -1417,11 +1262,7 @@ public  void setPositionGlobal(int x, int y){
 pInvokes.m_ts.fnGuiControl_setPositionGlobal(_ID, x, y);
 }
 /// <summary>
-/// Set the control profile for the control to use.
-///    The profile used by a control determines a great part of its behavior and appearance.
-///    @param profile The new profile the control should use.
-///    @ref GuiControl_Profiles )
-/// 
+/// Set the control profile for the control to use.   The profile used by a control determines a great part of its behavior and appearance.   @param profile The new profile the control should use.   @ref GuiControl_Profiles )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setProfile(string profile){
@@ -1430,7 +1271,6 @@ pInvokes.m_ts.fnGuiControl_setProfile(_ID, profile);
 }
 /// <summary>
 /// Displays the option to set the window settings of the control in the game when true. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setShowContextWindowSettings(bool lockx){
@@ -1438,9 +1278,7 @@ public  void setShowContextWindowSettings(bool lockx){
 pInvokes.m_ts.fnGuiControl_setShowContextWindowSettings(_ID, lockx);
 }
 /// <summary>
-/// Set the value associated with the control.
-///    @param value The new value for the control. )
-/// 
+/// Set the value associated with the control.   @param value The new value for the control. )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setValue(string value){
@@ -1448,10 +1286,7 @@ public  void setValue(string value){
 pInvokes.m_ts.fnGuiControl_setValue(_ID, value);
 }
 /// <summary>
-/// Set whether the control is visible or not.
-///    @param state The new visiblity flag state for the control.
-///    @ref GuiControl_VisibleActive )
-/// 
+/// Set whether the control is visible or not.   @param state The new visiblity flag state for the control.   @ref GuiControl_VisibleActive )
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  void setVisible(bool state = true){
@@ -1460,7 +1295,6 @@ pInvokes.m_ts.fnGuiControl_setVisible(_ID, state);
 }
 /// <summary>
 /// Returns true if the control is transparent. )
-/// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
 public  bool transparentControlCheck(){

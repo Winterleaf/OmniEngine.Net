@@ -301,3 +301,73 @@ DefineEngineMethod( GuiDynamicCtrlArrayControl, refresh, void, (),,
 {
    object->refresh();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiDynamicCtrlArrayControl_refresh(char * x__object)
+{
+GuiDynamicCtrlArrayControl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->refresh();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -711,3 +711,244 @@ DefineConsoleMethod(Settings, getCurrentGroups, const char*, (), , "settingObj.g
 {
    return object->getCurrentGroups();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_beginGroup(char * x__object, char * x__groupName, bool includeDefaults)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* groupName = (const char*)x__groupName;
+
+{
+	object->beginGroup( groupName, includeDefaults );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_clearGroups(char * x__object)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearGroups();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_endGroup(char * x__object)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->endGroup();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_findFirstValue(char * x__object, char * x__pattern, bool deepSearch, bool includeDefaults,  char* retval)
+{
+dSprintf(retval,16384,"");
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* pattern = (const char*)x__pattern;
+
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->findFirstValue( pattern, deepSearch, includeDefaults );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_findNextValue(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->findNextValue();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_getCurrentGroups(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   {wle_returnObject =object->getCurrentGroups();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_Settings_read(char * x__object)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->read();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_remove(char * x__object, char * x__settingName, bool includeDefaults)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* settingName = (const char*)x__settingName;
+
+{
+      
+	object->remove( settingName, includeDefaults );
+	object->remove( settingName, includeDefaults );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_setDefaultValue(char * x__object, char * x__settingName, char * x__value)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* settingName = (const char*)x__settingName;
+const char* value = (const char*)x__value;
+{
+   const char *fieldName = StringTable->insert( settingName );
+   object->setDefaultValue( fieldName, value );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_setValue(char * x__object, char * x__settingName, char * x__value)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* settingName = (const char*)x__settingName;
+const char* value = (const char*)x__value;
+{
+   const char *fieldName = StringTable->insert( settingName );
+   
+   if( value != "")
+      object->setValue( fieldName, value );
+   else
+      object->setValue( fieldName );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_Settings_value(char * x__object, char * x__settingName, char * x__defaultValue,  char* retval)
+{
+dSprintf(retval,16384,"");
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* settingName = (const char*)x__settingName;
+const char* defaultValue = (const char*)x__defaultValue;
+const char* wle_returnObject;
+{
+   const char *fieldName = StringTable->insert( settingName );
+   
+   if(defaultValue != "")
+      {wle_returnObject =object->value( fieldName, defaultValue );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   else if(settingName != "")
+      {wle_returnObject =object->value( fieldName );
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject ="";
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnSettings_write(char * x__object)
+{
+Settings* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+S32 argc = 2;
+{
+    
+   {wle_returnObject =object->write();
+return (S32)(wle_returnObject);}
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

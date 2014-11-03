@@ -54,7 +54,6 @@ exec("./weapons/Turret.cs");
 
 exec("./teleporter.cs");
 
-echo("============================>Loading Player Datablock");
 // Load the default player datablocks
 exec("./player.cs");
 

@@ -542,3 +542,173 @@ ConsoleFunction( getStockColorI, const char*, 2, 2, "(stockColorName) - Gets a b
    dSprintf(returnBuffer, 256, "%d %d %d %d", color.red, color.green, color.blue, color.alpha);
    return(returnBuffer);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn__getStockColorCount()
+{
+{
+{
+  return (S32)( StockColor::getCount());
+}
+}
+;
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__getStockColorF(char * x__a1,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* wle_returnObject;
+{
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+const char** argv = &arguments[0];
+{
+      const char* pStockColorName = argv[1];
+      if ( !StockColor::isColor( pStockColorName ) )
+      {wle_returnObject =StringTable->EmptyString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      const ColorF& color = StockColor::colorF( pStockColorName );
+      char* returnBuffer = Con::getReturnBuffer(256);
+   dSprintf(returnBuffer, 256, "%g %g %g %g", color.red, color.green, color.blue, color.alpha);
+   {wle_returnObject =(returnBuffer);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__getStockColorI(char * x__a1,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* wle_returnObject;
+{
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+const char** argv = &arguments[0];
+{
+      const char* pStockColorName = argv[1];
+      if ( !StockColor::isColor( pStockColorName ) )
+      {wle_returnObject =StringTable->EmptyString();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+      const ColorI& color = StockColor::colorI( pStockColorName );
+      char* returnBuffer = Con::getReturnBuffer(256);
+   dSprintf(returnBuffer, 256, "%d %d %d %d", color.red, color.green, color.blue, color.alpha);
+   {wle_returnObject =(returnBuffer);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__getStockColorName(char * x__a1,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* wle_returnObject;
+{
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+const char** argv = &arguments[0];
+{
+      const S32 stockColorIndex = dAtoi(argv[1]);
+      const StockColorItem* pColorItem = StockColor::getColorItem( stockColorIndex );
+   {wle_returnObject =pColorItem == NULL ? NULL : pColorItem->getColorName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn__isStockColor(char * x__a1)
+{
+const char* a1 = (const char*)x__a1;
+bool wle_returnObject;
+{
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+const char** argv = &arguments[0];
+{
+      const char* pStockColorName = argv[1];
+      {wle_returnObject =StockColor::isColor( pStockColorName );
+return (S32)(wle_returnObject);}
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

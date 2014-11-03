@@ -396,3 +396,114 @@ ConsoleToolFunction(isScriptPathExpando, bool, 2, 2, "(string expando)"
 {
    return Con::isScriptPathExpando(argv[1]);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__expandFilename(char * x__a1,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* wle_returnObject;
+{
+S32 argc = 2;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+const char** argv = &arguments[0];
+{
+   
+   static const U32 bufSize = 1024;
+   char* ret = Con::getReturnBuffer( bufSize );
+   Con::expandScriptFilename(ret, bufSize, argv[1]);
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__expandOldFilename(char * x__a1,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* wle_returnObject;
+{
+S32 argc = 2;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+const char** argv = &arguments[0];
+{
+   
+   static const U32 bufSize = 1024;
+   char* ret = Con::getReturnBuffer( bufSize );
+   Con::expandOldScriptFilename(ret, bufSize, argv[1]);
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

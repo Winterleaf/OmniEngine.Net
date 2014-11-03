@@ -525,3 +525,154 @@ static void RegisterGameFunctions()
       "Bounce ease for curve movement.\n"
 	   "@ingroup Game");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_containerFindFirst(U32 typeMask, char * x__origin, char * x__size,  char* retval)
+{
+dSprintf(retval,16384,"");
+Point3F origin = Point3F();
+sscanf(x__origin,"%f %f %f",&origin.x,&origin.y,&origin.z);
+Point3F size = Point3F();
+sscanf(x__size,"%f %f %f",&size.x,&size.y,&size.z);
+const char* wle_returnObject;
+{
+   
+      Box3F queryBox;
+   queryBox.minExtents = origin;
+   queryBox.maxExtents = origin;
+   queryBox.minExtents -= size;
+   queryBox.maxExtents += size;
+      sgServerQueryList.mList.clear();
+   gServerContainer.findObjects(queryBox, typeMask, SimpleQueryList::insertionCallback, &sgServerQueryList);
+      sgServerQueryIndex = 0;
+   static const U32 bufSize = 100;
+   char *buff = Con::getReturnBuffer(bufSize);
+   if (sgServerQueryList.mList.size())
+      dSprintf(buff, bufSize, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
+   else
+      buff[0] = '\0';
+   {wle_returnObject =buff;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_containerFindNext(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+      static const U32 bufSize = 100;
+   char *buff = Con::getReturnBuffer(bufSize);
+   if (sgServerQueryIndex < sgServerQueryList.mList.size())
+      dSprintf(buff, bufSize, "%d", sgServerQueryList.mList[sgServerQueryIndex++]->getId());
+   else
+      buff[0] = '\0';
+   {wle_returnObject =buff;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getFrustumOffset(char* retval)
+{
+dSprintf(retval,1024,"");
+Point4F wle_returnObject;
+{
+   {wle_returnObject =CameraAndFOV::sFrustumOffset;
+dSprintf(retval,1024,"%g %g %g %g ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z,wle_returnObject.w);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setDefaultFov(F32 defaultFOV)
+{
+{
+   CameraAndFOV::sDefaultFov = mClampF(defaultFOV, MinCameraFov, MaxCameraFov);
+   if(CameraAndFOV::sCameraFov == CameraAndFOV::sTargetFov)
+      CameraAndFOV::sTargetFov = CameraAndFOV::sDefaultFov;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setFov(F32 FOV)
+{
+{
+   CameraAndFOV::sTargetFov = mClampF(FOV, MinCameraFov, MaxCameraFov);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setFrustumOffset(char * x__offset)
+{
+Point4F offset = Point4F();
+sscanf(x__offset,"%g %g %g %g",&offset.x,&offset.y,&offset.z,&offset.w);
+{
+   CameraAndFOV::sFrustumOffset = offset;
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_setZoomSpeed(S32 speed)
+{
+{
+   CameraAndFOV::sZoomSpeed = mClamp(speed, 0, CameraAndFOV::MaxZoomSpeed);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

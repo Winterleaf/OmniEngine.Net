@@ -1790,3 +1790,165 @@ DefineEngineMethod( GuiTextEditCtrl, forceValidateText, void, (),,
 {
    object->forceValidateText();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiTextEditCtrl_selectText(char * x__object, S32 startBlock, S32 endBlock)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	object->selectText(startBlock, endBlock);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextEditCtrl_clearSelectedText(char * x__object)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearSelectedText();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextEditCtrl_forceValidateText(char * x__object)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->forceValidateText();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTextEditCtrl_getCursorPos(char * x__object)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)(( object->getCursorPos() ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextEditCtrl_getText(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   if( !object->hasText() )
+      {wle_returnObject =StringTable->insert("");
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   char *retBuffer = Con::getReturnBuffer( GuiTextEditCtrl::MAX_STRING_LENGTH );
+   object->getText( retBuffer );
+   {wle_returnObject =retBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiTextEditCtrl_isAllTextSelected(char * x__object)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isAllTextSelected();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextEditCtrl_selectAllText(char * x__object)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->selectAllText();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextEditCtrl_setCursorPos(char * x__object, S32 position)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setCursorPos( position );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextEditCtrl_setText(char * x__object, char * x__text)
+{
+GuiTextEditCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+{
+   object->setText( text );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

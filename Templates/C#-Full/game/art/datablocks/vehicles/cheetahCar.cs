@@ -24,35 +24,35 @@ datablock SFXProfile(cheetahEngine)
 {
    preload = "1";
    description = "AudioCloseLoop3D";
-   fileName = "art/sound/cheetah/cheetah_engine.wav";
+   fileName = "art/sound/cheetah/cheetah_engine.ogg";
 };
 
 datablock SFXProfile(cheetahSqueal)
 {
    preload = "1";
    description = "AudioDefault3D";
-   fileName = "art/sound/cheetah/cheetah_squeal.wav";
+   fileName = "art/sound/cheetah/cheetah_squeal.ogg";
 };
 
 datablock SFXProfile(hardImpact)
 {
    preload = "1";
    description = "AudioDefault3D";
-   fileName = "art/sound/cheetah/hardImpact.wav";
+   fileName = "art/sound/cheetah/hardImpact.ogg";
 };
 
 datablock SFXProfile(softImpact)
 {
    preload = "1";
    description = "AudioDefault3D";
-   fileName = "art/sound/cheetah/softImpact.wav";
+   fileName = "art/sound/cheetah/softImpact.ogg";
 };
 
 datablock SFXProfile(DirtKickup)
 {
    preload = "1";
    description = "AudioDefault3D";
-   fileName = "art/sound/cheetah/softImpact.wav";
+   fileName = "art/sound/cheetah/softImpact.ogg";
 };
 
 datablock SFXProfile(CheetahTurretFireSound)

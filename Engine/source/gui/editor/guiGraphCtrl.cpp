@@ -428,3 +428,148 @@ ConsoleMethod( GuiGraphCtrl, matchScale, void, 3, GuiGraphCtrl::MaxPlots + 2, "(
    for( S32 i = 0; i < ( argc - 2 ); ++ i )
 		object->setMax( dAtoi( argv[ 2 + i ] ), max );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGraphCtrl_addAutoPlot(char * x__object, S32 plotId, char * x__variable, S32 updateFrequency)
+{
+GuiGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+const char* variable = (const char*)x__variable;
+
+{
+   if( plotId > object->MaxPlots )
+   {
+	   Con::errorf( "GuiGraphCtrl::removeAutoPlot - 'plotId' out of range: %i", plotId );
+	   return;
+   }
+   object->addAutoPlot( plotId, variable, updateFrequency );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGraphCtrl_addDatum(char * x__object, S32 plotId, F32 value)
+{
+GuiGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+   if( plotId > object->MaxPlots )
+   {
+	   Con::errorf( "GuiGraphCtrl::addDatum - 'plotId' out of range: %i", plotId );
+	   return;
+   }
+   
+   object->addDatum( plotId, value );
+}
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnGuiGraphCtrl_getDatum(char * x__object, S32 plotId, S32 index)
+{
+GuiGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+
+{
+   if( plotId > object->MaxPlots )
+   {
+	   Con::errorf( "GuiGraphCtrl::getDatum - 'plotId' out of range: %i", plotId );
+	  return (F32)( -1.f);
+   }
+   
+   if( index > object->MaxDataPoints)
+   {
+	   Con::errorf( "GuiGraphCtrl::getDatum - Data point index out of range: %i", index );
+	  return (F32)( -1.f);
+   }
+  return (F32)( object->getDatum( plotId, index ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGraphCtrl_removeAutoPlot(char * x__object, S32 plotId)
+{
+GuiGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if( plotId > object->MaxPlots )
+   {
+	   Con::errorf( "GuiGraphCtrl::removeAutoPlot - 'plotId' out of range: %i", plotId );
+	   return;
+   }
+   object->removeAutoPlot( plotId );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiGraphCtrl_setGraphType(char * x__object, S32 plotId, S32 x__graphType)
+{
+GuiGraphCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+GuiGraphType graphType = (GuiGraphType)x__graphType;
+{
+	if( plotId > object->MaxPlots )
+	{
+	   Con::errorf( "GuiGraphCtrl::setGraphType - 'plotId' out of range: %i", plotId );
+		return;
+	}
+	object->setGraphType( plotId, graphType );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

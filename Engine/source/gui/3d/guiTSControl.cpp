@@ -630,3 +630,159 @@ DefineEngineMethod(GuiTSCtrl, getWorldPosition, const char*, (Point2I mousePoint
 {
 	return object->getWorldPosition(mousePoint);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnGuiTSCtrl_calculateViewDistance(char * x__object, F32 radius)
+{
+GuiTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->calculateViewDistance( radius ));
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTSCtrl_getClickVector(char * x__object, char * x__mousePoint,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2I mousePoint = Point2I();
+sscanf(x__mousePoint,"%i %i",&mousePoint.x,&mousePoint.y);
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getClickVector(mousePoint);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTSCtrl_getWorldPosition(char * x__object, char * x__mousePoint,  char* retval)
+{
+dSprintf(retval,16384,"");
+GuiTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2I mousePoint = Point2I();
+sscanf(x__mousePoint,"%i %i",&mousePoint.x,&mousePoint.y);
+const char* wle_returnObject;
+{
+	{wle_returnObject =object->getWorldPosition(mousePoint);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTSCtrl_getWorldToScreenScale(char * x__object,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point2F wle_returnObject;
+{
+   {wle_returnObject =object->getWorldToScreenScale();
+dSprintf(retval,1024,"%f %f ",wle_returnObject.x,wle_returnObject.y);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTSCtrl_project(char * x__object, char * x__worldPosition,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F worldPosition = Point3F();
+sscanf(x__worldPosition,"%f %f %f",&worldPosition.x,&worldPosition.y,&worldPosition.z);
+Point3F wle_returnObject;
+{
+   Point3F screenPos;
+   object->project( worldPosition, &screenPos );
+   {wle_returnObject =screenPos;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTSCtrl_unproject(char * x__object, char * x__screenPosition,  char* retval)
+{
+dSprintf(retval,1024,"");
+GuiTSCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F screenPosition = Point3F();
+sscanf(x__screenPosition,"%f %f %f",&screenPosition.x,&screenPosition.y,&screenPosition.z);
+Point3F wle_returnObject;
+{
+   Point3F worldPos;
+   object->unproject( screenPosition, &worldPos );
+   {wle_returnObject =worldPos;
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

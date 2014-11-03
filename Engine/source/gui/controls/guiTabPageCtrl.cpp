@@ -232,3 +232,76 @@ DefineEngineMethod( GuiTabPageCtrl, select, void, (),,
 
    book->selectPage( object );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTabPageCtrl_select(char * x__object)
+{
+GuiTabPageCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   GuiTabBookCtrl* book = dynamic_cast< GuiTabBookCtrl* >( object->getParent() );
+   if( !book )
+      return;
+   book->selectPage( object );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

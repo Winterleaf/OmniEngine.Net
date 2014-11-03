@@ -737,3 +737,149 @@ DefineEngineMethod(NavPath, getLength, F32, (),,
 {
    return object->getLength();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavPath_getFlags(char * x__object, S32 idx)
+{
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( (S32)object->getFlags(idx));
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnNavPath_getLength(char * x__object)
+{
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getLength());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavPath_getNode(char * x__object, S32 idx,  char* retval)
+{
+dSprintf(retval,1024,"");
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+Point3F wle_returnObject;
+{
+   {wle_returnObject =object->getNode(idx);
+dSprintf(retval,1024,"%f %f %f ",wle_returnObject.x,wle_returnObject.y,wle_returnObject.z);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavPath_onNavMeshUpdate(char * x__object, char * x__data)
+{
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* data = (const char*)x__data;
+{
+   if(object->mMesh && !dStrcmp(data, object->mMesh->getIdString()))
+      object->plan();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnNavPath_onNavMeshUpdateBox(char * x__object, char * x__data)
+{
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* data = (const char*)x__data;
+{
+   String s(data);
+   U32 space = s.find(' ');
+   if(space != String::NPos)
+   {
+      String id = s.substr(0, space);
+      if(!object->mMesh || id.compare(object->mMesh->getIdString()))
+         return;
+      String boxstr = s.substr(space + 1);
+      Box3F box;
+      castConsoleTypeFromString(box, boxstr.c_str());
+      if(object->getWorldBox().isOverlapped(box))
+         object->plan();
+   }
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavPath_plan(char * x__object)
+{
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->plan();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnNavPath_size(char * x__object)
+{
+NavPath* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->size());
+};
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

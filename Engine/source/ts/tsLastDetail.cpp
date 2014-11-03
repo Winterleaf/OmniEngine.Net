@@ -549,3 +549,68 @@ DefineConsoleFunction( tsUpdateImposterImages, void, (bool forceUpdate), (false)
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_tsUpdateImposterImages(bool forceUpdate)
+{
+{
+   TSLastDetail::updateImposterImages(forceUpdate);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -1358,3 +1358,135 @@ DefineConsoleFunction( getTerrainHeightBelowPosition, F32, (Point3F pos), ,
 	
 	return height;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getTerrainHeight(char * x__pos)
+{
+Point2F pos = Point2F();
+sscanf(x__pos,"%f %f",&pos.x,&pos.y);
+{
+	F32 height = 0.0f;
+	TerrainBlock * terrain = getTerrainUnderWorldPoint(Point3F(pos.x, pos.y, 5000.0f));
+	if(terrain)
+		if(terrain->isServerObject())
+		{
+			Point3F offset;
+			terrain->getTransform().getColumn(3, &offset);
+			pos -= Point2F(offset.x, offset.y);
+			terrain->getHeight(pos, &height);
+		}
+		return height;
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fn_getTerrainHeightBelowPosition(char * x__pos)
+{
+Point3F pos = Point3F();
+sscanf(x__pos,"%f %f %f",&pos.x,&pos.y,&pos.z);
+{
+	F32 height = 0.0f;
+	TerrainBlock * terrain = getTerrainUnderWorldPoint(pos);
+	
+	Point2F nohghtPos(pos.x, pos.y);
+	if(terrain)
+	{
+		if(terrain->isServerObject())
+		{
+			Point3F offset;
+			terrain->getTransform().getColumn(3, &offset);
+			nohghtPos -= Point2F(offset.x, offset.y);
+			terrain->getHeight(nohghtPos, &height);
+		}
+	}
+	
+	return height;
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getTerrainUnderWorldPoint(char * x__position)
+{
+Point3F position = Point3F();
+sscanf(x__position,"%f %f %f",&position.x,&position.y,&position.z);
+{
+   TerrainBlock* terrain = getTerrainUnderWorldPoint(position);
+   if(terrain != NULL)
+   {
+     return (S32)( terrain->getId());
+   }
+  return (S32)( 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTerrainBlock_save(char * x__object, char * x__fileName)
+{
+TerrainBlock* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* fileName = (const char*)x__fileName;
+bool wle_returnObject;
+{
+	char filename[256];
+	dStrcpy(filename,fileName);
+   char *ext = dStrrchr(filename, '.');
+   if (!ext || dStricmp(ext, ".ter") != 0)
+      dStrcat(filename, ".ter");
+   {wle_returnObject =static_cast<TerrainBlock*>(object)->save(filename);
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

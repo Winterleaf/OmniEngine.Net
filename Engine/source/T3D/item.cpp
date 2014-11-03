@@ -1386,3 +1386,164 @@ void Item::advanceTime(F32 dt)
    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnItem_getLastStickyNormal(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+Item* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char * wle_returnObject;
+{
+   static const U32 bufSize = 256;
+   char* ret = Con::getReturnBuffer(bufSize);
+   if (object->isServerObject())
+      dSprintf(ret, bufSize, "%g %g %g",
+               object->mStickyCollisionNormal.x,
+               object->mStickyCollisionNormal.y,
+               object->mStickyCollisionNormal.z);
+   else
+      dStrcpy(ret, "0 0 0");
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnItem_getLastStickyPos(char * x__object,  char* retval)
+{
+dSprintf(retval,16384,"");
+Item* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* wle_returnObject;
+{
+   static const U32 bufSize = 256;
+   char* ret = Con::getReturnBuffer(bufSize);
+   if (object->isServerObject())
+      dSprintf(ret, bufSize, "%g %g %g",
+               object->mStickyCollisionPos.x,
+               object->mStickyCollisionPos.y,
+               object->mStickyCollisionPos.z);
+   else
+      dStrcpy(ret, "0 0 0");
+   {wle_returnObject =ret;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_isAtRest(char * x__object)
+{
+Item* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isAtRest();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_isRotating(char * x__object)
+{
+Item* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isRotating();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_isStatic(char * x__object)
+{
+Item* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isStatic();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnItem_setCollisionTimeout(char * x__object, S32 ignoreColObj)
+{
+Item* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   ShapeBase* source = NULL;
+   if (Sim::findObject(ignoreColObj,source)) {
+      object->setCollisionTimeout(source);
+      {wle_returnObject =true;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

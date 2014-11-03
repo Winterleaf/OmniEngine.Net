@@ -415,3 +415,83 @@ DefineEngineMethod( GuiFormCtrl, setCaption, void, ( const char* caption ),,
 }
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnGuiFormCtrl_getMenuID(char * x__object)
+{
+GuiFormCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getMenuBarID());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiFormCtrl_setCaption(char * x__object, char * x__caption)
+{
+GuiFormCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* caption = (const char*)x__caption;
+{
+   object->setCaption( caption );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

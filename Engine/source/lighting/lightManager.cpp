@@ -497,3 +497,130 @@ DefineEngineFunction( resetLightManager, void, (),,
    lm->deactivate();
    lm->activate( sm );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getActiveLightManager(char* retval)
+{
+dSprintf(retval,16384,"");
+const char* wle_returnObject;
+{
+   if ( !LIGHTMGR )
+      {wle_returnObject =NULL;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+   {wle_returnObject =LIGHTMGR->getName();
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getLightManagerNames(char* retval)
+{
+dSprintf(retval,1024,"");
+String wle_returnObject;
+{
+   String names;
+   LightManager::getLightManagerNames( &names );
+   {wle_returnObject =names;
+dSprintf(retval,16384,"%s",wle_returnObject.c_str());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_lightScene(char * x__completeCallbackFn, char * x__mode)
+{
+const char* completeCallbackFn = (const char*)x__completeCallbackFn;
+const char* mode = (const char*)x__mode;
+bool wle_returnObject;
+{
+   if ( !LIGHTMGR )
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   {wle_returnObject =LIGHTMGR->lightScene( completeCallbackFn, mode );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_resetLightManager()
+{
+{
+   LightManager *lm = LIGHTMGR;
+   if ( !lm )
+      return;
+   SceneManager *sm = lm->getSceneManager();
+   lm->deactivate();
+   lm->activate( sm );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_setLightManager(char * x__name)
+{
+const char* name = (const char*)x__name;
+bool wle_returnObject;
+{
+   {wle_returnObject =gClientSceneGraph->setLightManager( name );
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

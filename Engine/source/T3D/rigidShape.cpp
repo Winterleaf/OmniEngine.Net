@@ -1733,3 +1733,94 @@ DefineEngineMethod( RigidShape, forceClientTransform, void, (),,
       object->forceClientTransform();
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRigidShape_forceClientTransform(char * x__object)
+{
+RigidShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   if(object->isServerObject())
+   {
+      object->forceClientTransform();
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRigidShape_freezeSim(char * x__object, bool isFrozen)
+{
+RigidShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->freezeSim(isFrozen);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnRigidShape_reset(char * x__object)
+{
+RigidShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->reset();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

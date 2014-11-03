@@ -638,3 +638,146 @@ DefineEngineMethod(PathCamera, popFront, void, (),, "Removes the knot at the fro
 {
    object->popFront();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_popFront(char * x__object)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->popFront();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_pushBack(char * x__object, char * x__transform, F32 speed, char * x__type, char * x__path)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF transform = TransformF();
+sscanf( x__transform,"%f %f %f %f %f %f %f", &transform.mPosition.x, &transform.mPosition.y, &transform.mPosition.z, &transform.mOrientation.axis.x, &transform.mOrientation.axis.y, &transform.mOrientation.axis.z, &transform.mOrientation.angle);
+
+const char* type = (const char*)x__type;
+const char* path = (const char*)x__path;
+{
+   QuatF rot(transform.getOrientation());
+   object->pushBack( new CameraSpline::Knot(transform.getPosition(), rot, speed, resolveKnotType(type), resolveKnotPath(path)) );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_pushFront(char * x__object, char * x__transform, F32 speed, char * x__type, char * x__path)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF transform = TransformF();
+sscanf( x__transform,"%f %f %f %f %f %f %f", &transform.mPosition.x, &transform.mPosition.y, &transform.mPosition.z, &transform.mOrientation.axis.x, &transform.mOrientation.axis.y, &transform.mOrientation.axis.z, &transform.mOrientation.angle);
+
+const char* type = (const char*)x__type;
+const char* path = (const char*)x__path;
+{
+   QuatF rot(transform.getOrientation());
+   object->pushFront( new CameraSpline::Knot(transform.getPosition(), rot, speed, resolveKnotType(type), resolveKnotPath(path)) );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_reset(char * x__object, F32 speed)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+	object->reset(speed);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_setPosition(char * x__object, F32 position)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setPosition(position);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_setState(char * x__object, char * x__newState)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* newState = (const char*)x__newState;
+{
+   if (!dStricmp(newState,"forward"))
+      object->setState(PathCamera::Forward);
+   else
+      if (!dStricmp(newState,"backward"))
+         object->setState(PathCamera::Backward);
+      else
+         object->setState(PathCamera::Stop);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnPathCamera_setTarget(char * x__object, F32 position)
+{
+PathCamera* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setTarget(position);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

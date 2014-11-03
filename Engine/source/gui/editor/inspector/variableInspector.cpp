@@ -66,3 +66,74 @@ DefineConsoleMethod( GuiVariableInspector, loadVars, void, ( const char * search
 {
    object->loadVars( searchString );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiVariableInspector_loadVars(char * x__object, char * x__searchString)
+{
+GuiVariableInspector* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* searchString = (const char*)x__searchString;
+{
+   object->loadVars( searchString );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

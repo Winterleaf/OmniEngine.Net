@@ -191,3 +191,73 @@ DefineConsoleMethod( SimPersistSet, resolvePersistentIds, void, (), , "() - Try 
 {
    object->resolvePIDs();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_SimPersistSet_resolvePersistentIds(char * x__object)
+{
+SimPersistSet* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->resolvePIDs();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

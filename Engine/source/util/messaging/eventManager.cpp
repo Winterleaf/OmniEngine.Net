@@ -512,3 +512,186 @@ DefineConsoleMethod( EventManager, dumpSubscribers, void, ( const char * listene
    else
       object->dumpSubscribers();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EventManager_dumpEvents(char * x__object)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->dumpEvents();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EventManager_dumpSubscribers(char * x__object, char * x__listenerName)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* listenerName = (const char*)x__listenerName;
+{
+   if( listenerName != "" )
+      object->dumpSubscribers( listenerName );
+   else
+      object->dumpSubscribers();
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_EventManager_isRegisteredEvent(char * x__object, char * x__evt)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* evt = (const char*)x__evt;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->isRegisteredEvent( evt );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_EventManager_postEvent(char * x__object, char * x__evt, char * x__data)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* evt = (const char*)x__evt;
+const char* data = (const char*)x__data;
+bool wle_returnObject;
+{
+   if( !object->getMessageQueue() || !object->getMessageQueue()[ 0 ] )
+   {
+      Con::errorf( "EventManager::postEvent - No queue name set on EventManager" );
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =object->postEvent( evt, data );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_EventManager_registerEvent(char * x__object, char * x__evt)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* evt = (const char*)x__evt;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->registerEvent( evt );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EventManager_remove(char * x__object, char * x__listenerName, char * x__evt)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* listenerName = (const char*)x__listenerName;
+const char* evt = (const char*)x__evt;
+{
+      SimObject * listener = dynamic_cast< SimObject * >( Sim::findObject( listenerName ) );
+   if( listener )
+      object->remove( listener, evt );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EventManager_removeAll(char * x__object, char * x__listenerName)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* listenerName = (const char*)x__listenerName;
+{
+   
+   SimObject * listener = dynamic_cast< SimObject * >( Sim::findObject( listenerName ) );
+   if( listener )
+      object->removeAll( listener );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_EventManager_subscribe(char * x__object, char * x__listenerName, char * x__evt, char * x__callback)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* listenerName = (const char*)x__listenerName;
+const char* evt = (const char*)x__evt;
+const char* callback = (const char*)x__callback;
+bool wle_returnObject;
+{
+      SimObject *cbObj = dynamic_cast<SimObject *>(Sim::findObject(listenerName));
+   if( cbObj == NULL )
+   {
+      Con::warnf( "EventManager::subscribe - Invalid listener." );
+      {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+   }
+   {wle_returnObject =object->subscribe( cbObj, evt, callback );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_EventManager_unregisterEvent(char * x__object, char * x__evt)
+{
+EventManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* evt = (const char*)x__evt;
+{
+   object->unregisterEvent( evt );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

@@ -943,3 +943,187 @@ DefineConsoleFunction( rumble, void, (const char * device, F32 xRumble, F32 yRum
       Con::printf( "DirectInput/XInput is not enabled." );
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_disableJoystick()
+{
+{
+   DInputManager::disableJoystick();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_disableXInput()
+{
+{
+   DInputManager::disableXInput();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_echoInputState()
+{
+{
+   DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
+   if ( mgr && mgr->isEnabled() )
+   {
+      Con::printf( "DirectInput is enabled %s.", Input::isActive() ? "and active" : "but inactive" );
+      Con::printf( "- Joystick is %sabled and %sactive.",
+            mgr->isJoystickEnabled() ? "en" : "dis",
+            mgr->isJoystickActive() ? "" : "in" );
+   }
+   else
+      Con::printf( "DirectInput is not enabled." );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_enableJoystick()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =( DInputManager::enableJoystick() );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_enableXInput()
+{
+bool wle_returnObject;
+{
+            
+   {wle_returnObject =( DInputManager::enableXInput() );
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_getXInputState(S32 controllerID, char * x__properties, bool current)
+{
+const char* properties = (const char*)x__properties;
+
+{
+   DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
+   if ( !mgr || !mgr->isEnabled() ) 
+     return (int)( -1);
+      #define GET_XI_STATE(constName) \
+   if (!dStricmp(properties, #constName)) \
+     return (int)( mgr->getXInputState( controllerID, constName, ( current )));
+   GET_XI_STATE(XI_THUMBLX);
+   GET_XI_STATE(XI_THUMBLY);
+   GET_XI_STATE(XI_THUMBRX);
+   GET_XI_STATE(XI_THUMBRY);
+   GET_XI_STATE(XI_LEFT_TRIGGER);
+   GET_XI_STATE(XI_RIGHT_TRIGGER);
+   GET_XI_STATE(SI_UPOV);
+   GET_XI_STATE(SI_DPOV);
+   GET_XI_STATE(SI_LPOV);
+   GET_XI_STATE(SI_RPOV);
+   GET_XI_STATE(XI_START);
+   GET_XI_STATE(XI_BACK);
+   GET_XI_STATE(XI_LEFT_THUMB);
+   GET_XI_STATE(XI_RIGHT_THUMB);
+   GET_XI_STATE(XI_LEFT_SHOULDER);
+   GET_XI_STATE(XI_RIGHT_SHOULDER);
+   GET_XI_STATE(XI_A);
+   GET_XI_STATE(XI_B);
+   GET_XI_STATE(XI_X);
+   GET_XI_STATE(XI_Y);
+#undef GET_XI_STATE
+  return (int)( -1);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isJoystickEnabled()
+{
+bool wle_returnObject;
+{
+   {wle_returnObject =DInputManager::isJoystickEnabled();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_isXInputConnected(S32 controllerID)
+{
+bool wle_returnObject;
+{
+   DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
+   if ( mgr && mgr->isEnabled() ) {wle_returnObject =mgr->isXInputConnected( controllerID );
+return (S32)(wle_returnObject);}
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_resetXInput()
+{
+{
+            
+   DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
+   if ( mgr && mgr->isEnabled() ) 
+      mgr->resetXInput();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_rumble(char * x__device, F32 xRumble, F32 yRumble)
+{
+const char* device = (const char*)x__device;
+
+{
+   DInputManager* mgr = dynamic_cast<DInputManager*>( Input::getManager() );
+   if ( mgr && mgr->isEnabled() )
+   {
+      mgr->rumble(device, xRumble, yRumble);
+   }
+   else
+   {
+      Con::printf( "DirectInput/XInput is not enabled." );
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

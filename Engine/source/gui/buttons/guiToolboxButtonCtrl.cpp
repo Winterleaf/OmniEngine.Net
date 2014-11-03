@@ -226,3 +226,94 @@ void GuiToolboxButtonCtrl::renderButton(GFXTexHandle &texture, Point2I &offset, 
       renderChildControls( offset, updateRect);
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiToolboxButtonCtrl_setHoverBitmap(char * x__object, char * x__name)
+{
+GuiToolboxButtonCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+{
+   object->setHoverBitmap(name);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiToolboxButtonCtrl_setLoweredBitmap(char * x__object, char * x__name)
+{
+GuiToolboxButtonCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+{
+   object->setLoweredBitmap(name);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_GuiToolboxButtonCtrl_setNormalBitmap(char * x__object, char * x__name)
+{
+GuiToolboxButtonCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* name = (const char*)x__name;
+{
+   object->setNormalBitmap(name);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

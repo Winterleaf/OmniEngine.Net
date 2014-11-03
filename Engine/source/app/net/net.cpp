@@ -428,3 +428,471 @@ done:
 }
 
 ConsoleFunctionGroupEnd( Net );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__buildTaggedString(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* wle_returnObject;
+{
+S32 argc = 11;
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+const char** argv = &arguments[0];
+{
+   const char *indexPtr = argv[1];
+   if (*indexPtr == StringTagPrefixByte)
+      indexPtr++;
+   const char *fmtString = gNetStringTable->lookupString(dAtoi(indexPtr));
+   static const U32 bufSize = 512;
+   char *strBuffer = Con::getReturnBuffer(bufSize);
+   const char *fmtStrPtr = fmtString;
+   char *strBufPtr = strBuffer;
+   S32 strMaxLength = bufSize - 1;
+   if (!fmtString)
+      goto done;
+      while (*fmtStrPtr)
+   {
+            if (*fmtStrPtr == '%')
+      {
+         if (fmtStrPtr[1] >= '1' && fmtStrPtr[1] <= '9')
+         {
+            S32 argIndex = S32(fmtStrPtr[1] - '0') + 1;
+            if (argIndex >= argc)
+               goto done;
+            const char *argStr = argv[argIndex];
+            if (!argStr)
+               goto done;
+            S32 strLength = dStrlen(argStr);
+            if (strLength > strMaxLength)
+               goto done;
+            dStrcpy(strBufPtr, argStr);
+            strBufPtr += strLength;
+            strMaxLength -= strLength;
+            fmtStrPtr += 2;
+            continue;
+         }
+      }
+            if (strMaxLength <= 0)
+         goto done;
+      *strBufPtr++ = *fmtStrPtr++;
+      strMaxLength--;
+   }
+done:
+   *strBufPtr = '\0';
+   {wle_returnObject =strBuffer;
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__commandToClient(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19, char * x__a20, char * x__a21)
+{
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+const char* a20 = (const char*)x__a20;
+const char* a21 = (const char*)x__a21;
+{
+S32 argc = 22;
+if (dStrlen(a21)==0)
+if (dStrlen(a20)==0)
+if (dStrlen(a19)==0)
+if (dStrlen(a18)==0)
+if (dStrlen(a17)==0)
+if (dStrlen(a16)==0)
+if (dStrlen(a15)==0)
+if (dStrlen(a14)==0)
+if (dStrlen(a13)==0)
+if (dStrlen(a12)==0)
+if (dStrlen(a11)==0)
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+else
+argc=21;
+else
+argc=22;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+if (argc>=12)
+arguments.push_back(a11);
+if (argc>=13)
+arguments.push_back(a12);
+if (argc>=14)
+arguments.push_back(a13);
+if (argc>=15)
+arguments.push_back(a14);
+if (argc>=16)
+arguments.push_back(a15);
+if (argc>=17)
+arguments.push_back(a16);
+if (argc>=18)
+arguments.push_back(a17);
+if (argc>=19)
+arguments.push_back(a18);
+if (argc>=20)
+arguments.push_back(a19);
+if (argc>=21)
+arguments.push_back(a20);
+if (argc>=22)
+arguments.push_back(a21);
+const char** argv = &arguments[0];
+{
+   NetConnection *conn;
+   if(!Sim::findObject(argv[1], conn))
+      return;
+   RemoteCommandEvent::sendRemoteCommand(conn, argc - 2, argv + 2);
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn__commandToServer(char * x__a1, char * x__a2, char * x__a3, char * x__a4, char * x__a5, char * x__a6, char * x__a7, char * x__a8, char * x__a9, char * x__a10, char * x__a11, char * x__a12, char * x__a13, char * x__a14, char * x__a15, char * x__a16, char * x__a17, char * x__a18, char * x__a19, char * x__a20)
+{
+const char* a1 = (const char*)x__a1;
+const char* a2 = (const char*)x__a2;
+const char* a3 = (const char*)x__a3;
+const char* a4 = (const char*)x__a4;
+const char* a5 = (const char*)x__a5;
+const char* a6 = (const char*)x__a6;
+const char* a7 = (const char*)x__a7;
+const char* a8 = (const char*)x__a8;
+const char* a9 = (const char*)x__a9;
+const char* a10 = (const char*)x__a10;
+const char* a11 = (const char*)x__a11;
+const char* a12 = (const char*)x__a12;
+const char* a13 = (const char*)x__a13;
+const char* a14 = (const char*)x__a14;
+const char* a15 = (const char*)x__a15;
+const char* a16 = (const char*)x__a16;
+const char* a17 = (const char*)x__a17;
+const char* a18 = (const char*)x__a18;
+const char* a19 = (const char*)x__a19;
+const char* a20 = (const char*)x__a20;
+{
+S32 argc = 21;
+if (dStrlen(a20)==0)
+if (dStrlen(a19)==0)
+if (dStrlen(a18)==0)
+if (dStrlen(a17)==0)
+if (dStrlen(a16)==0)
+if (dStrlen(a15)==0)
+if (dStrlen(a14)==0)
+if (dStrlen(a13)==0)
+if (dStrlen(a12)==0)
+if (dStrlen(a11)==0)
+if (dStrlen(a10)==0)
+if (dStrlen(a9)==0)
+if (dStrlen(a8)==0)
+if (dStrlen(a7)==0)
+if (dStrlen(a6)==0)
+if (dStrlen(a5)==0)
+if (dStrlen(a4)==0)
+if (dStrlen(a3)==0)
+argc=3;
+else
+argc=4;
+else
+argc=5;
+else
+argc=6;
+else
+argc=7;
+else
+argc=8;
+else
+argc=9;
+else
+argc=10;
+else
+argc=11;
+else
+argc=12;
+else
+argc=13;
+else
+argc=14;
+else
+argc=15;
+else
+argc=16;
+else
+argc=17;
+else
+argc=18;
+else
+argc=19;
+else
+argc=20;
+else
+argc=21;
+std::vector<const char*> arguments;
+arguments.push_back("");
+arguments.push_back(a1);
+if (argc>=3)
+arguments.push_back(a2);
+if (argc>=4)
+arguments.push_back(a3);
+if (argc>=5)
+arguments.push_back(a4);
+if (argc>=6)
+arguments.push_back(a5);
+if (argc>=7)
+arguments.push_back(a6);
+if (argc>=8)
+arguments.push_back(a7);
+if (argc>=9)
+arguments.push_back(a8);
+if (argc>=10)
+arguments.push_back(a9);
+if (argc>=11)
+arguments.push_back(a10);
+if (argc>=12)
+arguments.push_back(a11);
+if (argc>=13)
+arguments.push_back(a12);
+if (argc>=14)
+arguments.push_back(a13);
+if (argc>=15)
+arguments.push_back(a14);
+if (argc>=16)
+arguments.push_back(a15);
+if (argc>=17)
+arguments.push_back(a16);
+if (argc>=18)
+arguments.push_back(a17);
+if (argc>=19)
+arguments.push_back(a18);
+if (argc>=20)
+arguments.push_back(a19);
+if (argc>=21)
+arguments.push_back(a20);
+const char** argv = &arguments[0];
+{
+   NetConnection *conn = NetConnection::getConnectionToServer();
+   if(!conn)
+      return;
+   RemoteCommandEvent::sendRemoteCommand(conn, argc - 1, argv + 1);
+}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_addTaggedString(char * x__str,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* str = (const char*)x__str;
+const char* wle_returnObject;
+{
+	{wle_returnObject =RemoteCommandEvent::addTaggedString(str);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+	}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_getTaggedString(char * x__tag,  char* retval)
+{
+dSprintf(retval,16384,"");
+const char* tag = (const char*)x__tag;
+const char* wle_returnObject;
+{
+	{wle_returnObject =RemoteCommandEvent::getTaggedString(tag);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,16384,"%s",wle_returnObject);
+return;
+}
+	}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_removeTaggedString(S32 tag)
+{
+{
+	RemoteCommandEvent::removeTaggedString(tag);
+	}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

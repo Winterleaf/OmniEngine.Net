@@ -1262,3 +1262,89 @@ DefineEngineFunction( reloadTextures, void, (),,
 
    TEXMGR->reloadTextures();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_cleanupTexturePool()
+{
+{
+   if ( !GFX || !TEXMGR )
+      return;
+   TEXMGR->cleanupPool();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_flushTextureCache()
+{
+{
+   if ( !GFX || !TEXMGR )
+      return;
+   TEXMGR->zombify();
+   TEXMGR->resurrect();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_reloadTextures()
+{
+{
+   if ( !GFX || !TEXMGR )
+      return;
+   TEXMGR->reloadTextures();
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

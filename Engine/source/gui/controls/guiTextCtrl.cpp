@@ -244,3 +244,84 @@ void GuiTextCtrl::setScriptValue(const char *val)
 {
    setText(val);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextCtrl_setText(char * x__object, char * x__text)
+{
+GuiTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* text = (const char*)x__text;
+{
+   object->setText( text );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnGuiTextCtrl_setTextID(char * x__object, char * x__textID)
+{
+GuiTextCtrl* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* textID = (const char*)x__textID;
+{
+	object->setTextID( textID );
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

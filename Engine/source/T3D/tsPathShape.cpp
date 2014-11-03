@@ -671,3 +671,185 @@ DefineEngineMethod(TSPathShape, getNodeCount, S32, (), , "Returns the number of 
 {
    return object->getNodeCount();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSPathShape_getLooping(char * x__object)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->getLooping();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fnTSPathShape_getNodeCount(char * x__object)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getNodeCount());
+};
+}
+extern "C" __declspec(dllexport) F32  __cdecl wle_fnTSPathShape_getPathPosition(char * x__object)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (F32)( 0);
+{
+  return (F32)( object->getPathPosition());
+};
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_popFront(char * x__object)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->popFront();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_pushBack(char * x__object, char * x__transform, F32 speed, char * x__type, char * x__path)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF transform = TransformF();
+sscanf( x__transform,"%f %f %f %f %f %f %f", &transform.mPosition.x, &transform.mPosition.y, &transform.mPosition.z, &transform.mOrientation.axis.x, &transform.mOrientation.axis.y, &transform.mOrientation.axis.z, &transform.mOrientation.angle);
+
+const char* type = (const char*)x__type;
+const char* path = (const char*)x__path;
+{
+   QuatF rot(transform.getOrientation());
+   object->pushBack( new CameraSpline::Knot(transform.getPosition(), rot, speed, resolveKnotType(type), resolveKnotPath(path)) );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_pushFront(char * x__object, char * x__transform, F32 speed, char * x__type, char * x__path)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+TransformF transform = TransformF();
+sscanf( x__transform,"%f %f %f %f %f %f %f", &transform.mPosition.x, &transform.mPosition.y, &transform.mPosition.z, &transform.mOrientation.axis.x, &transform.mOrientation.axis.y, &transform.mOrientation.axis.z, &transform.mOrientation.angle);
+
+const char* type = (const char*)x__type;
+const char* path = (const char*)x__path;
+{
+   QuatF rot(transform.getOrientation());
+   object->pushFront( new CameraSpline::Knot(transform.getPosition(), rot, speed, resolveKnotType(type), resolveKnotPath(path)) );
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_reset(char * x__object, F32 speed, bool makeFirstKnot, bool initFromPath)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+
+{
+	if ( !object->reset(speed, makeFirstKnot && initFromPath) && makeFirstKnot )
+   {        MatrixF mat = object->getTransform();
+      AngAxisF mOrientation;
+      mOrientation.set(mat);
+      QuatF rot(mOrientation);
+      object->pushBack( new CameraSpline::Knot(mat.getPosition(), rot, speed, CameraSpline::Knot::NORMAL, CameraSpline::Knot::SPLINE) );
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_setLooping(char * x__object, bool isLooping)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setLooping(isLooping);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_setMoveState(char * x__object, S32 x__newState)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+PathShapeState newState = (PathShapeState)x__newState;
+{
+   object->setMoveState(newState);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_setPathPosition(char * x__object, F32 position)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setPathPosition(position);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fnTSPathShape_setTarget(char * x__object, F32 position)
+{
+TSPathShape* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->setTarget(position);
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

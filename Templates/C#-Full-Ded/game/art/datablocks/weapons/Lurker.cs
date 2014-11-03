@@ -102,7 +102,6 @@ datablock ParticleData(GunFireSmoke)
    times[1]      = "0.498039";
    times[2]      = 1.0;
    animTexName = "art/particles/smoke";
-   preload = true;
 };
 
 datablock ParticleEmitterData(GunFireSmokeEmitter)
@@ -148,7 +147,6 @@ datablock ParticleData(BulletDirtDust)
    times[1]      = "0.498039";
    times[2]      = 1.0;
    animTexName = "art/particles/impact";
-   preload = true;
 };
 
 datablock ParticleEmitterData(BulletDirtDustEmitter)
@@ -199,7 +197,6 @@ datablock DebrisData(BulletShell)
    snapOnMaxBounce = false;
    ignoreWater = true;
    fade = true;
-   preload = true;
 };
 
 //-----------------------------------------------------------------------------
@@ -269,7 +266,6 @@ datablock ItemData(LurkerClip)
    pickUpName = "Lurker clip";
    count = 1;
    maxInventory = 10;
-   preload = true;
 };
 
 datablock ItemData(LurkerAmmo)
@@ -292,7 +288,6 @@ datablock ItemData(LurkerAmmo)
    pickUpName = "Lurker ammo";
    maxInventory = 30;
    clip = LurkerClip;
-   preload = true;
 };
 
 //--------------------------------------------------------------------------
@@ -324,7 +319,6 @@ datablock ItemData(Lurker)
    description = "Lurker";
    image = LurkerWeaponImage;
    reticle = "crossHair";
-   preload = true;
 };
 
 
@@ -559,7 +553,6 @@ datablock ShapeBaseImageData(LurkerWeaponImage)
    stateSequenceTransitionOut[13]   = true;
    stateAllowImageChange[13]        = false;
    stateSequence[13]                = "sprint";
-   preload = true;
 };
 
 //--------------------------------------------------------------------------
@@ -585,7 +578,6 @@ datablock ItemData(LurkerGrenadeAmmo)
    // Dynamic properties defined by the scripts
    pickUpName = "Lurker grenade ammo";
    maxInventory = 20;
-   preload = true;
 };
 
 datablock ItemData(LurkerGrenadeLauncher)
@@ -612,7 +604,6 @@ datablock ItemData(LurkerGrenadeLauncher)
    description = "Lurker Grenade Launcher";
    image = LurkerGrenadeLauncherImage;
    reticle = "crossHair";
-   preload = true;
 };
 
 datablock ShapeBaseImageData(LurkerGrenadeLauncherImage)
@@ -832,5 +823,4 @@ datablock ShapeBaseImageData(LurkerGrenadeLauncherImage)
    stateSequenceTransitionOut[13]   = true;
    stateAllowImageChange[13]        = false;
    stateSequence[13]                = "sprint";
-   preload = true;
 };

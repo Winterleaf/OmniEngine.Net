@@ -2391,3 +2391,314 @@ DefineConsoleMethod( PersistenceManager, removeField, void, (const char * objNam
          object->addRemoveField(dirtyObject, fieldName);
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_clearAll(char * x__object)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   object->clearAll();
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_deleteObjectsFromFile(char * x__object, char * x__fileName)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* fileName = (const char*)x__fileName;
+{
+   // Delete Objects.
+   object->deleteObjectsFromFile( fileName );
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PersistenceManager_getDirtyObject(char * x__object, S32 index)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+   if ( index < 0 || index >= object->getDirtyList().size() )
+   {
+      Con::warnf( "PersistenceManager::getDirtyObject() - Index (%s) out of range.", index );
+     return (S32)( 0);
+   }
+   // Fetch Object.
+   const PersistenceManager::DirtyObject& dirtyObject = object->getDirtyList()[index];
+   // Return Id.
+  return (S32)( ( dirtyObject.getObject() ) ? dirtyObject.getObject()->getId() : 0);
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PersistenceManager_getDirtyObjectCount(char * x__object)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	return (S32)( 0);
+{
+  return (S32)( object->getDirtyList().size());
+};
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PersistenceManager_hasDirty(char * x__object)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->hasDirty();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PersistenceManager_isDirty(char * x__object, char * x__objName)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* objName = (const char*)x__objName;
+bool wle_returnObject;
+{
+   SimObject *dirtyObject = NULL;
+   if (dStrcmp ( objName,"")!=0)
+   {
+      if (!Sim::findObject(objName, dirtyObject))
+      {
+			Con::printf("%s(): Invalid SimObject: %s", object->getName(), objName);
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      }
+   }
+   if (dirtyObject)
+      {wle_returnObject =object->isDirty(dirtyObject);
+return (S32)(wle_returnObject);}
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_listDirty(char * x__object)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+{
+   const PersistenceManager::DirtyList dirtyList = object->getDirtyList();
+   for(U32 i = 0; i < dirtyList.size(); i++)
+   {
+      const PersistenceManager::DirtyObject& dirtyObject = dirtyList[i];
+      if (dirtyObject.isNull())
+         continue;
+      SimObject *obj = dirtyObject.getObject();
+      bool isSet = dynamic_cast<SimSet *>(obj) != 0;
+      const char *name = obj->getName();
+      if (name)
+      {
+         Con::printf("   %d,\"%s\": %s %s %s", obj->getId(), name,
+         obj->getClassName(), dirtyObject.fileName, isSet ? "(g)":"");
+      }
+      else
+      {
+         Con::printf("   %d: %s %s, %s", obj->getId(), obj->getClassName(),
+         dirtyObject.fileName, isSet ? "(g)" : "");
+      }
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_removeDirty(char * x__object, char * x__objName)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+{
+   SimObject *dirtyObject = NULL;
+	if (dStrcmp(  objName,"")!=0)
+   {
+      if (!Sim::findObject(objName, dirtyObject))
+      {
+			Con::printf("%s(): Invalid SimObject: %s", object->getName(),objName);
+         return;
+      }
+   }
+   if (dirtyObject)
+      object->removeDirty(dirtyObject);
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_removeField(char * x__object, char * x__objName, char * x__fieldName)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+const char* fieldName = (const char*)x__fieldName;
+{
+   SimObject *dirtyObject = NULL;
+   if (dStrcmp(objName,"")!=0)
+   {
+      if (!Sim::findObject(objName, dirtyObject))
+      {
+			Con::printf("%s(): Invalid SimObject: %s", object->getName(), objName);
+         return;
+      }
+   }
+   if (dirtyObject)
+   {
+      if (fieldName != "")
+         object->addRemoveField(dirtyObject, fieldName);
+   }
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_removeObjectFromFile(char * x__object, char * x__objName, char * x__filename)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+const char* filename = (const char*)x__filename;
+{
+   SimObject *dirtyObject = NULL;
+   if (dStrcmp ( objName , "")!=0)
+   {
+      if (!Sim::findObject(objName, dirtyObject))
+      {
+			Con::printf("%s(): Invalid SimObject: %s", object->getName(), objName);
+         return;
+      }
+   }
+   if (dirtyObject)
+   {
+      if (dStrcmp( filename,"")!=0)
+         object->removeObjectFromFile(dirtyObject, filename);
+      else
+         object->removeObjectFromFile(dirtyObject);
+   }
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PersistenceManager_saveDirty(char * x__object)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+bool wle_returnObject;
+{
+   {wle_returnObject =object->saveDirty();
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_PersistenceManager_saveDirtyObject(char * x__object, char * x__objName)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* objName = (const char*)x__objName;
+bool wle_returnObject;
+{
+   SimObject *dirtyObject = NULL;
+   if (dStrcmp (  objName, "")!=0)
+   {
+      if (!Sim::findObject(objName, dirtyObject))
+      {
+         Con::printf("%s(): Invalid SimObject: %s", object->getName(), objName);
+         {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+      }
+   }
+   if (dirtyObject)
+      {wle_returnObject =object->saveDirtyObject(dirtyObject);
+return (S32)(wle_returnObject);}
+   {wle_returnObject =false;
+return (S32)(wle_returnObject);}
+}
+}
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_PersistenceManager_setDirty(char * x__object, char * x__objName, char * x__fileName)
+{
+PersistenceManager* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return;
+const char* objName = (const char*)x__objName;
+const char* fileName = (const char*)x__fileName;
+{
+   SimObject *dirtyObject = NULL;
+   if (objName != "")
+   {
+      if (!Sim::findObject(objName, dirtyObject))
+      {
+         Con::printf("setDirty(): Invalid SimObject: %s", objName);
+         return;
+      }
+   }
+   
+   // Prevent ourselves from shooting us in the foot.
+   
+   if( dirtyObject == Sim::getRootGroup() )
+   {
+      Con::errorf( "%s(): Cannot save RootGroup", objName );
+      return;
+   }
+   if (dirtyObject)
+   {
+      if (dStrcmp( fileName,"")!=0)
+         object->setDirty(dirtyObject, fileName);
+      else
+         object->setDirty(dirtyObject);
+   }
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+

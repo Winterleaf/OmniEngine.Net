@@ -228,3 +228,90 @@ DefineEngineFunction(loadObject, SimObject*, ( const char *filename ),,
 {
    return Sim::loadObjectStream(filename);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------DNTC AUTO-GENERATED---------------//
+#include <vector>
+
+#include <string>
+
+#include "core/strings/stringFunctions.h"
+
+//---------------DO NOT MODIFY CODE BELOW----------//
+
+extern "C" __declspec(dllexport) void  __cdecl wle_fn_loadObject(char * x__filename,  char* retval)
+{
+dSprintf(retval,1024,"");
+const char* filename = (const char*)x__filename;
+SimObject* wle_returnObject;
+{
+   {wle_returnObject =Sim::loadObjectStream(filename);
+if (!wle_returnObject) 
+return;
+dSprintf(retval,1024,"%i",wle_returnObject->getId());
+return;
+}
+}
+}
+extern "C" __declspec(dllexport) S32  __cdecl wle_fn_saveObject(char * x__object, char * x__filename)
+{
+SimObject* object; Sim::findObject(x__object, object ); 
+if (!object)
+	 return 0;
+const char* filename = (const char*)x__filename;
+bool wle_returnObject;
+{
+   {wle_returnObject =object && Sim::saveObject(object, filename);
+return (S32)(wle_returnObject);}
+}
+}
+//---------------END DNTC AUTO-GENERATED-----------//
+
