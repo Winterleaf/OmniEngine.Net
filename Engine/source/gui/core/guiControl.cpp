@@ -654,7 +654,8 @@ void GuiControl::applyProfileSettings()
    {
 	   mProfile->mFontSize = mControlFontSize;
 	   mProfile->mFont = NULL;
-	   mProfile->loadFont();
+      mProfile->loadFont();
+      mFontSizeChanged = false;
    }
 
    /// Update the render alpha for the control.
@@ -2034,6 +2035,7 @@ void GuiControl::resetProfileSettings()
 	   mProfile->mFontSize = mFontSizeCopy;
 	   mProfile->mFont = NULL;
 	   mProfile->loadFont();
+      mFontSizeChanged = false;
    }
 
    GFX->getDrawUtil()->clearBitmapModulation();   
