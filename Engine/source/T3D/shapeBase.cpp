@@ -2430,13 +2430,15 @@ void ShapeBase::prepRenderImage( SceneRenderState *state )
 //Lod preloading
 void ShapeBase::PreLoadAllLOD(SceneRenderState *state)
 {
-	for (S32 i = mShapeInstance->getSmallestVisibleDL(); i >= 0; i-- )
-	{
-	mShapeInstance->setCurrentDetail( i );
-	mShapeInstance->animate();
-	prepBatchRender( state, -1 );
-	calcClassRenderData();
-	}
+   if (!mShapeInstance)
+      return;
+   for (S32 i = mShapeInstance->getSmallestVisibleDL(); i >= 0; i-- )
+   {
+	   mShapeInstance->setCurrentDetail( i );
+	   mShapeInstance->animate();
+	   prepBatchRender( state, -1 );
+	   calcClassRenderData();
+   }
 }
 //End Lod preloading
 
