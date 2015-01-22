@@ -56,13 +56,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Base.Utils
         [ConsoleInteraction]
         public string create(string treeView)
         {
-            omni.Util.pushInstantGroup();
+            Util.pushInstantGroup();
             ObjectCreator undoObject = new ObjectCreator("UndoScriptAction", "", typeof (UndoActionReparentObjects));
             //undoObject["class"] = "UndoActionReparentObjects";
             undoObject["numObjects"] = "0";
             undoObject["treeView"] = treeView;
             UndoActionReparentObjects action = undoObject.Create();
-            omni.Util.popInstantGroup();
+            Util.popInstantGroup();
 
             return action;
         }

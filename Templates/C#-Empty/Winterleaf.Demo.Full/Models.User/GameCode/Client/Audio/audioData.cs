@@ -42,8 +42,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Audio
 // before SFXProfile's (the sound itself) when creating new ones
     public class audioData
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             SingletonCreator sc = new SingletonCreator("SFXDescription", "BulletFireDesc : AudioEffect");
@@ -62,8 +60,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Audio
             sc["pitch"] = 1.4;
             sc.Create();
 
-            if (omni.Util.isFile("scripts/client/audioData.cs"))
-                omni.Util.exec("scripts/client/audioData.cs", false, false);
+            if (pInvokes.Util.isFile("scripts/client/audioData.cs"))
+                pInvokes.Util.exec("scripts/client/audioData.cs", false, false);
         }
     }
 }

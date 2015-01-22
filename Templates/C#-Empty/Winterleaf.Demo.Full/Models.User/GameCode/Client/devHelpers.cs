@@ -37,14 +37,12 @@ using WinterLeaf.Engine.Classes.Interopt;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
-    public class devHelpers
+    public class devHelpers : pInvokes
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         /// Shortcut for typing dbgSetParameters with the default values torsion uses.
         public static void dbgTorsion()
         {
-            omni.console.Call("dbgSetParameters", new string[] {"6060", "password", "false"});
+            console.Call("dbgSetParameters", new string[] {"6060", "password", "false"});
         }
 
         // Reset the input state to a default of all-keys-up.
@@ -55,12 +53,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //         for ( %i = 0; %i < 6; %i++ )
             //setVariable( "mvTriggerCount" @ %i, 0 );
             for (int i = 0; i < 6; i++)
-                omni.iGlobal["mvTriggerCount" + i] = 0;
+                iGlobal["mvTriggerCount" + i] = 0;
 
-            omni.iGlobal["$mvUpAction"] = 0;
-            omni.iGlobal["$mvDownAction"] = 0;
-            omni.iGlobal["$mvLeftAction"] = 0;
-            omni.iGlobal["$mvRightAction"] = 0;
+            iGlobal["$mvUpAction"] = 0;
+            iGlobal["$mvDownAction"] = 0;
+            iGlobal["$mvLeftAction"] = 0;
+            iGlobal["$mvRightAction"] = 0;
         }
     }
 }

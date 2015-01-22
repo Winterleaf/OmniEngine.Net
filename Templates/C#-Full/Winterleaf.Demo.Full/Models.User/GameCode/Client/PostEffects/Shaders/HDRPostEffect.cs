@@ -169,54 +169,54 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
         public static void initialize()
         {
             // Blends between the scene and the tone mapped scene.
-            omni.dGlobal["$HDRPostFX::enableToneMapping"] = 1.0;
+            dGlobal["$HDRPostFX::enableToneMapping"] = 1.0;
 
             // The tone mapping middle grey or exposure value used
             // to adjust the overall "balance" of the image.
             //
             // 0.18 is fairly common value.
             //
-            omni.dGlobal["$HDRPostFX::keyValue"] = 0.18;
+            dGlobal["$HDRPostFX::keyValue"] = 0.18;
 
             // The minimum luninace value to allow when tone mapping 
             // the scene.  Is particularly useful if your scene very 
             // dark or has a black ambient color in places.
-            omni.dGlobal["$HDRPostFX::minLuminace"] = 0.001;
+            dGlobal["$HDRPostFX::minLuminace"] = 0.001;
 
             // The lowest luminance value which is mapped to white.  This
             // is usually set to the highest visible luminance in your 
             // scene.  By setting this to smaller values you get a contrast
             // enhancement.
-            omni.dGlobal["$HDRPostFX::whiteCutoff"] = 1.0;
+            dGlobal["$HDRPostFX::whiteCutoff"] = 1.0;
 
             // The rate of adaptation from the previous and new 
             // average scene luminance. 
-            omni.dGlobal["$HDRPostFX::adaptRate"] = 2.0;
+            dGlobal["$HDRPostFX::adaptRate"] = 2.0;
 
             // Blends between the scene and the blue shifted version
             // of the scene for a cinematic desaturated night effect.
-            omni.dGlobal["$HDRPostFX::enableBlueShift"] = 0.0;
+            dGlobal["$HDRPostFX::enableBlueShift"] = 0.0;
 
             // The blue shift color value.
-            omni.sGlobal["$HDRPostFX::blueShiftColor"] = "1.05 0.97 1.27";
+            sGlobal["$HDRPostFX::blueShiftColor"] = "1.05 0.97 1.27";
 
             // Blends between the scene and the bloomed scene.
-            omni.dGlobal["$HDRPostFX::enableBloom"] = 1.0;
+            dGlobal["$HDRPostFX::enableBloom"] = 1.0;
 
             // The threshold luminace value for pixels which are
             // considered "bright" and need to be bloomed.
-            omni.dGlobal["$HDRPostFX::brightPassThreshold"] = 1.0;
+            dGlobal["$HDRPostFX::brightPassThreshold"] = 1.0;
 
             // These are used in the gaussian blur of the
             // bright pass for the bloom effect.
-            omni.dGlobal["$HDRPostFX::gaussMultiplier"] = 0.3;
-            omni.dGlobal["$HDRPostFX::gaussMean"] = 0.0;
-            omni.dGlobal["$HDRPostFX::gaussStdDev"] = 0.8;
+            dGlobal["$HDRPostFX::gaussMultiplier"] = 0.3;
+            dGlobal["$HDRPostFX::gaussMean"] = 0.0;
+            dGlobal["$HDRPostFX::gaussStdDev"] = 0.8;
 
             // The 1x255 color correction ramp texture used
             // by both the HDR shader and the GammaPostFx shader
             // for doing full screen color correction. 
-            //omni.sGlobal["$HDRPostFX::colorCorrectionRamp"] = "core/scripts/client/postFx/null_color_ramp.png";
+            //sGlobal["$HDRPostFX::colorCorrectionRamp"] = "core/scripts/client/postFx/null_color_ramp.png";
             mColorCorrectionFileName = "core/scripts/client/postFx/null_color_ramp.png";
 
             SingletonCreator sts = new SingletonCreator("ShaderData", "HDR_BrightPassShader");

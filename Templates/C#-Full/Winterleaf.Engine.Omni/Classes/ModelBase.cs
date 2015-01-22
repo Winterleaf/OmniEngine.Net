@@ -48,8 +48,6 @@ namespace WinterLeaf.Engine.Classes
     [TypeConverter(typeof (TypeConverterGeneric<ModelBase>))]
     public class ModelBase : pInvokes, IConvertible
     {
-        public static readonly pInvokes omni = new pInvokes();
-
         public static ulong Objectcount = 0;
 
         public ModelBase()

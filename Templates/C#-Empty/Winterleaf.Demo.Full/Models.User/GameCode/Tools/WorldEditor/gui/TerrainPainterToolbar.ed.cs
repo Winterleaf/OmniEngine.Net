@@ -45,8 +45,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 {
     public class TerrainPainterToolbar
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "TerrainPainterToolbar_initialize")]
         public static void initialize()
         {
@@ -816,7 +814,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             float val = ETerrainEditor.setSlopeLimitMinAngle(value);
             GuiTextEditCtrl SlopeMinAngle = ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMinAngle", true);
 
-            SlopeMinAngle.setValue(omni.Util.mFloatLength(val, 1));
+            SlopeMinAngle.setValue(pInvokes.Util.mFloatLength(val, 1));
         }
 
         [ConsoleInteraction]
@@ -826,7 +824,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             float val = ETerrainEditor.setSlopeLimitMaxAngle(value);
             GuiTextEditCtrl SlopeMaxAngle = ((GuiControl) "PaintBrushSlopeControl").findObjectByInternalName("SlopeMaxAngle", true);
 
-            SlopeMaxAngle.setValue(omni.Util.mFloatLength(val, 1));
+            SlopeMaxAngle.setValue(pInvokes.Util.mFloatLength(val, 1));
         }
     }
 

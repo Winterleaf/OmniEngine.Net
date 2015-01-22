@@ -278,7 +278,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 
         public static void HandleClientJoin(string msgType, string msgString, string ClientName, GameConnection clientID, string guid, int score, int kills, int deaths, bool isAI, bool isAdmin, bool isSuperAdmin)
         {
-            ((PlayerListGui) "PlayerListGui").update(clientID, omni.Util.detag(ClientName), isSuperAdmin, isAdmin, isAI, score, kills, deaths);
+            ((PlayerListGui) "PlayerListGui").update(clientID, Util.detag(ClientName), isSuperAdmin, isAdmin, isAI, score, kills, deaths);
         }
 
         public static void HandleClientDrop(string msgType, string msgString, string clientName, GameConnection clientId)
@@ -290,7 +290,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
         {
             ((PlayerListGui) "PlayerListGui").updateScore(clientId, score, kills, deaths);
 
-            omni.console.print(string.Format(" score:{0} kills:{1} deaths: {2}", score, kills, deaths));
+            console.print(string.Format(" score:{0} kills:{1} deaths: {2}", score, kills, deaths));
         }
 
         [ConsoleInteraction(true)]

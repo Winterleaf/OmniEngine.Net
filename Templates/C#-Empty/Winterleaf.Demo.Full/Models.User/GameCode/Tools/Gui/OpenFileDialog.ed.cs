@@ -43,8 +43,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
 {
     public class OpenFileDialog
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction]
         public static void getLoadFilename(string filespec, string callback, string currentFile)
         {
@@ -67,16 +65,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
             ofd.Multiselect = false;
             //FileDialog fd = ofd;
 
-            if (omni.Util.filePath(currentFile) != "")
-                ofd.InitialDirectory = omni.Util.filePath(currentFile);
+            if (pInvokes.Util.filePath(currentFile) != "")
+                ofd.InitialDirectory = pInvokes.Util.filePath(currentFile);
 
             DialogResult dr = Dialogs.OpenFileDialog(ref ofd);
 
             if (dr == DialogResult.OK)
                 {
                 string fileName = Dialogs.GetForwardSlashFile(ofd.FileName);
-                omni.Util.eval(callback + "(\"" + fileName + "\");");
-                omni.sGlobal["$Tools::FileDialogs::LastFilePath"] = omni.Util.filePath(fileName);
+                pInvokes.Util.eval(callback + "(\"" + fileName + "\");");
+                pInvokes.sGlobal["$Tools::FileDialogs::LastFilePath"] = pInvokes.Util.filePath(fileName);
                 }
         }
     }

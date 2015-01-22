@@ -56,8 +56,8 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode.Server
                 lines = "1";
 
             foreach (GameConnection client in
-                t3d.ClientGroup.Where(client => !((GameConnection) client).isAIControlled()))
-                t3d.console.commandToClient(client, "centerPrint", new[] {message, time, lines});
+                pInvokes.ClientGroup.Where(client => !((GameConnection) client).isAIControlled()))
+                pInvokes.console.commandToClient(client, "centerPrint", new[] {message, time, lines});
         }
 
         [ConsoleInteraction(true)]
@@ -66,8 +66,8 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode.Server
             if (lines == "" || lines.AsInt() > 3 || lines.AsInt() < 1)
                 lines = "1";
             foreach (GameConnection client in
-                t3d.ClientGroup.Where(client => !((GameConnection) client).isAIControlled()))
-                t3d.console.commandToClient(client, "bottomPrint", new[] {message, time, lines});
+                pInvokes.ClientGroup.Where(client => !((GameConnection) client).isAIControlled()))
+                pInvokes.console.commandToClient(client, "bottomPrint", new[] {message, time, lines});
         }
 
         [ConsoleInteraction(true)]
@@ -76,7 +76,7 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode.Server
             if (lines == "" || lines.AsInt() > 3 || lines.AsInt() < 1)
                 lines = "1";
 
-            t3d.console.commandToClient(client, "centerPrint", new[] {message, time, lines});
+            pInvokes.console.commandToClient(client, "centerPrint", new[] {message, time, lines});
         }
 
         [ConsoleInteraction(true)]
@@ -85,19 +85,19 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode.Server
             if (lines == "" || lines.AsInt() > 3 || lines.AsInt() < 1)
                 lines = "1";
 
-            t3d.console.commandToClient(client, "bottomPrint", new[] {message, time, lines});
+            pInvokes.console.commandToClient(client, "bottomPrint", new[] {message, time, lines});
         }
 
         [ConsoleInteraction(true)]
         public static void ClearCenterPrint(GameConnection client)
         {
-            t3d.console.commandToClient(client, "ClearCenterPrint");
+            pInvokes.console.commandToClient(client, "ClearCenterPrint");
         }
 
         [ConsoleInteraction(true)]
         public static void ClearBottomPrint(GameConnection client)
         {
-            t3d.console.commandToClient(client, "clearBottomPrint");
+            pInvokes.console.commandToClient(client, "clearBottomPrint");
         }
 
         [ConsoleInteraction(true)]
@@ -109,10 +109,10 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode.Server
                 {
                 GameConnection cl = ClientGroup.getObject(i);
                 if (!cl.isAIControlled())
-                    t3d.console.commandToClient(cl, "ClearCenterPrint");
+                    pInvokes.console.commandToClient(cl, "ClearCenterPrint");
                 }
-            //foreach (uint client in t3d.ClientGroup.Cast<GameConnection>().Where(client => !client.isAIControlled()))
-            //   t3d.console.commandToClient(client.AsString(), "ClearCenterPrint");
+            //foreach (uint client in pInvokes.ClientGroup.Cast<GameConnection>().Where(client => !client.isAIControlled()))
+            //   pInvokes.console.commandToClient(client.AsString(), "ClearCenterPrint");
         }
 
         [ConsoleInteraction(true)]
@@ -124,10 +124,10 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode.Server
                 {
                 GameConnection cl = ClientGroup.getObject(i);
                 if (!cl.isAIControlled())
-                    t3d.console.commandToClient(cl, "ClearBottomPrint");
+                    pInvokes.console.commandToClient(cl, "ClearBottomPrint");
                 }
-            //foreach (uint client in t3d.ClientGroup.Cast<GameConnection>().Where(client => !client.isAIControlled()))
-            //    t3d.console.commandToClient(client.AsString(), "clearBottomPrint");
+            //foreach (uint client in pInvokes.ClientGroup.Cast<GameConnection>().Where(client => !client.isAIControlled()))
+            //    pInvokes.console.commandToClient(client.AsString(), "clearBottomPrint");
         }
     }
 }

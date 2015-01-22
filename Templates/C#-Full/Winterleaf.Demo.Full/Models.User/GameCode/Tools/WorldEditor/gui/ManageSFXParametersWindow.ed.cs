@@ -42,8 +42,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 {
     public class ManageSFXParametersWindow
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "ManageSFXParametersWindow_initialize")]
         public static void initialize()
         {
@@ -52,37 +50,37 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             //=============================================================================
 
             // File to save newly created SFXParameters in by default.
-            omni.sGlobal["$SFX_PARAMETER_FILE"] = "scripts/client/audioData.cs";
+            pInvokes.sGlobal["$SFX_PARAMETER_FILE"] = "scripts/client/audioData.cs";
 
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[0]"] = "Volume";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[1]"] = "Pitch";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[2]"] = "Priority";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[3]"] = "MinDistance";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[4]"] = "MaxDistance";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[5]"] = "ConeInsideAngle";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[6]"] = "ConeOutsideAngle";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[7]"] = "ConeOutsideVolume";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[8]"] = "PositionX";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[9]"] = "PositionY";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[10]"] = "PositionZ";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[11]"] = "RotationX";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[12]"] = "RotationY";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[13]"] = "RotationZ";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[14]"] = "VelocityX";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[15]"] = "VelocityY";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[16]"] = "VelocityZ";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[17]"] = "Cursor";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[18]"] = "User0";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[19]"] = "User1";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[20]"] = "User2";
-            omni.sGlobal["$SFX_PARAMETER_CHANNELS[21]"] = "User3";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[0]"] = "Volume";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[1]"] = "Pitch";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[2]"] = "Priority";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[3]"] = "MinDistance";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[4]"] = "MaxDistance";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[5]"] = "ConeInsideAngle";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[6]"] = "ConeOutsideAngle";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[7]"] = "ConeOutsideVolume";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[8]"] = "PositionX";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[9]"] = "PositionY";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[10]"] = "PositionZ";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[11]"] = "RotationX";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[12]"] = "RotationY";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[13]"] = "RotationZ";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[14]"] = "VelocityX";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[15]"] = "VelocityY";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[16]"] = "VelocityZ";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[17]"] = "Cursor";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[18]"] = "User0";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[19]"] = "User1";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[20]"] = "User2";
+            pInvokes.sGlobal["$SFX_PARAMETER_CHANNELS[21]"] = "User3";
 
-            omni.iGlobal["$SFX_PARAMETER_CHANNELS_COUNT"] = 22;
+            pInvokes.iGlobal["$SFX_PARAMETER_CHANNELS_COUNT"] = 22;
 
             // Interval (in milliseconds) between GUI updates.  Each update
             // syncs the displayed values to the actual parameter states.
 
-            omni.iGlobal["$SFX_PARAMETERS_UPDATE_INTERVAL"] = 50;
+            pInvokes.iGlobal["$SFX_PARAMETERS_UPDATE_INTERVAL"] = 50;
 
             #region GuiControl (ManageSFXParametersContainer,EditorGuiGroup)        oc_Newobject10
 

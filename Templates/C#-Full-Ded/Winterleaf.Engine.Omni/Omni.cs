@@ -304,14 +304,14 @@ namespace WinterLeaf.Engine
                 SafeNativeMethods.SetUpDynamicDLL(_mDll);
                 }
             catch (Exception err)
-            {
+                {
                 LastError = err;
                 _mStop = true;
                 if (_ScriptExtensions_Allow)
                     csFactory.Instance.StopMonitoring();
 
                 return;
-            }
+                }
             //create a list of pointers for our parameters
             List<IntPtr> myp = new List<IntPtr> {Marshal.StringToCoTaskMemAnsi(Assembly.GetExecutingAssembly().Location)};
             //Add the pointer to a managed memory string containing the location of the Assembly.

@@ -41,8 +41,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class scriptDoc
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true)]
         public static void writeOutFunctions()
         {
@@ -51,8 +49,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
    dumpConsoleFunctions();
    logger.delete();
              */
-            omni.console.Eval("new ConsoleLogger(logger, \"scriptFunctions.txt\", false);");
-            omni.Util.dumpConsoleFunctions(true, true);
+            pInvokes.console.Eval("new ConsoleLogger(logger, \"scriptFunctions.txt\", false);");
+            pInvokes.Util.dumpConsoleFunctions(true, true);
             "logger".delete();
         }
 
@@ -64,8 +62,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
    dumpConsoleClasses();
    logger.delete();
              */
-            omni.console.Eval("new ConsoleLogger(logger, \"scriptClasses.txt\", false);");
-            omni.Util.dumpConsoleClasses(true, true);
+            pInvokes.console.Eval("new ConsoleLogger(logger, \"scriptClasses.txt\", false);");
+            pInvokes.Util.dumpConsoleClasses(true, true);
             "logger".delete();
         }
     }

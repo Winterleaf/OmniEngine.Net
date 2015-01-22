@@ -40,11 +40,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 {
     public class cursor
     {
-        public static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
-            if (omni.sGlobal["$platform"] == "macos")
+            if (pInvokes.sGlobal["$platform"] == "macos")
                 {
                 ObjectCreator oc = new ObjectCreator("GuiCursor", "DefaultCursor");
 

@@ -168,7 +168,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
         public static void loadStartup()
         {
             // The index of the current splash screen
-            omni.iGlobal["$StartupIdx"] = 0;
+            iGlobal["$StartupIdx"] = 0;
             // A list of the splash screens and logos
             // to cycle through. Note that they have to
             // be in consecutive numerical order
@@ -176,7 +176,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
             if (!"StartupGui".isObject())
                 return;
             StartupGui.bitmap0 = "art/gui/background_g";
-            StartupGui.logo0 = "art/gui/omni.png";
+            StartupGui.logo0 = "art/gui/png";
             StartupGui.logoPos0 = new Point2I(178, 251);
             StartupGui.logoExtent0 = new Point2I(443, 139);
             // Call the next() function to set our firt

@@ -533,11 +533,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui
 
             oc_Newobject21.Create();
 
-            omni.bGlobal["$River::EditorOpen"] = false;
-            omni.bGlobal["$River::wireframe"] = true;
-            omni.bGlobal["$River::showSpline"] = true;
-            omni.bGlobal["$River::showRiver"] = true;
-            omni.bGlobal["$River::showWalls"] = true;
+            bGlobal["$River::EditorOpen"] = false;
+            bGlobal["$River::wireframe"] = true;
+            bGlobal["$River::showSpline"] = true;
+            bGlobal["$River::showRiver"] = true;
+            bGlobal["$River::showWalls"] = true;
         }
 
         [ConsoleInteraction]

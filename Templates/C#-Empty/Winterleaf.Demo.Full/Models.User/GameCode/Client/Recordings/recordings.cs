@@ -44,8 +44,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Recordings
 {
     public class recordings
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true)]
         public static void StartSelectedDemo()
         {
@@ -54,7 +52,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Recordings
             int sel = RecordingsDlgList.getSelectedId();
             string rowText = RecordingsDlgList.getRowTextById(sel);
 
-            string file = omni.sGlobal["$currentMod"] + "/recordings/" + omni.Util.getField(rowText, 0) + ".rec";
+            string file = pInvokes.sGlobal["$currentMod"] + "/recordings/" + pInvokes.Util.getField(rowText, 0) + ".rec";
 
             GameConnection ServerConnection = new ObjectCreator("GameConnection", "ServerConnection").Create();
             ((SimGroup) "RootGroup").add(ServerConnection);
@@ -95,14 +93,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Recordings
                 if (i < 100)
                     num = "0" + num;
 
-                file = omni.sGlobal["$currentMod"] + "/recordings/demo" + num + ".rec";
-                if (!omni.Util.isFile(file))
+                file = pInvokes.sGlobal["$currentMod"] + "/recordings/demo" + num + ".rec";
+                if (!pInvokes.Util.isFile(file))
                     break;
                 }
             if (i == 1000)
                 return;
 
-            omni.sGlobal["$DemoFileName"] = file;
+            pInvokes.sGlobal["$DemoFileName"] = file;
 
             ServerConnection.call("prepDemoRecord");
             ServerConnection.startRecording(file);
@@ -110,9 +108,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Recordings
             // make sure start worked
             if (ServerConnection.isDemoRecording())
                 {
-                omni.Util._call("deleteFile", file);
+                pInvokes.Util._call("deleteFile", file);
 
-                omni.sGlobal["$DemoFileName"] = "";
+                pInvokes.sGlobal["$DemoFileName"] = "";
                 }
         }
 
@@ -125,7 +123,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Recordings
 
         public static void demoPlaybackComplete()
         {
-            omni.Util._call("disconnect");
+            pInvokes.Util._call("disconnect");
             // Clean up important client-side stuff, such as the group
             // for particle emitters and the decal manager.  This doesn't get 
             // launched during a demo as we short circuit the whole mission 

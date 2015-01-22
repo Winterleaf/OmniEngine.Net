@@ -80,8 +80,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             set { this["columnId"] = value.AsString(); }
         }
 
-        //private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             #region GuiWindowCtrl (ContentBrowserGui)        oc_Newobject42
@@ -3235,7 +3233,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         public static int sortArrayAscending(string itemA, string itemB)
         {
             ContentBrowserGui ContentBrowserGui = "ContentBrowserGui";
-            return omni.Util.strcmp(omni.Util.getField(itemB, ContentBrowserGui.columnId), omni.Util.getField(itemA, ContentBrowserGui.columnId));
+            return Util.strcmp(Util.getField(itemB, ContentBrowserGui.columnId), Util.getField(itemA, ContentBrowserGui.columnId));
         }
 
         [ConsoleInteraction]
@@ -3243,7 +3241,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         {
             ContentBrowserGui ContentBrowserGui = "ContentBrowserGui";
 
-            return omni.Util.strcmp(omni.Util.getField(itemB, ContentBrowserGui.columnId), omni.Util.getField(itemA, ContentBrowserGui.columnId));
+            return Util.strcmp(Util.getField(itemB, ContentBrowserGui.columnId), Util.getField(itemA, ContentBrowserGui.columnId));
         }
 
         [ConsoleInteraction]
@@ -3254,9 +3252,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
                 {
                 string extent1 = rootCanvas.getWindowPosition().AsString() + rootCanvas.getExtent().AsString();
 
-                string finalPos1 = (omni.Util.getWord(extent1, 0).AsInt() + omni.Util.getWord(extent1, 2).AsInt()) + " " + (omni.Util.getWord(extent1, 1).AsInt() + omni.Util.getWord(extent1, 3).AsInt());
+                string finalPos1 = (Util.getWord(extent1, 0).AsInt() + Util.getWord(extent1, 2).AsInt()) + " " + (Util.getWord(extent1, 1).AsInt() + Util.getWord(extent1, 3).AsInt());
 
-                if (omni.Util.getWord(screenPos, 0).AsInt() < omni.Util.getWord(extent1, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() < omni.Util.getWord(extent1, 1).AsInt() || omni.Util.getWord(screenPos, 0).AsInt() > omni.Util.getWord(finalPos1, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() > omni.Util.getWord(finalPos1, 1).AsInt())
+                if (Util.getWord(screenPos, 0).AsInt() < Util.getWord(extent1, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() < Util.getWord(extent1, 1).AsInt() || Util.getWord(screenPos, 0).AsInt() > Util.getWord(finalPos1, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() > Util.getWord(finalPos1, 1).AsInt())
                     {
                     //echo("Outside Root");
                     }
@@ -3268,9 +3266,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
 
                 string extent = Canvas.getWindowPosition().AsString() + Canvas.getExtent().AsString();
 
-                string finalPos = (omni.Util.getWord(extent, 0).AsInt() + omni.Util.getWord(extent, 2).AsInt()) + " " + (omni.Util.getWord(extent, 1).AsInt() + omni.Util.getWord(extent, 3).AsInt());
+                string finalPos = (Util.getWord(extent, 0).AsInt() + Util.getWord(extent, 2).AsInt()) + " " + (Util.getWord(extent, 1).AsInt() + Util.getWord(extent, 3).AsInt());
 
-                if (omni.Util.getWord(screenPos, 0).AsInt() < omni.Util.getWord(extent, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() < omni.Util.getWord(extent, 1).AsInt() || omni.Util.getWord(screenPos, 0).AsInt() > omni.Util.getWord(finalPos, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() > omni.Util.getWord(finalPos, 1).AsInt())
+                if (Util.getWord(screenPos, 0).AsInt() < Util.getWord(extent, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() < Util.getWord(extent, 1).AsInt() || Util.getWord(screenPos, 0).AsInt() > Util.getWord(finalPos, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() > Util.getWord(finalPos, 1).AsInt())
                     {
                     //echo("Outside Canvas");
                     return false;

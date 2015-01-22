@@ -80,7 +80,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ConvexEditor.gui.CodeB
 
             // Add ourselves to the ToolsToolbar
             string tooltip = "Sketch Tool (" + accel + ")";
-            EditorGui.addToToolsToolbar("ConvexEditorPlugin", "ConvexEditorPalette", omni.Util._expandFilename("tools/convexEditor/images/convex-editor-btn"), tooltip);
+            EditorGui.addToToolsToolbar("ConvexEditorPlugin", "ConvexEditorPalette", Util._expandFilename("tools/convexEditor/images/convex-editor-btn"), tooltip);
 
             //connect editor windows
             ((GuiWindowCollapseCtrl) "ConvexEditorOptionsWindow").attachTo("ConvexEditorTreeWindow");
@@ -102,7 +102,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ConvexEditor.gui.CodeB
             this["popupMenu"] = ConvexActionsMenu;
 
             //exec( "./convexEditorSettingsTab.ed.gui" );
-            omni.console.Call("ConvexEditorSettingsTab_initialize");
+            console.Call("ConvexEditorSettingsTab_initialize");
             ESettingsWindow.addTabPage("EConvexEditorSettingsPage");
         }
 

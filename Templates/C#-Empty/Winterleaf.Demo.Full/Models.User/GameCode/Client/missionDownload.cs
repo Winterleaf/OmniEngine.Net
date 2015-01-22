@@ -46,17 +46,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class missionDownload
     {
-        private static readonly pInvokes omni = new pInvokes();
         private static List<string> MLoadinfo = new List<string>();
 
         [ConsoleInteraction(true)]
         public static void clientCmdMissionStartPhase1(string seq, string missionName, string musicTrack, string serverCRC)
         {
             GameConnection ServerConnection = "ServerConnection";
-            omni.Util._echo("*** New Mission: " + missionName);
-            omni.Util._echo("*** Phase 1: Download Datablocks & Targets");
+            pInvokes.Util._echo("*** New Mission: " + missionName);
+            pInvokes.Util._echo("*** Phase 1: Download Datablocks & Targets");
             onMissionDownloadPhase1(missionName, musicTrack);
-            omni.sGlobal["$ServerDatablockCacheCRC"] = serverCRC;
+            pInvokes.sGlobal["$ServerDatablockCacheCRC"] = serverCRC;
 
             string name = missionName.Replace(" ", "");
             if (name.Contains("/"))
@@ -64,15 +63,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             if (name.Contains("."))
                 name = name.Split('.')[0];
 
-            omni.sGlobal["$ServerDatablockCacheMissionName"] = "DBCaches/" + name + "DB.db";
+            pInvokes.sGlobal["$ServerDatablockCacheMissionName"] = "DBCaches/" + name + "DB.db";
 
             if (ServerConnection.callScript("LoadDatablocksFromFile", new[] {serverCRC}).AsBool())
                 {
-                omni.console.print("Loaded Datablocks from file.");
+                pInvokes.console.print("Loaded Datablocks from file.");
                 clientCmdMissionStartPhase2(seq, missionName, true);
                 }
             else
-                omni.console.commandToServer("MissionStartPhase1Ack", new string[] {seq});
+                pInvokes.console.commandToServer("MissionStartPhase1Ack", new string[] {seq});
         }
 
         [ConsoleInteraction(true)]
@@ -85,29 +84,29 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         public static void clientCmdMissionStartPhase2(string seq, string missionName, bool isLoadedFromFile = false)
         {
             onPhase1Complete();
-            omni.Util._echo("*** Phase 2: Download Ghost Objects");
+            pInvokes.Util._echo("*** Phase 2: Download Ghost Objects");
             onMissionDownloadPhase2();
 
             //Push the client past the datablock transmition stage.
             if (isLoadedFromFile)
-                omni.console.commandToServer("MissionStartPhase2CacheAck");
+                pInvokes.console.commandToServer("MissionStartPhase2CacheAck");
 
             //Start next stage.
-            omni.console.commandToServer("MissionStartPhase2Ack", new string[] {seq, omni.sGlobal["$pref::Player:PlayerDB"]});
+            pInvokes.console.commandToServer("MissionStartPhase2Ack", new string[] {seq, pInvokes.sGlobal["$pref::Player:PlayerDB"]});
         }
 
         [ConsoleInteraction(true)]
         public static void onGhostAlwaysStarted(string ghostCount)
         {
-            omni.sGlobal["$ghostCount"] = ghostCount;
-            omni.iGlobal["$ghostsRecvd"] = 0;
+            pInvokes.sGlobal["$ghostCount"] = ghostCount;
+            pInvokes.iGlobal["$ghostsRecvd"] = 0;
         }
 
         [ConsoleInteraction(true)]
         public static void onGhostAlwaysObjectReceived()
         {
-            omni.iGlobal["$ghostsRecvd"] = omni.iGlobal["$ghostsRecvd"] + 1;
-            onPhase2Progress((omni.fGlobal["$ghostsRecvd"]/omni.fGlobal["$ghostCount"]).AsString());
+            pInvokes.iGlobal["$ghostsRecvd"] = pInvokes.iGlobal["$ghostsRecvd"] + 1;
+            onPhase2Progress((pInvokes.fGlobal["$ghostsRecvd"]/pInvokes.fGlobal["$ghostCount"]).AsString());
         }
 
         //
@@ -119,45 +118,45 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         public static void clientCmdMissionStartPhase3(string seq, string missionName)
         {
             onPhase2Complete();
-            omni.Util.StartClientReplication();
-            omni.Util.StartFoliageReplication();
+            pInvokes.Util.StartClientReplication();
+            pInvokes.Util.StartFoliageReplication();
             // Load the static mission decals.
 
-            omni.console.Call("decalManagerLoad", new string[] {missionName + ".decals"});
+            pInvokes.console.Call("decalManagerLoad", new string[] {missionName + ".decals"});
 
-            omni.Util._echo("*** Phase 3: Mission Lighting");
-            omni.sGlobal["$MSeq"] = seq;
-            omni.sGlobal["$Client::MissionFile"] = missionName;
+            pInvokes.Util._echo("*** Phase 3: Mission Lighting");
+            pInvokes.sGlobal["$MSeq"] = seq;
+            pInvokes.sGlobal["$Client::MissionFile"] = missionName;
 
             //Need to light the mission before we are ready.
             //The sceneLightingComplete function will complete the handshake 
             //once the scene lighting is done.
-            if (omni.Util.lightScene("sceneLightingComplete", ""))
+            if (pInvokes.Util.lightScene("sceneLightingComplete", ""))
                 {
-                omni.Util._echo("Lighting mission....");
-                omni.Util._schedule("1", "0", "updateLightingProgress");
+                pInvokes.Util._echo("Lighting mission....");
+                pInvokes.Util._schedule("1", "0", "updateLightingProgress");
                 onMissionDownloadPhase3();
-                omni.bGlobal["$lightingMission"] = true;
+                pInvokes.bGlobal["$lightingMission"] = true;
                 }
         }
 
         [ConsoleInteraction(true)]
         public static void updateLightingProgress()
         {
-            onPhase3Progress(omni.sGlobal["$SceneLighting::lightingProgress"]);
-            if (omni.bGlobal["$lightingMission"])
-                omni.iGlobal["$lightingProgressThread"] = omni.Util._schedule("1", "0", "updateLightingProgress");
+            onPhase3Progress(pInvokes.sGlobal["$SceneLighting::lightingProgress"]);
+            if (pInvokes.bGlobal["$lightingMission"])
+                pInvokes.iGlobal["$lightingProgressThread"] = pInvokes.Util._schedule("1", "0", "updateLightingProgress");
         }
 
         [ConsoleInteraction(true)]
         public static void sceneLightingComplete()
         {
-            omni.Util._echo("Mission lighting done");
+            pInvokes.Util._echo("Mission lighting done");
             onPhase3Complete();
             //The is also the end of the mission load cycle.
 
             onMissionDownloadComplete();
-            omni.console.commandToServer("MissionStartPhase3Ack", new string[] {omni.sGlobal["$MSeq"]});
+            pInvokes.console.commandToServer("MissionStartPhase3Ack", new string[] {pInvokes.sGlobal["$MSeq"]});
         }
 
         //
@@ -169,16 +168,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             GameConnection conn = new ObjectCreator("ServerConnection").Create();
             ((SimGroup) "RootGroup").add(conn);
-            conn.setConnectArgs(omni.sGlobal["$pref::Player::Name"]);
-            conn.setJoinPassword(omni.sGlobal["$Client::Password"]);
+            conn.setConnectArgs(pInvokes.sGlobal["$pref::Player::Name"]);
+            conn.setJoinPassword(pInvokes.sGlobal["$Client::Password"]);
             conn.connect(server);
         }
 
         public static void onMissionDownloadPhase1(string missionName, string musicTrack)
         {
             // Load the post effect presets for this mission.
-            string path = "levels/" + omni.Util.fileBase(missionName) + omni.sGlobal["$PostFXManager::fileExtension"];
-            if (omni.Util.isFile(path))
+            string path = "levels/" + pInvokes.Util.fileBase(missionName) + pInvokes.sGlobal["$PostFXManager::fileExtension"];
+            if (pInvokes.Util.isFile(path))
                 ((postFXManager) "postFXManager").loadPresetHandler(path);
             else
                 ((postFXManager) "postFXManager").settingsApplyDefaultPreset();
@@ -271,7 +270,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
         public static void onPhase3Complete()
         {
-            omni.bGlobal["$lightingMission"] = false;
+            pInvokes.bGlobal["$lightingMission"] = false;
             if (!"LoadingProgress".isObject())
                 return;
             ((GuiTextCtrl) "LoadingProgressTxt").setValue("STARTING MISSION");
@@ -296,7 +295,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void handleLoadInfoMessage(string msgType, string msgString, string mapname)
         {
-            omni.console.error("Load info Recieved map " + mapname);
+            pInvokes.console.error("Load info Recieved map " + mapname);
 
             GuiChunkedBitmapCtrl LoadingGui = "LoadingGui";
             if (((GuiCanvas) "canvas").getContent() != LoadingGui.getId())

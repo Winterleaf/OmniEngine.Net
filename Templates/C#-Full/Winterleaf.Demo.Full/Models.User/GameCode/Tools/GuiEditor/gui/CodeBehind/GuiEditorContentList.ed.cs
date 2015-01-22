@@ -49,11 +49,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
         [ConsoleInteraction(true, "GuiEditorContentList_initialize")]
         public static void initialize()
         {
-            if (!omni.Util.isDefined("$GuiEditor::GuiFilterList"))
+            if (!Util.isDefined("$GuiEditor::GuiFilterList"))
                 {
                 /// List of named controls that are filtered out from the
                 /// control list dropdown.
-                omni.sGlobal["$GuiEditor::GuiFilterList"] = "GuiEditorGui" + '\t' + "AL_ShadowVizOverlayCtrl" + '\t' + "MessageBoxOKDlg" + '\t' + "MessageBoxOKCancelDlg" + '\t' + "MessageBoxOKCancelDetailsDlg" + '\t' + "MessageBoxYesNoDlg" + '\t' + "MessageBoxYesNoCancelDlg" + '\t' + "MessagePopupDlg";
+                sGlobal["$GuiEditor::GuiFilterList"] = "GuiEditorGui" + '\t' + "AL_ShadowVizOverlayCtrl" + '\t' + "MessageBoxOKDlg" + '\t' + "MessageBoxOKCancelDlg" + '\t' + "MessageBoxOKCancelDetailsDlg" + '\t' + "MessageBoxYesNoDlg" + '\t' + "MessageBoxYesNoCancelDlg" + '\t' + "MessagePopupDlg";
                 }
         }
 

@@ -69,9 +69,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
         [ConsoleInteraction(true, "editor_Initialize")]
         public static void initialize()
         {
-            omni.sGlobal["$RelightCallback"] = "";
+            sGlobal["$RelightCallback"] = "";
             ((ActionMap) "GlobalActionMap").bind("keyboard", "f11", "toggleEditor");
-            omni.Util.eval(@"
+            Util.eval(@"
 
 package EditorDisconnectOverride
 {
@@ -83,7 +83,7 @@ Editor_Disconnect();
 
 
 ");
-            omni.Util.activatePackage("EditorDisconnectOverride");
+            Util.activatePackage("EditorDisconnectOverride");
         }
 
         [ConsoleInteraction(true, "Editor_Create")]
@@ -164,12 +164,12 @@ Editor_Disconnect();
             editor editor = "editor";
             if (make)
                 {
-                string timerID = omni.console.Call("startPrecisionTimer");
-                if (omni.bGlobal["$InGuiEditor"])
-                    //omni.console.Call("GuiEdit");
+                string timerID = console.Call("startPrecisionTimer");
+                if (bGlobal["$InGuiEditor"])
+                    //console.Call("GuiEdit");
                     GuiEditorGui.GuiEdit("");
 
-                if (!omni.bGlobal["$missionRunning"])
+                if (!bGlobal["$missionRunning"])
                     {
                     // Flag saying, when level is chosen, launch it with the editor open.
                     ((GuiControl) "ChooseLevelDlg")["launchInEditor"] = true.AsString();
@@ -178,7 +178,7 @@ Editor_Disconnect();
                     }
                 else
                     {
-                    omni.Util.pushInstantGroup();
+                    Util.pushInstantGroup();
                     if (!"Editor".isObject())
                         {
                         create();
@@ -191,7 +191,7 @@ Editor_Disconnect();
                         {
                         if (((LevelInfo) "theLevelInfo")["Type"] == "DemoScene")
                             {
-                            omni.console.commandToServer("dropPlayerAtCamera");
+                            console.commandToServer("dropPlayerAtCamera");
                             editor.close("SceneGui");
                             }
                         else
@@ -199,13 +199,13 @@ Editor_Disconnect();
                         }
                     else
                         {
-                        if (!omni.bGlobal["$GuiEditorBtnPressed"])
+                        if (!bGlobal["$GuiEditorBtnPressed"])
                             {
                             ((GuiCanvas) "Canvas").pushDialog("EditorLoadingGui");
                             ((GuiCanvas) "Canvas").repaint(0);
                             }
                         else
-                            omni.bGlobal["$GuiEditorBtnPressed"] = false;
+                            bGlobal["$GuiEditorBtnPressed"] = false;
 
                         editor.open();
 
@@ -213,20 +213,20 @@ Editor_Disconnect();
                         // the level from cycling after it's duration
                         // has elapsed.
 
-                        omni.Util.cancel(omni.iGlobal["$Game::Schedule"]);
+                        Util.cancel(iGlobal["$Game::Schedule"]);
 
                         if (((LevelInfo) "theLevelInfo")["type"] == "DemoScene")
-                            omni.console.commandToServer("dropCameraAtPlayer", new string[] {"true"});
+                            console.commandToServer("dropCameraAtPlayer", new string[] {"true"});
 
                         ((GuiCanvas) "Canvas").popDialog("EditorLoadingGui");
                         }
 
-                    omni.Util.popInstantGroup();
+                    Util.popInstantGroup();
                     }
 
-                string elapsed = omni.console.Call("stopPrecisionTimer", new string[] {timerID});
+                string elapsed = console.Call("stopPrecisionTimer", new string[] {timerID});
 
-                omni.Util._warn("Time spent in toggleEditor() : " + (elapsed.AsFloat()/1000.0) + " s");
+                Util._warn("Time spent in toggleEditor() : " + (elapsed.AsFloat()/1000.0) + " s");
                 }
         }
 
@@ -259,9 +259,9 @@ Editor_Disconnect();
                     editor.close("MainMenuGui");
                 }
 
-            omni.Util.deactivatePackage("EditorDisconnectOverride");
-            omni.Util._call("disconnect");
-            omni.Util.activatePackage("EditorDisconnectOverride");
+            Util.deactivatePackage("EditorDisconnectOverride");
+            Util._call("disconnect");
+            Util.activatePackage("EditorDisconnectOverride");
         }
 
         [ConsoleInteraction]
@@ -409,7 +409,6 @@ Editor_Disconnect();
             ShapeEdAdvancedWindow ShapeEdAdvancedWindow = "ShapeEdAdvancedWindow";
             ShapeEdSelectWindow ShapeEdSelectWindow = "ShapeEdSelectWindow";
             ShapeEdPropWindow ShapeEdPropWindow = "ShapeEdPropWindow";
-            MessageHud MessageHud = "MessageHud";
 
             EWTreeWindow["wasOpen"] = EWTreeWindow["isInPopup"];
             EWInspectorWindow["wasOpen"] = EWInspectorWindow["isInPopup"];
@@ -463,8 +462,7 @@ Editor_Disconnect();
 
             this.editorDisabled();
             Canvas.setContent(gui);
-            if (MessageHud.isObject())
-                MessageHud.close();
+
             EditorGui.writeCameraSettings();
 
             Util._schedule("1000", "0", "checkCursor");
@@ -494,7 +492,7 @@ Editor_Disconnect();
             RelightStatus.visible = true;
             RelightProgress.setValue("0");
             Canvas.repaint(0);
-            omni.Util.lightScene("EditorLightingComplete", forceAlways.AsString());
+            Util.lightScene("EditorLightingComplete", forceAlways.AsString());
             updateEditorLightingProgress();
         }
 
@@ -503,13 +501,13 @@ Editor_Disconnect();
         {
             GuiControl RelightStatus = "RelightStatus";
 
-            omni.bGlobal["$lightingMission"] = false;
+            bGlobal["$lightingMission"] = false;
             RelightStatus.visible = false;
 
-            if (omni.sGlobal["$RelightCallback"] != "")
-                omni.Util.eval(omni.sGlobal["$RelightCallback"]);
+            if (sGlobal["$RelightCallback"] != "")
+                Util.eval(sGlobal["$RelightCallback"]);
 
-            omni.sGlobal["$RelightCallback"] = "";
+            sGlobal["$RelightCallback"] = "";
         }
 
         [ConsoleInteraction]
@@ -517,9 +515,9 @@ Editor_Disconnect();
         {
             GuiProgressBitmapCtrl RelightProgress = "RelightProgress";
 
-            RelightProgress.setValue(omni.sGlobal["$SceneLighting::lightingProgress"]);
-            if (omni.bGlobal["$lightingMission"])
-                omni.iGlobal["$lightingProgressThread"] = omni.Util._schedule("1", "0", "updateEditorLightingProgress");
+            RelightProgress.setValue(sGlobal["$SceneLighting::lightingProgress"]);
+            if (bGlobal["$lightingMission"])
+                iGlobal["$lightingProgressThread"] = Util._schedule("1", "0", "updateEditorLightingProgress");
         }
 
         [ConsoleInteraction]
@@ -530,7 +528,7 @@ Editor_Disconnect();
                 messageBox.MessageBoxOK("Missing Object Name", "No name given for object.  Please enter a valid object name.");
                 return false;
                 }
-            if (!omni.Util.isValidObjectName(name))
+            if (!Util.isValidObjectName(name))
                 {
                 messageBox.MessageBoxOK("Invalid Object Name", "'" + name + "' is not a valid object name." + '\n' + "" + '\n' + "Please choose a name that begins with a letter or underscore and is otherwise comprised " + "exclusively of letters, digits, and/or underscores.");
                 return false;
@@ -544,7 +542,7 @@ Editor_Disconnect();
                 messageBox.MessageBoxOK("Invalid Object Name", "Object names must be unique, and there is an " + "existing " + ((SimObject) name).getClassName() + " object with the name '" + name + "' (defined " + "in " + filename + ").  Please choose another name.");
                 return false;
                 }
-            if (omni.Util.isClass(name))
+            if (Util.isClass(name))
                 {
                 messageBox.MessageBoxOK("Invalid Object Name", "'" + name + "' is the name of an existing TorqueScript " + "class.  Please choose another name.");
                 return false;

@@ -47,8 +47,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
 {
     public class Creator
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction]
         public static int alphaIconCompare(SimObject a, SimObject b)
         {
@@ -64,7 +62,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                     return 1;
                 }
 
-            int result = omni.Util.stricmp(a["text"], b["text"]);
+            int result = pInvokes.Util.stricmp(a["text"], b["text"]);
             return result;
         }
 
@@ -74,9 +72,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         {
             EWCreatorWindow EWCreatorWindow = "EWCreatorWindow";
 
-            if (!omni.Util.isClass(className))
+            if (!pInvokes.Util.isClass(className))
                 {
-                omni.Util._warn("createObject( " + className + " ) - Was not a valid class.");
+                pInvokes.Util._warn("createObject( " + className + " ) - Was not a valid class.");
                 return "";
                 }
 

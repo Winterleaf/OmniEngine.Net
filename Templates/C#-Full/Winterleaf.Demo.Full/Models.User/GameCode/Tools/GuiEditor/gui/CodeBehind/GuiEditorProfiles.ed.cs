@@ -47,13 +47,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
 {
     public class GuiEditorProfiles
     {
-        internal static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "GuiEditorProfiles_initialize")]
         public static void initialize()
         {
-            omni.sGlobal["$GUI_EDITOR_DEFAULT_PROFILE_FILENAME"] = "art/gui/customProfiles.cs";
-            omni.sGlobal["$GUI_EDITOR_DEFAULT_PROFILE_CATEGORY"] = "Other";
+            pInvokes.sGlobal["$GUI_EDITOR_DEFAULT_PROFILE_FILENAME"] = "art/gui/customProfiles.cs";
+            pInvokes.sGlobal["$GUI_EDITOR_DEFAULT_PROFILE_CATEGORY"] = "Other";
         }
 
         //=============================================================================================

@@ -46,7 +46,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.physicsTools
 
         public override void onMenuSelect()
         {
-            bool isEnabled = omni.Util.physicsSimulationEnabled();
+            bool isEnabled = Util.physicsSimulationEnabled();
 
             string itemText = !isEnabled ? "Start Simulation" : "Pause Simulation";
             string itemCommand = !isEnabled ? "physicsStartSimulation( \"client\" );physicsStartSimulation( \"server\" );" : "physicsStopSimulation( \"client\" );physicsStopSimulation( \"server\" );";

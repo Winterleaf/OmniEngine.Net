@@ -62,13 +62,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.ChooseLevel
         {
             GuiTextListCtrl CL_levelList = "CL_levelList";
             if (mission == "")
-                mission = omni.Util.getField(CL_levelList.getRowTextById(CL_levelList.getSelectedId()), 1);
+                mission = Util.getField(CL_levelList.getRowTextById(CL_levelList.getSelectedId()), 1);
 
             string serverType = hostingType;
 
             if (serverType == "")
                 {
-                if (omni.bGlobal["$pref::HostMultiPlayer"])
+                if (bGlobal["$pref::HostMultiPlayer"])
                     serverType = "MultiPlayer";
                 else
                     serverType = "SinglePlayer";

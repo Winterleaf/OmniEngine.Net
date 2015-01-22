@@ -5960,7 +5960,7 @@ public enum  R__WorldEditor__DropType{
 
       public static readonly TypeGuiStackingType Vertical = new TypeGuiStackingType((int)R__GuiStackControl__StackingType.stackingTypeVert,"Vertical","Stack children vertically by setting their Y position");
       public static readonly TypeGuiStackingType Horizontal = new TypeGuiStackingType((int)R__GuiStackControl__StackingType.stackingTypeHoriz,"Horizontal","Stack children horizontall by setting their X position");
-      public static readonly TypeGuiStackingType Dynamic = new TypeGuiStackingType((int)R__GuiStackControl__StackingType.stackingTypeDyn,"Dynamic","Automatically switch between          Vertical and Horizontal stacking. Vertical stacking is chosen when the          stack control is taller than it is wide, horizontal stacking is chosen          when the stack control is wider than it is tall.  ");
+      public static readonly TypeGuiStackingType Dynamic = new TypeGuiStackingType((int)R__GuiStackControl__StackingType.stackingTypeDyn,"Dynamic","Automatically switch between           Vertical and Horizontal stacking. Vertical stacking is chosen when the           stack control is taller than it is wide, horizontal stacking is chosen           when the stack control is wider than it is tall.  ");
       };
 
 /// <summary>
@@ -7896,29 +7896,29 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXChannel Volume = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVolume,"Volume","Channel controls volume level of attached sound sources. n         @see SFXDescription::volume  ");
-      public static readonly TypeSFXChannel Pitch = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPitch,"Pitch","Channel controls pitch of attached sound sources. n         @see SFXDescription::pitch  ");
-      public static readonly TypeSFXChannel Priority = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPriority,"Priority","Channel controls virtualizaton priority level of attached sound sources. n         @see SFXDescription::priority  ");
-      public static readonly TypeSFXChannel PositionX = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPositionX,"PositionX","Channel controls X coordinate of 3D sound position of attached sources.  ");
-      public static readonly TypeSFXChannel PositionY = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPositionY,"PositionY","Channel controls Y coordinate of 3D sound position of attached sources.  ");
-      public static readonly TypeSFXChannel PositionZ = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPositionZ,"PositionZ","Channel controls Z coordinate of 3D sound position of attached sources.  ");
-      public static readonly TypeSFXChannel RotationX = new TypeSFXChannel((int)R__SFXChannel.SFXChannelRotationX,"RotationX","Channel controls X rotation (in degrees) of 3D sound orientation of attached sources.  ");
-      public static readonly TypeSFXChannel RotationY = new TypeSFXChannel((int)R__SFXChannel.SFXChannelRotationY,"RotationY","Channel controls Y rotation (in degrees) of 3D sound orientation of attached sources.  ");
-      public static readonly TypeSFXChannel RotationZ = new TypeSFXChannel((int)R__SFXChannel.SFXChannelRotationZ,"RotationZ","Channel controls Z rotation (in degrees) of 3D sound orientation of attached sources.  ");
-      public static readonly TypeSFXChannel VelocityX = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVelocityX,"VelocityX","Channel controls X coordinate of 3D sound velocity vector of attached sources.  ");
-      public static readonly TypeSFXChannel VelocityY = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVelocityY,"VelocityY","Channel controls Y coordinate of 3D sound velocity vector of attached sources.  ");
-      public static readonly TypeSFXChannel VelocityZ = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVelocityZ,"VelocityZ","Channel controls Z coordinate of 3D sound velocity vector of attached sources.  ");
-      public static readonly TypeSFXChannel ReferenceDistance = new TypeSFXChannel((int)R__SFXChannel.SFXChannelMinDistance,"ReferenceDistance","Channel controls reference distance of 3D sound of attached sources. n         @see SFXDescription::referenceDistance  ");
-      public static readonly TypeSFXChannel MaxDistance = new TypeSFXChannel((int)R__SFXChannel.SFXChannelMaxDistance,"MaxDistance","Channel controls max volume attenuation distance of 3D sound of attached sources. n         @see SFXDescription::maxDistance  ");
-      public static readonly TypeSFXChannel ConeInsideAngle = new TypeSFXChannel((int)R__SFXChannel.SFXChannelConeInsideAngle,"ConeInsideAngle","Channel controls angle (in degrees) of 3D sound inner volume cone of attached sources. n         @see SFXDescription::coneInsideAngle  ");
-      public static readonly TypeSFXChannel ConeOutsideAngle = new TypeSFXChannel((int)R__SFXChannel.SFXChannelConeOutsideAngle,"ConeOutsideAngle","Channel controls angle (in degrees) of 3D sound outer volume cone of attached sources. n         @see SFXDescription::coneOutsideAngle  ");
-      public static readonly TypeSFXChannel ConeOutsideVolume = new TypeSFXChannel((int)R__SFXChannel.SFXChannelConeOutsideVolume,"ConeOutsideVolume","Channel controls volume outside of 3D sound outer cone of attached sources. n         @see SFXDescription::coneOutsideVolume  ");
-      public static readonly TypeSFXChannel Cursor = new TypeSFXChannel((int)R__SFXChannel.SFXChannelCursor,"Cursor","Channel controls playback cursor of attached sound sources. n n         @note Be aware that different types of sound sources interpret play cursor positions differently             or do not actually have play cursors (these sources will ignore the channel).  ");
-      public static readonly TypeSFXChannel Status = new TypeSFXChannel((int)R__SFXChannel.SFXChannelStatus,"Status","Channel controls playback status of attached sound sources. n n         The channel's value is rounded down to the nearest integer and interpreted in the following way: n         - 1: Play n         - 2: Stop n         - 3: Pause n n  ");
-      public static readonly TypeSFXChannel User0 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser0,"User0","Channel available for custom use.  By default ignored by sources. n n         @note For FMOD Designer event sources (SFXFMODEventSource), this channel is used for event parameters             defined in FMOD Designer and should not be used otherwise. n n         @see SFXSource::onParameterValueChange  ");
-      public static readonly TypeSFXChannel User1 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser1,"User1","Channel available for custom use.  By default ignored by sources. n n         @see SFXSource::onParameterValueChange  ");
-      public static readonly TypeSFXChannel User2 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser2,"User2","Channel available for custom use.  By default ignored by sources. n n         @see SFXSource::onParameterValueChange  ");
-      public static readonly TypeSFXChannel User3 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser3,"User3","Channel available for custom use.  By default ignored by sources. n n         @see SFXSource::onParameterValueChange  ");
+      public static readonly TypeSFXChannel Volume = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVolume,"Volume","Channel controls volume level of attached sound sources. n          @see SFXDescription::volume  ");
+      public static readonly TypeSFXChannel Pitch = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPitch,"Pitch","Channel controls pitch of attached sound sources. n          @see SFXDescription::pitch  ");
+      public static readonly TypeSFXChannel Priority = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPriority,"Priority","Channel controls virtualizaton priority level of attached sound sources. n          @see SFXDescription::priority  ");
+      public static readonly TypeSFXChannel PositionX = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPositionX,"PositionX","         Channel controls X coordinate of 3D sound position of attached sources.  ");
+      public static readonly TypeSFXChannel PositionY = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPositionY,"PositionY","         Channel controls Y coordinate of 3D sound position of attached sources.  ");
+      public static readonly TypeSFXChannel PositionZ = new TypeSFXChannel((int)R__SFXChannel.SFXChannelPositionZ,"PositionZ","         Channel controls Z coordinate of 3D sound position of attached sources.  ");
+      public static readonly TypeSFXChannel RotationX = new TypeSFXChannel((int)R__SFXChannel.SFXChannelRotationX,"RotationX","         Channel controls X rotation (in degrees) of 3D sound orientation of attached sources.  ");
+      public static readonly TypeSFXChannel RotationY = new TypeSFXChannel((int)R__SFXChannel.SFXChannelRotationY,"RotationY","         Channel controls Y rotation (in degrees) of 3D sound orientation of attached sources.  ");
+      public static readonly TypeSFXChannel RotationZ = new TypeSFXChannel((int)R__SFXChannel.SFXChannelRotationZ,"RotationZ","         Channel controls Z rotation (in degrees) of 3D sound orientation of attached sources.  ");
+      public static readonly TypeSFXChannel VelocityX = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVelocityX,"VelocityX","         Channel controls X coordinate of 3D sound velocity vector of attached sources.  ");
+      public static readonly TypeSFXChannel VelocityY = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVelocityY,"VelocityY","         Channel controls Y coordinate of 3D sound velocity vector of attached sources.  ");
+      public static readonly TypeSFXChannel VelocityZ = new TypeSFXChannel((int)R__SFXChannel.SFXChannelVelocityZ,"VelocityZ","         Channel controls Z coordinate of 3D sound velocity vector of attached sources.  ");
+      public static readonly TypeSFXChannel ReferenceDistance = new TypeSFXChannel((int)R__SFXChannel.SFXChannelMinDistance,"ReferenceDistance","Channel controls reference distance of 3D sound of attached sources. n          @see SFXDescription::referenceDistance  ");
+      public static readonly TypeSFXChannel MaxDistance = new TypeSFXChannel((int)R__SFXChannel.SFXChannelMaxDistance,"MaxDistance","Channel controls max volume attenuation distance of 3D sound of attached sources. n          @see SFXDescription::maxDistance  ");
+      public static readonly TypeSFXChannel ConeInsideAngle = new TypeSFXChannel((int)R__SFXChannel.SFXChannelConeInsideAngle,"ConeInsideAngle","Channel controls angle (in degrees) of 3D sound inner volume cone of attached sources. n          @see SFXDescription::coneInsideAngle  ");
+      public static readonly TypeSFXChannel ConeOutsideAngle = new TypeSFXChannel((int)R__SFXChannel.SFXChannelConeOutsideAngle,"ConeOutsideAngle","Channel controls angle (in degrees) of 3D sound outer volume cone of attached sources. n          @see SFXDescription::coneOutsideAngle  ");
+      public static readonly TypeSFXChannel ConeOutsideVolume = new TypeSFXChannel((int)R__SFXChannel.SFXChannelConeOutsideVolume,"ConeOutsideVolume","Channel controls volume outside of 3D sound outer cone of attached sources. n          @see SFXDescription::coneOutsideVolume  ");
+      public static readonly TypeSFXChannel Cursor = new TypeSFXChannel((int)R__SFXChannel.SFXChannelCursor,"Cursor","Channel controls playback cursor of attached sound sources. n n          @note Be aware that different types of sound sources interpret play cursor positions differently              or do not actually have play cursors (these sources will ignore the channel).  ");
+      public static readonly TypeSFXChannel Status = new TypeSFXChannel((int)R__SFXChannel.SFXChannelStatus,"Status","Channel controls playback status of attached sound sources. n n          The channel's value is rounded down to the nearest integer and interpreted in the following way: n          - 1: Play n          - 2: Stop n          - 3: Pause n n  ");
+      public static readonly TypeSFXChannel User0 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser0,"User0","Channel available for custom use.  By default ignored by sources. n n          @note For FMOD Designer event sources (SFXFMODEventSource), this channel is used for event parameters              defined in FMOD Designer and should not be used otherwise. n n          @see SFXSource::onParameterValueChange  ");
+      public static readonly TypeSFXChannel User1 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser1,"User1","Channel available for custom use.  By default ignored by sources. n n          @see SFXSource::onParameterValueChange  ");
+      public static readonly TypeSFXChannel User2 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser2,"User2","Channel available for custom use.  By default ignored by sources. n n          @see SFXSource::onParameterValueChange  ");
+      public static readonly TypeSFXChannel User3 = new TypeSFXChannel((int)R__SFXChannel.SFXChannelUser3,"User3","Channel available for custom use.  By default ignored by sources. n n          @see SFXSource::onParameterValueChange  ");
       };
 
 /// <summary>
@@ -7993,8 +7993,8 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXDistanceModel Linear = new TypeSFXDistanceModel((int)R__SFXDistanceModel.SFXDistanceModelLinear,"Linear","Volume attenuates linearly from the references distance onwards to max distance where it reaches zero.  ");
-      public static readonly TypeSFXDistanceModel Logarithmic = new TypeSFXDistanceModel((int)R__SFXDistanceModel.SFXDistanceModelLogarithmic,"Logarithmic","Volume attenuates logarithmically starting from the reference distance and halving every reference distance step from there on.          Attenuation stops at max distance but volume won't reach zero.  ");
+      public static readonly TypeSFXDistanceModel Linear = new TypeSFXDistanceModel((int)R__SFXDistanceModel.SFXDistanceModelLinear,"Linear","         Volume attenuates linearly from the references distance onwards to max distance where it reaches zero.  ");
+      public static readonly TypeSFXDistanceModel Logarithmic = new TypeSFXDistanceModel((int)R__SFXDistanceModel.SFXDistanceModelLogarithmic,"Logarithmic","Volume attenuates logarithmically starting from the reference distance and halving every reference distance step from there on.           Attenuation stops at max distance but volume won't reach zero.  ");
       };
 
 /// <summary>
@@ -8069,8 +8069,8 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXPlayListLoopMode All = new TypeSFXPlayListLoopMode((int)R__SFXPlayList__ELoopMode.LOOP_All,"All","Loop over all slots, i.e. jump from last to first slot after all slots have played.  ");
-      public static readonly TypeSFXPlayListLoopMode Single = new TypeSFXPlayListLoopMode((int)R__SFXPlayList__ELoopMode.LOOP_Single,"Single","Loop infinitely over the current slot.  Only useful in combination with either states or manual playlist control.  ");
+      public static readonly TypeSFXPlayListLoopMode All = new TypeSFXPlayListLoopMode((int)R__SFXPlayList__ELoopMode.LOOP_All,"All","         Loop over all slots, i.e. jump from last to first slot after all slots have played.  ");
+      public static readonly TypeSFXPlayListLoopMode Single = new TypeSFXPlayListLoopMode((int)R__SFXPlayList__ELoopMode.LOOP_Single,"Single","         Loop infinitely over the current slot.  Only useful in combination with either states or manual playlist control.  ");
       };
 
 /// <summary>
@@ -8145,9 +8145,9 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXPlayListRandomMode NotRandom = new TypeSFXPlayListRandomMode((int)R__SFXPlayList__ERandomMode.RANDOM_NotRandom,"NotRandom","Play slots in sequential order.  No randomization.  ");
-      public static readonly TypeSFXPlayListRandomMode StrictRandom = new TypeSFXPlayListRandomMode((int)R__SFXPlayList__ERandomMode.RANDOM_StrictRandom,"StrictRandom","Play a strictly random selection of slots. n n         In this mode, a set of numSlotsToPlay random numbers between 0 and numSlotsToPlay-1 (inclusive), i.e. in the range of valid slot indices, is          generated and playlist slots are played back in the order of this list.  This allows the same slot to occur multiple times in a list and,          consequentially, allows for other slots to not appear at all in a given slot ordering.  ");
-      public static readonly TypeSFXPlayListRandomMode OrderedRandom = new TypeSFXPlayListRandomMode((int)R__SFXPlayList__ERandomMode.RANDOM_OrderedRandom,"OrderedRandom","Play all slots in the list in a random order. n n         In this mode, the @c numSlotsToPlay slots from the list with valid tracks assigned are put into a random order and played.  This guarantees          that each slots is played exactly once albeit at a random position in the total ordering.  ");
+      public static readonly TypeSFXPlayListRandomMode NotRandom = new TypeSFXPlayListRandomMode((int)R__SFXPlayList__ERandomMode.RANDOM_NotRandom,"NotRandom","         Play slots in sequential order.  No randomization.  ");
+      public static readonly TypeSFXPlayListRandomMode StrictRandom = new TypeSFXPlayListRandomMode((int)R__SFXPlayList__ERandomMode.RANDOM_StrictRandom,"StrictRandom","Play a strictly random selection of slots. n n          In this mode, a set of numSlotsToPlay random numbers between 0 and numSlotsToPlay-1 (inclusive), i.e. in the range of valid slot indices, is           generated and playlist slots are played back in the order of this list.  This allows the same slot to occur multiple times in a list and,           consequentially, allows for other slots to not appear at all in a given slot ordering.  ");
+      public static readonly TypeSFXPlayListRandomMode OrderedRandom = new TypeSFXPlayListRandomMode((int)R__SFXPlayList__ERandomMode.RANDOM_OrderedRandom,"OrderedRandom","Play all slots in the list in a random order. n n          In this mode, the @c numSlotsToPlay slots from the list with valid tracks assigned are put into a random order and played.  This guarantees           that each slots is played exactly once albeit at a random position in the total ordering.  ");
       };
 
 /// <summary>
@@ -8222,11 +8222,11 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXPlayListReplayMode IgnorePlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_IgnorePlaying,"IgnorePlaying","Ignore any sources that may already be playing on the slot and just create a new source.  ");
-      public static readonly TypeSFXPlayListReplayMode RestartPlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_RestartPlaying,"RestartPlaying","Restart all sources that was last created for the slot.  ");
-      public static readonly TypeSFXPlayListReplayMode KeepPlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_KeepPlaying,"KeepPlaying","Keep playing the current source(s) as if the source started last on the slot was created in this cycle.  For this,          the sources associated with the slot are brought to the top of the play stack.  ");
-      public static readonly TypeSFXPlayListReplayMode StartNew = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_StartNew,"StartNew","Stop all sources currently playing on the slot and then create a new source.  ");
-      public static readonly TypeSFXPlayListReplayMode SkipIfPlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_SkipIfPlaying,"SkipIfPlaying","If there are sources already playing on the slot, skip the play stage.  ");
+      public static readonly TypeSFXPlayListReplayMode IgnorePlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_IgnorePlaying,"IgnorePlaying","         Ignore any sources that may already be playing on the slot and just create a new source.  ");
+      public static readonly TypeSFXPlayListReplayMode RestartPlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_RestartPlaying,"RestartPlaying","         Restart all sources that was last created for the slot.  ");
+      public static readonly TypeSFXPlayListReplayMode KeepPlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_KeepPlaying,"KeepPlaying","Keep playing the current source(s) as if the source started last on the slot was created in this cycle.  For this,           the sources associated with the slot are brought to the top of the play stack.  ");
+      public static readonly TypeSFXPlayListReplayMode StartNew = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_StartNew,"StartNew","         Stop all sources currently playing on the slot and then create a new source.  ");
+      public static readonly TypeSFXPlayListReplayMode SkipIfPlaying = new TypeSFXPlayListReplayMode((int)R__SFXPlayList__EReplayMode.REPLAY_SkipIfPlaying,"SkipIfPlaying","         If there are sources already playing on the slot, skip the play stage.  ");
       };
 
 /// <summary>
@@ -8301,9 +8301,9 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXPlayListStateMode StopWhenDeactivated = new TypeSFXPlayListStateMode((int)R__SFXPlayList__EStateMode.STATE_StopInactive,"StopWhenDeactivated","Stop the sources playing on the slot when a state changes to a setting that is incompatible with          the slot's state setting.  ");
-      public static readonly TypeSFXPlayListStateMode PauseWhenDeactivated = new TypeSFXPlayListStateMode((int)R__SFXPlayList__EStateMode.STATE_PauseInactive,"PauseWhenDeactivated","Pause all sources playing on the slot when a state changes to a setting that is incompatible with the          slot's state setting. n n         When the slot's state is reactivated again, the sources will resume playback.  ");
-      public static readonly TypeSFXPlayListStateMode IgnoreWhenDeactivated = new TypeSFXPlayListStateMode((int)R__SFXPlayList__EStateMode.STATE_IgnoreInactive,"IgnoreWhenDeactivated","Ignore when a state changes to a setting incompatible with the slot's state setting and just keep          playing sources attached to the slot.  ");
+      public static readonly TypeSFXPlayListStateMode StopWhenDeactivated = new TypeSFXPlayListStateMode((int)R__SFXPlayList__EStateMode.STATE_StopInactive,"StopWhenDeactivated","Stop the sources playing on the slot when a state changes to a setting that is incompatible with           the slot's state setting.  ");
+      public static readonly TypeSFXPlayListStateMode PauseWhenDeactivated = new TypeSFXPlayListStateMode((int)R__SFXPlayList__EStateMode.STATE_PauseInactive,"PauseWhenDeactivated","Pause all sources playing on the slot when a state changes to a setting that is incompatible with the           slot's state setting. n n          When the slot's state is reactivated again, the sources will resume playback.  ");
+      public static readonly TypeSFXPlayListStateMode IgnoreWhenDeactivated = new TypeSFXPlayListStateMode((int)R__SFXPlayList__EStateMode.STATE_IgnoreInactive,"IgnoreWhenDeactivated","Ignore when a state changes to a setting incompatible with the slot's state setting and just keep           playing sources attached to the slot.  ");
       };
 
 /// <summary>
@@ -8378,11 +8378,11 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXPlayListTransitionMode None = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_None,"None","No transition.  Immediately move on to processing the slot or immediately move on to the next slot.  ");
-      public static readonly TypeSFXPlayListTransitionMode Wait = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_Wait,"Wait","Wait for the sound source spawned last by this playlist to finish playing.  Then proceed.  ");
-      public static readonly TypeSFXPlayListTransitionMode WaitAll = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_WaitAll,"WaitAll","Wait for all sound sources currently spawned by the playlist to finish playing.  Then proceed.  ");
-      public static readonly TypeSFXPlayListTransitionMode Stop = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_Stop,"Stop","Stop the sound source spawned last by this playlist.  Then proceed.  ");
-      public static readonly TypeSFXPlayListTransitionMode StopAll = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_StopAll,"StopAll","Stop all sound sources spawned by the playlist.  Then proceed.  ");
+      public static readonly TypeSFXPlayListTransitionMode None = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_None,"None","         No transition.  Immediately move on to processing the slot or immediately move on to the next slot.  ");
+      public static readonly TypeSFXPlayListTransitionMode Wait = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_Wait,"Wait","         Wait for the sound source spawned last by this playlist to finish playing.  Then proceed.  ");
+      public static readonly TypeSFXPlayListTransitionMode WaitAll = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_WaitAll,"WaitAll","         Wait for all sound sources currently spawned by the playlist to finish playing.  Then proceed.  ");
+      public static readonly TypeSFXPlayListTransitionMode Stop = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_Stop,"Stop","         Stop the sound source spawned last by this playlist.  Then proceed.  ");
+      public static readonly TypeSFXPlayListTransitionMode StopAll = new TypeSFXPlayListTransitionMode((int)R__SFXPlayList__ETransitionMode.TRANSITION_StopAll,"StopAll","         Stop all sound sources spawned by the playlist.  Then proceed.  ");
       };
 
 /// <summary>
@@ -8457,9 +8457,9 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeSFXStatus Playing = new TypeSFXStatus((int)R__SFXStatus.SFXStatusPlaying,"Playing","The source is currently playing.  ");
-      public static readonly TypeSFXStatus Stopped = new TypeSFXStatus((int)R__SFXStatus.SFXStatusStopped,"Stopped","Playback of the source is stopped.  When transitioning to Playing state, playback will start at the beginning             of the source.  ");
-      public static readonly TypeSFXStatus Paused = new TypeSFXStatus((int)R__SFXStatus.SFXStatusPaused,"Paused","Playback of the source is paused.  Resuming playback will play from the current playback position.  ");
+      public static readonly TypeSFXStatus Playing = new TypeSFXStatus((int)R__SFXStatus.SFXStatusPlaying,"Playing","         The source is currently playing.  ");
+      public static readonly TypeSFXStatus Stopped = new TypeSFXStatus((int)R__SFXStatus.SFXStatusStopped,"Stopped","Playback of the source is stopped.  When transitioning to Playing state, playback will start at the beginning              of the source.  ");
+      public static readonly TypeSFXStatus Paused = new TypeSFXStatus((int)R__SFXStatus.SFXStatusPaused,"Paused","         Playback of the source is paused.  Resuming playback will play from the current playback position.  ");
       };
 
 /// <summary>
@@ -8534,9 +8534,9 @@ public enum  R__WorldEditor__DropType{
             get { return msdict[key]; }
             }
 
-      public static readonly TypeShadowFilterMode None = new TypeShadowFilterMode((int)R__ShadowFilterMode.ShadowFilterMode_None,"None","@brief Simple point sampled filtering. n         This is the fastest and lowest quality mode.  ");
-      public static readonly TypeShadowFilterMode SoftShadow = new TypeShadowFilterMode((int)R__ShadowFilterMode.ShadowFilterMode_SoftShadow,"SoftShadow","@brief A variable tap rotated poisson disk soft shadow filter. n         It performs 4 taps to classify the point as in shadow, out of shadow, or along a          shadow edge.  Samples on the edge get an additional 8 taps to soften them.  ");
-      public static readonly TypeShadowFilterMode SoftShadowHighQuality = new TypeShadowFilterMode((int)R__ShadowFilterMode.ShadowFilterMode_SoftShadowHighQuality,"SoftShadowHighQuality","@brief A 12 tap rotated poisson disk soft shadow filter. n         It performs all the taps for every point without any early rejection.  ");
+      public static readonly TypeShadowFilterMode None = new TypeShadowFilterMode((int)R__ShadowFilterMode.ShadowFilterMode_None,"None","@brief Simple point sampled filtering. n          This is the fastest and lowest quality mode.  ");
+      public static readonly TypeShadowFilterMode SoftShadow = new TypeShadowFilterMode((int)R__ShadowFilterMode.ShadowFilterMode_SoftShadow,"SoftShadow","@brief A variable tap rotated poisson disk soft shadow filter. n          It performs 4 taps to classify the point as in shadow, out of shadow, or along a           shadow edge.  Samples on the edge get an additional 8 taps to soften them.  ");
+      public static readonly TypeShadowFilterMode SoftShadowHighQuality = new TypeShadowFilterMode((int)R__ShadowFilterMode.ShadowFilterMode_SoftShadowHighQuality,"SoftShadowHighQuality","@brief A 12 tap rotated poisson disk soft shadow filter. n          It performs all the taps for every point without any early rejection.  ");
       };
 
 /// <summary>

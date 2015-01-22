@@ -40,8 +40,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
 {
     public class shaders
     {
-        public static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             ObjectCreator tch = new ObjectCreator("GFXStateBlockData", "AL_VectorLightState");

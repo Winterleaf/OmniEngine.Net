@@ -52,8 +52,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
     {
         public static int movementSpeed = 1;
 
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             if ("moveMap".isObject())
@@ -101,8 +99,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             moveMap.bind("gamepad", "triggerr", "gamepadFire");
             moveMap.bind("gamepad", "triggerl", "gamepadAltTrigger");
 
-            if (omni.sGlobal["$Player::CurrentFOV"] == "")
-                omni.iGlobal["$Player::CurrentFOV"] = omni.iGlobal["$pref::Player::DefaultFOV"]/2;
+            if (pInvokes.sGlobal["$Player::CurrentFOV"] == "")
+                pInvokes.iGlobal["$Player::CurrentFOV"] = pInvokes.iGlobal["$pref::Player::DefaultFOV"]/2;
 
             moveMap.bind("keyboard", "f", "setZoomFOV"); // f for field of view
             moveMap.bind("keyboard", "z", "toggleZoom"); // z for zoom
@@ -146,7 +144,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void escapeFromGame()
         {
-            if (omni.sGlobal["$Server::ServerType"] == "SinglePlayer")
+            if (pInvokes.sGlobal["$Server::ServerType"] == "SinglePlayer")
                 messageBox.MessageBoxYesNo("Exit", "Exit from this Mission?", "disconnect();", "");
             else
                 messageBox.MessageBoxYesNo("Disconnect", "Disconnect from the server?", "disconnect();", "");
@@ -165,7 +163,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             if (val)
                 {
                 ((GuiCanvas) "Canvas").setContent("HudlessPlayGui");
-                omni.Util._schedule("10", "0", "doScreenShot", val.AsString());
+                pInvokes.Util._schedule("10", "0", "doScreenShot", val.AsString());
                 }
             else
                 ((GuiCanvas) "Canvas").setContent("PlayGui");
@@ -181,27 +179,27 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void moveleft(int val)
         {
-            omni.iGlobal["$mvLeftAction"] = movementSpeed*val;
+            pInvokes.iGlobal["$mvLeftAction"] = movementSpeed*val;
         }
 
         [ConsoleInteraction(true)]
         public static void moveright(int val)
         {
             //console.SetVar("$mvRightAction", val.AsInt()*movementSpeed);
-            omni.iGlobal["$mvRightAction"] = val*movementSpeed;
+            pInvokes.iGlobal["$mvRightAction"] = val*movementSpeed;
         }
 
         [ConsoleInteraction(true)]
         public static void moveforward(int val)
         {
             //console.SetVar("$mvForwardAction", val.AsInt() * movementSpeed);
-            omni.iGlobal["$mvForwardAction"] = val*movementSpeed;
+            pInvokes.iGlobal["$mvForwardAction"] = val*movementSpeed;
         }
 
         [ConsoleInteraction(true)]
         public static void movebackward(int val)
         {
-            omni.iGlobal["$mvBackwardAction"] = val*movementSpeed;
+            pInvokes.iGlobal["$mvBackwardAction"] = val*movementSpeed;
             //console.SetVar("$mvBackwardAction", val.AsInt() * movementSpeed);
         }
 
@@ -210,7 +208,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             SimObject obj = ((GameConnection) "ServerConnection").getControlObject();
             if (obj.isInNamespaceHierarchy("Camera"))
-                omni.iGlobal["$mvUpAction"] = val*movementSpeed;
+                pInvokes.iGlobal["$mvUpAction"] = val*movementSpeed;
             //console.SetVar("$mvUpAction", val.AsInt() * movementSpeed);
         }
 
@@ -219,14 +217,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             SimObject obj = ((GameConnection) "ServerConnection").getControlObject();
             if (obj.isInNamespaceHierarchy("Camera"))
-                omni.iGlobal["$mvDownAction"] = val*movementSpeed;
+                pInvokes.iGlobal["$mvDownAction"] = val*movementSpeed;
             //console.SetVar("$mvDownAction", val.AsInt() * movementSpeed);
         }
 
         [ConsoleInteraction(true)]
         public static void turnLeft(bool val)
         {
-            omni.iGlobal["$mvYawRightSpeed"] = val ? omni.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            pInvokes.iGlobal["$mvYawRightSpeed"] = val ? pInvokes.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
             //console.SetVar("$mvYawRightSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
         }
 
@@ -234,34 +232,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         public static void turnRight(bool val)
         {
             //console.SetVar("$mvYawLeftSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
-            omni.iGlobal["$mvYawLeftSpeed"] = val ? omni.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            pInvokes.iGlobal["$mvYawLeftSpeed"] = val ? pInvokes.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
         }
 
         [ConsoleInteraction(true)]
         public static void panUp(bool val)
         {
-            omni.iGlobal["$mvPitchDownSpeed"] = val ? omni.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            pInvokes.iGlobal["$mvPitchDownSpeed"] = val ? pInvokes.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
             //console.SetVar("$mvPitchDownSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
         }
 
         [ConsoleInteraction(true)]
         public static void panDown(bool val)
         {
-            omni.iGlobal["$mvPitchUpSpeed"] = val ? omni.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
+            pInvokes.iGlobal["$mvPitchUpSpeed"] = val ? pInvokes.iGlobal["$Pref::Input::KeyboardTurnSpeed"] : 0;
             //console.SetVar("$mvPitchUpSpeed", val.AsBool() ? console.GetVarInt("$Pref::Input::KeyboardTurnSpeed") : 0);
         }
 
         [ConsoleInteraction(true)]
         public static float getMouseAdjustAmount(float val)
         {
-            return ((val*(omni.fGlobal["$cameraFov"]/90.0f)*0.01f)*omni.fGlobal["$pref::Input::LinkMouseSensitivity"]);
+            return ((val*(pInvokes.fGlobal["$cameraFov"]/90.0f)*0.01f)*pInvokes.fGlobal["$pref::Input::LinkMouseSensitivity"]);
             //return ((val.AsDouble() * (console.GetVarFloat("$cameraFov") / 90.0) * 0.01) * console.GetVarFloat("$pref::Input::LinkMouseSensitivity")).AsString();
         }
 
         [ConsoleInteraction(true)]
         public static float getGamepadAdjustAmount(float val)
         {
-            return ((val*(omni.fGlobal["$cameraFov"]/90.0f)*0.01f)*10.0f);
+            return ((val*(pInvokes.fGlobal["$cameraFov"]/90.0f)*0.01f)*10.0f);
             //return ((val.AsFloat() * (console.GetVarFloat("$cameraFov") / 90) * 0.01) * 10.0).AsString();
         }
 
@@ -271,10 +269,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             float yawAdj = getMouseAdjustAmount(val);
             if (((GameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
-                yawAdj = omni.Util.mClamp(yawAdj, (-omni.Util.m2Pi() + (float) 0.01), (omni.Util.m2Pi() - (float) 0.01));
+                yawAdj = pInvokes.Util.mClamp(yawAdj, (-pInvokes.Util.m2Pi() + (float) 0.01), (pInvokes.Util.m2Pi() - (float) 0.01));
                 yawAdj *= (float) 0.5;
                 }
-            omni.fGlobal["$mvYaw"] = omni.fGlobal["$mvYaw"] + yawAdj;
+            pInvokes.fGlobal["$mvYaw"] = pInvokes.fGlobal["$mvYaw"] + yawAdj;
             //console.SetVar("$mvYaw", console.GetVarFloat("$mvYaw") + yawAdj);
         }
 
@@ -284,17 +282,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             float pitchAdj = getMouseAdjustAmount(val);
             if (((GameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
-                pitchAdj = omni.Util.mClamp(pitchAdj, (-omni.Util.m2Pi() + (float) 0.01), (omni.Util.m2Pi() - (float) 0.01));
+                pitchAdj = pInvokes.Util.mClamp(pitchAdj, (-pInvokes.Util.m2Pi() + (float) 0.01), (pInvokes.Util.m2Pi() - (float) 0.01));
                 pitchAdj *= (float) 0.5;
                 }
-            omni.fGlobal["$mvPitch"] = omni.fGlobal["$mvPitch"] + pitchAdj;
+            pInvokes.fGlobal["$mvPitch"] = pInvokes.fGlobal["$mvPitch"] + pitchAdj;
             //console.SetVar("$mvPitch", console.GetVarFloat("$mvPitch") + pitchAdj);
         }
 
         [ConsoleInteraction(true)]
         public static void Jump(string val)
         {
-            omni.iGlobal["$mvTriggerCount2"] = omni.iGlobal["$mvTriggerCount2"] + 1;
+            pInvokes.iGlobal["$mvTriggerCount2"] = pInvokes.iGlobal["$mvTriggerCount2"] + 1;
             //console.SetVar("$mvTriggerCount2", console.GetVarInt("$mvTriggerCount2") + 1);
         }
 
@@ -303,15 +301,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             if (val > 0)
                 {
-                omni.dGlobal["$mvRightAction"] = val*movementSpeed;
-                omni.dGlobal["$mvLeftAction"] = 0;
+                pInvokes.dGlobal["$mvRightAction"] = val*movementSpeed;
+                pInvokes.dGlobal["$mvLeftAction"] = 0;
                 //console.SetVar("$mvRightAction", (val * movementSpeed).AsString());
                 //console.SetVar("$mvLeftAction", 0);
                 }
             else
                 {
-                omni.dGlobal["$mvRightAction"] = 0;
-                omni.dGlobal["$mvLeftAction"] = -val*movementSpeed;
+                pInvokes.dGlobal["$mvRightAction"] = 0;
+                pInvokes.dGlobal["$mvLeftAction"] = -val*movementSpeed;
                 //console.SetVar("$mvRightAction", 0);
                 //console.SetVar("$mvLeftAction", (-val * movementSpeed).AsString());
                 }
@@ -322,16 +320,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             if (val > 0)
                 {
-                omni.dGlobal["$mvForwardAction"] = val*movementSpeed;
-                omni.dGlobal["$mvBackwardAction"] = 0;
+                pInvokes.dGlobal["$mvForwardAction"] = val*movementSpeed;
+                pInvokes.dGlobal["$mvBackwardAction"] = 0;
                 //console.SetVar("$mvForwardAction", val.AsDouble() * movementSpeed);
                 //console.SetVar("$mvBackwardAction", 0);
                 }
             else
                 {
-                omni.dGlobal["$mvForwardAction"] = 0;
+                pInvokes.dGlobal["$mvForwardAction"] = 0;
                 //console.SetVar("$mvForwardAction", 0);
-                omni.dGlobal["$mvBackwardAction"] = -val*movementSpeed;
+                pInvokes.dGlobal["$mvBackwardAction"] = -val*movementSpeed;
                 //console.SetVar("$mvBackwardAction", -val.AsDouble() * movementSpeed);
                 }
         }
@@ -342,22 +340,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             float yawAdj = getGamepadAdjustAmount(val);
             if (((GameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
-                yawAdj = omni.Util.mClamp(yawAdj, (float) (-omni.Util.m2Pi() + 0.01), (float) (omni.Util.m2Pi() - 0.01));
+                yawAdj = pInvokes.Util.mClamp(yawAdj, (float) (-pInvokes.Util.m2Pi() + 0.01), (float) (pInvokes.Util.m2Pi() - 0.01));
                 yawAdj *= (float) 0.5;
                 }
 
             if (yawAdj > 0)
                 {
-                omni.fGlobal["$mvYawLeftSpeed"] = yawAdj;
-                omni.fGlobal["$mvYawRightSpeed"] = 0;
+                pInvokes.fGlobal["$mvYawLeftSpeed"] = yawAdj;
+                pInvokes.fGlobal["$mvYawRightSpeed"] = 0;
                 //console.SetVar("$mvYawLeftSpeed", yawAdj);
                 //console.SetVar("$mvYawRightSpeed", 0);
                 }
             else
                 {
-                omni.fGlobal["$mvYawLeftSpeed"] = 0;
+                pInvokes.fGlobal["$mvYawLeftSpeed"] = 0;
                 //console.SetVar("$mvYawLeftSpeed", 0);
-                omni.fGlobal["$mvYawRightSpeed"] = -yawAdj;
+                pInvokes.fGlobal["$mvYawRightSpeed"] = -yawAdj;
                 //console.SetVar("$mvYawRightSpeed", -yawAdj);
                 }
         }
@@ -368,20 +366,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             float pitchAdj = getGamepadAdjustAmount(val);
             if (((GameConnection) "ServerConnection").isControlObjectRotDampedCamera())
                 {
-                pitchAdj = omni.Util.mClamp(pitchAdj, (float) (-omni.Util.m2Pi() + 0.01), (float) (omni.Util.m2Pi() - 0.01));
+                pitchAdj = pInvokes.Util.mClamp(pitchAdj, (float) (-pInvokes.Util.m2Pi() + 0.01), (float) (pInvokes.Util.m2Pi() - 0.01));
                 pitchAdj *= (float) 0.5;
                 }
             if (pitchAdj > 0)
                 {
-                omni.fGlobal["$mvPitchDownSpeed"] = -pitchAdj; //- and + swap for INVERTED look
-                omni.fGlobal["$mvPitchUpSpeed"] = 0;
+                pInvokes.fGlobal["$mvPitchDownSpeed"] = -pitchAdj; //- and + swap for INVERTED look
+                pInvokes.fGlobal["$mvPitchUpSpeed"] = 0;
                 //console.SetVar("$mvPitchDownSpeed", pitchAdj);
                 //console.SetVar("$mvPitchUpSpeed", 0);
                 }
             else
                 {
-                omni.fGlobal["$mvPitchDownSpeed"] = 0;
-                omni.fGlobal["$mvPitchUpSpeed"] = pitchAdj; //- and + swap for INVERTED look
+                pInvokes.fGlobal["$mvPitchDownSpeed"] = 0;
+                pInvokes.fGlobal["$mvPitchUpSpeed"] = pitchAdj; //- and + swap for INVERTED look
                 //console.SetVar("$mvPitchDownSpeed", 0);
                 //console.SetVar("$mvPitchUpSpeed", -pitchAdj);
                 }
@@ -390,75 +388,75 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void doCrouch(string val)
         {
-            omni.iGlobal["$mvTriggerCount3"] += 1;
+            pInvokes.iGlobal["$mvTriggerCount3"] += 1;
             //console.SetVar("$mvTriggerCount3", console.GetVarString("$mvTriggerCount3").AsInt() + 1);
         }
 
         [ConsoleInteraction(true)]
         public static void doSprint(string val)
         {
-            omni.iGlobal["$mvTriggerCount5"] += 1;
+            pInvokes.iGlobal["$mvTriggerCount5"] += 1;
             //console.SetVar("$mvTriggerCount5", console.GetVarString("$mvTriggerCount5").AsInt() + 1);
         }
 
         [ConsoleInteraction(true)]
         public static void mouseFire(string val)
         {
-            omni.iGlobal["$mvTriggerCount0"] += 1;
+            pInvokes.iGlobal["$mvTriggerCount0"] += 1;
             //console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
         }
 
         [ConsoleInteraction(true)]
         public static void altTrigger(string val)
         {
-            omni.iGlobal["$mvTriggerCount1"] += 1;
+            pInvokes.iGlobal["$mvTriggerCount1"] += 1;
             //console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
         }
 
         [ConsoleInteraction(true)]
         public static void gamepadFire(double val)
         {
-            if (val > .1 && !omni.console.GetVarBool("$gamepadFireTriggered"))
+            if (val > .1 && !pInvokes.console.GetVarBool("$gamepadFireTriggered"))
                 {
-                omni.bGlobal["$gamepadFireTriggered"] = true;
-                omni.Util.rumble("gamepad", (float) 0.25, (float) 0.25); //deviceName, Left Motor(low-frequency),Right Motor(high-frequency)//Rumble Start
+                pInvokes.bGlobal["$gamepadFireTriggered"] = true;
+                pInvokes.Util.rumble("gamepad", (float) 0.25, (float) 0.25); //deviceName, Left Motor(low-frequency),Right Motor(high-frequency)//Rumble Start
                 //console.SetVar("$gamepadFireTriggered", true);
                 //console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
                 }
             else
                 {
-                omni.bGlobal["$gamepadFireTriggered"] = false;
-                omni.Util.rumble("gamepad", 0, 0);
+                pInvokes.bGlobal["$gamepadFireTriggered"] = false;
+                pInvokes.Util.rumble("gamepad", 0, 0);
                 //console.SetVar("$gamepadFireTriggered", false);
                 //console.SetVar("$mvTriggerCount0", console.GetVarString("$mvTriggerCount0").AsInt() + 1);
                 }
-            omni.iGlobal["$mvTriggerCount0"] += 1;
+            pInvokes.iGlobal["$mvTriggerCount0"] += 1;
         }
 
         [ConsoleInteraction(true)]
         public static void gamepadAltTrigger(double val)
         {
-            if (val > .1 && !omni.bGlobal["$gamepadFireTriggered"])
+            if (val > .1 && !pInvokes.bGlobal["$gamepadFireTriggered"])
                 {
-                omni.bGlobal["$gamepadAltTriggerTriggered"] = true;
+                pInvokes.bGlobal["$gamepadAltTriggerTriggered"] = true;
                 //                console.SetVar("$gamepadAltTriggerTriggered", true);
                 }
             else
                 {
-                omni.bGlobal["$gamepadAltTriggerTriggered"] = false;
+                pInvokes.bGlobal["$gamepadAltTriggerTriggered"] = false;
                 //console.SetVar("$gamepadAltTriggerTriggered", false);
                 }
-            omni.iGlobal["$mvTriggerCount1"] += 1;
+            pInvokes.iGlobal["$mvTriggerCount1"] += 1;
             //console.SetVar("$mvTriggerCount1", console.GetVarString("$mvTriggerCount1").AsInt() + 1);
         }
 
         [ConsoleInteraction(true)]
         public static void toggleZoomFOV()
         {
-            float cfov = omni.fGlobal["$Player::CurrentFOV"]/(float) 2.0;
+            float cfov = pInvokes.fGlobal["$Player::CurrentFOV"]/(float) 2.0;
 
-            omni.console.SetVar("$Player::CurrentFOV", cfov);
-            omni.fGlobal["$Player::CurrentFOV"] = cfov;
+            pInvokes.console.SetVar("$Player::CurrentFOV", cfov);
+            pInvokes.fGlobal["$Player::CurrentFOV"] = cfov;
 
             if (cfov < 5)
                 resetCurrentFOV();
@@ -466,9 +464,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             if (((GameConnection) "ServerConnection")["zoomed"].AsBool())
                 //console.GetVarBool("ServerConnection.zoomed"))
 
-                omni.console.Call("setFov", new[] {cfov.AsString()});
+                pInvokes.console.Call("setFov", new[] {cfov.AsString()});
             else
-                omni.console.Call("setFov", new[] {omni.console.GetVarString("ServerConnection.getControlCameraDefaultFov()")});
+                pInvokes.console.Call("setFov", new[] {pInvokes.console.GetVarString("ServerConnection.getControlCameraDefaultFov()")});
         }
 
         [ConsoleInteraction(true)]
@@ -480,15 +478,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void resetCurrentFOV()
         {
-            omni.fGlobal["$Player::CurrentFOV"] = ((GameConnection) "ServerConnection").getControlCameraDefaultFov()/2.0f;
+            pInvokes.fGlobal["$Player::CurrentFOV"] = ((GameConnection) "ServerConnection").getControlCameraDefaultFov()/2.0f;
             //console.SetVar("$Player::CurrentFOV", console.GetVarFloat("ServerConnection.getControlCameraDefaultFov") / (float)2.0);
         }
 
         [ConsoleInteraction(true)]
         public static void turnOffZoom()
         {
-            omni.console.SetVar("ServerConnection.zoomed", false);
-            omni.console.Call("setFov", new[] {((GameConnection) "ServerConnection").getControlCameraDefaultFov().AsString()});
+            pInvokes.console.SetVar("ServerConnection.zoomed", false);
+            pInvokes.console.Call("setFov", new[] {((GameConnection) "ServerConnection").getControlCameraDefaultFov().AsString()});
             postFXManager.ppOptionsUpdateDOFSettings();
         }
 
@@ -504,8 +502,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             if (val)
                 {
-                omni.console.SetVar("ServerConnection.zoomed", true);
-                omni.console.Call("setFov", new[] {omni.console.GetVarString("$Player::CurrentFOV")});
+                pInvokes.console.SetVar("ServerConnection.zoomed", true);
+                pInvokes.console.Call("setFov", new[] {pInvokes.console.GetVarString("$Player::CurrentFOV")});
 
                 ((DOFPostEffect) "DOFPostEffect").setAutoFocus(true);
                 //DOFPostEffectsetAutoFocus("DOFPostEffect", true);
@@ -522,7 +520,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void toggleFreeLook(bool val)
         {
-            omni.bGlobal["$mvFreeLook"] = val;
+            pInvokes.bGlobal["$mvFreeLook"] = val;
             //console.SetVar("$mvFreeLook", val);
         }
 
@@ -541,21 +539,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         public static void toggleCamera(bool val)
         {
             if (val)
-                omni.console.commandToServer("ToggleCamera");
+                pInvokes.console.commandToServer("ToggleCamera");
         }
 
         [ConsoleInteraction(true)]
         public static void startRecordingDemo(bool val)
         {
             if (val)
-                omni.console.Call("StartDemoRecord");
+                pInvokes.console.Call("StartDemoRecord");
         }
 
         [ConsoleInteraction(true)]
         public static void stopRecordingDemo(bool val)
         {
             if (val)
-                omni.console.Call("StopDemoRecord");
+                pInvokes.console.Call("StopDemoRecord");
         }
 
         [ConsoleInteraction(true)]
@@ -563,7 +561,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             if (val)
                 {
-                omni.console.Call("showCursor");
+                pInvokes.console.Call("showCursor");
                 ((GuiCanvas) "Canvas").pushDialog("OptionsDlg");
                 }
         }
@@ -647,15 +645,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             if (val)
                 {
-                omni.console.print("Starting profile session...");
-                omni.Util.profilerReset();
-                omni.Util.profilerEnable(true);
+                pInvokes.console.print("Starting profile session...");
+                pInvokes.Util.profilerReset();
+                pInvokes.Util.profilerEnable(true);
                 }
             else
                 {
-                omni.console.print("Ending profile session...");
-                omni.Util.profilerDumpToFile("profilerDumpToFile" + omni.console.Call("getSimTime") + ".txt");
-                omni.Util.profilerEnable(false);
+                pInvokes.console.print("Ending profile session...");
+                pInvokes.Util.profilerDumpToFile("profilerDumpToFile" + pInvokes.console.Call("getSimTime") + ".txt");
+                pInvokes.Util.profilerEnable(false);
                 }
         }
 

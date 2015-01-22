@@ -41,17 +41,15 @@ namespace WinterLeaf.Demo.Full.Models.User.CustomObjects.Utilities
 {
     public class Audio
     {
-        public static pInvokes tst = new pInvokes();
-
         public static void AudioServerPlay2D(string profile)
         {
-            foreach (GameConnection clientid in tst.ClientGroup)
+            foreach (GameConnection clientid in pInvokes.ClientGroup)
                 clientid.play2D(profile);
         }
 
         public static void AudioServerPlay3D(string profile, TransformF transform)
         {
-            foreach (GameConnection clientid in tst.ClientGroup)
+            foreach (GameConnection clientid in pInvokes.ClientGroup)
                 clientid.play3D(profile, transform);
         }
     }

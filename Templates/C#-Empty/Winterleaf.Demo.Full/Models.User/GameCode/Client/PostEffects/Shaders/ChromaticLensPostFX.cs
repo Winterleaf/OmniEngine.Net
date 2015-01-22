@@ -50,17 +50,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
 
         public static void initialize()
         {
-            omni.bGlobal["$CAPostFx::enabled"] = false;
+            bGlobal["$CAPostFx::enabled"] = false;
 
             // The lens distortion coefficient.
-            omni.dGlobal["$CAPostFx::distCoeffecient"] = -0.05;
+            dGlobal["$CAPostFx::distCoeffecient"] = -0.05;
 
             // The cubic distortion value.
-            omni.dGlobal["$CAPostFx::cubeDistortionFactor"] = -0.1;
+            dGlobal["$CAPostFx::cubeDistortionFactor"] = -0.1;
 
             // The amount and direction of the maxium shift for
             // the red, green, and blue channels.
-            omni.sGlobal["$CAPostFx::colorDistortionFactor"] = "0.005 -0.005 0.01";
+            sGlobal["$CAPostFx::colorDistortionFactor"] = "0.005 -0.005 0.01";
 
             SingletonCreator ts = new SingletonCreator("GFXStateBlockData", "PFX_DefaultChromaticLensStateBlock");
             ts["zDefined"] = true;

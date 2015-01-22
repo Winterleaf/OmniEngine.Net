@@ -46,8 +46,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.SoftBodies
 {
     public class SoftBodies
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             #region SoftBodyData ( PhysFlag )        oc_Newobject1
@@ -91,7 +89,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.SoftBodies
             //-----------------------------------------------------------------------------
             // for Game Mechanics Editor
             //-----------------------------------------------------------------------------
-            omni.Util.activatePackage("TemplateFunctions");
+            pInvokes.Util.activatePackage("TemplateFunctions");
 
             //TODO FIX
             //inheritTemplate("PhysFlag", "AbstractRigidBody");
@@ -100,7 +98,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server.SoftBodies
             //inheritTemplate("PhysSoftSphere", "AbstractRigidBody");
             //registerTemplate("PhysSoftSphere", "Physics", "SoftBodyData::create(PhysSoftSphere);");
 
-            omni.Util.deactivatePackage("TemplateFunctions");
+            pInvokes.Util.deactivatePackage("TemplateFunctions");
         }
     }
 }

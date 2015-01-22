@@ -39,11 +39,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
 {
     public partial class shadowViz
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void Initialize_Gui()
         {
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 %guiContent = new GuiControl(AL_ShadowVizOverlayCtrl) {
    canSaveDynamicFields = ""0"";
    isContainer = ""1"";

@@ -69,14 +69,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Common
         [ConsoleInteraction]
         public static void shareValueSafeDelay(GuiControl source, GuiControl dest, int delayMS)
         {
-            omni.Util._schedule(delayMS.AsString(), "0", "ShareValueSafe", source, dest);
+            Util._schedule(delayMS.AsString(), "0", "ShareValueSafe", source, dest);
         }
 
         [ConsoleInteraction]
         public static bool parseMissionGroup(string className, string childGroup = "")
         {
             SimGroup currentGroup = "";
-            if (omni.Util.getWordCount(childGroup) == 0)
+            if (Util.getWordCount(childGroup) == 0)
                 currentGroup = "MissionGroup";
             else
                 currentGroup = childGroup;
@@ -108,9 +108,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Common
                 // the first character
                 string firstChar = name.Substring(0, 1);
                 // if the character is a number remove it
-                if (omni.Util.strpos(numbers, firstChar, 0) != -1)
+                if (Util.strpos(numbers, firstChar, 0) != -1)
                     {
-                    name = omni.Util.getSubStr(name, 1, name.Length - 1);
+                    name = Util.getSubStr(name, 1, name.Length - 1);
                     name = name.Trim();
                     }
                 else
@@ -120,7 +120,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Common
             name = name.Replace(" ", "");
             // remove any other invalid characters
             string invalidCharacters = "-+*/%$&§=()[].?\"#,;!~<>|°^{}";
-            name = omni.Util.stripChars(name, invalidCharacters);
+            name = Util.stripChars(name, invalidCharacters);
             if (name == "")
                 name = "Unnamed";
             return name;
@@ -132,13 +132,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Common
         [ConsoleInteraction]
         public static int wordPos(string text, string word, int start = 0)
         {
-            if (omni.Util.strpos(text, word, 0) == -1)
+            if (Util.strpos(text, word, 0) == -1)
                 return -1;
 
-            int count = omni.Util.getWordCount(text);
+            int count = Util.getWordCount(text);
             for (int i = start; i < count; i++)
                 {
-                if (omni.Util.getWord(text, i) == word)
+                if (Util.getWord(text, i) == word)
                     return i;
                 }
             return -1;
@@ -150,15 +150,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Common
         [ConsoleInteraction]
         public static int fieldPos(string text, string field, int start = 0)
         {
-            if (omni.Util.strpos(text, field, 0) == -1)
+            if (Util.strpos(text, field, 0) == -1)
                 return -1;
 
-            int count = omni.Util.getFieldCount(text);
+            int count = Util.getFieldCount(text);
             if (start > count)
                 return -1;
             for (int i = start; i < count; i++)
                 {
-                if (omni.Util.getField(text, i) == field)
+                if (Util.getField(text, i) == field)
                     return i;
                 }
             return -1;
@@ -189,7 +189,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Common
         {
             string classIds = "";
             SimGroup currentGroup;
-            if (omni.Util.getWordCount(childGroup) == 0)
+            if (Util.getWordCount(childGroup) == 0)
                 currentGroup = "MissionGroup";
             else
                 currentGroup = childGroup;

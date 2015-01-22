@@ -46,17 +46,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.EditorClasses.RSSNews
 {
     public class RSSFeedScript
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "RSSFeedScript_initialize")]
         public static void initialize()
         {
             // RSS ticker configuration:
-            omni.sGlobal["$RSSFeed::serverName"] = "feeds.garagegames.com";
-            omni.iGlobal["$RSSFeed::serverPort"] = 80;
-            omni.sGlobal["$RSSFeed::serverURL"] = "/product/tgea";
-            omni.sGlobal["$RSSFeed::userAgent"] = "TorqueGameEngineAdvances/1.1";
-            omni.iGlobal["$RSSFeed::maxNewHeadlines"] = 10;
+            pInvokes.sGlobal["$RSSFeed::serverName"] = "feeds.garagegames.com";
+            pInvokes.iGlobal["$RSSFeed::serverPort"] = 80;
+            pInvokes.sGlobal["$RSSFeed::serverURL"] = "/product/tgea";
+            pInvokes.sGlobal["$RSSFeed::userAgent"] = "TorqueGameEngineAdvances/1.1";
+            pInvokes.iGlobal["$RSSFeed::maxNewHeadlines"] = 10;
 
             // Load up the helper objects
             //exec( "./RSSStructs.ed.cs" );

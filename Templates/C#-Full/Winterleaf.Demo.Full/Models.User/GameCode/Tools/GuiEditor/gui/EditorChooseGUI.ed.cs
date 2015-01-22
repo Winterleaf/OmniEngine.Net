@@ -347,32 +347,32 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
         {
             GuiCanvas Canvas = "Canvas";
 
-            string openFileName = omni.console.Call_Classname("GuiBuilder", "getOpenName");
+            string openFileName = console.Call_Classname("GuiBuilder", "getOpenName");
             if (openFileName == "")
                 return;
 
             // Make sure the file is valid.
-            if ((!omni.Util.isFile(openFileName)) && (!omni.Util.isFile(openFileName + ".dso")))
+            if ((!Util.isFile(openFileName)) && (!Util.isFile(openFileName + ".dso")))
                 return;
 
             // Allow stomping objects while exec'ing the GUI file as we want to
             // pull the file's objects even if we have another version of the GUI
             // already loaded.
 
-            string oldRedefineBehavior = omni.sGlobal["$Con::redefineBehavior"];
-            omni.sGlobal["$Con::redefineBehavior"] = "replaceExisting";
+            string oldRedefineBehavior = sGlobal["$Con::redefineBehavior"];
+            sGlobal["$Con::redefineBehavior"] = "replaceExisting";
 
             // Load up the level.
-            SimObject guiContent = omni.Util.eval(openFileName);
+            SimObject guiContent = Util.eval(openFileName);
 
-            omni.sGlobal["$Con::redefineBehavior"] = oldRedefineBehavior;
+            sGlobal["$Con::redefineBehavior"] = oldRedefineBehavior;
 
             // The level file should have contained a scenegraph, which should now be in the instant
             // group. And, it should be the only thing in the group.
             //TODO
             if (!guiContent.isObject())
                 {
-                omni.Util.messageBox(omni.console.Call("getEngineName"), "You have loaded a Gui file that was created before this version.  It has been loaded but you must open it manually from the content list dropdown", "Ok", "Information");
+                Util.messageBox(console.Call("getEngineName"), "You have loaded a Gui file that was created before this version.  It has been loaded but you must open it manually from the content list dropdown", "Ok", "Information");
                 GuiEditorGui.GuiEditContent(Canvas.getContent().AsString());
                 return;
                 }

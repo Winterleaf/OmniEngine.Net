@@ -493,7 +493,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui
         {
             EWorldEditor EWorldEditor = "EWorldEditor";
 
-            omni.bGlobal["$DecalRoad::EditorOpen"] = true;
+            bGlobal["$DecalRoad::EditorOpen"] = true;
 
             int count = EWorldEditor.getSelectionSize();
             for (uint i = 0; i < count; i++)
@@ -511,7 +511,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui
         [ConsoleInteraction]
         public override void onSleep()
         {
-            omni.bGlobal["$DecalRoad::EditorOpen"] = false;
+            bGlobal["$DecalRoad::EditorOpen"] = false;
         }
 
         [ConsoleInteraction]
@@ -560,7 +560,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui
 
             // Update the materialEditorList
             if (road.isObject())
-                omni.sGlobal["$Tools::materialEditorList"] = road;
+                sGlobal["$Tools::materialEditorList"] = road;
             else
                 return;
 
@@ -640,7 +640,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui
             if (dr == DialogResult.OK)
                 {
                 string fileName = Dialogs.GetForwardSlashFile(ofd.FileName);
-                this["lastPath"] = omni.console.Call("filePath", new string[] {fileName});
+                this["lastPath"] = console.Call("filePath", new string[] {fileName});
                 //string filename = fileName;
 
                 //TODO

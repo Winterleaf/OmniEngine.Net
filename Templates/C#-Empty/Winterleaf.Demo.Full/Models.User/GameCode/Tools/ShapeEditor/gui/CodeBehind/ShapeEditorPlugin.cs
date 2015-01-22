@@ -53,8 +53,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
     [TypeConverter(typeof (TypeConverterGeneric<ShapeEditorPlugin>))]
     public class ShapeEditorPlugin : EditorPlugin
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         internal ActionMap map
         {
             get { return this["map"]; }
@@ -424,8 +422,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
             ShapeEditorToolbar ShapeEditorToolbar = "ShapeEditorToolbar";
             GuiBitmapButtonCtrl wireframeMode = ShapeEditorToolbar.FOT("wireframeMode");
 
-            omni.bGlobal["$gfx::wireframe"] = !omni.bGlobal["$gfx::wireframe"];
-            wireframeMode.setStateOn(omni.bGlobal["$gfx::wireframe"]);
+            bGlobal["$gfx::wireframe"] = !bGlobal["$gfx::wireframe"];
+            wireframeMode.setStateOn(bGlobal["$gfx::wireframe"]);
         }
 
         //-----------------------------------------------------------------------------

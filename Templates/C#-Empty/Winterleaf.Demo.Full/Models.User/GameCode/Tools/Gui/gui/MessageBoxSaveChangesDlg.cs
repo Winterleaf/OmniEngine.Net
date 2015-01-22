@@ -247,7 +247,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             // Sanity Check
             if (MessageBoxSaveChangesDlg.isAwake())
                 {
-                omni.Util._warn("Save Changes Dialog already Awake, NOT creating second instance.");
+                Util._warn("Save Changes Dialog already Awake, NOT creating second instance.");
                 return;
                 }
 

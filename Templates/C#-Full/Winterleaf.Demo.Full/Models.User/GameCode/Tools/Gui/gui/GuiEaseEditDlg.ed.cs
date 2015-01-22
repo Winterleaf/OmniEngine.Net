@@ -537,10 +537,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             GuiTextEditSliderCtrl param2Value = this.FOT("param2Value");
 
             easeView.ease = ease.AsEaseF();
-            directionList.setSelected(omni.Util.getWord(ease, 0).AsInt(), false);
-            typeList.setSelected(omni.Util.getWord(ease, 1).AsInt(), false);
-            param1Value.setValue(omni.Util.getWord(ease, 2));
-            param2Value.setValue(omni.Util.getWord(ease, 3));
+            directionList.setSelected(Util.getWord(ease, 0).AsInt(), false);
+            typeList.setSelected(Util.getWord(ease, 1).AsInt(), false);
+            param1Value.setValue(Util.getWord(ease, 2));
+            param2Value.setValue(Util.getWord(ease, 3));
 
             this.onEaseTypeSet();
         }

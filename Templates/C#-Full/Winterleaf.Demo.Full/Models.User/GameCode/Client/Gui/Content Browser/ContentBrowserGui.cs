@@ -1,18 +1,18 @@
 ﻿// WinterLeaf Entertainment
 // Copyright (c) 2014, WinterLeaf Entertainment LLC
-// 
+//
 // All rights reserved.
-// 
+//
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
-// 
+//
 // These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
-// 
+//
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
-// 
+//
 // BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-// 
+//
 //     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
 //     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 //     With respect to any Product that the Licensee develop using the Software:
@@ -30,8 +30,8 @@
 //         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
 //         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
 //         use the Software for any illegal purpose.
-// 
-// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+//
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System.ComponentModel;
 using WinterLeaf.Demo.Full.Models.User.Extendable;
@@ -79,8 +79,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             get { return this["columnId"].AsInt(); }
             set { this["columnId"] = value.AsString(); }
         }
-
-        //private static readonly pInvokes omni = new pInvokes();
 
         public static void initialize()
         {
@@ -2301,7 +2299,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             if (!CBScheduleArray.isObject())
                 CBScheduleArray = new ObjectCreator("ArrayObject", "CBScheduleArray").Create();
 
-            // if we select another list... delete all schedules that were created by 
+            // if we select another list... delete all schedules that were created by
             // previous load
             for (int i = 0; i < CBScheduleArray.count(); i++)
                 Util.cancel(CBScheduleArray.getKey(i).AsInt());
@@ -2506,7 +2504,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
                     previewImage = ((SimObject) material["cubemap"])["cubeFace[0]"];
 
                 // were going to use a couple of string commands in order to properly
-                // find out what the img src path is 
+                // find out what the img src path is
                 // **NEW** this needs to be updated with the above, but has some timing issues
                 string materialDiffuse = previewImage;
 
@@ -2759,7 +2757,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         {
             // it may seem goofy why the checkbox can't be instanciated inside the container
             // reason being its because we need to store the checkbox ctrl in order to make changes
-            // on it later in the function. 
+            // on it later in the function.
 
             #region GuiControl ()        oc_Newobject6
 
@@ -3235,7 +3233,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         public static int sortArrayAscending(string itemA, string itemB)
         {
             ContentBrowserGui ContentBrowserGui = "ContentBrowserGui";
-            return omni.Util.strcmp(omni.Util.getField(itemB, ContentBrowserGui.columnId), omni.Util.getField(itemA, ContentBrowserGui.columnId));
+            return Util.strcmp(Util.getField(itemB, ContentBrowserGui.columnId), Util.getField(itemA, ContentBrowserGui.columnId));
         }
 
         [ConsoleInteraction]
@@ -3243,7 +3241,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         {
             ContentBrowserGui ContentBrowserGui = "ContentBrowserGui";
 
-            return omni.Util.strcmp(omni.Util.getField(itemB, ContentBrowserGui.columnId), omni.Util.getField(itemA, ContentBrowserGui.columnId));
+            return Util.strcmp(Util.getField(itemB, ContentBrowserGui.columnId), Util.getField(itemA, ContentBrowserGui.columnId));
         }
 
         [ConsoleInteraction]
@@ -3254,9 +3252,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
                 {
                 string extent1 = rootCanvas.getWindowPosition().AsString() + rootCanvas.getExtent().AsString();
 
-                string finalPos1 = (omni.Util.getWord(extent1, 0).AsInt() + omni.Util.getWord(extent1, 2).AsInt()) + " " + (omni.Util.getWord(extent1, 1).AsInt() + omni.Util.getWord(extent1, 3).AsInt());
+                string finalPos1 = (Util.getWord(extent1, 0).AsInt() + Util.getWord(extent1, 2).AsInt()) + " " + (Util.getWord(extent1, 1).AsInt() + Util.getWord(extent1, 3).AsInt());
 
-                if (omni.Util.getWord(screenPos, 0).AsInt() < omni.Util.getWord(extent1, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() < omni.Util.getWord(extent1, 1).AsInt() || omni.Util.getWord(screenPos, 0).AsInt() > omni.Util.getWord(finalPos1, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() > omni.Util.getWord(finalPos1, 1).AsInt())
+                if (Util.getWord(screenPos, 0).AsInt() < Util.getWord(extent1, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() < Util.getWord(extent1, 1).AsInt() || Util.getWord(screenPos, 0).AsInt() > Util.getWord(finalPos1, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() > Util.getWord(finalPos1, 1).AsInt())
                     {
                     //echo("Outside Root");
                     }
@@ -3268,9 +3266,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
 
                 string extent = Canvas.getWindowPosition().AsString() + Canvas.getExtent().AsString();
 
-                string finalPos = (omni.Util.getWord(extent, 0).AsInt() + omni.Util.getWord(extent, 2).AsInt()) + " " + (omni.Util.getWord(extent, 1).AsInt() + omni.Util.getWord(extent, 3).AsInt());
+                string finalPos = (Util.getWord(extent, 0).AsInt() + Util.getWord(extent, 2).AsInt()) + " " + (Util.getWord(extent, 1).AsInt() + Util.getWord(extent, 3).AsInt());
 
-                if (omni.Util.getWord(screenPos, 0).AsInt() < omni.Util.getWord(extent, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() < omni.Util.getWord(extent, 1).AsInt() || omni.Util.getWord(screenPos, 0).AsInt() > omni.Util.getWord(finalPos, 0).AsInt() || omni.Util.getWord(screenPos, 1).AsInt() > omni.Util.getWord(finalPos, 1).AsInt())
+                if (Util.getWord(screenPos, 0).AsInt() < Util.getWord(extent, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() < Util.getWord(extent, 1).AsInt() || Util.getWord(screenPos, 0).AsInt() > Util.getWord(finalPos, 0).AsInt() || Util.getWord(screenPos, 1).AsInt() > Util.getWord(finalPos, 1).AsInt())
                     {
                     //echo("Outside Canvas");
                     return false;
@@ -3285,7 +3283,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         #region ProxyObjects Operator Overrides
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
@@ -3296,7 +3294,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -3305,7 +3303,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -3315,7 +3313,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ts"></param>
         /// <param name="simobjectid"></param>
@@ -3328,7 +3326,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
@@ -3338,7 +3336,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
@@ -3349,7 +3347,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
@@ -3359,7 +3357,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="simobjectid"></param>
         /// <returns></returns>
@@ -3369,7 +3367,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
@@ -3379,7 +3377,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static implicit operator ContentBrowserGui(uint simobjectid)
@@ -3432,7 +3430,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3443,7 +3441,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -3452,7 +3450,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -3462,7 +3460,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3475,7 +3473,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3485,7 +3483,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3496,7 +3494,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3506,7 +3504,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -3516,7 +3514,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3526,7 +3524,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator CBDetailedTable(uint simobjectid)
@@ -3583,7 +3581,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3594,7 +3592,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -3603,7 +3601,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -3613,7 +3611,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3626,7 +3624,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3636,7 +3634,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3647,7 +3645,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3657,7 +3655,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -3667,7 +3665,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3677,7 +3675,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator CBLibraryTreeView(uint simobjectid)
@@ -3702,7 +3700,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3713,7 +3711,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -3722,7 +3720,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -3732,7 +3730,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3745,7 +3743,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3755,7 +3753,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3766,7 +3764,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3776,7 +3774,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -3786,7 +3784,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3796,7 +3794,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator CBSearchAutoCompleteCtrl(uint simobjectid)
@@ -3832,7 +3830,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3843,7 +3841,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -3852,7 +3850,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -3862,7 +3860,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -3875,7 +3873,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3885,7 +3883,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3896,7 +3894,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3906,7 +3904,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -3916,7 +3914,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -3926,7 +3924,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator ContentDropTypeMenu(uint simobjectid)
@@ -3988,7 +3986,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
 
                         SimObject id = ((ColladaImportDlg) "ColladaImportDlg").showDialog(this["path"], altCommand);
 
-                        //SimObject id = Util.eval(cmd);         
+                        //SimObject id = Util.eval(cmd);
 
                         //%id.setPosition(%posX SPC %posY SPC %posZ);
 
@@ -4009,7 +4007,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4020,7 +4018,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -4029,7 +4027,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -4039,7 +4037,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4052,7 +4050,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4062,7 +4060,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4073,7 +4071,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4083,7 +4081,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -4093,7 +4091,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4103,7 +4101,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator CreatorShapeIconBtn(uint simobjectid)
@@ -4177,7 +4175,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4188,7 +4186,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -4197,7 +4195,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -4207,7 +4205,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4220,7 +4218,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4230,7 +4228,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4241,7 +4239,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4251,7 +4249,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -4261,7 +4259,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4271,7 +4269,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator CreatorStaticIconBtn(uint simobjectid)
@@ -4333,7 +4331,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
 
                         Inspector Inspector = "Inspector";
                         //Inspector.inspect(%object);
-                        //eval( "" @ %object @".Material = " @ %this.toolTip @ ";" ); 
+                        //eval( "" @ %object @".Material = " @ %this.toolTip @ ";" );
                         Inspector.setObjectField("material", this["toolTip"]);
                         Inspector.apply();
                         Inspector.refresh();
@@ -4345,7 +4343,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4356,7 +4354,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -4365,7 +4363,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -4375,7 +4373,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4388,7 +4386,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4398,7 +4396,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4409,7 +4407,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4419,7 +4417,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -4429,7 +4427,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4439,7 +4437,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator MaterialButton(uint simobjectid)
@@ -4464,7 +4462,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             #region ProxyObjects Operator Overrides
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4475,7 +4473,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public override int GetHashCode()
@@ -4484,7 +4482,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="obj"></param>
             /// <returns></returns>
@@ -4494,7 +4492,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <param name="simobjectid"></param>
@@ -4507,7 +4505,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4517,7 +4515,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4528,7 +4526,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4538,7 +4536,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="simobjectid"></param>
             /// <returns></returns>
@@ -4548,7 +4546,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <param name="ts"></param>
             /// <returns></returns>
@@ -4558,7 +4556,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Content_Browser
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             /// <returns></returns>
             public static implicit operator ParticleEmitterButton(uint simobjectid)

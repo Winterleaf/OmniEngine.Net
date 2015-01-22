@@ -126,9 +126,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         [ConsoleInteraction(true)]
         public static int findRemapCmdIndex(string command)
         {
-            for (int i = 0; i < omni.iGlobal["$RemapCount"]; i++)
+            for (int i = 0; i < iGlobal["$RemapCount"]; i++)
                 {
-                if (command == omni.sGlobal["$RemapCmd[" + i + "]"])
+                if (command == sGlobal["$RemapCmd[" + i + "]"])
                     return i;
                 }
             return -1;
@@ -143,11 +143,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             if (temp == "")
                 return;
 
-            count = omni.Util.getFieldCount(temp) - (count*2);
+            count = Util.getFieldCount(temp) - (count*2);
             for (int i = 0; i < count; i += 2)
                 {
-                string device = omni.Util.getField(temp, i + 0);
-                string action = omni.Util.getField(temp, i + 1);
+                string device = Util.getField(temp, i + 0);
+                string action = Util.getField(temp, i + 1);
                 ((ActionMap) "moveMap").unbind(device, action);
                 }
         }

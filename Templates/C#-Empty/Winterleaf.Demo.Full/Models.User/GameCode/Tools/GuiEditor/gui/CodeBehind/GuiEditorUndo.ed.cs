@@ -47,8 +47,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
 {
     public class GuiEditorUndo
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [TypeConverter(typeof (TypeConverterGeneric<GenericUndoAction>))]
         public class GenericUndoAction : UndoScriptAction
         {
@@ -60,14 +58,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
             {
                 // The instant group will try to add our
                 // UndoAction if we don't disable it. 
-                omni.Util.pushInstantGroup();
+                Util.pushInstantGroup();
 
                 GenericUndoAction act = new ObjectCreator("UndoScriptAction", "", typeof (GenericUndoAction)).Create();
 
                 act.actionName = "Edit Objects";
 
                 // Restore the instant group.
-                omni.Util.popInstantGroup();
+                Util.popInstantGroup();
 
                 return act;
             }
@@ -97,7 +95,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                     this["fieldValues[" + objectx + "," + field + "]"] = objectx.getFieldValue(field, -1);
                     }
                 // clean spurious spaces from the field name list
-                this["fieldNames[" + objectx + "]"] = omni.Util.trim(this["fieldNames[" + objectx + "]"]);
+                this["fieldNames[" + objectx + "]"] = pInvokes.Util.trim(this["fieldNames[" + objectx + "]"]);
                 // record that we know this object
                 this["objectIds[" + objectx + "]"] = "1";
                 this["objectIdList"] = this["objectIdList"] + ' ' + objectx;
@@ -128,15 +126,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                     }
 
                 // trim
-                this["newFieldNames[" + objectx + "]"] = omni.Util.trim(this["newFieldNames[" + objectx + "]"]);
+                this["newFieldNames[" + objectx + "]"] = Util.trim(this["newFieldNames[" + objectx + "]"]);
 
                 // look for differences
                 //----------------------------------------------------------------------
                 bool diffs = false;
                 string newFieldNames = this["newFieldNames[" + objectx + "]"];
                 string oldFieldNames = this["fieldNames[" + objectx + "]"];
-                int numNewFields = omni.Util.getWordCount(newFieldNames);
-                int numOldFields = omni.Util.getWordCount(oldFieldNames);
+                int numNewFields = Util.getWordCount(newFieldNames);
+                int numOldFields = Util.getWordCount(oldFieldNames);
                 // compare the old field list to the new field list.
                 // if a field is on the old list that isn't on the new list, 
                 // add it to the newNullFields list.
@@ -385,7 +383,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                 GuiEditorGui.GuiEditor GuiEditor = "GuiEditor";
                 // Create action object.
 
-                omni.Util.pushInstantGroup();
+                Util.pushInstantGroup();
                 ObjectCreator undoAct = new ObjectCreator("UndoScriptAction", "", typeof (GuiEditorGroupAction));
                 undoAct["actionName"] = "Group";
                 undoAct["count"] = 1;
@@ -398,7 +396,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                 undoAct["#object"] = groupCreator;
                 GuiEditorGroupAction action = undoAct.Create();
 
-                omni.Util.popInstantGroup();
+                Util.popInstantGroup();
 
                 // Add objects from set to group.
 
@@ -810,7 +808,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
             {
                 // Create action object.
 
-                omni.Util.pushInstantGroup();
+                Util.pushInstantGroup();
                 ObjectCreator oc = new ObjectCreator("UndoScriptAction", "", typeof (GuiEditorUngroupAction));
                 oc["actionName"] = "Ungroup";
 
@@ -845,7 +843,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                         }
                     }
 
-                omni.Util.popInstantGroup();
+                Util.popInstantGroup();
 
                 action.count = groupCount;
                 return action;
@@ -1004,12 +1002,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
 
                 // The instant group will try to add our
                 // UndoAction if we don't disable it. 
-                omni.Util.pushInstantGroup();
+                Util.pushInstantGroup();
 
                 UndoScriptAction act = new ObjectCreator("UndoScriptAction", "", typeof (T)).Create();
 
                 // Restore the instant group.
-                omni.Util.popInstantGroup();
+                Util.popInstantGroup();
 
                 for (uint i = 0; i < set.getCount(); i++)
                     {

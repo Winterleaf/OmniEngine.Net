@@ -212,7 +212,7 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
 
             // The instant group will try to add our
             // UndoAction if we don't disable it.   
-            omni.Util.pushInstantGroup();
+            Util.pushInstantGroup();
 
             // Create the undo action.     
             ObjectCreator actionCreator = new ObjectCreator("MECreateUndoAction");
@@ -221,7 +221,7 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
             MECreateUndoAction action = actionCreator.Create();
 
             // Restore the instant group.
-            omni.Util.popInstantGroup();
+            Util.popInstantGroup();
 
             // Set the object to undo.
             action.addObject(undoObject);
@@ -261,7 +261,7 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
 
             // The instant group will try to add our
             // UndoAction if we don't disable it.   
-            omni.Util.pushInstantGroup();
+            Util.pushInstantGroup();
 
             // Create the undo action.     
             ObjectCreator actionCreator = new ObjectCreator("MEDeleteUndoAction");
@@ -270,27 +270,27 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
             MEDeleteUndoAction action = actionCreator.Create();
 
             // Restore the instant group.
-            omni.Util.popInstantGroup();
+            Util.popInstantGroup();
 
             // Add the deletion objects to the action which
             // will take care of properly deleting them.
-            deleteObjects = omni.Util.trim(deleteObjects);
+            deleteObjects = Util.trim(deleteObjects);
 
             if (wordSeperated)
                 {
-                int count = omni.Util.getWordCount(deleteObjects);
+                int count = Util.getWordCount(deleteObjects);
                 for (int i = 0; i < count; i++)
                     {
-                    SimObject xobject = omni.Util.getWord(deleteObjects, i);
+                    SimObject xobject = Util.getWord(deleteObjects, i);
                     action.deleteObject(xobject);
                     }
                 }
             else
                 {
-                int count = omni.Util.getFieldCount(deleteObjects);
+                int count = Util.getFieldCount(deleteObjects);
                 for (int i = 0; i < count; i++)
                     {
-                    SimObject xobject = omni.Util.getField(deleteObjects, i);
+                    SimObject xobject = Util.getField(deleteObjects, i);
                     action.deleteObject(xobject);
                     }
                 }

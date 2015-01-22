@@ -40,8 +40,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.art.gui
 {
     public class defaultGameProfiles
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void Initialize()
         {
             SingletonCreator ts = new SingletonCreator("GuiControlProfile", "ChatHudEditProfile");

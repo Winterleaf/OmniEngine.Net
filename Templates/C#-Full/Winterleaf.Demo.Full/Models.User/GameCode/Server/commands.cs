@@ -1,18 +1,18 @@
 ﻿// WinterLeaf Entertainment
 // Copyright (c) 2014, WinterLeaf Entertainment LLC
-// 
+//
 // All rights reserved.
-// 
+//
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
-// 
+//
 // These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
-// 
+//
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
-// 
+//
 // BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-// 
+//
 //     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
 //     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 //     With respect to any Product that the Licensee develop using the Software:
@@ -30,8 +30,8 @@
 //         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
 //         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
 //         use the Software for any illegal purpose.
-// 
-// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+//
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #region
 
@@ -51,7 +51,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
 {
     public class commands
     {
-        private static readonly pInvokes omni = new pInvokes();
         //-----------------------------------------------------------------------------
         // Misc. server commands avialable to clients
         //-----------------------------------------------------------------------------
@@ -64,7 +63,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         {
             EditorGui EditorGui = "EditorGui";
             if (EditorGui.isObject())
-                //omni.console.Call("EditorGui", "syncCameraGui");
+                //pInvokes.console.Call("EditorGui", "syncCameraGui");
                 EditorGui.syncCameraGui();
         }
 
@@ -113,7 +112,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             ((Player) client["player"]).setVelocity(new Point3F("0 0 0"));
             client.setControlObject(client["player"]);
             client.setFirstPerson(true);
-            omni.bGlobal["$isFirstPersonVar"] = true;
+            pInvokes.bGlobal["$isFirstPersonVar"] = true;
             syncEditorGui();
         }
 
@@ -123,7 +122,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             ((Player) client["player"]).setVelocity(new Point3F("0 0 0"));
             client.setControlObject(client["player"]);
             client.setFirstPerson(false);
-            omni.bGlobal["$isFirstPersonVar"] = false;
+            pInvokes.bGlobal["$isFirstPersonVar"] = false;
             syncEditorGui();
         }
 
@@ -136,7 +135,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             ShapeBase obj = null;
 
             obj = player.getObjectMount();
-            if (!omni.console.isObject(obj))
+            if (!pInvokes.console.isObject(obj))
                 obj = client["player"];
 
             obj.setTransform(((Extendable.Camera) client["Camera"]).getTransform());
@@ -264,21 +263,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         [ConsoleInteraction(true)]
         public static void serverCmdSAD(GameConnection client, string password)
         {
-            if (password == string.Empty || password != omni.sGlobal["$Pref::Server::AdminPassword"])
+            if (password == string.Empty || password != pInvokes.sGlobal["$Pref::Server::AdminPassword"])
                 return;
             client["isAdmin"] = true.AsString();
             client["isSuperAdmin"] = true.AsString();
 
-            string name = omni.console.getTaggedString(client["playerName"]);
+            string name = pInvokes.console.getTaggedString(client["playerName"]);
 
-            message.MessageAll("MsgAdminForce", omni.console.ColorEncode(string.Format(@"\c2{0} has become Admin by force.", name)), client);
+            message.MessageAll("MsgAdminForce", pInvokes.console.ColorEncode(string.Format(@"\c2{0} has become Admin by force.", name)), client);
         }
 
         [ConsoleInteraction(true)]
         public static void serverCmdSADSetPassword(GameConnection client, string password)
         {
             if (client["isSuperAdmin"].AsBool())
-                omni.sGlobal["$Pref::Server::AdminPassword"] = password;
+                pInvokes.sGlobal["$Pref::Server::AdminPassword"] = password;
         }
 
         //----------------------------------------------------------------------------
@@ -288,17 +287,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         [ConsoleInteraction(true)]
         public static void serverCmdTeamMessageSent(GameConnection client, string text)
         {
-            if (text.Trim().Length >= omni.iGlobal["$Pref::Server::MaxChatLen"])
-                text = text.Substring(0, omni.iGlobal["$Pref::Server::MaxChatLen"]);
-            message.ChatMessageTeam(client, client["team"], omni.console.ColorEncode(@"\c3%1: %2"), client["playerName"], text);
+            if (text.Trim().Length >= pInvokes.iGlobal["$Pref::Server::MaxChatLen"])
+                text = text.Substring(0, pInvokes.iGlobal["$Pref::Server::MaxChatLen"]);
+            message.ChatMessageTeam(client, client["team"], pInvokes.console.ColorEncode(@"\c3%1: %2"), client["playerName"], text);
         }
 
         [ConsoleInteraction(true)]
         public static void ServerCmdMessageSent(GameConnection client, string text)
         {
-            if (text.Trim().Length >= omni.iGlobal["$Pref::Server::MaxChatLen"])
-                text = text.Substring(0, omni.iGlobal["$Pref::Server::MaxChatLen"]);
-            message.ChatMessageAll(client, omni.console.ColorEncode(@"\c4%1: %2"), client["playerName"], text);
+            if (text.Trim().Length >= pInvokes.iGlobal["$Pref::Server::MaxChatLen"])
+                text = text.Substring(0, pInvokes.iGlobal["$Pref::Server::MaxChatLen"]);
+            message.ChatMessageAll(client, pInvokes.console.ColorEncode(@"\c4%1: %2"), client["playerName"], text);
         }
 
         [ConsoleInteraction(true)]
@@ -327,10 +326,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         {
             Player player = client["player"];
 
-            if (!player.isObject() || (player.getState() == "Dead") || !omni.bGlobal["$Game::Running"])
+            if (!player.isObject() || (player.getState() == "Dead") || !pInvokes.bGlobal["$Game::Running"])
                 return;
 
-            SimObject mountedimage = player.getMountedImage(omni.iGlobal["$WeaponSlot"]);
+            SimObject mountedimage = player.getMountedImage(pInvokes.iGlobal["$WeaponSlot"]);
             switch (data)
                 {
                     case "Weapon":
@@ -369,7 +368,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         [ConsoleInteraction(true)]
         public static void serverCmdUnmountWeapon(GameConnection client)
         {
-            ((Player) client["player"]).unmountImage(omni.iGlobal["$WeaponSlot"]);
+            ((Player) client["player"]).unmountImage(pInvokes.iGlobal["$WeaponSlot"]);
         }
 
         [ConsoleInteraction(true)]
@@ -377,13 +376,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         {
             Player player = client["player"];
 
-            WeaponImage image = player.getMountedImage(omni.iGlobal["$WeaponSlot"]);
+            WeaponImage image = player.getMountedImage(pInvokes.iGlobal["$WeaponSlot"]);
 
             if (player.getInventory(image["ammo"]) == image["ammo.maxInventory"].AsInt())
                 return;
 
             if (image > 0)
-                image.clearAmmoClip(player, omni.sGlobal["$WeaponSlot"].AsInt());
+                image.clearAmmoClip(player, pInvokes.sGlobal["$WeaponSlot"].AsInt());
         }
     }
 }

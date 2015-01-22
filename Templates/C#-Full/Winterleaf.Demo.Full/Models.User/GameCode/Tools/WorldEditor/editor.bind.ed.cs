@@ -45,8 +45,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 {
     public class editor_bind_ed
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "editor_bind_ed_cs_initialize")]
         public static void initialize()
         {
@@ -70,8 +68,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             //EditorGui-->CameraSpeedSpinner.setText( $Camera::movementSpeed );
 
             float rollAdj = defaultBind.getMouseAdjustAmount(val);
-            rollAdj = omni.Util.mClamp(rollAdj, (float) (-Math.PI + 0.01), (float) (Math.PI - 0.01));
-            omni.fGlobal["$mvRoll"] += rollAdj;
+            rollAdj = pInvokes.Util.mClamp(rollAdj, (float) (-Math.PI + 0.01), (float) (Math.PI - 0.01));
+            pInvokes.fGlobal["$mvRoll"] += rollAdj;
         }
 
         [ConsoleInteraction]
@@ -81,14 +79,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             if (((GameConnection) "ServerConnection").isControlObjectRotDampedCamera() || ((EWorldEditor) "EWorldEditor").isMiddleMouseDown())
                 {
                 // Clamp and scale
-                yawAdj = omni.Util.mClamp(yawAdj, ((float) (-2.0f*Math.PI) + 0.01f), ((float) (2.0f*Math.PI) - 0.01f));
+                yawAdj = pInvokes.Util.mClamp(yawAdj, ((float) (-2.0f*Math.PI) + 0.01f), ((float) (2.0f*Math.PI) - 0.01f));
                 yawAdj *= 0.5f;
                 }
 
             if (((SimObject) "EditorSettings")["Camera/invertXAxis"].AsBool())
                 yawAdj *= -1;
 
-            omni.fGlobal["$mvYaw"] += yawAdj;
+            pInvokes.fGlobal["$mvYaw"] += yawAdj;
         }
 
         [ConsoleInteraction]
@@ -97,13 +95,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             float pitchAdj = defaultBind.getMouseAdjustAmount(val);
             if (((GameConnection) "ServerConnection").isControlObjectRotDampedCamera() || ((EWorldEditor) "EWorldEditor").isMiddleMouseDown())
                 {
-                pitchAdj = omni.Util.mClamp(pitchAdj, ((float) (-2.0f*Math.PI) + 0.01f), ((float) (2.0f*Math.PI) - 0.01f));
+                pitchAdj = pInvokes.Util.mClamp(pitchAdj, ((float) (-2.0f*Math.PI) + 0.01f), ((float) (2.0f*Math.PI) - 0.01f));
                 pitchAdj *= 0.5f;
                 }
             if (((SimObject) "EditorSettings")["Camera/invertYAxis"].AsBool())
                 pitchAdj *= -1;
 
-            omni.fGlobal["$mvPitch"] += pitchAdj;
+            pInvokes.fGlobal["$mvPitch"] += pitchAdj;
         }
 
         [ConsoleInteraction]

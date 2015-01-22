@@ -980,9 +980,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             oc_Newobject42.Create();
 
-            omni.sGlobal["$Pref::MaterialSelector::CurrentStaticFilter"] = "MaterialFilterAllArray";
-            omni.sGlobal["$Pref::MaterialSelector::CurrentFilter"] = ""; //ALL
-            omni.iGlobal["$Pref::MaterialSelector::ThumbnailCountIndex"] = 0;
+            sGlobal["$Pref::MaterialSelector::CurrentStaticFilter"] = "MaterialFilterAllArray";
+            sGlobal["$Pref::MaterialSelector::CurrentFilter"] = ""; //ALL
+            iGlobal["$Pref::MaterialSelector::ThumbnailCountIndex"] = 0;
 
             new ObjectCreator("PersistenceManager", "MaterialSelectorPerMan").Create();
 

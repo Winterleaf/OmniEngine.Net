@@ -717,8 +717,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             oc_Newobject22.Create();
 
-            omni.sGlobal["$TerrainImportGui::HeightFieldFilter"] = "Heightfield Files (*.png, *.bmp, *.jpg, *.gif)|*.png;*.bmp;*.jpg;*.gif|All Files (*.*)|*.*";
-            omni.sGlobal["$TerrainImportGui::OpacityMapFilter"] = "Opacity Map Files (*.png, *.bmp, *.jpg, *.gif)|*.png;*.bmp;*.jpg;*.gif|All Files (*.*)|*.*";
+            sGlobal["$TerrainImportGui::HeightFieldFilter"] = "Heightfield Files (*.png, *.bmp, *.jpg, *.gif)|*.png;*.bmp;*.jpg;*.gif|All Files (*.*)|*.*";
+            sGlobal["$TerrainImportGui::OpacityMapFilter"] = "Opacity Map Files (*.png, *.bmp, *.jpg, *.gif)|*.png;*.bmp;*.jpg;*.gif|All Files (*.*)|*.*";
         }
 
         /*
@@ -914,15 +914,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             // TODO: Need to actually look at
             // the file here and figure
             // out how many channels it has.
-            string txt = omni.Util.makeRelativePath(name, omni.Util.getWorkingDirectory());
+            string txt = Util.makeRelativePath(name, Util.getWorkingDirectory());
             // Will need to do this stuff
             // once per channel in the file
             // currently it works with just grayscale.   
 
             string channelsTxt = "R\tG\tB\tA";
-            string bitmapInfo = omni.Util.getBitmapInfo(name);
+            string bitmapInfo = Util.getBitmapInfo(name);
 
-            string channelCount = omni.Util.getWord(bitmapInfo, 2);
+            string channelCount = Util.getWord(bitmapInfo, 2);
 
             GuiTextListCtrl opacityList = ((GuiControl) "TerrainImportGui").findObjectByInternalName("OpacityLayerTextList", true);
 
@@ -933,10 +933,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
             for (int i = 0; i < channelCount.AsInt(); i++)
                 {
                 namesArray.push_back(txt, name);
-                channelsArray.push_back(txt, omni.Util.getWord(channelsTxt, i) + "/t" + channelCount);
+                channelsArray.push_back(txt, Util.getWord(channelsTxt, i) + "/t" + channelCount);
                 //TerrainImportGui.namesArray.echo();   
                 int count = opacityList.rowCount();
-                opacityList.addRow(count, txt + "/t" + omni.Util.getWord(channelsTxt, i), -1);
+                opacityList.addRow(count, txt + "/t" + Util.getWord(channelsTxt, i), -1);
                 }
             //OpacityMapListBox.addItem( %name );
         }
@@ -1022,10 +1022,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             string rowTxt = opacityList.getRowTextById(itemIdx.AsInt());
 
-            int columTxtCount = omni.Util.getFieldCount(rowTxt);
+            int columTxtCount = Util.getFieldCount(rowTxt);
 
             if (columTxtCount > 2)
-                rowTxt = omni.Util.getFields(rowTxt, 0, 1);
+                rowTxt = Util.getFields(rowTxt, 0, 1);
 
             opacityList.setRowById(itemIdx.AsInt(), rowTxt + "\t" + ((SimObject) mat).internalName + "/t" + mat);
         }

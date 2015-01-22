@@ -133,7 +133,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
             oc_Newobject1["Visible"] = "1";
             oc_Newobject1["tooltipprofile"] = "GuiToolTipProfile";
             oc_Newobject1["hovertime"] = "1000";
-            oc_Newobject1["bitmap"] = "art/gui/omni.png";
+            oc_Newobject1["bitmap"] = "art/gui/pInvokes.png";
             oc_Newobject1["wrap"] = "0";
 
             #endregion

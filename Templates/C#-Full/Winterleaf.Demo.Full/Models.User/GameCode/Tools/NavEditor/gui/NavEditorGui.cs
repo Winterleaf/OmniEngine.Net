@@ -50,8 +50,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
     [TypeConverter(typeof (TypeConverterGeneric<NavEditorGui>))]
     public class NavEditorGui : GuiNavEditorCtrl
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public NavMesh selectedObject
         {
             get { return this["selectedObject"]; }
@@ -1308,13 +1306,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                 oc_Newobject00056.Create();
                 }
 
-            omni.bGlobal["$Nav::EditorOpen"] = false;
-            omni.bGlobal["$Nav::Editor::renderMesh"] = true;
-            omni.bGlobal["$Nav::Editor::renderPortals"] = false;
-            omni.bGlobal["$Nav::Editor::renderBVTree"] = false;
-            omni.bGlobal["$Nav::Editor::backgroundBuild"] = true;
-            omni.bGlobal["$Nav::Editor::saveIntermediates"] = false;
-            omni.bGlobal["$Nav::Editor::playSoundWhenDone"] = false;
+            bGlobal["$Nav::EditorOpen"] = false;
+            bGlobal["$Nav::Editor::renderMesh"] = true;
+            bGlobal["$Nav::Editor::renderPortals"] = false;
+            bGlobal["$Nav::Editor::renderBVTree"] = false;
+            bGlobal["$Nav::Editor::backgroundBuild"] = true;
+            bGlobal["$Nav::Editor::saveIntermediates"] = false;
+            bGlobal["$Nav::Editor::playSoundWhenDone"] = false;
         }
 
         [ConsoleInteraction]
@@ -1493,12 +1491,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
             LinkClimbFlag.setActive(true);
             LinkTeleportFlag.setActive(true);
 
-            LinkWalkFlag.setStateOn(flags == omni.iGlobal["$Nav::WalkFlag"]);
-            LinkJumpFlag.setStateOn(flags == omni.iGlobal["$Nav::JumpFlag"]);
-            LinkDropFlag.setStateOn(flags == omni.iGlobal["$Nav::DropFlag"]);
-            LinkLedgeFlag.setStateOn(flags == omni.iGlobal["$Nav::LedgeFlag"]);
-            LinkClimbFlag.setStateOn(flags == omni.iGlobal["$Nav::ClimbFlag"]);
-            LinkTeleportFlag.setStateOn(flags == omni.iGlobal["$Nav::TeleportFlag"]);
+            LinkWalkFlag.setStateOn(flags == iGlobal["$Nav::WalkFlag"]);
+            LinkJumpFlag.setStateOn(flags == iGlobal["$Nav::JumpFlag"]);
+            LinkDropFlag.setStateOn(flags == iGlobal["$Nav::DropFlag"]);
+            LinkLedgeFlag.setStateOn(flags == iGlobal["$Nav::LedgeFlag"]);
+            LinkClimbFlag.setStateOn(flags == iGlobal["$Nav::ClimbFlag"]);
+            LinkTeleportFlag.setStateOn(flags == iGlobal["$Nav::TeleportFlag"]);
         }
 
         [ConsoleInteraction]
@@ -1511,7 +1509,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
             GuiCheckBoxCtrl LinkClimbFlag = control.FOT("LinkClimbFlag");
             GuiCheckBoxCtrl LinkTeleportFlag = control.FOT("LinkTeleportFlag");
 
-            return (LinkWalkFlag.isStateOn() ? omni.iGlobal["$Nav::WalkFlag"] : 0) | (LinkJumpFlag.isStateOn() ? omni.iGlobal["$Nav::JumpFlag"] : 0) | (LinkDropFlag.isStateOn() ? omni.iGlobal["$Nav::DropFlag"] : 0) | (LinkLedgeFlag.isStateOn() ? omni.iGlobal["$Nav::LedgeFlag"] : 0) | (LinkClimbFlag.isStateOn() ? omni.iGlobal["$Nav::ClimbFlag"] : 0) | (LinkTeleportFlag.isStateOn() ? omni.iGlobal["$Nav::TeleportFlag"] : 0);
+            return (LinkWalkFlag.isStateOn() ? iGlobal["$Nav::WalkFlag"] : 0) | (LinkJumpFlag.isStateOn() ? iGlobal["$Nav::JumpFlag"] : 0) | (LinkDropFlag.isStateOn() ? iGlobal["$Nav::DropFlag"] : 0) | (LinkLedgeFlag.isStateOn() ? iGlobal["$Nav::LedgeFlag"] : 0) | (LinkClimbFlag.isStateOn() ? iGlobal["$Nav::ClimbFlag"] : 0) | (LinkTeleportFlag.isStateOn() ? iGlobal["$Nav::TeleportFlag"] : 0);
         }
 
         [ConsoleInteraction]

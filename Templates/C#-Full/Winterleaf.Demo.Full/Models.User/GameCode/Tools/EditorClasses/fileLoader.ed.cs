@@ -40,8 +40,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.EditorClasses
 {
     public class fileLoader
     {
-        public static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction]
         public static void loadDirectory(string path, string type, string dsoType)
         {
@@ -58,7 +56,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.EditorClasses
             // First we find all the scripts and compile them if there are any
             // In the shipping version, this wont find anything.
             string dsopath;
-            if (!omni.bGlobal["$Scripts::ignoreDSOs"])
+            if (!pInvokes.bGlobal["$Scripts::ignoreDSOs"])
                 {
                 bool dsoReloc = compileDirectory(cspath, "");
 
@@ -76,47 +74,47 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.EditorClasses
                 dsopath = cspath;
 
             //error("Execing Directory " @ %dsopath @ " ...");
-            string file = omni.Util.findFirstFile(dsopath, false);
+            string file = pInvokes.Util.findFirstFile(dsopath, false);
 
             while (file != "")
                 {
                 //error("  Found File: " @ %file);
 
                 // As we cant exec() a .dso directly, we need to strip that part from the filename
-                int pos = omni.Util.strstr(file, "." + dsoType);
+                int pos = pInvokes.Util.strstr(file, "." + dsoType);
                 string csfile;
                 if (pos != -1)
-                    csfile = omni.Util.getSubStr(file, 0, pos);
+                    csfile = pInvokes.Util.getSubStr(file, 0, pos);
                 else
                     csfile = file;
 
-                omni.Util.exec(csfile, false, false);
-                file = omni.Util.findNextFile(dsopath);
+                pInvokes.Util.exec(csfile, false, false);
+                file = pInvokes.Util.findNextFile(dsopath);
                 }
         }
 
         [ConsoleInteraction]
         public static bool compileDirectory(string path, string dsoPath)
         {
-            string saveDSOPath = omni.sGlobal["$Scripts::OverrideDSOPath"];
-            omni.sGlobal["$Scripts::OverrideDSOPath"] = dsoPath;
+            string saveDSOPath = pInvokes.sGlobal["$Scripts::OverrideDSOPath"];
+            pInvokes.sGlobal["$Scripts::OverrideDSOPath"] = dsoPath;
 
             bool dsoReloc = false;
 
-            string file = omni.Util.findFirstFile(path, false);
+            string file = pInvokes.Util.findFirstFile(path, false);
 
             //error("Compiling Directory " @ %path @ " ...");
             while (file != "")
                 {
                 //error("  Found File: " @ %file @ " (" @ getDSOPath(%file) @ ")");
-                if (omni.Util.filePath(file) != omni.Util.filePath(omni.Util.getDSOPath(file)))
+                if (pInvokes.Util.filePath(file) != pInvokes.Util.filePath(pInvokes.Util.getDSOPath(file)))
                     dsoReloc = true;
 
-                omni.Util.compile(file, false);
-                file = omni.Util.findNextFile(path);
+                pInvokes.Util.compile(file, false);
+                file = pInvokes.Util.findNextFile(path);
                 }
 
-            omni.sGlobal["$Scripts::OverrideDSOPath"] = saveDSOPath;
+            pInvokes.sGlobal["$Scripts::OverrideDSOPath"] = saveDSOPath;
 
             return dsoReloc;
         }
@@ -124,13 +122,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.EditorClasses
         [ConsoleInteraction]
         public static void listDirectory(string path)
         {
-            string file = omni.Util.findFirstFile(path, false);
+            string file = pInvokes.Util.findFirstFile(path, false);
 
-            omni.Util._echo("Listing Directory " + path + " ...");
+            pInvokes.Util._echo("Listing Directory " + path + " ...");
             while (file != "")
                 {
-                omni.Util._echo("  " + file);
-                file = omni.Util.findNextFile(path);
+                pInvokes.Util._echo("  " + file);
+                file = pInvokes.Util.findNextFile(path);
                 }
         }
     }

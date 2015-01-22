@@ -45,8 +45,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 {
     public class main
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         private static string[] EditorsToLoad = new string[] {"editorClasses", //Must be first
             "base", //Must be second
             "worldEditor", //Must be third, rest don't matter.
@@ -54,20 +52,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
 
         public static void initialize()
         {
-            omni.Util._echo("-------------------->Loading Tools");
+            pInvokes.Util._echo("-------------------->Loading Tools");
             //---------------------------------------------------------------------------------------------
             // Path to the folder that contains the editors we will load.
             //---------------------------------------------------------------------------------------------
-            omni.sGlobal["$Tools::resourcePath"] = "tools/";
+            pInvokes.sGlobal["$Tools::resourcePath"] = "tools/";
 
             // These must be loaded first, in this order, before anything else is loaded
-            omni.sGlobal["$Tools::loadFirst"] = "editorClasses base worldEditor";
+            pInvokes.sGlobal["$Tools::loadFirst"] = "editorClasses base worldEditor";
 
             //---------------------------------------------------------------------------------------------
             // Object that holds the simObject id that the materialEditor uses to interpret its material list
             //---------------------------------------------------------------------------------------------
 
-            omni.sGlobal["$Tools::materialEditorList"] = "";
+            pInvokes.sGlobal["$Tools::materialEditorList"] = "";
 
             String ToExecute = @"
 package Tools
@@ -101,8 +99,8 @@ package Tools
         }   
     };
 ";
-            omni.console.Eval(ToExecute);
-            omni.Util.activatePackage("Tools");
+            pInvokes.console.Eval(ToExecute);
+            pInvokes.Util.activatePackage("Tools");
         }
 
         [ConsoleInteraction]
@@ -115,29 +113,29 @@ package Tools
             //new Settings(EditorSettings) { file = "tools/settings.xml"; };
             EditorSettings.read();
 
-            omni.Util._echo(" % - Initializing Tools");
+            pInvokes.Util._echo(" % - Initializing Tools");
 
             // Default file path when saving from the editor (such as prefabs)
-            if (omni.sGlobal["$Pref::WorldEditor::LastPath"] == "")
-                omni.sGlobal["$Pref::WorldEditor::LastPath"] = omni.Util.getMainDotCsDir();
+            if (pInvokes.sGlobal["$Pref::WorldEditor::LastPath"] == "")
+                pInvokes.sGlobal["$Pref::WorldEditor::LastPath"] = pInvokes.Util.getMainDotCsDir();
 
             // Common GUI stuff.
 
             //exec( "./gui/cursors.ed.cs" );
-            //omni.Util.exec("tools/gui/profiles.ed.cs", false, false);
+            //pInvokes.Util.exec("tools/gui/profiles.ed.cs", false, false);
             profiles.initialize();
             NavPanelProfiles.initialize();
 
             // Make sure we get editor profiles before any GUI's
             // BUG: these dialogs are needed earlier in the init sequence, and should be moved to
             // common, along with the guiProfiles they depend on.
-            omni.Util.exec("tools/gui/guiDialogs.ed.cs", false, false);
+            pInvokes.Util.exec("tools/gui/guiDialogs.ed.cs", false, false);
             guiDialogs.initialize();
 
             //%toggle = $Scripts::ignoreDSOs;
             //$Scripts::ignoreDSOs = true;
 
-            omni.uGlobal["$ignoredDatablockSet"] = new ObjectCreator("SimSet").Create();
+            pInvokes.uGlobal["$ignoredDatablockSet"] = new ObjectCreator("SimSet").Create();
 
             //// fill the list of editors
             //$editors[count] = getWordCount( $Tools::loadFirst );
@@ -179,8 +177,8 @@ package Tools
             foreach (string editor in EditorsToLoad)
                 {
                 string initializeFunction = "initialize" + editor;
-                if (omni.Util.isFunction(initializeFunction))
-                    omni.Util._call(initializeFunction);
+                if (pInvokes.Util.isFunction(initializeFunction))
+                    pInvokes.Util._call(initializeFunction);
                 }
             //%count = $editors[count];
             //for ( %i = 0; %i < %count; %i++ )
@@ -195,59 +193,59 @@ package Tools
             // Popuplate the default SimObject icons that 
             // are used by the various editors.
             //EditorIconRegistry::loadFromPath( "tools/classIcons/" );
-            omni.console.Call_Classname("EditorIconRegistry", "loadFromPath", new[] {"tools/classIcons/"});
+            pInvokes.console.Call_Classname("EditorIconRegistry", "loadFromPath", new[] {"tools/classIcons/"});
 
             // Load up the tools resources. All the editors are initialized at this point, so
             // resources can override, redefine, or add functionality.
             //      Tools::LoadResources( $Tools::resourcePath );
-            LoadResources(omni.sGlobal["$Tools::resourcePath"]);
+            LoadResources(pInvokes.sGlobal["$Tools::resourcePath"]);
         }
 
         [ConsoleInteraction]
         public static void tools_startToolTime(string tool)
         {
-            if (omni.sGlobal["$toolDataToolCount"] == "")
-                omni.sGlobal["$toolDataToolCount"] = "0";
+            if (pInvokes.sGlobal["$toolDataToolCount"] == "")
+                pInvokes.sGlobal["$toolDataToolCount"] = "0";
 
-            if (omni.sGlobal["$toolDataToolEntry[" + tool + "]"] != "true")
+            if (pInvokes.sGlobal["$toolDataToolEntry[" + tool + "]"] != "true")
                 {
-                omni.sGlobal["$toolDataToolEntry[" + tool + "]"] = "true";
-                omni.sGlobal["$toolDataToolList[" + omni.sGlobal["$toolDataToolCount"] + "]"] = tool;
-                omni.iGlobal["$toolDataToolCount"]++;
-                omni.iGlobal["$toolDataClickCount[" + tool + "]"] = 0;
+                pInvokes.sGlobal["$toolDataToolEntry[" + tool + "]"] = "true";
+                pInvokes.sGlobal["$toolDataToolList[" + pInvokes.sGlobal["$toolDataToolCount"] + "]"] = tool;
+                pInvokes.iGlobal["$toolDataToolCount"]++;
+                pInvokes.iGlobal["$toolDataClickCount[" + tool + "]"] = 0;
                 }
 
-            omni.iGlobal["$toolDataStartTime[" + tool + "]"] = omni.Util.getSimTime();
-            omni.iGlobal["$toolDataClickCount[" + tool + "]"]++;
+            pInvokes.iGlobal["$toolDataStartTime[" + tool + "]"] = pInvokes.Util.getSimTime();
+            pInvokes.iGlobal["$toolDataClickCount[" + tool + "]"]++;
         }
 
         [ConsoleInteraction]
         public static void tools_endtoolTime(string tool)
         {
             int startTime = 0;
-            if (omni.sGlobal["$toolDataStartTime[" + tool + "]"] != "")
-                startTime = omni.iGlobal["$toolDataStartTime[" + tool + "]"];
+            if (pInvokes.sGlobal["$toolDataStartTime[" + tool + "]"] != "")
+                startTime = pInvokes.iGlobal["$toolDataStartTime[" + tool + "]"];
 
-            if (omni.sGlobal["$toolDataTotalTime[" + tool + "]"] == "")
-                omni.iGlobal["$toolDataTotalTime[" + tool + "]"] = 0;
+            if (pInvokes.sGlobal["$toolDataTotalTime[" + tool + "]"] == "")
+                pInvokes.iGlobal["$toolDataTotalTime[" + tool + "]"] = 0;
 
-            omni.iGlobal["$toolDataTotalTime[" + tool + "]"] += omni.Util.getSimTime() - startTime;
+            pInvokes.iGlobal["$toolDataTotalTime[" + tool + "]"] += pInvokes.Util.getSimTime() - startTime;
         }
 
         [ConsoleInteraction]
         public static void tools_dumpToolData()
         {
-            int count = omni.iGlobal["$toolDataToolCount"];
+            int count = pInvokes.iGlobal["$toolDataToolCount"];
             for (int i = 0; i < count; i++)
                 {
-                string tool = omni.sGlobal["$toolDataToolList[" + i + "]"];
-                int totalTime = omni.iGlobal["$toolDataTotalTime[" + tool + "]"];
-                int clickCount = omni.iGlobal["$toolDataClickCount[" + tool + "]"];
-                omni.Util._echo("---");
-                omni.Util._echo("Tool: " + tool);
-                omni.Util._echo("Time (Seconds): " + (totalTime/1000));
-                omni.Util._echo("Activated: " + clickCount);
-                omni.Util._echo("---");
+                string tool = pInvokes.sGlobal["$toolDataToolList[" + i + "]"];
+                int totalTime = pInvokes.iGlobal["$toolDataTotalTime[" + tool + "]"];
+                int clickCount = pInvokes.iGlobal["$toolDataClickCount[" + tool + "]"];
+                pInvokes.Util._echo("---");
+                pInvokes.Util._echo("Tool: " + tool);
+                pInvokes.Util._echo("Time (Seconds): " + (totalTime/1000));
+                pInvokes.Util._echo("Activated: " + clickCount);
+                pInvokes.Util._echo("---");
                 }
         }
 
@@ -294,7 +292,7 @@ package Tools
 
             // Free all the icon images in the registry.
             //EditorIconRegistry::clear();
-            omni.console.Call_Classname("EditorIconRegistry", "clear");
+            pInvokes.console.Call_Classname("EditorIconRegistry", "clear");
 
             // Save any Layouts we might be using
             //GuiFormManager::SaveLayout(LevelBuilder, Default, User);
@@ -310,22 +308,22 @@ package Tools
             foreach (string editor in EditorsToLoad)
                 {
                 string destroyfunction = "destroy" + editor;
-                if (omni.Util.isFunction(destroyfunction))
-                    omni.Util._call(destroyfunction);
+                if (pInvokes.Util.isFunction(destroyfunction))
+                    pInvokes.Util._call(destroyfunction);
                 }
         }
 
         public static void LoadResources(string path)
         {
             string resourcesPath = path + "resources/";
-            string resourcesList = omni.Util.getDirectoryList(resourcesPath, 0);
+            string resourcesList = pInvokes.Util.getDirectoryList(resourcesPath, 0);
 
-            int wordCount = omni.Util.getFieldCount(resourcesList);
+            int wordCount = pInvokes.Util.getFieldCount(resourcesList);
             for (int i = 0; i < wordCount; i++)
                 {
-                string resource = omni.Util.getField(resourcesList, i);
-                if (omni.Util.isFile(resourcesPath + resource + "/resourceDatabase.cs"))
-                    omni.console.Call_Classname("ResourceObject", "load", new string[] {path, resource});
+                string resource = pInvokes.Util.getField(resourcesList, i);
+                if (pInvokes.Util.isFile(resourcesPath + resource + "/resourceDatabase.cs"))
+                    pInvokes.console.Call_Classname("ResourceObject", "load", new string[] {path, resource});
                 }
         }
     }

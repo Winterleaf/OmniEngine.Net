@@ -1779,15 +1779,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
             EditorSettings.setDefaultValue("dropType", "screenCenter");
             EditorSettings.setDefaultValue("undoLimit", "40");
             EditorSettings.setDefaultValue("forceLoadDAE", "0");
-            EditorSettings.setDefaultValue("displayType", omni.sGlobal["$EditTsCtrl::DisplayTypePerspective"]);
+            EditorSettings.setDefaultValue("displayType", sGlobal["$EditTsCtrl::DisplayTypePerspective"]);
             EditorSettings.setDefaultValue("orthoFOV", "50");
             EditorSettings.setDefaultValue("orthoShowGrid", "1");
             EditorSettings.setDefaultValue("currentEditor", "WorldEditorInspectorPlugin");
             EditorSettings.setDefaultValue("newLevelFile", "tools/levels/BlankRoom.mis");
 
-            if (omni.Util.isFile("C:/Program Files/Torsion/Torsion.exe"))
+            if (Util.isFile("C:/Program Files/Torsion/Torsion.exe"))
                 EditorSettings.setDefaultValue("torsionPath", "C:/Program Files/Torsion/Torsion.exe");
-            else if (omni.Util.isFile("C:/Program Files (x86)/Torsion/Torsion.exe"))
+            else if (Util.isFile("C:/Program Files (x86)/Torsion/Torsion.exe"))
                 EditorSettings.setDefaultValue("torsionPath", "C:/Program Files (x86)/Torsion/Torsion.exe");
             else
                 EditorSettings.setDefaultValue("torsionPath", "");
@@ -1932,8 +1932,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools
         [ConsoleInteraction]
         public static void setDefault(string name, string value)
         {
-            if (!omni.Util.isDefined(name))
-                omni.Util.eval(name + ' ' + "=" + ' ' + "\"" + value + "\";");
+            if (!Util.isDefined(name))
+                Util.eval(name + ' ' + "=" + ' ' + "\"" + value + "\";");
         }
 
         [ConsoleInteraction]

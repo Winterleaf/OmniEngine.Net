@@ -51,8 +51,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
     [TypeConverter(typeof (TypeConverterGeneric<DatablockEditorPlugin>))]
     public class DatablockEditorPlugin : WorldEditorPlugin
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         internal ActionMap map
         {
             get { return this["map"]; }
@@ -96,7 +94,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
 
             // Add ourselves to the ToolsToolbar
             string tooltip = "Datablock Editor (" + accel + ")";
-            EditorGui.addToToolsToolbar("DatablockEditorPlugin", "DatablockEditorPalette", omni.Util._expandFilename("tools/worldEditor/images/toolbar/datablock-editor"), tooltip);
+            EditorGui.addToToolsToolbar("DatablockEditorPlugin", "DatablockEditorPalette", Util._expandFilename("tools/worldEditor/images/toolbar/datablock-editor"), tooltip);
 
             //connect editor windows
             ((GuiWindowCollapseCtrl) "DatablockEditorInspectorWindow").attachTo("DatablockEditorTreeWindow");
@@ -248,7 +246,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
 
             // Populate datablock type tree.
 
-            string classList = omni.Util.enumerateConsoleClasses("SimDatablock");
+            string classList = Util.enumerateConsoleClasses("SimDatablock");
             DatablockEditorTypeTree.clear();
 
             foreach (string datablockClass in classList.Split('\t'))
@@ -636,7 +634,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
             if (numSelected == 1)
                 {
                 string fileName = datablock.getFilename();
-                fileNameField.setText(fileName != "" ? fileName : omni.sGlobal["$DATABLOCK_EDITOR_DEFAULT_FILENAME"]);
+                fileNameField.setText(fileName != "" ? fileName : sGlobal["$DATABLOCK_EDITOR_DEFAULT_FILENAME"]);
                 }
             else
                 fileNameField.setText("");
@@ -843,11 +841,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
                 else
                     eval = dbType + className + "(" + name + ") { canSaveDynamicFields = \"1\"; };";
 
-                string res = omni.Util.eval(eval);
+                string res = Util.eval(eval);
 
                 action["db"] = name.getID().AsString();
                 action["dbName"] = name;
-                action["fname"] = omni.sGlobal["$DATABLOCK_EDITOR_DEFAULT_FILENAME"];
+                action["fname"] = sGlobal["$DATABLOCK_EDITOR_DEFAULT_FILENAME"];
 
                 this.submitUndo(action);
 
@@ -881,7 +879,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
         // [ConsoleInteraction]
         public string createUndo<T>(string desc)
         {
-            omni.Util.pushInstantGroup();
+            Util.pushInstantGroup();
             ObjectCreator ocf = new ObjectCreator("UndoScriptAction", "", typeof (T));
 
             //ocf["class"] = className;
@@ -893,7 +891,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
 
             UndoScriptAction action = ocf.Create();
 
-            omni.Util.popInstantGroup();
+            Util.popInstantGroup();
             return action;
         }
 

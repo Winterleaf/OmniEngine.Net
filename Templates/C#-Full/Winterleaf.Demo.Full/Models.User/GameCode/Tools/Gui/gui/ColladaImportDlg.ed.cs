@@ -1990,17 +1990,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         public static void convertColladaModels(string pattern)
         {
             // Force loading the COLLADA file (to ensure cached DTS is updated)
-            omni.bGlobal["$collada::forceLoadDAE"] = true;
+            bGlobal["$collada::forceLoadDAE"] = true;
 
-            string fullPath = omni.Util.findFirstFile("*.dae", false);
+            string fullPath = Util.findFirstFile("*.dae", false);
             while (fullPath != "")
                 {
                 // Check if this file is inside the given path
-                fullPath = omni.Util.makeRelativePath(fullPath, omni.Util.getMainDotCsDir());
-                if ((pattern == "") || omni.Util.strIsMatchMultipleExpr(pattern, fullPath, false))
+                fullPath = Util.makeRelativePath(fullPath, Util.getMainDotCsDir());
+                if ((pattern == "") || Util.strIsMatchMultipleExpr(pattern, fullPath, false))
                     {
                     // Load the model by creating a temporary TSStatic
-                    omni.Util._echo("Converting " + fullPath + " to DTS...");
+                    Util._echo("Converting " + fullPath + " to DTS...");
                     ObjectCreator tempCreator = new ObjectCreator("TSStatic");
                     tempCreator["shapeName"] = fullPath;
                     tempCreator["collisionType"] = "None";
@@ -2010,10 +2010,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                     temp.delete();
                     }
 
-                fullPath = omni.Util.findNextFile("*.dae");
+                fullPath = Util.findNextFile("*.dae");
                 }
 
-            omni.bGlobal["$collada::forceLoadDAE"] = false;
+            bGlobal["$collada::forceLoadDAE"] = false;
         }
 
         [TypeConverter(typeof (TypeConverterGeneric<ColladaImportTreeView>))]

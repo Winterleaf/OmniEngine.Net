@@ -58,31 +58,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
         public new static void initialize()
         {
-            omni.bGlobal["$canvasCreated"] = false;
+            bGlobal["$canvasCreated"] = false;
         }
 
         public static void initializeCanvas()
         {
-            if (omni.bGlobal["$canvasCreated"])
+            if (bGlobal["$canvasCreated"])
                 {
-                omni.console.error("Cannot instantiate more than one canvas!");
+                console.error("Cannot instantiate more than one canvas!");
                 return;
                 }
 
-            if (!createCanvas(omni.sGlobal["$appName"]))
+            if (!createCanvas(sGlobal["$appName"]))
                 {
-                omni.console.error("Canvas creation failed. Shutting down.");
+                console.error("Canvas creation failed. Shutting down.");
                 Main.Quit();
                 //t3d.Util.quit();
                 }
-            omni.bGlobal["$canvasCreated"] = true;
+            bGlobal["$canvasCreated"] = true;
         }
 
         public static bool createCanvas(string windowTitle)
         {
-            if (omni.bGlobal["$isDedicated"])
+            if (bGlobal["$isDedicated"])
                 {
-                omni.console.Call_Classname("GFXInit", "createNullDevice");
+                console.Call_Classname("GFXInit", "createNullDevice");
                 return true;
                 }
             // Create the Canvas
@@ -90,28 +90,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             GuiCanvas canvas = new ObjectCreator("GuiCanvas", "Canvas", typeof (canvas)).Create();
 
             if (canvas.isObject())
-                canvas.setWindowTitle(omni.Util.getEngineName() + " - " + omni.sGlobal["$appName"]);
+                canvas.setWindowTitle(Util.getEngineName() + " - " + sGlobal["$appName"]);
             return true;
         }
 
         [ConsoleInteraction(true)]
         public static void configureCanvas()
         {
-            if (omni.sGlobal["$pref::Video::Canvas::mode"] == "")
-                omni.sGlobal["$pref::Video::Canvas::mode"] = "1024 768 false 32 60 4";
+            if (sGlobal["$pref::Video::Canvas::mode"] == "")
+                sGlobal["$pref::Video::Canvas::mode"] = "1024 768 false 32 60 4";
 
-            string resolution = omni.sGlobal["$pref::Video::Canvas::mode"];
-            float resX = resolution.Split(' ')[omni.iGlobal["$WORD::RES_X"]].AsFloat();
-            float resY = resolution.Split(' ')[omni.iGlobal["$WORD::RES_Y"]].AsFloat();
-            string fs = resolution.Split(' ')[omni.iGlobal["$WORD::FULLSCREEN"]];
-            string bpp = resolution.Split(' ')[omni.iGlobal["$WORD::BITDEPTH"]];
-            string rate = resolution.Split(' ')[omni.iGlobal["$WORD::REFRESH"]];
-            string fsaa = resolution.Split(' ')[omni.iGlobal["$WORD::AA"]];
+            string resolution = sGlobal["$pref::Video::Canvas::mode"];
+            float resX = resolution.Split(' ')[iGlobal["$WORD::RES_X"]].AsFloat();
+            float resY = resolution.Split(' ')[iGlobal["$WORD::RES_Y"]].AsFloat();
+            string fs = resolution.Split(' ')[iGlobal["$WORD::FULLSCREEN"]];
+            string bpp = resolution.Split(' ')[iGlobal["$WORD::BITDEPTH"]];
+            string rate = resolution.Split(' ')[iGlobal["$WORD::REFRESH"]];
+            string fsaa = resolution.Split(' ')[iGlobal["$WORD::AA"]];
 
-            omni.console.print("--------------");
-            omni.console.print("Attempting to set resolution to \"" + resolution + "\"");
+            console.print("--------------");
+            console.print("Attempting to set resolution to \"" + resolution + "\"");
 
-            Point3F deskRes = omni.Util.getDesktopResolution();
+            Point3F deskRes = Util.getDesktopResolution();
             float deskResX = deskRes.x;
             float deskResY = deskRes.y;
             float deskResBPP = deskRes.z;
@@ -126,15 +126,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                 // Windowed mode has to use the same bit depth as the desktop
                 if (resX >= deskResX || resY >= deskResY)
                     {
-                    omni.Util._warn("Warning: The requested windowed resolution is equal to or larger than the current desktop resolution. Attempting to find a better resolution");
+                    Util._warn("Warning: The requested windowed resolution is equal to or larger than the current desktop resolution. Attempting to find a better resolution");
 
                     int resCount = ((GuiCanvas) "Canvas").getModeCount();
                     for (int i = (resCount - 1); i >= 0; i--)
                         {
                         string testRes = ((GuiCanvas) "Canvas").getMode(i);
-                        float testResX = testRes.Split(' ')[omni.iGlobal["$WORD::RES_X"]].AsFloat();
-                        float testResY = testRes.Split(' ')[omni.iGlobal["$WORD::RES_Y"]].AsFloat();
-                        string testBPP = testRes.Split(' ')[omni.iGlobal["$WORD::BITDEPTH"]];
+                        float testResX = testRes.Split(' ')[iGlobal["$WORD::RES_X"]].AsFloat();
+                        float testResY = testRes.Split(' ')[iGlobal["$WORD::RES_Y"]].AsFloat();
+                        string testBPP = testRes.Split(' ')[iGlobal["$WORD::BITDEPTH"]];
 
                         if (testBPP.AsInt() != bpp.AsInt())
                             continue;
@@ -145,25 +145,25 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                         resX = testResX;
                         resY = testResY;
 
-                        omni.Util._warn("Warning: Switching to \"" + resX + " " + resY + " " + bpp + "\"");
+                        Util._warn("Warning: Switching to \"" + resX + " " + resY + " " + bpp + "\"");
                         break;
                         }
                     }
                 }
 
-            omni.sGlobal["$pref::Video::Canvas::mode"] = resX + " " + resY + " " + fs + " " + bpp + " " + rate + " " + fsaa;
+            sGlobal["$pref::Video::Canvas::mode"] = resX + " " + resY + " " + fs + " " + bpp + " " + rate + " " + fsaa;
 
             string fsLabel = "No";
             if (fs.AsBool())
                 fsLabel = "Yes";
 
-            omni.console.print("Accepted Mode: ");
-            omni.console.print("--Resolution : " + resX + " " + resY);
-            omni.console.print("--Full Screen : " + fsLabel);
-            omni.console.print("--Bits Per Pixel : " + bpp);
-            omni.console.print("--Refresh Rate : " + rate);
-            omni.console.print("--FSAA Level : " + fsaa);
-            omni.console.print("--------------");
+            console.print("Accepted Mode: ");
+            console.print("--Resolution : " + resX + " " + resY);
+            console.print("--Full Screen : " + fsLabel);
+            console.print("--Bits Per Pixel : " + bpp);
+            console.print("--Refresh Rate : " + rate);
+            console.print("--FSAA Level : " + fsaa);
+            console.print("--------------");
 
             // Actually set the new video mode
             ((GuiCanvas) "Canvas").setVideoMode((uint) resX, (uint) resY, fs.AsBool(), bpp.AsUint(), rate.AsUint(), fsaa.AsUint());

@@ -44,8 +44,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class metrics
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             //con.error("------------------------>LOADING FRAMEOVERLAYGUI!!!!!!!!!!!!!!!!!!!!!");
@@ -58,10 +56,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append(" | FPS | ");
-            outtext.Append(omni.sGlobal["$fps::real"] + "  max: ");
-            outtext.Append(omni.sGlobal["$fps::realMax"] + "  min: ");
-            outtext.Append(omni.sGlobal["$fps::realMin"] + "  mspf: ");
-            outtext.Append((1000.0/omni.dGlobal["$fps::real"]));
+            outtext.Append(pInvokes.sGlobal["$fps::real"] + "  max: ");
+            outtext.Append(pInvokes.sGlobal["$fps::realMax"] + "  min: ");
+            outtext.Append(pInvokes.sGlobal["$fps::realMin"] + "  mspf: ");
+            outtext.Append((1000.0/pInvokes.dGlobal["$fps::real"]));
             return outtext.ToString();
             //return "  | FPS |  " +
             //    t3d.sGlobal["$fps::real"] + "  max: " +
@@ -76,11 +74,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | GFX |");
             outtext.Append("  PolyCount: ");
-            outtext.Append(omni.sGlobal["$GFXDeviceStatistics::polyCount"]);
+            outtext.Append(pInvokes.sGlobal["$GFXDeviceStatistics::polyCount"]);
             outtext.Append("  DrawCalls: ");
-            outtext.Append(omni.sGlobal["$GFXDeviceStatistics::drawCalls"]);
+            outtext.Append(pInvokes.sGlobal["$GFXDeviceStatistics::drawCalls"]);
             outtext.Append("  RTChanges: ");
-            outtext.Append(omni.sGlobal["$GFXDeviceStatistics::renderTargetChanges"]);
+            outtext.Append(pInvokes.sGlobal["$GFXDeviceStatistics::renderTargetChanges"]);
             return outtext.ToString();
 
             //return "  | GFX |" + 
@@ -98,11 +96,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Terrain |");
             outtext.Append("  Cells: ");
-            outtext.Append(omni.sGlobal["$TerrainBlock::cellsRendered"]);
+            outtext.Append(pInvokes.sGlobal["$TerrainBlock::cellsRendered"]);
             outtext.Append("  Override Cells: ");
-            outtext.Append(omni.sGlobal["$TerrainBlock::overrideCells"]);
+            outtext.Append(pInvokes.sGlobal["$TerrainBlock::overrideCells"]);
             outtext.Append("  DrawCalls: ");
-            outtext.Append(omni.sGlobal["$TerrainBlock::drawCalls"]);
+            outtext.Append(pInvokes.sGlobal["$TerrainBlock::drawCalls"]);
             return outtext.ToString();
             //return 
             //    "  | Terrain |" + 
@@ -120,11 +118,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Net |");
             outtext.Append("  BitsSent: ");
-            outtext.Append(omni.sGlobal["$Stats::netBitsSent"]);
+            outtext.Append(pInvokes.sGlobal["$Stats::netBitsSent"]);
             outtext.Append("  BitsRcvd: ");
-            outtext.Append(omni.sGlobal["$Stats::netBitsReceived"]);
+            outtext.Append(pInvokes.sGlobal["$Stats::netBitsReceived"]);
             outtext.Append("  GhostUpd: ");
-            outtext.Append(omni.sGlobal["$Stats::netGhostUpdates"]);
+            outtext.Append(pInvokes.sGlobal["$Stats::netGhostUpdates"]);
             return outtext.ToString();
 
             //return 
@@ -143,13 +141,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | GroundCover |");
             outtext.Append("  Cells: ");
-            outtext.Append(omni.sGlobal["$GroundCover::renderedCells"]);
+            outtext.Append(pInvokes.sGlobal["$GroundCover::renderedCells"]);
             outtext.Append("  Billboards: ");
-            outtext.Append(omni.sGlobal["$GroundCover::renderedBillboards"]);
+            outtext.Append(pInvokes.sGlobal["$GroundCover::renderedBillboards"]);
             outtext.Append("  Batches: ");
-            outtext.Append(omni.sGlobal["$GroundCover::renderedBatches"]);
+            outtext.Append(pInvokes.sGlobal["$GroundCover::renderedBatches"]);
             outtext.Append("  Shapes: ");
-            outtext.Append(omni.sGlobal["$GroundCover::renderedShapes"]);
+            outtext.Append(pInvokes.sGlobal["$GroundCover::renderedShapes"]);
             return outtext.ToString();
 
             //return 
@@ -170,28 +168,28 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | SFX |");
             outtext.Append("  Sounds: ");
-            outtext.Append(omni.sGlobal["$SFX::numSounds"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::numSounds"]);
             outtext.Append("  Lists: ");
-            outtext.Append((omni.iGlobal["$SFX::numSources"] - omni.iGlobal["$SFX::numSounds"] - omni.iGlobal["$SFX::Device::fmodNumEventSource"]));
+            outtext.Append((pInvokes.iGlobal["$SFX::numSources"] - pInvokes.iGlobal["$SFX::numSounds"] - pInvokes.iGlobal["$SFX::Device::fmodNumEventSource"]));
             outtext.Append("  Events: ");
-            outtext.Append(omni.sGlobal["$SFX::fmodNumEventSources"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::fmodNumEventSources"]);
             outtext.Append("  Playing: ");
-            outtext.Append(omni.sGlobal["$SFX::numPlaying"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::numPlaying"]);
             outtext.Append("  Culled: ");
-            outtext.Append(omni.sGlobal["$SFX::numCulled"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::numCulled"]);
             outtext.Append("  Voices: ");
-            outtext.Append(omni.sGlobal["$SFX::numVoices"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::numVoices"]);
             outtext.Append("  Buffers: ");
-            outtext.Append(omni.sGlobal["$SFX::Device::numBuffers"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::Device::numBuffers"]);
             outtext.Append("  Memory: ");
-            outtext.Append((omni.dGlobal["$SFX::Device::numBufferBytes"]/1024.0/1024.0));
+            outtext.Append((pInvokes.dGlobal["$SFX::Device::numBufferBytes"]/1024.0/1024.0));
             outtext.Append(" MB");
             outtext.Append("  Time/S: ");
-            outtext.Append(omni.sGlobal["$SFX::sourceUpdateTime"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::sourceUpdateTime"]);
             outtext.Append("  Time/P: ");
-            outtext.Append(omni.sGlobal["$SFX::parameterUpdateTime"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::parameterUpdateTime"]);
             outtext.Append("  Time/A: ");
-            outtext.Append(omni.sGlobal["$SFX::ambientUpdateTime"]);
+            outtext.Append(pInvokes.sGlobal["$SFX::ambientUpdateTime"]);
             return outtext.ToString();
 
             //return 
@@ -224,19 +222,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static string sfxSourcesMetricsCallback()
         {
-            return omni.Util.sfxDumpSourcesToString(false);
+            return pInvokes.Util.sfxDumpSourcesToString(false);
         }
 
         [ConsoleInteraction(true)]
         public static string sfxStatesMetricsCallback()
         {
-            return "  | SFXStates |" + omni.sGlobal["sfxGetActiveStates"];
+            return "  | SFXStates |" + pInvokes.sGlobal["sfxGetActiveStates"];
         }
 
         [ConsoleInteraction(true)]
         public static string timeMetricsCallback()
         {
-            return "  | Time |" + "  Sim Time: " + omni.Util.getSimTime() + "  Mod: " + (omni.Util.getSimTime()%32);
+            return "  | Time |" + "  Sim Time: " + pInvokes.Util.getSimTime() + "  Mod: " + (pInvokes.Util.getSimTime()%32);
         }
 
         [ConsoleInteraction(true)]
@@ -245,24 +243,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | REFLECT |");
             outtext.Append("  Objects: ");
-            outtext.Append(omni.sGlobal["$Reflect::numObjects"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::numObjects"]);
             outtext.Append("  Visible: ");
-            outtext.Append(omni.sGlobal["$Reflect::numVisible"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::numVisible"]);
             outtext.Append("  Occluded: ");
-            outtext.Append(omni.sGlobal["$Reflect::numOccluded"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::numOccluded"]);
             outtext.Append("  Updated: ");
-            outtext.Append(omni.sGlobal["$Reflect::numUpdated"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::numUpdated"]);
             outtext.Append("  Elapsed: ");
-            outtext.Append(omni.sGlobal["$Reflect::elapsed"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::elapsed"]);
             outtext.Append("\n");
             outtext.Append("  Allocated: ");
-            outtext.Append(omni.sGlobal["$Reflect::renderTargetsAllocated"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::renderTargetsAllocated"]);
             outtext.Append("  Pooled: ");
-            outtext.Append(omni.sGlobal["$Reflect::poolSize"]);
+            outtext.Append(pInvokes.sGlobal["$Reflect::poolSize"]);
             outtext.Append("\n");
             outtext.Append("  ");
 
-            string[] textstat = omni.sGlobal["$Reflect::textureStats"].Split(' ');
+            string[] textstat = pInvokes.sGlobal["$Reflect::textureStats"].Split(' ');
 
             if (textstat.GetUpperBound(0) > 0)
                 {
@@ -320,7 +318,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static string decalMetricsCallback()
         {
-            return "  | DECAL |" + " Batches: " + omni.sGlobal["$Decal::Batches"] + " Buffers: " + omni.sGlobal["$Decal::Buffers"] + " DecalsRendered: " + omni.sGlobal["$Decal::DecalsRendered"];
+            return "  | DECAL |" + " Batches: " + pInvokes.sGlobal["$Decal::Batches"] + " Buffers: " + pInvokes.sGlobal["$Decal::Buffers"] + " DecalsRendered: " + pInvokes.sGlobal["$Decal::DecalsRendered"];
         }
 
         [ConsoleInteraction(true)]
@@ -329,31 +327,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Render |");
             outtext.Append("  Int: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Interior"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Interior"]);
             outtext.Append("  IntDL: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_InteriorDynamicLighting"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_InteriorDynamicLighting"]);
             outtext.Append("  Mesh: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Mesh"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Mesh"]);
             outtext.Append("  MeshDL: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_MeshDynamicLighting"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_MeshDynamicLighting"]);
             outtext.Append("  Shadow: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Shadow"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Shadow"]);
             outtext.Append("  Sky: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Sky"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Sky"]);
             outtext.Append("  Obj: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Object"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Object"]);
             outtext.Append("  ObjT: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_ObjectTranslucent"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_ObjectTranslucent"]);
             outtext.Append("  Decal: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Decal"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Decal"]);
             outtext.Append("  Water: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Water"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Water"]);
             outtext.Append("  Foliage: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Foliage"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Foliage"]);
             outtext.Append("  Trans: ");
-            outtext.Append(omni.sGlobal["$RenderMetris::RIT_Translucent"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetris::RIT_Translucent"]);
             outtext.Append("  Custom: ");
-            outtext.Append(omni.sGlobal["$RenderMetrics::RIT_Custom"]);
+            outtext.Append(pInvokes.sGlobal["$RenderMetrics::RIT_Custom"]);
             return outtext.ToString();
             //return 
             //    "  | Render |" + 
@@ -391,19 +389,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Shadow |");
             outtext.Append("  Active: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::activeMaps"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::activeMaps"]);
             outtext.Append("  Updated: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::updatedMaps"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::updatedMaps"]);
             outtext.Append("  PolyCount: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::polyCount"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::polyCount"]);
             outtext.Append("  DrawCalls: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::drawCalls"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::drawCalls"]);
             outtext.Append("  RTChanges: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::rtChanges"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::rtChanges"]);
             outtext.Append("  PoolTexCount: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::poolTexCount"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::poolTexCount"]);
             outtext.Append("  PoolTexMB: ");
-            outtext.Append(omni.sGlobal["$ShadowStats::poolTexMemory"]);
+            outtext.Append(pInvokes.sGlobal["$ShadowStats::poolTexMemory"]);
             outtext.Append("MB");
             return outtext.ToString();
 
@@ -432,11 +430,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder outtext = new StringBuilder(1000);
             outtext.Append("  | Shadow |");
             outtext.Append("  Active: ");
-            outtext.Append(omni.sGlobal["$BasicLightManagerStats::activePlugins"]);
+            outtext.Append(pInvokes.sGlobal["$BasicLightManagerStats::activePlugins"]);
             outtext.Append("  Updated: ");
-            outtext.Append(omni.sGlobal["$BasicLightManagerStats::shadowsUpdated"]);
+            outtext.Append(pInvokes.sGlobal["$BasicLightManagerStats::shadowsUpdated"]);
             outtext.Append("  Elapsed Ms: ");
-            outtext.Append(omni.sGlobal["$BasicLightManagerStats::elapsedUpdateMs"]);
+            outtext.Append(pInvokes.sGlobal["$BasicLightManagerStats::elapsedUpdateMs"]);
             return outtext.ToString();
             //return 
             //    "  | Shadow |" + 
@@ -451,13 +449,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static string lightMetricsCallback()
         {
-            return "  | Deferred Lights |" + "  Active: " + omni.sGlobal["$lightMetrics::activeLights"] + "  Culled: " + omni.sGlobal["$lightMetrics::culledLights"];
+            return "  | Deferred Lights |" + "  Active: " + pInvokes.sGlobal["$lightMetrics::activeLights"] + "  Culled: " + pInvokes.sGlobal["$lightMetrics::culledLights"];
         }
 
         [ConsoleInteraction(true)]
         public static string particleMetricsCallback()
         {
-            return "  | Particles |" + "  # Simulated " + omni.sGlobal["$particle::numSimulated"];
+            return "  | Particles |" + "  # Simulated " + pInvokes.sGlobal["$particle::numSimulated"];
         }
 
         [ConsoleInteraction(true)]
@@ -484,15 +482,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             StringBuilder sb = new StringBuilder(1000);
             sb.Append("  | IMPOSTER |");
             sb.Append("   Rendered: ");
-            sb.Append(omni.sGlobal["$ImposterStats::rendered"]);
+            sb.Append(pInvokes.sGlobal["$ImposterStats::rendered"]);
             sb.Append("   Batches: ");
-            sb.Append(omni.sGlobal["$ImposterStats::batches"]);
+            sb.Append(pInvokes.sGlobal["$ImposterStats::batches"]);
             sb.Append("   DrawCalls: ");
-            sb.Append(omni.sGlobal["$ImposterStats::drawCalls"]);
+            sb.Append(pInvokes.sGlobal["$ImposterStats::drawCalls"]);
             sb.Append("   Polys: ");
-            sb.Append(omni.sGlobal["$ImposterStats::polyCount"]);
+            sb.Append(pInvokes.sGlobal["$ImposterStats::polyCount"]);
             sb.Append("   RtChanges: ");
-            sb.Append(omni.sGlobal["$ImposterStats::rtChanges"]);
+            sb.Append(pInvokes.sGlobal["$ImposterStats::rtChanges"]);
             return sb.ToString();
         }
 

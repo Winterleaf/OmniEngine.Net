@@ -485,30 +485,30 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             oc_Newobject25.Create();
 
-            omni.sGlobal["$ColorPickerCallback"] = ""; // Control that we need to update
-            omni.sGlobal["$ColorPickerCancelCallback"] = "";
-            omni.sGlobal["$ColorPickerUpdateCallback"] = "";
-            omni.iGlobal["$ColorCallbackType"] = 1; // ColorI
+            sGlobal["$ColorPickerCallback"] = ""; // Control that we need to update
+            sGlobal["$ColorPickerCancelCallback"] = "";
+            sGlobal["$ColorPickerUpdateCallback"] = "";
+            iGlobal["$ColorCallbackType"] = 1; // ColorI
         }
 
         [ConsoleInteraction]
         public static string ColorFloatToInt(string color)
         {
-            string red = omni.Util.getWord(color, 0);
-            string green = omni.Util.getWord(color, 1);
-            string blue = omni.Util.getWord(color, 2);
-            string alpha = omni.Util.getWord(color, 3);
+            string red = Util.getWord(color, 0);
+            string green = Util.getWord(color, 1);
+            string blue = Util.getWord(color, 2);
+            string alpha = Util.getWord(color, 3);
 
-            return omni.Util.mCeil(red.AsFloat()*255).AsString() + " " + omni.Util.mCeil(green.AsFloat()*255).AsString() + " " + omni.Util.mCeil(blue.AsFloat()*255).AsString() + " " + omni.Util.mCeil(alpha.AsFloat()*255).AsString();
+            return Util.mCeil(red.AsFloat()*255).AsString() + " " + Util.mCeil(green.AsFloat()*255).AsString() + " " + Util.mCeil(blue.AsFloat()*255).AsString() + " " + Util.mCeil(alpha.AsFloat()*255).AsString();
         }
 
         [ConsoleInteraction]
         public static string ColorIntToFloat(string color)
         {
-            string red = omni.Util.getWord(color, 0);
-            string green = omni.Util.getWord(color, 1);
-            string blue = omni.Util.getWord(color, 2);
-            string alpha = omni.Util.getWord(color, 3);
+            string red = Util.getWord(color, 0);
+            string green = Util.getWord(color, 1);
+            string blue = Util.getWord(color, 2);
+            string alpha = Util.getWord(color, 3);
 
             return (red.AsFloat()/255).AsString() + " " + (green.AsFloat()/255).AsString() + " " + (blue.AsFloat()/255).AsString() + " " + (alpha.AsFloat()/255).AsString();
         }
@@ -526,11 +526,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             GuiTextEditCtrl Channel_A_Val = "Channel_A_Val";
             ColorPickerDlg ColorPickerDlg = "ColorPickerDlg";
 
-            omni.bGlobal["$ColorPickerSignal"] = true;
-            omni.sGlobal["$ColorPickerCallback"] = callback;
-            omni.sGlobal["$ColorPickerCancelCallback"] = cancelCallback;
-            omni.sGlobal["$ColorPickerUpdateCallback"] = updateCallback;
-            omni.iGlobal["$ColorCallbackType"] = 1; // ColorI
+            bGlobal["$ColorPickerSignal"] = true;
+            sGlobal["$ColorPickerCallback"] = callback;
+            sGlobal["$ColorPickerCancelCallback"] = cancelCallback;
+            sGlobal["$ColorPickerUpdateCallback"] = updateCallback;
+            iGlobal["$ColorCallbackType"] = 1; // ColorI
 
             oldColor.color = ColorIntToFloat(currentColor).AsColorF();
             myColor.color = ColorIntToFloat(currentColor).AsColorF();
@@ -542,10 +542,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             ColorAlphaSelect.range = "0 255".AsPoint2F();
 
             // Set the RGBA displays accordingly
-            float red = omni.Util.getWord(currentColor, 0).AsFloat()/255;
-            float green = omni.Util.getWord(currentColor, 1).AsFloat()/255;
-            float blue = omni.Util.getWord(currentColor, 2).AsFloat()/255;
-            float alpha = omni.Util.getWord(currentColor, 3).AsFloat();
+            float red = Util.getWord(currentColor, 0).AsFloat()/255;
+            float green = Util.getWord(currentColor, 1).AsFloat()/255;
+            float blue = Util.getWord(currentColor, 2).AsFloat()/255;
+            float alpha = Util.getWord(currentColor, 3).AsFloat();
 
             // set the initial range blend to correct color, no alpha needed
             // this should also set the color blend select right now
@@ -574,11 +574,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             GuiTextEditCtrl Channel_A_Val = "Channel_A_Val";
             ColorPickerDlg ColorPickerDlg = "ColorPickerDlg";
 
-            omni.bGlobal["$ColorPickerSignal"] = true;
-            omni.sGlobal["$ColorPickerCallback"] = callback;
-            omni.sGlobal["$ColorPickerCancelCallback"] = cancelCallback;
-            omni.sGlobal["$ColorPickerUpdateCallback"] = updateCallback;
-            omni.iGlobal["$ColorCallbackType"] = 2; // ColorF
+            bGlobal["$ColorPickerSignal"] = true;
+            sGlobal["$ColorPickerCallback"] = callback;
+            sGlobal["$ColorPickerCancelCallback"] = cancelCallback;
+            sGlobal["$ColorPickerUpdateCallback"] = updateCallback;
+            iGlobal["$ColorCallbackType"] = 2; // ColorF
 
             oldColor.color = currentColor.AsColorF();
             myColor.color = currentColor.AsColorF();
@@ -590,10 +590,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             ColorAlphaSelect.range = "0 1".AsPoint2F();
 
             // Set the RGBA displays accordingly
-            string red = omni.Util.getWord(currentColor, 0);
-            string green = omni.Util.getWord(currentColor, 1);
-            string blue = omni.Util.getWord(currentColor, 2);
-            string alpha = omni.Util.getWord(currentColor, 3);
+            string red = Util.getWord(currentColor, 0);
+            string green = Util.getWord(currentColor, 1);
+            string blue = Util.getWord(currentColor, 2);
+            string alpha = Util.getWord(currentColor, 3);
 
             // set the initial range blend to correct color, no alpha needed
             // this should also set the color blend select right now
@@ -622,14 +622,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             string green = Channel_G_Val.getValue();
             string blue = Channel_B_Val.getValue();
 
-            if (omni.iGlobal["$ColorCallbackType"] == 1)
+            if (iGlobal["$ColorCallbackType"] == 1)
                 {
                 red = (red.AsFloat()/255).AsString();
                 green = (green.AsFloat()/255).AsString();
                 blue = (blue.AsFloat()/255).AsString();
                 }
 
-            omni.iGlobal["$ColorPickerSignal"] = 1;
+            iGlobal["$ColorPickerSignal"] = 1;
 
             ColorBlendSelect.baseColor = (red + " " + green + " " + blue + " " + "1.0").AsColorF();
             ColorBlendSelect.updateColor();
@@ -642,7 +642,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             ColorPickerDlg ColorPickerDlg = "ColorPickerDlg";
             GuiSwatchButtonCtrl myColor = "myColor";
 
-            omni.Util.eval(omni.sGlobal["$ColorPickerCallback"] + "(\"" + constructNewColor(myColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
+            Util.eval(sGlobal["$ColorPickerCallback"] + "(\"" + constructNewColor(myColor.color.AsString(), iGlobal["$ColorCallbackType"]) + "\");");
             ((GuiCanvas) ColorPickerDlg.getRoot()).popDialog(ColorPickerDlg);
         }
 
@@ -653,8 +653,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             GuiSwatchButtonCtrl oldColor = "oldColor";
 
             ((GuiCanvas) ColorPickerDlg.getRoot()).popDialog(ColorPickerDlg);
-            if (omni.sGlobal["$ColorPickerCancelCallback"] != "")
-                omni.Util.eval(omni.sGlobal["$ColorPickerCancelCallback"] + "(\"" + constructNewColor(oldColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
+            if (sGlobal["$ColorPickerCancelCallback"] != "")
+                Util.eval(sGlobal["$ColorPickerCancelCallback"] + "(\"" + constructNewColor(oldColor.color.AsString(), iGlobal["$ColorCallbackType"]) + "\");");
         }
 
         [ConsoleInteraction]
@@ -662,8 +662,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         {
             GuiSwatchButtonCtrl myColor = "myColor";
 
-            if (omni.sGlobal["$ColorPickerUpdateCallback"] != "")
-                omni.Util.eval(omni.sGlobal["$ColorPickerUpdateCallback"] + "(\"" + constructNewColor(myColor.color.AsString(), omni.iGlobal["$ColorCallbackType"]) + "\");");
+            if (sGlobal["$ColorPickerUpdateCallback"] != "")
+                Util.eval(sGlobal["$ColorPickerUpdateCallback"] + "(\"" + constructNewColor(myColor.color.AsString(), iGlobal["$ColorCallbackType"]) + "\");");
         }
 
         [ConsoleInteraction]
@@ -675,17 +675,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             string pickColor;
 
-            if (omni.bGlobal["$ColorPickerSignal"] && location)
+            if (bGlobal["$ColorPickerSignal"] && location)
                 pickColor = ColorRangeSelect.baseColor.AsString();
             else
                 pickColor = ColorRangeSelect.pickColor.AsString();
 
-            omni.bGlobal["$ColorPickerSignal"] = true;
+            bGlobal["$ColorPickerSignal"] = true;
 
-            string red = omni.Util.getWord(pickColor, 0);
-            string green = omni.Util.getWord(pickColor, 1);
-            string blue = omni.Util.getWord(pickColor, 2);
-            string alpha = omni.Util.getWord(pickColor, 3);
+            string red = Util.getWord(pickColor, 0);
+            string green = Util.getWord(pickColor, 1);
+            string blue = Util.getWord(pickColor, 2);
+            string alpha = Util.getWord(pickColor, 3);
 
             ColorBlendSelect.baseColor = (red + " " + green + " " + blue + " " + "1.0").AsColorF();
             ColorBlendSelect.updateColor();
@@ -704,17 +704,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             string pickColor;
 
             //update the color based on where it came from
-            if (omni.bGlobal["$ColorPickerSignal"] && location)
+            if (bGlobal["$ColorPickerSignal"] && location)
                 pickColor = ColorBlendSelect.baseColor.AsString();
             else
                 pickColor = ColorBlendSelect.pickColor.AsString();
 
             //lets prepare the color
-            string red = omni.Util.getWord(pickColor, 0);
-            string green = omni.Util.getWord(pickColor, 1);
-            string blue = omni.Util.getWord(pickColor, 2);
+            string red = Util.getWord(pickColor, 0);
+            string green = Util.getWord(pickColor, 1);
+            string blue = Util.getWord(pickColor, 2);
             //the alpha should be grabbed from mycolor
-            string alpha = omni.Util.getWord(myColor.color.AsString(), 3);
+            string alpha = Util.getWord(myColor.color.AsString(), 3);
 
             // set the color!
             myColor.color = (red + " " + green + " " + blue + " " + alpha).AsColorF();
@@ -722,17 +722,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             DoColorPickerUpdateCallback();
 
             //update differently depending on type
-            if (omni.iGlobal["$ColorCallbackType"] == 1)
+            if (iGlobal["$ColorCallbackType"] == 1)
                 {
-                red = omni.Util.mCeil(red.AsFloat()*255).AsString();
-                blue = omni.Util.mCeil(blue.AsFloat()*255).AsString();
-                green = omni.Util.mCeil(green.AsFloat()*255).AsString();
+                red = Util.mCeil(red.AsFloat()*255).AsString();
+                blue = Util.mCeil(blue.AsFloat()*255).AsString();
+                green = Util.mCeil(green.AsFloat()*255).AsString();
                 }
             else
                 {
-                red = omni.Util.mFloatLength(red.AsFloat(), 3);
-                blue = omni.Util.mFloatLength(blue.AsFloat(), 3);
-                green = omni.Util.mFloatLength(green.AsFloat(), 3);
+                red = Util.mFloatLength(red.AsFloat(), 3);
+                blue = Util.mFloatLength(blue.AsFloat(), 3);
+                green = Util.mFloatLength(green.AsFloat(), 3);
                 }
 
             // changes current color values
@@ -740,7 +740,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             Channel_G_Val.setValue(green);
             Channel_B_Val.setValue(blue);
 
-            omni.bGlobal["$ColorPickerSignal"] = false;
+            bGlobal["$ColorPickerSignal"] = false;
         }
 
         [ConsoleInteraction]
@@ -749,12 +749,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
             GuiSwatchButtonCtrl myColor = "myColor";
 
             //lets prepare the color
-            string red = omni.Util.getWord(myColor.color.AsString(), 0);
-            string green = omni.Util.getWord(myColor.color.AsString(), 1);
-            string blue = omni.Util.getWord(myColor.color.AsString(), 2);
+            string red = Util.getWord(myColor.color.AsString(), 0);
+            string green = Util.getWord(myColor.color.AsString(), 1);
+            string blue = Util.getWord(myColor.color.AsString(), 2);
             string alpha = alphaVal;
 
-            if (omni.iGlobal["$ColorCallbackType"] == 1)
+            if (iGlobal["$ColorCallbackType"] == 1)
                 alpha = (alpha.AsFloat()/255).AsString();
 
             myColor.color = (red + " " + green + " " + blue + " " + alpha).AsColorF();
@@ -765,15 +765,15 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
         [ConsoleInteraction]
         public static string constructNewColor(string pickColor, int colorType)
         {
-            string red = omni.Util.getWord(pickColor, 0);
-            string green = omni.Util.getWord(pickColor, 1);
-            string blue = omni.Util.getWord(pickColor, 2);
-            string alpha = omni.Util.getWord(pickColor, 3); // Copyright (C) 2013 WinterLeaf Entertainment LLC.
+            string red = Util.getWord(pickColor, 0);
+            string green = Util.getWord(pickColor, 1);
+            string blue = Util.getWord(pickColor, 2);
+            string alpha = Util.getWord(pickColor, 3); // Copyright (C) 2013 WinterLeaf Entertainment LLC.
 
             // Update the text controls to reflect new color
             //setColorInfo(red, green, blue, alpha);
             if (colorType == 1) // ColorI
-                return omni.Util.mCeil(red.AsFloat()*255).AsString() + " " + omni.Util.mCeil(green.AsFloat()*255).AsString() + " " + omni.Util.mCeil(blue.AsFloat()*255).AsString() + " " +/* Copyright (C) 2013 WinterLeaf Entertainment LLC. */ omni.Util.mCeil(alpha.AsFloat()*255).AsString();
+                return Util.mCeil(red.AsFloat()*255).AsString() + " " + Util.mCeil(green.AsFloat()*255).AsString() + " " + Util.mCeil(blue.AsFloat()*255).AsString() + " " +/* Copyright (C) 2013 WinterLeaf Entertainment LLC. */ Util.mCeil(alpha.AsFloat()*255).AsString();
             else // ColorF
                 return red + " " + green + " " + blue + " " + alpha;
         }

@@ -44,8 +44,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
 {
     public class lightViz
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             ObjectCreator tch = new ObjectCreator("GFXStateBlockData", "AL_DepthVisualizeState");
@@ -134,7 +132,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         {
             if (enabled == "")
                 {
-                omni.bGlobal["$AL_DepthVisualizeVar"] = !((PostEffect) "AL_DepthVisualize").isEnabled;
+                pInvokes.bGlobal["$AL_DepthVisualizeVar"] = !((PostEffect) "AL_DepthVisualize").isEnabled;
                 ((PostEffect) "AL_DepthVisualize").toggle();
                 }
             else if (enabled.AsBool())
@@ -148,7 +146,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         {
             if (enabled == "")
                 {
-                omni.bGlobal["$AL_NormalsVisualizeVar"] = !((PostEffect) "AL_NormalsVisualize").isEnabled;
+                pInvokes.bGlobal["$AL_NormalsVisualizeVar"] = !((PostEffect) "AL_NormalsVisualize").isEnabled;
                 ((PostEffect) "AL_NormalsVisualize").toggle();
                 }
             else if (enabled.AsBool())
@@ -162,7 +160,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         {
             if (enabled == "")
                 {
-                omni.bGlobal["$AL_LightColorVisualizeVar"] = !((PostEffect) "AL_LightColorVisualize").isEnabled;
+                pInvokes.bGlobal["$AL_LightColorVisualizeVar"] = !((PostEffect) "AL_LightColorVisualize").isEnabled;
                 ((PostEffect) "AL_LightColorVisualize").toggle();
                 }
             else if (enabled.AsBool())
@@ -176,7 +174,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         {
             if (enabled == "")
                 {
-                omni.bGlobal["$AL_LightSpecularVisualizeVar"] = !((PostEffect) "AL_LightSpecularVisualize").isEnabled;
+                pInvokes.bGlobal["$AL_LightSpecularVisualizeVar"] = !((PostEffect) "AL_LightSpecularVisualize").isEnabled;
                 ((PostEffect) "AL_LightSpecularVisualize").toggle();
                 }
             else if (enabled.AsBool())

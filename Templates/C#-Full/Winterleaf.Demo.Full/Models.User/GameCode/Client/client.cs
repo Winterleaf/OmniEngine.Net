@@ -1,18 +1,18 @@
 ﻿// WinterLeaf Entertainment
 // Copyright (c) 2014, WinterLeaf Entertainment LLC
-// 
+//
 // All rights reserved.
-// 
+//
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
-// 
+//
 // These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
-// 
+//
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
-// 
+//
 // BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-// 
+//
 //     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
 //     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 //     With respect to any Product that the Licensee develop using the Software:
@@ -30,8 +30,8 @@
 //         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
 //         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
 //         use the Software for any illegal purpose.
-// 
-// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+//
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #region
 
@@ -49,44 +49,42 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class client
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void LoadDefaults()
         {
-            omni.sGlobal["$pref::Player::Name"] = "Visitor";
-            omni.iGlobal["$pref::Player::defaultFov"] = 65;
-            omni.iGlobal["$pref::Player::zoomSpeed"] = 0;
+            pInvokes.sGlobal["$pref::Player::Name"] = "Visitor";
+            pInvokes.iGlobal["$pref::Player::defaultFov"] = 65;
+            pInvokes.iGlobal["$pref::Player::zoomSpeed"] = 0;
 
-            omni.iGlobal["$pref::Net::LagThreshold"] = 400;
-            omni.iGlobal["$pref::Net::Port"] = 28000;
+            pInvokes.iGlobal["$pref::Net::LagThreshold"] = 400;
+            pInvokes.iGlobal["$pref::Net::Port"] = 28000;
 
-            //omni.iGlobal["$pref::Net::PacketRateToClient"] = 32;
-            //omni.iGlobal["$pref::Net::PacketRateToServer"] = 32;
-            //omni.iGlobal["$pref::Net::PacketSize"] = 200;
+            //pInvokes.iGlobal["$pref::Net::PacketRateToClient"] = 32;
+            //pInvokes.iGlobal["$pref::Net::PacketRateToServer"] = 32;
+            //pInvokes.iGlobal["$pref::Net::PacketSize"] = 200;
 
-            omni.iGlobal["$pref::HudMessageLogSize"] = 40;
-            omni.iGlobal["$pref::ChatHudLength"] = 1;
+            pInvokes.iGlobal["$pref::HudMessageLogSize"] = 40;
+            pInvokes.iGlobal["$pref::ChatHudLength"] = 1;
 
-            omni.iGlobal["$pref::Input::LinkMouseSensitivity"] = 1;
+            pInvokes.iGlobal["$pref::Input::LinkMouseSensitivity"] = 1;
             // DInput keyboard, mouse, and joystick prefs
-            omni.iGlobal["$pref::Input::KeyboardEnabled"] = 1;
-            omni.iGlobal["$pref::Input::MouseEnabled"] = 1;
-            omni.iGlobal["$pref::Input::JoystickEnabled"] = 0;
-            omni.dGlobal["$pref::Input::KeyboardTurnSpeed"] = 0.1;
+            pInvokes.iGlobal["$pref::Input::KeyboardEnabled"] = 1;
+            pInvokes.iGlobal["$pref::Input::MouseEnabled"] = 1;
+            pInvokes.iGlobal["$pref::Input::JoystickEnabled"] = 0;
+            pInvokes.dGlobal["$pref::Input::KeyboardTurnSpeed"] = 0.1;
 
-            omni.iGlobal["$sceneLighting::cacheSize"] = 20000;
-            omni.sGlobal["$sceneLighting::purgeMethod"] = "lastCreated";
-            omni.iGlobal["$sceneLighting::cacheLighting"] = 1;
+            pInvokes.iGlobal["$sceneLighting::cacheSize"] = 20000;
+            pInvokes.sGlobal["$sceneLighting::purgeMethod"] = "lastCreated";
+            pInvokes.iGlobal["$sceneLighting::cacheLighting"] = 1;
 
-            omni.sGlobal["$pref::Video::displayDevice"] = "D3D9";
-            omni.iGlobal["$pref::Video::disableVerticalSync"] = 1;
-            omni.sGlobal["$pref::Video::Canvas::mode"] = "1024 768 false 32 60 4";
-            //omni.sGlobal["$pref::Video::Canvas_SceneTree::mode"] = "300 480 false 32 60 4";
-            //omni.sGlobal["$pref::Video::Canvas_Inspector::mode"] = "500 480 false 32 60 4";
+            pInvokes.sGlobal["$pref::Video::displayDevice"] = "D3D9";
+            pInvokes.iGlobal["$pref::Video::disableVerticalSync"] = 1;
+            pInvokes.sGlobal["$pref::Video::Canvas::mode"] = "1024 768 false 32 60 4";
+            //pInvokes.sGlobal["$pref::Video::Canvas_SceneTree::mode"] = "300 480 false 32 60 4";
+            //pInvokes.sGlobal["$pref::Video::Canvas_Inspector::mode"] = "500 480 false 32 60 4";
 
-            omni.iGlobal["$pref::Video::defaultFenceCount"] = 0;
-            omni.iGlobal["$pref::Video::screenShotSession"] = 0;
-            omni.sGlobal["$pref::Video::screenShotFormat"] = "PNG";
+            pInvokes.iGlobal["$pref::Video::defaultFenceCount"] = 0;
+            pInvokes.iGlobal["$pref::Video::screenShotSession"] = 0;
+            pInvokes.sGlobal["$pref::Video::screenShotFormat"] = "PNG";
 
             // This disables the hardware FSAA/MSAA so that
             // we depend completely on the FXAA post effect
@@ -96,141 +94,141 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // will fail to initialize when hardware AA is
             // enabled... so you've been warned.
             //
-            omni.bGlobal["$pref::Video::disableHardwareAA"] = true;
+            pInvokes.bGlobal["$pref::Video::disableHardwareAA"] = true;
 
-            omni.bGlobal["$pref::Video::disableNormalmapping"] = false;
+            pInvokes.bGlobal["$pref::Video::disableNormalmapping"] = false;
 
-            omni.bGlobal["$pref::Video::disablePixSpecular"] = false;
+            pInvokes.bGlobal["$pref::Video::disablePixSpecular"] = false;
 
-            omni.bGlobal["$pref::Video::disableCubemapping"] = false;
+            pInvokes.bGlobal["$pref::Video::disableCubemapping"] = false;
 
-            omni.bGlobal["$pref::Video::disableParallaxMapping"] = false;
+            pInvokes.bGlobal["$pref::Video::disableParallaxMapping"] = false;
 
-            omni.dGlobal["$pref::Video::Gamma"] = 1.0;
+            pInvokes.dGlobal["$pref::Video::Gamma"] = 1.0;
 
-            if (omni.sGlobal["$platform"] == "xenon")
+            if (pInvokes.sGlobal["$platform"] == "xenon")
                 {
                 // Save some fillrate on the X360, and take advantage of the HW scaling
-                omni.sGlobal["$pref::Video::Resolution"] = "1152 640";
-                omni.sGlobal["$pref::Video::Canvas::mode"] = omni.sGlobal["$pref::Video::Resolution"] + " " + "true 32 60 0";
-                omni.iGlobal["$pref::Video::fullScreen"] = 1;
+                pInvokes.sGlobal["$pref::Video::Resolution"] = "1152 640";
+                pInvokes.sGlobal["$pref::Video::Canvas::mode"] = pInvokes.sGlobal["$pref::Video::Resolution"] + " " + "true 32 60 0";
+                pInvokes.iGlobal["$pref::Video::fullScreen"] = 1;
                 }
 
             // This is the path used by ShaderGen to cache procedural
             // shaders.  If left blank ShaderGen will only cache shaders
             // to memory and not to disk.
-            omni.sGlobal["$shaderGen::cachePath"] = "shaders/procedural";
+            pInvokes.sGlobal["$shaderGen::cachePath"] = "shaders/procedural";
 
             // The perfered light manager to use at startup.  If blank
             // or if the selected one doesn't work on this platfom it
             // will try the defaults below.
-            omni.sGlobal["$pref::lightManager"] = "";
+            pInvokes.sGlobal["$pref::lightManager"] = "";
 
             // This is the default list of light managers ordered from
             // most to least desirable for initialization.
-            omni.sGlobal["$lightManager::defaults"] = "Advanced Lighting\nBasic Lighting";
+            pInvokes.sGlobal["$lightManager::defaults"] = "Advanced Lighting\nBasic Lighting";
 
             // A scale to apply to the camera view distance
             // typically used for tuning performance.
-            omni.dGlobal["$pref::camera::distanceScale"] = 1.0;
+            pInvokes.dGlobal["$pref::camera::distanceScale"] = 1.0;
 
             // Causes the system to do a one time autodetect
             // of an SFX provider and device at startup if the
             // provider is unset.
-            omni.bGlobal["$pref::SFX::autoDetect"] = true;
+            pInvokes.bGlobal["$pref::SFX::autoDetect"] = true;
 
             // The sound provider to select at startup.  Typically
-            // this is DirectSound, OpenAL, or XACT.  There is also 
-            // a special Null provider which acts normally, but 
+            // this is DirectSound, OpenAL, or XACT.  There is also
+            // a special Null provider which acts normally, but
             // plays no sound.
-            omni.sGlobal["$pref::SFX::provider"] = "";
+            pInvokes.sGlobal["$pref::SFX::provider"] = "";
 
             // The sound device to select from the provider.  Each
             // provider may have several different devices.
-            omni.sGlobal["$pref::SFX::device"] = "OpenAL";
+            pInvokes.sGlobal["$pref::SFX::device"] = "OpenAL";
 
             // If true the device will try to use hardware buffers
             // and sound mixing.  If not it will use software.
-            omni.bGlobal["$pref::SFX::useHardware"] = false;
+            pInvokes.bGlobal["$pref::SFX::useHardware"] = false;
 
-            // If you have a software device you have a 
+            // If you have a software device you have a
             // choice of how many software buffers to
             // allow at any one time.  More buffers cost
             // more CPU time to process and mix.
-            omni.iGlobal["$pref::SFX::maxSoftwareBuffers"] = 16;
+            pInvokes.iGlobal["$pref::SFX::maxSoftwareBuffers"] = 16;
 
-            // This is the playback frequency for the primary 
+            // This is the playback frequency for the primary
             // sound buffer used for mixing.  Although most
-            // providers will reformat on the fly, for best 
+            // providers will reformat on the fly, for best
             // quality and performance match your sound files
             // to this setting.
-            omni.iGlobal["$pref::SFX::frequency"] = 44100;
+            pInvokes.iGlobal["$pref::SFX::frequency"] = 44100;
 
-            // This is the playback bitrate for the primary 
+            // This is the playback bitrate for the primary
             // sound buffer used for mixing.  Although most
-            // providers will reformat on the fly, for best 
+            // providers will reformat on the fly, for best
             // quality and performance match your sound files
             // to this setting.
-            omni.iGlobal["$pref::SFX::bitrate"] = 32;
+            pInvokes.iGlobal["$pref::SFX::bitrate"] = 32;
 
-            // The overall system volume at startup.  Note that 
+            // The overall system volume at startup.  Note that
             // you can only scale volume down, volume does not
             // get louder than 1.
-            omni.dGlobal["$pref::SFX::masterVolume"] = 0.8;
+            pInvokes.dGlobal["$pref::SFX::masterVolume"] = 0.8;
 
-            // The startup sound channel volumes.  These are 
-            // used to control the overall volume of different 
+            // The startup sound channel volumes.  These are
+            // used to control the overall volume of different
             // classes of sounds.
-            omni.iGlobal["$pref::SFX::channelVolume1"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume2"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume3"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume4"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume5"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume6"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume7"] = 1;
-            omni.iGlobal["$pref::SFX::channelVolume8"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume1"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume2"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume3"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume4"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume5"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume6"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume7"] = 1;
+            pInvokes.iGlobal["$pref::SFX::channelVolume8"] = 1;
 
-            omni.sGlobal["$pref::PostEffect::PreferedHDRFormat"] = "GFXFormatR8G8B8A8";
+            pInvokes.sGlobal["$pref::PostEffect::PreferedHDRFormat"] = "GFXFormatR8G8B8A8";
 
-            // This is an scalar which can be used to reduce the 
+            // This is an scalar which can be used to reduce the
             // reflection textures on all objects to save fillrate.
-            omni.dGlobal["$pref::Reflect::refractTexScale"] = 1.0;
+            pInvokes.dGlobal["$pref::Reflect::refractTexScale"] = 1.0;
 
             // This is the total frame in milliseconds to budget for
             // reflection rendering.  If your CPU bound and have alot
             // of smaller reflection surfaces try reducing this time.
-            omni.iGlobal["$pref::Reflect::frameLimitMS"] = 10;
+            pInvokes.iGlobal["$pref::Reflect::frameLimitMS"] = 10;
 
             // Set true to force all water objects to use static cubemap reflections.
-            omni.bGlobal["$pref::Water::disableTrueReflections"] = false;
+            pInvokes.bGlobal["$pref::Water::disableTrueReflections"] = false;
 
             // A global LOD scalar which can reduce the overall density of placed GroundCover.
-            omni.dGlobal["$pref::GroundCover::densityScale"] = 1.0;
+            pInvokes.dGlobal["$pref::GroundCover::densityScale"] = 1.0;
 
             // An overall scaler on the lod switching between DTS models.
             // Smaller numbers makes the lod switch sooner.
-            omni.dGlobal["$pref::TS::detailAdjust"] = 1.0;
-            omni.bGlobal["$pref::decalMgr::enabled"] = true;
+            pInvokes.dGlobal["$pref::TS::detailAdjust"] = 1.0;
+            pInvokes.bGlobal["$pref::decalMgr::enabled"] = true;
 
             //
-            omni.bGlobal["$pref::Decals::enabled"] = true;
+            pInvokes.bGlobal["$pref::Decals::enabled"] = true;
 
             //
-            omni.sGlobal["$pref::Decals::lifeTimeScale"] = "1";
+            pInvokes.sGlobal["$pref::Decals::lifeTimeScale"] = "1";
 
             // The number of mipmap levels to drop on loaded textures
-            // to reduce video memory usage.  
+            // to reduce video memory usage.
             //
-            // It will skip any textures that have been defined as not 
+            // It will skip any textures that have been defined as not
             // allowing down scaling.
             //
-            omni.iGlobal["$pref::Video::textureReductionLevel"] = 0;
+            pInvokes.iGlobal["$pref::Video::textureReductionLevel"] = 0;
 
             //
-            omni.dGlobal["$pref::Shadows::textureScalar"] = 1.0;
+            pInvokes.dGlobal["$pref::Shadows::textureScalar"] = 1.0;
 
             //
-            omni.bGlobal["$pref::Shadows::disable"] = false;
+            pInvokes.bGlobal["$pref::Shadows::disable"] = false;
 
             // Sets the shadow filtering mode.
             //
@@ -238,19 +236,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //
             // SoftShadow - Does a simple soft shadow
             //
-            // SoftShadowHighQuality 
+            // SoftShadowHighQuality
             //
-            omni.sGlobal["$pref::Shadows::filterMode"] = "SoftShadow";
+            pInvokes.sGlobal["$pref::Shadows::filterMode"] = "SoftShadow";
 
             //
-            omni.iGlobal["$pref::Video::defaultAnisotropy"] = 0;
+            pInvokes.iGlobal["$pref::Video::defaultAnisotropy"] = 0;
 
             // Radius in meters around the camera that ForestItems are affected by wind.
             // Note that a very large number with a large number of items is not cheap.
-            omni.iGlobal["$pref::windEffectRadius"] = 25;
+            pInvokes.iGlobal["$pref::windEffectRadius"] = 25;
 
             // AutoDetect graphics quality levels the next startup.
-            omni.iGlobal["$pref::Video::autoDetect"] = 1;
+            pInvokes.iGlobal["$pref::Video::autoDetect"] = 1;
 
             //-----------------------------------------------------------------------------
             // Graphics Quality Groups
@@ -426,26 +424,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             oc["#4"] = so4;
             oc.Create();
 
-            omni.bGlobal["$PhysXLogWarnings"] = false;
-            if (omni.sGlobal["$platform"] != "xenon")
+            pInvokes.bGlobal["$PhysXLogWarnings"] = false;
+            if (pInvokes.sGlobal["$platform"] != "xenon")
                 {
                 //Todo Settings - Switch this back when fixed.
 
                 //Settings.LoadSection("scripts/client/prefs.cs");
-                omni.Util.exec("prefs.client.cs", false, false);
+                pInvokes.Util.exec("prefs.client.cs", false, false);
                 }
             else
-                omni.console.print("Not loading client prefs.cs on Xbox360");
+                pInvokes.console.print("Not loading client prefs.cs on Xbox360");
         }
 
         [ConsoleInteraction(true)]
         public static string GraphicsQualityAutodetect()
         {
-            omni.bGlobal["$pref::Video::autoDetect = false;"] = false;
+            pInvokes.bGlobal["$pref::Video::autoDetect = false;"] = false;
 
-            float shaderVer = omni.Util.getPixelShaderVersion();
-            bool intel = omni.Util.getDisplayDeviceInformation().ToUpper() == "INTEL";
-            string videoMem = omni.console.Call_Classname("GFXCardProfilerAPI", "getVideoMemoryMB");
+            float shaderVer = pInvokes.Util.getPixelShaderVersion();
+            bool intel = pInvokes.Util.getDisplayDeviceInformation().ToUpper() == "INTEL";
+            string videoMem = pInvokes.console.Call_Classname("GFXCardProfilerAPI", "getVideoMemoryMB");
 
             return GraphicsQualityAutodetect_Apply(shaderVer, intel, videoMem);
         }
@@ -529,7 +527,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void netSimulateLag(int msDelay, int packetLossPercent)
         {
-            omni.console.commandToServer("NetSimulateLag", new[] {msDelay.AsString(), packetLossPercent.AsString()});
+            pInvokes.console.commandToServer("NetSimulateLag", new[] {msDelay.AsString(), packetLossPercent.AsString()});
         }
     }
 }

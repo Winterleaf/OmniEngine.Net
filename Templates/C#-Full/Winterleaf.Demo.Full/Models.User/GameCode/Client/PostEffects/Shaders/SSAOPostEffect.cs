@@ -122,39 +122,39 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
 
         public static void initialize()
         {
-            omni.dGlobal["$SSAOPostFx::overallStrength"] = 2.0;
+            dGlobal["$SSAOPostFx::overallStrength"] = 2.0;
 
             // TODO: Add small/large param docs.
 
             // The small radius SSAO settings.
-            omni.dGlobal["$SSAOPostFx::sRadius"] = 0.1;
-            omni.dGlobal["$SSAOPostFx::sStrength"] = 6.0;
-            omni.dGlobal["$SSAOPostFx::sDepthMin"] = 0.1;
-            omni.dGlobal["$SSAOPostFx::sDepthMax"] = 1.0;
-            omni.dGlobal["$SSAOPostFx::sDepthPow"] = 1.0;
-            omni.dGlobal["$SSAOPostFx::sNormalTol"] = 0.0;
-            omni.dGlobal["$SSAOPostFx::sNormalPow"] = 1.0;
+            dGlobal["$SSAOPostFx::sRadius"] = 0.1;
+            dGlobal["$SSAOPostFx::sStrength"] = 6.0;
+            dGlobal["$SSAOPostFx::sDepthMin"] = 0.1;
+            dGlobal["$SSAOPostFx::sDepthMax"] = 1.0;
+            dGlobal["$SSAOPostFx::sDepthPow"] = 1.0;
+            dGlobal["$SSAOPostFx::sNormalTol"] = 0.0;
+            dGlobal["$SSAOPostFx::sNormalPow"] = 1.0;
 
             // The large radius SSAO settings.
-            omni.dGlobal["$SSAOPostFx::lRadius"] = 1.0;
-            omni.dGlobal["$SSAOPostFx::lStrength"] = 10.0;
-            omni.dGlobal["$SSAOPostFx::lDepthMin"] = 0.2;
-            omni.dGlobal["$SSAOPostFx::lDepthMax"] = 2.0;
-            omni.dGlobal["$SSAOPostFx::lDepthPow"] = 0.2;
-            omni.dGlobal["$SSAOPostFx::lNormalTol"] = -0.5;
-            omni.dGlobal["$SSAOPostFx::lNormalPow"] = 2.0;
+            dGlobal["$SSAOPostFx::lRadius"] = 1.0;
+            dGlobal["$SSAOPostFx::lStrength"] = 10.0;
+            dGlobal["$SSAOPostFx::lDepthMin"] = 0.2;
+            dGlobal["$SSAOPostFx::lDepthMax"] = 2.0;
+            dGlobal["$SSAOPostFx::lDepthPow"] = 0.2;
+            dGlobal["$SSAOPostFx::lNormalTol"] = -0.5;
+            dGlobal["$SSAOPostFx::lNormalPow"] = 2.0;
 
             // Valid values: 0, 1, 2
-            omni.iGlobal["$SSAOPostFx::quality"] = 0;
+            iGlobal["$SSAOPostFx::quality"] = 0;
 
             //
-            omni.dGlobal["$SSAOPostFx::blurDepthTol"] = 0.001;
+            dGlobal["$SSAOPostFx::blurDepthTol"] = 0.001;
 
             // 
-            omni.dGlobal["$SSAOPostFx::blurNormalTol"] = 0.95;
+            dGlobal["$SSAOPostFx::blurNormalTol"] = 0.95;
 
             //
-            omni.sGlobal["$SSAOPostFx::targetScale"] = "0.5 0.5";
+            sGlobal["$SSAOPostFx::targetScale"] = "0.5 0.5";
 
             SingletonCreator ts = new SingletonCreator("GFXStateBlockData", "SSAOStateBlock : PFX_DefaultStateBlock");
             ts["samplersDefined"] = true;
