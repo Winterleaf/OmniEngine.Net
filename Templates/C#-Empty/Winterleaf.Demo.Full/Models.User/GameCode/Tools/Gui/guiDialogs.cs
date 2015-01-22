@@ -40,8 +40,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
 {
     public class guiDialogs
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             //omni.Util.exec("tools/gui/fileDialogBase.ed.cs",false,false);

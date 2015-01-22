@@ -7633,23 +7633,23 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Gui
 
         public static void createGui()
         {
-            omni.sGlobal["$PostFXManager::defaultPreset"] = "core/scripts/client/postFx/default.postfxpreset.cs";
+            sGlobal["$PostFXManager::defaultPreset"] = "core/scripts/client/postFx/default.postfxpreset.cs";
 
             // Used to name the saved files.
-            omni.sGlobal["$PostFXManager::fileExtension"] = ".postfxpreset.cs";
+            sGlobal["$PostFXManager::fileExtension"] = ".postfxpreset.cs";
 
             // The filter string for file open/save dialogs.
-            omni.sGlobal["$PostFXManager::fileFilter"] = "Post Effect Presets|*.postfxpreset.cs";
+            sGlobal["$PostFXManager::fileFilter"] = "Post Effect Presets|*.postfxpreset.cs";
 
             // Enable / disable PostFX when loading presets or just apply the settings?
-            omni.bGlobal["$PostFXManager::forceEnableFromPresets"] = true;
+            bGlobal["$PostFXManager::forceEnableFromPresets"] = true;
 
-            omni.bGlobal["$PostFXManager::vebose"] = true;
+            bGlobal["$PostFXManager::vebose"] = true;
 
             if (!guicreated)
                 {
                 //until I rip out gui's I need to execute the script.
-                //omni.Util.exec("core/scripts/client/postFx/postFXManager.gui", false, false);
+                //Util.exec("core/scripts/client/postFx/postFXManager.gui", false, false);
                 initialize();
                 guicreated = true;
                 }
@@ -8273,10 +8273,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Gui
         public static void ppOptionsUpdateDOFSettings()
         {
             DOFPostEffect mDOFPostEffect = "DOFPostEffect";
-            mDOFPostEffect.setFocusParams(omni.fGlobal["$DOFPostFx::BlurMin"], omni.fGlobal["$DOFPostFx::BlurMax"], omni.fGlobal["$DOFPostFx::FocusRangeMin"], omni.fGlobal["$DOFPostFx::FocusRangeMax"], -omni.fGlobal["$DOFPostFx::BlurCurveNear"], omni.fGlobal["$DOFPostFx::BlurCurveFar"]);
-            mDOFPostEffect.setAutoFocus(omni.bGlobal["$DOFPostFx::EnableAutoFocus"]);
+            mDOFPostEffect.setFocusParams(fGlobal["$DOFPostFx::BlurMin"], fGlobal["$DOFPostFx::BlurMax"], fGlobal["$DOFPostFx::FocusRangeMin"], fGlobal["$DOFPostFx::FocusRangeMax"], -fGlobal["$DOFPostFx::BlurCurveNear"], fGlobal["$DOFPostFx::BlurCurveFar"]);
+            mDOFPostEffect.setAutoFocus(bGlobal["$DOFPostFx::EnableAutoFocus"]);
             mDOFPostEffect.setFocalDist("0");
-            if (omni.bGlobal["$PostFXManager::PostFX::EnableDOF"])
+            if (bGlobal["$PostFXManager::PostFX::EnableDOF"])
                 mDOFPostEffect.enable();
             else
                 mDOFPostEffect.disable();
@@ -8292,14 +8292,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Gui
         [ConsoleInteraction(true)]
         public static void ppColorCorrection_selectFileHandler(string filename)
         {
-            if ((filename == "") || !omni.Util.isFile(filename))
+            if ((filename == "") || !Util.isFile(filename))
                 filename = "core/scripts/client/postFx/null_color_ramp.png";
             else
-                filename = omni.Util.makeRelativePath(filename, omni.Util.getMainDotCsDir());
+                filename = Util.makeRelativePath(filename, Util.getMainDotCsDir());
 
             Extendable.PostEffect.mColorCorrectionFileName = filename;
 
-            //omni.sGlobal["$HDRPostFX::colorCorrectionRamp"] = filename;
+            //sGlobal["$HDRPostFX::colorCorrectionRamp"] = filename;
 
             ((GuiTextEditCtrl) ((postFXManager) "PostFXManager").findObjectByInternalName("ColorCorrectionFileName", true)).text = filename;
         }

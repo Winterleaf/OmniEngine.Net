@@ -98,8 +98,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
             ts["target"] = "$backBuffer";
             ts.Create();
 
-            omni.iGlobal["$CausticsPFX::refTime"] = omni.Util.getSimTime();
-            omni.sGlobal["$CausticsPFX::color"] = "1.0 1.0 1.0 1.0";
+            iGlobal["$CausticsPFX::refTime"] = Util.getSimTime();
+            sGlobal["$CausticsPFX::color"] = "1.0 1.0 1.0 1.0";
         }
 
         //private static  CausticsPostEffect cpf;
@@ -109,8 +109,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
             //cpf.texture[1] = new TypeImageFilename( "core/scripts/client/postFx/textures/caustics_1.png");
             //cpf.texture[2] = new TypeImageFilename( "core/scripts/client/postFx/textures/caustics_2.png");
 
-            this.setShaderConst("$refTime", omni.sGlobal["$CausticsPFX::refTime"]);
-            setShaderConst("$colorize", omni.sGlobal["$CausticsPFX::color"]);
+            this.setShaderConst("$refTime", sGlobal["$CausticsPFX::refTime"]);
+            setShaderConst("$colorize", sGlobal["$CausticsPFX::color"]);
         }
     }
 }

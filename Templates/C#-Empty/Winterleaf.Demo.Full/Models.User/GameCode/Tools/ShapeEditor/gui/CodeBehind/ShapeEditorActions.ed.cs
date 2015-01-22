@@ -49,8 +49,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
 {
     public class ShapeEditorActions
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "ShapeEditorActions_initialize")]
         public static void initialize()
         {

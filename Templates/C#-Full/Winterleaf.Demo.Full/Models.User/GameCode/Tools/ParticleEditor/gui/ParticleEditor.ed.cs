@@ -54,21 +54,21 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui
         [ConsoleInteraction(true, "ParticleEditor_initialize")]
         public static void initialize()
         {
-            omni.sGlobal["$PE_guielement_pos_single_container"] = "0 0";
-            omni.sGlobal["$PE_guielement_ext_single_container"] = "184 20";
-            omni.sGlobal["$PE_guielement_pos_name"] = "1 0";
-            omni.sGlobal["$PE_guielement_ext_name"] = "70 18";
-            omni.sGlobal["$PE_guielement_pos_slider"] = "74 2";
-            omni.sGlobal["$PE_guielement_ext_slider"] = "58 12";
-            omni.sGlobal["$PE_guielement_pos_value"] = "138 0";
-            omni.sGlobal["$PE_guielement_ext_value"] = "36 18";
-            omni.sGlobal["$PE_guielement_pos_textedit"] = "74 0";
-            omni.sGlobal["$PE_guielement_ext_textedit"] = "100 18";
-            omni.sGlobal["$PE_guielement_ext_checkbox_name"] = "156 18";
-            omni.sGlobal["$PE_guielement_pos_checkbox"] = "161 0";
-            omni.sGlobal["$PE_guielement_ext_checkbox"] = "15 18";
-            omni.sGlobal["$PE_guielement_pos_colorpicker"] = "158 0";
-            omni.sGlobal["$PE_guielement_ext_colorpicker"] = "18 18";
+            sGlobal["$PE_guielement_pos_single_container"] = "0 0";
+            sGlobal["$PE_guielement_ext_single_container"] = "184 20";
+            sGlobal["$PE_guielement_pos_name"] = "1 0";
+            sGlobal["$PE_guielement_ext_name"] = "70 18";
+            sGlobal["$PE_guielement_pos_slider"] = "74 2";
+            sGlobal["$PE_guielement_ext_slider"] = "58 12";
+            sGlobal["$PE_guielement_pos_value"] = "138 0";
+            sGlobal["$PE_guielement_ext_value"] = "36 18";
+            sGlobal["$PE_guielement_pos_textedit"] = "74 0";
+            sGlobal["$PE_guielement_ext_textedit"] = "100 18";
+            sGlobal["$PE_guielement_ext_checkbox_name"] = "156 18";
+            sGlobal["$PE_guielement_pos_checkbox"] = "161 0";
+            sGlobal["$PE_guielement_ext_checkbox"] = "15 18";
+            sGlobal["$PE_guielement_pos_colorpicker"] = "158 0";
+            sGlobal["$PE_guielement_ext_colorpicker"] = "18 18";
 
             #region GuiWindowCollapseCtrl (PE_Window)        oc_Newobject243
 

@@ -409,7 +409,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
         /// Utility function to sort rollouts by their caption.
         public static int _GuiEditorToolboxSortRollouts(SimObject a, SimObject b)
         {
-            return omni.Util.strinatcmp(a["caption"], b["caption"]);
+            return Util.strinatcmp(a["caption"], b["caption"]);
         }
 
         #region ProxyObjects Operator Overrides

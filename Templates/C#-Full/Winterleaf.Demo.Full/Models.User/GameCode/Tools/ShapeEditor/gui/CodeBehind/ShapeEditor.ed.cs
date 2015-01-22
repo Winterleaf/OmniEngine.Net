@@ -90,8 +90,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui.CodeBe
         [ConsoleInteraction]
         public static string strcapitalise(string str)
         {
-            int len = omni.Util.strlen(str);
-            return omni.Util.strupr(omni.Util.getSubStr(str, 0, 1)) + omni.Util.getSubStr(str, 1, len - 1);
+            int len = Util.strlen(str);
+            return Util.strupr(Util.getSubStr(str, 0, 1)) + Util.getSubStr(str, 1, len - 1);
         }
 
         [ConsoleInteraction]

@@ -14,10 +14,14 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -193,6 +197,15 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClassInheritanceLog012220151446.txt" />
+    <Content Include="ClassInheritanceLog012220152525.txt" />
+    <Content Include="ClassInheritanceLog012220153004.txt" />
+    <Content Include="StaticCodeAnalyserRunLog012220151425.txt" />
+    <Content Include="StaticCodeAnalyserRunLog012220151639.txt" />
+    <Content Include="StaticCodeAnalyserRunLog012220152541.txt" />
+    <Content Include="StaticCodeAnalyserRunLog012220153239.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
@@ -206,5 +219,4 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
- 
 </Project>

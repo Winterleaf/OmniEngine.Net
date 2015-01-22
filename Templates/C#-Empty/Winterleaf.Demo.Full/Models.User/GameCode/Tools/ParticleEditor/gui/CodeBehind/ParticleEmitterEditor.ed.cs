@@ -49,12 +49,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ParticleEditor.gui.Cod
 {
     public class ParticleEmitterEditor
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "ParticleEmitterEditor_initialize")]
         public static void initialize()
         {
-            omni.sGlobal["$PE_EMITTEREDITOR_DEFAULT_FILENAME"] = "art/particles/managedParticleEmitterData.cs";
+            pInvokes.sGlobal["$PE_EMITTEREDITOR_DEFAULT_FILENAME"] = "art/particles/managedParticleEmitterData.cs";
         }
 
         //=============================================================================================

@@ -538,17 +538,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
 
             if (!objectx.isObject())
                 {
-                omni.Util._error("inspectObject: no object '" + objectx + "'");
+                Util._error("inspectObject: no object '" + objectx + "'");
                 return;
                 }
 
             // Create a new object inspector window.
             //exec( "./guiObjectInspector.ed.gui" );
-            GuiObjectInspector guiContent = omni.console.Call("GuiObjectInspector_initialize");
+            GuiObjectInspector guiContent = console.Call("GuiObjectInspector_initialize");
 
             if (!guiContent.isObject())
                 {
-                omni.Util._error("InspectObject: failed to create GUI from 'guiObjectInspector.ed.gui'");
+                Util._error("InspectObject: failed to create GUI from 'guiObjectInspector.ed.gui'");
                 return;
                 }
 

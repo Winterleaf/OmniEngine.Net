@@ -299,7 +299,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui.gui
                 {
                 string text = textpad.getText();
                 string command = ScriptEditorDlg["callback"] + "( text );";
-                omni.Util.eval(command);
+                Util.eval(command);
                 }
             ScriptEditorDlg["callback"] = "";
             ((GuiCanvas) ScriptEditorDlg.getRoot()).popDialog(ScriptEditorDlg);

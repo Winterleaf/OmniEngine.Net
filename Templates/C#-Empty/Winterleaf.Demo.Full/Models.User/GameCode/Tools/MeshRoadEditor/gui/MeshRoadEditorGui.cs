@@ -530,18 +530,18 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
 
             oc_Newobject21.Create();
 
-            omni.bGlobal["$MeshRoad::wireframe"] = true;
-            omni.bGlobal["$MeshRoad::showSpline"] = true;
-            omni.bGlobal["$MeshRoad::showReflectPlane"] = false;
-            omni.bGlobal["$MeshRoad::showRoad"] = true;
-            omni.dGlobal["$MeshRoad::breakAngle"] = 3.0;
+            bGlobal["$MeshRoad::wireframe"] = true;
+            bGlobal["$MeshRoad::showSpline"] = true;
+            bGlobal["$MeshRoad::showReflectPlane"] = false;
+            bGlobal["$MeshRoad::showRoad"] = true;
+            dGlobal["$MeshRoad::breakAngle"] = 3.0;
         }
 
         [ConsoleInteraction]
         public override void onWake()
         {
             EWorldEditor EWorldEditor = "EWorldEditor";
-            omni.bGlobal["$MeshRoad::EditorOpen"] = true;
+            bGlobal["$MeshRoad::EditorOpen"] = true;
 
             int count = EWorldEditor.getSelectionSize();
             for (int i = 0; i < count; i++)
@@ -561,7 +561,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
         [ConsoleInteraction]
         public override void onSleep()
         {
-            omni.bGlobal["$MeshRoad::EditorOpen"] = false;
+            bGlobal["$MeshRoad::EditorOpen"] = false;
         }
 
         [ConsoleInteraction]
@@ -591,7 +591,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
 
             // Update the materialEditorList
             if (road.isObject())
-                omni.sGlobal["$Tools::materialEditorList"] = road;
+                sGlobal["$Tools::materialEditorList"] = road;
             else
                 return;
 
@@ -700,7 +700,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui
             if (dr == DialogResult.OK)
                 {
                 string fileName = Dialogs.GetForwardSlashFile(ofd.FileName);
-                this["lastPath"] = omni.console.Call("filePath", new string[] {fileName});
+                this["lastPath"] = console.Call("filePath", new string[] {fileName});
                 //string filename = dlg["FileName"];
 
                 //TODO

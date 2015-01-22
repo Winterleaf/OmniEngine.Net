@@ -5,11 +5,11 @@
 // 
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
 // 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use pInvokes. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
 // 
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
 // 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE pInvokes. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
 // 
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 
@@ -43,14 +43,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class mission
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             // Whether the local client is currently running a mission.
-            omni.bGlobal["$Client::missionRunning"] = false;
+            pInvokes.bGlobal["$Client::missionRunning"] = false;
             // Sequence number for currently running mission.
-            omni.iGlobal["$Client::missionSeq"] = -1;
+            pInvokes.iGlobal["$Client::missionSeq"] = -1;
         }
 
         // Called when mission is started.
@@ -59,12 +57,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             // The client recieves a mission start right before
             // being dropped into the game.
-            omni.Util.physicsStartSimulation("client");
+            pInvokes.Util.physicsStartSimulation("client");
             // Start game audio effects channels.
             ((SFXSource) "AudioChannelEffects").play(-1);
             // Create client mission cleanup group.
             new ObjectCreator("SimGroup", "ClientMissionCleanup").Create();
-            omni.bGlobal["$Client::missionRunning"] = true;
+            pInvokes.bGlobal["$Client::missionRunning"] = true;
         }
 
         // Called when mission is ended (either through disconnect or
@@ -73,19 +71,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         public static void clientEndMission()
         {
             // Stop physics simulation on client.
-            omni.Util.physicsStopSimulation("client");
+            pInvokes.Util.physicsStopSimulation("client");
             // Stop game audio effects channels.
 
             ((SFXSource) "AudioChannelEffects").stop(-1);
 
-            omni.console.Call("decalManagerClear");
+            pInvokes.console.Call("decalManagerClear");
             // Delete client mission cleanup group. 
 
             ((SimGroup) "ClientMissionCleanup").delete();
 
-            omni.Util.clearClientPaths();
+            pInvokes.Util.clearClientPaths();
 
-            omni.bGlobal["$Client::missionRunning"] = false;
+            pInvokes.bGlobal["$Client::missionRunning"] = false;
         }
 
         //----------------------------------------------------------------------------
@@ -96,16 +94,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             clientStartMission();
 
-            omni.sGlobal["$Client::missionSeq"] = seq;
+            pInvokes.sGlobal["$Client::missionSeq"] = seq;
         }
 
         [ConsoleInteraction(true)]
         public static void clientCmdMissionEnd(string seq)
         {
-            if (!omni.bGlobal["$Client::missionRunning"] || omni.sGlobal["$Client::missionSeq"] != seq)
+            if (!pInvokes.bGlobal["$Client::missionRunning"] || pInvokes.sGlobal["$Client::missionSeq"] != seq)
                 return;
             clientEndMission();
-            omni.iGlobal["$Client::missionSeq"] = -1;
+            pInvokes.iGlobal["$Client::missionSeq"] = -1;
         }
 
         /// Expands the name of a mission into the full 
@@ -114,20 +112,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         {
             // Expand any escapes in it.
 
-            missionFile = omni.Util._expandFilename(missionFile);
+            missionFile = pInvokes.Util._expandFilename(missionFile);
             string newMission = "";
-            if (!omni.Util.isFile(missionFile))
+            if (!pInvokes.Util.isFile(missionFile))
                 {
                 if (!missionFile.Trim().EndsWith(".mis"))
                     newMission = missionFile.Trim() + ".mis";
 
-                if (!omni.Util.isFile(newMission))
+                if (!pInvokes.Util.isFile(newMission))
                     {
-                    newMission = omni.Util._expandFilename("levels/" + newMission);
+                    newMission = pInvokes.Util._expandFilename("levels/" + newMission);
 
-                    if (!omni.Util.isFile(newMission))
+                    if (!pInvokes.Util.isFile(newMission))
                         {
-                        omni.console.warn("The mission file '" + missionFile + "' was not found.");
+                        pInvokes.console.warn("The mission file '" + missionFile + "' was not found.");
                         return "";
                         }
                     }

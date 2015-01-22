@@ -403,7 +403,7 @@ function ProximityMineData::create( %datablock )
 }
 ";
 
-            omni.Util.eval(toeval);
+            Util.eval(toeval);
         }
 
         [ConsoleInteraction]

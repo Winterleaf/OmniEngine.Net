@@ -42,8 +42,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 {
     public class ProceduralTerrainPainterGui
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "ProceduralTerrainPainterGui_initialize")]
         public static void initialize()
         {
@@ -520,11 +518,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
 
             }
 
-            omni.iGlobal["$TPPHeightMin"] = -10000;
-            omni.iGlobal["$TPPHeightMax"] = 10000;
-            omni.iGlobal["$TPPSlopeMin"] = 0;
-            omni.iGlobal["$TPPSlopeMax"] = 90;
-            omni.iGlobal["$TPPCoverage"] = 100;
+            pInvokes.iGlobal["$TPPHeightMin"] = -10000;
+            pInvokes.iGlobal["$TPPHeightMax"] = 10000;
+            pInvokes.iGlobal["$TPPSlopeMin"] = 0;
+            pInvokes.iGlobal["$TPPSlopeMax"] = 90;
+            pInvokes.iGlobal["$TPPCoverage"] = 100;
 
         }
 
@@ -538,8 +536,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui
         public static void generateProceduralTerrainMask()
         {
             ((GuiCanvas) "Canvas").popDialog("ProceduralTerrainPainterGui");
-            ((TerrainEditor) "ETerrainEditor").autoMaterialLayer(omni.fGlobal["$TPPHeightMin"],
-                omni.fGlobal["$TPPHeightMax"], omni.fGlobal["$TPPSlopeMin"], omni.fGlobal["$TPPSlopeMax"], omni.fGlobal["$TPPCoverage"]);
+            ((TerrainEditor) "ETerrainEditor").autoMaterialLayer(pInvokes.fGlobal["$TPPHeightMin"],
+                pInvokes.fGlobal["$TPPHeightMax"], pInvokes.fGlobal["$TPPSlopeMin"], pInvokes.fGlobal["$TPPSlopeMax"], pInvokes.fGlobal["$TPPCoverage"]);
         }
     }
 }

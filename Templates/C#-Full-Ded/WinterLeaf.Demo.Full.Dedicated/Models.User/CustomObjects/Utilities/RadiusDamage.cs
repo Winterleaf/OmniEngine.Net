@@ -11,14 +11,12 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.CustomObjects.Utilities
     {
     class radiusDamage
         {
-        private static pInvokes tst = new pInvokes();
-
         public static void RadiusDamage(GameBase sourceobject, Point3F position, float radius, float damage, string damageType, float impulse)
             {
             // Use the container system to iterate through all the objects
             // within our explosion radius.  We'll apply damage to all ShapeBase
             // objects.
-            Dictionary<uint, float> r = tst.console.initContainerRadiusSearch(position, radius, (uint)SceneObjectTypesAsUint.ShapeBaseObjectType);
+            Dictionary<uint, float> r = pInvokes.console.initContainerRadiusSearch(position, radius, (uint)SceneObjectTypesAsUint.ShapeBaseObjectType);
             float halfRadius = radius / (float)2.0;
             foreach (ShapeBase targetObject in r.Keys)
                 {
@@ -29,7 +27,7 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.CustomObjects.Utilities
 
                 UInt32 mask = (uint)SceneObjectTypesAsUint.TerrainObjectType | (uint)SceneObjectTypesAsUint.StaticShapeObjectType | (uint)SceneObjectTypesAsUint.VehicleObjectType ;
 
-                float coverage = tst.Util.calcExplosionCoverage(new Point3F(position), targetObject, mask);
+                float coverage = pInvokes.Util.calcExplosionCoverage(new Point3F(position), targetObject, mask);
                 if (!coverage.AsBool())
                     continue;
                 float dist = r[targetObject];

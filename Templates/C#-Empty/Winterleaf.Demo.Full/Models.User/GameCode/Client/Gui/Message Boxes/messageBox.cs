@@ -47,8 +47,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 {
     internal class messageBox
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             if ("MessagePopupDlg".isObject())
@@ -68,7 +66,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 
             #region exec("./messageBoxOk.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 
 %guiContent = new GuiControl(MessageBoxOKDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxOKDlg).FullName + @""";
@@ -135,7 +133,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 
             #region exec("./messageBoxYesNo.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 %guiContent = new GuiControl(MessageBoxYesNoDlg) {
 
 WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoDlg).FullName + @""";
@@ -218,7 +216,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoDlg).FullName + @"""
 
             #region exec("./messageBoxYesNoCancel.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 %guiContent = new GuiControl(MessageBoxYesNoCancelDlg) {
 WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName + @""";
    
@@ -330,7 +328,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./messageBoxOKCancel.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(MessageBoxOKCancelDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = ""WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Message_Boxes.MessageBoxOKCancelDlg"";
@@ -414,7 +412,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./messageBoxOKCancelDetailsDlg.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(MessageBoxOKCancelDetailsDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = ""WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Message_Boxes.MessageBoxOKCancelDetailsDlg"";
@@ -561,7 +559,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./messagePopup.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(MessagePopupDlg) {
    profile = ""GuiDefaultProfile"";
@@ -615,7 +613,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./IODropdownDlg.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(IODropdownDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = ""WinterLeaf.userObjects.GameCode.Client.Gui.Message_Boxes.IODropdownDlg"";
@@ -783,7 +781,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region new SFXDescription(MessageBoxAudioDescription)
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 new SFXDescription(MessageBoxAudioDescription)
 {
    volume      = 1.0;
@@ -814,8 +812,8 @@ new SFXProfile(messageBoxBeep)
         {
             ((GuiCanvas) "Canvas").popDialog(dlg);
             if (callback.Trim() != "")
-                omni.Util.eval(callback);
-            //omni.console.Eval(callback);
+                pInvokes.Util.eval(callback);
+            //pInvokes.console.Eval(callback);
         }
 
         /// <summary>
@@ -831,7 +829,7 @@ new SFXProfile(messageBoxBeep)
             int id = IODropdownMenu.getSelected();
             string text = IODropdownMenu.getTextById(id);
             callback = callback.Replace("#", text);
-            omni.console.Eval(callback);
+            pInvokes.console.Eval(callback);
             ((GuiCanvas) "Canvas").popDialog(dlg);
         }
 
@@ -861,7 +859,7 @@ new SFXProfile(messageBoxBeep)
             frame.canMaximize = false;
 
             //TODO
-            //omni.Util._sfxPlayOnce("messageBoxBeep");
+            //pInvokes.Util._sfxPlayOnce("messageBoxBeep");
         }
 
         [ConsoleInteraction(true)]
@@ -984,7 +982,7 @@ new SFXProfile(messageBoxBeep)
             ((GuiCanvas) "Canvas").pushDialog("MessagePopupDlg");
             MBSetText("MessagePopText", "MessagePopFrame", message);
             if (delay != 0)
-                omni.Util._schedule(delay.AsString(), "0", "CloseMessagePopup");
+                pInvokes.Util._schedule(delay.AsString(), "0", "CloseMessagePopup");
         }
 
         [ConsoleInteraction(true)]

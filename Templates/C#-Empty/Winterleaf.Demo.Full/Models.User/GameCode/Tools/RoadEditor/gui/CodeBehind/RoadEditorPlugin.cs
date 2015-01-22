@@ -43,6 +43,7 @@ using WinterLeaf.Engine;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
+using WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui.CodeBehind
@@ -87,14 +88,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui.CodeBeh
 
             // Add ourselves to the ToolsToolbar
             string tooltip = "Road Editor (" + accel + ")";
-            EditorGui.addToToolsToolbar("RoadEditorPlugin", "RoadEditorPalette", omni.Util._expandFilename("tools/worldEditor/images/toolbar/road-path-editor"), tooltip);
+            EditorGui.addToToolsToolbar("RoadEditorPlugin", "RoadEditorPalette", pInvokes.Util._expandFilename("tools/worldEditor/images/toolbar/road-path-editor"), tooltip);
 
             //connect editor windows
             ((GuiWindowCollapseCtrl) "RoadEditorOptionsWindow").attachTo("RoadEditorTreeWindow");
 
             // Add ourselves to the Editor Settings window
             //exec( "./RoadEditorSettingsTab.gui" );
-            omni.console.Call("RoadEditorSettingsTab_initialize");
+            pInvokes.console.Call("RoadEditorSettingsTab_initialize");
             ((ESettingsWindow) "ESettingsWindow").addTabPage("ERoadEditorSettingsPage");
         }
 
@@ -210,7 +211,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RoadEditor.gui.CodeBeh
         public override bool? setEditorFunction(string overrideGroup = "")
         {
             bool terrainExists = AggregateControl.parseMissionGroup("TerrainBlock");
-            //   omni.console.Call("parseMissionGroup", new string[] { "TerrainBlock" }).AsBool();
+            //   pInvokes.console.Call("parseMissionGroup", new string[] { "TerrainBlock" }).AsBool();
 
             if (terrainExists == false)
                 messageBox.MessageBoxYesNoCancel("No Terrain", "Would you like to create a New Terrain?", "Canvas.pushDialog(CreateNewTerrainGui);");

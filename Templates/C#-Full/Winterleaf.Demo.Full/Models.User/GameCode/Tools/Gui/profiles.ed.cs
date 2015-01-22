@@ -5,11 +5,11 @@
 // 
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
 // 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use  Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
 // 
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
 // 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE  IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
 // 
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 
@@ -38,15 +38,13 @@ using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
 {
-    public class profiles
+    public class profiles : pInvokes
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
-            omni.sGlobal["$Gui::clipboardFile"] = omni.Util._expandFilename("tools/gui/clipboard.gui");
+            sGlobal["$Gui::clipboardFile"] = Util._expandFilename("tools/gui/clipboard.gui");
 
-            if (!omni.Util.isObject("ToolsGuiDefaultProfile"))
+            if (!Util.isObject("ToolsGuiDefaultProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiDefaultProfile)        oc_Newobject1
 
@@ -87,7 +85,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject1.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiEditorProfile"))
+            if (!Util.isObject("ToolsGuiEditorProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiEditorProfile)        oc_Newobject2
 
@@ -128,7 +126,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject2.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiSolidDefaultProfile"))
+            if (!Util.isObject("ToolsGuiSolidDefaultProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiSolidDefaultProfile)        oc_Newobject3
 
@@ -142,7 +140,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject3.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTransparentProfile"))
+            if (!Util.isObject("ToolsGuiTransparentProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiTransparentProfile)        oc_Newobject4
 
@@ -156,7 +154,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject4.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiGroupBorderProfile"))
+            if (!Util.isObject("ToolsGuiGroupBorderProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiGroupBorderProfile )        oc_Newobject5
 
@@ -172,7 +170,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject5.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTabBorderProfile"))
+            if (!Util.isObject("ToolsGuiTabBorderProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTabBorderProfile )        oc_Newobject6
 
@@ -188,7 +186,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject6.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiToolTipProfile"))
+            if (!Util.isObject("ToolsGuiToolTipProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiToolTipProfile)        oc_Newobject7
 
@@ -205,7 +203,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject7.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiModelessDialogProfile"))
+            if (!Util.isObject("ToolsGuiModelessDialogProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiModelessDialogProfile )        oc_Newobject8
 
@@ -218,7 +216,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject8.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiFrameSetProfile"))
+            if (!Util.isObject("ToolsGuiFrameSetProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiFrameSetProfile)        oc_Newobject9
 
@@ -234,7 +232,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject9.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiWindowProfile"))
+            if (!Util.isObject("ToolsGuiWindowProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiWindowProfile)        oc_Newobject10
 
@@ -271,7 +269,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject10.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiToolbarWindowProfile"))
+            if (!Util.isObject("ToolsGuiToolbarWindowProfile"))
                 {
                 #region GuiControlProfile (ToolsGuiToolbarWindowProfile : ToolsGuiWindowProfile)        oc_Newobject11
 
@@ -285,7 +283,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject11.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiWindowCollapseProfile"))
+            if (!Util.isObject("ToolsGuiWindowCollapseProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiWindowCollapseProfile : ToolsGuiWindowProfile)        oc_Newobject12
 
@@ -297,7 +295,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject12.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextProfile"))
+            if (!Util.isObject("ToolsGuiTextProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiTextProfile)        oc_Newobject13
 
@@ -326,7 +324,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject13.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextBoldCenterProfile"))
+            if (!Util.isObject("ToolsGuiTextBoldCenterProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiTextBoldCenterProfile : ToolsGuiTextProfile)        oc_Newobject14
 
@@ -342,7 +340,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject14.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextRightProfile"))
+            if (!Util.isObject("ToolsGuiTextRightProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiTextRightProfile : ToolsGuiTextProfile)        oc_Newobject15
 
@@ -355,7 +353,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject15.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextCenterProfile"))
+            if (!Util.isObject("ToolsGuiTextCenterProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiTextCenterProfile : ToolsGuiTextProfile)        oc_Newobject16
 
@@ -368,7 +366,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject16.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiInspectorTitleTextProfile"))
+            if (!Util.isObject("ToolsGuiInspectorTitleTextProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiInspectorTitleTextProfile)        oc_Newobject17
 
@@ -381,7 +379,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject17.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiAutoSizeTextProfile"))
+            if (!Util.isObject("ToolsGuiAutoSizeTextProfile"))
                 {
                 #region GuiControlProfile  (ToolsGuiAutoSizeTextProfile)        oc_Newobject18
 
@@ -397,7 +395,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject18.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiMLTextProfile"))
+            if (!Util.isObject("ToolsGuiMLTextProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiMLTextProfile )        oc_Newobject19
 
@@ -428,7 +426,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject19.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextArrayProfile"))
+            if (!Util.isObject("ToolsGuiTextArrayProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTextArrayProfile : ToolsGuiTextProfile )        oc_Newobject20
 
@@ -447,7 +445,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject20.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextListProfile"))
+            if (!Util.isObject("ToolsGuiTextListProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTextListProfile : ToolsGuiTextProfile )        oc_Newobject21
 
@@ -461,7 +459,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject21.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextEditProfile"))
+            if (!Util.isObject("ToolsGuiTextEditProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTextEditProfile )        oc_Newobject22
 
@@ -495,7 +493,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject22.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiNumericTextEditProfile"))
+            if (!Util.isObject("ToolsGuiNumericTextEditProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiNumericTextEditProfile : ToolsGuiTextEditProfile )        oc_Newobject23
 
@@ -508,7 +506,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject23.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiNumericDropSliderTextProfile"))
+            if (!Util.isObject("ToolsGuiNumericDropSliderTextProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiNumericDropSliderTextProfile : ToolsGuiTextEditProfile )        oc_Newobject24
 
@@ -521,7 +519,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject24.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiRLProgressBitmapProfile"))
+            if (!Util.isObject("ToolsGuiRLProgressBitmapProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiRLProgressBitmapProfile )        oc_Newobject25
 
@@ -536,7 +534,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject25.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiProgressTextProfile"))
+            if (!Util.isObject("ToolsGuiProgressTextProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiProgressTextProfile )        oc_Newobject26
 
@@ -552,7 +550,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject26.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiButtonProfile"))
+            if (!Util.isObject("ToolsGuiButtonProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiButtonProfile )        oc_Newobject27
 
@@ -585,7 +583,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject27.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiThumbHighlightButtonProfile"))
+            if (!Util.isObject("ToolsGuiThumbHighlightButtonProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiThumbHighlightButtonProfile : ToolsGuiButtonProfile )        oc_Newobject28
 
@@ -598,7 +596,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject28.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiIconButtonProfile"))
+            if (!Util.isObject("ToolsGuiIconButtonProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiIconButtonProfile )        oc_Newobject29
 
@@ -620,7 +618,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject29.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiIconButtonSmallProfile"))
+            if (!Util.isObject("ToolsGuiIconButtonSmallProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiIconButtonSmallProfile : ToolsGuiIconButtonProfile )        oc_Newobject30
 
@@ -633,7 +631,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject30.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiEditorTabPage"))
+            if (!Util.isObject("ToolsGuiEditorTabPage"))
                 {
                 #region GuiControlProfile (ToolsGuiEditorTabPage)        oc_Newobject31
 
@@ -655,7 +653,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject31.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiCheckBoxProfile"))
+            if (!Util.isObject("ToolsGuiCheckBoxProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiCheckBoxProfile )        oc_Newobject32
 
@@ -682,7 +680,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject32.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiCheckBoxListProfile"))
+            if (!Util.isObject("ToolsGuiCheckBoxListProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiCheckBoxListProfile : ToolsGuiCheckBoxProfile)        oc_Newobject33
 
@@ -696,7 +694,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject33.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiCheckBoxListFlipedProfile"))
+            if (!Util.isObject("ToolsGuiCheckBoxListFlipedProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiCheckBoxListFlipedProfile : ToolsGuiCheckBoxProfile)        oc_Newobject34
 
@@ -710,7 +708,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject34.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiInspectorCheckBoxTitleProfile"))
+            if (!Util.isObject("ToolsGuiInspectorCheckBoxTitleProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiInspectorCheckBoxTitleProfile : ToolsGuiCheckBoxProfile )        oc_Newobject35
 
@@ -725,7 +723,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject35.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiRadioProfile"))
+            if (!Util.isObject("ToolsGuiRadioProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiRadioProfile )        oc_Newobject36
 
@@ -747,7 +745,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject36.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiScrollProfile"))
+            if (!Util.isObject("ToolsGuiScrollProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiScrollProfile )        oc_Newobject37
 
@@ -768,7 +766,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject37.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiOverlayProfile"))
+            if (!Util.isObject("ToolsGuiOverlayProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiOverlayProfile )        oc_Newobject00037
 
@@ -785,7 +783,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject00037.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiSliderProfile"))
+            if (!Util.isObject("ToolsGuiSliderProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiSliderProfile )        oc_Newobject00038
 
@@ -798,7 +796,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject00038.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiSliderBoxProfile"))
+            if (!Util.isObject("ToolsGuiSliderBoxProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiSliderBoxProfile )        oc_Newobject00039
 
@@ -811,7 +809,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject00039.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopupMenuItemBorder"))
+            if (!Util.isObject("ToolsGuiPopupMenuItemBorder"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopupMenuItemBorder )        oc_Newobject38
 
@@ -842,7 +840,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject38.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopUpMenuEditProfile"))
+            if (!Util.isObject("ToolsGuiPopUpMenuEditProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopUpMenuEditProfile )        oc_Newobject39
 
@@ -873,7 +871,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject39.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopUpMenuDefault"))
+            if (!Util.isObject("ToolsGuiPopUpMenuDefault"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopUpMenuDefault )        oc_Newobject40
 
@@ -906,7 +904,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject40.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopupMenuItemBorder"))
+            if (!Util.isObject("ToolsGuiPopupMenuItemBorder"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopupMenuItemBorder : ToolsGuiButtonProfile )        oc_Newobject41
 
@@ -929,7 +927,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject41.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopUpMenuTabProfile"))
+            if (!Util.isObject("ToolsGuiPopUpMenuTabProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopUpMenuTabProfile : ToolsGuiDefaultProfile )        oc_Newobject42
 
@@ -962,7 +960,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject42.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopUpMenuProfile"))
+            if (!Util.isObject("ToolsGuiPopUpMenuProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopUpMenuProfile : ToolsGuiPopUpMenuDefault )        oc_Newobject43
 
@@ -996,7 +994,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject43.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopUpMenuTabProfile"))
+            if (!Util.isObject("ToolsGuiPopUpMenuTabProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopUpMenuTabProfile : ToolsGuiPopUpMenuDefault )        oc_Newobject44
 
@@ -1018,7 +1016,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject44.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiPopUpMenuEditProfile"))
+            if (!Util.isObject("ToolsGuiPopUpMenuEditProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiPopUpMenuEditProfile : ToolsGuiPopUpMenuDefault )        oc_Newobject45
 
@@ -1036,7 +1034,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject45.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiListBoxProfile"))
+            if (!Util.isObject("ToolsGuiListBoxProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiListBoxProfile )        oc_Newobject46
 
@@ -1050,7 +1048,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject46.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTabBookProfile"))
+            if (!Util.isObject("ToolsGuiTabBookProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTabBookProfile )        oc_Newobject47
 
@@ -1082,7 +1080,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject47.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTabBookNoBitmapProfile"))
+            if (!Util.isObject("ToolsGuiTabBookNoBitmapProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTabBookNoBitmapProfile : ToolsGuiTabBookProfile )        oc_Newobject48
 
@@ -1095,7 +1093,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject48.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTabPageProfile"))
+            if (!Util.isObject("ToolsGuiTabPageProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTabPageProfile : ToolsGuiDefaultProfile )        oc_Newobject49
 
@@ -1113,7 +1111,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject49.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTreeViewProfile"))
+            if (!Util.isObject("ToolsGuiTreeViewProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTreeViewProfile )        oc_Newobject50
 
@@ -1145,7 +1143,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject50.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiTextPadProfile"))
+            if (!Util.isObject("ToolsGuiTextPadProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiTextPadProfile )        oc_Newobject51
 
@@ -1164,7 +1162,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Gui
                 oc_Newobject51.Create();
                 }
 
-            if (!omni.Util.isObject("ToolsGuiFormProfile"))
+            if (!Util.isObject("ToolsGuiFormProfile"))
                 {
                 #region GuiControlProfile ( ToolsGuiFormProfile : ToolsGuiTextProfile )        oc_Newobject52
 

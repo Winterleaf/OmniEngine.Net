@@ -40,8 +40,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class commonMaterialData
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void intialize()
         {
             //-----------------------------------------------------------------------------
@@ -50,11 +48,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // handle the "|" operation for combining them together
             // ie. Scroll | Wave does not work.
             //-----------------------------------------------------------------------------
-            omni.iGlobal["$scroll"] = 1;
-            omni.iGlobal["$rotate"] = 2;
-            omni.iGlobal["$wave"] = 4;
-            omni.iGlobal["$scale"] = 8;
-            omni.iGlobal["$sequence"] = 16;
+            pInvokes.iGlobal["$scroll"] = 1;
+            pInvokes.iGlobal["$rotate"] = 2;
+            pInvokes.iGlobal["$wave"] = 4;
+            pInvokes.iGlobal["$scale"] = 8;
+            pInvokes.iGlobal["$sequence"] = 16;
 
             // Common stateblock definitions
             ObjectCreator oc = new ObjectCreator("GFXSamplerStateData", "SamplerClampLinear");

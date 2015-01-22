@@ -5,11 +5,11 @@
 // 
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
 // 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use pInvokes. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
 // 
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
 // 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE pInvokes. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
 // 
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 
@@ -40,35 +40,33 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class lighting
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true)]
         public static void initLightingSystems()
         {
-            omni.console.print("\n--------- Initializing Lighting Systems ---------");
+            pInvokes.console.print("\n--------- Initializing Lighting Systems ---------");
 
-            omni.console.print("\n--------- Initializing Advanced Lighting ---------");
+            pInvokes.console.print("\n--------- Initializing Advanced Lighting ---------");
             Lighting.advanced.init.initialize();
 
-            omni.console.print("\n--------- Initializing Basic Lighting ---------");
+            pInvokes.console.print("\n--------- Initializing Basic Lighting ---------");
             Lighting.basic.init.initialize();
 
-            omni.console.print("\n--------- Initializing ShadowMaps Lighting ---------");
+            pInvokes.console.print("\n--------- Initializing ShadowMaps Lighting ---------");
             Lighting.shadowMaps.init.initialize();
 
-            omni.console.print("\n--------- Finished Initializing Advanced Lighting ---------");
+            pInvokes.console.print("\n--------- Finished Initializing Advanced Lighting ---------");
 
             // Try the perfered one first.
-            bool success = omni.Util.setLightManager(omni.sGlobal["$pref::lightManager"]);
+            bool success = pInvokes.Util.setLightManager(pInvokes.sGlobal["$pref::lightManager"]);
             if (!success)
                 {
                 // The perfered one fell thru... so go thru the default
                 // light managers until we find one that works.
-                int lmCount = omni.Util.getFieldCount(omni.sGlobal["$lightManager::defaults"]);
+                int lmCount = pInvokes.Util.getFieldCount(pInvokes.sGlobal["$lightManager::defaults"]);
                 for (int i = 0; i < lmCount; i++)
                     {
-                    string lmName = omni.Util.getField(omni.sGlobal["$lightManager::defaults"], i);
-                    success = omni.Util.setLightManager(lmName);
+                    string lmName = pInvokes.Util.getField(pInvokes.sGlobal["$lightManager::defaults"], i);
+                    success = pInvokes.Util.setLightManager(lmName);
                     if (success)
                         break;
                     }
@@ -81,26 +79,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                 //t3d.Util.quitWithErrorMessage("Failed to set a light manager!");
                 Main.quitWithErrorMessage("Failed to set a light manager!");
                 }
-            omni.console.print("\n");
+            pInvokes.console.print("\n");
         }
 
         [ConsoleInteraction(true)]
         public static void onLightManagerActivate(string lmName)
         {
-            omni.sGlobal["$pref::lightManager"] = lmName;
-            omni.console.print("Using " + lmName);
+            pInvokes.sGlobal["$pref::lightManager"] = lmName;
+            pInvokes.console.print("Using " + lmName);
 
             string activateNewFn = "onActivate" + lmName.Split(' ')[0] + "LM";
-            if (omni.console.isFunction(activateNewFn))
-                omni.console.Call(activateNewFn);
+            if (pInvokes.console.isFunction(activateNewFn))
+                pInvokes.console.Call(activateNewFn);
         }
 
         [ConsoleInteraction(true)]
         public static void onLightManagerDeactivate(string lmName)
         {
             string deactivateOldfn = "onDeactivate" + lmName.Split(' ')[0] + "LM";
-            if (omni.console.isFunction(deactivateOldfn))
-                omni.console.Call(deactivateOldfn);
+            if (pInvokes.console.isFunction(deactivateOldfn))
+                pInvokes.console.Call(deactivateOldfn);
         }
     }
 }

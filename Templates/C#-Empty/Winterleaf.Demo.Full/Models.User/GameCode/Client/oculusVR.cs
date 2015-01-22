@@ -5,11 +5,11 @@
 // 
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
 // 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use pInvokes. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
 // 
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
 // 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE pInvokes. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
 // 
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 
@@ -43,16 +43,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class oculusVR
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         // Only load these functions if an Oculus VR device is present
         [ConsoleInteraction(true)]
         public static string oculusSensorMetricsCallback()
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return "";
 
-            return "  | OVR Sensor 0 |" + "  rot: " + omni.Util._call("getOVRSensorEulerRotation", "0");
+            return "  | OVR Sensor 0 |" + "  rot: " + pInvokes.Util._call("getOVRSensorEulerRotation", "0");
         }
 
         // Call this function from createCanvas() to have the Canvas attach itself
@@ -63,9 +61,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void pointCanvasToOculusVRDisplay()
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return;
-            omni.sGlobal["$pref::Video::displayOutputDevice"] = omni.Util._call("getOVRHMDDisplayDeviceName", "0");
+            pInvokes.sGlobal["$pref::Video::displayOutputDevice"] = pInvokes.Util._call("getOVRHMDDisplayDeviceName", "0");
         }
 
         // Call this function from GameConnection::initialControlSet() just before
@@ -81,9 +79,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void enableOculusVRDisplay(GameConnection gameConnection, bool trueStereoRendering)
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return;
-            omni.Util._call("setOVRHMDAsGameConnectionDisplayDevice", gameConnection);
+            pInvokes.Util._call("setOVRHMDAsGameConnectionDisplayDevice", gameConnection);
             ((GameConnection) "PlayGui")["renderStyle"] = "stereo side by side";
 
             if (trueStereoRendering)
@@ -92,7 +90,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                 ((PostEffect) "OVRBarrelDistortionMonoPostFX")["isEnabled"] = "true";
 
             // Reset all sensors
-            omni.Util._call("ovrResetAllSensors");
+            pInvokes.Util._call("ovrResetAllSensors");
         }
 
         // Call this function when ever you wish to turn off the stereo rendering
@@ -100,7 +98,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void disableOculusVRDisplay(GameConnection gameConnection)
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return;
             gameConnection.clearDisplayDevice();
             ((GameConnection) "PlayGui")["renderStyle"] = "standard";
@@ -115,9 +113,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void setStandardOculusVRControlScheme(GameConnection gameConnection)
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return;
-            gameConnection.setControlSchemeParameters(true, true, omni.Util._call("isOVRHMDSimulated", "0").AsBool());
+            gameConnection.setControlSchemeParameters(true, true, pInvokes.Util._call("isOVRHMDSimulated", "0").AsBool());
         }
 
         //-----------------------------------------------------------------------------
@@ -130,9 +128,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void setVideoModeForOculusVRDisplay(string fullscreen)
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return;
-            Point2I res = new Point2I(omni.Util._call("getOVRHMDResolution", "0"));
+            Point2I res = new Point2I(pInvokes.Util._call("getOVRHMDResolution", "0"));
             ((GuiCanvas) "canvas").setVideoMode((uint) res.x, (uint) res.y, fullscreen.AsBool(), 32, 4);
         }
 
@@ -141,9 +139,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void resetOculusVRSensors()
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!pInvokes.Util.isFunction("isOculusVRDeviceActive"))
                 return;
-            omni.Util._call("ovrResetAllSensors");
+            pInvokes.Util._call("ovrResetAllSensors");
         }
     }
 }

@@ -43,8 +43,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class postFX
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             SingletonCreator ts = new SingletonCreator("GFXStateBlockData", "PFX_DefaultStateBlock");
@@ -92,7 +90,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
             postFXManager.createGui();
 
-            omni.Util.exec("core/scripts/client/postFx/default.postfxpreset.cs", false, false);
+            pInvokes.Util.exec("core/scripts/client/postFx/default.postfxpreset.cs", false, false);
         }
 
         public static void SetPostFXToDefault()

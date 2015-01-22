@@ -49,7 +49,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
 {
     public class commands
     {
-        private static readonly pInvokes omni = new pInvokes();
         //-----------------------------------------------------------------------------
         // Misc. server commands avialable to clients
         //-----------------------------------------------------------------------------
@@ -62,7 +61,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         {
             EditorGui EditorGui = "EditorGui";
             if (EditorGui.isObject())
-                //omni.console.Call("EditorGui", "syncCameraGui");
+                //pInvokes.console.Call("EditorGui", "syncCameraGui");
                 EditorGui.syncCameraGui();
         }
 
@@ -111,7 +110,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
             ((Player) client["player"]).setVelocity(new Point3F("0 0 0"));
             client.setControlObject(client["player"]);
             client.setFirstPerson(true);
-            omni.bGlobal["$isFirstPersonVar"] = true;
+            pInvokes.bGlobal["$isFirstPersonVar"] = true;
             syncEditorGui();
         }
 
@@ -224,19 +223,19 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Server
         [ConsoleInteraction(true)]
         public static void serverCmdSAD(GameConnection client, string password)
         {
-            if (password == string.Empty || password != omni.sGlobal["$Pref::Server::AdminPassword"])
+            if (password == string.Empty || password != pInvokes.sGlobal["$Pref::Server::AdminPassword"])
                 return;
             client["isAdmin"] = true.AsString();
             client["isSuperAdmin"] = true.AsString();
 
-            string name = omni.console.getTaggedString(client["playerName"]);
+            string name = pInvokes.console.getTaggedString(client["playerName"]);
         }
 
         [ConsoleInteraction(true)]
         public static void serverCmdSADSetPassword(GameConnection client, string password)
         {
             if (client["isSuperAdmin"].AsBool())
-                omni.sGlobal["$Pref::Server::AdminPassword"] = password;
+                pInvokes.sGlobal["$Pref::Server::AdminPassword"] = password;
         }
 
         //----------------------------------------------------------------------------

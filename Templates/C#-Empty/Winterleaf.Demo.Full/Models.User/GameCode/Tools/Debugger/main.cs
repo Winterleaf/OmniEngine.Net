@@ -44,8 +44,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger
 {
     public class main
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction]
         public static void initializeDebugger()
         {
@@ -74,8 +72,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger
             new ObjectCreator("TCPObject", "TCPDebugger", typeof (gui.CodeBehind.Debugger.TCPDebugger)).Create();
 
             // Used to get unique IDs for breakpoints and watch expressions.
-            omni.iGlobal["$DbgBreakId"] = 0;
-            omni.iGlobal["$DbgWatchSeq"] = 1;
+            pInvokes.iGlobal["$DbgBreakId"] = 0;
+            pInvokes.iGlobal["$DbgWatchSeq"] = 1;
 
             // Set up the GUI.
             gui.CodeBehind.Debugger.DebuggerConsoleView DebuggerConsoleView = "DebuggerConsoleView";

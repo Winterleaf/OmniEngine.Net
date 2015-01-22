@@ -58,7 +58,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
         [ConsoleInteraction]
         public static void LoadTerrainEditorTextureFileSpec()
         {
-            omni.sGlobal["$TerrainEditor::TextureFileSpec"] = "Image Files (*.png, *.jpg, *.dds)|*.png;*.jpg;*.dds|All Files (*.*)|*.*";
+            sGlobal["$TerrainEditor::TextureFileSpec"] = "Image Files (*.png, *.jpg, *.dds)|*.png;*.jpg;*.dds|All Files (*.*)|*.*";
         }
 
         [ConsoleInteraction]

@@ -56,13 +56,13 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
 
         public static void initialize()
         {
-            omni.Util.eval(@"function disconnect(){_disconnect();}");
+            Util.eval(@"function disconnect(){_disconnect();}");
         }
 
         [ConsoleInteraction(true)]
         public static void handleConnectionErrorMessage(string msgType, string msgString, string msgError)
         {
-            omni.console.SetVar("$ServerConnectionErrorMessage", msgError);
+            console.SetVar("$ServerConnectionErrorMessage", msgError);
         }
 
         [ConsoleInteraction(true)]
@@ -201,7 +201,7 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
         {
             // We need to stop the client side simulation
             // else physics resources will not cleanup properly.
-            omni.Util.physicsStopSimulation("client");
+            Util.physicsStopSimulation("client");
 
             // Before we destroy the client physics world
             // make sure all ServerConnection objects are deleted.
@@ -221,13 +221,13 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
         public static void disconnectedCleanup()
         {
             // End mission, if it's running.
-            if (omni.console.GetVarBool("$Client::missionRunning"))
+            if (console.GetVarBool("$Client::missionRunning"))
                 mission.clientEndMission();
 
             // Disable mission lighting if it's going, this is here
             // in case we're disconnected while the mission is loading.
-            omni.bGlobal["$lightingMission"] = false;
-            omni.bGlobal["$sceneLighting::terminateLighting"] = true;
+            bGlobal["$lightingMission"] = false;
+            bGlobal["$sceneLighting::terminateLighting"] = true;
 
             // Clear misc script stuff
             ((MessageVector) "HudMessageVector").clear();
@@ -236,10 +236,10 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
             centerPrint.clientCmdClearBottomPrint();
             centerPrint.clientCmdClearCenterPrint();
 
-            if (omni.console.isObject("MainMenuGui"))
+            if (console.isObject("MainMenuGui"))
                 ((GuiCanvas) "Canvas").setContent("MainMenuGui");
 
-            omni.Util.physicsDestroyWorld("client");
+            Util.physicsDestroyWorld("client");
         }
     }
 }

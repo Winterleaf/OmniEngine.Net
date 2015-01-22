@@ -51,7 +51,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
 
         public static void initialize()
         {
-            if (!omni.Util.isFunction("isOculusVRDeviceActive"))
+            if (!Util.isFunction("isOculusVRDeviceActive"))
                 return;
 
             SingletonCreator ts = new SingletonCreator("ShaderData", "OVRMonoToStereoShader");
@@ -138,7 +138,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
 
         public override void setShaderConsts()
         {
-            string xOffsets = omni.console.Call("getOVRHMDEyeXOffsets", new string[] {"0"});
+            string xOffsets = console.Call("getOVRHMDEyeXOffsets", new string[] {"0"});
             setShaderConst("$LensXOffsets", xOffsets);
         }
     }

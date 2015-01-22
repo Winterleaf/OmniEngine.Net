@@ -60,13 +60,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             //-----------------------------------------------------------------------------
 
             // chat hud sizes in lines
-            omni.iGlobal["$outerChatLenY[1]"] = 4;
-            omni.iGlobal["$outerChatLenY[2]"] = 9;
-            omni.iGlobal["$outerChatLenY[3]"] = 13;
-            omni.iGlobal["$LastHudTarget"] = 0;
+            iGlobal["$outerChatLenY[1]"] = 4;
+            iGlobal["$outerChatLenY[2]"] = 9;
+            iGlobal["$outerChatLenY[3]"] = 13;
+            iGlobal["$LastHudTarget"] = 0;
 
             // Only play sound files that are <= 5000ms in length.
-            omni.iGlobal["$MaxMessageWavLength"] = 5000;
+            iGlobal["$MaxMessageWavLength"] = 5000;
             //new MessageVector(HudMessageVector);
             ObjectCreator oc = new ObjectCreator("MessageVector", "HudMessageVector");
             oc.Create();
@@ -186,7 +186,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         // Returns starting position of wave file indicator.
         public static int PlayMessageSound(string message, string voice, string pitch)
         {
-            int wavstart = omni.Util.strstr(message, "~w");
+            int wavstart = Util.strstr(message, "~w");
             if (wavstart == -1)
                 return -1;
 
@@ -200,36 +200,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // would be nice to support checking in each mod path if we
             // have multiple mods active.
 
-            if (omni.Util.strstr(wavFile, ".wav") != wavFile.Length - 4)
+            if (Util.strstr(wavFile, ".wav") != wavFile.Length - 4)
                 wavFile = wavFile + ".wav";
 
-            wavSource = omni.Util._expandFilename(wavFile);
+            wavSource = Util._expandFilename(wavFile);
 
             if (wavSource.isObject())
                 {
                     {
-                    int wavLengthMs = omni.console.Call(wavSource, "getDuration").AsInt()*pitch.AsInt();
+                    int wavLengthMs = console.Call(wavSource, "getDuration").AsInt()*pitch.AsInt();
 
                     if (wavLengthMs == 0)
-                        omni.console.error(string.Format("** WAV file \"{0}\" is nonexistent or sound is zero-length **", wavFile));
-                    else if (wavLengthMs <= omni.console.GetVarInt("$MaxMessageWavLength"))
+                        console.error(string.Format("** WAV file \"{0}\" is nonexistent or sound is zero-length **", wavFile));
+                    else if (wavLengthMs <= console.GetVarInt("$MaxMessageWavLength"))
                         {
-                        if (omni.console.isObject("$ClientChatHandle[0]"))
-                            omni.sGlobal["$ClientChatHandle[0]"].delete();
+                        if (console.isObject("$ClientChatHandle[0]"))
+                            sGlobal["$ClientChatHandle[0]"].delete();
 
-                        omni.console.SetVar("$ClientChatHandle[0]", wavSource);
+                        console.SetVar("$ClientChatHandle[0]", wavSource);
 
                         if (pitch.AsInt() != 1)
-                            omni.console.Call("$ClientChatHandle[0]", "setPitch", new[] {pitch});
+                            console.Call("$ClientChatHandle[0]", "setPitch", new[] {pitch});
 
-                        omni.console.Call("$ClientChatHandle[0]", "play");
+                        console.Call("$ClientChatHandle[0]", "play");
                         }
                     else
-                        omni.console.error(string.Format("** WAV file \"{0}\" is too long **", wavFile));
+                        console.error(string.Format("** WAV file \"{0}\" is too long **", wavFile));
                     }
                 }
             else
-                omni.console.error(string.Format("** Unable to load WAV file : \"{0}\" **", wavFile));
+                console.error(string.Format("** Unable to load WAV file : \"{0}\" **", wavFile));
             return wavstart;
         }
 

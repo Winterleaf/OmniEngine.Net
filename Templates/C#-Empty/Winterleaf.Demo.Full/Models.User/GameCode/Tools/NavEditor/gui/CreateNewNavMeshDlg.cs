@@ -50,8 +50,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
     [TypeConverter(typeof (TypeConverterGeneric<CreateNewNavMeshDlg>))]
     public class CreateNewNavMeshDlg : GuiControl
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             ObjectCreator oc_Newobject00011;
@@ -432,7 +430,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                 string wbox = "0 0 0 0 0 0";
                 if (cls == "SimGroup" || cls == "SimSet" || cls == "Path")
                     wbox = MissionBoundsExtents((SimSet) obj);
-                else if (obj.GetType() == typeof (SceneObject) && ((SceneObject) obj).getType() == omni.iGlobal["$TypeMasks::StaticObjectType"] && !(((SceneObject) obj).getType() == omni.iGlobal["$TypeMasks::EnvironmentObjectType"]))
+                else if (obj.GetType() == typeof (SceneObject) && ((SceneObject) obj).getType() == iGlobal["$TypeMasks::StaticObjectType"] && !(((SceneObject) obj).getType() == iGlobal["$TypeMasks::EnvironmentObjectType"]))
                     wbox = ((SceneObject) obj).getWorldBox().AsString();
                 else
                     continue;
@@ -440,14 +438,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.NavEditor.gui
                 // Update min point.
                 for (int j = 0; j < 3; j++)
                     {
-                    if (omni.Util.getWord(box, j).AsInt() > omni.Util.getWord(wbox, j).AsInt())
-                        box = omni.Util.setWord(box, j, omni.Util.getWord(wbox, j));
+                    if (Util.getWord(box, j).AsInt() > Util.getWord(wbox, j).AsInt())
+                        box = Util.setWord(box, j, Util.getWord(wbox, j));
                     }
                 // Update max point.
                 for (int j = 3; j < 6; j++)
                     {
-                    if (omni.Util.getWord(box, j).AsInt() < omni.Util.getWord(wbox, j).AsInt())
-                        box = omni.Util.setWord(box, j, omni.Util.getWord(wbox, j));
+                    if (Util.getWord(box, j).AsInt() < Util.getWord(wbox, j).AsInt())
+                        box = Util.setWord(box, j, Util.getWord(wbox, j));
                     }
                 }
             return box;

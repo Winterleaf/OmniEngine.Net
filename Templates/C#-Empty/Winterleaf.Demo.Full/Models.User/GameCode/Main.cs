@@ -59,8 +59,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
     /// 
     public static class Main
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         /// <summary>
         /// Main entry point into the scripts.
         /// MANDITORY FUNCTION
@@ -77,51 +75,51 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             // 
 
             // Set the name of our application
-            omni.sGlobal["$appName"] = "Full";
+            pInvokes.sGlobal["$appName"] = "Full";
             // The directory it is run from
-            omni.sGlobal["$defaultGame"] = "scripts";
+            pInvokes.sGlobal["$defaultGame"] = "scripts";
             // Set profile directory
-            omni.sGlobal["$Pref::Video::ProfilePath"] = "core/profile";
+            pInvokes.sGlobal["$Pref::Video::ProfilePath"] = "core/profile";
 
-            omni.bGlobal["$displayHelp"] = false;
+            pInvokes.bGlobal["$displayHelp"] = false;
 
-            omni.bGlobal["$isDedicated"] = false;
+            pInvokes.bGlobal["$isDedicated"] = false;
 
-            omni.iGlobal["$dirCount"] = 2;
+            pInvokes.iGlobal["$dirCount"] = 2;
 
-            omni.sGlobal["$userDirs"] = omni.sGlobal["$defaultGame"] + ";art;levels";
+            pInvokes.sGlobal["$userDirs"] = pInvokes.sGlobal["$defaultGame"] + ";art;levels";
 
             mainParseArgs();
 
             // load tools scripts if we're a tool build
-            //if (omni.Util.isToolBuild() && !omni.bGlobal["$isDedicated"])
-            //    omni.sGlobal["$userDirs"] = "tools;" + omni.sGlobal["$userDirs"];
+            //if (pInvokes.Util.isToolBuild() && !pInvokes.bGlobal["$isDedicated"])
+            //    pInvokes.sGlobal["$userDirs"] = "tools;" + pInvokes.sGlobal["$userDirs"];
 
             // Parse the executable arguments with the standard
             // function from core/main.cs
 
-            if (omni.iGlobal["$dirCount"] == 0)
+            if (pInvokes.iGlobal["$dirCount"] == 0)
                 {
-                omni.sGlobal["$userDirs"] = omni.sGlobal["$defaultGame"];
-                omni.iGlobal["$dirCount"] = 1;
+                pInvokes.sGlobal["$userDirs"] = pInvokes.sGlobal["$defaultGame"];
+                pInvokes.iGlobal["$dirCount"] = 1;
                 }
 
             //-----------------------------------------------------------------------------
             // Display a splash window immediately to improve app responsiveness before
             // engine is initialized and main window created
 
-            if (!omni.bGlobal["$isDedicated"])
-                omni.Util.displaySplashWindow("art/gui/omni.bmp");
+            if (!pInvokes.bGlobal["$isDedicated"])
+                pInvokes.Util.displaySplashWindow("art/gui/pInvokes.bmp");
 
-            if (!omni.bGlobal["$logModeSpecified"])
+            if (!pInvokes.bGlobal["$logModeSpecified"])
                 {
-                if (omni.sGlobal["$platform"] != "xbox" && omni.sGlobal["$platform"] != "xenon")
-                    omni.Util.setLogMode(6);
+                if (pInvokes.sGlobal["$platform"] != "xbox" && pInvokes.sGlobal["$platform"] != "xenon")
+                    pInvokes.Util.setLogMode(6);
                 }
 
-            omni.Util.nextToken("$userDirs", "currentMod", ";");
+            pInvokes.Util.nextToken("$userDirs", "currentMod", ";");
 
-            omni.console.print("--------- Loading DIRS ---------");
+            pInvokes.console.print("--------- Loading DIRS ---------");
 
             /*Ok, so here is the deal.  Until the tools are converted to a OMNI toolset we need to allow support of
              * packages in some way.  Since packages require a base function and then override it we needed to
@@ -136,7 +134,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
              * 
              * Pretty slick....
              */
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
                 function onStart()
                     {
                     onMainStart();
@@ -157,31 +155,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             GameConnection.initialize();
             SetConstantsForReferencingVideoResolutionPreference();
 
-            loadDirs(omni.sGlobal["$userDirs"]);
+            loadDirs(pInvokes.sGlobal["$userDirs"]);
 
             //-----> Load tools here
-            if (omni.Util.isToolBuild() && !omni.bGlobal["$isDedicated"])
-                //omni.sGlobal["$userDirs"] = "tools;" + omni.sGlobal["$userDirs"];
+            if (pInvokes.Util.isToolBuild() && !pInvokes.bGlobal["$isDedicated"])
+                //pInvokes.sGlobal["$userDirs"] = "tools;" + pInvokes.sGlobal["$userDirs"];
 
                 Tools.main.initialize();
 
             //We don't need this no more, no more scripts!
-            // if (omni.iGlobal["$dirCount"] == 0)
+            // if (pInvokes.iGlobal["$dirCount"] == 0)
             // {
-            // omni.Util._call("enableWinConsole", "true");
-            // omni.console.error("Error: Unable to load any specified directories");
+            // pInvokes.Util._call("enableWinConsole", "true");
+            // pInvokes.console.error("Error: Unable to load any specified directories");
             //Main.Quit();
             //t3d.Util.quit();
             //}
 
             // Parse the command line arguments
-            omni.console.print("--------- Parsing Arguments ---------");
+            pInvokes.console.print("--------- Parsing Arguments ---------");
 
             mainParseArgs();
 
-            if (omni.bGlobal["$displayHelp"])
+            if (pInvokes.bGlobal["$displayHelp"])
                 {
-                omni.console.Call("enableWinConsole", new[] {"true"});
+                pInvokes.console.Call("enableWinConsole", new[] {"true"});
                 displayHelp();
                 //t3d.Util.quit();
                 Quit();
@@ -189,31 +187,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             else
                 {
                 //due to the Tools, this must be called through the console.
-                omni.console.Call("onStart");
+                pInvokes.console.Call("onStart");
                 //onStart();
-                omni.console.print("Engine initialized...");
+                pInvokes.console.print("Engine initialized...");
                 GuiCanvas canvas1 = "Canvas";
-                if (!omni.bGlobal["$isDedicated"])
+                if (!pInvokes.bGlobal["$isDedicated"])
                     {
-                    omni.Util.closeSplashWindow();
+                    pInvokes.Util.closeSplashWindow();
                     canvas1.showWindow();
                     }
 
-                if (omni.sGlobal["$platform"] == "xenon")
+                if (pInvokes.sGlobal["$platform"] == "xenon")
                     {
                     const string mission = "levels//Empty Terrain.mis";
-                    omni.console.print("Xbox360 Autoloading level: '" + mission + "'");
-                    string serverType = omni.bGlobal["$pref::HostMultiPlayer"] ? "MultiPlayer" : "SinglePlayer";
+                    pInvokes.console.print("Xbox360 Autoloading level: '" + mission + "'");
+                    string serverType = pInvokes.bGlobal["$pref::HostMultiPlayer"] ? "MultiPlayer" : "SinglePlayer";
                     server.createAndConnectToLocalServer(serverType, mission);
                     }
                 }
 
-            for (int i = 1; i < omni.iGlobal["$Game::argc"]; i++)
+            for (int i = 1; i < pInvokes.iGlobal["$Game::argc"]; i++)
                 {
-                if (!omni.bGlobal["$argUsed[" + i + "]"])
+                if (!pInvokes.bGlobal["$argUsed[" + i + "]"])
                     {
-                    if (omni.sGlobal["$Game::argv[" + i + "]"].Trim() != "")
-                        omni.console.error("Error: Unknown command line argument: " + omni.sGlobal["$Game::argv[" + i + "]"]);
+                    if (pInvokes.sGlobal["$Game::argv[" + i + "]"].Trim() != "")
+                        pInvokes.console.error("Error: Unknown command line argument: " + pInvokes.sGlobal["$Game::argv[" + i + "]"]);
                     }
                 }
 
@@ -222,12 +220,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             
 
 
-            if (omni.bGlobal["$startWorldEditor"])
+            if (pInvokes.bGlobal["$startWorldEditor"])
                 {
                 canvas.setCursor("DefaultCursor");
                 canvas.setContent("EditorChooseLevelGui");
                 }
-            else if (omni.bGlobal["$startGUIEditor"])
+            else if (pInvokes.bGlobal["$startGUIEditor"])
                 {
                 canvas.setCursor("DefaultCursor");
                 canvas.setContent("EditorChooseGUI");
@@ -262,34 +260,34 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             pushBack("$useDirs", dir, ";");
             if (!isScriptFile(dir + "/main.cs"))
                 return;
-            omni.console.print("Calling " + dir + "/main.cs");
-            omni.Util.exec(dir + "/main.cs", false, false);
+            pInvokes.console.print("Calling " + dir + "/main.cs");
+            pInvokes.Util.exec(dir + "/main.cs", false, false);
         }
 
         [ConsoleInteraction(true)]
         public static void onMainExit()
         {
-            if (omni.bGlobal["$Server::Dedicated"])
+            if (pInvokes.bGlobal["$Server::Dedicated"])
                 server.destroyServer();
             else
-                omni.console.Call("disconnect");
+                pInvokes.console.Call("disconnect");
 
-            omni.Util.physicsDestroy();
+            pInvokes.Util.physicsDestroy();
 
-            omni.console.print("Exporting client prefs");
+            pInvokes.console.print("Exporting client prefs");
 
             //Todo Settings - Switch this back when fixed.
-            omni.Util.export("$pref::*", "prefs.client.cs", false);
-            //omni.Util.exportToSettings("$pref::*", "scripts/client/prefs.cs", false);
+            pInvokes.Util.export("$pref::*", "prefs.client.cs", false);
+            //pInvokes.Util.exportToSettings("$pref::*", "scripts/client/prefs.cs", false);
             //            t3d.Util.exportToSettings("$Pref::*", "scripts/client/prefs1.cs", true);
 
-            omni.console.print("Exporting server prefs");
+            pInvokes.console.print("Exporting server prefs");
 
             //Todo Settings - Switch this back when fixed.
-            omni.Util.export("$Pref::Server::*", "prefs.server.cs", false);
-            //omni.Util.exportToSettings("$Pref::Server::*", "scripts/server/prefs.cs", false);
+            pInvokes.Util.export("$Pref::Server::*", "prefs.server.cs", false);
+            //pInvokes.Util.exportToSettings("$Pref::Server::*", "scripts/server/prefs.cs", false);
 
-            omni.console.Call_Classname("BanList", "Export", new[] {"prefs.banlist.cs"});
+            pInvokes.console.Call_Classname("BanList", "Export", new[] {"prefs.banlist.cs"});
 
             core.shutdownCore();
 
@@ -299,7 +297,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
         [ConsoleInteraction(true)]
         public static bool isScriptFile(string path)
         {
-            if (omni.Util.isFile(path + ".dso") || omni.Util.isFile(path))
+            if (pInvokes.Util.isFile(path + ".dso") || pInvokes.Util.isFile(path))
                 return true;
             return false;
         }
@@ -309,16 +307,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             string[] directorypaths = dirPath.Split(';');
             for (int i = directorypaths.Count() - 1; i >= 0; i--)
                 {
-                if (omni.Util.exec(directorypaths[i] + "/main.cs", false, false))
+                if (pInvokes.Util.exec(directorypaths[i] + "/main.cs", false, false))
                     continue;
-                omni.console.error("Error: Unable to find specified directory: " + directorypaths[i]);
-                omni.iGlobal["$dirCount"]--;
+                pInvokes.console.error("Error: Unable to find specified directory: " + directorypaths[i]);
+                pInvokes.iGlobal["$dirCount"]--;
                 }
         }
 
         public static void displayHelp()
         {
-            omni.console.error("Torque Demo command line options:\n" + "  -log <logmode>         Logging behavior; see main.cs comments for details\n" + "  -game <game_name>      Reset list of mods to only contain <game_name>\n" + "  <game_name>            Works like the -game argument\n" + "  -dir <dir_name>        Add <dir_name> to list of directories\n" + "  -console               Open a separate console\n" + "  -show <shape>          Deprecated\n" + "  -jSave  <file_name>    Record a journal\n" + "  -jPlay  <file_name>    Play back a journal\n" + "  -jDebug <file_name>    Play back a journal and issue an int3 at the end\n" + "  -help                  Display this help message\n");
+            pInvokes.console.error("Torque Demo command line options:\n" + "  -log <logmode>         Logging behavior; see main.cs comments for details\n" + "  -game <game_name>      Reset list of mods to only contain <game_name>\n" + "  <game_name>            Works like the -game argument\n" + "  -dir <dir_name>        Add <dir_name> to list of directories\n" + "  -console               Open a separate console\n" + "  -show <shape>          Deprecated\n" + "  -jSave  <file_name>    Record a journal\n" + "  -jPlay  <file_name>    Play back a journal\n" + "  -jDebug <file_name>    Play back a journal and issue an int3 at the end\n" + "  -help                  Display this help message\n");
         }
 
         public static string pushFront(string list, string token, string delim)
@@ -337,284 +335,284 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
 
         public static string popFront(string list, string delim)
         {
-            return omni.Util.nextToken(list, "", delim);
+            return pInvokes.Util.nextToken(list, "", delim);
         }
 
         [ConsoleInteraction(true)]
         public static void mainParseArgs()
         {
-            for (int i = 1; i < omni.iGlobal["$Game::argc"]; i++)
+            for (int i = 1; i < pInvokes.iGlobal["$Game::argc"]; i++)
                 {
-                string arg = omni.sGlobal["$Game::argv[" + i + "]"];
-                string nextArg = omni.sGlobal["$Game::argv[" + (i + 1) + "]"];
-                bool hasNextarg = omni.iGlobal["$Game::argc"] - i > 1;
-                omni.bGlobal["$logModeSpecified"] = false;
+                string arg = pInvokes.sGlobal["$Game::argv[" + i + "]"];
+                string nextArg = pInvokes.sGlobal["$Game::argv[" + (i + 1) + "]"];
+                bool hasNextarg = pInvokes.iGlobal["$Game::argc"] - i > 1;
+                pInvokes.bGlobal["$logModeSpecified"] = false;
                 Console.WriteLine(arg);
                 switch (arg)
                     {
                         case "-log":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
                                 if (nextArg.AsInt() != 0)
                                     nextArg += 4;
-                                omni.Util.setLogMode(nextArg.AsInt());
-                                omni.bGlobal["$logModeSpecified"] = true;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.Util.setLogMode(nextArg.AsInt());
+                                pInvokes.bGlobal["$logModeSpecified"] = true;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -log <Mode: 0,1,2>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -log <Mode: 0,1,2>");
                             break;
                         case "-console":
-                            omni.console.Call("enableWinConsole", new string[] {"true"});
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.console.Call("enableWinConsole", new string[] {"true"});
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-jSave":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.Util._echo("Saving event log to journal: '" + nextArg + ".");
-                                omni.Util.saveJournal(nextArg);
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.Util._echo("Saving event log to journal: '" + nextArg + ".");
+                                pInvokes.Util.saveJournal(nextArg);
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -jSave <journal_name>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -jSave <journal_name>");
                             break;
                         case "-jPlay":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.Util.playJournal(nextArg);
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.Util.playJournal(nextArg);
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -jPlay <journal_name>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -jPlay <journal_name>");
                             break;
                         case "-jPlayToVideo":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$VideoCapture::journalName"] = nextArg;
-                                omni.bGlobal["$VideoCapture::captureFromJournal"] = true;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$VideoCapture::journalName"] = nextArg;
+                                pInvokes.bGlobal["$VideoCapture::captureFromJournal"] = true;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -jPlayToVideo <journal_name>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -jPlayToVideo <journal_name>");
                             break;
 
                         case "-vidCapFile":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$VideoCapture::fileName"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$VideoCapture::fileName"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -vidCapFile <ouput_video_name>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -vidCapFile <ouput_video_name>");
                             break;
                         case "-vidCapFPS":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$VideoCapture::fps"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$VideoCapture::fps"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -vidCapFPS <ouput_video_framerate>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -vidCapFPS <ouput_video_framerate>");
                             break;
 
                         case "-vidCapEncoder":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$VideoCapture::encoder"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$VideoCapture::encoder"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -vidCapEncoder <ouput_video_encoder>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -vidCapEncoder <ouput_video_encoder>");
                             break;
                         case "-vidCapWidth":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$videoCapture::width"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$videoCapture::width"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -vidCapWidth <ouput_video_width>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -vidCapWidth <ouput_video_width>");
                             break;
                         case "-vidCapHeight":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$videoCapture::height"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$videoCapture::height"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -vidCapHeight <ouput_video_height>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -vidCapHeight <ouput_video_height>");
                             break;
                         case "-jDebug":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.Util.playJournal(nextArg);
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.Util.playJournal(nextArg);
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -jDebug <journal_name>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -jDebug <journal_name>");
                             break;
                         case "-level":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
                                 if (!nextArg.EndsWith(".mis"))
                                     {
-                                    omni.sGlobal["$levelToLoad"] = nextArg + ".mis";
-                                    omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                    pInvokes.sGlobal["$levelToLoad"] = nextArg + ".mis";
+                                    pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                     i++;
                                     }
                                 else
                                     {
-                                    omni.sGlobal["$levelToLoad"] = nextArg;
-                                    omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                    pInvokes.sGlobal["$levelToLoad"] = nextArg;
+                                    pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                     i++;
                                     }
                                 }
                             else
-                                omni.console.error("Error: Missing Command Line argument. Usage: -level <level file name (no path), with or without extension>");
+                                pInvokes.console.error("Error: Missing Command Line argument. Usage: -level <level file name (no path), with or without extension>");
                             break;
 
                         case "-worldeditor":
-                            omni.bGlobal["$startWorldEditor"] = true;
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$startWorldEditor"] = true;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
 
                         case "-guieditor":
-                            omni.bGlobal["$startGUIEditor"] = true;
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$startGUIEditor"] = true;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-help":
-                            omni.bGlobal["$displayHelp"] = true;
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$displayHelp"] = true;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-compileAll":
-                            omni.bGlobal["$compileAll"] = true;
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$compileAll"] = true;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-compileTools":
-                            omni.bGlobal["$compileTools"] = true;
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$compileTools"] = true;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-genScript":
-                            omni.bGlobal["$genScript"] = true;
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$genScript"] = true;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
 
                         case "-fullscreen":
-                            omni.console.Call("setFullScreen", new[] {"true"});
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.console.Call("setFullScreen", new[] {"true"});
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-windowed":
-                            omni.console.Call("setFullScreen", new[] {"false"});
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.console.Call("setFullScreen", new[] {"false"});
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-openGL":
-                            omni.sGlobal["$pref::Video::displayDevice"] = "OpenGL";
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.sGlobal["$pref::Video::displayDevice"] = "OpenGL";
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-directX":
-                            omni.sGlobal["$pref::Video::displayDevice"] = "D3D";
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.sGlobal["$pref::Video::displayDevice"] = "D3D";
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-voodoo2":
-                            omni.sGlobal["$pref::Video::displayDevice"] = "Voodoo2";
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.sGlobal["$pref::Video::displayDevice"] = "Voodoo2";
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-autoVideo":
-                            omni.sGlobal["$pref::Video::displayDevice"] = "";
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.sGlobal["$pref::Video::displayDevice"] = "";
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-prefs":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.Util.exec(nextArg, true, true);
-                                omni.iGlobal["$argUsed[" + i + "]"]++;
+                                pInvokes.Util.exec(nextArg, true, true);
+                                pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.Util._error("Error: Missing Command Line argument. Usage: -prefs <path/script.cs>");
+                                pInvokes.Util._error("Error: Missing Command Line argument. Usage: -prefs <path/script.cs>");
                             break;
                         case "-dedicated":
-                            omni.bGlobal["$Server::Dedicated"] = true;
-                            omni.bGlobal["$isDedicated"] = true;
-                            omni.console.Call("enableWinConsole", new[] {"true"});
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.bGlobal["$Server::Dedicated"] = true;
+                            pInvokes.bGlobal["$isDedicated"] = true;
+                            pInvokes.console.Call("enableWinConsole", new[] {"true"});
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             break;
                         case "-mission":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$missionArg"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$missionArg"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.console.error("Error: Missing Command Line argument. Usage: -mission <filename>");
+                                pInvokes.console.error("Error: Missing Command Line argument. Usage: -mission <filename>");
                             break;
                         case "-connect":
-                            omni.iGlobal["$argUsed[" + i + "]"]++;
+                            pInvokes.iGlobal["$argUsed[" + i + "]"]++;
                             if (hasNextarg)
                                 {
-                                omni.sGlobal["$JoinGameAddress"] = nextArg;
-                                omni.iGlobal["$argUsed[" + (i + 1) + "]"]++;
+                                pInvokes.sGlobal["$JoinGameAddress"] = nextArg;
+                                pInvokes.iGlobal["$argUsed[" + (i + 1) + "]"]++;
                                 i++;
                                 }
                             else
-                                omni.console.error("Error: Missing Command Line argument. Usage: -connect <ip_address>");
+                                pInvokes.console.error("Error: Missing Command Line argument. Usage: -connect <ip_address>");
                             break;
                     }
                 }
 
-            if (omni.bGlobal["$VideoCapture::captureFromJournal"] && (omni.sGlobal["$VideoCapture::journalName"] != ""))
+            if (pInvokes.bGlobal["$VideoCapture::captureFromJournal"] && (pInvokes.sGlobal["$VideoCapture::journalName"] != ""))
                 {
-                if (omni.sGlobal["$VideoCapture::fileName"] == "")
-                    omni.sGlobal["$VideoCapture::fileName"] = omni.sGlobal["$VideoCapture::journalName"];
+                if (pInvokes.sGlobal["$VideoCapture::fileName"] == "")
+                    pInvokes.sGlobal["$VideoCapture::fileName"] = pInvokes.sGlobal["$VideoCapture::journalName"];
 
-                if (omni.sGlobal["$VideoCapture::encoder"] == "")
-                    omni.sGlobal["$VideoCapture::encoder"] = "THEORA";
+                if (pInvokes.sGlobal["$VideoCapture::encoder"] == "")
+                    pInvokes.sGlobal["$VideoCapture::encoder"] = "THEORA";
 
-                if (omni.sGlobal["$VideoCapture::fps"] == "")
-                    omni.sGlobal["$VideoCapture::fps"] = "30";
+                if (pInvokes.sGlobal["$VideoCapture::fps"] == "")
+                    pInvokes.sGlobal["$VideoCapture::fps"] = "30";
 
-                if (omni.sGlobal["$videoCapture::width"] == "")
-                    omni.sGlobal["$videoCapture::width"] = "0";
+                if (pInvokes.sGlobal["$videoCapture::width"] == "")
+                    pInvokes.sGlobal["$videoCapture::width"] = "0";
 
-                if (omni.sGlobal["$videoCapture::height"] == "")
-                    omni.sGlobal["$videoCapture::height"] = "0";
+                if (pInvokes.sGlobal["$videoCapture::height"] == "")
+                    pInvokes.sGlobal["$videoCapture::height"] = "0";
 
-                omni.Util.playJournalToVideo(omni.sGlobal["$VideoCapture::journalName"], omni.sGlobal["$VideoCapture::fileName"], omni.sGlobal["$VideoCapture::encoder"], omni.fGlobal["$VideoCapture::fps"], new Point2I(omni.sGlobal["$videoCapture::width"].AsInt(), omni.sGlobal["$videoCapture::height"].AsInt()));
+                pInvokes.Util.playJournalToVideo(pInvokes.sGlobal["$VideoCapture::journalName"], pInvokes.sGlobal["$VideoCapture::fileName"], pInvokes.sGlobal["$VideoCapture::encoder"], pInvokes.fGlobal["$VideoCapture::fps"], new Point2I(pInvokes.sGlobal["$videoCapture::width"].AsInt(), pInvokes.sGlobal["$videoCapture::height"].AsInt()));
                 }
         }
 
         public static void SetConstantsForReferencingVideoResolutionPreference()
         {
-            omni.iGlobal["$WORD::RES_X"] = 0;
-            omni.iGlobal["$WORD::RES_Y"] = 1;
-            omni.iGlobal["$WORD::FULLSCREEN"] = 2;
-            omni.iGlobal["$WORD::BITDEPTH"] = 3;
-            omni.iGlobal["$WORD::REFRESH"] = 4;
-            omni.iGlobal["$WORD::AA"] = 5;
+            pInvokes.iGlobal["$WORD::RES_X"] = 0;
+            pInvokes.iGlobal["$WORD::RES_Y"] = 1;
+            pInvokes.iGlobal["$WORD::FULLSCREEN"] = 2;
+            pInvokes.iGlobal["$WORD::BITDEPTH"] = 3;
+            pInvokes.iGlobal["$WORD::REFRESH"] = 4;
+            pInvokes.iGlobal["$WORD::AA"] = 5;
         }
 
         [ConsoleInteraction(true)]
@@ -629,41 +627,41 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
 
             // Here is where we will do the video device stuff, so it overwrites the defaults
             // First set the PCI device variables (yes AGP/PCI-E works too)
-            omni.iGlobal["$isFirstPersonVar"] = 1;
+            pInvokes.iGlobal["$isFirstPersonVar"] = 1;
             // Uncomment to enable AdvancedLighting on the Mac (T3D 2009 Beta 3)
-            omni.bGlobal["$pref::machax::enableAdvancedLighting"] = true;
+            pInvokes.bGlobal["$pref::machax::enableAdvancedLighting"] = true;
 
             // Uncomment to disable ShaderGen, useful when debugging
-            //omni.bGlobal["$ShaderGen::GenNewShaders"] = false;
+            //pInvokes.bGlobal["$ShaderGen::GenNewShaders"] = false;
 
             // Uncomment to dump disassembly for any shader that is compiled to disk.
             // These will appear as shadername_dis.txt in the same path as the
             // hlsl or glsl shader.   
-            //omni.bGlobal["$gfx::disassembleAllShaders"] = true;
+            //pInvokes.bGlobal["$gfx::disassembleAllShaders"] = true;
 
             // Uncomment useNVPerfHud to allow you to start up correctly
             // when you drop your executable onto NVPerfHud
-            //omni.bGlobal["$Video::useNVPerfHud"] = true;
+            //pInvokes.bGlobal["$Video::useNVPerfHud"] = true;
 
             // Uncomment these to allow you to force your app into using
             // a specific pixel shader version (0 is for fixed function)
-            //omni.bGlobal["$pref::Video::forcePixVersion"] = true;
-            //omni.iGlobal["$pref::Video::forcedPixVersion"] = 0;
+            //pInvokes.bGlobal["$pref::Video::forcePixVersion"] = true;
+            //pInvokes.iGlobal["$pref::Video::forcedPixVersion"] = 0;
 
-            //if (omni.sGlobal["$platform"] == "macos")
-            //omni.sGlobal["$pref::Video::displayDevice"] = "OpenGL";
+            //if (pInvokes.sGlobal["$platform"] == "macos")
+            //pInvokes.sGlobal["$pref::Video::displayDevice"] = "OpenGL";
             //else
-            //omni.sGlobal["$pref::Video::displayDevice"] = "D3D9";
+            //pInvokes.sGlobal["$pref::Video::displayDevice"] = "D3D9";
             core.initializeCore();
 
-            omni.Util._echo(" % - Initialized Core");
+            pInvokes.Util._echo(" % - Initialized Core");
 
             #region FPS
 
-            omni.console.print("\n--------- Initializing Directory: scripts ---------");
+            pInvokes.console.print("\n--------- Initializing Directory: scripts ---------");
 
             // Init the physics plugin.
-            omni.Util.physicsInit("Bullet");
+            pInvokes.Util.physicsInit("Bullet");
 
             // Start up the audio system.
             audio.sfxStartup();
@@ -675,7 +673,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
             server.initServer();
 
             // Start up in either client, or dedicated server mode
-            if (omni.bGlobal["$Server::Dedicated"])
+            if (pInvokes.bGlobal["$Server::Dedicated"])
                 server.initDedicated();
             else
                 init.initClient();
@@ -686,10 +684,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode
         [ConsoleInteraction(true)]
         public static void mainloadKeybindings()
         {
-            omni.iGlobal["$keybindCount"] = 0;
+            pInvokes.iGlobal["$keybindCount"] = 0;
             // Load up the active projects keybinds.
-            if (omni.Util.isFunction("setupKeybinds"))
-                omni.console.Call("setupKeybinds");
+            if (pInvokes.Util.isFunction("setupKeybinds"))
+                pInvokes.console.Call("setupKeybinds");
         }
 
     }

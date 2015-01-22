@@ -2023,14 +2023,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             oc_Newobject78.Create();
 
-            omni.bGlobal["$InGuiEditor"] = false;
-            omni.bGlobal["$MLAAFxGuiEditorTemp"] = false;
+            bGlobal["$InGuiEditor"] = false;
+            bGlobal["$MLAAFxGuiEditorTemp"] = false;
 
             ActionMap GlobalActionMap = "GlobalActionMap";
 
             GlobalActionMap.bind("keyboard", "f10", "toggleGuiEditor");
 
-            omni.Util.eval(@"package GuiEditor_BlockDialogs
+            Util.eval(@"package GuiEditor_BlockDialogs
             {
             function GuiCanvas::pushDialog() {}
             function GuiCanvas::popDialog() {}
@@ -2309,7 +2309,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
             if (val != "")
                 return;
 
-            if (!omni.bGlobal["$InGuiEditor"])
+            if (!bGlobal["$InGuiEditor"])
                 {
                 GuiEditContent(Canvas.getContent());
 
@@ -2317,7 +2317,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 if (MLAAFx.isObject() && MLAAFx.isEnabled)
                     {
                     MLAAFx.isEnabled = false;
-                    omni.bGlobal["$MLAAFxGuiEditorTemp"] = true;
+                    bGlobal["$MLAAFxGuiEditorTemp"] = true;
                     }
                 }
             else
@@ -2335,7 +2335,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             GuiEditor.openForEditing(content);
 
-            omni.bGlobal["$InGuiEditor"] = true;
+            bGlobal["$InGuiEditor"] = true;
         }
 
         [ConsoleInteraction]
@@ -2352,7 +2352,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 // Cancel the scheduled event to prevent
                 // the level from cycling after it's duration
                 // has elapsed.
-                omni.Util.cancel(omni.iGlobal["$Game::Schedule"]);
+                Util.cancel(iGlobal["$Game::Schedule"]);
                 }
         }
 
@@ -2765,7 +2765,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiBitmapButtonCtrl GuiEditorEdgeSnapping_btn = "GuiEditorEdgeSnapping_btn";
 
                 this.snapToEdges = !this.snapToEdges;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_EDGESNAP_INDEX"], this.snapToEdges);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_EDGESNAP_INDEX"], this.snapToEdges);
                 GuiEditorEdgeSnapping_btn.setStateOn(this.snapToEdges);
             }
 
@@ -2778,7 +2778,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiBitmapButtonCtrl GuiEditorCenterSnapping_btn = "GuiEditorCenterSnapping_btn";
 
                 this.snapToCenters = !this.snapToCenters;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_CENTERSNAP_INDEX"], this.snapToCenters);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_CENTERSNAP_INDEX"], this.snapToCenters);
                 GuiEditorCenterSnapping_btn.setStateOn(this.snapToCenters);
             }
 
@@ -2790,7 +2790,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.fullBoxSelection = !this.fullBoxSelection;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("EditMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_FULLBOXSELECT_INDEX"], this.fullBoxSelection);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("EditMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_FULLBOXSELECT_INDEX"], this.fullBoxSelection);
             }
 
             //---------------------------------------------------------------------------------------------
@@ -2801,7 +2801,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.drawGuides = !this.drawGuides;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_DRAWGUIDES_INDEX"], this.drawGuides);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_DRAWGUIDES_INDEX"], this.drawGuides);
             }
 
             //---------------------------------------------------------------------------------------------
@@ -2812,7 +2812,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.snapToGuides = !this["snapToGuides"].AsBool();
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_GUIDESNAP_INDEX"], this.snapToGuides);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_GUIDESNAP_INDEX"], this.snapToGuides);
             }
 
             //---------------------------------------------------------------------------------------------
@@ -2823,7 +2823,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.snapToControls = !this.snapToControls;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_CONTROLSNAP_INDEX"], this.snapToControls);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_CONTROLSNAP_INDEX"], this.snapToControls);
             }
 
             //---------------------------------------------------------------------------------------------
@@ -2834,7 +2834,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 GuiEditCanvas GuiEditCanvas = "GuiEditCanvas";
 
                 this.snapToCanvas = !this.snapToCanvas;
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_CANVASSNAP_INDEX"], this.snapToCanvas);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_CANVASSNAP_INDEX"], this.snapToCanvas);
             }
 
             //---------------------------------------------------------------------------------------------
@@ -2851,7 +2851,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
                 else
                     this.setSnapToGrid(this["snap2GridSize"].AsUint());
 
-                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(omni.iGlobal["$GUI_EDITOR_MENU_GRIDSNAP_INDEX"], this.snap2Grid);
+                ((MenuBuilder) GuiEditCanvas.menuBar.FOF("SnapMenu")).checkItem(iGlobal["$GUI_EDITOR_MENU_GRIDSNAP_INDEX"], this.snap2Grid);
                 GuiEditorSnapCheckBox.setStateOn(this.snap2Grid);
             }
 

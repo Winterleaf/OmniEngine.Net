@@ -43,8 +43,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class game
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true)]
         public static void ClientCmdGameEnd(string endgamepause)
         {
@@ -69,7 +67,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             ((GuiCanvas) "Canvas").setContent("EndGameGui");
 
             if (endgamepause.AsInt() > 0)
-                omni.Util._schedule((endgamepause.AsInt()*1000).AsString(), "0", "ShowLoading");
+                pInvokes.Util._schedule((endgamepause.AsInt()*1000).AsString(), "0", "ShowLoading");
         }
     }
 }

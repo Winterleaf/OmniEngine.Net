@@ -1,18 +1,18 @@
 ﻿// WinterLeaf Entertainment
 // Copyright (c) 2014, WinterLeaf Entertainment LLC
-// 
+//
 // All rights reserved.
-// 
+//
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
-// 
+//
 // These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
-// 
+//
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
-// 
+//
 // BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-// 
+//
 //     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
 //     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 //     With respect to any Product that the Licensee develop using the Software:
@@ -30,8 +30,8 @@
 //         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
 //         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
 //         use the Software for any illegal purpose.
-// 
-// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+//
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #region
 
@@ -47,8 +47,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 {
     internal class messageBox
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             if ("MessagePopupDlg".isObject())
@@ -68,7 +66,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 
             #region exec("./messageBoxOk.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 
 %guiContent = new GuiControl(MessageBoxOKDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxOKDlg).FullName + @""";
@@ -135,11 +133,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
 
             #region exec("./messageBoxYesNo.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 %guiContent = new GuiControl(MessageBoxYesNoDlg) {
 
 WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoDlg).FullName + @""";
-   
+
 	profile = ""GuiOverlayProfile"";
 	horizSizing = ""width"";
 	vertSizing = ""height"";
@@ -218,10 +216,10 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoDlg).FullName + @"""
 
             #region exec("./messageBoxYesNoCancel.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 %guiContent = new GuiControl(MessageBoxYesNoCancelDlg) {
 WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName + @""";
-   
+
    canSaveDynamicFields = ""0"";
    Profile = ""GuiOverlayProfile"";
    HorizSizing = ""width"";
@@ -330,7 +328,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./messageBoxOKCancel.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(MessageBoxOKCancelDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = ""WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Message_Boxes.MessageBoxOKCancelDlg"";
@@ -374,7 +372,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
          lineSpacing = ""2"";
          allowColorChars = ""0"";
          maxChars = ""-1"";
-         
+
       };
       new GuiButtonCtrl() {
          profile = ""GuiButtonProfile"";
@@ -414,7 +412,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./messageBoxOKCancelDetailsDlg.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(MessageBoxOKCancelDetailsDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = ""WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.Message_Boxes.MessageBoxOKCancelDetailsDlg"";
@@ -561,7 +559,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./messagePopup.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(MessagePopupDlg) {
    profile = ""GuiDefaultProfile"";
@@ -615,7 +613,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region exec("./IODropdownDlg.ed.gui");
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 //--- OBJECT WRITE BEGIN ---
 %guiContent = new GuiControl(IODropdownDlg) {
    WLE_OVERRIDE_PROXY_CLASSTYPE = ""WinterLeaf.userObjects.GameCode.Client.Gui.Message_Boxes.IODropdownDlg"";
@@ -783,7 +781,7 @@ WLE_OVERRIDE_PROXY_CLASSTYPE = """ + typeof (MessageBoxYesNoCancelDlg).FullName 
 
             #region new SFXDescription(MessageBoxAudioDescription)
 
-            omni.console.Eval(@"
+            pInvokes.console.Eval(@"
 new SFXDescription(MessageBoxAudioDescription)
 {
    volume      = 1.0;
@@ -814,12 +812,12 @@ new SFXProfile(messageBoxBeep)
         {
             ((GuiCanvas) "Canvas").popDialog(dlg);
             if (callback.Trim() != "")
-                omni.Util.eval(callback);
-            //omni.console.Eval(callback);
+                pInvokes.Util.eval(callback);
+            //pInvokes.console.Eval(callback);
         }
 
         /// <summary>
-        /// The # in the function passed replaced with the output 
+        /// The # in the function passed replaced with the output
         /// of the preset menu.
         /// </summary>
         /// <param name="dlg"></param>
@@ -831,7 +829,7 @@ new SFXProfile(messageBoxBeep)
             int id = IODropdownMenu.getSelected();
             string text = IODropdownMenu.getTextById(id);
             callback = callback.Replace("#", text);
-            omni.console.Eval(callback);
+            pInvokes.console.Eval(callback);
             ((GuiCanvas) "Canvas").popDialog(dlg);
         }
 
@@ -861,7 +859,7 @@ new SFXProfile(messageBoxBeep)
             frame.canMaximize = false;
 
             //TODO
-            //omni.Util._sfxPlayOnce("messageBoxBeep");
+            //pInvokes.Util._sfxPlayOnce("messageBoxBeep");
         }
 
         [ConsoleInteraction(true)]
@@ -984,7 +982,7 @@ new SFXProfile(messageBoxBeep)
             ((GuiCanvas) "Canvas").pushDialog("MessagePopupDlg");
             MBSetText("MessagePopText", "MessagePopFrame", message);
             if (delay != 0)
-                omni.Util._schedule(delay.AsString(), "0", "CloseMessagePopup");
+                pInvokes.Util._schedule(delay.AsString(), "0", "CloseMessagePopup");
         }
 
         [ConsoleInteraction(true)]

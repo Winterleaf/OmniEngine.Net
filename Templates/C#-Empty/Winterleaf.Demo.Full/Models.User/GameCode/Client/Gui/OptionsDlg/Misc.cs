@@ -5,11 +5,11 @@
 // 
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
 // 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use pInvokes. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
 // 
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
 // 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE pInvokes. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
 // 
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 
@@ -44,91 +44,89 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
 {
     internal class Misc
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
-            omni.iGlobal["$RemapCount"] = 0;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Forward";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "moveforward";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Backward";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "movebackward";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Strafe Left";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "moveleft";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Strafe Right";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "moveright";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Turn Left";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "turnLeft";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Turn Right";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "turnRight";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Look Up";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "panUp";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Look Down";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "panDown";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Jump";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "jump";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Fire Weapon";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "mouseFire";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Adjust Zoom";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "setZoomFov";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Toggle Zoom";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "toggleZoom";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Free Look";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "toggleFreeLook";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Switch 1st/3rd";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "toggleFirstPerson";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Chat to Everyone";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "toggleMessageHud";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Message Hud PageUp";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "pageMessageHudUp";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Message Hud PageDown";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "pageMessageHudDown";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Resize Message Hud";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "resizeMessageHud";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Show Scores";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "showPlayerList";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Animation - Wave";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "celebrationWave";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Animation - Salute";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "celebrationSalute";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Suicide";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "suicide";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Toggle Camera";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "toggleCamera";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Drop Camera at Player";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "dropCameraAtPlayer";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Drop Player at Camera";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "dropPlayerAtCamera";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
-            omni.sGlobal["$RemapName[" + omni.iGlobal["$RemapCount"] + "]"] = "Bring up Options Dialog";
-            omni.sGlobal["$RemapCmd[" + omni.iGlobal["$RemapCount"] + "]"] = "bringUpOptions";
-            omni.iGlobal["$RemapCount"] = omni.iGlobal["$RemapCount"] + 1;
+            pInvokes.iGlobal["$RemapCount"] = 0;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Forward";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "moveforward";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Backward";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "movebackward";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Strafe Left";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "moveleft";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Strafe Right";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "moveright";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Turn Left";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "turnLeft";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Turn Right";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "turnRight";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Look Up";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "panUp";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Look Down";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "panDown";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Jump";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "jump";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Fire Weapon";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "mouseFire";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Adjust Zoom";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "setZoomFov";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Toggle Zoom";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "toggleZoom";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Free Look";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "toggleFreeLook";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Switch 1st/3rd";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "toggleFirstPerson";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Chat to Everyone";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "toggleMessageHud";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Message Hud PageUp";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "pageMessageHudUp";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Message Hud PageDown";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "pageMessageHudDown";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Resize Message Hud";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "resizeMessageHud";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Show Scores";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "showPlayerList";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Animation - Wave";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "celebrationWave";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Animation - Salute";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "celebrationSalute";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Suicide";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "suicide";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Toggle Camera";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "toggleCamera";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Drop Camera at Player";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "dropCameraAtPlayer";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Drop Player at Camera";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "dropPlayerAtCamera";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
+            pInvokes.sGlobal["$RemapName[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "Bring up Options Dialog";
+            pInvokes.sGlobal["$RemapCmd[" + pInvokes.iGlobal["$RemapCount"] + "]"] = "bringUpOptions";
+            pInvokes.iGlobal["$RemapCount"] = pInvokes.iGlobal["$RemapCount"] + 1;
 
-            omni.iGlobal["$AudioTestHandle"] = 0;
+            pInvokes.iGlobal["$AudioTestHandle"] = 0;
             // Description to use for playing the volume test sound.  This isn't
             // played with the description of the channel that has its volume changed
             // because we know nothing about the playback state of the channel.  If it
@@ -137,7 +135,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             ObjectCreator oc = new ObjectCreator("SFXDescription");
             oc["sourceGroup"] = "AudioChannelMaster";
 
-            omni.sGlobal["$AudioTestDescription"] = oc.Create().AsString();
+            pInvokes.sGlobal["$AudioTestDescription"] = oc.Create().AsString();
         }
 
         [ConsoleInteraction(true)]
@@ -151,38 +149,38 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         [ConsoleInteraction(true)]
         public static void OptAudioUpdateMasterVolume(float volume)
         {
-            if (volume == omni.fGlobal["$pref::SFX::masterVolume"])
+            if (volume == pInvokes.fGlobal["$pref::SFX::masterVolume"])
                 return;
 
             audio.sfxSetMasterVolume(volume);
-            omni.fGlobal["$pref::SFX::masterVolume"] = volume;
+            pInvokes.fGlobal["$pref::SFX::masterVolume"] = volume;
 
-            if (omni.sGlobal["$AudioTestHandle"].isObject())
-                omni.iGlobal["$AudioTestHandle"] = omni.Util.sfxPlayOnce("AudioChannel", "art/sound/ui/volumeTest.wav");
+            if (pInvokes.sGlobal["$AudioTestHandle"].isObject())
+                pInvokes.iGlobal["$AudioTestHandle"] = pInvokes.Util.sfxPlayOnce("AudioChannel", "art/sound/ui/volumeTest.wav");
         }
 
         [ConsoleInteraction(true)]
         public static void OptAudioUpdateChannelVolume(SFXDescription description, float volume)
         {
             string channel = audio.sfxGroupToOldChannel(description["sourceGroup"]);
-            if (volume == omni.fGlobal["$pref::SFX::channelVolume[" + channel + "]"])
+            if (volume == pInvokes.fGlobal["$pref::SFX::channelVolume[" + channel + "]"])
                 return;
 
             audio.sfxSetChannelVolume(channel, volume);
 
-            omni.fGlobal["$pref::SFX::channelVolume[" + channel + "]"] = volume;
+            pInvokes.fGlobal["$pref::SFX::channelVolume[" + channel + "]"] = volume;
 
-            if (omni.sGlobal["$AudioTestHandle"].isObject())
+            if (pInvokes.sGlobal["$AudioTestHandle"].isObject())
                 {
-                ((SFXDescription) omni.sGlobal["$AudioTestDescription"])["volume"] = volume.AsString();
-                omni.fGlobal["$AudioTestHandle"] = omni.Util.sfxPlayOnce(omni.sGlobal["$AudioTestDescription"], "art/sound/ui/volumeTest.wav");
+                ((SFXDescription) pInvokes.sGlobal["$AudioTestDescription"])["volume"] = volume.AsString();
+                pInvokes.fGlobal["$AudioTestHandle"] = pInvokes.Util.sfxPlayOnce(pInvokes.sGlobal["$AudioTestDescription"], "art/sound/ui/volumeTest.wav");
                 }
         }
 
         [ConsoleInteraction(true)]
         public static void OptMouseSetSensitivity(float value)
         {
-            omni.fGlobal["$pref::Input::LinkMouseSensitivity"] = value;
+            pInvokes.fGlobal["$pref::Input::LinkMouseSensitivity"] = value;
         }
     }
 }

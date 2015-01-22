@@ -70,23 +70,23 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
 
         public static void initialize()
         {
-            omni.bGlobal["$cursorControlled"] = true;
+            bGlobal["$cursorControlled"] = true;
             ((GuiCanvas) "Canvas").checkCursor();
         }
 
         [ConsoleInteraction(true)]
         public new static void showCursor()
         {
-            if (omni.bGlobal["$cursorControlled"])
-                omni.Util.lockMouse(false);
+            if (bGlobal["$cursorControlled"])
+                Util.lockMouse(false);
             ((GuiCanvas) "Canvas").cursorOn();
         }
 
         [ConsoleInteraction(true)]
         public new static void hideCursor()
         {
-            if (omni.bGlobal["$cursorControlled"])
-                omni.Util.lockMouse(true);
+            if (bGlobal["$cursorControlled"])
+                Util.lockMouse(true);
             ((GuiCanvas) "Canvas").cursorOff();
         }
 

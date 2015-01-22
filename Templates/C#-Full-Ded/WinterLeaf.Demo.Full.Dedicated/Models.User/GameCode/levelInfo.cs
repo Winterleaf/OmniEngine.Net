@@ -11,7 +11,6 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode
     {
     public class levelInfo
         {
-        private static readonly pInvokes omni = new pInvokes();
         //------------------------------------------------------------------------------
         // Loading info is text displayed on the client side while the mission
         // is being loaded.  This information is extracted from the mission file
@@ -66,11 +65,11 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode
                             infoObject += line + " ";
                         }
                     }
-                omni.console.Eval(infoObject);
+                pInvokes.console.Eval(infoObject);
                 }
             else
                 {
-                omni.console.error(string.Format("Level File {0} not found.", mission));
+                pInvokes.console.error(string.Format("Level File {0} not found.", mission));
                 }
             }
 
@@ -84,10 +83,10 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.GameCode
             {
             LevelInfo thelevelinfo = "theLevelInfo";
 
-            omni.console.print("Level Name: " + thelevelinfo["name"]);
-            omni.console.print("Level Description:");
+            pInvokes.console.print("Level Name: " + thelevelinfo["name"]);
+            pInvokes.console.print("Level Description:");
             for (int i = 0; thelevelinfo["desc[" + i + "]"] != ""; i++)
-                omni.console.print("     " + thelevelinfo["desc[" + i + "]"]);
+                pInvokes.console.print("     " + thelevelinfo["desc[" + i + "]"]);
             }
         }
     }

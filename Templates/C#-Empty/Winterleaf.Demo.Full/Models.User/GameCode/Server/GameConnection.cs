@@ -50,8 +50,6 @@ namespace WinterLeaf.Demo.Full.Models.User.Extendable
     {
         #region Static Variables
 
-        private static readonly pInvokes tst = new pInvokes();
-
         #endregion
 
         #region Overrides

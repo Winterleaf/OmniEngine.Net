@@ -1,18 +1,18 @@
 ﻿// WinterLeaf Entertainment
 // Copyright (c) 2014, WinterLeaf Entertainment LLC
-// 
+//
 // All rights reserved.
-// 
+//
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
-// 
+//
 // These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
-// 
+//
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
-// 
+//
 // BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-// 
+//
 //     Redistributions of source code must retain the all copyright notice, this list of conditions and the following disclaimer.
 //     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 //     With respect to any Product that the Licensee develop using the Software:
@@ -30,8 +30,8 @@
 //         remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in OMNI Engine; or
 //         use the Software to develop or distribute any software that competes with the Software without WinterLeaf Entertainment’s prior written consent; or
 //         use the Software for any illegal purpose.
-// 
-// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+//
+// THIS SOFTWARE IS PROVIDED BY WINTERLEAF ENTERTAINMENT LLC ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WINTERLEAF ENTERTAINMENT LLC BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #region
 
@@ -52,19 +52,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class init
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true)]
         public static void initClient()
         {
-            omni.console.print("\n--------- Initializing " + omni.sGlobal["$appName"] + ": Client Scripts ---------");
+            pInvokes.console.print("\n--------- Initializing " + pInvokes.sGlobal["$appName"] + ": Client Scripts ---------");
 
             // Make sure this variable reflects the correct state.
-            omni.bGlobal["$Server::Dedicated"] = false;
+            pInvokes.bGlobal["$Server::Dedicated"] = false;
 
             // Game information used to query the master server
-            omni.sGlobal["$Client::GameTypeQuery"] = omni.sGlobal["$appName"];
-            omni.sGlobal["$Client::MissionTypeQuery"] = "Any";
+            pInvokes.sGlobal["$Client::GameTypeQuery"] = pInvokes.sGlobal["$appName"];
+            pInvokes.sGlobal["$Client::MissionTypeQuery"] = "Any";
 
             // These should be game specific GuiProfiles.  Custom profiles are saved out
             // from the Gui Editor.  Either of these may override any that already exist.
@@ -78,39 +76,39 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             canvas.configureCanvas();
 
             // Load up the Game GUIs
-            //omni.Util.exec("art/gui/PlayGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/PlayGui.gui", false, false);
             playGui.initialize();
 
-            //omni.Util.exec("art/gui/ChatHud.gui", false, false);
+            //pInvokes.Util.exec("art/gui/ChatHud.gui", false, false);
             MessageHud.initialize();
 
-            //omni.Util.exec("art/gui/playerList.gui", false, false);
+            //pInvokes.Util.exec("art/gui/playerList.gui", false, false);
             PlayerListGui.initializeGui();
 
-            //omni.Util.exec("art/gui/hudlessGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/hudlessGui.gui", false, false);
             hudlessGui.initialize();
 
             // Load up the shell GUIs
 
-            //omni.Util.exec("art/gui/mainMenuGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/mainMenuGui.gui", false, false);
             mainMenuGui.initialize();
 
-            //omni.Util.exec("art/gui/joinServerDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/joinServerDlg.gui", false, false);
             JoinServerDlg.initialize();
 
-            //omni.Util.exec("art/gui/endGameGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/endGameGui.gui", false, false);
             endGameGui.initialize();
 
-            //omni.Util.exec("art/gui/StartupGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/StartupGui.gui", false, false);
             startupGui.initialize();
 
-            //omni.Util.exec("art/gui/chooseLevelDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/chooseLevelDlg.gui", false, false);
             //chooseLevelDlg.Initialize();
 
-            //omni.Util.exec("art/gui/loadingGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/loadingGui.gui", false, false);
             loadingGui.initialize();
 
-            //omni.Util.exec("art/gui/optionsDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/optionsDlg.gui", false, false);
             OptionsDlg.initialize();
 
             ToolsDlg.initialize();
@@ -119,13 +117,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
             ContentBrowserGui.initialize();
 
-            //omni.Util.exec("art/gui/remapDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/remapDlg.gui", false, false);
             RemapDlg.initialize();
 
             // Gui scripts
             PlayerListGui.initialize();
             chatHud.initialize();
-            //omni.Util.exec("scripts/gui/optionsDlg.cs", false, false);
+            //pInvokes.Util.exec("scripts/gui/optionsDlg.cs", false, false);
             Misc.initialize();
 
             // Client scripts
@@ -136,8 +134,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // Default player key bindings
             defaultBind.initialize();
 
-            if (omni.Util.isFile("scripts/client/config.cs"))
-                omni.Util.exec("scripts/client/config.cs", false, false);
+            if (pInvokes.Util.isFile("scripts/client/config.cs"))
+                pInvokes.Util.exec("scripts/client/config.cs", false, false);
 
             //string[] files = Directory.GetFiles( System.IO.Path.Combine( AppDomain.CurrentDomain.BaseDirectory,@"art\gui"), "*.png", SearchOption.AllDirectories);
             //foreach (string file in files)
@@ -166,31 +164,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // going to connect to a remote server, or host a multi-player
             // game.
 
-            omni.Util.setNetPort(0, false);
+            pInvokes.Util.setNetPort(0, false);
 
-            omni.console.Call("setDefaultFov", new[] {omni.sGlobal["$pref::Player::defaultFov"]});
-            omni.console.Call("setZoomSpeed", new[] {omni.sGlobal["$pref::Player::zoomSpeed"]});
+            pInvokes.console.Call("setDefaultFov", new[] {pInvokes.sGlobal["$pref::Player::defaultFov"]});
+            pInvokes.console.Call("setZoomSpeed", new[] {pInvokes.sGlobal["$pref::Player::zoomSpeed"]});
             audioData.initialize();
 
             // Start up the main menu... this is separated out into a
             // method for easier mod override
 
-            if (omni.bGlobal["$startWorldEditor"] || omni.bGlobal["$startGUIEditor"])
+            if (pInvokes.bGlobal["$startWorldEditor"] || pInvokes.bGlobal["$startGUIEditor"])
                 // Editor GUI's will start up in the primary main.cs once
                 // engine is initialized.
                 return;
 
-            if (omni.sGlobal["$JoinGameAddress"] != "")
+            if (pInvokes.sGlobal["$JoinGameAddress"] != "")
                 {
                 loadLoadingGui("loadLoadingGui");
-                missionDownload.connect(omni.sGlobal["$JoinGameAddress"]);
+                missionDownload.connect(pInvokes.sGlobal["$JoinGameAddress"]);
                 }
             else
                 {
                 // Otherwise go to the splash screen.
                 ((GuiCanvas) "canvas").setCursor("DefaultCursor");
                 startupGui.loadStartup();
-                //omni.console.Call("loadStartup");
+                //pInvokes.console.Call("loadStartup");
                 }
         }
 
@@ -205,20 +203,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
             // first check if we have a level file to load
 
-            if (omni.sGlobal["$levelToLoad"] != "")
+            if (pInvokes.sGlobal["$levelToLoad"] != "")
                 {
                 string levelfile = "levels/";
 
-                if (!omni.sGlobal["$levelToLoad"].EndsWith(".mis"))
-                    levelfile += omni.sGlobal["$levelToLoad"] + ".mis";
+                if (!pInvokes.sGlobal["$levelToLoad"].EndsWith(".mis"))
+                    levelfile += pInvokes.sGlobal["$levelToLoad"] + ".mis";
                 else
-                    levelfile += omni.sGlobal["$levelToLoad"];
+                    levelfile += pInvokes.sGlobal["$levelToLoad"];
                 // Clear out the $levelToLoad so we don't attempt to load the level again
                 // later on.
 
-                omni.sGlobal["$levelToLoad"] = "";
+                pInvokes.sGlobal["$levelToLoad"] = "";
 
-                string file = omni.Util.findFirstFile(levelfile, false);
+                string file = pInvokes.Util.findFirstFile(levelfile, false);
                 if (file != "")
                     server.createAndConnectToLocalServer("SinglePlayer", file);
                 }

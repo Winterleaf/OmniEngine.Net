@@ -52,19 +52,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class init
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true)]
         public static void initClient()
         {
-            omni.console.print("\n--------- Initializing " + omni.sGlobal["$appName"] + ": Client Scripts ---------");
+            pInvokes.console.print("\n--------- Initializing " + pInvokes.sGlobal["$appName"] + ": Client Scripts ---------");
 
             // Make sure this variable reflects the correct state.
-            omni.bGlobal["$Server::Dedicated"] = false;
+            pInvokes.bGlobal["$Server::Dedicated"] = false;
 
             // Game information used to query the master server
-            omni.sGlobal["$Client::GameTypeQuery"] = omni.sGlobal["$appName"];
-            omni.sGlobal["$Client::MissionTypeQuery"] = "Any";
+            pInvokes.sGlobal["$Client::GameTypeQuery"] = pInvokes.sGlobal["$appName"];
+            pInvokes.sGlobal["$Client::MissionTypeQuery"] = "Any";
 
             // These should be game specific GuiProfiles.  Custom profiles are saved out
             // from the Gui Editor.  Either of these may override any that already exist.
@@ -78,35 +76,35 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             canvas.configureCanvas();
 
             // Load up the Game GUIs
-            //omni.Util.exec("art/gui/PlayGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/PlayGui.gui", false, false);
             playGui.initialize();
 
-            //omni.Util.exec("art/gui/playerList.gui", false, false);
+            //pInvokes.Util.exec("art/gui/playerList.gui", false, false);
 
-            //omni.Util.exec("art/gui/hudlessGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/hudlessGui.gui", false, false);
             hudlessGui.initialize();
 
             // Load up the shell GUIs
 
-            //omni.Util.exec("art/gui/mainMenuGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/mainMenuGui.gui", false, false);
             mainMenuGui.initialize();
 
-            //omni.Util.exec("art/gui/joinServerDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/joinServerDlg.gui", false, false);
             JoinServerDlg.initialize();
 
-            //omni.Util.exec("art/gui/endGameGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/endGameGui.gui", false, false);
             endGameGui.initialize();
 
-            //omni.Util.exec("art/gui/StartupGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/StartupGui.gui", false, false);
             startupGui.initialize();
 
-            //omni.Util.exec("art/gui/chooseLevelDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/chooseLevelDlg.gui", false, false);
             //chooseLevelDlg.Initialize();
 
-            //omni.Util.exec("art/gui/loadingGui.gui", false, false);
+            //pInvokes.Util.exec("art/gui/loadingGui.gui", false, false);
             loadingGui.initialize();
 
-            //omni.Util.exec("art/gui/optionsDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/optionsDlg.gui", false, false);
             OptionsDlg.initialize();
 
             ToolsDlg.initialize();
@@ -115,10 +113,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
             ContentBrowserGui.initialize();
 
-            //omni.Util.exec("art/gui/remapDlg.gui", false, false);
+            //pInvokes.Util.exec("art/gui/remapDlg.gui", false, false);
             RemapDlg.initialize();
 
-            //omni.Util.exec("scripts/gui/optionsDlg.cs", false, false);
+            //pInvokes.Util.exec("scripts/gui/optionsDlg.cs", false, false);
             Misc.initialize();
 
             // Client scripts
@@ -129,8 +127,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // Default player key bindings
             defaultBind.initialize();
 
-            if (omni.Util.isFile("scripts/client/config.cs"))
-                omni.Util.exec("scripts/client/config.cs", false, false);
+            if (pInvokes.Util.isFile("scripts/client/config.cs"))
+                pInvokes.Util.exec("scripts/client/config.cs", false, false);
 
             //string[] files = Directory.GetFiles( System.IO.Path.Combine( AppDomain.CurrentDomain.BaseDirectory,@"art\gui"), "*.png", SearchOption.AllDirectories);
             //foreach (string file in files)
@@ -159,31 +157,31 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             // going to connect to a remote server, or host a multi-player
             // game.
 
-            omni.Util.setNetPort(0, false);
+            pInvokes.Util.setNetPort(0, false);
 
-            omni.console.Call("setDefaultFov", new[] {omni.sGlobal["$pref::Player::defaultFov"]});
-            omni.console.Call("setZoomSpeed", new[] {omni.sGlobal["$pref::Player::zoomSpeed"]});
+            pInvokes.console.Call("setDefaultFov", new[] {pInvokes.sGlobal["$pref::Player::defaultFov"]});
+            pInvokes.console.Call("setZoomSpeed", new[] {pInvokes.sGlobal["$pref::Player::zoomSpeed"]});
             audioData.initialize();
 
             // Start up the main menu... this is separated out into a
             // method for easier mod override
 
-            if (omni.bGlobal["$startWorldEditor"] || omni.bGlobal["$startGUIEditor"])
+            if (pInvokes.bGlobal["$startWorldEditor"] || pInvokes.bGlobal["$startGUIEditor"])
                 // Editor GUI's will start up in the primary main.cs once
                 // engine is initialized.
                 return;
 
-            if (omni.sGlobal["$JoinGameAddress"] != "")
+            if (pInvokes.sGlobal["$JoinGameAddress"] != "")
                 {
                 loadLoadingGui("loadLoadingGui");
-                missionDownload.connect(omni.sGlobal["$JoinGameAddress"]);
+                missionDownload.connect(pInvokes.sGlobal["$JoinGameAddress"]);
                 }
             else
                 {
                 // Otherwise go to the splash screen.
                 ((GuiCanvas) "canvas").setCursor("DefaultCursor");
                 startupGui.loadStartup();
-                //omni.console.Call("loadStartup");
+                //pInvokes.console.Call("loadStartup");
                 }
         }
 
@@ -198,20 +196,20 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 
             // first check if we have a level file to load
 
-            if (omni.sGlobal["$levelToLoad"] != "")
+            if (pInvokes.sGlobal["$levelToLoad"] != "")
                 {
                 string levelfile = "levels/";
 
-                if (!omni.sGlobal["$levelToLoad"].EndsWith(".mis"))
-                    levelfile += omni.sGlobal["$levelToLoad"] + ".mis";
+                if (!pInvokes.sGlobal["$levelToLoad"].EndsWith(".mis"))
+                    levelfile += pInvokes.sGlobal["$levelToLoad"] + ".mis";
                 else
-                    levelfile += omni.sGlobal["$levelToLoad"];
+                    levelfile += pInvokes.sGlobal["$levelToLoad"];
                 // Clear out the $levelToLoad so we don't attempt to load the level again
                 // later on.
 
-                omni.sGlobal["$levelToLoad"] = "";
+                pInvokes.sGlobal["$levelToLoad"] = "";
 
-                string file = omni.Util.findFirstFile(levelfile, false);
+                string file = pInvokes.Util.findFirstFile(levelfile, false);
                 if (file != "")
                     server.createAndConnectToLocalServer("SinglePlayer", file);
                 }

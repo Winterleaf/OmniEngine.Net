@@ -72,13 +72,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.PostEffects.Shaders
 
         public static void initialize()
         {
-            omni.dGlobal["$LightRayPostFX::brightScalar"] = 0.75;
-            omni.dGlobal["$LightRayPostFX::numSamples"] = 40;
-            omni.dGlobal["$LightRayPostFX::density"] = 0.94;
-            omni.dGlobal["$LightRayPostFX::weight"] = 5.65;
-            omni.dGlobal["$LightRayPostFX::decay"] = 1.0;
-            omni.dGlobal["$LightRayPostFX::exposure"] = 0.0005;
-            omni.dGlobal["$LightRayPostFX::resolutionScale"] = 1.0;
+            dGlobal["$LightRayPostFX::brightScalar"] = 0.75;
+            dGlobal["$LightRayPostFX::numSamples"] = 40;
+            dGlobal["$LightRayPostFX::density"] = 0.94;
+            dGlobal["$LightRayPostFX::weight"] = 5.65;
+            dGlobal["$LightRayPostFX::decay"] = 1.0;
+            dGlobal["$LightRayPostFX::exposure"] = 0.0005;
+            dGlobal["$LightRayPostFX::resolutionScale"] = 1.0;
 
             SingletonCreator ts = new SingletonCreator("ShaderData", "LightRayOccludeShader");
             ts["DXVertexShaderFile"] = "shaders/common/postFx/postFxV.hlsl";

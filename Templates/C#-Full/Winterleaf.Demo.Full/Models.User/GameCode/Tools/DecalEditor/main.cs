@@ -44,13 +44,11 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor
 {
     public class main
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction]
         public static void initializeDecalEditor()
         {
             Omni.self.Print(" % - Initializing Decal Editor");
-            omni.sGlobal["$decalDataFile"] = "art/decals/managedDecalData.cs";
+            pInvokes.sGlobal["$decalDataFile"] = "art/decals/managedDecalData.cs";
             gui.DecalEditorGui.initialize();
 
             // Add ourselves to EditorGui, where all the other tools reside

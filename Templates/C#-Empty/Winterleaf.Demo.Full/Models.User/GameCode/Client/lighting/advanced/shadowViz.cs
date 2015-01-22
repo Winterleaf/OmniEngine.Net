@@ -36,6 +36,7 @@
 using WinterLeaf.Demo.Full.Models.User.Extendable;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
+using WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
@@ -84,13 +85,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         {
             if (((GuiControl) "AL_ShadowVizOverlayCtrl").isAwake())
                 {
-                omni.Util.setShadowVizLight("0");
+                pInvokes.Util.setShadowVizLight("0");
                 ((GuiCanvas) "Canvas").popDialog("AL_ShadowVizOverlayCtrl");
                 }
             else
                 {
                 ((GuiCanvas) "Canvas").pushDialog("AL_ShadowVizOverlayCtrl", 100);
-                _setShadowVizLight(omni.console.Call("EWorldEditor", "getSelectedObject", new[] {"0"}), false);
+                _setShadowVizLight(pInvokes.console.Call("EWorldEditor", "getSelectedObject", new[] {"0"}), false);
                 }
         }
 
@@ -110,16 +111,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
                 //todo Got a bug here I think, don't know enough about lighting to debug it at the moment.  the sizeAndAspect is always blank.
                 string clientLight = client.serverToClientObject(light.AsInt()).AsString();
                 //console.Call("serverToClientObject", new string[] { light });
-                sizeAndAspect = omni.Util.setShadowVizLight(clientLight);
+                sizeAndAspect = pInvokes.Util.setShadowVizLight(clientLight);
                 }
 
-            omni.console.Call(AL_ShadowVizOverlayCtrl.findObjectByInternalName("MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
+            pInvokes.console.Call(AL_ShadowVizOverlayCtrl.findObjectByInternalName("MatCtrl", true), "setMaterial", new[] {"AL_ShadowVisualizeMaterial"});
             string text = "ShadowViz";
 
             if (light.isObject() && sizeAndAspect != "")
                 text = text + ":" + sizeAndAspect.Split(' ')[0] + " x " + sizeAndAspect.Split(' ')[1];
 
-            omni.console.SetVar(AL_ShadowVizOverlayCtrl.findObjectByInternalName("WindowCtrl", true), text);
+            pInvokes.console.SetVar(AL_ShadowVizOverlayCtrl.findObjectByInternalName("WindowCtrl", true), text);
         }
 
         [ConsoleInteraction(true)]

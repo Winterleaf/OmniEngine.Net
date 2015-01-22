@@ -41,8 +41,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
 {
     public class init
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
             shaders.initialize();
@@ -53,9 +51,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         [ConsoleInteraction(true)]
         public static void onActivateAdvancedLM()
         {
-            if (omni.sGlobal["$platform"] == "macos")
+            if (pInvokes.sGlobal["$platform"] == "macos")
                 return;
-            if (omni.sGlobal["$platform"] == "xenon")
+            if (pInvokes.sGlobal["$platform"] == "xenon")
                 return;
             ((RenderFormatToken) "AL_FormatToken").enable();
         }
@@ -69,7 +67,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Lighting.advanced
         [ConsoleInteraction(true)]
         public static void setAdvancedLighting()
         {
-            omni.Util.setLightManager("Advanced Lighting");
+            pInvokes.Util.setLightManager("Advanced Lighting");
         }
     }
 }

@@ -42,6 +42,7 @@ using WinterLeaf.Engine;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
+using WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.View.Creators;
 
 namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui.CodeBehind
@@ -95,7 +96,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.MeshRoadEditor.gui.Cod
 
             // Add ourselves to the Editor Settings window
             //exec( "./meshRoadEditorSettingsTab.gui" );
-            omni.console.Call("MeshRoadEditorSettingsTab_initialize");
+            pInvokes.console.Call("MeshRoadEditorSettingsTab_initialize");
             ESettingsWindow.addTabPage("EMeshRoadEditorSettingsPage");
         }
 

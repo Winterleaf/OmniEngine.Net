@@ -48,12 +48,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DatablockEditor.gui.Co
 {
     public class DatablockEditor
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "DatablockEditor_initialize")]
         public static void initialize()
         {
-            omni.sGlobal["$DATABLOCK_EDITOR_DEFAULT_FILENAME"] = "art/datablocks/managedDatablocks.cs";
+            pInvokes.sGlobal["$DATABLOCK_EDITOR_DEFAULT_FILENAME"] = "art/datablocks/managedDatablocks.cs";
             new ObjectCreator("SimSet", "UnlistedDatablocks").Create();
         }
 

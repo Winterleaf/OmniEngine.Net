@@ -49,7 +49,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
         // onLine is invoked whenever the TCP object receives a line from the server. Treat the first
         // word as a "command" and dispatch to an appropriate handler.
         //---------------------------------------------------------------------------------------------
-        private static readonly pInvokes omni = new pInvokes();
 
         //---------------------------------------------------------------------------------------------
         // Various support functions.
@@ -68,9 +67,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
             string expr = WatchDialogExpression.getValue();
             if (expr != "")
                 {
-                DebuggerWatchView.setRowById(omni.iGlobal["$DbgWatchSeq"], expr + "\t(unknown)");
-                TCPDebugger.send("EVAL " + omni.iGlobal["$DbgWatchSeq"] + " 0 " + expr + "\r\n");
-                omni.iGlobal["$DbgWatchSeq"]++;
+                DebuggerWatchView.setRowById(pInvokes.iGlobal["$DbgWatchSeq"], expr + "\t(unknown)");
+                TCPDebugger.send("EVAL " + pInvokes.iGlobal["$DbgWatchSeq"] + " 0 " + expr + "\r\n");
+                pInvokes.iGlobal["$DbgWatchSeq"]++;
                 }
             Canvas.popDialog(DebuggerWatchDlg);
         }
@@ -90,7 +89,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
             if (id >= 0)
                 {
                 string row = DebuggerWatchView.getRowTextById(id);
-                string expr = omni.Util.getField(row, 0);
+                string expr = pInvokes.Util.getField(row, 0);
                 string assignment;
                 if (newValue == "")
                     assignment = expr + " = \"\"";
@@ -167,7 +166,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
             if (id != -1)
                 {
                 string bkp = DebuggerBreakPoints.getRowTextById(id);
-                DbgSetBreakPoint(omni.Util.getField(bkp, 1), omni.Util.getField(bkp, 0).AsUInt(), clear.AsBool(), passct, condition);
+                DbgSetBreakPoint(pInvokes.Util.getField(bkp, 1), pInvokes.Util.getField(bkp, 0).AsUInt(), clear.AsBool(), passct, condition);
                 }
 
             Canvas.popDialog(DebuggerBreakConditionDlg);
@@ -188,10 +187,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
                     // Go to the line.
                     DebuggerFileView.setCurrentLine(line, selectLine);
                     // Get the breakpoints for this file.
-                    if (file != omni.sGlobal["$DebuggerFile"])
+                    if (file != pInvokes.sGlobal["$DebuggerFile"])
                         {
                         TCPDebugger.send("BREAKLIST " + file + "\r\n");
-                        omni.sGlobal["$DebuggerFile"] = file;
+                        pInvokes.sGlobal["$DebuggerFile"] = file;
                         }
                     }
                 }
@@ -222,7 +221,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
 
             if (!clear)
                 {
-                if (file == omni.sGlobal["$DebuggerFile"])
+                if (file == pInvokes.sGlobal["$DebuggerFile"])
                     DebuggerFileView.setBreak(line);
                 }
             DebuggerBreakPoints.addBreak(file, line.AsString(), clear, passct, expr);
@@ -237,7 +236,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
             DebuggerBreakPoints DebuggerBreakPoints = "DebuggerBreakPoints";
             TCPDebugger TCPDebugger = "TCPDebugger";
 
-            if (file == omni.sGlobal["$DebuggerFile"])
+            if (file == pInvokes.sGlobal["$DebuggerFile"])
                 DebuggerFileView.removeBreak(line);
             TCPDebugger.send("BRKCLR " + file + " " + line + "\r\n");
             DebuggerBreakPoints.removeBreak(file, line.AsString());
@@ -254,8 +253,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
             if (rowNum >= 0)
                 {
                 string breakText = DebuggerBreakPoints.getRowText(rowNum);
-                string breakLine = omni.Util.getField(breakText, 0);
-                string breakFile = omni.Util.getField(breakText, 1);
+                string breakLine = pInvokes.Util.getField(breakText, 0);
+                string breakFile = pInvokes.Util.getField(breakText, 1);
                 DbgRemoveBreakPoint(breakFile, breakLine.AsUint());
                 }
         }
@@ -314,7 +313,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
                 {
                 int id = DebuggerWatchView.getRowId(i);
                 string row = DebuggerWatchView.getRowTextById(id);
-                string expr = omni.Util.getField(row, 0);
+                string expr = pInvokes.Util.getField(row, 0);
                 TCPDebugger.send("EVAL " + id + " 0 " + expr + "\r\n");
                 }
         }

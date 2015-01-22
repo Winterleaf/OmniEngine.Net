@@ -8,11 +8,9 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.CustomObjects.Utilities
     {
     public class Audio
         {
-        public static pInvokes tst = new pInvokes();
-
         static public void AudioServerPlay2D(string profile)
             {
-            foreach (GameConnection clientid in tst.ClientGroup)
+            foreach (GameConnection clientid in pInvokes.ClientGroup)
                 clientid.play2D(profile);
             }
 
@@ -20,7 +18,7 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.User.CustomObjects.Utilities
 
         static public void AudioServerPlay3D(string profile, TransformF transform)
             {
-            foreach (GameConnection clientid in tst.ClientGroup)
+            foreach (GameConnection clientid in pInvokes.ClientGroup)
                 clientid.play3D(profile, transform);
             }
         }

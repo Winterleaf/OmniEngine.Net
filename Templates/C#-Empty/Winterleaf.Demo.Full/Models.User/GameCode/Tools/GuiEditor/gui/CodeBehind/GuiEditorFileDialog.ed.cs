@@ -54,7 +54,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
             [ConsoleInteraction(true, "GuiBuilder_initialize")]
             public static void initialize()
             {
-                omni.sGlobal["$GUI::FileSpec"] = "Torque Gui Files (*.gui)|*.gui|All Files (*.*)|*.*";
+                sGlobal["$GUI::FileSpec"] = "Torque Gui Files (*.gui)|*.gui|All Files (*.*)|*.*";
             }
 
             /// GuiBuilder::getSaveName - Open a Native File dialog and retrieve the
@@ -69,22 +69,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                 if (defaultFileName == "")
                     {
                     string prefix = "";
-                    if (omni.Util.isFunction("isScriptPathExpando"))
+                    if (Util.isFunction("isScriptPathExpando"))
                         {
                         // if we're editing a game, we want to default to the games dir.
                         // if we're not, then we default to the tools directory or the base.
-                        if (omni.console.Call("isScriptPathExpando", new string[] {"^game"}).AsBool())
+                        if (console.Call("isScriptPathExpando", new string[] {"^game"}).AsBool())
                             prefix = "^game/";
-                        else if (omni.console.Call("isScriptPathExpando", new string[] {"^tools"}).AsBool())
+                        else if (console.Call("isScriptPathExpando", new string[] {"^tools"}).AsBool())
                             prefix = "^tools/";
                         }
 
-                    defaultFileName = omni.Util._expandFilename(prefix + "gui/untitled.gui");
+                    defaultFileName = Util._expandFilename(prefix + "gui/untitled.gui");
                     }
                 else
-                    defaultPath = omni.Util.filePath(defaultFileName);
+                    defaultPath = Util.filePath(defaultFileName);
 
-                SaveFileDialog sfd = new SaveFileDialog {Filter = omni.sGlobal["$GUI::FileSpec"], InitialDirectory = omni.Util.makeFullPath(defaultPath, ""), FileName = defaultFileName, OverwritePrompt = true,};
+                SaveFileDialog sfd = new SaveFileDialog {Filter = sGlobal["$GUI::FileSpec"], InitialDirectory = Util.makeFullPath(defaultPath, ""), FileName = defaultFileName, OverwritePrompt = true,};
 
                 string filename = "";
 
@@ -93,9 +93,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                 if (dr == DialogResult.OK)
                     {
                     filename = Dialogs.GetForwardSlashFile(sfd.FileName);
-                    GuiEditor["LastPath"] = omni.Util.filePath(filename);
+                    GuiEditor["LastPath"] = Util.filePath(filename);
                     //filename = dlg["FileName"];
-                    if (omni.Util.fileExt(filename) != ".gui")
+                    if (Util.fileExt(filename) != ".gui")
                         filename = filename + ".gui";
                     }
 
@@ -116,16 +116,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui.CodeBehi
                 GuiEditorGui.GuiEditor GuiEditor = "GuiEditor";
 
                 if (defaultFileName == "")
-                    defaultFileName = omni.Util._expandFilename("^game/gui/untitled.gui");
+                    defaultFileName = Util._expandFilename("^game/gui/untitled.gui");
 
-                OpenFileDialog ofd = new OpenFileDialog {FileName = defaultFileName, InitialDirectory = GuiEditor["LastPath"], Filter = omni.sGlobal["$GUI::FileSpec"], CheckFileExists = true, Multiselect = false};
+                OpenFileDialog ofd = new OpenFileDialog {FileName = defaultFileName, InitialDirectory = GuiEditor["LastPath"], Filter = sGlobal["$GUI::FileSpec"], CheckFileExists = true, Multiselect = false};
 
                 DialogResult dr = Dialogs.OpenFileDialog(ref ofd);
 
                 if (dr == DialogResult.OK)
                     {
                     string fileName = Dialogs.GetForwardSlashFile(ofd.FileName);
-                    GuiEditor["LastPath"] = omni.Util.filePath(fileName);
+                    GuiEditor["LastPath"] = Util.filePath(fileName);
                     return fileName;
                     }
                 return "";

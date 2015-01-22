@@ -786,7 +786,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui
         [ConsoleInteraction]
         public static void onServerQueryStatus(string status, string msg, string value)
         {
-            omni.Util._echo("ServerQuery: " + " " + status + " " + msg + " " + value);
+            Util._echo("ServerQuery: " + " " + status + " " + msg + " " + value);
             // Update query status
             // States: start, update, ping, query, done
             // value = % (0-1) done for ping and query states

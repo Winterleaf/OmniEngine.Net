@@ -281,8 +281,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.GuiEditor.gui
 
             oc_Newobject9.Create();
 
-            omni.iGlobal["$GuiEditor::defaultGridSize"] = 8;
-            omni.iGlobal["$GuiEditor::minGridSize"] = 3;
+            iGlobal["$GuiEditor::defaultGridSize"] = 8;
+            iGlobal["$GuiEditor::minGridSize"] = 3;
         }
 
         //-----------------------------------------------------------------------------------------

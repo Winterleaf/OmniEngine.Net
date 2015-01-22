@@ -5,11 +5,11 @@
 // 
 // The use of the WinterLeaf Entertainment LLC OMNI "Community Edition" is governed by this license agreement ("Agreement").
 // 
-// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use OMNI. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
+// These license terms are an agreement between WinterLeaf Entertainment LLC and you.  Please read them. They apply to the source code and any other assets or works that are included with the product named above, which includes the media on which you received it, if any. These terms also apply to any updates, supplements, internet-based services, and support services for this software and its associated assets, unless other terms accompany those items. If so, those terms apply. You must read and agree to this Agreement terms BEFORE installing OMNI "Community Edition" to your hard drive or using OMNI in any way. If you do not agree to the license terms, do not download, install or use pInvokes. Please make copies of this Agreement for all those in your organization who need to be familiar with the license terms.
 // 
 // This license allows companies of any size, government entities or individuals to create, sell, rent, lease, or otherwise profit commercially from, games using executables created from the source code that accompanies OMNI "Community Edition".
 // 
-// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE OMNI. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
+// BY CLICKING THE ACCEPTANCE BUTTON AND/OR INSTALLING OR USING OMNI "Community Edition", THE INDIVIDUAL ACCESSING OMNI ("LICENSEE") IS CONSENTING TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT ACCEPT THESE TERMS, DO NOT INSTALL OR USE pInvokes. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW:
 // 
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 
@@ -43,11 +43,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
 {
     public class screenshot
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         public static void initialize()
         {
-            omni.iGlobal["$screenshotNumber"] = 0;
+            pInvokes.iGlobal["$screenshotNumber"] = 0;
         }
 
         [ConsoleInteraction(true)]
@@ -89,13 +87,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
                 encoder = "THEORA";
 
             string resolution = ((GuiCanvas) "canvas").getVideoMode();
-            omni.Util.startVideoCapture("canvas", movieName, encoder, fps, new Point2I(0, 0));
+            pInvokes.Util.startVideoCapture("canvas", movieName, encoder, fps, new Point2I(0, 0));
         }
 
         [ConsoleInteraction(true)]
         public static void stopMovie()
         {
-            omni.Util.stopVideoCapture();
+            pInvokes.Util.stopVideoCapture();
         }
 
         // This is bound in initializeCommon() to take
@@ -112,24 +110,24 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
         [ConsoleInteraction(true)]
         public static void _screenShot(uint tiles, float overlap = 0f)
         {
-            if (omni.sGlobal["$pref::Video::screenShotSession"] == "")
-                omni.iGlobal["$pref::Video::screenShotSession"] = 0;
+            if (pInvokes.sGlobal["$pref::Video::screenShotSession"] == "")
+                pInvokes.iGlobal["$pref::Video::screenShotSession"] = 0;
 
-            if (omni.iGlobal["$screenshotNumber"] == 0)
-                omni.iGlobal["$pref::Video::screenShotSession"]++;
+            if (pInvokes.iGlobal["$screenshotNumber"] == 0)
+                pInvokes.iGlobal["$pref::Video::screenShotSession"]++;
 
-            if (omni.iGlobal["$pref::Video::screenShotSession"] > 999)
-                omni.iGlobal["$pref::Video::screenShotSession"] = 1;
+            if (pInvokes.iGlobal["$pref::Video::screenShotSession"] > 999)
+                pInvokes.iGlobal["$pref::Video::screenShotSession"] = 1;
 
-            string name = "screenshot_" + formatSessionNumber(omni.iGlobal["$pref::Video::screenShotSession"]) + "-" + formatImageNumber(omni.iGlobal["$screenshotNumber"]);
-            name = omni.Util._expandFilename(name);
+            string name = "screenshot_" + formatSessionNumber(pInvokes.iGlobal["$pref::Video::screenShotSession"]) + "-" + formatImageNumber(pInvokes.iGlobal["$screenshotNumber"]);
+            name = pInvokes.Util._expandFilename(name);
 
-            omni.iGlobal["$screenshotNumber"]++;
+            pInvokes.iGlobal["$screenshotNumber"]++;
 
-            if ((omni.sGlobal["$pref::Video::screenShotFormat"] == "JPEG") || (omni.sGlobal["$pref::Video::screenShotFormat"] == "JPG"))
-                omni.Util.screenShot("screenshots\\" + name, "JPEG", tiles, overlap);
+            if ((pInvokes.sGlobal["$pref::Video::screenShotFormat"] == "JPEG") || (pInvokes.sGlobal["$pref::Video::screenShotFormat"] == "JPG"))
+                pInvokes.Util.screenShot("screenshots\\" + name, "JPEG", tiles, overlap);
             else
-                omni.Util.screenShot("screenshots\\" + name, "PNG", tiles, overlap);
+                pInvokes.Util.screenShot("screenshots\\" + name, "PNG", tiles, overlap);
         }
 
         // This will close the console and take a large format

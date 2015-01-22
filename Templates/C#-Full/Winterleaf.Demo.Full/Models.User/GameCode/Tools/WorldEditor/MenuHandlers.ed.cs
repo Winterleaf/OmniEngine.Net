@@ -60,12 +60,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 {
     public class MenuHandlers
     {
-        private static readonly pInvokes omni = new pInvokes();
-
         [ConsoleInteraction(true, "MenuHandlers_initialize")]
         public static void initialize()
         {
-            omni.sGlobal["$Pref::WorldEditor::FileSpec"] = "Torque Mission Files (*.mis)|*.mis|All Files (*.*)|*.*";
+            pInvokes.sGlobal["$Pref::WorldEditor::FileSpec"] = "Torque Mission Files (*.mis)|*.mis|All Files (*.*)|*.*";
 
             // Package that gets temporarily activated to toggle editor after mission loading.
             // Deactivates itself.
@@ -80,9 +78,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             }
 
             };";
-            omni.Util.eval(package);
+            pInvokes.Util.eval(package);
 
-            //omni.Util.deactivatePackage("BootEditor");
+            //pInvokes.Util.deactivatePackage("BootEditor");
         }
 
         /// Checks the various dirty flags and returns true if the 
@@ -133,16 +131,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
         [ConsoleInteraction]
         public static void EditorQuitGame()
         {
-            if (EditorIsDirty() && !omni.Util.isWebDemo())
+            if (EditorIsDirty() && !pInvokes.Util.isWebDemo())
                 messageBox.MessageBoxYesNoCancel("Level Modified", "Would you like to save your changes before quitting?", "EditorSaveMissionMenu(); quit();", "quit();", "");
             else
-                omni.console.Call("quit");
+                pInvokes.console.Call("quit");
         }
 
         [ConsoleInteraction]
         public static void EditorExitMission()
         {
-            if (EditorIsDirty() && !omni.Util.isWebDemo())
+            if (EditorIsDirty() && !pInvokes.Util.isWebDemo())
                 messageBox.MessageBoxYesNoCancel("Level Modified", "Would you like to save your changes before exiting?", "EditorDoExitMission(true);", "EditorDoExitMission(false);", "");
             else
                 EditorDoExitMission(false);
@@ -154,7 +152,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             GuiChunkedBitmapCtrl MainMenuGui = "MainMenuGui";
             editor Editor = "Editor";
 
-            if (saveFirst && !omni.Util.isWebDemo())
+            if (saveFirst && !pInvokes.Util.isWebDemo())
                 EditorSaveMissionMenu();
             else
                 EditorClearDirty();
@@ -162,7 +160,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             if (MainMenuGui.isObject())
                 Editor.close(MainMenuGui);
 
-            omni.console.Call("disconnect");
+            pInvokes.console.Call("disconnect");
         }
 
         [ConsoleInteraction]
@@ -173,7 +171,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             // Make sure we have a valid path to the Torsion installation.
 
             string torsionPath = EditorSettings.value("WorldEditor/torsionPath");
-            if (!omni.Util.isFile(torsionPath))
+            if (!pInvokes.Util.isFile(torsionPath))
                 {
                 messageBox.MessageBoxOK("Torsion Not Found", "Torsion not found at '" + torsionPath + "'.  Please set the correct path in the preferences.");
                 return;
@@ -183,14 +181,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 
             if (projectFile == "")
                 {
-                string projectName = omni.Util.fileBase(omni.Util.getExecutableName());
-                projectFile = omni.Util.makeFullPath(projectName + ".torsion", "");
-                if (!omni.Util.isFile(projectFile))
+                string projectName = pInvokes.Util.fileBase(pInvokes.Util.getExecutableName());
+                projectFile = pInvokes.Util.makeFullPath(projectName + ".torsion", "");
+                if (!pInvokes.Util.isFile(projectFile))
                     {
-                    projectFile = omni.Util.findFirstFile("*.torsion", false);
-                    if (!omni.Util.isFile(projectFile))
+                    projectFile = pInvokes.Util.findFirstFile("*.torsion", false);
+                    if (!pInvokes.Util.isFile(projectFile))
                         {
-                        messageBox.MessageBoxOK("Project File Not Found", "Cannot find .torsion project file in '" + omni.Util.getMainDotCsDir() + "'.");
+                        messageBox.MessageBoxOK("Project File Not Found", "Cannot find .torsion project file in '" + pInvokes.Util.getMainDotCsDir() + "'.");
                         return;
                         }
                     }
@@ -198,7 +196,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 
             // Open the project in Torsion.
 
-            omni.Util.shellExecute(torsionPath, "\"" + projectFile + "\"");
+            pInvokes.Util.shellExecute(torsionPath, "\"" + projectFile + "\"");
         }
 
         [ConsoleInteraction]
@@ -209,7 +207,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             // Make sure we have a valid path to the Torsion installation.
 
             string torsionPath = EditorSettings.value("WorldEditor/torsionPath");
-            if (!omni.Util.isFile(torsionPath))
+            if (!pInvokes.Util.isFile(torsionPath))
                 {
                 messageBox.MessageBoxOK("Torsion Not Found", "Torsion not found at '" + torsionPath + "'.  Please set the correct path in the preferences.");
                 return;
@@ -218,7 +216,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             // If no file was specified, take the current mission file.
 
             if (file == "")
-                file = omni.Util.makeFullPath(omni.sGlobal["$Server::MissionFile"], "");
+                file = pInvokes.Util.makeFullPath(pInvokes.sGlobal["$Server::MissionFile"], "");
 
             // Open the file in Torsion.
 
@@ -227,7 +225,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 args = args + ":" + line;
             args = args + "\"";
 
-            omni.Util.shellExecute(torsionPath, args);
+            pInvokes.Util.shellExecute(torsionPath, args);
         }
 
         [ConsoleInteraction]
@@ -237,7 +235,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             if (fileName == "")
                 return;
 
-            EditorOpenFileInTorsion(omni.Util.makeFullPath(fileName, "'"), xobject.getDeclarationLine().AsString());
+            EditorOpenFileInTorsion(pInvokes.Util.makeFullPath(fileName, "'"), xobject.getDeclarationLine().AsString());
         }
 
         [ConsoleInteraction]
@@ -247,14 +245,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             EditorGui EditorGui = "EditorGui";
             Settings EditorSettings = "EditorSettings";
 
-            if (omni.Util.isWebDemo())
+            if (pInvokes.Util.isWebDemo())
                 return;
 
             bool saveFirst = false;
             if (EditorIsDirty())
                 {
-                omni.Util._error("knob");
-                saveFirst = omni.Util.messageBox("Mission Modified", "Would you like to save changes to the current mission \"" + omni.sGlobal["$Server::MissionFile"] + "\" before creating a new mission?", "SaveDontSave", "Question") == omni.iGlobal["$MROk"];
+                pInvokes.Util._error("knob");
+                saveFirst = pInvokes.Util.messageBox("Mission Modified", "Would you like to save changes to the current mission \"" + pInvokes.sGlobal["$Server::MissionFile"] + "\" before creating a new mission?", "SaveDontSave", "Question") == pInvokes.iGlobal["$MROk"];
                 }
 
             if (saveFirst)
@@ -270,9 +268,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             if (file == "")
                 file = EditorSettings.value("WorldEditor/newLevelFile");
 
-            if (!omni.bGlobal["$missionRunning"])
+            if (!pInvokes.bGlobal["$missionRunning"])
                 {
-                omni.Util.activatePackage("BootEditor");
+                pInvokes.Util.activatePackage("BootEditor");
                 chooseLevelDlg.StartLevel(file, "");
                 }
             else
@@ -288,7 +286,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
         {
             EditorGui EditorGui = "EditorGui";
 
-            if (!omni.bGlobal["$Pref::disableSaving"] && !omni.Util.isWebDemo())
+            if (!pInvokes.bGlobal["$Pref::disableSaving"] && !pInvokes.Util.isWebDemo())
                 {
                 if (EditorGui["saveAs"].AsBool())
                     EditorSaveMissionAs("");
@@ -312,22 +310,22 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             // just save the mission without renaming it
 
             // first check for dirty and read-only files:
-            if ((EWorldEditor.isDirty || ETerrainEditor.isMissionDirty) && !omni.Util.isWriteableFileName(omni.sGlobal["$Server::MissionFile"]))
+            if ((EWorldEditor.isDirty || ETerrainEditor.isMissionDirty) && !pInvokes.Util.isWriteableFileName(pInvokes.sGlobal["$Server::MissionFile"]))
                 {
-                omni.Util.messageBox("Error", "Mission file \"" + omni.sGlobal["$Server::MissionFile"] + "\" is read-only.  Continue?", "Ok", "Stop");
+                pInvokes.Util.messageBox("Error", "Mission file \"" + pInvokes.sGlobal["$Server::MissionFile"] + "\" is read-only.  Continue?", "Ok", "Stop");
                 return false;
                 }
             if (ETerrainEditor.isDirty)
                 {
                 // Find all of the terrain files
-                omni.Util.initContainerTypeSearch(omni.uGlobal["$TypeMasks::TerrainObjectType"], false);
+                pInvokes.Util.initContainerTypeSearch(pInvokes.uGlobal["$TypeMasks::TerrainObjectType"], false);
 
                 TerrainBlock terrainObject;
-                while ((terrainObject = omni.Util.containerSearchNext(false)) != 0)
+                while ((terrainObject = pInvokes.Util.containerSearchNext(false)) != 0)
                     {
-                    if (!omni.Util.isWriteableFileName(terrainObject["terrainFile"]))
+                    if (!pInvokes.Util.isWriteableFileName(terrainObject["terrainFile"]))
                         {
-                        if (omni.Util.messageBox("Error", "Terrain file \"" + terrainObject["terrainFile"] + "\" is read-only.  Continue?", "Ok", "Stop") == omni.iGlobal["$MROk"])
+                        if (pInvokes.Util.messageBox("Error", "Terrain file \"" + terrainObject["terrainFile"] + "\" is read-only.  Continue?", "Ok", "Stop") == pInvokes.iGlobal["$MROk"])
                             continue;
                         else
                             return false;
@@ -338,14 +336,14 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             // now write the terrain and mission files out:
 
             if (EWorldEditor.isDirty || ETerrainEditor["isMissionDirty"].AsBool())
-                MissionGroup.save(omni.sGlobal["$Server::MissionFile"], false, "");
+                MissionGroup.save(pInvokes.sGlobal["$Server::MissionFile"], false, "");
             if (ETerrainEditor["isDirty"].AsBool())
                 {
                 // Find all of the terrain files
-                omni.Util.initContainerTypeSearch(omni.uGlobal["$TypeMasks::TerrainObjectType"], false);
+                pInvokes.Util.initContainerTypeSearch(pInvokes.uGlobal["$TypeMasks::TerrainObjectType"], false);
 
                 TerrainBlock terrainObject;
-                while ((terrainObject = omni.Util.containerSearchNext(false)) != 0)
+                while ((terrainObject = pInvokes.Util.containerSearchNext(false)) != 0)
                     terrainObject.save(terrainObject["terrainFile"]);
                 }
 
@@ -356,7 +354,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 {
                 EditorPlugin obj = EditorPluginSet.getObject(i);
                 if (obj.isDirty())
-                    obj.onSaveMission(omni.sGlobal["$Server::MissionFile"]);
+                    obj.onSaveMission(pInvokes.sGlobal["$Server::MissionFile"]);
                 }
 
             EditorClearDirty();
@@ -388,13 +386,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             EditorGui EditorGui = "EditorGui";
             TerrainEditor ETerrainEditor = "ETerrainEditor";
 
-            if (!omni.bGlobal["$Pref::disableSaving"] && !omni.Util.isWebDemo())
+            if (!pInvokes.bGlobal["$Pref::disableSaving"] && !pInvokes.Util.isWebDemo())
                 {
                 // If we didn't get passed a new mission name then
                 // prompt the user for one.
                 if (missionName == "")
                     {
-                    SaveFileDialog sfd = new SaveFileDialog {Filter = omni.sGlobal["$Pref::WorldEditor::FileSpec"], InitialDirectory = Path.Combine(Environment.CurrentDirectory, EditorSettings.value("LevelInformation/levelsDirectory")), OverwritePrompt = true,};
+                    SaveFileDialog sfd = new SaveFileDialog {Filter = pInvokes.sGlobal["$Pref::WorldEditor::FileSpec"], InitialDirectory = Path.Combine(Environment.CurrentDirectory, EditorSettings.value("LevelInformation/levelsDirectory")), OverwritePrompt = true,};
 
                     DialogResult dr = Dialogs.SaveFileDialog(ref sfd);
 
@@ -403,7 +401,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                             case DialogResult.OK:
                                 string filename = Dialogs.GetForwardSlashFile(sfd.FileName);
                                 // Immediately override/set the levelsDirectory
-                                EditorSettings.setValue("LevelInformation/levelsDirectory", omni.console.Call("collapseFilename", new string[] {omni.Util.filePath(filename)}));
+                                EditorSettings.setValue("LevelInformation/levelsDirectory", pInvokes.console.Call("collapseFilename", new string[] {pInvokes.Util.filePath(filename)}));
 
                                 missionName = filename;
                                 break;
@@ -416,36 +414,36 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                         }
                     }
 
-                if (omni.Util.fileExt(missionName) != ".mis")
+                if (pInvokes.Util.fileExt(missionName) != ".mis")
                     missionName = missionName + ".mis";
 
                 EWorldEditor.isDirty = true;
-                string saveMissionFile = omni.sGlobal["$Server::MissionFile"];
+                string saveMissionFile = pInvokes.sGlobal["$Server::MissionFile"];
 
-                omni.sGlobal["$Server::MissionFile"] = missionName;
+                pInvokes.sGlobal["$Server::MissionFile"] = missionName;
 
                 bool copyTerrainsFailed = false;
 
                 // Rename all the terrain files.  Save all previous names so we can
                 // reset them if saving fails.
-                string newMissionName = omni.Util.fileBase(missionName);
-                string oldMissionName = omni.Util.fileBase(saveMissionFile);
+                string newMissionName = pInvokes.Util.fileBase(missionName);
+                string oldMissionName = pInvokes.Util.fileBase(saveMissionFile);
 
-                omni.Util.initContainerTypeSearch(omni.uGlobal["$TypeMasks::TerrainObjectType"]);
+                pInvokes.Util.initContainerTypeSearch(pInvokes.uGlobal["$TypeMasks::TerrainObjectType"]);
                 ScriptObject savedTerrNames = new ObjectCreator("ScriptObject").Create();
                 for (int i = 0;; i++)
                     {
-                    string nterrainObject = omni.Util.containerSearchNext(false);
+                    string nterrainObject = pInvokes.Util.containerSearchNext(false);
                     if (nterrainObject == "")
                         break;
-                    TerrainBlock terrainObject = nterrainObject; //omni.Util.containerSearchNext(false);
+                    TerrainBlock terrainObject = nterrainObject; //pInvokes.Util.containerSearchNext(false);
                     //if (terrainObject == null)
                     //    break;
 
                     savedTerrNames["array[" + i + "]"] = terrainObject["terrainFile"];
 
-                    string terrainFilePath = omni.Util.makeRelativePath(omni.Util.filePath(terrainObject["terrainFile"]), omni.Util.getMainDotCsDir());
-                    string terrainFileName = omni.Util.fileName(terrainObject["terrainFile"]);
+                    string terrainFilePath = pInvokes.Util.makeRelativePath(pInvokes.Util.filePath(terrainObject["terrainFile"]), pInvokes.Util.getMainDotCsDir());
+                    string terrainFileName = pInvokes.Util.fileName(terrainObject["terrainFile"]);
 
                     // Workaround to have terrains created in an unsaved "New Level..." mission
                     // moved to the correct place.
@@ -455,16 +453,16 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 
                     // Try and follow the existing naming convention.
                     // If we can't, use systematic terrain file names.
-                    if (omni.Util.strstr(terrainFileName, oldMissionName) >= 0)
-                        terrainFileName = omni.Util.strreplace(terrainFileName, oldMissionName, newMissionName);
+                    if (pInvokes.Util.strstr(terrainFileName, oldMissionName) >= 0)
+                        terrainFileName = pInvokes.Util.strreplace(terrainFileName, oldMissionName, newMissionName);
                     else
                         terrainFileName = newMissionName + "_" + i + ".ter";
 
                     string newTerrainFile = terrainFilePath + "/" + terrainFileName;
 
-                    if (!omni.Util.isWriteableFileName(newTerrainFile))
+                    if (!pInvokes.Util.isWriteableFileName(newTerrainFile))
                         {
-                        if (omni.Util.messageBox("Error", "Terrain file \"" + newTerrainFile + "\" is read-only.  Continue?", "Ok", "Stop") == omni.iGlobal["$MROk"])
+                        if (pInvokes.Util.messageBox("Error", "Terrain file \"" + newTerrainFile + "\" is read-only.  Continue?", "Ok", "Stop") == pInvokes.iGlobal["$MROk"])
                             continue;
                         else
                             {
@@ -475,7 +473,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 
                     if (!terrainObject.save(newTerrainFile))
                         {
-                        omni.Util._error("Failed to save '" + newTerrainFile + "'");
+                        pInvokes.Util._error("Failed to save '" + newTerrainFile + "'");
                         copyTerrainsFailed = true;
                         break;
                         }
@@ -490,12 +488,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                     {
                     // It failed, so restore the mission and terrain filenames.
 
-                    omni.sGlobal["$Server::MissionFile"] = saveMissionFile;
+                    pInvokes.sGlobal["$Server::MissionFile"] = saveMissionFile;
 
-                    omni.Util.initContainerTypeSearch(omni.uGlobal["$TypeMasks::TerrainObjectType"], false);
+                    pInvokes.Util.initContainerTypeSearch(pInvokes.uGlobal["$TypeMasks::TerrainObjectType"], false);
                     for (int i = 0;; i++)
                         {
-                        TerrainBlock terrainObject = omni.Util.containerSearchNext(false);
+                        TerrainBlock terrainObject = pInvokes.Util.containerSearchNext(false);
                         if (terrainObject == null)
                             break;
 
@@ -518,10 +516,10 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             EditorGui EditorGui = "EditorGui";
             SimSet MissionCleanup = "MissionCleanup";
 
-            if (EditorIsDirty() && !omni.Util.isWebDemo())
+            if (EditorIsDirty() && !pInvokes.Util.isWebDemo())
                 {
                 // "EditorSaveBeforeLoad();", "getLoadFilename(\"*.mis\", \"EditorDoLoadMission\");"
-                if (omni.Util.messageBox("Mission Modified", "Would you like to save changes to the current mission \"" + omni.sGlobal["$Server::MissionFile"] + "\" before opening a new mission?", "SaveDontSave", "Question") == omni.iGlobal["$MROk"])
+                if (pInvokes.Util.messageBox("Mission Modified", "Would you like to save changes to the current mission \"" + pInvokes.sGlobal["$Server::MissionFile"] + "\" before opening a new mission?", "SaveDontSave", "Question") == pInvokes.iGlobal["$MROk"])
                     {
                     if (!EditorSaveMission())
                         return;
@@ -530,7 +528,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 
             if (filename == "")
                 {
-                OpenFileDialog ofd = new OpenFileDialog {Filter = omni.sGlobal["$Pref::WorldEditor::FileSpec"], InitialDirectory = EditorSettings.value("LevelInformation/levelsDirectory"), CheckFileExists = true, Multiselect = false};
+                OpenFileDialog ofd = new OpenFileDialog {Filter = pInvokes.sGlobal["$Pref::WorldEditor::FileSpec"], InitialDirectory = EditorSettings.value("LevelInformation/levelsDirectory"), CheckFileExists = true, Multiselect = false};
 
                 DialogResult dr = Dialogs.OpenFileDialog(ref ofd);
 
@@ -539,7 +537,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                         case DialogResult.OK:
                             filename = Dialogs.GetForwardSlashFile(ofd.FileName);
                             // Immediately override/set the levelsDirectory
-                            EditorSettings.setValue("LevelInformation/levelsDirectory", omni.console.Call("collapseFilename", new string[] {omni.Util.filePath(filename)}));
+                            EditorSettings.setValue("LevelInformation/levelsDirectory", pInvokes.console.Call("collapseFilename", new string[] {pInvokes.Util.filePath(filename)}));
                             break;
                         case DialogResult.Abort:
                         case DialogResult.Ignore:
@@ -559,26 +557,26 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             // If we haven't yet connnected, create a server now.
             // Otherwise just load the mission.
 
-            if (!omni.bGlobal["$missionRunning"])
+            if (!pInvokes.bGlobal["$missionRunning"])
                 {
-                omni.Util.activatePackage("BootEditor");
+                pInvokes.Util.activatePackage("BootEditor");
                 chooseLevelDlg.StartLevel(filename, "");
                 }
             else
                 {
                 missionLoad.loadMission(filename, true);
 
-                omni.Util.pushInstantGroup();
+                pInvokes.Util.pushInstantGroup();
 
                 // recreate and open the editor
                 //Editor::create();
-                omni.console.Call("Editor_Create");
+                pInvokes.console.Call("Editor_Create");
                 MissionCleanup.add(Editor);
                 MissionCleanup.add(Editor.getUndoManager());
                 EditorGui["loadingMission"] = true.AsString();
                 Editor.open();
 
-                omni.Util.popInstantGroup();
+                pInvokes.Util.popInstantGroup();
                 }
         }
 
@@ -590,9 +588,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             ShapeEditor.gui.CodeBehind.ShapeEditor.ShapeEdShapeView ShapeEdShapeView = "ShapeEdShapeView";
             EWorldEditor EWorldEditor = "EWorldEditor";
 
-            if (!omni.bGlobal["$Pref::disableSaving"] && !omni.Util.isWebDemo())
+            if (!pInvokes.bGlobal["$Pref::disableSaving"] && !pInvokes.Util.isWebDemo())
                 {
-                SaveFileDialog sfd = new SaveFileDialog {Filter = @"COLLADA Files (*.dae)|*.dae", InitialDirectory = omni.sGlobal["$Pref::WorldEditor::LastPath"], FileName = "", OverwritePrompt = true,};
+                SaveFileDialog sfd = new SaveFileDialog {Filter = @"COLLADA Files (*.dae)|*.dae", InitialDirectory = pInvokes.sGlobal["$Pref::WorldEditor::LastPath"], FileName = "", OverwritePrompt = true,};
 
                 string exportFile = "";
 
@@ -602,7 +600,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                     {
                         case DialogResult.OK:
                             exportFile = Dialogs.GetForwardSlashFile(sfd.FileName);
-                            omni.sGlobal["$Pref::WorldEditor::LastPath"] = omni.Util.filePath(exportFile);
+                            pInvokes.sGlobal["$Pref::WorldEditor::LastPath"] = pInvokes.Util.filePath(exportFile);
                             break;
                         case DialogResult.Abort:
                         case DialogResult.Ignore:
@@ -612,7 +610,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                             return;
                     }
 
-                if (omni.Util.fileExt(exportFile) != ".dae")
+                if (pInvokes.Util.fileExt(exportFile) != ".dae")
                     exportFile = exportFile + ".dae";
 
                 if (EditorGui.currentEditor.getId() == ShapeEditorPlugin.getId())
@@ -629,9 +627,9 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             EditorTree EditorTree = "EditorTree";
 
             // Should this be protected or not?
-            if (!omni.bGlobal["$Pref::disableSaving"] && !omni.Util.isWebDemo())
+            if (!pInvokes.bGlobal["$Pref::disableSaving"] && !pInvokes.Util.isWebDemo())
                 {
-                SaveFileDialog sfd = new SaveFileDialog {Filter = @"Prefab Files (*.prefab)|*.prefab", InitialDirectory = omni.sGlobal["$Pref::WorldEditor::LastPath"], FileName = "", OverwritePrompt = true,};
+                SaveFileDialog sfd = new SaveFileDialog {Filter = @"Prefab Files (*.prefab)|*.prefab", InitialDirectory = pInvokes.sGlobal["$Pref::WorldEditor::LastPath"], FileName = "", OverwritePrompt = true,};
 
                 string saveFile = "";
 
@@ -641,7 +639,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                     {
                         case DialogResult.OK:
                             saveFile = Dialogs.GetForwardSlashFile(sfd.FileName);
-                            omni.sGlobal["$Pref::WorldEditor::LastPath"] = omni.Util.filePath(saveFile);
+                            pInvokes.sGlobal["$Pref::WorldEditor::LastPath"] = pInvokes.Util.filePath(saveFile);
                             break;
                         case DialogResult.Abort:
                         case DialogResult.Ignore:
@@ -651,7 +649,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                             return;
                     }
 
-                if (omni.Util.fileExt(saveFile) != ".prefab")
+                if (pInvokes.Util.fileExt(saveFile) != ".prefab")
                     saveFile = saveFile + ".prefab";
 
                 EWorldEditor.makeSelectionPrefab(saveFile);
@@ -678,7 +676,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
         {
             EWorldEditor EWorldEditor = "EWorldEditor";
 
-            omni.Util._echo("EditorMount");
+            pInvokes.Util._echo("EditorMount");
 
             int size = EWorldEditor.getSelectionSize();
             if (size != 2)
@@ -696,7 +694,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
         {
             EWorldEditor EWorldEditor = "EWorldEditor";
 
-            omni.Util._echo("EditorUnmount");
+            pInvokes.Util._echo("EditorUnmount");
 
             SimObject obj = EWorldEditor.getSelectedObject(0);
             obj.call("unmount");
@@ -756,7 +754,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 EWorldEditor EWorldEditor = "EWorldEditor";
 
                 // Have the editor align all selected objects by the selected bounds.
-                EWorldEditor.alignByBounds(omni.Util.getField(this["item[" + id + "]"], 2).AsInt());
+                EWorldEditor.alignByBounds(pInvokes.Util.getField(this["item[" + id + "]"], 2).AsInt());
 
                 return true;
             }
@@ -885,7 +883,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 EWorldEditor EWorldEditor = "EWorldEditor";
 
                 // Have the editor align all selected objects by the selected axis.
-                EWorldEditor.alignByAxis(omni.Util.getField(this["item[" + id + "]"], 2).AsInt());
+                EWorldEditor.alignByAxis(pInvokes.Util.getField(this["item[" + id + "]"], 2).AsInt());
 
                 return true;
             }
@@ -1156,17 +1154,17 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 GuiSliderCtrl Slider = CameraSpeedDropdownCtrlContainer.FOT("slider");
 
                 // Grab and set speed
-                float speed = omni.Util.getField(this["item[" + id + "]"], 2).AsFloat();
-                omni.fGlobal["$Camera::movementSpeed"] = speed;
+                float speed = pInvokes.Util.getField(this["item[" + id + "]"], 2).AsFloat();
+                pInvokes.fGlobal["$Camera::movementSpeed"] = speed;
 
                 // Update Editor
                 this.checkRadioItem(0, 6, id.AsInt());
 
                 // Update Toolbar TextEdit
-                EWorldEditorCameraSpeed.setText(omni.fGlobal["$Camera::movementSpeed"].AsString());
+                EWorldEditorCameraSpeed.setText(pInvokes.fGlobal["$Camera::movementSpeed"].AsString());
 
                 // Update Toolbar Slider
-                Slider.setValue(omni.fGlobal["$Camera::movementSpeed"].AsString());
+                Slider.setValue(pInvokes.fGlobal["$Camera::movementSpeed"].AsString());
 
                 return true;
             }
@@ -1191,7 +1189,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                     // Update Editor with default speed
                     defaultSpeed = "25";
                     }
-                omni.fGlobal["$Camera::movementSpeed"] = defaultSpeed.AsFloat();
+                pInvokes.fGlobal["$Camera::movementSpeed"] = defaultSpeed.AsFloat();
 
                 // Update Toolbar TextEdit
                 EWorldEditorCameraSpeed.setText(defaultSpeed);
@@ -1235,7 +1233,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 // Set up the camera speed items
                 float inc = ((maxSpeed - minSpeed)/(this.getItemCount() - 1));
                 for (int i = 0; i < this.getItemCount(); i++)
-                    this["item[" + i + "]"] = omni.Util.setField(this["item[" + i + "]"], 2, (minSpeed + (inc*i)).AsString());
+                    this["item[" + i + "]"] = pInvokes.Util.setField(this["item[" + i + "]"], 2, (minSpeed + (inc*i)).AsString());
 
                 // Set up min/max camera slider range
                 Slider.range = (minSpeed + " " + maxSpeed).AsPoint2F();
@@ -1365,7 +1363,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
 
                 // This sets up which drop script function to use when
                 // a drop type is selected in the menu.
-                EWorldEditor.dropType = omni.Util.getField(this["item[" + id + "]"], 2);
+                EWorldEditor.dropType = pInvokes.Util.getField(this["item[" + id + "]"], 2);
 
                 this.checkRadioItem(0, (this.getItemCount() - 1), id.AsInt());
 
@@ -1384,7 +1382,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
                 int dropTypeIndex = 0;
                 for (; dropTypeIndex < numItems; dropTypeIndex++)
                     {
-                    if (omni.Util.getField(this["item[" + dropTypeIndex + "]"], 2) == EWorldEditor["dropType"])
+                    if (pInvokes.Util.getField(this["item[" + dropTypeIndex + "]"], 2) == EWorldEditor["dropType"])
                         break;
                     }
 
@@ -2115,7 +2113,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor
             {
                 EditorGui EditorGui = "EditorGui";
 
-                string toolName = omni.Util.getField(this["item[" + id + "]"], 2);
+                string toolName = pInvokes.Util.getField(this["item[" + id + "]"], 2);
 
                 //In the torquescript they passed a local variable called %paletteName as the second parameter.
                 //Well, in reality it's expecting a bool, so an unitialized variable is false by default, so they were sending false

@@ -3230,12 +3230,12 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         [ConsoleInteraction(true)]
         public static string _makePrettyResString(string resString)
         {
-            string width = omni.Util.getWord(resString, omni.iGlobal["$WORD::RES_X"]);
-            string height = omni.Util.getWord(resString, omni.iGlobal["$WORD::RES_Y"]);
+            string width = Util.getWord(resString, iGlobal["$WORD::RES_X"]);
+            string height = Util.getWord(resString, iGlobal["$WORD::RES_Y"]);
 
             float aspect = width.AsFloat()/height.AsFloat();
 
-            aspect = (float) Math.Round(aspect, 2); // omni.Util.mRound(aspect * 100.0f) * .01f;
+            aspect = (float) Math.Round(aspect, 2); // Util.mRound(aspect * 100.0f) * .01f;
             string newaspect = "";
             if (aspect == 1.33f)
                 newaspect = "4:3";
@@ -3519,7 +3519,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
             if (!testNeedApply)
                 _updateApplyState();
 
-            omni.Util.export("$pref::*", "prefs.client.cs", false);
+            Util.export("$pref::*", "prefs.client.cs", false);
             return false;
         }
 
@@ -3565,8 +3565,8 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
         [ConsoleInteraction(true)]
         public static string buildFullMapString(int index)
         {
-            string name = omni.sGlobal["$RemapName[" + index + "]"];
-            string cmd = omni.sGlobal["$RemapCmd[" + index + "]"];
+            string name = sGlobal["$RemapName[" + index + "]"];
+            string cmd = sGlobal["$RemapCmd[" + index + "]"];
             string temp = ((ActionMap) "moveMap").getBinding(cmd);
 
             if (temp == "")
@@ -3574,13 +3574,13 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
 
             string mapString = "";
 
-            int count = omni.Util.getFieldCount(temp);
+            int count = Util.getFieldCount(temp);
             for (int i = 0; i < count; i += 2)
                 {
                 if (mapString != "")
                     mapString = mapString + ", ";
-                string device = omni.Util.getField(temp, i + 0);
-                string obj = omni.Util.getField(temp, i + 1);
+                string device = Util.getField(temp, i + 0);
+                string obj = Util.getField(temp, i + 1);
                 mapString = mapString + getMapDisplayName(device, obj);
                 }
             return name + "\t" + mapString;
@@ -3595,38 +3595,38 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
 
             if (device == "keyboard")
                 return action;
-            else if (omni.Util.strstr(device, "mouse") != -1)
+            else if (Util.strstr(device, "mouse") != -1)
                 {
                 // Substitute "mouse" for "button" in the action string:
-                int pos = omni.Util.strstr(action, "button");
+                int pos = Util.strstr(action, "button");
                 if (pos != -1)
                     {
-                    mods = omni.Util.getSubStr(action, 0, pos);
-                    Object = omni.Util.getSubStr(action, pos, 1000);
-                    instance = omni.Util.getSubStr(Object, omni.Util.strlen("button"), 1000);
+                    mods = Util.getSubStr(action, 0, pos);
+                    Object = Util.getSubStr(action, pos, 1000);
+                    instance = Util.getSubStr(Object, Util.strlen("button"), 1000);
                     return mods + "mouse" + (instance.AsInt() + 1);
                     }
                 else
-                    omni.console.error("Mouse input object other than button passed to getDisplayMapName!");
+                    console.error("Mouse input object other than button passed to getDisplayMapName!");
                 }
-            else if (omni.Util.strstr(device, "joystick") != -1)
+            else if (Util.strstr(device, "joystick") != -1)
                 {
-                int pos = omni.Util.strstr(action, "button");
+                int pos = Util.strstr(action, "button");
                 if (pos != -1)
                     {
-                    mods = omni.Util.getSubStr(action, 0, pos);
-                    Object = omni.Util.getSubStr(action, pos, 1000);
-                    instance = omni.Util.getSubStr(Object, omni.Util.strlen("button"), 1000);
+                    mods = Util.getSubStr(action, 0, pos);
+                    Object = Util.getSubStr(action, pos, 1000);
+                    instance = Util.getSubStr(Object, Util.strlen("button"), 1000);
                     return mods + "joystick" + (instance.AsInt() + 1);
                     }
                 else
                     {
-                    pos = omni.Util.strstr(action, "pov");
+                    pos = Util.strstr(action, "pov");
                     if (pos != -1)
                         {
-                        int wordCount = omni.Util.getWordCount(action);
-                        mods = (wordCount > 1) ? omni.Util.getWords(action, 0, wordCount - 2) + " " : "";
-                        Object = omni.Util.getWord(action, wordCount - 1);
+                        int wordCount = Util.getWordCount(action);
+                        mods = (wordCount > 1) ? Util.getWords(action, 0, wordCount - 2) + " " : "";
+                        Object = Util.getWord(action, wordCount - 1);
                         switch (Object)
                             {
                                 case "upov":
@@ -3661,7 +3661,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                         }
 
                     else
-                        omni.console.error("Unsupported Joystick input object passed to getDisplayMapName!");
+                        console.error("Unsupported Joystick input object passed to getDisplayMapName!");
                     }
                 }
             return "??";

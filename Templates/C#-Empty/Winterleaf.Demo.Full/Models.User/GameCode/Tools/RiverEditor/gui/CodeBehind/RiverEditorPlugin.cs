@@ -116,7 +116,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui.CodeBe
             //Copyright Winterleaf Entertainment L.L.C. 2013
             this.readSettings();
 
-            omni.bGlobal["$River::EditorOpen"] = true;
+            bGlobal["$River::EditorOpen"] = true;
 
             ((GuiBitmapButtonCtrl) ((GuiDynamicCtrlArrayControl) "ToolsPaletteArray").findObjectByInternalName("RiverEditorAddRiverMode", false)).performClick();
             EditorGui.bringToFront("RiverEditorGui");
@@ -166,7 +166,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.RiverEditor.gui.CodeBe
 
             this.writeSettings();
 
-            omni.bGlobal["$River::EditorOpen"] = false;
+            bGlobal["$River::EditorOpen"] = false;
 
             RiverEditorGui.setVisible(false);
             RiverEditorToolbar.setVisible(false);
