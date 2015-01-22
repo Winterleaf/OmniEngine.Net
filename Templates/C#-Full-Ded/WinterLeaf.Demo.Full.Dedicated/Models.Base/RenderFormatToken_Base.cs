@@ -16,10 +16,10 @@ using  WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
-using Winterleaf.Demo.Full.Dedicated.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 #endregion
 
-namespace Winterleaf.Demo.Full.Dedicated.Models.Base
+namespace WinterLeaf.Demo.Full.Models.Base
     {
     /// <summary>
     /// 
@@ -137,21 +137,6 @@ namespace Winterleaf.Demo.Full.Dedicated.Models.Base
 #endregion
 #region Init Persists
 /// <summary>
-/// Anti-ailiasing level for the this token. 0 disables, -1 uses adapter default.
-/// </summary>
-[MemberGroup("")]
-public int aaLevel
-       {
-       get
-          {
-          return Omni.self.GetVar(_ID + ".aaLevel").AsInt();
-          }
-       set
-          {
-          Omni.self.SetVar(_ID + ".aaLevel", value.AsString());
-          }
-       }
-/// <summary>
 /// This PostEffect will be run when the render target is changed to the format specified    by this token. It is used to copy/format data into the token rendertarget
 /// </summary>
 [MemberGroup("")]
@@ -207,6 +192,21 @@ public PostEffect resolveEffect
        set
           {
           Omni.self.SetVar(_ID + ".resolveEffect", value.ToString());
+          }
+       }
+/// <summary>
+/// Anti-ailiasing level for the this token. 0 disables, -1 uses adapter default.
+/// </summary>
+[MemberGroup("")]
+public int aaLevel
+       {
+       get
+          {
+          return Omni.self.GetVar(_ID + ".aaLevel").AsInt();
+          }
+       set
+          {
+          Omni.self.SetVar(_ID + ".aaLevel", value.AsString());
           }
        }
 

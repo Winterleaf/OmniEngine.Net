@@ -15,10 +15,10 @@ using  WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
-using Winterleaf.Demo.Full.Dedicated.Models.Base;
+using WinterLeaf.Demo.Full.Models.Base;
 #endregion
 
-namespace Winterleaf.Demo.Full.Dedicated.Models.User.Extendable
+namespace WinterLeaf.Demo.Full.Models.User.Extendable
     {
     /// <summary>
     /// 
