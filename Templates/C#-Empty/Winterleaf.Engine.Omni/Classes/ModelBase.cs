@@ -319,7 +319,7 @@ namespace WinterLeaf.Engine.Classes
             return _ID;
         }
 
-        internal virtual void SetUpObject(uint simobjectid)
+        public virtual void SetUpObject(uint simobjectid)
         {
             _ID = simobjectid.AsString();
             _iID = simobjectid;
