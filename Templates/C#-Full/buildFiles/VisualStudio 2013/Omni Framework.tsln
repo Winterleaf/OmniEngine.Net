@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Game", "..\..\Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Demo.Full", "..\..\Winterleaf.Demo.Full\Winterleaf.Demo.Full.csproj", "{6A6B388C-7C5E-49E2-938E-E4EC95570673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Engine", "..\..\Winterleaf.Engine.Omni\Winterleaf.Engine.csproj", "{F08948D7-0E15-408A-B1F6-EC395895656F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterleaf.Engine", "..\..\..\..\Winterleaf.Engine.Omni\Winterleaf.Engine.csproj", "{F08948D7-0E15-408A-B1F6-EC395895656F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
