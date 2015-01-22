@@ -16,10 +16,10 @@ using  WinterLeaf.Engine.Classes.Interopt;
 using WinterLeaf.Engine.Classes.Decorations;
 using WinterLeaf.Engine.Classes.Extensions;
 using WinterLeaf.Engine.Classes.Helpers;
-using Winterleaf.Demo.Full.Dedicated.Models.User.Extendable;
+using WinterLeaf.Demo.Full.Models.User.Extendable;
 #endregion
 
-namespace Winterleaf.Demo.Full.Dedicated.Models.Base
+namespace WinterLeaf.Demo.Full.Models.Base
     {
     /// <summary>
     /// 
@@ -197,11 +197,12 @@ public  void regenCells(){
 pInvokes.m_ts.fn_Forest_regenCells(_ID);
 }
 /// <summary>
-/// ), saveDataFile( [path] ) )
+/// saveDataFile( [path] ) )
 /// 
 /// </summary>
 [MemberFunctionConsoleInteraction(true)]
-public  void saveDataFile(string path = null){
+public  void saveDataFile(string path = null ){
+if (path== null) {path = null;}
 
 pInvokes.m_ts.fn_Forest_saveDataFile(_ID, path);
 }

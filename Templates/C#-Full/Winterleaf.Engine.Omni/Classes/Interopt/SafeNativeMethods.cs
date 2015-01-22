@@ -514,6 +514,21 @@ static internal wle_fn__expandFilename mwle_fn__expandFilename;
 static internal wle_fn__expandOldFilename mwle_fn__expandOldFilename;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn__expandOldFilename([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a1,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn__getStockColorCount mwle_fn__getStockColorCount;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate int wle_fn__getStockColorCount();
+static internal wle_fn__getStockColorF mwle_fn__getStockColorF;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn__getStockColorF([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a1,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn__getStockColorI mwle_fn__getStockColorI;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn__getStockColorI([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a1,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn__getStockColorName mwle_fn__getStockColorName;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn__getStockColorName([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a1,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn__isStockColor mwle_fn__isStockColor;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate int wle_fn__isStockColor([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a1);
 static internal wle_fn__mathInit mwle_fn__mathInit;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn__mathInit([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a1, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a2, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a3, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a4, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a5, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a6, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a7, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a8, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder a9);
@@ -643,9 +658,15 @@ static internal wle_fn_clearGFXResourceFlags mwle_fn_clearGFXResourceFlags;
 static internal wle_fn_clearServerPaths mwle_fn_clearServerPaths;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_clearServerPaths();
+static internal wle_fn_CloseAllPopOuts mwle_fn_CloseAllPopOuts;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_CloseAllPopOuts();
 static internal wle_fn_closeNetPort mwle_fn_closeNetPort;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_closeNetPort();
+static internal wle_fn_closeSplashWindow mwle_fn_closeSplashWindow;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_closeSplashWindow();
 static internal wle_fn_collapseEscape mwle_fn_collapseEscape;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_collapseEscape([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder text,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
@@ -901,9 +922,6 @@ static internal wle_fn_dumpSoCount mwle_fn_dumpSoCount;
 static internal wle_fn_dumpStringMemStats mwle_fn_dumpStringMemStats;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_dumpStringMemStats();
-static internal wle_fn_dumpStringTableSize mwle_fn_dumpStringTableSize;
-[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fn_dumpStringTableSize();
 static internal wle_fn_dumpTextureObjects mwle_fn_dumpTextureObjects;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_dumpTextureObjects();
@@ -1207,6 +1225,12 @@ static internal wle_fn_getFileCountMultiExpr mwle_fn_getFileCountMultiExpr;
 static internal wle_fn_getFileCRC mwle_fn_getFileCRC;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fn_getFileCRC([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder fileName);
+static internal wle_fn_getFormatExtensions mwle_fn_getFormatExtensions;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_getFormatExtensions([MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+static internal wle_fn_getFormatFilters mwle_fn_getFormatFilters;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_getFormatFilters([MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
 static internal wle_fn_getFrustumOffset mwle_fn_getFrustumOffset;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_getFrustumOffset([MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
@@ -2418,7 +2442,7 @@ static internal wle_fn_nameToID mwle_fn_nameToID;
  internal delegate int wle_fn_nameToID([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder objectName);
 static internal wle_fn_nextToken mwle_fn_nextToken;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fn_nextToken([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder str, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder token, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder delim,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
+ internal delegate void wle_fn_nextToken([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder str1, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder token, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder delim,[MarshalAs(UnmanagedType.LPStr)] [Out] StringBuilder retval);
 static internal wle_fn_openFile mwle_fn_openFile;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_openFile([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder file);
@@ -2605,6 +2629,12 @@ static internal wle_fn_queryMasterServer mwle_fn_queryMasterServer;
 static internal wle_fn_querySingleServer mwle_fn_querySingleServer;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_querySingleServer([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder addrText, [In] byte flags);
+static internal wle_fn_quit mwle_fn_quit;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_quit();
+static internal wle_fn_quitWithErrorMessage mwle_fn_quitWithErrorMessage;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fn_quitWithErrorMessage([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder message);
 static internal wle_fn_ReadXML_readFile mwle_fn_ReadXML_readFile;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fn_ReadXML_readFile([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder readxml);
@@ -3168,7 +3198,7 @@ static internal wle_fn_TerrainEditor_attachTerrain mwle_fn_TerrainEditor_attachT
  internal delegate void wle_fn_TerrainEditor_attachTerrain([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder terraineditor, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder terrain);
 static internal wle_fn_TerrainEditor_autoMaterialLayer mwle_fn_TerrainEditor_autoMaterialLayer;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fn_TerrainEditor_autoMaterialLayer([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder terraineditor, [In] float minHeight, [In] float maxHeight, [In] float minSlope, [In] float maxSlope);
+ internal delegate void wle_fn_TerrainEditor_autoMaterialLayer([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder terraineditor, [In] float minHeight, [In] float maxHeight, [In] float minSlope, [In] float maxSlope, [In] float coverage);
 static internal wle_fn_TerrainEditor_clearSelection mwle_fn_TerrainEditor_clearSelection;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_TerrainEditor_clearSelection([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder terraineditor);
@@ -3355,9 +3385,6 @@ static internal wle_fn_UndoManager_redo mwle_fn_UndoManager_redo;
 static internal wle_fn_UndoManager_undo mwle_fn_UndoManager_undo;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_UndoManager_undo([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder undomanager);
-static internal wle_fn_unitTest_runTests mwle_fn_unitTest_runTests;
-[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fn_unitTest_runTests([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder searchString, [In] bool skip);
 static internal wle_fn_unregisterMessageListener mwle_fn_unregisterMessageListener;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fn_unregisterMessageListener([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder queueName, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder listenerName);
@@ -3571,6 +3598,12 @@ static internal wle_fnActionMap_unbindObj mwle_fnActionMap_unbindObj;
 static internal wle_fnAIPlayer_AISearchSimSet mwle_fnAIPlayer_AISearchSimSet;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnAIPlayer_AISearchSimSet([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder aiplayer, [In] float fOV, [In] float farDist, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder ObjToSearch, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder result);
+static internal wle_fnAIPlayer_checkInFoV mwle_fnAIPlayer_checkInFoV;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate int wle_fnAIPlayer_checkInFoV([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder aiplayer, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder obj, [In] float fov, [In] bool checkEnabled);
+static internal wle_fnAIPlayer_checkInLos mwle_fnAIPlayer_checkInLos;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate int wle_fnAIPlayer_checkInLos([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder aiplayer, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder obj, [In] bool useMuzzle, [In] bool checkEnabled);
 static internal wle_fnAIPlayer_clearAim mwle_fnAIPlayer_clearAim;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnAIPlayer_clearAim([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder aiplayer);
@@ -3882,7 +3915,7 @@ static internal wle_fnCamera_setOffset mwle_fnCamera_setOffset;
  internal delegate void wle_fnCamera_setOffset([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder camera, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder offset);
 static internal wle_fnCamera_setOrbitMode mwle_fnCamera_setOrbitMode;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate int wle_fnCamera_setOrbitMode([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder camera, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder orbitObject, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder orbitPoint, [In] float minDistance, [In] float maxDistance, [In] float initDistance, [In] bool ownClientObj, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder offset, [In] bool lockedx);
+ internal delegate void wle_fnCamera_setOrbitMode([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder camera, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder orbitObject, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder orbitPoint, [In] float minDistance, [In] float maxDistance, [In] float initDistance, [In] bool ownClientObj, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder offset, [In] bool lockedx);
 static internal wle_fnCamera_setOrbitObject mwle_fnCamera_setOrbitObject;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fnCamera_setOrbitObject([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder camera, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder orbitObject, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder rotation, [In] float minDistance, [In] float maxDistance, [In] float initDistance, [In] bool ownClientObject, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder offset, [In] bool lockedx);
@@ -3904,9 +3937,6 @@ static internal wle_fnCamera_setValidEditOrbitPoint mwle_fnCamera_setValidEditOr
 static internal wle_fnCamera_setVelocity mwle_fnCamera_setVelocity;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnCamera_setVelocity([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder camera, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder velocity);
-static internal wle_fnCloudLayer_ChangeCoverage mwle_fnCloudLayer_ChangeCoverage;
-[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fnCloudLayer_ChangeCoverage([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder cloudlayer, [In] float newCoverage);
 static internal wle_fnCoverPoint_isOccupied mwle_fnCoverPoint_isOccupied;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fnCoverPoint_isOccupied([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder coverpoint);
@@ -4027,9 +4057,6 @@ static internal wle_fnForest_addItemWithTransform mwle_fnForest_addItemWithTrans
 static internal wle_fnForestWindEmitter_attachToObject mwle_fnForestWindEmitter_attachToObject;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnForestWindEmitter_attachToObject([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder forestwindemitter, [In] uint objectID);
-static internal wle_fnForestWindEmitter_resetWind mwle_fnForestWindEmitter_resetWind;
-[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fnForestWindEmitter_resetWind([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder forestwindemitter, [In] int randomSeed);
 static internal wle_fnGameBase_applyImpulse mwle_fnGameBase_applyImpulse;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fnGameBase_applyImpulse([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder gamebase, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder pos, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder vel);
@@ -4282,6 +4309,9 @@ static internal wle_fnGuiCanvas_getWindowPosition mwle_fnGuiCanvas_getWindowPosi
 static internal wle_fnGuiCanvas_hideCursor mwle_fnGuiCanvas_hideCursor;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnGuiCanvas_hideCursor([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder guicanvas);
+static internal wle_fnGuiCanvas_hideWindow mwle_fnGuiCanvas_hideWindow;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fnGuiCanvas_hideWindow([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder guicanvas);
 static internal wle_fnGuiCanvas_isCursorOn mwle_fnGuiCanvas_isCursorOn;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fnGuiCanvas_isCursorOn([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder guicanvas);
@@ -4318,6 +4348,9 @@ static internal wle_fnGuiCanvas_setWindowTitle mwle_fnGuiCanvas_setWindowTitle;
 static internal wle_fnGuiCanvas_showCursor mwle_fnGuiCanvas_showCursor;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnGuiCanvas_showCursor([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder guicanvas);
+static internal wle_fnGuiCanvas_showWindow mwle_fnGuiCanvas_showWindow;
+[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
+ internal delegate void wle_fnGuiCanvas_showWindow([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder guicanvas);
 static internal wle_fnGuiCanvas_toggleFullscreen mwle_fnGuiCanvas_toggleFullscreen;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnGuiCanvas_toggleFullscreen([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder guicanvas);
@@ -6325,9 +6358,6 @@ static internal wle_fnShapeBase_setImageTarget mwle_fnShapeBase_setImageTarget;
 static internal wle_fnShapeBase_setImageTrigger mwle_fnShapeBase_setImageTrigger;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate int wle_fnShapeBase_setImageTrigger([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder shapebase, [In] int slot, [In] bool state);
-static internal wle_fnShapeBase_setInvincibleMode mwle_fnShapeBase_setInvincibleMode;
-[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fnShapeBase_setInvincibleMode([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder shapebase, [In] float time, [In] float speed);
 static internal wle_fnShapeBase_setMeshHidden mwle_fnShapeBase_setMeshHidden;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnShapeBase_setMeshHidden([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder shapebase, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder name, [In] bool hide);
@@ -6651,7 +6681,7 @@ static internal wle_fnTCPObject_disconnect mwle_fnTCPObject_disconnect;
  internal delegate void wle_fnTCPObject_disconnect([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder tcpobject);
 static internal wle_fnTCPObject_listen mwle_fnTCPObject_listen;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
- internal delegate void wle_fnTCPObject_listen([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder tcpobject, [In] int port);
+ internal delegate void wle_fnTCPObject_listen([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder tcpobject, [In] uint port);
 static internal wle_fnTCPObject_send mwle_fnTCPObject_send;
 [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = true)] 
  internal delegate void wle_fnTCPObject_send([MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder tcpobject, [MarshalAs(UnmanagedType.LPStr)] [In]  StringBuilder data);
@@ -7119,6 +7149,11 @@ mwle_fn__error= null;
 mwle_fn__execPrefs= null;
 mwle_fn__expandFilename= null;
 mwle_fn__expandOldFilename= null;
+mwle_fn__getStockColorCount= null;
+mwle_fn__getStockColorF= null;
+mwle_fn__getStockColorI= null;
+mwle_fn__getStockColorName= null;
+mwle_fn__isStockColor= null;
 mwle_fn__mathInit= null;
 mwle_fn__resourceDump= null;
 mwle_fn__schedule= null;
@@ -7162,7 +7197,9 @@ mwle_fn_cleanupTexturePool= null;
 mwle_fn_clearClientPaths= null;
 mwle_fn_clearGFXResourceFlags= null;
 mwle_fn_clearServerPaths= null;
+mwle_fn_CloseAllPopOuts= null;
 mwle_fn_closeNetPort= null;
+mwle_fn_closeSplashWindow= null;
 mwle_fn_collapseEscape= null;
 mwle_fn_compile= null;
 mwle_fn_CompoundUndoAction_addAction= null;
@@ -7248,7 +7285,6 @@ mwle_fn_dumpProcessList= null;
 mwle_fn_dumpRandomNormalMap= null;
 mwle_fn_dumpSoCount= null;
 mwle_fn_dumpStringMemStats= null;
-mwle_fn_dumpStringTableSize= null;
 mwle_fn_dumpTextureObjects= null;
 mwle_fn_duplicateCachedFont= null;
 mwle_fn_echoInputState= null;
@@ -7350,6 +7386,8 @@ mwle_fn_getFields= null;
 mwle_fn_getFileCount= null;
 mwle_fn_getFileCountMultiExpr= null;
 mwle_fn_getFileCRC= null;
+mwle_fn_getFormatExtensions= null;
+mwle_fn_getFormatFilters= null;
 mwle_fn_getFrustumOffset= null;
 mwle_fn_getFunctionPackage= null;
 mwle_fn_getJoystickAxes= null;
@@ -7816,6 +7854,8 @@ mwle_fn_queryAllServers= null;
 mwle_fn_queryLanServers= null;
 mwle_fn_queryMasterServer= null;
 mwle_fn_querySingleServer= null;
+mwle_fn_quit= null;
+mwle_fn_quitWithErrorMessage= null;
 mwle_fn_ReadXML_readFile= null;
 mwle_fn_realQuit= null;
 mwle_fn_redbookClose= null;
@@ -8066,7 +8106,6 @@ mwle_fn_UndoManager_popCompound= null;
 mwle_fn_UndoManager_pushCompound= null;
 mwle_fn_UndoManager_redo= null;
 mwle_fn_UndoManager_undo= null;
-mwle_fn_unitTest_runTests= null;
 mwle_fn_unregisterMessageListener= null;
 mwle_fn_unregisterMessageQueue= null;
 mwle_fn_VectorAdd= null;
@@ -8138,6 +8177,8 @@ mwle_fnActionMap_save= null;
 mwle_fnActionMap_unbind= null;
 mwle_fnActionMap_unbindObj= null;
 mwle_fnAIPlayer_AISearchSimSet= null;
+mwle_fnAIPlayer_checkInFoV= null;
+mwle_fnAIPlayer_checkInLos= null;
 mwle_fnAIPlayer_clearAim= null;
 mwle_fnAIPlayer_findCover= null;
 mwle_fnAIPlayer_findNavMesh= null;
@@ -8249,7 +8290,6 @@ mwle_fnCamera_setSpeedMultiplier= null;
 mwle_fnCamera_setTrackObject= null;
 mwle_fnCamera_setValidEditOrbitPoint= null;
 mwle_fnCamera_setVelocity= null;
-mwle_fnCloudLayer_ChangeCoverage= null;
 mwle_fnCoverPoint_isOccupied= null;
 mwle_fnCubemapData_getFilename= null;
 mwle_fnCubemapData_updateFaces= null;
@@ -8290,7 +8330,6 @@ mwle_fnFlyingVehicle_useCreateHeight= null;
 mwle_fnForest_addItem= null;
 mwle_fnForest_addItemWithTransform= null;
 mwle_fnForestWindEmitter_attachToObject= null;
-mwle_fnForestWindEmitter_resetWind= null;
 mwle_fnGameBase_applyImpulse= null;
 mwle_fnGameBase_applyRadialImpulse= null;
 mwle_fnGameBase_getDataBlock= null;
@@ -8375,6 +8414,7 @@ mwle_fnGuiCanvas_getMouseControl= null;
 mwle_fnGuiCanvas_getVideoMode= null;
 mwle_fnGuiCanvas_getWindowPosition= null;
 mwle_fnGuiCanvas_hideCursor= null;
+mwle_fnGuiCanvas_hideWindow= null;
 mwle_fnGuiCanvas_isCursorOn= null;
 mwle_fnGuiCanvas_isCursorShown= null;
 mwle_fnGuiCanvas_renderFront= null;
@@ -8387,6 +8427,7 @@ mwle_fnGuiCanvas_setPopupShown= null;
 mwle_fnGuiCanvas_setWindowPosition= null;
 mwle_fnGuiCanvas_setWindowTitle= null;
 mwle_fnGuiCanvas_showCursor= null;
+mwle_fnGuiCanvas_showWindow= null;
 mwle_fnGuiCanvas_toggleFullscreen= null;
 mwle_fnGuiCheckBoxCtrl_isStateOn= null;
 mwle_fnGuiCheckBoxCtrl_setStateOn= null;
@@ -9056,7 +9097,6 @@ mwle_fnShapeBase_setImageLoaded= null;
 mwle_fnShapeBase_setImageScriptAnimPrefix= null;
 mwle_fnShapeBase_setImageTarget= null;
 mwle_fnShapeBase_setImageTrigger= null;
-mwle_fnShapeBase_setInvincibleMode= null;
 mwle_fnShapeBase_setMeshHidden= null;
 mwle_fnShapeBase_setRechargeRate= null;
 mwle_fnShapeBase_setRepairRate= null;
@@ -9328,6 +9368,11 @@ mwle_fn__error= (wle_fn__error)Marshal.GetDelegateForFunctionPointer(GetProcAddr
 mwle_fn__execPrefs= (wle_fn__execPrefs)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__execPrefs"), typeof(wle_fn__execPrefs));
 mwle_fn__expandFilename= (wle_fn__expandFilename)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__expandFilename"), typeof(wle_fn__expandFilename));
 mwle_fn__expandOldFilename= (wle_fn__expandOldFilename)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__expandOldFilename"), typeof(wle_fn__expandOldFilename));
+mwle_fn__getStockColorCount= (wle_fn__getStockColorCount)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__getStockColorCount"), typeof(wle_fn__getStockColorCount));
+mwle_fn__getStockColorF= (wle_fn__getStockColorF)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__getStockColorF"), typeof(wle_fn__getStockColorF));
+mwle_fn__getStockColorI= (wle_fn__getStockColorI)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__getStockColorI"), typeof(wle_fn__getStockColorI));
+mwle_fn__getStockColorName= (wle_fn__getStockColorName)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__getStockColorName"), typeof(wle_fn__getStockColorName));
+mwle_fn__isStockColor= (wle_fn__isStockColor)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__isStockColor"), typeof(wle_fn__isStockColor));
 mwle_fn__mathInit= (wle_fn__mathInit)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__mathInit"), typeof(wle_fn__mathInit));
 mwle_fn__resourceDump= (wle_fn__resourceDump)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__resourceDump"), typeof(wle_fn__resourceDump));
 mwle_fn__schedule= (wle_fn__schedule)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn__schedule"), typeof(wle_fn__schedule));
@@ -9371,7 +9416,9 @@ mwle_fn_cleanupTexturePool= (wle_fn_cleanupTexturePool)Marshal.GetDelegateForFun
 mwle_fn_clearClientPaths= (wle_fn_clearClientPaths)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_clearClientPaths"), typeof(wle_fn_clearClientPaths));
 mwle_fn_clearGFXResourceFlags= (wle_fn_clearGFXResourceFlags)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_clearGFXResourceFlags"), typeof(wle_fn_clearGFXResourceFlags));
 mwle_fn_clearServerPaths= (wle_fn_clearServerPaths)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_clearServerPaths"), typeof(wle_fn_clearServerPaths));
+mwle_fn_CloseAllPopOuts= (wle_fn_CloseAllPopOuts)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_CloseAllPopOuts"), typeof(wle_fn_CloseAllPopOuts));
 mwle_fn_closeNetPort= (wle_fn_closeNetPort)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_closeNetPort"), typeof(wle_fn_closeNetPort));
+mwle_fn_closeSplashWindow= (wle_fn_closeSplashWindow)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_closeSplashWindow"), typeof(wle_fn_closeSplashWindow));
 mwle_fn_collapseEscape= (wle_fn_collapseEscape)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_collapseEscape"), typeof(wle_fn_collapseEscape));
 mwle_fn_compile= (wle_fn_compile)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_compile"), typeof(wle_fn_compile));
 mwle_fn_CompoundUndoAction_addAction= (wle_fn_CompoundUndoAction_addAction)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_CompoundUndoAction_addAction"), typeof(wle_fn_CompoundUndoAction_addAction));
@@ -9457,7 +9504,6 @@ mwle_fn_dumpProcessList= (wle_fn_dumpProcessList)Marshal.GetDelegateForFunctionP
 mwle_fn_dumpRandomNormalMap= (wle_fn_dumpRandomNormalMap)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpRandomNormalMap"), typeof(wle_fn_dumpRandomNormalMap));
 mwle_fn_dumpSoCount= (wle_fn_dumpSoCount)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpSoCount"), typeof(wle_fn_dumpSoCount));
 mwle_fn_dumpStringMemStats= (wle_fn_dumpStringMemStats)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpStringMemStats"), typeof(wle_fn_dumpStringMemStats));
-mwle_fn_dumpStringTableSize= (wle_fn_dumpStringTableSize)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpStringTableSize"), typeof(wle_fn_dumpStringTableSize));
 mwle_fn_dumpTextureObjects= (wle_fn_dumpTextureObjects)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_dumpTextureObjects"), typeof(wle_fn_dumpTextureObjects));
 mwle_fn_duplicateCachedFont= (wle_fn_duplicateCachedFont)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_duplicateCachedFont"), typeof(wle_fn_duplicateCachedFont));
 mwle_fn_echoInputState= (wle_fn_echoInputState)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_echoInputState"), typeof(wle_fn_echoInputState));
@@ -9559,6 +9605,8 @@ mwle_fn_getFields= (wle_fn_getFields)Marshal.GetDelegateForFunctionPointer(GetPr
 mwle_fn_getFileCount= (wle_fn_getFileCount)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFileCount"), typeof(wle_fn_getFileCount));
 mwle_fn_getFileCountMultiExpr= (wle_fn_getFileCountMultiExpr)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFileCountMultiExpr"), typeof(wle_fn_getFileCountMultiExpr));
 mwle_fn_getFileCRC= (wle_fn_getFileCRC)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFileCRC"), typeof(wle_fn_getFileCRC));
+mwle_fn_getFormatExtensions= (wle_fn_getFormatExtensions)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFormatExtensions"), typeof(wle_fn_getFormatExtensions));
+mwle_fn_getFormatFilters= (wle_fn_getFormatFilters)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFormatFilters"), typeof(wle_fn_getFormatFilters));
 mwle_fn_getFrustumOffset= (wle_fn_getFrustumOffset)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFrustumOffset"), typeof(wle_fn_getFrustumOffset));
 mwle_fn_getFunctionPackage= (wle_fn_getFunctionPackage)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getFunctionPackage"), typeof(wle_fn_getFunctionPackage));
 mwle_fn_getJoystickAxes= (wle_fn_getJoystickAxes)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_getJoystickAxes"), typeof(wle_fn_getJoystickAxes));
@@ -10025,6 +10073,8 @@ mwle_fn_queryAllServers= (wle_fn_queryAllServers)Marshal.GetDelegateForFunctionP
 mwle_fn_queryLanServers= (wle_fn_queryLanServers)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_queryLanServers"), typeof(wle_fn_queryLanServers));
 mwle_fn_queryMasterServer= (wle_fn_queryMasterServer)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_queryMasterServer"), typeof(wle_fn_queryMasterServer));
 mwle_fn_querySingleServer= (wle_fn_querySingleServer)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_querySingleServer"), typeof(wle_fn_querySingleServer));
+mwle_fn_quit= (wle_fn_quit)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_quit"), typeof(wle_fn_quit));
+mwle_fn_quitWithErrorMessage= (wle_fn_quitWithErrorMessage)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_quitWithErrorMessage"), typeof(wle_fn_quitWithErrorMessage));
 mwle_fn_ReadXML_readFile= (wle_fn_ReadXML_readFile)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_ReadXML_readFile"), typeof(wle_fn_ReadXML_readFile));
 mwle_fn_realQuit= (wle_fn_realQuit)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_realQuit"), typeof(wle_fn_realQuit));
 mwle_fn_redbookClose= (wle_fn_redbookClose)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_redbookClose"), typeof(wle_fn_redbookClose));
@@ -10275,7 +10325,6 @@ mwle_fn_UndoManager_popCompound= (wle_fn_UndoManager_popCompound)Marshal.GetDele
 mwle_fn_UndoManager_pushCompound= (wle_fn_UndoManager_pushCompound)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_UndoManager_pushCompound"), typeof(wle_fn_UndoManager_pushCompound));
 mwle_fn_UndoManager_redo= (wle_fn_UndoManager_redo)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_UndoManager_redo"), typeof(wle_fn_UndoManager_redo));
 mwle_fn_UndoManager_undo= (wle_fn_UndoManager_undo)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_UndoManager_undo"), typeof(wle_fn_UndoManager_undo));
-mwle_fn_unitTest_runTests= (wle_fn_unitTest_runTests)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_unitTest_runTests"), typeof(wle_fn_unitTest_runTests));
 mwle_fn_unregisterMessageListener= (wle_fn_unregisterMessageListener)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_unregisterMessageListener"), typeof(wle_fn_unregisterMessageListener));
 mwle_fn_unregisterMessageQueue= (wle_fn_unregisterMessageQueue)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_unregisterMessageQueue"), typeof(wle_fn_unregisterMessageQueue));
 mwle_fn_VectorAdd= (wle_fn_VectorAdd)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fn_VectorAdd"), typeof(wle_fn_VectorAdd));
@@ -10347,6 +10396,8 @@ mwle_fnActionMap_save= (wle_fnActionMap_save)Marshal.GetDelegateForFunctionPoint
 mwle_fnActionMap_unbind= (wle_fnActionMap_unbind)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnActionMap_unbind"), typeof(wle_fnActionMap_unbind));
 mwle_fnActionMap_unbindObj= (wle_fnActionMap_unbindObj)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnActionMap_unbindObj"), typeof(wle_fnActionMap_unbindObj));
 mwle_fnAIPlayer_AISearchSimSet= (wle_fnAIPlayer_AISearchSimSet)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_AISearchSimSet"), typeof(wle_fnAIPlayer_AISearchSimSet));
+mwle_fnAIPlayer_checkInFoV= (wle_fnAIPlayer_checkInFoV)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_checkInFoV"), typeof(wle_fnAIPlayer_checkInFoV));
+mwle_fnAIPlayer_checkInLos= (wle_fnAIPlayer_checkInLos)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_checkInLos"), typeof(wle_fnAIPlayer_checkInLos));
 mwle_fnAIPlayer_clearAim= (wle_fnAIPlayer_clearAim)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_clearAim"), typeof(wle_fnAIPlayer_clearAim));
 mwle_fnAIPlayer_findCover= (wle_fnAIPlayer_findCover)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_findCover"), typeof(wle_fnAIPlayer_findCover));
 mwle_fnAIPlayer_findNavMesh= (wle_fnAIPlayer_findNavMesh)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnAIPlayer_findNavMesh"), typeof(wle_fnAIPlayer_findNavMesh));
@@ -10458,7 +10509,6 @@ mwle_fnCamera_setSpeedMultiplier= (wle_fnCamera_setSpeedMultiplier)Marshal.GetDe
 mwle_fnCamera_setTrackObject= (wle_fnCamera_setTrackObject)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCamera_setTrackObject"), typeof(wle_fnCamera_setTrackObject));
 mwle_fnCamera_setValidEditOrbitPoint= (wle_fnCamera_setValidEditOrbitPoint)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCamera_setValidEditOrbitPoint"), typeof(wle_fnCamera_setValidEditOrbitPoint));
 mwle_fnCamera_setVelocity= (wle_fnCamera_setVelocity)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCamera_setVelocity"), typeof(wle_fnCamera_setVelocity));
-mwle_fnCloudLayer_ChangeCoverage= (wle_fnCloudLayer_ChangeCoverage)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCloudLayer_ChangeCoverage"), typeof(wle_fnCloudLayer_ChangeCoverage));
 mwle_fnCoverPoint_isOccupied= (wle_fnCoverPoint_isOccupied)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCoverPoint_isOccupied"), typeof(wle_fnCoverPoint_isOccupied));
 mwle_fnCubemapData_getFilename= (wle_fnCubemapData_getFilename)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCubemapData_getFilename"), typeof(wle_fnCubemapData_getFilename));
 mwle_fnCubemapData_updateFaces= (wle_fnCubemapData_updateFaces)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnCubemapData_updateFaces"), typeof(wle_fnCubemapData_updateFaces));
@@ -10499,7 +10549,6 @@ mwle_fnFlyingVehicle_useCreateHeight= (wle_fnFlyingVehicle_useCreateHeight)Marsh
 mwle_fnForest_addItem= (wle_fnForest_addItem)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnForest_addItem"), typeof(wle_fnForest_addItem));
 mwle_fnForest_addItemWithTransform= (wle_fnForest_addItemWithTransform)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnForest_addItemWithTransform"), typeof(wle_fnForest_addItemWithTransform));
 mwle_fnForestWindEmitter_attachToObject= (wle_fnForestWindEmitter_attachToObject)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnForestWindEmitter_attachToObject"), typeof(wle_fnForestWindEmitter_attachToObject));
-mwle_fnForestWindEmitter_resetWind= (wle_fnForestWindEmitter_resetWind)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnForestWindEmitter_resetWind"), typeof(wle_fnForestWindEmitter_resetWind));
 mwle_fnGameBase_applyImpulse= (wle_fnGameBase_applyImpulse)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGameBase_applyImpulse"), typeof(wle_fnGameBase_applyImpulse));
 mwle_fnGameBase_applyRadialImpulse= (wle_fnGameBase_applyRadialImpulse)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGameBase_applyRadialImpulse"), typeof(wle_fnGameBase_applyRadialImpulse));
 mwle_fnGameBase_getDataBlock= (wle_fnGameBase_getDataBlock)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGameBase_getDataBlock"), typeof(wle_fnGameBase_getDataBlock));
@@ -10584,6 +10633,7 @@ mwle_fnGuiCanvas_getMouseControl= (wle_fnGuiCanvas_getMouseControl)Marshal.GetDe
 mwle_fnGuiCanvas_getVideoMode= (wle_fnGuiCanvas_getVideoMode)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_getVideoMode"), typeof(wle_fnGuiCanvas_getVideoMode));
 mwle_fnGuiCanvas_getWindowPosition= (wle_fnGuiCanvas_getWindowPosition)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_getWindowPosition"), typeof(wle_fnGuiCanvas_getWindowPosition));
 mwle_fnGuiCanvas_hideCursor= (wle_fnGuiCanvas_hideCursor)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_hideCursor"), typeof(wle_fnGuiCanvas_hideCursor));
+mwle_fnGuiCanvas_hideWindow= (wle_fnGuiCanvas_hideWindow)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_hideWindow"), typeof(wle_fnGuiCanvas_hideWindow));
 mwle_fnGuiCanvas_isCursorOn= (wle_fnGuiCanvas_isCursorOn)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_isCursorOn"), typeof(wle_fnGuiCanvas_isCursorOn));
 mwle_fnGuiCanvas_isCursorShown= (wle_fnGuiCanvas_isCursorShown)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_isCursorShown"), typeof(wle_fnGuiCanvas_isCursorShown));
 mwle_fnGuiCanvas_renderFront= (wle_fnGuiCanvas_renderFront)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_renderFront"), typeof(wle_fnGuiCanvas_renderFront));
@@ -10596,6 +10646,7 @@ mwle_fnGuiCanvas_setPopupShown= (wle_fnGuiCanvas_setPopupShown)Marshal.GetDelega
 mwle_fnGuiCanvas_setWindowPosition= (wle_fnGuiCanvas_setWindowPosition)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_setWindowPosition"), typeof(wle_fnGuiCanvas_setWindowPosition));
 mwle_fnGuiCanvas_setWindowTitle= (wle_fnGuiCanvas_setWindowTitle)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_setWindowTitle"), typeof(wle_fnGuiCanvas_setWindowTitle));
 mwle_fnGuiCanvas_showCursor= (wle_fnGuiCanvas_showCursor)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_showCursor"), typeof(wle_fnGuiCanvas_showCursor));
+mwle_fnGuiCanvas_showWindow= (wle_fnGuiCanvas_showWindow)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_showWindow"), typeof(wle_fnGuiCanvas_showWindow));
 mwle_fnGuiCanvas_toggleFullscreen= (wle_fnGuiCanvas_toggleFullscreen)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCanvas_toggleFullscreen"), typeof(wle_fnGuiCanvas_toggleFullscreen));
 mwle_fnGuiCheckBoxCtrl_isStateOn= (wle_fnGuiCheckBoxCtrl_isStateOn)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCheckBoxCtrl_isStateOn"), typeof(wle_fnGuiCheckBoxCtrl_isStateOn));
 mwle_fnGuiCheckBoxCtrl_setStateOn= (wle_fnGuiCheckBoxCtrl_setStateOn)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnGuiCheckBoxCtrl_setStateOn"), typeof(wle_fnGuiCheckBoxCtrl_setStateOn));
@@ -11265,7 +11316,6 @@ mwle_fnShapeBase_setImageLoaded= (wle_fnShapeBase_setImageLoaded)Marshal.GetDele
 mwle_fnShapeBase_setImageScriptAnimPrefix= (wle_fnShapeBase_setImageScriptAnimPrefix)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setImageScriptAnimPrefix"), typeof(wle_fnShapeBase_setImageScriptAnimPrefix));
 mwle_fnShapeBase_setImageTarget= (wle_fnShapeBase_setImageTarget)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setImageTarget"), typeof(wle_fnShapeBase_setImageTarget));
 mwle_fnShapeBase_setImageTrigger= (wle_fnShapeBase_setImageTrigger)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setImageTrigger"), typeof(wle_fnShapeBase_setImageTrigger));
-mwle_fnShapeBase_setInvincibleMode= (wle_fnShapeBase_setInvincibleMode)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setInvincibleMode"), typeof(wle_fnShapeBase_setInvincibleMode));
 mwle_fnShapeBase_setMeshHidden= (wle_fnShapeBase_setMeshHidden)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setMeshHidden"), typeof(wle_fnShapeBase_setMeshHidden));
 mwle_fnShapeBase_setRechargeRate= (wle_fnShapeBase_setRechargeRate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setRechargeRate"), typeof(wle_fnShapeBase_setRechargeRate));
 mwle_fnShapeBase_setRepairRate= (wle_fnShapeBase_setRepairRate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(dllname, "wle_fnShapeBase_setRepairRate"), typeof(wle_fnShapeBase_setRepairRate));
