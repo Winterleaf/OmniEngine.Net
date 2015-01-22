@@ -369,7 +369,7 @@ namespace WinterLeaf.Engine.Classes
         /// <returns></returns>
         public virtual bool isMethod(string method)
         {
-            return Omni.self.fn_isMethod(ID, method);
+            return Omni.self.fn_SimObject_isMethod(ID, method);
         }
 
         /// <summary>
