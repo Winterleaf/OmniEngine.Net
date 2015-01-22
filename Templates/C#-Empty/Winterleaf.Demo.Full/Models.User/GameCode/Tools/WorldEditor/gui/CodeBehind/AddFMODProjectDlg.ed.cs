@@ -70,7 +70,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
                 }
 
             // Make sure we have the FMOD Event DLL loaded.
-            uint deviceCaps = Util.getField(Util.sfxGetDeviceInfo(), iGlobal["$SFX::DEVICE_INFO_CAPS"]).AsUInt();
+            uint deviceCaps = Util.getField(Util.sfxGetDeviceInfo(), iGlobal["$SFX::DEVICE_INFO_CAPS"]).AsUint();
 
             if ((deviceCaps & uGlobal["$SFX::DEVICE_CAPS_FMODDESIGNER"]) != 1)
                 {

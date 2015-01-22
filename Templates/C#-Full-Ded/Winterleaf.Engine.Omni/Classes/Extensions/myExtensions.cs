@@ -416,7 +416,7 @@ namespace WinterLeaf.Engine.Classes.Extensions
         /// </summary>
         /// <param name="value"> </param>
         /// <returns> int </returns>
-        public static uint AsUInt(this string value)
+        public static uint AsUint(this string value)
         {
             if (value.Trim() == string.Empty)
                 return 0;
@@ -457,36 +457,6 @@ namespace WinterLeaf.Engine.Classes.Extensions
                 return 0;
             Byte i;
             return Byte.TryParse(value, out i) ? i : (byte) 0;
-        }
-
-        /// <summary>
-        ///   returns the string as a unint
-        /// </summary>
-        /// <param name="value"> uint </param>
-        /// <returns> </returns>
-        public static uint AsUint(this string value)
-        {
-            if (value.Trim() == string.Empty)
-                return 0;
-            if (!IsNumeric(value))
-                {
-                try
-                    {
-                    ModelBase t = value;
-                    value = t._ID.AsString();
-                    }
-                catch (Exception)
-                    {
-                    }
-                }
-            uint v;
-            if (uint.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out v))
-                return v;
-
-            int i;
-            if (int.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out i))
-                return (uint) i;
-            throw new Exception("Failed to cast string to uint");
         }
 
         /// <summary>

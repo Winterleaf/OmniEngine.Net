@@ -93,7 +93,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.WorldEditor.gui.CodeBe
             if (pos.AsInt() >= 0 && pos.AsInt() < CameraBookMarks.getCount())
                 {
                 EditorGui EditorGui = "EditorGui";
-                SimObject mark = CameraBookMarks.getObject(pos.AsUInt());
+                SimObject mark = CameraBookMarks.getObject(pos.AsUint());
                 EditorGui.jumpToBookmark(mark.internalName);
                 return true;
                 }

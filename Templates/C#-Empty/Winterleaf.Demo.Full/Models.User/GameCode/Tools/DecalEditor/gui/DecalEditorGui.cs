@@ -1699,7 +1699,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 // Set the curent decalinstances id
                 DecalEditorGui["selDecalInstanceId"] = decalId;
 
-                DecalEditorGui.selectDecal(decalId.AsUInt());
+                DecalEditorGui.selectDecal(decalId.AsUint());
                 DecalEditorGui.syncNodeDetails();
             }
 
