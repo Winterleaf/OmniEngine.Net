@@ -167,7 +167,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
             if (id != -1)
                 {
                 string bkp = DebuggerBreakPoints.getRowTextById(id);
-                DbgSetBreakPoint(omni.Util.getField(bkp, 1), omni.Util.getField(bkp, 0).AsUInt(), clear.AsBool(), passct, condition);
+                DbgSetBreakPoint(omni.Util.getField(bkp, 1), omni.Util.getField(bkp, 0).AsUint(), clear.AsBool(), passct, condition);
                 }
 
             Canvas.popDialog(DebuggerBreakConditionDlg);
@@ -1106,7 +1106,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.Debugger.gui.CodeBehin
                 // Set the possible break positions.
                 for (int i = 0; i < pairs; i++)
                     {
-                    uint skip = Util.getWord(line, i*2 + 2).AsUInt();
+                    uint skip = Util.getWord(line, i*2 + 2).AsUint();
                     int breaks = Util.getWord(line, i*2 + 3).AsInt();
                     curLine += skip;
                     for (int j = 0; j < breaks; j++)

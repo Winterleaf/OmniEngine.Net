@@ -63,7 +63,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui.CodeBe
 
                     DecalEditorGui.editDecalDetails(this["instanceId"].AsUint(), pos, tan, size);
                     DecalEditorGui.syncNodeDetails();
-                    DecalEditorGui.selectDecal(this["instanceId"].AsUInt());
+                    DecalEditorGui.selectDecal(this["instanceId"].AsUint());
                     return true;
                     }
                 return false;

@@ -166,7 +166,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client
             omni.console.print("--------------");
 
             // Actually set the new video mode
-            ((GuiCanvas) "Canvas").setVideoMode((uint) resX, (uint) resY, fs.AsBool(), bpp.AsUint(), rate.AsUint(), fsaa.AsUint());
+            ((GuiCanvas)"Canvas").setVideoMode((uint)resX, (uint)resY, fs.AsBool(), bpp.AsUint(), rate.AsUint(), fsaa.AsUint());
 
             // FXAA piggybacks on the FSAA setting in $pref::Video::mode.
             if ("FXAA_PostEffect".isObject())
