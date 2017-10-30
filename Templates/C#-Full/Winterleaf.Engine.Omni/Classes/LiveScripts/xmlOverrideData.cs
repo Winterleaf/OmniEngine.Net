@@ -220,7 +220,7 @@ namespace WinterLeaf.Engine.Classes.LiveScripts
                 foreach (CompilerError ce in errs)
                     {
                     lock (Omni.self.tick)
-                        Omni.self.Error(String.Format(">>csFactory::File {0} Line {1} Column {2} MSG {3} ", ce.FileName, ce.Line, ce.Column, ce.ErrorText, ce.FileName));
+                        Omni.self.Error(String.Format(">>csFactory::File {0} Line {1} Column {2} MSG {3} ", ce.FileName, ce.Line, ce.Column, ce.ErrorText));
                     }
                 return false;
                 }
