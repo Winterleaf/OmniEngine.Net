@@ -862,7 +862,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.ShapeEditor.gui
             int frameCount = Util.getWord(ShapeEdSeqSlider["range"], 1).AsInt();
             int pos_x = Util.getWord(ShapeEdSeqSlider.getPosition().AsString(), 0).AsInt();
             int len_x = Util.getWord(ShapeEdSeqSlider.getExtent().AsString(), 0).AsInt() - width;
-            return pos_x + ((len_x*val/frameCount));
+            return pos_x + (len_x*val/frameCount);
         }
 
         // Set the in or out sequence limit
