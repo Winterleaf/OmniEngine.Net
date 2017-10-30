@@ -68,7 +68,6 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Client.Gui.OptionsDlg
                 }
 
             string cmd = sGlobal["$RemapCmd[" + this["index"] + "]"];
-            cmd = sGlobal["$RemapName[" + this["index"] + "]"];
 
             // Grab the friendly display name for this action
             // which we'll use when prompting the user below.
