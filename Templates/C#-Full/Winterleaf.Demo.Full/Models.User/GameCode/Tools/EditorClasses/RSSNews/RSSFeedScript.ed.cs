@@ -297,9 +297,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.EditorClasses.RSSNews
             [ConsoleInteraction]
             public void initialize(string callback)
             {
-                RSSFeedObject RSSFeedObject = "RSSFeedObject";
-
-                RSSFeedObject = new ObjectCreator("TCPObject", "RSSFeedObject", typeof (RSSFeedObject)).Create();
+                RSSFeedObject RSSFeedObject = new ObjectCreator("TCPObject", "RSSFeedObject", typeof (RSSFeedObject)).Create();
                 RSSFeedObject["_callback"] = callback;
 
                 RSSFeedObject.connect(sGlobal["$RSSFeed::serverName"] + ":" + sGlobal["$RSSFeed::serverPort"]);
