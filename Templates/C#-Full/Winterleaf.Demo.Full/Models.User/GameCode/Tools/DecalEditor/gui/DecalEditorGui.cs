@@ -1973,7 +1973,7 @@ namespace WinterLeaf.Demo.Full.Models.User.GameCode.Tools.DecalEditor.gui
                 // Same work to do as for the regular WorldEditor Inspector.
                 Inspector.onInspectorFieldModified(objectx, fieldName, arrayIndex, oldValue, newValue);
 
-                if (oldValue != newValue || oldValue != newValue)
+                if (oldValue != newValue)
                     this.setDirty(objectx);
             }
 
